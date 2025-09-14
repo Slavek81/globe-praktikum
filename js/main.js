@@ -16,25 +16,30 @@ document.addEventListener('DOMContentLoaded', function() {
  * Navigation functionality
  */
 function initializeNavigation() {
-    // Smooth scrolling for navigation links
-    const navLinks = document.querySelectorAll('.nav-link');
-    
+    // Smooth scrolling for navigation links (both main nav and quick nav)
+    const navLinks = document.querySelectorAll('.nav-link, .quick-nav-item');
+
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href').substring(1);
-            const targetElement = document.getElementById(targetId);
-            
-            if (targetElement) {
-                const offsetTop = targetElement.offsetTop - 80; // Account for fixed header
-                window.scrollTo({
-                    top: offsetTop,
-                    behavior: 'smooth'
-                });
+            const href = this.getAttribute('href');
+
+            // Only handle internal anchor links
+            if (href && href.startsWith('#')) {
+                e.preventDefault();
+                const targetId = href.substring(1);
+                const targetElement = document.getElementById(targetId);
+
+                if (targetElement) {
+                    const offsetTop = targetElement.offsetTop - 80; // Account for fixed header
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
             }
         });
     });
-    
+
     // Active navigation highlighting
     window.addEventListener('scroll', updateActiveNavigation);
 }
@@ -44,14 +49,14 @@ function initializeNavigation() {
  */
 function updateActiveNavigation() {
     const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('.nav-link');
+    const navLinks = document.querySelectorAll('.nav-link, .quick-nav-item');
     const scrollPosition = window.scrollY + 100;
-    
+
     sections.forEach(section => {
         const sectionTop = section.offsetTop;
         const sectionHeight = section.offsetHeight;
         const sectionId = section.getAttribute('id');
-        
+
         if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
             navLinks.forEach(link => {
                 link.classList.remove('active');
@@ -85,7 +90,7 @@ function initializeMobileMenu() {
         });
         
         // Close mobile menu on nav link click
-        document.querySelectorAll('.nav-link').forEach(link => {
+        document.querySelectorAll('.nav-link, .quick-nav-item').forEach(link => {
             link.addEventListener('click', function() {
                 nav.classList.remove('mobile-active');
                 mobileToggle.classList.remove('active');
