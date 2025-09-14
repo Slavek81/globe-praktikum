@@ -513,20 +513,27 @@ a:hover {
 /* Responsive Design */
 @media (max-width: 768px) {
     .nav {
-        display: none;
+        display: flex;
         position: absolute;
         top: 100%;
         left: 0;
         width: 100%;
-        background: white;
+        background: var(--background);
         box-shadow: var(--shadow);
         flex-direction: column;
         padding: 1rem;
-        z-index: 1000;
+        z-index: 1001;
+        border-top: 1px solid var(--border-color);
+        transform: translateY(-100vh);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
     }
 
     .nav.mobile-active {
-        display: flex;
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
     }
 
     .nav-link {

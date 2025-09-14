@@ -74,10 +74,13 @@ function initializeMobileMenu() {
     const nav = document.querySelector('.nav');
     
     if (mobileToggle && nav) {
+        console.log('Mobile menu initialized');
         mobileToggle.addEventListener('click', function() {
+            console.log('Mobile toggle clicked');
             nav.classList.toggle('mobile-active');
             this.classList.toggle('active');
-            
+            console.log('Nav classes after toggle:', nav.classList.toString());
+
             // Toggle icon
             const icon = this.querySelector('i');
             if (icon.classList.contains('fa-bars')) {
