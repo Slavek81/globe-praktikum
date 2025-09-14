@@ -104,6 +104,7 @@ a:hover {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
 }
 
 .nav-brand h1 {
@@ -513,10 +514,42 @@ a:hover {
 @media (max-width: 768px) {
     .nav {
         display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: white;
+        box-shadow: var(--shadow);
+        flex-direction: column;
+        padding: 1rem;
+        z-index: 1000;
     }
-    
+
+    .nav.mobile-active {
+        display: flex;
+    }
+
+    .nav-link {
+        padding: 0.75rem 1rem;
+        border-bottom: 1px solid var(--border-color);
+        display: block;
+        width: 100%;
+        text-align: left;
+    }
+
+    .nav-link:last-child {
+        border-bottom: none;
+    }
+
     .mobile-menu-toggle {
         display: block;
+        cursor: pointer;
+        padding: 0.5rem;
+        transition: all 0.3s ease;
+    }
+
+    .mobile-menu-toggle:hover {
+        color: var(--primary-color);
     }
     
     .hero-content h2 {
