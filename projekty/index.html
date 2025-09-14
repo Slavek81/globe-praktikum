@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Semestrální projekty | Praktické aplikace fyziky a chemie</title>
-    <meta name="description" content="Přehled všech semestrálních projektů předmětu Praktické aplikace fyziky a chemie na Gymnáziu Globe.">
+    <meta name="description" content="Semestrální projekty z praktických aplikací fyziky a chemie - zadání projektů zaměřených na energetiku a tepelnou techniku.">
     <link rel="stylesheet" href="../css/main.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,414 +21,690 @@
             </div>
             <nav class="nav">
                 <a href="../index.html" class="nav-link">Domů</a>
-                <a href="../prednášky/" class="nav-link">Přednášky</a>
-                <a href="../cvičení/" class="nav-link">Cvičení</a>
-                <a href="../index.html#contact" class="nav-link">Kontakt</a>
             </nav>
         </div>
     </header>
 
-    <!-- Page Header -->
-    <section class="page-hero">
+    <!-- Hero Section -->
+    <section class="hero">
         <div class="container">
-            <h1>Semestrální projekty</h1>
-            <p class="page-description">Komplexní projekty zaměřené na praktické aplikace v energetice a tepelné technice s reálnými ekonomickými výsledky</p>
-            <div class="breadcrumb">
-                <a href="../index.html">Domů</a> 
-                <span>/</span> 
-                <span>Projekty</span>
+            <div class="hero-content">
+                <h2>Semestrální projekty</h2>
+                <p class="hero-description">Komplexní praktické úlohy spojující fyziku, chemii a inženýrské aplikace s důrazem na energetiku a tepelnou techniku.</p>
             </div>
         </div>
     </section>
 
-    <!-- Projects Summary -->
+    <!-- Project Info Section -->
     <section class="section">
         <div class="container">
-            <div class="projects-summary">
-                <h2>Přehled výsledků</h2>
-                <div class="summary-stats">
-                    <div class="summary-stat">
-                        <div class="stat-icon"><i class="fas fa-piggy-bank"></i></div>
-                        <div class="stat-content">
-                            <div class="stat-number">3.27M Kč</div>
-                            <div class="stat-label">Celkové roční úspory</div>
-                        </div>
+            <div class="info-grid">
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-info-circle"></i>
                     </div>
-                    <div class="summary-stat">
-                        <div class="stat-icon"><i class="fas fa-leaf"></i></div>
-                        <div class="stat-content">
-                            <div class="stat-number">238.6 t</div>
-                            <div class="stat-label">CO₂ úspory ročně</div>
-                        </div>
-                    </div>
-                    <div class="summary-stat">
-                        <div class="stat-icon"><i class="fas fa-chart-line"></i></div>
-                        <div class="stat-content">
-                            <div class="stat-number">1.4 roku</div>
-                            <div class="stat-label">Průměrná návratnost</div>
-                        </div>
-                    </div>
-                    <div class="summary-stat">
-                        <div class="stat-icon"><i class="fas fa-coins"></i></div>
-                        <div class="stat-content">
-                            <div class="stat-number">4.58M Kč</div>
-                            <div class="stat-label">Celkové investice</div>
-                        </div>
-                    </div>
+                    <h3>Informace o projektech</h3>
+                    <p>Každý student si vybere <strong>jeden projekt</strong> ze čtyř nabízených témat. Projekty jsou zaměřené na praktické aplikace termodynamiky a energetiky v budovách.</p>
+                    <p>Součástí každého projektu je vypracování <strong>odborné zprávy</strong> podle stanovených metodických pokynů.</p>
                 </div>
             </div>
         </div>
-    </section>    <!-- Project Details -->
-    <section class="section section-gray">
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projekty" class="section">
         <div class="container">
-            <div class="projects-detailed-grid">
-                <!-- Project 1 -->
-                <div class="project-detailed-card">
-                    <div class="project-header-detailed">
-                        <div class="project-number">01</div>
-                        <div class="project-icon-large">
+            <div class="projects-grid">
+
+                <!-- Projekt 1 -->
+                <div id="projekt1" class="project-detail-card">
+                    <div class="project-header">
+                        <div class="project-icon">
                             <i class="fas fa-battery-half"></i>
                         </div>
-                        <div class="project-title-section">
-                            <h2>Akumulace tepla v budovách</h2>
-                            <p class="project-subtitle">Tepelné akumulační systémy pro optimalizaci spotřeby energie</p>
-                        </div>
-                        <div class="project-status success">
-                            <i class="fas fa-check-circle"></i>
-                            <span>Dokončeno</span>
-                        </div>
+                        <div class="project-badge">Projekt 1</div>
                     </div>
-                    
-                    <div class="project-content-detailed">
-                        <div class="project-description">
-                            <p>Analýza tepelných akumulačních systémů pro optimalizaci spotřeby energie v budovách s důrazem na peak-shaving a flexibilitu dodávek. Projekt se zaměřuje na využití PCM (Phase Change Materials) technologií.</p>
+                    <h2>Akumulace tepla v budovách</h2>
+                    <p class="project-intro">Návrh systému akumulace tepelné energie pro rodinný dům s důrazem na peak-shaving a flexibilitu dodávek energie.</p>
+
+                    <div class="project-difficulty">
+                        <span class="difficulty-badge medium">Střední náročnost</span>
+                    </div>
+
+                    <div class="project-content">
+                        <div class="project-goals">
+                            <h4><i class="fas fa-target"></i> Cíle projektu</h4>
+                            <ul>
+                                <li>Navrhnout optimální systém akumulace tepla pro rodinný dům</li>
+                                <li>Vypočítat tepelné ztráty budovy a požadovaný výkon</li>
+                                <li>Porovnat různé typy akumulačních materiálů</li>
+                                <li>Vyhodnotit ekonomickou efektivnost řešení</li>
+                            </ul>
                         </div>
-                        
-                        <div class="project-highlights">
-                            <div class="highlight-grid">
-                                <div class="highlight-item">
-                                    <div class="highlight-icon"><i class="fas fa-battery-full"></i></div>
-                                    <div class="highlight-content">
-                                        <div class="highlight-value">150 kWh</div>
-                                        <div class="highlight-label">Optimální kapacita</div>
-                                    </div>
+
+                        <div class="project-outputs">
+                            <h4><i class="fas fa-clipboard-list"></i> Výstupy projektu</h4>
+                            <ul>
+                                <li>Tepelný výpočet budovy podle ČSN EN ISO 13790</li>
+                                <li>Návrh akumulačního systému s technickou specifikací</li>
+                                <li>Ekonomická analýza návratnosti investice</li>
+                                <li>Odborná zpráva (15-20 stran)</li>
+                            </ul>
+                        </div>
+
+                        <div class="project-methodology">
+                            <h5><i class="fas fa-cogs"></i> Metodika řešení</h5>
+                            <div class="methodology-phases">
+                                <div class="phase">
+                                    <strong>1. Fáze:</strong> Analýza energetických potřeb budovy - výpočet tepelných ztrát, stanovení denního profilu spotřeby tepla
                                 </div>
-                                <div class="highlight-item">
-                                    <div class="highlight-icon"><i class="fas fa-percentage"></i></div>
-                                    <div class="highlight-content">
-                                        <div class="highlight-value">35%</div>
-                                        <div class="highlight-label">Úspora nákladů</div>
-                                    </div>
+                                <div class="phase">
+                                    <strong>2. Fáze:</strong> Výběr akumulačního materiálu - porovnání fázových změn, senzibilního tepla, chemických reakcí
                                 </div>
-                                <div class="highlight-item">
-                                    <div class="highlight-icon"><i class="fas fa-clock"></i></div>
-                                    <div class="highlight-content">
-                                        <div class="highlight-value">4.2 roky</div>
-                                        <div class="highlight-label">Návratnost</div>
-                                    </div>
+                                <div class="phase">
+                                    <strong>3. Fáze:</strong> Technický návrh - dimenzování zásobníku, volba konstrukce, integrace do systému vytápění
                                 </div>
-                                <div class="highlight-item">
-                                    <div class="highlight-icon"><i class="fas fa-cog"></i></div>
-                                    <div class="highlight-content">
-                                        <div class="highlight-value">PCM</div>
-                                        <div class="highlight-label">Technologie</div>
-                                    </div>
+                                <div class="phase">
+                                    <strong>4. Fáze:</strong> Ekonomické vyhodnocení - kalkulace investičních nákladů, provozních úspor, doby návratnosti
                                 </div>
                             </div>
-                        </div>
-                        
-                        <div class="project-deliverables">
-                            <h4>Výstupy projektu:</h4>
-                            <div class="deliverable-links">
-                                <a href="#" class="deliverable-link">
-                                    <i class="fab fa-python"></i>
-                                    <span>Python analýza</span>
-                                    <small>Tepelné výpočty a simulace</small>
-                                </a>
-                                <a href="#" class="deliverable-link">
-                                    <i class="fas fa-file-excel"></i>
-                                    <span>Excel workbook</span>
-                                    <small>Ekonomická analýza</small>
-                                </a>
-                                <a href="#" class="deliverable-link">
-                                    <i class="fas fa-code"></i>
-                                    <span>HTML prezentace</span>
-                                    <small>Interaktivní kalkulátory</small>
-                                </a>
+                            <div class="project-note warning">
+                                <strong>Pozor:</strong> Pro výpočty použijte skutečné klimatické údaje pro českou republiku a aktuální ceny energií.
                             </div>
                         </div>
                     </div>
-                </div>                <!-- Project 2 -->
-                <div class="project-detailed-card">
-                    <div class="project-header-detailed">
-                        <div class="project-number">02</div>
-                        <div class="project-icon-large">
+                </div>
+
+                <!-- Projekt 2 -->
+                <div id="projekt2" class="project-detail-card">
+                    <div class="project-header">
+                        <div class="project-icon">
                             <i class="fas fa-recycle"></i>
                         </div>
-                        <div class="project-title-section">
-                            <h2>Rekuperace tepla v jídelně</h2>
-                            <p class="project-subtitle">Systém zpětného získávání tepla z odvětrávaného vzduchu</p>
-                        </div>
-                        <div class="project-status success">
-                            <i class="fas fa-check-circle"></i>
-                            <span>Dokončeno</span>
-                        </div>
+                        <div class="project-badge">Projekt 2</div>
                     </div>
-                    
-                    <div class="project-content-detailed">
-                        <div class="project-description">
-                            <p>Návrh systému zpětného získávání tepla z odvětrávaného vzduchu jídelny pro předehřev čerstvého vzduchu. Projekt dosáhl 85% účinnosti s rotačním výměníkem tepla.</p>
+                    <h2>Rekuperace v jídelně</h2>
+                    <p class="project-intro">Studie proveditelnosti rekuperace tepla z odvětrávaného vzduchu jídelny pro předehřev čerstvého vzduchu.</p>
+
+                    <div class="project-difficulty">
+                        <span class="difficulty-badge hard">Vyšší náročnost</span>
+                    </div>
+
+                    <div class="project-content">
+                        <div class="project-goals">
+                            <h4><i class="fas fa-target"></i> Cíle projektu</h4>
+                            <ul>
+                                <li>Analyzovat energetické toky ve školní jídelně</li>
+                                <li>Navrhnout systém rekuperace tepla z odpadního vzduchu</li>
+                                <li>Vypočítat potenciální úspory energie</li>
+                                <li>Posoudit technickou a ekonomickou proveditelnost</li>
+                            </ul>
                         </div>
-                        
-                        <div class="project-highlights">
-                            <div class="highlight-grid">
-                                <div class="highlight-item">
-                                    <div class="highlight-icon"><i class="fas fa-sync-alt"></i></div>
-                                    <div class="highlight-content">
-                                        <div class="highlight-value">85%</div>
-                                        <div class="highlight-label">Účinnost systému</div>
-                                    </div>
+
+                        <div class="project-outputs">
+                            <h4><i class="fas fa-clipboard-list"></i> Výstupy projektu</h4>
+                            <ul>
+                                <li>Energetický audit současného stavu</li>
+                                <li>Technický návrh rekuperační jednotky</li>
+                                <li>Výpočet tepelných bilancí a účinnosti</li>
+                                <li>Ekonomická analýza a doporučení</li>
+                            </ul>
+                        </div>
+
+                        <div class="project-methodology">
+                            <h5><i class="fas fa-cogs"></i> Metodika řešení</h5>
+                            <div class="methodology-phases">
+                                <div class="phase">
+                                    <strong>1. Fáze:</strong> Energetický audit - měření teplot, vlhkosti, průtoků vzduchu během provozu kuchyně
                                 </div>
-                                <div class="highlight-item">
-                                    <div class="highlight-icon"><i class="fas fa-bolt"></i></div>
-                                    <div class="highlight-content">
-                                        <div class="highlight-value">156 MWh</div>
-                                        <div class="highlight-label">Roční úspory</div>
-                                    </div>
+                                <div class="phase">
+                                    <strong>2. Fáze:</strong> Analýza technologií - porovnání deskových, rotačních a tepelných čerpadel pro rekuperaci
                                 </div>
-                                <div class="highlight-item">
-                                    <div class="highlight-icon"><i class="fas fa-chart-line"></i></div>
-                                    <div class="highlight-content">
-                                        <div class="highlight-value">3.2 roky</div>
-                                        <div class="highlight-label">Návratnost</div>
-                                    </div>
+                                <div class="phase">
+                                    <strong>3. Fáze:</strong> Technický návrh - dimenzování výměníku, ventilátorů, regulace podle hygienických předpisů
                                 </div>
-                                <div class="highlight-item">
-                                    <div class="highlight-icon"><i class="fas fa-coins"></i></div>
-                                    <div class="highlight-content">
-                                        <div class="highlight-value">2.85M Kč</div>
-                                        <div class="highlight-label">NPV (10 let)</div>
-                                    </div>
+                                <div class="phase">
+                                    <strong>4. Fáze:</strong> Ekonomické hodnocení - investiční náklady, provozní úspory, rizikové faktory
                                 </div>
                             </div>
-                        </div>
-                        
-                        <div class="project-deliverables">
-                            <h4>Výstupy projektu:</h4>
-                            <div class="deliverable-links">
-                                <a href="#" class="deliverable-link">
-                                    <i class="fab fa-python"></i>
-                                    <span>Python analýza</span>
-                                    <small>Srovnání všech typů výměníků</small>
-                                </a>
-                                <a href="#" class="deliverable-link">
-                                    <i class="fas fa-file-excel"></i>
-                                    <span>Excel výpočty</span>
-                                    <small>Technické a ekonomické analýzy</small>
-                                </a>
-                                <a href="#" class="deliverable-link">
-                                    <i class="fas fa-code"></i>
-                                    <span>Interaktivní prezentace</span>
-                                    <small>HTML s kalkulátory</small>
-                                </a>
+                            <div class="project-note tip">
+                                <strong>Tip:</strong> Zapojte do řešení i aspekty kvality vnitřního prostředí a hygienické požadavky podle vyhlášky č. 410/2005 Sb.
                             </div>
                         </div>
                     </div>
-                </div>                <!-- Project 3 -->
-                <div class="project-detailed-card">
-                    <div class="project-header-detailed">
-                        <div class="project-number">03</div>
-                        <div class="project-icon-large">
+                </div>
+
+                <!-- Projekt 3 -->
+                <div id="projekt3" class="project-detail-card">
+                    <div class="project-header">
+                        <div class="project-icon">
                             <i class="fas fa-home"></i>
                         </div>
-                        <div class="project-title-section">
-                            <h2>Tepelné čerpadlo vs kotel</h2>
-                            <p class="project-subtitle">TCO analýza různých technologií vytápění pro rodinný dům</p>
-                        </div>
-                        <div class="project-status success">
-                            <i class="fas fa-check-circle"></i>
-                            <span>Dokončeno</span>
-                        </div>
+                        <div class="project-badge">Projekt 3</div>
                     </div>
-                    
-                    <div class="project-content-detailed">
-                        <div class="project-description">
-                            <p>Komplexní srovnání nákladů vlastnictví (Total Cost of Ownership) různých technologií vytápění. Země-voda tepelné čerpadlo se ukázalo jako nejvýhodnější řešení s 20letými úsporami 180k Kč.</p>
+                    <h2>Tepelné čerpadlo vs. kotel</h2>
+                    <p class="project-intro">Komplexní porovnání tepelného čerpadla a kondenzačního plynového kotle pro vytápění rodinného domu.</p>
+
+                    <div class="project-difficulty">
+                        <span class="difficulty-badge hard">Vyšší náročnost</span>
+                    </div>
+
+                    <div class="project-content">
+                        <div class="project-goals">
+                            <h4><i class="fas fa-target"></i> Cíle projektu</h4>
+                            <ul>
+                                <li>Porovnat efektivnost tepelného čerpadla a plynového kotle</li>
+                                <li>Analyzovat termodynamické principy obou systémů</li>
+                                <li>Vypočítat celkové náklady vlastnictví (TCO)</li>
+                                <li>Posoudit environmentální dopady</li>
+                            </ul>
                         </div>
-                        
-                        <div class="project-highlights">
-                            <div class="highlight-grid">
-                                <div class="highlight-item winner">
-                                    <div class="highlight-icon"><i class="fas fa-trophy"></i></div>
-                                    <div class="highlight-content">
-                                        <div class="highlight-value">Země-voda TČ</div>
-                                        <div class="highlight-label">Vítězná technologie</div>
-                                    </div>
+
+                        <div class="project-outputs">
+                            <h4><i class="fas fa-clipboard-list"></i> Výstupy projektu</h4>
+                            <ul>
+                                <li>Termodynamická analýza obou systémů</li>
+                                <li>Výpočet COP tepelného čerpadla při různých teplotách</li>
+                                <li>TCO analýza na 20letý provoz</li>
+                                <li>Citlivostní analýza na změny cen energií</li>
+                            </ul>
+                        </div>
+
+                        <div class="project-methodology">
+                            <h5><i class="fas fa-cogs"></i> Metodika řešení</h5>
+                            <div class="methodology-phases">
+                                <div class="phase">
+                                    <strong>1. Fáze:</strong> Termodynamické základy - Carnotův cyklus, reálný cykl TČ, účinnost spalování
                                 </div>
-                                <div class="highlight-item">
-                                    <div class="highlight-icon"><i class="fas fa-coins"></i></div>
-                                    <div class="highlight-content">
-                                        <div class="highlight-value">540k Kč</div>
-                                        <div class="highlight-label">Nejnižší TCO</div>
-                                    </div>
+                                <div class="phase">
+                                    <strong>2. Fáze:</strong> Výkonové charakteristiky - závislost COP na venkovní teplotě, modulace výkonu
                                 </div>
-                                <div class="highlight-item">
-                                    <div class="highlight-icon"><i class="fas fa-leaf"></i></div>
-                                    <div class="highlight-content">
-                                        <div class="highlight-value">65%</div>
-                                        <div class="highlight-label">Snížení CO₂</div>
-                                    </div>
+                                <div class="phase">
+                                    <strong>3. Fáze:</strong> Ekonomická analýza - investiční náklady, provoz, údržba, odpisy, financování
                                 </div>
-                                <div class="highlight-item">
-                                    <div class="highlight-icon"><i class="fas fa-thermometer-half"></i></div>
-                                    <div class="highlight-content">
-                                        <div class="highlight-value">COP 4.2</div>
-                                        <div class="highlight-label">Roční průměr</div>
-                                    </div>
+                                <div class="phase">
+                                    <strong>4. Fáze:</strong> Citlivostní analýza - scénáře vývoje cen elektřiny, plynu, emisních povolenek
                                 </div>
                             </div>
-                        </div>
-                        
-                        <div class="technology-comparison">
-                            <h4>Srovnání technologií (TCO za 20 let):</h4>
-                            <div class="comparison-list">
-                                <div class="comparison-item winner">
-                                    <div class="tech-name">Země-voda tepelné čerpadlo</div>
-                                    <div class="tech-cost">540k Kč</div>
-                                    <div class="tech-badge">VÍTĚZ</div>
-                                </div>
-                                <div class="comparison-item">
-                                    <div class="tech-name">Voda-voda tepelné čerpadlo</div>
-                                    <div class="tech-cost">580k Kč</div>
-                                </div>
-                                <div class="comparison-item">
-                                    <div class="tech-name">Vzduch-voda tepelné čerpadlo</div>
-                                    <div class="tech-cost">630k Kč</div>
-                                </div>
-                                <div class="comparison-item">
-                                    <div class="tech-name">Kondenzační kotel biomasa</div>
-                                    <div class="tech-cost">650k Kč</div>
-                                </div>
-                                <div class="comparison-item">
-                                    <div class="tech-name">Kondenzační plynový kotel</div>
-                                    <div class="tech-cost">720k Kč</div>
-                                </div>
+                            <div class="project-note bonus">
+                                <strong>Bonus:</strong> Zahrňte do analýzy i hybridní systémy (bivalentní provoz) a jejich optimalizaci.
                             </div>
                         </div>
                     </div>
-                </div>                <!-- Project 4 -->
-                <div class="project-detailed-card">
-                    <div class="project-header-detailed">
-                        <div class="project-number">04</div>
-                        <div class="project-icon-large">
+                </div>
+
+                <!-- Projekt 4 -->
+                <div id="projekt4" class="project-detail-card">
+                    <div class="project-header">
+                        <div class="project-icon">
                             <i class="fas fa-school"></i>
                         </div>
-                        <div class="project-title-section">
-                            <h2>Tepelná izolace školy</h2>
-                            <p class="project-subtitle">Energetický audit a optimalizace zateplení školní budovy</p>
+                        <div class="project-badge">Projekt 4</div>
+                    </div>
+                    <h2>Tepelná izolace školy</h2>
+                    <p class="project-intro">Energetický audit školní budovy s návrhem variant zateplení a ekonomickým vyhodnocením nejvhodnější varianty.</p>
+
+                    <div class="project-difficulty">
+                        <span class="difficulty-badge hard">Vyšší náročnost</span>
+                    </div>
+
+                    <div class="project-content">
+                        <div class="project-goals">
+                            <h4><i class="fas fa-target"></i> Cíle projektu</h4>
+                            <ul>
+                                <li>Analyzovat současný energetický stav školní budovy</li>
+                                <li>Navrhnout optimální zateplení obvodových konstrukcí</li>
+                                <li>Vypočítat tepelné ztráty a úspory energie</li>
+                                <li>Ekonomicky vyhodnotit různé varianty zateplení</li>
+                            </ul>
                         </div>
-                        <div class="project-status success">
-                            <i class="fas fa-check-circle"></i>
-                            <span>Dokončeno</span>
+
+                        <div class="project-outputs">
+                            <h4><i class="fas fa-clipboard-list"></i> Výstupy projektu</h4>
+                            <ul>
+                                <li>Energetický audit s termovizním snímkováním</li>
+                                <li>Tepelně-technické výpočty podle norem</li>
+                                <li>Návrh zateplovacího systému</li>
+                                <li>Investiční analýza s hodnocením rizik</li>
+                            </ul>
+                        </div>
+
+                        <div class="project-methodology">
+                            <h5><i class="fas fa-cogs"></i> Metodika řešení</h5>
+                            <div class="methodology-phases">
+                                <div class="phase">
+                                    <strong>1. Fáze:</strong> Energetický audit - analýza konstrukcí, tepelných mostů, vzduchotěsnosti
+                                </div>
+                                <div class="phase">
+                                    <strong>2. Fáze:</strong> Tepelně-technické výpočty - součinitel prostupu tepla U, tepelné ztráty podle ČSN EN ISO 13789
+                                </div>
+                                <div class="phase">
+                                    <strong>3. Fáze:</strong> Návrh opatření - výběr izolačních materiálů, tloušťky, technologie aplikace
+                                </div>
+                                <div class="phase">
+                                    <strong>4. Fáze:</strong> Ekonomická optimalizace - minimalizace celkových nákladů při splnění normových požadavků
+                                </div>
+                            </div>
+                            <div class="project-note warning">
+                                <strong>Upozornění:</strong> Zohledněte požadavky na požární bezpečnost a stavební fyziku (kondenzace, difúze vodních par).
+                            </div>
                         </div>
                     </div>
-                    
-                    <div class="project-content-detailed">
-                        <div class="project-description">
-                            <p>Energetický audit školní budovy s návrhem variant zateplení a ekonomickým vyhodnocením. Nejlepší varianta dosahuje 99.7% úspor energie s návratností pouhých 0.9 roku.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Report Guidelines Section -->
+    <section class="section bg-light">
+        <div class="container">
+            <h2 class="section-title"><i class="fas fa-file-alt"></i> Návod k vypracování odborné zprávy</h2>
+            <p class="section-description">Každý projekt musí být zpracován formou odborné zprávy podle následujících požadavků</p>
+
+            <div class="report-guidelines">
+                <div class="guideline-card">
+                    <h3><i class="fas fa-list"></i> Struktura zprávy</h3>
+                    <ul class="structure-list">
+                        <li><strong>Úvod a cíle</strong> (1-2 strany)</li>
+                        <li><strong>Teoretické základy</strong> (3-4 strany)</li>
+                        <li><strong>Metodika řešení</strong> (2-3 strany)</li>
+                        <li><strong>Výsledky a analýza</strong> (5-6 stran)</li>
+                        <li><strong>Diskuse a doporučení</strong> (2-3 strany)</li>
+                        <li><strong>Závěr</strong> (1 strana)</li>
+                        <li><strong>Literatura a přílohy</strong></li>
+                    </ul>
+                </div>
+
+                <div class="guideline-card">
+                    <h3><i class="fas fa-format-align-left"></i> Formální požadavky</h3>
+                    <ul class="format-list">
+                        <li><strong>Rozsah:</strong> 15-20 stran (bez příloh)</li>
+                        <li><strong>Písmo:</strong> Times New Roman 12pt</li>
+                        <li><strong>Řádkování:</strong> 1,5 násobné</li>
+                        <li><strong>Okraje:</strong> 2,5 cm ze všech stran</li>
+                        <li><strong>Citace:</strong> IEEE styl</li>
+                        <li><strong>Obrázky:</strong> Číslované s popisem</li>
+                        <li><strong>Tabulky:</strong> S hlavičkami a jednotkami</li>
+                    </ul>
+                </div>
+
+                <div class="evaluation-card">
+                    <h3><i class="fas fa-star"></i> Hodnocení zprávy</h3>
+                    <div class="evaluation-grid">
+                        <div class="eval-item">
+                            <h4>Obsah (40%)</h4>
+                            <ul>
+                                <li>Správnost výpočtů</li>
+                                <li>Hloubka analýzy</li>
+                                <li>Praktická aplikovatelnost</li>
+                            </ul>
                         </div>
-                        
-                        <div class="project-highlights">
-                            <div class="highlight-grid">
-                                <div class="highlight-item exceptional">
-                                    <div class="highlight-icon"><i class="fas fa-fire"></i></div>
-                                    <div class="highlight-content">
-                                        <div class="highlight-value">99.7%</div>
-                                        <div class="highlight-label">Úspora energie</div>
-                                    </div>
-                                </div>
-                                <div class="highlight-item exceptional">
-                                    <div class="highlight-icon"><i class="fas fa-rocket"></i></div>
-                                    <div class="highlight-content">
-                                        <div class="highlight-value">0.9 roku</div>
-                                        <div class="highlight-label">Návratnost</div>
-                                    </div>
-                                </div>
-                                <div class="highlight-item">
-                                    <div class="highlight-icon"><i class="fas fa-leaf"></i></div>
-                                    <div class="highlight-content">
-                                        <div class="highlight-value">182 t</div>
-                                        <div class="highlight-label">CO₂ úspory/rok</div>
-                                    </div>
-                                </div>
-                                <div class="highlight-item">
-                                    <div class="highlight-icon"><i class="fas fa-chart-line"></i></div>
-                                    <div class="highlight-content">
-                                        <div class="highlight-value">G → A</div>
-                                        <div class="highlight-label">Energetická třída</div>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="eval-item">
+                            <h4>Metodika (30%)</h4>
+                            <ul>
+                                <li>Logický postup</li>
+                                <li>Použité metody</li>
+                                <li>Zdůvodnění rozhodnutí</li>
+                            </ul>
                         </div>
-                        
-                        <div class="current-vs-optimized">
-                            <h4>Současný stav vs. Optimalizovaný:</h4>
-                            <div class="comparison-grid">
-                                <div class="state-comparison">
-                                    <div class="state-current">
-                                        <h5>Současný stav</h5>
-                                        <div class="state-stats">
-                                            <div class="state-stat">
-                                                <span class="label">Plocha:</span>
-                                                <span class="value">2 800 m²</span>
-                                            </div>
-                                            <div class="state-stat">
-                                                <span class="label">Spotřeba:</span>
-                                                <span class="value">741 MWh/rok</span>
-                                            </div>
-                                            <div class="state-stat">
-                                                <span class="label">Náklady:</span>
-                                                <span class="value">2.58 mil. Kč/rok</span>
-                                            </div>
-                                            <div class="state-stat">
-                                                <span class="label">Energetická třída:</span>
-                                                <span class="value grade-g">G</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="state-arrow">
-                                        <i class="fas fa-arrow-right"></i>
-                                    </div>
-                                    <div class="state-optimized">
-                                        <h5>Po optimalizaci</h5>
-                                        <div class="state-stats">
-                                            <div class="state-stat">
-                                                <span class="label">Investice:</span>
-                                                <span class="value">2.2 mil. Kč</span>
-                                            </div>
-                                            <div class="state-stat">
-                                                <span class="label">Spotřeba:</span>
-                                                <span class="value">2.3 MWh/rok</span>
-                                            </div>
-                                            <div class="state-stat">
-                                                <span class="label">Úspory:</span>
-                                                <span class="value">2.57 mil. Kč/rok</span>
-                                            </div>
-                                            <div class="state-stat">
-                                                <span class="label">Energetická třída:</span>
-                                                <span class="value grade-a">A</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="eval-item">
+                            <h4>Forma (20%)</h4>
+                            <ul>
+                                <li>Struktura textu</li>
+                                <li>Jazyková správnost</li>
+                                <li>Grafická úprava</li>
+                            </ul>
                         </div>
+                        <div class="eval-item">
+                            <h4>Citace (10%)</h4>
+                            <ul>
+                                <li>Správnost citací</li>
+                                <li>Kvalita zdrojů</li>
+                                <li>Aktuálnost literatury</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tips-card">
+                    <h4><i class="fas fa-lightbulb"></i> Praktické tipy</h4>
+                    <ul class="tips-list">
+                        <li><strong>Začněte včas:</strong> Projekt vyžaduje průběžnou práci po celý semestr</li>
+                        <li><strong>Konzultujte průběžně:</strong> Využívejte konzultační hodiny k řešení problémů</li>
+                        <li><strong>Používejte skutečná data:</strong> Vždy pracujte s reálnými hodnotami a aktuálními cenami</li>
+                        <li><strong>Dokumentujte výpočty:</strong> Všechny výpočty musí být sledovatelné a ověřitelné</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Deadlines Section -->
+    <section class="section">
+        <div class="container">
+            <div class="deadlines-card">
+                <h3><i class="fas fa-calendar-alt"></i> Termíny odevzdání</h3>
+                <div class="deadlines-list">
+                    <div class="deadline-item">
+                        <strong>Volba projektu:</strong> Do konce října
+                    </div>
+                    <div class="deadline-item">
+                        <strong>Odevzdání zprávy:</strong> Do konce ledna
+                    </div>
+                    <div class="deadline-item">
+                        <strong>Prezentace výsledků:</strong> Únor (podle rozvrhu)
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    
-    <script src="../js/main.js"></script>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h4>Praktické aplikace fyziky a chemie</h4>
+                    <p>Gymnázium GLOBE - Specializované kurzy</p>
+                </div>
+                <div class="footer-contact">
+                    <p><i class="fas fa-envelope"></i> info@gymglobe.cz</p>
+                    <p><i class="fas fa-phone"></i> +420 123 456 789</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <style>
+        /* Additional styles for project details */
+        .project-detail-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2.5rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            border: 1px solid #e5e7eb;
+            scroll-margin-top: 100px;
+        }
+
+        .project-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            color: white;
+        }
+
+        .project-badge {
+            background: #f3f4f6;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            color: #374151;
+            font-size: 0.9rem;
+        }
+
+        .project-intro {
+            font-size: 1.1rem;
+            color: #6b7280;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .project-difficulty {
+            margin-bottom: 2rem;
+        }
+
+        .difficulty-badge {
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .difficulty-badge.medium {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .difficulty-badge.hard {
+            background: #fecaca;
+            color: #991b1b;
+        }
+
+        .project-content {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .project-goals, .project-outputs, .project-methodology {
+            background: #f9fafb;
+            padding: 1.5rem;
+            border-radius: 12px;
+            border-left: 4px solid #3b82f6;
+        }
+
+        .project-goals h4, .project-outputs h4, .project-methodology h5 {
+            color: #1f2937;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .project-goals ul, .project-outputs ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .project-goals li, .project-outputs li {
+            padding: 0.5rem 0;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .project-goals li::before, .project-outputs li::before {
+            content: "•";
+            color: #3b82f6;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .methodology-phases {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .phase {
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 3px solid #10b981;
+        }
+
+        .project-note {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 8px;
+        }
+
+        .project-note.warning {
+            background: #fef2f2;
+            border-left: 4px solid #ef4444;
+            color: #991b1b;
+        }
+
+        .project-note.tip {
+            background: #f0fdf4;
+            border-left: 4px solid #10b981;
+            color: #065f46;
+        }
+
+        .project-note.bonus {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            color: #92400e;
+        }
+
+        .info-grid {
+            display: grid;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .info-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .info-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            color: white;
+            margin: 0 auto 1rem;
+        }
+
+        .bg-light {
+            background: #f8fafc;
+        }
+
+        .report-guidelines {
+            display: grid;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .guideline-card, .evaluation-card, .tips-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .guideline-card h3, .evaluation-card h3, .tips-card h4 {
+            color: #1f2937;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .structure-list, .format-list, .tips-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .structure-list li, .format-list li, .tips-list li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .structure-list li:last-child, .format-list li:last-child, .tips-list li:last-child {
+            border-bottom: none;
+        }
+
+        .evaluation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .eval-item {
+            background: #f8fafc;
+            padding: 1.5rem;
+            border-radius: 8px;
+        }
+
+        .eval-item h4 {
+            color: #1f2937;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .eval-item ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .eval-item li {
+            padding: 0.25rem 0;
+            color: #6b7280;
+            font-size: 0.9rem;
+        }
+
+        .deadlines-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .deadlines-card h3 {
+            color: #1f2937;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .deadlines-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .deadline-item {
+            background: #f8fafc;
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid #3b82f6;
+        }
+
+        @media (max-width: 768px) {
+            .project-detail-card {
+                padding: 1.5rem;
+                margin-bottom: 2rem;
+            }
+
+            .project-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 24px;
+            }
+
+            .evaluation-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .deadlines-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </body>
 </html>
