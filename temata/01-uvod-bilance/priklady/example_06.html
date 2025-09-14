@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Náklady na Ohřev Vody v Rychlovarné Konvici</title>
+    
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>Výpočet ceny za ohřev vody v rychlovarné konvici</h1>
+        </header>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <p>
+                Cílem je spočítat, kolik energie odebere rychlovarná konvice ze sítě a jaká bude výsledná cena 
+                za ohřátí jednoho litru vody na čaj za daných podmínek. Zohledníme přitom účinnost konvice a aktuální ceny elektřiny.
+            </p>
+        </section>
+
+        <section id="vstupni-data">
+            <h3>Vstupní data</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Veličina</th>
+                        <th>Symbol</th>
+                        <th>Hodnota</th>
+                        <th>Jednotka</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Objem vody</td>
+                        <td class="variable">V</td>
+                        <td class="value">1</td>
+                        <td class="unit">litr</td>
+                    </tr>
+                    <tr>
+                        <td>Hmotnost vody (1 l ≈ 1 kg)</td>
+                        <td class="variable">m</td>
+                        <td class="value">1</td>
+                        <td class="unit">kg</td>
+                    </tr>
+                    <tr>
+                        <td>Počáteční teplota vody</td>
+                        <td class="variable">$t_1$</td>
+                        <td class="value">18</td>
+                        <td class="unit">°C</td>
+                    </tr>
+                    <tr>
+                        <td>Konečná teplota vody</td>
+                        <td class="variable">$t_2$</td>
+                        <td class="value">100</td>
+                        <td class="unit">°C</td>
+                    </tr>
+                    <tr>
+                        <td>Měrná tepelná kapacita vody</td>
+                        <td class="variable">c</td>
+                        <td class="value">4180</td>
+                        <td class="unit">J/(kg·K)</td>
+                    </tr>
+                    <tr>
+                        <td>Příkon konvice</td>
+                        <td class="variable">$P_{\text{příkon}}$</td>
+                        <td class="value">2000</td>
+                        <td class="unit">W</td>
+                    </tr>
+                    <tr>
+                        <td>Účinnost konvice</td>
+                        <td class="variable">$\eta$</td>
+                        <td class="value">85 % (0,85)</td>
+                        <td class="unit">-</td>
+                    </tr>
+                    <tr>
+                        <td>Cena elektrické energie</td>
+                        <td class="variable">$C_{\text{kWh}}$</td>
+                        <td class="value">4,61</td>
+                        <td class="unit">Kč/kWh</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+            <p>Výpočet rozdělíme do několika logických kroků: nejprve spočteme energii, kterou skutečně pohltí voda, 
+            poté zohledníme ztráty (účinnost) a nakonec vypočítáme cenu.</p>
+            
+            <div class="calculation-step">
+                <h4>Krok 1: Výpočet užitečné energie (tepla) pro ohřev vody ($Q_{\text{užitečná}}$)</h4>
+                <p>Toto je množství energie, které je potřeba k ohřátí daného množství vody o daný teplotní rozdíl. 
+                Rozdíl teplot ve °C je stejný jako v K.</p>
+                
+                <div class="formula-box">
+                    <strong>Vzorec pro potřebné teplo:</strong>
+                    $$Q_{\text{užitečná}} = m \cdot c \cdot (t_2 - t_1)$$
+                    
+                    <p><strong>Kde:</strong></p>
+                    <ul>
+                        <li>$Q_{\text{užitečná}}$ je teplo potřebné k ohřevu vody <span class="unit">[J]</span></li>
+                        <li>$m$ je hmotnost vody <span class="unit">[kg]</span></li>
+                        <li>$c$ je měrná tepelná kapacita vody <span class="unit">[J/(kg·K)]</span></li>
+                        <li>$(t_2 - t_1)$ je rozdíl teplot <span class="unit">[°C nebo K]</span></li>
+                    </ul>
+                </div>
+                
+                <p><strong>Výpočet teplotního rozdílu:</strong></p>
+                $$\Delta t = t_2 - t_1 = 100 - 18 = 82 \text{ °C} \text{ (= 82 K)}$$
+                
+                <p><strong>Výpočet užitečné energie:</strong></p>
+                $$Q_{\text{užitečná}} = 1 \cdot 4\,180 \cdot 82 = 342\,760 \text{ J}$$
+            </div>
+            
+            <div class="calculation-step">
+                <h4>Krok 2: Výpočet celkové energie odebrané ze sítě ($E_{\text{celková}}$)</h4>
+                <p>Konvice není 100% účinná, část energie se ztratí jako teplo do okolí. 
+                Musíme tedy ze sítě odebrat více energie, než kolik přijme voda. To určíme pomocí účinnosti.</p>
+                
+                <div class="formula-box">
+                    <strong>Vzorec pro celkovou energii:</strong>
+                    $$E_{\text{celková}} = \frac{Q_{\text{užitečná}}}{\eta}$$
+                    
+                    <p><strong>Kde:</strong></p>
+                    <ul>
+                        <li>$E_{\text{celková}}$ je energie odebraná ze sítě <span class="unit">[J]</span></li>
+                        <li>$Q_{\text{užitečná}}$ je užitečné teplo <span class="unit">[J]</span></li>
+                        <li>$\eta$ je účinnost konvice <span class="unit">[-]</span></li>
+                    </ul>
+                </div>
+                
+                <p><strong>Výpočet:</strong></p>
+                $$E_{\text{celková}} = \frac{342\,760}{0{,}85} = 403\,247 \text{ J}$$
+                
+                <div class="cost-highlight">
+                    <strong>Energetické ztráty:</strong> Ztráty činí $403\,247 - 342\,760 = 60\,487$ J, 
+                    což je $(60\,487 \div 403\,247) \times 100 = 15$ % celkové spotřeby.
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 3: Převod celkové energie na kilowatthodiny (kWh)</h4>
+                <p>Cena elektřiny se udává v Kč/kWh, proto musíme celkovou energii v joulech převést na tuto jednotku.</p>
+                
+                <div class="note-box">
+                    <strong>Převodní vztah:</strong> $1 \text{ kWh} = 3\,600\,000 \text{ J}$<br>
+                    <em>Důvod:</em> 1 kWh = 1000 W × 3600 s = 3,600,000 J
+                </div>
+                
+                <div class="formula-box">
+                    <strong>Vzorec pro převod:</strong>
+                    $$E_{\text{kWh}} = \frac{E_{\text{celková (J)}}}{3\,600\,000}$$
+                </div>
+                
+                <p><strong>Výpočet:</strong></p>
+                $$E_{\text{kWh}} = \frac{403\,247}{3\,600\,000} = 0{,}112 \text{ kWh}$$
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 4: Výpočet ceny za ohřev</h4>
+                <p>Nyní jen vynásobíme spotřebovanou energii v kWh její cenou.</p>
+                
+                <div class="formula-box">
+                    <strong>Vzorec pro cenu:</strong>
+                    $$\text{Cena za ohřev} = E_{\text{kWh}} \times C_{\text{kWh}}$$
+                </div>
+                
+                <p><strong>Výpočet:</strong></p>
+                $$\text{Cena za ohřev} = 0{,}112 \times 4{,}61 = 0{,}516 \text{ Kč}$$
+                
+                <p>Zaokrouhleno na haléře: <strong>0,52 Kč</strong></p>
+            </div>
+        </section>
+        
+        <section id="vysledek">
+            <h2>Shrnutí výsledků</h2>
+            <div class="result-box">
+                <p>Celková energie odebraná ze sítě: <span>0,112 kWh</span></p>
+                <p>Cena za jedno ohřátí 1 litru vody: <span>0,52 Kč</span></p>
+                <hr style="border-top: 2px solid #28a745; border-bottom: none; margin: 25px auto; width: 60%;">
+                <p style="font-size: 1.1em; color: #155724;">
+                    <strong>To znamená:</strong><br>
+                    Jeden šálek čaje stojí přibližně <span style="font-size: 1.2em;">půl koruny</span>
+                </p>
+            </div>
+        </section>
+
+        <section id="prakticky-vysledek">
+            <h2>Praktické srovnání a zajímavosti</h2>
+            
+            <div class="note-box">
+                <h4>💡 Zajímavé srovnání</h4>
+                <p><strong>Roční spotřeba při každodenním ohřevu 1 litru vody:</strong></p>
+                <ul>
+                    <li><strong>Energie:</strong> $0{,}112 \times 365 = 40{,}9$ kWh/rok</li>
+                    <li><strong>Náklady:</strong> $0{,}52 \times 365 = 190$ Kč/rok</li>
+                </ul>
+                
+                <p><strong>Porovnání s jinými spotřebiči (1 hodina provozu):</strong></p>
+                <ul>
+                    <li>LED žárovka 10W: 0,046 Kč</li>
+                    <li>Notebook 65W: 0,30 Kč</li>
+                    <li><strong>Ohřev 1L vody: 0,52 Kč</strong></li>
+                    <li>Mikrovlnná trouba 800W: 3,69 Kč</li>
+                    <li>Elektrický radiátor 2000W: 9,22 Kč</li>
+                </ul>
+            </div>
+            
+            <div class="cost-highlight">
+                <strong>Tip pro úsporu:</strong> Ohřívejte pouze potřebné množství vody. 
+                Ohřev 0,5 litru bude stát polovinu (≈ 0,26 Kč), ohřev 2 litrů dvojnásobek (≈ 1,04 Kč).
+            </div>
+        </section>
+    </main>
+</body>
+</html>

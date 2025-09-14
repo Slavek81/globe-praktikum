@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spalování Síry</title>
+    
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>Spalování síry a přebytek vzduchu</h1>
+        </header>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <p>
+                Síra (S) se dokonale spaluje v proudu vzduchu. Reakce je kompletní (konverze 100 %).
+            </p>
+            
+            <div class="reaction-scheme">
+                <h4>🔥 Chemická reakce</h4>
+                <div class="chemical-equation">
+                    $$\text{S} + \text{O}_2 \rightarrow \text{SO}_2$$
+                </div>
+            </div>
+            
+            <p><strong>Úkol:</strong> Jaký musí být přebytek vzduchu, aby spaliny obsahovaly <strong>12 mol.% oxidu siřičitého ($\text{SO}_2$)</strong>?</p>
+        </section>
+
+        <section id="strategie">
+            <h2>Analýza a strategie řešení</h2>
+            
+            <div class="strategy-box">
+                <h3>🎯 Klíčová myšlenka: Volba základu</h3>
+                <p>
+                    V zadání nemáme žádný konkrétní průtok (jako třeba 1000 kg/h). To je skvělá zpráva! 
+                    Znamená to, že výsledek (přebytek vzduchu) je <strong>poměrné číslo</strong> a nezávisí na velikosti reaktoru.
+                </p>
+                <p>
+                    Můžeme si proto výpočet zjednodušit a říct: <strong>"Předpokládejme, že do reaktoru vstupuje právě 1 kmol síry."</strong> 
+                    Tomuto se říká <strong>"volba bilančního základu"</strong> a je to mocný nástroj inženýra.
+                </p>
+                <p>
+                    Budeme pracovat v <strong>látkovém množství (molech)</strong>, protože chemická rovnice nám udává poměry právě v molech.
+                </p>
+            </div>
+            
+            <div class="process-diagram">
+                <h4>⚙️ Bilanční schéma procesu</h4>
+                <svg width="400" height="200" viewBox="0 0 400 200">
+                    <defs>
+                        <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                            <path d="M 0 0 L 10 5 L 0 10 z" fill="#333" />
+                        </marker>
+                    </defs>
+                    
+                    <rect x="100" y="50" width="200" height="100" fill="#e0f2fe" stroke="#2563eb" stroke-width="2"/>
+                    <text x="175" y="40" font-weight="bold">Reaktor</text>
+                    
+                    <!-- Vstupy -->
+                    <line x1="20" y1="80" x2="100" y2="80" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+                    <text x="50" y="75" font-weight="bold" fill="#2563eb">1: Síra</text>
+                    
+                    <line x1="20" y1="120" x2="100" y2="120" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+                    <text x="40" y="135" font-weight="bold" fill="#2563eb">2: Vzduch</text>
+                    
+                    <!-- Výstup -->
+                    <line x1="300" y1="100" x2="380" y2="100" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+                    <text x="315" y="95" font-weight="bold" fill="#2563eb">3: Spaliny</text>
+                    
+                    <!-- Stechiometrie -->
+                    <line x1="170" y1="150" x2="170" y2="180" stroke="#dc2626" stroke-width="2" stroke-dasharray="5,5" marker-end="url(#arrow)"/>
+                    <text x="110" y="175" fill="#dc2626" font-size="11">4: Reaktanty</text>
+                    
+                    <line x1="230" y1="180" x2="230" y2="150" stroke="#16a34a" stroke-width="2" stroke-dasharray="5,5" marker-end="url(#arrow)"/>
+                    <text x="240" y="175" fill="#16a34a" font-size="11">5: Produkty</text>
+                </svg>
+            </div>
+        </section>
+
+        <section id="vstupni-data">
+            <h2>Vstupní data</h2>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Symbol</th>
+                        <th>Látka</th>
+                        <th>Molární hmotnost</th>
+                        <th>Jednotka</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="variable">A</td>
+                        <td>Síra (S)</td>
+                        <td class="value">32</td>
+                        <td class="unit">kg/kmol</td>
+                    </tr>
+                    <tr>
+                        <td class="variable">B</td>
+                        <td>Kyslík ($\text{O}_2$)</td>
+                        <td class="value">32</td>
+                        <td class="unit">kg/kmol</td>
+                    </tr>
+                    <tr>
+                        <td class="variable">C</td>
+                        <td>Oxid siřičitý ($\text{SO}_2$)</td>
+                        <td class="value">64</td>
+                        <td class="unit">kg/kmol</td>
+                    </tr>
+                    <tr>
+                        <td class="variable">D</td>
+                        <td>Dusík ($\text{N}_2$)</td>
+                        <td class="value">28</td>
+                        <td class="unit">kg/kmol</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="note-box">
+                <h4>🌬️ Složení vzduchu</h4>
+                <p><strong>Objemová/molová procenta:</strong></p>
+                <ul>
+                    <li>Kyslík ($\text{O}_2$): <strong>21 mol.%</strong></li>
+                    <li>Dusík ($\text{N}_2$): <strong>79 mol.%</strong></li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="vypocet">
+            <h2>Postupný výpočet</h2>
+            
+            <div class="calculation-step">
+                <h4>Krok 1: Stanovení bilančního základu</h4>
+                <p><strong>Náš základ:</strong> Do reaktoru vstupuje $n_1 = 1$ kmol síry (složka A).</p>
+                
+                <div class="formula-box">
+                    <strong>Bilanční základ:</strong>
+                    $$n_{A,1} = 1 \text{ kmol S}$$
+                </div>
+            </div>
+            
+            <div class="calculation-step">
+                <h4>Krok 2: Bilance síry a výpočet produktu</h4>
+                <p>Protože reakce je 100% a stechiometrický poměr S:$\text{SO}_2$ je 1:1, veškerá síra se přemění na oxid siřičitý:</p>
+                
+                $$n_{C,3} = n_{A,1} = 1 \text{ kmol } \text{SO}_2$$
+            </div>
+            
+            <div class="calculation-step">
+                <h4>Krok 3: Výpočet celkového množství spalin</h4>
+                <p>Víme, že spaliny obsahují 12 mol.% $\text{SO}_2$:</p>
+                
+                <div class="formula-box">
+                    <strong>Molový zlomek:</strong>
+                    $$x_{C,3} = 0{,}12 = \frac{n_{C,3}}{n_3}$$
+                </div>
+                
+                <p>Odtud:</p>
+                $$n_3 = \frac{n_{C,3}}{x_{C,3}} = \frac{1}{0{,}12} = 8{,}333 \text{ kmol spalin}$$
+            </div>
+            
+            <div class="calculation-step">
+                <h4>Krok 4: Bilance kyslíku a dusíku</h4>
+                <p>Spaliny obsahují: $\text{SO}_2$, nezreagovaný $\text{O}_2$ a $\text{N}_2$</p>
+                
+                <p><strong>Celkové množství $\text{O}_2$ a $\text{N}_2$ ve spalinách:</strong></p>
+                $$n_{B,3} + n_{D,3} = n_3 - n_{C,3} = 8{,}333 - 1 = 7{,}333 \text{ kmol}$$
+                
+                <p><strong>Bilance dusíku:</strong> Dusík je inertní, takže $n_{D,2} = n_{D,3}$</p>
+                
+                <p><strong>Ze složení vzduchu:</strong> $\frac{n_{D,2}}{n_{B,2}} = \frac{79}{21}$</p>
+                
+                <p><strong>Bilance kyslíku:</strong> $n_{B,3} = n_{B,2} - 1$ (1 kmol se spotřebuje na reakci)</p>
+                
+                <p>Dosadíme:</p>
+                $$(n_{B,2} - 1) + n_{D,2} = 7{,}333$$
+                $$(n_{B,2} - 1) + \frac{79}{21} \cdot n_{B,2} = 7{,}333$$
+                $$n_{B,2} \left(1 + \frac{79}{21}\right) = 8{,}333$$
+                $$n_{B,2} \cdot \frac{100}{21} = 8{,}333$$
+                $$n_{B,2} = 8{,}333 \cdot \frac{21}{100} = 1{,}75 \text{ kmol}$$
+            </div>
+            
+            <div class="calculation-step">
+                <h4>Krok 5: Výpočet přebytku vzduchu</h4>
+                <p><strong>Stechiometrická potřeba:</strong> 1 kmol $\text{O}_2$ (poměr S:$\text{O}_2$ je 1:1)</p>
+                <p><strong>Skutečný přívod:</strong> 1,75 kmol $\text{O}_2$</p>
+                
+                <div class="formula-box">
+                    <strong>Přebytek vzduchu:</strong>
+                    $$\text{Přebytek} = \frac{\text{Skutečný přívod} - \text{Stechiometrická potřeba}}{\text{Stechiometrická potřeba}} \times 100\%$$
+                </div>
+                
+                <p><strong>Výpočet:</strong></p>
+                $$\text{Přebytek} = \frac{1{,}75 - 1}{1} \times 100\% = 0{,}75 \times 100\% = 75\%$$
+            </div>
+        </section>
+        
+        <section id="vysledek">
+            <h2>Výsledek</h2>
+            
+            <div class="result-box">
+                <p><strong>Potřebný přebytek vzduchu:</strong></p>
+                <span>75 %</span>
+                <hr style="border-top: 2px solid #10b981; border-bottom: none; margin: 25px auto; width: 60%;">
+                <p style="font-size: 1.1em; color: #065f46;">
+                    <strong>To znamená 1,75× stechiometrické množství kyslíku</strong>
+                </p>
+            </div>
+            
+            <div class="results-table">
+                <h3>📊 Finální přehled látkových toků</h3>
+                
+                <h4>Látkové množství [kmol]</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Složka</th>
+                            <th>1: Síra (vstup)</th>
+                            <th>2: Vzduch (vstup)</th>
+                            <th>3: Spaliny (výstup)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong>A (S)</strong></td><td>1,00</td><td>0</td><td>0</td></tr>
+                        <tr><td><strong>B (O₂)</strong></td><td>0</td><td>1,75</td><td>0,75</td></tr>
+                        <tr><td><strong>C (SO₂)</strong></td><td>0</td><td>0</td><td>1,00</td></tr>
+                        <tr><td><strong>D (N₂)</strong></td><td>0</td><td>6,583</td><td>6,583</td></tr>
+                        <tr><th>Celkem</th><th>1,00</th><th>8,333</th><th>8,333</th></tr>
+                    </tbody>
+                </table>
+                
+                <h4>Molové zlomky [-]</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Složka</th>
+                            <th>1: Síra</th>
+                            <th>2: Vzduch</th>
+                            <th>3: Spaliny</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong>A (S)</strong></td><td>1,00</td><td>0,00</td><td>0,00</td></tr>
+                        <tr><td><strong>B (O₂)</strong></td><td>0,00</td><td>0,21</td><td>0,09</td></tr>
+                        <tr><td><strong>C (SO₂)</strong></td><td>0,00</td><td>0,00</td><td>0,12</td></tr>
+                        <tr><td><strong>D (N₂)</strong></td><td>0,00</td><td>0,79</td><td>0,79</td></tr>
+                        <tr><th>Součet</th><th>1,00</th><th>1,00</th><th>1,00</th></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="zhodnoceni">
+            <h2>Zhodnocení a praktické poznámky</h2>
+            
+            <div class="note-box">
+                <h4>⚖️ Kontrola bilance</h4>
+                <p><strong>Molová bilance:</strong></p>
+                <ul>
+                    <li>Vstup: 1,00 + 8,333 = 9,333 kmol ✓</li>
+                    <li>Výstup: 8,333 kmol ✓</li>
+                    <li>Rozdíl: 1 kmol S reaguje s 1 kmol O₂ → tvoří 1 kmol SO₂ ✓</li>
+                </ul>
+            </div>
+            
+            <div class="note-box">
+                <h4>🏭 Praktické aspekty přebytku vzduchu</h4>
+                <p><strong>Proč používat přebytek vzduchu?</strong></p>
+                <ul>
+                    <li><strong>Úplné spalování:</strong> Zajištění dokonalé reakce všeho paliva</li>
+                    <li><strong>Kinetika reakce:</strong> Vyšší koncentrace kyslíku zrychluje spalování</li>
+                    <li><strong>Homogenizace:</strong> Lepší promíchání reaktantů</li>
+                    <li><strong>Regulace teploty:</strong> Nadbytečný vzduch odvádí teplo</li>
+                </ul>
+                
+                <p><strong>Nevýhody vysokého přebytku:</strong></p>
+                <ul>
+                    <li><strong>Ředění produktů:</strong> Nižší koncentrace SO₂ ve spalinách</li>
+                    <li><strong>Energetické ztráty:</strong> Ohřev nadbytečného vzduchu</li>
+                    <li><strong>Větší zařízení:</strong> Vyšší objemové průtoky</li>
+                </ul>
+            </div>
+            
+            <div class="note-box">
+                <h4>🎯 Význam výsledku</h4>
+                <p>
+                    <strong>75% přebytek vzduchu</strong> je typická hodnota pro průmyslové spalovací procesy. 
+                    Poskytuje dobrý kompromis mezi úplností spalování a energetickou efektivitou.
+                </p>
+                <p>
+                    Výsledek <strong>12 mol.% SO₂</strong> ve spalinách umožňuje efektivní další zpracování 
+                    (např. absorpci do kyseliny sírové).
+                </p>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

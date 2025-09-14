@@ -1975,6 +1975,9 @@ a:hover {
     box-shadow: var(--shadow);
     transition: all 0.2s ease;
     position: relative;
+    text-decoration: none;
+    color: inherit;
+    display: block;
 }
 
 .example-item:hover {

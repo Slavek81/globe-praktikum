@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Separátor s recyklem</title>
+    <!-- Import pro renderování LaTeX matematických vzorců -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>Separátor s Recyklem</h1>
+            <p>Vyřešme systém se zpětnou smyčkou - klíčový koncept v procesním inženýrství!</p>
+        </header>
+
+        <section class="section">
+            <h2>Zadání</h2>
+            <p>Separační jednotka zpracovává směs složek A a B. Systém má následující parametry:</p>
+            <ul>
+                <li><strong>Čerstvý vstup (proud 1):</strong> Průtok \( \dot{m}_1 = 100 \, \text{kg/h} \), složení 30 hm.% A a 70 hm.% B.</li>
+                <li><strong>Separátor:</strong> Odděluje <strong>90 %</strong> složky A (která do něj vstoupí) do horního produktu a <strong>85 %</strong> složky B (která do něj vstoupí) do spodního produktu.</li>
+                <li><strong>Recykl:</strong> Celý horní produkt ze separátoru se vrací zpět (recykluje) a mísí se s čerstvým vstupem.</li>
+            </ul>
+            <p><strong>Úkol: Určete složení a hmotnostní průtoky všech proudů v systému.</strong></p>
+        </section>
+
+        <section class="section">
+            <h2>Analýza a Bilanční Schéma</h2>
+            <p>Tento systém obsahuje recyklační smyčku. Čerstvý vstup se mísí s recyklem a vytváří tak celkový nástřik do separátoru. Separátor pak tento nástřik dělí na výsledný produkt a recyklovaný proud.</p>
+            <div class="schema-container">
+                <svg width="500" height="250" viewBox="0 0 500 250">
+                    <defs><marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#333" /></marker></defs>
+                    <!-- Jednotky -->
+                    <circle cx="150" cy="125" r="20" fill="#f4ecf7" stroke="#8e44ad" stroke-width="2" /><text x="144" y="129">M</text>
+                    <rect x="250" y="75" width="120" height="100" fill="#f4ecf7" stroke="#8e44ad" stroke-width="2"/><text x="278" y="130">Separátor</text>
+                    <!-- Proudy -->
+                    <line x1="20" y1="125" x2="130" y2="125" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/><text x="45" y="115" font-weight="bold">1 (Čerstvý vstup)</text>
+                    <line x1="170" y1="125" x2="250" y2="125" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/><text x="185" y="115" font-weight="bold">2 (Nástřik)</text>
+                    <line x1="370" y1="150" x2="480" y2="150" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/><text x="375" y="170" font-weight="bold">3 (Spodní produkt)</text>
+                    <!-- Recykl - upraveno -->
+                    <line x1="310" y1="75" x2="310" y2="40" stroke="crimson" stroke-width="2" marker-end="url(#arrow)"/>
+                    <line x1="310" y1="40" x2="150" y2="40" stroke="crimson" stroke-width="2" />
+                    <line x1="150" y1="40" x2="150" y2="105" stroke="crimson" stroke-width="2" marker-end="url(#arrow)"/>
+                    <text x="220" y="35" font-weight="bold" fill="crimson">4 (Recykl)</text>
+                </svg>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Strategie a Postupný Výpočet</h2>
+            <div class="strategy-box">
+                <h3>Jak na systémy se smyčkou? Bilance "Černé skříňky"!</h3>
+                <p>Recykly se nejlépe řeší tak, že si nejprve celý systém představíme jako jednu velkou "černou skříňku". Zajímají nás jen proudy, které překračují hranice systému. V našem případě do systému vstupuje pouze <strong>čerstvý vstup (1)</strong> a vystupuje pouze <strong>spodní produkt (3)</strong>. Vše ostatní (proudy 2 a 4) je uvnitř.</p>
+                <p>Zákon zachování hmotnosti nám říká, že co do černé skříňky vejde, musí z ní i vyjít. To nám výpočet obrovsky zjednoduší!</p>
+            </div>
+
+            <div class="box">
+                <p><strong>1. Celková bilance systému ("Černá skříňka"):</strong><br>
+                Celková hmotnost: \( \dot{m}_1 = \dot{m}_3 \)<br>
+                Protože \( \dot{m}_1 = 100 \, \text{kg/h} \), tak \( \dot{m}_3 = 100 \, \text{kg/h} \).<br>
+                Bilance složky A: \( \dot{m}_1 \cdot w_{A1} = \dot{m}_3 \cdot w_{A3} \)<br>
+                \( 100 \cdot 0,30 = 100 \cdot w_{A3} \implies w_{A3} = 0,30 \) (30 % A)<br>
+                Tím pádem \( w_{B3} = 1 - 0,30 = 0,70 \) (70 % B).<br>
+                <em>Zjistili jsme, že spodní produkt má stejný průtok i složení jako čerstvý vstup. To dává smysl, protože je to jediný produkt opouštějící systém.</em>
+                </p>
+
+                <p><strong>2. Bilance kolem separátoru:</strong><br>
+                Nyní, když známe proud 3, můžeme se zaměřit na separátor. Známe jeho účinnost pro obě složky.<br>
+                Množství složky B v proudu 3: \( \dot{m}_{B3} = \dot{m}_3 \cdot w_{B3} = 100 \cdot 0,70 = 70 \, \text{kg/h} \).<br>
+                Víme, že toto množství je 85 % složky B, která do separátoru vstoupila v proudu 2:<br>
+                \( \dot{m}_{B3} = 0,85 \cdot \dot{m}_{B2} \implies 70 = 0,85 \cdot \dot{m}_{B2} \)<br>
+                Množství složky B v nástřiku (proudu 2): \( \dot{m}_{B2} = \frac{70}{0,85} \approx 82,35 \, \text{kg/h} \).<br>
+                
+                Množství složky A v proudu 3: \( \dot{m}_{A3} = \dot{m}_3 \cdot w_{A3} = 100 \cdot 0,30 = 30 \, \text{kg/h} \).<br>
+                Zbytek složky A, který nevystoupil nahoře, musí být ve spodním produktu. Pokud 90 % A jde do horního produktu (recyklu), pak 10 % A jde do spodního produktu:<br>
+                \( \dot{m}_{A3} = (1 - 0,90) \cdot \dot{m}_{A2} \implies 30 = 0,10 \cdot \dot{m}_{A2} \)<br>
+                Množství složky A v nástřiku (proudu 2): \( \dot{m}_{A2} = \frac{30}{0,10} = 300 \, \text{kg/h} \).
+                </p>
+
+                <p><strong>3. Výpočet nástřiku do separátoru (proud 2):</strong><br>
+                Celkový průtok proudu 2 je součtem průtoků jeho složek:<br>
+                \( \dot{m}_2 = \dot{m}_{A2} + \dot{m}_{B2} = 300 + 82,35 = 382,35 \, \text{kg/h} \)<br>
+                Složení proudu 2:<br>
+                \( w_{A2} = \frac{300}{382,35} \approx 0,7846 \) (78,46 % A)<br>
+                \( w_{B2} = \frac{82,35}{382,35} \approx 0,2154 \) (21,54 % B)
+                </p>
+
+                <p><strong>4. Výpočet recyklu (proud 4):</strong><br>
+                Použijeme bilanci mísícího bodu: \( \dot{m}_1 + \dot{m}_4 = \dot{m}_2 \)<br>
+                \( 100 + \dot{m}_4 = 382,35 \implies \dot{m}_4 = 282,35 \, \text{kg/h} \)<br>
+                Množství složek v proudu 4:<br>
+                Složka A v recyklu (90 % z nástřiku A): \( \dot{m}_{A4} = 0,90 \cdot \dot{m}_{A2} = 0,90 \cdot 300 = 270 \, \text{kg/h} \)<br>
+                Složka B v recyklu (zbytek B, tedy 15 %): \( \dot{m}_{B4} = (1-0,85) \cdot \dot{m}_{B2} = 0,15 \cdot 82,35 \approx 12,35 \, \text{kg/h} \)<br>
+                (Kontrola: \( \dot{m}_4 = 270 + 12,35 = 282,35 \, \text{kg/h} \). Sedí!)<br>
+                Složení proudu 4:<br>
+                \( w_{A4} = \frac{270}{282,35} \approx 0,9563 \) (95,63 % A)<br>
+                \( w_{B4} = \frac{12,35}{282,35} \approx 0,0437 \) (4,37 % B)
+                </p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Výsledky</h2>
+            <div class="box result-box">
+                <h3>Průtoky a složení jednotlivých proudů jsou:</h3>
+                <ul>
+                    <li><strong>Proud 1 (Čerstvý vstup):</strong> Průtok = 100 kg/h, Složení = 30% A, 70% B</li>
+                    <li><strong>Proud 2 (Nástřik do separátoru):</strong> Průtok = 382,4 kg/h, Složení = 78,5% A, 21,5% B</li>
+                    <li><strong>Proud 3 (Spodní produkt):</strong> Průtok = 100 kg/h, Složení = 30% A, 70% B</li>
+                    <li><strong>Proud 4 (Recykl):</strong> Průtok = 282,4 kg/h, Složení = 95,6% A, 4,4% B</li>
+                </ul>
+            </div>
+            <h3>Souhrnná bilanční tabulka (Hmotnostní toky)</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Proud</th>
+                        <th>Popis</th>
+                        <th>Celkový tok [kg/h]</th>
+                        <th>Tok složky A [kg/h]</th>
+                        <th>Tok složky B [kg/h]</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>1</td><td>Čerstvý vstup</td><td>100,0</td><td>30,0</td><td>70,0</td></tr>
+                    <tr><td>2</td><td>Nástřik</td><td><strong>382,4</strong></td><td><strong>300,0</strong></td><td><strong>82,4</strong></td></tr>
+                    <tr><td>3</td><td>Spodní produkt</td><td>100,0</td><td>30,0</td><td>70,0</td></tr>
+                    <tr><td>4</td><td>Recykl</td><td><strong>282,4</strong></td><td><strong>270,0</strong></td><td><strong>12,4</strong></td></tr>
+                </tbody>
+            </table>
+            
+            <h3>Přehled hmotnostních zlomků (Složení)</h3>
+             <table>
+                <thead>
+                    <tr>
+                        <th>Proud</th>
+                        <th>Popis</th>
+                        <th>Složení w_A [%]</th>
+                        <th>Složení w_B [%]</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>1</td><td>Čerstvý vstup</td><td>30,0</td><td>70,0</td></tr>
+                    <tr><td>2</td><td>Nástřik</td><td>78,5</td><td>21,5</td></tr>
+                    <tr><td>3</td><td>Spodní produkt</td><td>30,0</td><td>70,0</td></tr>
+                    <tr><td>4</td><td>Recykl</td><td>95,6</td><td>4,4</td></tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+</body>
+</html>
+

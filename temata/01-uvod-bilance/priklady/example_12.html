@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Krystalizace s Recyklací</title>
+    
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>Krystalizace uhličitanu sodného s recyklací</h1>
+        </header>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <p>
+                Roztok o průtoku <strong>1000 kg/h</strong> obsahující <strong>10 hm.% uhličitanu sodného (Na₂CO₃)</strong> 
+                se mísí s recyklovaným proudem. Směs se vede do odparky, kde se odpaří část vody a roztok se zahustí 
+                na <strong>30 hm.% Na₂CO₃</strong>.
+            </p>
+            <p>
+                Tento zahuštěný roztok postupuje do krystalizátoru, kde ochlazením vznikají krystaly dekahydrátu 
+                uhličitanu sodného (Na₂CO₃ · 10H₂O) a matečný roztok s 
+                <strong>20 hm.% Na₂CO₃</strong>. Matečný roztok se dělí - část odchází jako odpad 
+                a část se vrací jako recykl na začátek.
+            </p>
+            <p>
+                <strong>Cíl:</strong> Dosáhnout <strong>90% výtěžnosti krystalizace</strong> (tj. 90 % uhličitanu 
+                ze vstupu se stane součástí krystalů).
+            </p>
+            
+            <div class="recycle-highlight">
+                <h4>🔄 Úkol</h4>
+                <p><strong>Jak velký musí být recyklující proud?</strong></p>
+            </div>
+        </section>
+
+        <section id="schema">
+            <h2>Bilanční schéma procesu</h2>
+            
+            <div class="process-diagram">
+                <h4>🏭 Schéma technologického procesu</h4>
+                <svg width="600" height="300" viewBox="0 0 600 300">
+                    <defs>
+                        <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                            <path d="M 0 0 L 10 5 L 0 10 z" fill="#333" />
+                        </marker>
+                    </defs>
+                    
+                    <!-- Jednotky -->
+                    <rect x="70" y="100" width="80" height="60" fill="#e0f2fe" stroke="#2563eb" stroke-width="2"/>
+                    <text x="82" y="135" font-size="12" font-weight="bold">I. Mísič</text>
+                    
+                    <rect x="180" y="100" width="80" height="60" fill="#e0f2fe" stroke="#2563eb" stroke-width="2"/>
+                    <text x="187" y="135" font-size="12" font-weight="bold">II. Odparka</text>
+                    
+                    <rect x="290" y="100" width="80" height="60" fill="#e0f2fe" stroke="#2563eb" stroke-width="2"/>
+                    <text x="295" y="135" font-size="12" font-weight="bold">III. Krystalizátor</text>
+                    
+                    <rect x="400" y="40" width="80" height="60" fill="#e0f2fe" stroke="#2563eb" stroke-width="2"/>
+                    <text x="415" y="75" font-size="12" font-weight="bold">IV. Dělič</text>
+                    
+                    <!-- Proudy -->
+                    <line x1="0" y1="130" x2="70" y2="130" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+                    <text x="30" y="125" font-weight="bold" fill="#2563eb">1</text>
+                    
+                    <line x1="150" y1="130" x2="180" y2="130" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+                    <text x="160" y="125" font-weight="bold" fill="#2563eb">2</text>
+                    
+                    <line x1="220" y1="100" x2="220" y2="50" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+                    <text x="225" y="75" font-weight="bold" fill="#2563eb">3</text>
+                    
+                    <line x1="260" y1="130" x2="290" y2="130" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+                    <text x="270" y="125" font-weight="bold" fill="#2563eb">4</text>
+                    
+                    <line x1="330" y1="160" x2="330" y2="210" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+                    <text x="335" y="190" font-weight="bold" fill="#2563eb">5</text>
+                    
+                    <polyline points="370,130 440,130 440,100" fill="none" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+                    <text x="400" y="125" font-weight="bold" fill="#2563eb">6</text>
+                    
+                    <line x1="480" y1="70" x2="530" y2="70" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+                    <text x="500" y="65" font-weight="bold" fill="#2563eb">7</text>
+                    
+                    <line x1="400" y1="70" x2="110" y2="70" stroke="#f97316" stroke-width="3" stroke-dasharray="5,5"/>
+                    <text x="250" y="65" font-weight="bold" fill="#f97316">8 (Recykl)</text>
+                    <line x1="110" y1="70" x2="110" y2="100" stroke="#f97316" stroke-width="3" marker-end="url(#arrow)"/>
+                    
+                    <!-- Legenda -->
+                    <text x="10" y="250" font-size="11">1: Surovina | 3: Odpařená voda | 5: Produkt (krystaly)</text>
+                    <text x="10" y="265" font-size="11">7: Odpad | 8: Recykl (hledáno)</text>
+                </svg>
+            </div>
+            
+            <div class="note-box">
+                <h4>🏷️ Pojmenování proudů</h4>
+                <p><strong>Složky:</strong> A = Na₂CO₃, B = H₂O</p>
+                <ul>
+                    <li><strong>Proud 1:</strong> Surovina (1000 kg/h, 10% Na₂CO₃)</li>
+                    <li><strong>Proud 2:</strong> Směs suroviny a recyklu (vstup do odparky)</li>
+                    <li><strong>Proud 3:</strong> Odpařená voda (čistá H₂O)</li>
+                    <li><strong>Proud 4:</strong> Zahuštěný roztok (30% Na₂CO₃)</li>
+                    <li><strong>Proud 5:</strong> Produkt - krystaly Na₂CO₃·10H₂O</li>
+                    <li><strong>Proud 6:</strong> Matečný roztok (20% Na₂CO₃)</li>
+                    <li><strong>Proud 7:</strong> Odpad (20% Na₂CO₃)</li>
+                    <li><strong>Proud 8:</strong> Recykl (20% Na₂CO₃) - hledáno!</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="strategie">
+            <h2>Strategie řešení</h2>
+            
+            <div class="strategy-box">
+                <h3>🎯 Metoda "zvenku dovnitř"</h3>
+                <p>
+                    Systém vypadá složitě kvůli vnitřním proudům (2, 4, 6, 8). Klíčová finta je:
+                </p>
+                <ol>
+                    <li><strong>Nejprve analyzovat celý proces jako "černou skříňku"</strong> - zajímají nás jen proudy 1, 3, 5, 7</li>
+                    <li><strong>Spočítat vnější bilanci</strong> - určit velikosti vstupů a výstupů</li>
+                    <li><strong>Postupně "rozbalovat" jednotlivá zařízení</strong> - krystalizátor, dělič</li>
+                    <li><strong>Nakonec dopočítat recykl</strong> z bilance děliče</li>
+                </ol>
+            </div>
+        </section>
+
+        <section id="vypocet">
+            <h2>Postup výpočtu</h2>
+            
+            <div class="calculation-step">
+                <h4>Krok 1: Analýza krystalů (proud 5)</h4>
+                <p>Krystaly jsou dekahydrát Na₂CO₃ · 10H₂O. Určíme jejich složení:</p>
+                
+                <div class="formula-box">
+                    <strong>Molární hmotnosti:</strong>
+                    <ul>
+                        <li>$M_{\mathrm{Na_2CO_3}} = 106$ g/mol</li>
+                        <li>$M_{\mathrm{H_2O}} = 18$ g/mol</li>
+                        <li>$M_{\mathrm{krystal}} = 106 + 10 \times 18 = 286$ g/mol</li>
+                    </ul>
+                    
+                    <p><strong>Hmotnostní složení krystalů:</strong></p>
+                    $$w_{A,5} = \frac{106}{286} = 0.3706 = 37.06\,\%$$
+                    $$w_{B,5} = \frac{180}{286} = 0.6294 = 62.94\,\%$$
+                </div>
+            </div>
+            
+            <div class="calculation-step">
+                <h4>Krok 2: Celková bilance systému - "černá skříňka"</h4>
+                
+                <p><strong>Výpočet produktu (proud 5) z výtěžnosti:</strong></p>
+                <p>Množství Na₂CO₃ na vstupu: $\dot{m}_{A,1} = 1000 \times 0.10 = 100$ kg/h</p>
+                <p>90% se má stát produktem: $\dot{m}_{A,5} = 100 \times 0.90 = 90$ kg/h</p>
+                
+                $$\dot{m}_5 = \frac{\dot{m}_{A,5}}{w_{A,5}} = \frac{90}{0.3706} = 242.8 \mathrm{ \; kg/h}$$
+                
+                <p><strong>Bilance Na₂CO₃ pro celý systém:</strong></p>
+                $$\mathrm{VSTUP} = \mathrm{VÝSTUP}$$
+                $$\dot{m}_1 \cdot w_{A,1} = \dot{m}_5 \cdot w_{A,5} + \dot{m}_7 \cdot w_{A,7}$$
+                $$1000 \times 0.10 = 242.8 \times 0.3706 + \dot{m}_7 \times 0.20$$
+                $$100 = 90 + \dot{m}_7 \times 0.20$$
+                $$\dot{m}_7 = \frac{10}{0.20} = 50 \mathrm{ \; kg/h}$$
+                
+                <p><strong>Celková hmotnostní bilance:</strong></p>
+                $$\dot{m}_1 = \dot{m}_3 + \dot{m}_5 + \dot{m}_7$$
+                $$1000 = \dot{m}_3 + 242.8 + 50$$
+                $$\dot{m}_3 = 707.2 \mathrm{ \; kg/h}$$
+            </div>
+            
+            <div class="calculation-step">
+                <h4>Krok 3: Bilance krystalizátoru (zařízení III)</h4>
+                <p>Známe výstupy z krystalizátoru (proudy 5 a 6), chceme spočítat vstup (proud 4):</p>
+                
+                <div class="formula-box">
+                    <strong>Bilance krystalizátoru:</strong>
+                    <p>Celková hmotnost: $\dot{m}_4 = \dot{m}_5 + \dot{m}_6$</p>
+                    <p>Bilance Na₂CO₃: $\dot{m}_4 \times 0{,}30 = \dot{m}_5 \times 0{,}3706 + \dot{m}_6 \times 0{,}20$</p>
+                </div>
+                
+                <p>Dosadíme první rovnici do druhé:</p>
+                $$(\dot{m}_5 + \dot{m}_6) \times 0.30 = 90 + \dot{m}_6 \times 0.20$$
+                $$(242.8 + \dot{m}_6) \times 0.30 = 90 + 0.20 \dot{m}_6$$
+                $$72.84 + 0.30 \dot{m}_6 = 90 + 0.20 \dot{m}_6$$
+                $$0.10 \dot{m}_6 = 17.16$$
+                $$\dot{m}_6 = 171.6 \mathrm{ \; kg/h}$$
+                
+                <p>A tedy: $\dot{m}_4 = 242.8 + 171.6 = 414.4$ kg/h</p>
+            </div>
+            
+            <div class="calculation-step">
+                <h4>Krok 4: Bilance děliče - výpočet recyklu!</h4>
+                <p>Dělič (zařízení IV) rozděluje matečný roztok na odpad a recykl:</p>
+                
+                <div class="formula-box">
+                    <strong>Bilance děliče:</strong>
+                    $$\dot{m}_6 = \dot{m}_7 + \dot{m}_8$$
+                </div>
+                
+                <p>Známe $\dot{m}_6 = 171.6$ kg/h a $\dot{m}_7 = 50$ kg/h, takže:</p>
+                $$171.6 = 50 + \dot{m}_8$$
+                $$\dot{m}_8 = 171.6 - 50 = 121.6 \mathrm{ \; kg/h}$$
+            </div>
+        </section>
+        
+        <section id="vysledek">
+            <h2>Výsledek</h2>
+            
+            <div class="result-box">
+                <p><strong>Velikost recyklovaného proudu:</strong></p>
+                <span>121.6 kg/h</span>
+                <hr style="border-top: 2px solid #10b981; border-bottom: none; margin: 25px auto; width: 60%;">
+                <p style="font-size: 1.1em; color: #065f46;">
+                    <strong>Poměr recyklu k surovině:</strong><br>
+                    <span style="font-size: 1.0em;">121.6 ÷ 1000 = 12.2 %</span>
+                </p>
+            </div>
+            
+            <div class="results-table">
+                <h3>📊 Finální přehled všech proudů</h3>
+                
+                <h4>Hmotnostní zlomky složek [-]</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Proud</th>
+                            <th>Popis</th>
+                            <th>$w_A$ (Na₂CO₃)</th>
+                            <th>$w_B$ (H₂O)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong>1</strong></td><td>Surovina</td><td>0.1000</td><td>0.9000</td></tr>
+                        <tr><td><strong>2</strong></td><td>Směs (do odparky)</td><td>0.1108</td><td>0.8892</td></tr>
+                        <tr><td><strong>3</strong></td><td>Odpařená voda</td><td>0.0000</td><td>1.0000</td></tr>
+                        <tr><td><strong>4</strong></td><td>Zahuštěný roztok</td><td>0.3000</td><td>0.7000</td></tr>
+                        <tr><td><strong>5</strong></td><td>Produkt (krystaly)</td><td>0.3706</td><td>0.6294</td></tr>
+                        <tr><td><strong>6</strong></td><td>Matečný roztok</td><td>0.2000</td><td>0.8000</td></tr>
+                        <tr><td><strong>7</strong></td><td>Odpad</td><td>0.2000</td><td>0.8000</td></tr>
+                        <tr><td><strong>8</strong></td><td><strong>Recykl</strong></td><td><strong>0.2000</strong></td><td><strong>0.8000</strong></td></tr>
+                    </tbody>
+                </table>
+                
+                <h4>Hmotnostní toky [kg/h]</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Proud</th>
+                            <th>Celkem $\dot{m}$</th>
+                            <th>$\dot{m}_A$ (Na₂CO₃)</th>
+                            <th>$\dot{m}_B$ (H₂O)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong>1</strong></td><td>1000.0</td><td>100.0</td><td>900.0</td></tr>
+                        <tr><td><strong>2</strong></td><td>1121.6</td><td>124.3</td><td>997.3</td></tr>
+                        <tr><td><strong>3</strong></td><td>707.2</td><td>0.0</td><td>707.2</td></tr>
+                        <tr><td><strong>4</strong></td><td>414.4</td><td>124.3</td><td>290.1</td></tr>
+                        <tr><td><strong>5</strong></td><td>242.8</td><td>90.0</td><td>152.8</td></tr>
+                        <tr><td><strong>6</strong></td><td>171.6</td><td>34.3</td><td>137.3</td></tr>
+                        <tr><td><strong>7</strong></td><td>50.0</td><td>10.0</td><td>40.0</td></tr>
+                        <tr><td><strong>8</strong></td><td><strong>121.6</strong></td><td><strong>24.3</strong></td><td><strong>97.3</strong></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="zhodnoceni">
+            <h2>Zhodnocení a praktické poznámky</h2>
+            
+            <div class="note-box">
+                <h4>⚖️ Kontrola bilance</h4>
+                <p><strong>Celková hmotnostní bilance:</strong></p>
+                <ul>
+                    <li>Vstup: 1000 kg/h ✓</li>
+                    <li>Výstupy: 707,2 + 242,8 + 50,0 = 1000 kg/h ✓</li>
+                </ul>
+                <p><strong>Bilance Na₂CO₃:</strong></p>
+                <ul>
+                    <li>Vstup: 100 kg/h ✓</li>
+                    <li>Výstupy: 90,0 + 10,0 = 100 kg/h ✓</li>
+                    <li>Výtěžnost: 90/100 = 90 % ✓</li>
+                </ul>
+            </div>
+            
+            <div class="note-box">
+                <h4>🏭 Praktické aspekty recyklace</h4>
+                <p><strong>Výhody recyklace:</strong></p>
+                <ul>
+                    <li><strong>Vyšší výtěžnost:</strong> Využití cenné složky z matečných roztoků</li>
+                    <li><strong>Nižší odpad:</strong> Snížení objemu odpadních proudů</li>
+                    <li><strong>Ekonomická úspora:</strong> Menší ztráty suroviny</li>
+                </ul>
+                
+                <p><strong>Nevýhody recyklace:</strong></p>
+                <ul>
+                    <li><strong>Složitější proces:</strong> Více zařízení, regulace</li>
+                    <li><strong>Akumulace nečistot:</strong> Postupné zahuštění příměsí</li>
+                    <li><strong>Vyšší investiční náklady:</strong> Dodatečná čerpadla, potrubí</li>
+                </ul>
+            </div>
+            
+            <div class="recycle-highlight">
+                <h4>♻️ Environmentální význam</h4>
+                <p>
+                    Recyklace snižuje objem odpadu z <strong>171,6 kg/h na 50 kg/h</strong> - to je snížení o <strong>71%</strong>!
+                    Současně se zvyšuje využití suroviny z 90% na prakticky 100% (pouze malé ztráty v odpadu).
+                </p>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

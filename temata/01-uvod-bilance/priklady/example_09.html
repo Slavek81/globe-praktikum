@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analýza Průmyslové Pece</title>
+    
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>Energetická a ekonomická analýza průmyslové pece</h1>
+        </header>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <p>
+                Cílem je provést kompletní energetický a ekonomický výpočet provozu průmyslové pece na ohřev oceli. 
+                Určíme užitečný výkon, celkový příkon, spotřebu paliva a výsledné náklady na provoz.
+            </p>
+            
+            <div class="temperature-highlight">
+                <strong>Pracovní teplota pece: 1200°C</strong><br>
+                <em>Extrémní podmínky vyžadující precizní energetickou bilanci</em>
+            </div>
+        </section>
+
+        <section id="vstupni-data">
+            <h3>Vstupní data</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Veličina</th>
+                        <th>Symbol</th>
+                        <th>Hodnota</th>
+                        <th>Jednotka</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="4">Ocel (ohřívaný materiál)</td>
+                    </tr>
+                    <tr>
+                        <td>Hmotnostní průtok oceli</td>
+                        <td class="variable">$\dot{m}_{\text{ocel}}$</td>
+                        <td class="value">0,5</td>
+                        <td class="unit">kg/s</td>
+                    </tr>
+                    <tr>
+                        <td>Počáteční teplota oceli</td>
+                        <td class="variable">$t_1$</td>
+                        <td class="value">25</td>
+                        <td class="unit">°C</td>
+                    </tr>
+                    <tr>
+                        <td>Konečná teplota oceli</td>
+                        <td class="variable">$t_2$</td>
+                        <td class="value">1200</td>
+                        <td class="unit">°C</td>
+                    </tr>
+                    <tr>
+                        <td>Měrná tepelná kapacita oceli</td>
+                        <td class="variable">$c_{\text{ocel}}$</td>
+                        <td class="value">0,46</td>
+                        <td class="unit">kJ/(kg·K)</td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">Pec a palivo</td>
+                    </tr>
+                    <tr>
+                        <td>Účinnost pece</td>
+                        <td class="variable">$\eta$</td>
+                        <td class="value">75 % (0,75)</td>
+                        <td class="unit">-</td>
+                    </tr>
+                    <tr>
+                        <td>Výhřevnost zemního plynu</td>
+                        <td class="variable">$H_u$</td>
+                        <td class="value">50 000</td>
+                        <td class="unit">kJ/kg</td>
+                    </tr>
+                    <tr>
+                        <td>Cena zemního plynu</td>
+                        <td class="variable">$C_{\text{plyn}}$</td>
+                        <td class="value">2</td>
+                        <td class="unit">Kč/kWh</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+            
+            <div class="calculation-step">
+                <h4>Krok 1: Výpočet užitečného výkonu pece ($P_{\text{užitečný}}$)</h4>
+                <p>Toto je tepelný výkon, který je skutečně předán oceli a způsobí její ohřátí z pokojové teploty 
+                na vysokou teplotu 1200°C. Jedná se o "čistý" výkon pece bez ztrát.</p>
+                
+                <div class="formula-box">
+                    <strong>Vzorec pro užitečný výkon:</strong>
+                    $$P_{\text{užitečný}} = \dot{m}_{\text{ocel}} \cdot c_{\text{ocel}} \cdot (t_2 - t_1)$$
+                    
+                    <p><strong>Kde:</strong></p>
+                    <ul>
+                        <li>$P_{\text{užitečný}}$ je užitečný výkon pece <span class="unit">[kW]</span></li>
+                        <li>$\dot{m}_{\text{ocel}}$ je hmotnostní průtok oceli <span class="unit">[kg/s]</span></li>
+                        <li>$c_{\text{ocel}}$ je měrná tepelná kapacita oceli <span class="unit">[kJ/(kg·K)]</span></li>
+                        <li>$(t_2 - t_1)$ je rozdíl teplot <span class="unit">[°C nebo K]</span></li>
+                    </ul>
+                </div>
+                
+                <p><strong>Výpočet teplotního rozdílu:</strong></p>
+                $$\Delta t = t_2 - t_1 = 1\,200 - 25 = 1\,175 \text{ °C} \text{ (= 1\,175 K)}$$
+                
+                <p><strong>Výpočet užitečného výkonu:</strong></p>
+                $$P_{\text{užitečný}} = 0{,}5 \cdot 0{,}46 \cdot 1\,175 = 270{,}25 \text{ kW}$$
+                
+                <div class="furnace-process">
+                    <strong>Fyzikální význam:</strong> Každou sekundu musí pec předat oceli 270,25 kJ tepelné energie, 
+                    aby mohla kontinuálně ohřívat 0,5 kg oceli z okolní teploty na žhavou teplotu 1200°C 
+                    potřebnou pro metalurgické zpracování.
+                </div>
+            </div>
+            
+            <div class="calculation-step">
+                <h4>Krok 2: Výpočet celkového příkonu pece ($P_{\text{příkon}}$)</h4>
+                <p>Pec má energetické ztráty (účinnost není 100%), takže musíme spálit více paliva, než odpovídá užitečnému výkonu. 
+                Příkon je celkový výkon, který musíme do pece dodat ve formě spalovaného zemního plynu.</p>
+                
+                <div class="formula-box">
+                    <strong>Vzorec pro celkový příkon:</strong>
+                    $$P_{\text{příkon}} = \frac{P_{\text{užitečný}}}{\eta}$$
+                    
+                    <p><strong>Kde:</strong></p>
+                    <ul>
+                        <li>$P_{\text{příkon}}$ je celkový příkon pece <span class="unit">[kW]</span></li>
+                        <li>$P_{\text{užitečný}}$ je užitečný výkon <span class="unit">[kW]</span></li>
+                        <li>$\eta$ je účinnost pece <span class="unit">[-]</span></li>
+                    </ul>
+                </div>
+                
+                <p><strong>Výpočet:</strong></p>
+                $$P_{\text{příkon}} = \frac{270{,}25}{0{,}75} = 360{,}33 \text{ kW}$$
+                
+                <div class="efficiency-box">
+                    <strong>Analýza energetických ztrát:</strong>
+                    <ul>
+                        <li><strong>Užitečný výkon:</strong> 270,25 kW (75%)</li>
+                        <li><strong>Ztráty:</strong> 360,33 - 270,25 = 90,08 kW (25%)</li>
+                    </ul>
+                    
+                    <p><strong>Typy ztrát ve vysokoteplotní peci:</strong></p>
+                    <ul>
+                        <li><strong>Radiační ztráty:</strong> Vyzařování tepla stěnami pece</li>
+                        <li><strong>Konvekční ztráty:</strong> Proudění horkého vzduchu</li>
+                        <li><strong>Ztráty se spalinami:</strong> Horké spaliny odcházející komínem</li>
+                        <li><strong>Vedení tepla:</strong> Konstrukcí pece do okolí</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 3: Výpočet spotřeby zemního plynu ($\dot{m}_{\text{ZP}}$)</h4>
+                <p>Na základě celkového příkonu a výhřevnosti paliva spočítáme, kolik kilogramů zemního plynu 
+                musíme kontinuálně spalovat každou sekundu pro udržení požadovaného výkonu.</p>
+                
+                <div class="formula-box">
+                    <strong>Vzorec pro spotřebu paliva:</strong>
+                    $$\dot{m}_{\text{ZP}} = \frac{P_{\text{příkon}}}{H_u}$$
+                    
+                    <p><strong>Kde:</strong></p>
+                    <ul>
+                        <li>$\dot{m}_{\text{ZP}}$ je hmotnostní průtok zemního plynu <span class="unit">[kg/s]</span></li>
+                        <li>$P_{\text{příkon}}$ je příkon pece <span class="unit">[kW = kJ/s]</span></li>
+                        <li>$H_u$ je výhřevnost zemního plynu <span class="unit">[kJ/kg]</span></li>
+                    </ul>
+                </div>
+                
+                <p><strong>Výpočet:</strong></p>
+                <p>Příkon je v kW (kJ/s) a výhřevnost v kJ/kg, takže jednotky jsou konzistentní:</p>
+                $$\dot{m}_{\text{ZP}} = \frac{360{,}33 \text{ kJ/s}}{50\,000 \text{ kJ/kg}} = 0{,}007207 \text{ kg/s}$$
+                
+                <p><strong>Převody na praktičtější jednotky:</strong></p>
+                <ul>
+                    <li><strong>Za minutu:</strong> $0{,}007207 \times 60 = 0{,}432$ kg/min</li>
+                    <li><strong>Za hodinu:</strong> $0{,}007207 \times 3\,600 = 25{,}9$ kg/h</li>
+                    <li><strong>Za směnu (8h):</strong> $25{,}9 \times 8 = 207$ kg/směnu</li>
+                    <li><strong>Za den (24h):</strong> $25{,}9 \times 24 = 622$ kg/den</li>
+                </ul>
+                
+                <div class="note-box">
+                    <strong>Objemová spotřeba:</strong> Za normálních podmínek má zemní plyn hustotu přibližně 0,8 kg/m³, 
+                    takže 25,9 kg/h odpovídá zhruba 32,4 m³/h objemové spotřeby plynu.
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 4: Výpočet nákladů na provoz</h4>
+                <p>Provozní náklady vypočítáme z celkového příkonu a ceny energie. 
+                Celkový příkon v kW přímo udává spotřebu energie v kWh za jednu hodinu.</p>
+                
+                <div class="formula-box">
+                    <strong>Vzorce pro provozní náklady:</strong>
+                    $$\text{Energie za hodinu} = P_{\text{příkon}} \times 1 \text{ h} = 360{,}33 \text{ kWh}$$
+                    $$\text{Cena za hodinu} = P_{\text{příkon}} \times C_{\text{plyn}}$$
+                </div>
+                
+                <p><strong>Výpočet hodinových nákladů:</strong></p>
+                $$\text{Cena za hodinu} = 360{,}33 \times 2 = 720{,}66 \text{ Kč/h}$$
+                
+                <div class="cost-highlight">
+                    <strong>Podrobná ekonomická analýza:</strong>
+                    <ul>
+                        <li><strong>Hodinové náklady:</strong> 721 Kč</li>
+                        <li><strong>Směnové náklady (8h):</strong> 721 × 8 = 5 768 Kč</li>
+                        <li><strong>Denní náklady (24h):</strong> 721 × 24 = 17 304 Kč</li>
+                        <li><strong>Týdenní náklady (7×24h):</strong> 17 304 × 7 = 121 128 Kč</li>
+                        <li><strong>Měsíční náklady (30 dní):</strong> 17 304 × 30 = 519 120 Kč</li>
+                        <li><strong>Roční náklady (365 dní):</strong> 17 304 × 365 = 6 316 000 Kč</li>
+                    </ul>
+                    
+                    <p><strong>Náklady na jednotku produkce:</strong></p>
+                    <ul>
+                        <li><strong>Náklady na 1 kg oceli:</strong> 721 ÷ (0,5 × 3600) = 0,40 Kč/kg</li>
+                        <li><strong>Náklady na 1 tunu oceli:</strong> 0,40 × 1000 = 400 Kč/t</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <section id="vysledek">
+            <h2>Shrnutí výsledků</h2>
+            <div class="result-box">
+                <p>Užitečný výkon pece (předaný oceli): <span>270,25 kW</span></p>
+                <p>Celkový příkon pece (z paliva): <span>360,33 kW</span></p>
+                <p>Spotřeba zemního plynu: <span>25,9 kg/h (≈ 32,4 m³/h)</span></p>
+                <p>Provozní náklady: <span>720,66 Kč/h</span></p>
+                <hr style="border-top: 2px solid #ff5722; border-bottom: none; margin: 25px auto; width: 60%;">
+                <p style="font-size: 1.1em; color: #d84315;">
+                    <strong>Účinnost pece: 75 %</strong><br>
+                    <span style="font-size: 1.0em;">Energetické ztráty: 90 kW (25%)</span>
+                </p>
+            </div>
+        </section>
+
+        <section id="prakticky-vysledek">
+            <h2>Průmyslové aplikace a optimalizace</h2>
+            
+            <div class="industrial-note">
+                <h4>🏭 Průmyslové aplikace vysokoteplotních pecí</h4>
+                <p><strong>Typy průmyslových pecí pro zpracování oceli:</strong></p>
+                <ul>
+                    <li><strong>Plamenné pece:</strong> Přímé spalování zemního plynu/oleje (tento příklad)</li>
+                    <li><strong>Elektrické odporové pece:</strong> Ohřev pomocí odporových spirál</li>
+                    <li><strong>Indukční pece:</strong> Ohřev elektromagnetickou indukcí</li>
+                    <li><strong>Obloukové pece:</strong> Ohřev pomocí elektrického oblouku</li>
+                    <li><strong>Vakuové pece:</strong> Pro speciální tepelné zpracování</li>
+                </ul>
+                
+                <p><strong>Průmyslová odvětví využívající podobné vysokoteplotní pece:</strong></p>
+                <ul>
+                    <li><strong>Metalurgie:</strong> Výroba a zpracování kovů, slévárny</li>
+                    <li><strong>Automobilový průmysl:</strong> Tepelné zpracování součástí motorů</li>
+                    <li><strong>Strojírenství:</strong> Kalení a popouštění nástrojových ocelí</li>
+                    <li><strong>Sklářský průmysl:</strong> Tavení skla při 1500-1700°C</li>
+                    <li><strong>Keramický průmysl:</strong> Vypalování technické keramiky</li>
+                </ul>
+            </div>
+            
+            <div class="efficiency-box">
+                <h4>💡 Možnosti optimalizace a energetických úspor</h4>
+                <p><strong>Zvýšení účinnosti pece z 75% na 85% by přineslo:</strong></p>
+                <ul>
+                    <li><strong>Nový příkon:</strong> 270,25 ÷ 0,85 = 318 kW</li>
+                    <li><strong>Úspora výkonu:</strong> 360,33 - 318 = 42,3 kW (11,7%)</li>
+                    <li><strong>Úspora nákladů:</strong> 42,3 × 2 = 84,6 Kč/h</li>
+                    <li><strong>Roční úspora:</strong> 84,6 × 8760 = 741 096 Kč</li>
+                </ul>
+                
+                <p><strong>Technická opatření pro zvýšení účinnosti:</strong></p>
+                <ul>
+                    <li><strong>Rekuperace tepla:</strong> Předehřev spalovacího vzduchu horkými spalinami</li>
+                    <li><strong>Vylepšená izolace:</strong> Moderní žárupevné materiály s nižší tepelnou vodivostí</li>
+                    <li><strong>Optimalizace spalování:</strong> Přesné λ-regulace pro ideální poměr paliva a vzduchu</li>
+                    <li><strong>Řízení atmosféry:</strong> Kontrola složení spalin pro minimalizaci ztrát</li>
+                    <li><strong>Regenerativní systémy:</strong> Střídavé využití tepla spalin</li>
+                </ul>
+            </div>
+            
+            <div class="cost-highlight">
+                <h4>💰 Ekonomické srovnání různých paliv</h4>
+                <p><strong>Náklady při stejném výkonu 360 kW pro různá paliva:</strong></p>
+                <table style="margin: 15px 0; font-size: 1em;">
+                    <tr><th>Palivo</th><th>Cena [Kč/kWh]</th><th>Hodinové náklady [Kč/h]</th><th>Roční náklady [mil. Kč]</th></tr>
+                    <tr><td><strong>Zemní plyn</strong></td><td>2,0</td><td>720</td><td>6,3</td></tr>
+                    <tr><td>Propan-butan</td><td>3,0</td><td>1080</td><td>9,5</td></tr>
+                    <tr><td>Topný olej</td><td>2,5</td><td>900</td><td>7,9</td></tr>
+                    <tr><td>Elektřina (VVN)</td><td>4,0</td><td>1440</td><td>12,6</td></tr>
+                    <tr><td>Elektřina (VN)</td><td>5,0</td><td>1800</td><td>15,8</td></tr>
+                </table>
+                
+                <p><strong>Závěr:</strong> Zemní plyn je nejekonomičtější volbou pro kontinuální provoz vysokoteplotních pecí. 
+                Oproti elektřině na VN úrovni šetrí ročně až 9,5 mil. Kč!</p>
+            </div>
+            
+            <div class="temperature-highlight">
+                <strong>Energetická náročnost vysokoteplotních procesů</strong><br>
+                <em>1200°C reprezentuje extrémní pracovní podmínky vyžadující specializované materiály, 
+                precizní regulaci a vysoké energetické vstupy</em>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
