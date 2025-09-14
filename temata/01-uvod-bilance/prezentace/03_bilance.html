@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Základy Procesních Bilancí pro Studenty</title>
+    <!-- Import pro renderování LaTeX matematických vzorců -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>Průvodce Procesními Bilancemi</h1>
+            <p>Pojďme společně odhalit tajemství toho, co se děje uvnitř průmyslových zařízení!</p>
+        </header>
+
+        <section class="intro-box">
+            <h2>Co jsou to bilance a proč jsou důležité?</h2>
+            <p>Představte si, že mícháte koktejl. Víte přesně, kolik džusu a kolik sirupu jste do shakeru nalili. Co z toho plyne? Že přesně víte, kolik koktejlu (a jak sladkého) ve výsledku máte. A přesně to je princip bilancí! V průmyslu je to stejné, jen místo džusu a sirupu pracujeme s chemikáliemi, teplem a energií.</p>
+            <p>Základní myšlenka je <strong>Zákon zachování</strong>:</p>
+            <ul>
+                <li><strong>Hmotnostní bilance:</strong> Hmotnost se nemůže jen tak ztratit ani odnikud objevit. Co do zařízení vteče, to z něj musí i vytéct.</li>
+                <li><strong>Energetická bilance:</strong> Energie se také neztrácí, pouze mění svou formu. Energie, kterou do systému dodáme (např. ohřevem), se musí projevit na výstupu (např. vyšší teplotou).</li>
+            </ul>
+            <p>Díky bilancím umíme přesně spočítat, co se stane s materiály a energií v jakémkoliv zařízení, aniž bychom se do něj museli dívat. Je to základní nástroj každého inženýra!</p>
+            <h3>Jak počítáme energii?</h3>
+            <p>Energii, kterou nese každý proud, nazýváme <strong>entalpie</strong> (značíme H). Je to v podstatě tepelný obsah. Počítá se jako hmotnostní průtok (ṁ) krát měrná entalpie (h). Měrnou entalpii pro jednoduchost určíme jako: \( h = c_p \cdot (t - t_{ref}) \), kde \(c_p\) je tepelná kapacita a \(t_{ref}\) je referenční teplota (obvykle 0 °C).</p>
+        </section>
+
+        <!-- SMĚŠOVAČ -->
+        <section id="mixer" class="unit-section">
+            <h2>1. Směšovač (Mixer)</h2>
+            <p><strong>Princip:</strong> Nejjednodušší zařízení. Dva nebo více vstupních proudů smíchá do jednoho výstupního proudu. Představte si míchání teplé a studené vody ve sprše.</p>
+            
+            <div class="schema-container">
+                <svg width="300" height="150" viewBox="0 0 300 150">
+                    <defs><marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#333" /></marker></defs>
+                    <text x="135" y="20" font-family="Verdana" font-size="12">Směšovač</text>
+                    <rect x="100" y="25" width="100" height="100" fill="#eaf6ff" stroke="#005A9C" stroke-width="2"/>
+                    <line x1="20" y1="50" x2="100" y2="50" stroke="#333" stroke-width="2" marker-end="url(#arrow)" />
+                    <text x="50" y="45" font-family="Verdana" font-size="12">Proud 1</text>
+                    <line x1="20" y1="100" x2="100" y2="100" stroke="#333" stroke-width="2" marker-end="url(#arrow)" />
+                    <text x="50" y="115" font-family="Verdana" font-size="12">Proud 2</text>
+                    <line x1="200" y1="75" x2="280" y2="75" stroke="#333" stroke-width="2" marker-end="url(#arrow)" />
+                    <text x="220" y="70" font-family="Verdana" font-size="12">Proud 3</text>
+                </svg>
+            </div>
+
+            <div class="equations">
+                <h3>Obecné bilanční rovnice</h3>
+                <p><strong>Celková hmotnostní bilance:</strong> Součet vstupů se rovná výstupu.
+                $$ \dot{m}_1 + \dot{m}_2 = \dot{m}_3 $$</p>
+                <p><strong>Energetická (entalpická) bilance:</strong> Energie výstupu je součtem energií vstupů.
+                $$ \dot{m}_1 h_1 + \dot{m}_2 h_2 = \dot{m}_3 h_3 $$
+                $$ \dot{m}_1 c_p (t_1 - t_{ref}) + \dot{m}_2 c_p (t_2 - t_{ref}) = \dot{m}_3 c_p (t_3 - t_{ref}) $$</p>
+            </div>
+
+            <div class="example">
+                <h3>Konkrétní příklad</h3>
+                <p><strong>Zadání:</strong> Mícháme proud 1 (studená voda, 3 kg/s, 10 °C) s proudem 2 (horká voda, 1 kg/s, 90 °C). Jaké budou parametry výsledného proudu 3? Tepelná kapacita vody \(c_p\) je 4.2 kJ/(kg·K).</p>
+                <p><strong>Výpočet:</strong>
+                <br>1. <strong>Hmotnostní bilance:</strong> \( \dot{m}_3 = \dot{m}_1 + \dot{m}_2 = 3 + 1 = 4 \, \text{kg/s} \)
+                <br>2. <strong>Energetická bilance (za \(t_{ref}\) = 0 °C):</strong>
+                $$ 3 \cdot 4.2 \cdot (10 - 0) + 1 \cdot 4.2 \cdot (90 - 0) = 4 \cdot 4.2 \cdot (t_3 - 0) $$
+                $$ 126 + 378 = 16.8 \cdot t_3 $$
+                $$ 504 = 16.8 \cdot t_3 \implies t_3 = \frac{504}{16.8} = 30 \, \text{°C} $$
+                </p>
+                <h4>Bilanční tabulka</h4>
+                <table>
+                    <tr><th>Proud</th><th>Průtok [kg/s]</th><th>Teplota [°C]</th><th>Složení</th><th>Entalpický tok [kW]</th></tr>
+                    <tr><td>1 (Vstup)</td><td>3.0</td><td>10</td><td>100% Voda</td><td>\(3 \cdot 4.2 \cdot 10 = 126\)</td></tr>
+                    <tr><td>2 (Vstup)</td><td>1.0</td><td>90</td><td>100% Voda</td><td>\(1 \cdot 4.2 \cdot 90 = 378\)</td></tr>
+                    <tr><td>3 (Výstup)</td><td><code>4.0</code></td><td><code>30</code></td><td>100% Voda</td><td>\(126+378 = 504\)</td></tr>
+                </table>
+            </div>
+        </section>
+
+        <!-- DĚLIČ -->
+        <section id="divider" class="unit-section">
+            <h2>2. Dělič (Splitter)</h2>
+            <p><strong>Princip:</strong> Jeden vstupní proud rozdělí na dva nebo více výstupních proudů. Důležité je, že složení ani teplota se nemění! Jen se rozdělí hmota. Funguje jako "téčko" na zahradní hadici.</p>
+
+            <div class="schema-container">
+                <svg width="300" height="150" viewBox="0 0 300 150">
+                    <text x="140" y="20" font-family="Verdana" font-size="12">Dělič</text>
+                    <rect x="100" y="25" width="100" height="100" fill="#eaf6ff" stroke="#005A9C" stroke-width="2"/>
+                    <line x1="20" y1="75" x2="100" y2="75" stroke="#333" stroke-width="2" marker-end="url(#arrow)" />
+                    <text x="50" y="70" font-family="Verdana" font-size="12">Proud 1</text>
+                    <line x1="200" y1="50" x2="280" y2="50" stroke="#333" stroke-width="2" marker-end="url(#arrow)" />
+                    <text x="220" y="45" font-family="Verdana" font-size="12">Proud 2</text>
+                    <line x1="200" y1="100" x2="280" y2="100" stroke="#333" stroke-width="2" marker-end="url(#arrow)" />
+                    <text x="220" y="115" font-family="Verdana" font-size="12">Proud 3</text>
+                </svg>
+            </div>
+
+            <div class="equations">
+                <h3>Obecné bilanční rovnice</h3>
+                <p><strong>Celková hmotnostní bilance:</strong> $$ \dot{m}_1 = \dot{m}_2 + \dot{m}_3 $$</p>
+                <p><strong>Dělící poměr (R):</strong> Udává, jaká část vstupního proudu jde do proudu 2.
+                $$ \dot{m}_2 = R \cdot \dot{m}_1 \implies \dot{m}_3 = (1-R) \cdot \dot{m}_1 $$</p>
+                <p><strong>Složení a teplota:</strong> $$ t_1 = t_2 = t_3 $$ $$ \text{složení}_1 = \text{složení}_2 = \text{složení}_3 $$</p>
+            </div>
+
+            <div class="example">
+                <h3>Konkrétní příklad</h3>
+                <p><strong>Zadání:</strong> Dělíme proud 1 (100 kg/h směsi 60% vody a 40% ethanolu) o teplotě 50 °C. Dělící poměr do proudu 2 je 0.3 (tedy 30 %). Jaké budou parametry výstupních proudů? \(c_p\) směsi je 3.5 kJ/(kg·K).</p>
+                <p><strong>Výpočet:</strong>
+                <br>1. <strong>Průtoky:</strong>
+                <br>\( \dot{m}_2 = 0.3 \cdot 100 = 30 \, \text{kg/h} \)
+                <br>\( \dot{m}_3 = (1 - 0.3) \cdot 100 = 70 \, \text{kg/h} \)
+                <br>2. <strong>Teplota a složení:</strong> Zůstávají stejné jako na vstupu.
+                <br>\( t_2 = t_3 = 50 \, \text{°C} \)
+                <br>\( \text{složení}_2 = \text{složení}_3 = 60\% \, \text{voda}, 40\% \, \text{ethanol} \)
+                </p>
+                <h4>Bilanční tabulka</h4>
+                <table>
+                     <tr><th>Proud</th><th>Průtok [kg/h]</th><th>Teplota [°C]</th><th>Složení (Voda/Ethanol)</th><th>Entalpický tok [kJ/h]</th></tr>
+                    <tr><td>1 (Vstup)</td><td>100.0</td><td>50</td><td>60% / 40%</td><td>\(100 \cdot 3.5 \cdot 50 = 17500\)</td></tr>
+                    <tr><td>2 (Výstup)</td><td><code>30.0</code></td><td><code>50</code></td><td><code>60% / 40%</code></td><td>\(30 \cdot 3.5 \cdot 50 = 5250\)</td></tr>
+                    <tr><td>3 (Výstup)</td><td><code>70.0</code></td><td><code>50</code></td><td><code>60% / 40%</code></td><td>\(70 \cdot 3.5 \cdot 50 = 12250\)</td></tr>
+                </table>
+            </div>
+        </section>
+
+        <!-- SEPARÁTOR -->
+        <section id="separator" class="unit-section">
+            <h2>3. Separátor složek</h2>
+            <p><strong>Princip:</strong> Na rozdíl od děliče toto zařízení rozděluje proud na základě chemických nebo fyzikálních vlastností. Například v destilační koloně se oddělí těkavější látka (ethanol) od méně těkavé (voda). Teplotu pro zjednodušení považujeme za konstantní.</p>
+        
+            <div class="schema-container">
+                <svg width="350" height="200" viewBox="0 0 350 200">
+                     <text x="140" y="20" font-family="Verdana" font-size="12">Separátor</text>
+                     <rect x="100" y="25" width="150" height="150" fill="#eaf6ff" stroke="#005A9C" stroke-width="2"/>
+                     <line x1="20" y1="100" x2="100" y2="100" stroke="#333" stroke-width="2" marker-end="url(#arrow)" />
+                     <text x="50" y="95" font-family="Verdana" font-size="12">Vstup</text>
+                     <line x1="175" y1="25" x2="175" y2="0" stroke="#333" stroke-width="2" marker-end="url(#arrow)" />
+                     <text x="185" y="15" font-family="Verdana" font-size="12">Horní produkt</text>
+                     <line x1="175" y1="175" x2="175" y2="200" stroke="#333" stroke-width="2" marker-end="url(#arrow)" />
+                     <text x="185" y="195" font-family="Verdana" font-size="12">Spodní produkt</text>
+                </svg>
+            </div>
+
+            <div class="equations">
+                <h3>Obecné bilanční rovnice</h3>
+                <p><strong>Celková hmotnostní bilance:</strong> Vstup se rovná součtu výstupů.
+                $$ \dot{m}_1 = \dot{m}_2 + \dot{m}_3 $$</p>
+                <p><strong>Bilanční složky (pro každou složku 'i'):</strong> Hmotnost každé složky se musí také zachovat.
+                $$ \dot{m}_{1,i} = \dot{m}_{2,i} + \dot{m}_{3,i} $$
+                Kde \( \dot{m}_{1,i} \) je hmotnostní průtok složky 'i' v proudu 1. Platí \( \dot{m}_{1,i} = x_{1,i} \cdot \dot{m}_1 \), kde \(x\) je hmotnostní zlomek dané složky.</p>
+                <p><strong>Energetická (entalpická) bilance:</strong> Za předpokladu, že separace probíhá při konstantní teplotě a bez dodávání či odebírání tepla (adiabaticky), je energie vstupního proudu rovna součtu energií výstupních proudů.
+                $$ \dot{m}_1 h_1 = \dot{m}_2 h_2 + \dot{m}_3 h_3 $$
+                Protože se mění složení proudů, každý proud má jinou měrnou tepelnou kapacitu (\(c_p\)). Teplota se pro zjednodušení často považuje za konstantní (\(t_1 = t_2 = t_3\)).</p>
+            </div>
+
+            <div class="example">
+                <h3>Konkrétní příklad</h3>
+                <p><strong>Zadání:</strong> Do separátoru vstupuje 100 kg/h směsi (proud 1) složené z 60% vody a 40% ethanolu při 80°C. Víme, že 95% ethanolu ze vstupu odchází horním produktem (proud 2). Zbytek ethanolu a veškerá voda odchází spodním produktem (proud 3). Jaké je složení a průtok výstupních proudů? \(c_p\) směsi = 3.5 kJ/(kg·K).</p>
+                <p><strong>Výpočet:</strong>
+                <br>1. <strong>Průtoky složek ve vstupu:</strong>
+                <br>\( \dot{m}_{1,voda} = 0.60 \cdot 100 = 60 \, \text{kg/h} \)
+                <br>\( \dot{m}_{1,eth} = 0.40 \cdot 100 = 40 \, \text{kg/h} \)
+                <br>2. <strong>Rozdělení ethanolu:</strong>
+                <br>\( \dot{m}_{2,eth} = 0.95 \cdot \dot{m}_{1,eth} = 0.95 \cdot 40 = 38 \, \text{kg/h} \) (v horním produktu)
+                <br>\( \dot{m}_{3,eth} = \dot{m}_{1,eth} - \dot{m}_{2,eth} = 40 - 38 = 2 \, \text{kg/h} \) (ve spodním produktu)
+                <br>3. <strong>Rozdělení vody:</strong> Veškerá voda jde do spodního produktu.
+                <br>\( \dot{m}_{2,voda} = 0 \, \text{kg/h} \)
+                <br>\( \dot{m}_{3,voda} = 60 \, \text{kg/h} \)
+                <br>4. <strong>Celkové průtoky a složení výstupů:</strong>
+                <br>\( \dot{m}_2 = \dot{m}_{2,voda} + \dot{m}_{2,eth} = 0 + 38 = 38 \, \text{kg/h} \) (Složení: 100% ethanol)
+                <br>\( \dot{m}_3 = \dot{m}_{3,voda} + \dot{m}_{3,eth} = 60 + 2 = 62 \, \text{kg/h} \)
+                <br>Hmotnostní zlomek vody v proudu 3: \( x_{3,voda} = 60 / 62 \approx 96.8\% \)
+                </p>
+                <h4>Bilanční tabulka</h4>
+                <table>
+                     <tr><th>Proud</th><th>Průtok [kg/h]</th><th>Teplota [°C]</th><th>Složení (Voda/Ethanol)</th><th>Entalpický tok [kJ/h]</th></tr>
+                     <tr><td>1 (Vstup)</td><td>100.0</td><td>80</td><td>60% / 40%</td><td>\(100 \cdot 3.5 \cdot 80 = 28000\)</td></tr>
+                     <tr><td>2 (Výstup)</td><td><code>38.0</code></td><td>80</td><td><code>0% / 100%</code></td><td>\(38 \cdot 2.4 \cdot 80 \approx 7296 \)*</td></tr>
+                     <tr><td>3 (Výstup)</td><td><code>62.0</code></td><td>80</td><td><code>96.8% / 3.2%</code></td><td>\(62 \cdot 4.0 \cdot 80 \approx 19840 \)*</td></tr>
+                </table>
+                <p><small><i>*Pozn: Pro výpočet entalpie výstupů byly použity odpovídající tepelné kapacity čistého ethanolu (2.4) a směsi v proudu 3 (cca 4.0). Součet entalpií výstupů (27136) se mírně liší od vstupu kvůli zjednodušení. V reálu by se energie zachovala přesně.</i></small></p>
+            </div>
+        </section>
+
+        <!-- OHŘÍVAČ -->
+        <section id="heater" class="unit-section">
+            <h2>4. Ohřívač (Heater)</h2>
+            <p><strong>Princip:</strong> Zařízení, které dodává teplo (energii) do procházejícího proudu a zvyšuje tak jeho teplotu. Příkladem je rychlovarná konvice nebo průtokový ohřívač vody.</p>
+        
+            <div class="schema-container">
+                 <svg width="300" height="150" viewBox="0 0 300 150">
+                    <text x="135" y="20" font-family="Verdana" font-size="12">Ohřívač</text>
+                    <rect x="100" y="25" width="100" height="100" fill="#fff0f0" stroke="#c0392b" stroke-width="2"/>
+                    <line x1="20" y1="75" x2="100" y2="75" stroke="#333" stroke-width="2" marker-end="url(#arrow)" />
+                    <text x="50" y="70" font-family="Verdana" font-size="12">Vstup</text>
+                    <line x1="200" y1="75" x2="280" y2="75" stroke="#333" stroke-width="2" marker-end="url(#arrow)" />
+                    <text x="220" y="70" font-family="Verdana" font-size="12">Výstup</text>
+                    <line x1="150" y1="125" x2="150" y2="150" stroke="red" stroke-width="3" marker-start="url(#arrow)" />
+                    <text x="160" y="145" font-family="Verdana" font-size="14" fill="red">Q</text>
+                </svg>
+            </div>
+
+            <div class="equations">
+                <h3>Obecné bilanční rovnice</h3>
+                <p><strong>Hmotnostní bilance:</strong> Průtok se nemění. $$ \dot{m}_1 = \dot{m}_2 $$</p>
+                <p><strong>Energetická bilance:</strong> K energii vstupu přičteme dodané teplo Q.
+                $$ \dot{m}_1 h_1 + Q = \dot{m}_2 h_2 $$
+                $$ Q = \dot{m} \cdot c_p \cdot (t_2 - t_1) $$</p>
+            </div>
+
+            <div class="example">
+                <h3>Konkrétní příklad</h3>
+                <p><strong>Zadání:</strong> Chceme ohřát 0.5 kg/s oleje (\(c_p\) = 2.1 kJ/(kg·K)) z 20 °C na 120 °C. Jaký tepelný výkon (Q) musíme do ohřívače dodávat?</p>
+                <p><strong>Výpočet:</strong>
+                <br>1. <strong>Hmotnostní bilance:</strong> \( \dot{m}_1 = \dot{m}_2 = 0.5 \, \text{kg/s} \)
+                <br>2. <strong>Energetická bilance:</strong>
+                <br>\( Q = 0.5 \cdot 2.1 \cdot (120 - 20) \)
+                <br>\( Q = 0.5 \cdot 2.1 \cdot 100 = 105 \, \text{kW} \)
+                </p>
+                <h4>Bilanční tabulka</h4>
+                <table>
+                     <tr><th>Proud</th><th>Průtok [kg/s]</th><th>Teplota [°C]</th><th>Složení</th><th>Entalpický tok [kW]</th></tr>
+                     <tr><td>1 (Vstup)</td><td>0.5</td><td>20</td><td>100% Olej</td><td>\(0.5 \cdot 2.1 \cdot 20 = 21\)</td></tr>
+                     <tr><td>Q (Dodané teplo)</td><td>-</td><td>-</td><td>-</td><td><code>105</code></td></tr>
+                     <tr><td>2 (Výstup)</td><td>0.5</td><td><code>120</code></td><td>100% Olej</td><td>\(21 + 105 = 126\)</td></tr>
+                </table>
+            </div>
+        </section>
+
+        <!-- CHLADIČ -->
+        <section id="cooler" class="unit-section">
+            <h2>5. Chladič (Cooler)</h2>
+            <p><strong>Princip:</strong> Přesný opak ohřívače. Ze zařízení odebíráme teplo, a tím snižujeme teplotu procházejícího proudu. Typickým příkladem je chladič v autě.</p>
+        
+            <div class="schema-container">
+                 <svg width="300" height="150" viewBox="0 0 300 150">
+                    <text x="135" y="20" font-family="Verdana" font-size="12">Chladič</text>
+                    <rect x="100" y="25" width="100" height="100" fill="#eaf6ff" stroke="#005A9C" stroke-width="2"/>
+                    <line x1="20" y1="75" x2="100" y2="75" stroke="#333" stroke-width="2" marker-end="url(#arrow)" />
+                    <text x="50" y="70" font-family="Verdana" font-size="12">Vstup</text>
+                    <line x1="200" y1="75" x2="280" y2="75" stroke="#333" stroke-width="2" marker-end="url(#arrow)" />
+                    <text x="220" y="70" font-family="Verdana" font-size="12">Výstup</text>
+                    <line x1="150" y1="25" x2="150" y2="0" stroke="blue" stroke-width="3" marker-end="url(#arrow)" />
+                    <text x="160" y="15" font-family="Verdana" font-size="14" fill="blue">Q</text>
+                </svg>
+            </div>
+
+            <div class="equations">
+                <h3>Obecné bilanční rovnice</h3>
+                <p><strong>Hmotnostní bilance:</strong> $$ \dot{m}_1 = \dot{m}_2 $$</p>
+                <p><strong>Energetická bilance:</strong> Z energie vstupu odebereme odebrané teplo Q.
+                $$ \dot{m}_1 h_1 = \dot{m}_2 h_2 + Q $$
+                $$ Q = \dot{m} \cdot c_p \cdot (t_1 - t_2) $$</p>
+            </div>
+
+            <div class="example">
+                <h3>Konkrétní příklad</h3>
+                <p><strong>Zadání:</strong> Chladičem odebíráme výkon 500 kW. Kolik vody (\(c_p\) = 4.2 kJ/(kg·K)) o vstupní teplotě 95 °C můžeme ochladit na 45 °C?</p>
+                <p><strong>Výpočet:</strong>
+                <br>Ze vzorce \( Q = \dot{m} \cdot c_p \cdot (t_1 - t_2) \) vyjádříme \( \dot{m} \):
+                $$ \dot{m} = \frac{Q}{c_p \cdot (t_1 - t_2)} $$
+                $$ \dot{m} = \frac{500}{4.2 \cdot (95 - 45)} = \frac{500}{4.2 \cdot 50} = \frac{500}{210} \approx 2.38 \, \text{kg/s} $$
+                </p>
+                <h4>Bilanční tabulka</h4>
+                <table>
+                     <tr><th>Proud</th><th>Průtok [kg/s]</th><th>Teplota [°C]</th><th>Složení</th><th>Entalpický tok [kW]</th></tr>
+                     <tr><td>1 (Vstup)</td><td><code>2.38</code></td><td>95</td><td>100% Voda</td><td>\(2.38 \cdot 4.2 \cdot 95 \approx 950\)</td></tr>
+                     <tr><td>Q (Odebrané teplo)</td><td>-</td><td>-</td><td>-</td><td>500</td></tr>
+                     <tr><td>2 (Výstup)</td><td>2.38</td><td>45</td><td>100% Voda</td><td>\(950 - 500 = 450\)</td></tr>
+                </table>
+            </div>
+        </section>
+
+        <!-- VÝMĚNÍK -->
+        <section id="exchanger" class="unit-section">
+            <h2>6. Výměník Tepla</h2>
+            <p><strong>Princip:</strong> Nejdůmyslnější zařízení! Teplo se zde "nerecykluje". Horký proud předává své teplo studenému proudu, aniž by se smíchaly. Horký proud se ochlazuje a studený ohřívá. Celkové teplo se do systému nedodává ani neodebírá (Q=0).</p>
+        
+            <div class="schema-container">
+                 <svg width="300" height="200" viewBox="0 0 300 200">
+                    <text x="120" y="20" font-family="Verdana" font-size="12">Výměník tepla</text>
+                    <rect x="50" y="25" width="200" height="150" fill="#f0f8ff" stroke="#005A9C" stroke-width="2"/>
+                    <!-- Hot Stream -->
+                    <text x="140" y="55" font-family="Verdana" font-size="12" fill="red">Horký proud</text>
+                    <line x1="0" y1="75" x2="50" y2="75" stroke="red" stroke-width="2" marker-end="url(#arrow)" />
+                    <line x1="250" y1="75" x2="300" y2="75" stroke="red" stroke-width="2" marker-end="url(#arrow)" />
+                    <!-- Cold Stream -->
+                     <text x="135" y="120" font-family="Verdana" font-size="12" fill="blue">Studený proud</text>
+                    <line x1="300" y1="135" x2="250" y2="135" stroke="blue" stroke-width="2" marker-start="url(#arrow)" />
+                    <line x1="50" y1="135" x2="0" y2="135" stroke="blue" stroke-width="2" marker-start="url(#arrow)" />
+                </svg>
+            </div>
+
+            <div class="equations">
+                <h3>Obecné bilanční rovnice</h3>
+                <p><strong>Hmotnostní bilance:</strong> Pro každý proud zvlášť platí, že vstup se rovná výstupu.</p>
+                <p><strong>Energetická bilance:</strong> Teplo odevzdané horkým proudem ($Q_{horký}$) se rovná teplu přijatému studeným proudem ($Q_{studený}$).
+                $$ Q_{\text{odevzdané}} = Q_{\text{přijaté}} $$
+                $$ \dot{m}_h \cdot c_{p,h} \cdot (t_{h,1} - t_{h,2}) = \dot{m}_s \cdot c_{p,s} \cdot (t_{s,2} - t_{s,1}) $$</p>
+            </div>
+
+            <div class="example">
+                <h3>Konkrétní příklad</h3>
+                <p><strong>Zadání:</strong> Horký olej (proud h, 1 kg/s, \(c_p\)=2.1 kJ/kgK) se chladí z 150°C na 50°C. Tímto teplem ohříváme vodu (proud s, 0.5 kg/s, \(c_p\)=4.2 kJ/kgK) o vstupní teplotě 20°C. Jaká bude výstupní teplota vody?</p>
+                <p><strong>Výpočet:</strong>
+                <br>1. <strong>Výpočet přeneseného tepla Q z horkého proudu:</strong>
+                <br>\( Q = \dot{m}_h \cdot c_{p,h} \cdot (t_{h,1} - t_{h,2}) \)
+                <br>\( Q = 1 \cdot 2.1 \cdot (150 - 50) = 1 \cdot 2.1 \cdot 100 = 210 \, \text{kW} \)
+                <br>2. <strong>Výpočet výstupní teploty studeného proudu:</strong>
+                <br>\( Q = \dot{m}_s \cdot c_{p,s} \cdot (t_{s,2} - t_{s,1}) \), vyjádříme \( t_{s,2} \):
+                $$ t_{s,2} = t_{s,1} + \frac{Q}{\dot{m}_s \cdot c_{p,s}} $$
+                $$ t_{s,2} = 20 + \frac{210}{0.5 \cdot 4.2} = 20 + \frac{210}{2.1} = 20 + 100 = 120 \, \text{°C} $$
+                </p>
+                <h4>Bilanční tabulka</h4>
+                <table>
+                     <tr><th>Proud</th><th>Průtok [kg/s]</th><th>Teplota Vstup [°C]</th><th>Teplota Výstup [°C]</th><th>Entalpická změna [kW]</th></tr>
+                     <tr><td>Horký (Olej)</td><td>1.0</td><td>150</td><td>50</td><td><code>-210</code> (odevzdal)</td></tr>
+                     <tr><td>Studený (Voda)</td><td>0.5</td><td>20</td><td><code>120</code></td><td><code>+210</code> (přijal)</td></tr>
+                </table>
+            </div>
+        </section>
+
+    </main>
+</body>
+</html>
+
