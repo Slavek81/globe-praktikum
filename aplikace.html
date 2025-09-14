@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doporučené aplikace | Praktické aplikace fyziky a chemie</title>
+    <meta name="description" content="Přehled užitečných aplikací a nástrojů pro studenty předmětu Praktické aplikace fyziky a chemie.">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .app-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .app-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .app-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            border-color: #2563eb;
+        }
+
+        .app-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .app-icon {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            border-radius: 12px;
+        }
+
+        .app-title h3 {
+            margin: 0;
+            color: #1e293b;
+            font-size: 1.3rem;
+        }
+
+        .app-type {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: #f1f5f9;
+            color: #64748b;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-top: 0.25rem;
+        }
+
+        .app-description {
+            color: #475569;
+            line-height: 1.6;
+            margin: 1rem 0;
+        }
+
+        .app-features {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+
+        .app-features h4 {
+            color: #1e293b;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .app-features ul {
+            margin: 0;
+            padding-left: 1.2rem;
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+
+        .app-features li {
+            margin: 0.25rem 0;
+        }
+
+        .app-links {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: 1.5rem;
+        }
+
+        .app-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+        }
+
+        .app-link:hover {
+            background: #1d4ed8;
+            transform: translateY(-1px);
+        }
+
+        .app-link.secondary {
+            background: #e2e8f0;
+            color: #475569;
+        }
+
+        .app-link.secondary:hover {
+            background: #cbd5e1;
+        }
+
+        .platform-badge {
+            display: inline-block;
+            padding: 0.2rem 0.5rem;
+            background: #10b981;
+            color: white;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            margin-left: 0.5rem;
+        }
+
+        .category-section {
+            margin-bottom: 3rem;
+        }
+
+        .category-title {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        .category-title i {
+            font-size: 1.5rem;
+            color: #2563eb;
+        }
+
+        .category-title h2 {
+            color: #1e293b;
+            font-size: 1.8rem;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="nav-brand">
+                <h1><a href="index.html" style="color: inherit; text-decoration: none;"><i class="fas fa-atom"></i> Praktické aplikace fyziky a chemie</a></h1>
+                <p class="subtitle">Doporučené aplikace</p>
+            </div>
+            <nav class="nav">
+                <a href="index.html" class="nav-link">Domů</a>
+                <a href="index.html#topics" class="nav-link">Témata</a>
+                <a href="projekty/index.html" class="nav-link">Projekty</a>
+                <a href="index.html#contact" class="nav-link">Kontakt</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="page-hero">
+        <div class="container">
+            <h1>🛠️ Doporučené aplikace a nástroje</h1>
+            <p class="lead">Přehled užitečných programů, které vám pomohou při studiu, analýze dat a tvorbě projektů. Všechny uvedené aplikace jsou zdarma nebo mají bezplatnou verzi pro studenty.</p>
+        </div>
+    </section>
+
+    <!-- Apps Content -->
+    <section class="section">
+        <div class="container">
+
+            <!-- Programování a vývoj -->
+            <div class="category-section">
+                <div class="category-title">
+                    <i class="fas fa-code"></i>
+                    <h2>Programování a vývoj</h2>
+                </div>
+
+                <div class="app-grid">
+                    <!-- VS Code -->
+                    <div class="app-card">
+                        <div class="app-header">
+                            <div class="app-icon" style="background: linear-gradient(135deg, #007ACC, #1BA0E2);">
+                                <i class="fas fa-code" style="color: white;"></i>
+                            </div>
+                            <div class="app-title">
+                                <h3>Visual Studio Code</h3>
+                                <span class="app-type">Editor kódu</span>
+                                <span class="platform-badge">Zdarma</span>
+                            </div>
+                        </div>
+                        <p class="app-description">
+                            Moderní editor kódu od Microsoftu. Ideální pro psaní Python skriptů, HTML/CSS webových stránek a práci s daty.
+                        </p>
+                        <div class="app-features">
+                            <h4>Jak ho využijete:</h4>
+                            <ul>
+                                <li>Psaní a ladění Python programů pro výpočty</li>
+                                <li>Tvorba webových prezentací projektů</li>
+                                <li>Práce s Jupyter notebooky</li>
+                                <li>Integrovaný terminál a Git</li>
+                                <li>Automatické doplňování kódu</li>
+                            </ul>
+                        </div>
+                        <div class="app-links">
+                            <a href="https://code.visualstudio.com/" target="_blank" class="app-link">
+                                <i class="fas fa-download"></i> Stáhnout
+                            </a>
+                            <a href="https://code.visualstudio.com/docs" target="_blank" class="app-link secondary">
+                                <i class="fas fa-book"></i> Dokumentace
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Python -->
+                    <div class="app-card">
+                        <div class="app-header">
+                            <div class="app-icon" style="background: linear-gradient(135deg, #3776AB, #FFD43B);">
+                                <i class="fab fa-python" style="color: white;"></i>
+                            </div>
+                            <div class="app-title">
+                                <h3>Python</h3>
+                                <span class="app-type">Programovací jazyk</span>
+                                <span class="platform-badge">Zdarma</span>
+                            </div>
+                        </div>
+                        <p class="app-description">
+                            Nejpopulárnější jazyk pro vědecké výpočty a analýzu dat. Jednoduchý na naučení, ale velmi mocný.
+                        </p>
+                        <div class="app-features">
+                            <h4>Jak ho využijete:</h4>
+                            <ul>
+                                <li>Automatizace výpočtů a bilancí</li>
+                                <li>Zpracování experimentálních dat</li>
+                                <li>Tvorba grafů s matplotlib</li>
+                                <li>Numerické simulace s NumPy</li>
+                                <li>Strojové učení a AI experimenty</li>
+                            </ul>
+                        </div>
+                        <div class="app-links">
+                            <a href="https://www.python.org/downloads/" target="_blank" class="app-link">
+                                <i class="fas fa-download"></i> Stáhnout
+                            </a>
+                            <a href="https://docs.python.org/3/tutorial/" target="_blank" class="app-link secondary">
+                                <i class="fas fa-graduation-cap"></i> Tutoriál
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Vědecké výpočty -->
+            <div class="category-section">
+                <div class="category-title">
+                    <i class="fas fa-calculator"></i>
+                    <h2>Vědecké výpočty a analýza</h2>
+                </div>
+
+                <div class="app-grid">
+                    <!-- GNU Octave -->
+                    <div class="app-card">
+                        <div class="app-header">
+                            <div class="app-icon" style="background: linear-gradient(135deg, #0790BE, #FE7F2D);">
+                                <i class="fas fa-chart-line" style="color: white;"></i>
+                            </div>
+                            <div class="app-title">
+                                <h3>GNU Octave</h3>
+                                <span class="app-type">Numerické výpočty</span>
+                                <span class="platform-badge">Zdarma</span>
+                            </div>
+                        </div>
+                        <p class="app-description">
+                            Open-source alternativa k MATLABu. Výkonný nástroj pro numerické výpočty, lineární algebru a vizualizaci dat.
+                        </p>
+                        <div class="app-features">
+                            <h4>Jak ho využijete:</h4>
+                            <ul>
+                                <li>Řešení soustav rovnic</li>
+                                <li>Maticové operace a lineární algebra</li>
+                                <li>Zpracování signálů a dat</li>
+                                <li>Tvorba 2D a 3D grafů</li>
+                                <li>Simulace fyzikálních procesů</li>
+                            </ul>
+                        </div>
+                        <div class="app-links">
+                            <a href="https://octave.org/download" target="_blank" class="app-link">
+                                <i class="fas fa-download"></i> Stáhnout
+                            </a>
+                            <a href="https://wiki.octave.org/GNU_Octave_for_beginners" target="_blank" class="app-link secondary">
+                                <i class="fas fa-rocket"></i> Začínáme
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- WebPlotDigitizer -->
+                    <div class="app-card">
+                        <div class="app-header">
+                            <div class="app-icon" style="background: linear-gradient(135deg, #FF6B6B, #4ECDC4);">
+                                <i class="fas fa-crosshairs" style="color: white;"></i>
+                            </div>
+                            <div class="app-title">
+                                <h3>WebPlotDigitizer</h3>
+                                <span class="app-type">Extrakce dat</span>
+                                <span class="platform-badge">Zdarma</span>
+                            </div>
+                        </div>
+                        <p class="app-description">
+                            Nástroj pro získání číselných dat z obrázků grafů. Když máte graf jen jako obrázek a potřebujete data.
+                        </p>
+                        <div class="app-features">
+                            <h4>Jak ho využijete:</h4>
+                            <ul>
+                                <li>Digitalizace grafů z článků a knih</li>
+                                <li>Získání dat z experimentálních měření</li>
+                                <li>Analýza historických dat</li>
+                                <li>Porovnání vlastních měření s literaturou</li>
+                                <li>Export dat do CSV/Excel</li>
+                            </ul>
+                        </div>
+                        <div class="app-links">
+                            <a href="https://automeris.io/WebPlotDigitizer/" target="_blank" class="app-link">
+                                <i class="fas fa-globe"></i> Webová verze
+                            </a>
+                            <a href="https://github.com/ankitrohatgi/WebPlotDigitizer/releases" target="_blank" class="app-link secondary">
+                                <i class="fas fa-desktop"></i> Desktop
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Grafika a vizualizace -->
+            <div class="category-section">
+                <div class="category-title">
+                    <i class="fas fa-chart-area"></i>
+                    <h2>Grafika a vizualizace</h2>
+                </div>
+
+                <div class="app-grid">
+                    <!-- GNUplot -->
+                    <div class="app-card">
+                        <div class="app-header">
+                            <div class="app-icon" style="background: linear-gradient(135deg, #667eea, #764ba2);">
+                                <i class="fas fa-chart-scatter" style="color: white;"></i>
+                            </div>
+                            <div class="app-title">
+                                <h3>GNUplot</h3>
+                                <span class="app-type">Tvorba grafů</span>
+                                <span class="platform-badge">Zdarma</span>
+                            </div>
+                        </div>
+                        <p class="app-description">
+                            Profesionální nástroj pro tvorbu vědeckých grafů. Ideální pro publikace a prezentace.
+                        </p>
+                        <div class="app-features">
+                            <h4>Jak ho využijete:</h4>
+                            <ul>
+                                <li>Tvorba publikačních grafů</li>
+                                <li>Fitování experimentálních dat</li>
+                                <li>3D vizualizace funkcí</li>
+                                <li>Animace časových průběhů</li>
+                                <li>Export do LaTeX dokumentů</li>
+                            </ul>
+                        </div>
+                        <div class="app-links">
+                            <a href="http://www.gnuplot.info/download.html" target="_blank" class="app-link">
+                                <i class="fas fa-download"></i> Stáhnout
+                            </a>
+                            <a href="http://www.gnuplot.info/demo/" target="_blank" class="app-link secondary">
+                                <i class="fas fa-images"></i> Ukázky
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Inkscape -->
+                    <div class="app-card">
+                        <div class="app-header">
+                            <div class="app-icon" style="background: linear-gradient(135deg, #1a1a1a, #4a4a4a);">
+                                <i class="fas fa-pen-nib" style="color: white;"></i>
+                            </div>
+                            <div class="app-title">
+                                <h3>Inkscape</h3>
+                                <span class="app-type">Vektorová grafika</span>
+                                <span class="platform-badge">Zdarma</span>
+                            </div>
+                        </div>
+                        <p class="app-description">
+                            Open-source editor vektorové grafiky. Alternativa k Adobe Illustrator pro tvorbu diagramů a schémat.
+                        </p>
+                        <div class="app-features">
+                            <h4>Jak ho využijete:</h4>
+                            <ul>
+                                <li>Kreslení technických schémat</li>
+                                <li>Tvorba posterů a prezentací</li>
+                                <li>Úprava a vylepšení grafů</li>
+                                <li>Design infografik</li>
+                                <li>Vytváření log a ikon</li>
+                            </ul>
+                        </div>
+                        <div class="app-links">
+                            <a href="https://inkscape.org/release/" target="_blank" class="app-link">
+                                <i class="fas fa-download"></i> Stáhnout
+                            </a>
+                            <a href="https://inkscape.org/learn/tutorials/" target="_blank" class="app-link secondary">
+                                <i class="fas fa-graduation-cap"></i> Tutoriály
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- draw.io -->
+                    <div class="app-card">
+                        <div class="app-header">
+                            <div class="app-icon" style="background: linear-gradient(135deg, #FF9500, #FF5E3A);">
+                                <i class="fas fa-project-diagram" style="color: white;"></i>
+                            </div>
+                            <div class="app-title">
+                                <h3>draw.io (diagrams.net)</h3>
+                                <span class="app-type">Diagramy</span>
+                                <span class="platform-badge">Zdarma</span>
+                            </div>
+                        </div>
+                        <p class="app-description">
+                            Webový nástroj pro tvorbu diagramů, vývojových schémat a technických nákresů. Funguje i offline.
+                        </p>
+                        <div class="app-features">
+                            <h4>Jak ho využijete:</h4>
+                            <ul>
+                                <li>Blokové schémata procesů</li>
+                                <li>Vývojové diagramy algoritmů</li>
+                                <li>P&ID schémata</li>
+                                <li>Mind mapy pro učení</li>
+                                <li>UML diagramy pro projekty</li>
+                            </ul>
+                        </div>
+                        <div class="app-links">
+                            <a href="https://app.diagrams.net/" target="_blank" class="app-link">
+                                <i class="fas fa-globe"></i> Webová verze
+                            </a>
+                            <a href="https://github.com/jgraph/drawio-desktop/releases" target="_blank" class="app-link secondary">
+                                <i class="fas fa-desktop"></i> Desktop
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Organizace a výzkum -->
+            <div class="category-section">
+                <div class="category-title">
+                    <i class="fas fa-book-open"></i>
+                    <h2>Organizace a výzkum</h2>
+                </div>
+
+                <div class="app-grid">
+                    <!-- Zotero -->
+                    <div class="app-card">
+                        <div class="app-header">
+                            <div class="app-icon" style="background: linear-gradient(135deg, #CC2936, #8B1A1A);">
+                                <i class="fas fa-bookmark" style="color: white;"></i>
+                            </div>
+                            <div class="app-title">
+                                <h3>Zotero</h3>
+                                <span class="app-type">Správa literatury</span>
+                                <span class="platform-badge">Zdarma</span>
+                            </div>
+                        </div>
+                        <p class="app-description">
+                            Nástroj pro organizaci vědeckých článků a literatury. Automaticky generuje citace a bibliografie.
+                        </p>
+                        <div class="app-features">
+                            <h4>Jak ho využijete:</h4>
+                            <ul>
+                                <li>Ukládání článků pro projekty</li>
+                                <li>Automatické citace v dokumentech</li>
+                                <li>Sdílení literatury ve skupině</li>
+                                <li>Poznámky a zvýraznění v PDF</li>
+                                <li>Synchronizace mezi zařízeními</li>
+                            </ul>
+                        </div>
+                        <div class="app-links">
+                            <a href="https://www.zotero.org/download/" target="_blank" class="app-link">
+                                <i class="fas fa-download"></i> Stáhnout
+                            </a>
+                            <a href="https://www.zotero.org/support/quick_start_guide" target="_blank" class="app-link secondary">
+                                <i class="fas fa-rocket"></i> Rychlý start
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tips Section -->
+            <div class="tips-section" style="background: #f0f9ff; border-radius: 12px; padding: 2rem; margin-top: 3rem;">
+                <h2 style="color: #1e40af; margin-bottom: 1rem;">
+                    <i class="fas fa-lightbulb"></i> Tipy pro začátek
+                </h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+                    <div>
+                        <h3 style="color: #1e293b; font-size: 1.1rem; margin-bottom: 0.5rem;">
+                            <i class="fas fa-play-circle" style="color: #3b82f6;"></i> Začněte jednoduše
+                        </h3>
+                        <p style="color: #64748b; line-height: 1.6;">
+                            Nemusíte ovládat všechny nástroje najednou. Začněte s VS Code a Pythonem - to vám pokryje většinu potřeb.
+                        </p>
+                    </div>
+                    <div>
+                        <h3 style="color: #1e293b; font-size: 1.1rem; margin-bottom: 0.5rem;">
+                            <i class="fas fa-users" style="color: #3b82f6;"></i> Učte se společně
+                        </h3>
+                        <p style="color: #64748b; line-height: 1.6;">
+                            Sdílejte tipy a triky se spolužáky. Každý nástroj má velkou komunitu a spoustu tutoriálů online.
+                        </p>
+                    </div>
+                    <div>
+                        <h3 style="color: #1e293b; font-size: 1.1rem; margin-bottom: 0.5rem;">
+                            <i class="fas fa-graduation-cap" style="color: #3b82f6;"></i> Studentské licence
+                        </h3>
+                        <p style="color: #64748b; line-height: 1.6;">
+                            Mnoho placených alternativ (MATLAB, Mathematica) nabízí studentské licence zdarma nebo se slevou.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Gymnázium Globe. Všechna práva vyhrazena.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
