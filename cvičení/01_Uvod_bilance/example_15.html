@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSTR reaktor - Hydrolýza esteru</title>
+    <!-- Import pro renderování LaTeX matematických vzorců -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>CSTR reaktor - Hydrolýza esteru</h1>
+            <p>Podíváme se na bilanci v reaktoru, kde neustále něco přitéká a odtéká!</p>
+        </header>
+
+        <section class="section">
+            <h2>Zadání</h2>
+            <p>V kontinuálním míchacím reaktoru (CSTR - Continuous Stirred-Tank Reactor) probíhá hydrolýza ethylacetátu podle rovnice:</p>
+            <p style="text-align:center; font-size: 1.2em; font-weight: bold;">
+                \( \underbrace{\text{CH}_3\text{COOC}_2\text{H}_5}_{\text{Ethylacetát (A)}} + \underbrace{\text{H}_2\text{O}}_{\text{Voda (B)}} \rightarrow \underbrace{\text{CH}_3\text{COOH}}_{\text{Kys. octová (C)}} + \underbrace{\text{C}_2\text{H}_5\text{OH}}_{\text{Ethanol (D)}} \)
+            </p>
+            <p><strong>Vstupní proud:</strong></p>
+            <ul>
+                <li>Vstupní koncentrace esteru: \( c_{A,vstup} = 2 \, \text{mol/l} \)</li>
+                <li>Objemový průtok: \( \dot{V} = 10 \, \text{l/min} \)</li>
+                <li>Předpokládáme, že voda je na vstupu v ekvimolárním poměru, tedy \( c_{B,vstup} = 2 \, \text{mol/l} \)</li>
+            </ul>
+            <p><strong>Parametry reaktoru:</strong></p>
+            <ul>
+                <li>Objem reaktoru: \( V_R = 50 \, \text{l} \)</li>
+                <li>Dosažená konverze esteru: \( \alpha_A = 80\% \) (0,8)</li>
+            </ul>
+            <p><strong>Úkol: Určete výstupní koncentrace všech složek [mol/l].</strong></p>
+        </section>
+
+        <section class="section">
+            <h2>Analýza a Schéma</h2>
+            <h3>Co je to CSTR?</h3>
+            <p>Představte si hrnec, do kterého neustále přiléváte polévku a zároveň z něj odebíráte hotovou. Uvnitř je vrtule, která vše okamžitě dokonale promíchá. To je CSTR! Díky dokonalému míchání je <strong>složení a teplota v celém objemu reaktoru stejná a shoduje se se složením a teplotou na výstupu</strong>. To je klíčová vlastnost pro naše výpočty.</p>
+            <div class="schema-container">
+                <svg width="400" height="200" viewBox="0 0 400 200">
+                    <defs><marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#333" /></marker></defs>
+                    <rect x="100" y="50" width="200" height="100" fill="#eafaf1" stroke="#27ae60" stroke-width="2"/>
+                    <text x="185" y="40">CSTR</text>
+                    <!-- Míchadlo -->
+                    <line x1="200" y1="50" x2="200" y2="90" stroke="#34495e" stroke-width="2"/>
+                    <line x1="170" y1="90" x2="230" y2="110" stroke="#34495e" stroke-width="2"/>
+                    <line x1="170" y1="110" x2="230" y2="90" stroke="#34495e" stroke-width="2"/>
+                    <!-- Vstup -->
+                    <line x1="20" y1="100" x2="100" y2="100" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/><text x="40" y="95">Vstup</text>
+                    <!-- Výstup -->
+                    <line x1="300" y1="100" x2="380" y2="100" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/><text x="310" y="95">Výstup</text>
+                </svg>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Postupný Výpočet</h2>
+            <div class="box">
+                <p>Pro výpočet budeme používat <strong>látkové toky</strong> (\(\dot{n}\)) udávané v [mol/min]. Látkový tok je množství látky, které proteče za jednotku času.</p>
+                <p><strong>1. Výpočet vstupních látkových toků (\(\dot{n}_{vstup}\)):</strong><br>
+                Látkový tok se vypočte jako \( \dot{n} = c \cdot \dot{V} \).<br>
+                Ester (A): \( \dot{n}_{A,vstup} = 2 \, \text{mol/l} \cdot 10 \, \text{l/min} = 20 \, \text{mol/min} \)<br>
+                Voda (B): \( \dot{n}_{B,vstup} = 2 \, \text{mol/l} \cdot 10 \, \text{l/min} = 20 \, \text{mol/min} \)<br>
+                Produkty na vstupu nejsou: \( \dot{n}_{C,vstup} = 0 \), \( \dot{n}_{D,vstup} = 0 \)
+                </p>
+
+                <p><strong>2. Kolik esteru zreagovalo?</strong><br>
+                Konverze je 80 %, takže zreaguje 80 % vstupního esteru.<br>
+                Zreagované množství esteru: \( \Delta \dot{n}_A = \dot{n}_{A,vstup} \cdot \alpha_A = 20 \, \text{mol/min} \cdot 0,8 = 16 \, \text{mol/min} \)
+                </p>
+
+                <p><strong>3. Výpočet výstupních látkových toků (\(\dot{n}_{výstup}\)):</strong><br>
+                Použijeme rovnici: \( \dot{n}_{výstup} = \dot{n}_{vstup} - \text{spotřeba} + \text{vznik} \)<br>
+                <strong>Ester (A)</strong> - spotřebovává se:<br>
+                \( \dot{n}_{A,výstup} = \dot{n}_{A,vstup} - \Delta \dot{n}_A = 20 - 16 = 4 \, \text{mol/min} \)<br>
+                
+                <strong>Voda (B)</strong> - spotřebovává se (stechiometrie 1:1 k esteru):<br>
+                \( \dot{n}_{B,výstup} = \dot{n}_{B,vstup} - \Delta \dot{n}_A = 20 - 16 = 4 \, \text{mol/min} \)<br>
+
+                <strong>Kyselina octová (C)</strong> - vzniká (stechiometrie 1:1 k esteru):<br>
+                \( \dot{n}_{C,výstup} = \dot{n}_{C,vstup} + \Delta \dot{n}_A = 0 + 16 = 16 \, \text{mol/min} \)<br>
+
+                <strong>Ethanol (D)</strong> - vzniká (stechiometrie 1:1 k esteru):<br>
+                \( \dot{n}_{D,výstup} = \dot{n}_{D,vstup} + \Delta \dot{n}_A = 0 + 16 = 16 \, \text{mol/min} \)<br>
+                </p>
+                
+                <p><strong>4. Přepočet na výstupní koncentrace (\(c_{výstup}\)):</strong><br>
+                Předpokládáme, že objemový průtok se reakcí nemění (\(\dot{V} = 10 \, \text{l/min}\)). Koncentraci získáme jako \( c = \frac{\dot{n}}{\dot{V}} \).<br>
+                Ester (A): \( c_{A,výstup} = \frac{4 \, \text{mol/min}}{10 \, \text{l/min}} = 0,4 \, \text{mol/l} \)<br>
+                Voda (B): \( c_{B,výstup} = \frac{4 \, \text{mol/min}}{10 \, \text{l/min}} = 0,4 \, \text{mol/l} \)<br>
+                Kyselina octová (C): \( c_{C,výstup} = \frac{16 \, \text{mol/min}}{10 \, \text{l/min}} = 1,6 \, \text{mol/l} \)<br>
+                Ethanol (D): \( c_{D,výstup} = \frac{16 \, \text{mol/min}}{10 \, \text{l/min}} = 1,6 \, \text{mol/l} \)<br>
+                </p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Výsledky</h2>
+            <div class="box result-box">
+                <h3>Výstupní koncentrace z reaktoru jsou:</h3>
+                <ul>
+                    <li>Koncentrace <strong>ethylacetátu</strong>: \( c_A = 0,4 \, \text{mol/l} \)</li>
+                    <li>Koncentrace <strong>vody</strong>: \( c_B = 0,4 \, \text{mol/l} \)</li>
+                    <li>Koncentrace <strong>kyseliny octové</strong>: \( c_C = 1,6 \, \text{mol/l} \)</li>
+                    <li>Koncentrace <strong>ethanolu</strong>: \( c_D = 1,6 \, \text{mol/l} \)</li>
+                </ul>
+            </div>
+
+            <h3>Souhrnná bilanční tabulka</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Složka</th>
+                        <th>Vstupní tok [mol/min]</th>
+                        <th>Výstupní tok [mol/min]</th>
+                        <th>Vstupní konc. [mol/l]</th>
+                        <th>Výstupní konc. [mol/l]</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>A (Ester)</td><td>20,0</td><td>4,0</td><td>2,0</td><td><strong>0,4</strong></td></tr>
+                    <tr><td>B (Voda)</td><td>20,0</td><td>4,0</td><td>2,0</td><td><strong>0,4</strong></td></tr>
+                    <tr><td>C (Kys. octová)</td><td>0,0</td><td>16,0</td><td>0,0</td><td><strong>1,6</strong></td></tr>
+                    <tr><td>D (Ethanol)</td><td>0,0</td><td>16,0</td><td>0,0</td><td><strong>1,6</strong></td></tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+</body>
+</html>

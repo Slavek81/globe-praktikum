@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ekonomická Analýza Rekuperačního Výměníku</title>
+    
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>Ekonomická analýza rekuperačního výměníku</h1>
+        </header>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <p>
+                Cílem je zhodnotit investici do rekuperačního výměníku tepla. Vypočítáme, kolik energie a peněz se ročně ušetří využitím tepla z odpadních spalin. Na základě těchto úspor stanovíme prostou dobu návratnosti počáteční investice.
+            </p>
+        </section>
+
+        <section id="vstupni-data">
+            <h3>Vstupní data</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Veličina</th>
+                        <th>Symbol</th>
+                        <th>Hodnota</th>
+                        <th>Jednotka</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="4">Spaliny</td>
+                    </tr>
+                    <tr>
+                        <td>Hmotnostní průtok spalin</td>
+                        <td class="variable">$\dot{m}_{\text{sp}}$</td>
+                        <td class="value">5000</td>
+                        <td class="unit">kg/h</td>
+                    </tr>
+                    <tr>
+                        <td>Vstupní teplota spalin</td>
+                        <td class="variable">$t_{\text{sp,1}}$</td>
+                        <td class="value">450</td>
+                        <td class="unit">°C</td>
+                    </tr>
+                    <tr>
+                        <td>Výstupní teplota spalin</td>
+                        <td class="variable">$t_{\text{sp,2}}$</td>
+                        <td class="value">200</td>
+                        <td class="unit">°C</td>
+                    </tr>
+                    <tr>
+                        <td>Měrná tepelná kapacita spalin</td>
+                        <td class="variable">$c_{\text{sp}}$</td>
+                        <td class="value">1100</td>
+                        <td class="unit">J/(kg·K)</td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">Provoz a ekonomika</td>
+                    </tr>
+                    <tr>
+                        <td>Provozní doba</td>
+                        <td class="variable">$\tau$</td>
+                        <td class="value">8000</td>
+                        <td class="unit">h/rok</td>
+                    </tr>
+                    <tr>
+                        <td>Výhřevnost zemního plynu</td>
+                        <td class="variable">$H_u$</td>
+                        <td class="value">50</td>
+                        <td class="unit">MJ/kg</td>
+                    </tr>
+                    <tr>
+                        <td>Cena zemního plynu</td>
+                        <td class="variable">$C_{\text{plyn}}$</td>
+                        <td class="value">2</td>
+                        <td class="unit">Kč/kWh</td>
+                    </tr>
+                    <tr>
+                        <td>Investiční náklady</td>
+                        <td class="variable">$I$</td>
+                        <td class="value">6 000 000</td>
+                        <td class="unit">Kč</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+            
+            <div class="calculation-step">
+                <h4>Krok 1: Výpočet rekuperovaného tepelného výkonu ($P_{\text{úspora}}$)</h4>
+                <p>Nejprve spočítáme, jaký tepelný výkon získáme ochlazením spalin. Toto je výkon, který již nemusíme dodávat spalováním nového paliva.</p>
+                
+                <p><strong>Převod průtoku spalin na základní jednotky:</strong></p>
+                $$\dot{m}_{\text{sp}} = \frac{5000 \text{ kg/h}}{3600 \text{ s/h}} = 1{,}389 \text{ kg/s}$$
+                
+                <div class="formula-box">
+                    <strong>Vzorec pro rekuperovaný tepelný výkon:</strong>
+                    $$P_{\text{úspora}} = \dot{m}_{\text{sp}} \cdot c_{\text{sp}} \cdot (t_{\text{sp,1}} - t_{\text{sp,2}})$$
+                    
+                    <p><strong>Kde:</strong></p>
+                    <ul>
+                        <li>$P_{\text{úspora}}$ je rekuperovaný tepelný výkon <span class="unit">[W]</span></li>
+                        <li>$\dot{m}_{\text{sp}}$ je hmotnostní průtok spalin <span class="unit">[kg/s]</span></li>
+                        <li>$c_{\text{sp}}$ je měrná tepelná kapacita spalin <span class="unit">[J/(kg·K)]</span></li>
+                        <li>$(t_{\text{sp,1}} - t_{\text{sp,2}})$ je rozdíl teplot spalin <span class="unit">[°C nebo K]</span></li>
+                    </ul>
+                </div>
+                
+                <p><strong>Výpočet:</strong></p>
+                $$\Delta t_{\text{spaliny}} = 450 - 200 = 250 \text{ °C} \text{ (= 250 K)}$$
+                $$P_{\text{úspora}} = 1{,}389 \cdot 1\,100 \cdot 250 = 381\,975 \text{ W} = 382 \text{ kW}$$
+                
+                <div class="economic-highlight">
+                    <strong>Fyzikální význam:</strong> Každou sekundu lze z odpadních spalin získat 382 kJ tepelné energie, 
+                    která by jinak unikla do atmosféry. Tato energie může být využita k předehřevu vzduchu nebo jiných médií.
+                </div>
+            </div>
+            
+            <div class="calculation-step">
+                <h4>Krok 2: Výpočet roční ušetřené energie ($E_{\text{úspora}}$)</h4>
+                <p>Vynásobením ušetřeného výkonu roční provozní dobou získáme celkovou ušetřenou energii za rok.</p>
+                
+                <div class="formula-box">
+                    <strong>Vzorec pro roční úsporu energie:</strong>
+                    $$E_{\text{úspora}} = P_{\text{úspora}} \cdot \tau$$
+                </div>
+                
+                <p><strong>Výpočet:</strong></p>
+                $$E_{\text{úspora}} = 382 \text{ kW} \cdot 8\,000 \text{ h/rok} = 3\,056\,000 \text{ kWh/rok}$$
+                
+                <p>To odpovídá přibližně <strong>3,06 GWh ročně</strong> - což je spotřeba několika stovek domácností.</p>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 3: Výpočet roční úspory paliva ($m_{\text{úspora}}$)</h4>
+                <p>Ušetřená energie odpovídá energii, kterou bychom jinak museli získat spálením určitého množství zemního plynu.</p>
+                
+                <div class="note-box">
+                    <h4>🔄 Převodní vztah</h4>
+                    <p><strong>Převod kWh na MJ:</strong> $1 \text{ kWh} = 3{,}6 \text{ MJ}$</p>
+                    <p>Celková ušetřená energie v MJ:</p>
+                    $$E_{\text{úspora (MJ)}} = 3\,056\,000 \times 3{,}6 = 11\,001\,600 \text{ MJ/rok}$$
+                </div>
+                
+                <div class="formula-box">
+                    <strong>Vzorec pro úsporu paliva:</strong>
+                    $$m_{\text{úspora}} = \frac{E_{\text{úspora (MJ)}}}{H_u}$$
+                </div>
+                
+                <p><strong>Výpočet:</strong></p>
+                $$m_{\text{úspora}} = \frac{11\,001\,600 \text{ MJ/rok}}{50 \text{ MJ/kg}} = 220\,032 \text{ kg/rok}$$
+                
+                <p>Což je přibližně <strong>220 tun zemního plynu ročně</strong>!</p>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 4: Výpočet roční finanční úspory ($\text{Úspora}_{\text{Kč}}$)</h4>
+                <p>Vynásobením roční úspory energie cenou za kWh získáme celkovou finanční úsporu.</p>
+                
+                <div class="formula-box">
+                    <strong>Vzorec pro finanční úsporu:</strong>
+                    $$\text{Úspora}_{\text{Kč}} = E_{\text{úspora}} \times C_{\text{plyn}}$$
+                </div>
+                
+                <p><strong>Výpočet:</strong></p>
+                $$\text{Úspora}_{\text{Kč}} = 3\,056\,000 \text{ kWh/rok} \times 2 \text{ Kč/kWh}$$
+                $$\text{Úspora}_{\text{Kč}} = 6\,112\,000 \text{ Kč/rok}$$
+                
+                <div class="economic-highlight">
+                    <strong>Měsíční úspora:</strong> $6\,112\,000 \div 12 = 509\,333$ Kč/měsíc<br>
+                    <strong>Denní úspora:</strong> $6\,112\,000 \div 365 = 16\,745$ Kč/den
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 5: Výpočet prosté doby návratnosti investice ($T_{\text{návratnost}}$)</h4>
+                <p>Doba návratnosti nám říká, za kolik let se počáteční investice vrátí díky provozním úsporám.</p>
+                
+                <div class="formula-box">
+                    <strong>Vzorec pro dobu návratnosti:</strong>
+                    $$T_{\text{návratnost}} = \frac{\text{Investiční náklady}}{\text{Roční finanční úspora}}$$
+                </div>
+                
+                <p><strong>Výpočet:</strong></p>
+                $$T_{\text{návratnost}} = \frac{6\,000\,000 \text{ Kč}}{6\,112\,000 \text{ Kč/rok}} = 0{,}982 \text{ roku}$$
+                
+                <p><strong>Převody na praktičtější jednotky:</strong></p>
+                <ul>
+                    <li><strong>V měsících:</strong> $0{,}982 \times 12 = 11{,}8$ měsíců</li>
+                    <li><strong>Ve dnech:</strong> $0{,}982 \times 365 = 358$ dní</li>
+                </ul>
+                
+                <div class="investment-highlight">
+                    <strong>Výsledek:</strong> Investice se vrátí za méně než jeden rok! 
+                    To je v průmyslové praxi považováno za vynikající investiční příležitost.
+                </div>
+            </div>
+        </section>
+        
+        <section id="vysledek">
+            <h2>Shrnutí výsledků</h2>
+            <div class="result-box">
+                <p>Rekuperovaný tepelný výkon: <span>382 kW</span></p>
+                <p>Roční úspora energie: <span>3,06 GWh</span></p>
+                <p>Roční úspora zemního plynu: <span>220 tun</span></p>
+                <p>Roční finanční úspora: <span>6,11 mil. Kč</span></p>
+                <hr style="border-top: 2px solid #10b981; border-bottom: none; margin: 25px auto; width: 60%;">
+                <p style="font-size: 1.1em; color: #065f46;">
+                    <strong>Prostá doba návratnosti: 0,98 roku</strong><br>
+                    <span style="font-size: 1.0em;">(≈ 11,8 měsíců)</span>
+                </p>
+            </div>
+        </section>
+
+        <section id="ekonomicke-zhodnoceni">
+            <h2>Ekonomické zhodnocení a doporučení</h2>
+            
+            <div class="economic-highlight">
+                <h4>💰 Výhodnost investice</h4>
+                <p><strong>Doba návratnosti pod 1 rok</strong> je v průmyslových projektech považována za exceptionálně výhodnou. 
+                Standardně se za velmi dobré investice považují projekty s návratností do 3 let.</p>
+                
+                <p><strong>Další ekonomické benefity:</strong></p>
+                <ul>
+                    <li><strong>Čistý zisk po 10 letech:</strong> $(6{,}11 \times 10) - 6{,}0 = 55{,}1$ mil. Kč</li>
+                    <li><strong>Čistý zisk po 20 letech:</strong> $(6{,}11 \times 20) - 6{,}0 = 116{,}2$ mil. Kč</li>
+                    <li><strong>ROI (Return on Investment):</strong> $(6{,}11 \div 6{,}0) \times 100 = 102$ % ročně!</li>
+                </ul>
+            </div>
+            
+            <div class="note-box">
+                <h4>🌱 Environmentální přínos</h4>
+                <p>Kromě ekonomických výhod projekt přináší významné environmentální benefity:</p>
+                <ul>
+                    <li><strong>Snížení emisí CO₂:</strong> Úspora 220 tun plynu ≈ snížení o 540 tun CO₂ ročně</li>
+                    <li><strong>Zvýšení energetické efektivity:</strong> Využití odpadního tepla místo jeho ztráty</li>
+                    <li><strong>Udržitelnost:</strong> Projekt podporuje principy cirkulární ekonomiky</li>
+                </ul>
+            </div>
+            
+            <div class="investment-highlight">
+                <h4>⚠️ Rizika a doporučení</h4>
+                <p><strong>Potenciální rizika:</strong></p>
+                <ul>
+                    <li><strong>Změny ceny paliv:</strong> Růst cen energie zvýší úspory, pokles je sníží</li>
+                    <li><strong>Provozní doba:</strong> Snížení využití pod 8000 h/rok prodlouží návratnost</li>
+                    <li><strong>Údržbové náklady:</strong> Je nutné zohlednit pravidelnou údržbu výměníku</li>
+                </ul>
+                
+                <p><strong>Doporučení:</strong></p>
+                <ul>
+                    <li><strong>Rychlá realizace:</strong> Vzhledem k výjimečné rentabilitě doporučujeme neprodleně zahájit projekt</li>
+                    <li><strong>Kvalitní dodavatel:</strong> Investice do kvalitního výměníku s dlouhou životností</li>
+                    <li><strong>Monitoring:</strong> Sledování skutečných úspor pro ověření kalkulace</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Praktické aplikace fyziky a chemie | Gymnázium Globe</title>
+    <meta name="description" content="Webové stránky předmětu Praktické aplikace fyziky a chemie na Gymnáziu Globe. Přednášky, semestrální projekty, cvičení a studijní materiály.">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="nav-brand">
+                <h1><i class="fas fa-atom"></i> Praktické aplikace fyziky a chemie</h1>
+                <p class="subtitle">Gymnázium Globe</p>
+            </div>
+            <nav class="nav">
+                <a href="#about" class="nav-link">O předmětu</a>
+                <a href="#topics" class="nav-link">Okruhy témat</a>
+                <a href="#projects" class="nav-link">Projekty</a>
+                <a href="#materials" class="nav-link">Materiály</a>
+                <a href="#contact" class="nav-link">Kontakt</a>
+            </nav>
+            <div class="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h2>Praktické aplikace fyziky a chemie</h2>
+                <p class="hero-description">Moderní přístup k výuce fyziky a chemie s důrazem na praktické aplikace, projektové učení a moderní technologie.</p>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number">7</span>
+                        <span class="stat-label">Okruhů témat</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">4</span>
+                        <span class="stat-label">Semestrálních projektů</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title">O předmětu</h2>
+            <div class="about-grid">
+                <div class="about-card">
+                    <div class="about-icon">
+                        <i class="fas fa-target"></i>
+                    </div>
+                    <h3>Cíle předmětu</h3>
+                    <p>Propojení teoretických znalostí z fyziky a chemie s praktickými aplikacemi v inženýrství, energetice a průmyslu.</p>
+                </div>
+                <div class="about-card">
+                    <div class="about-icon">
+                        <i class="fas fa-flask"></i>
+                    </div>
+                    <h3>Praktické zaměření</h3>
+                    <p>Důraz na experimentální práci, numerické simulace a řešení reálných technických problémů.</p>
+                </div>
+                <div class="about-card">
+                    <div class="about-icon">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <h3>Projektové učení</h3>
+                    <p>Komplexní semestrální projekty zaměřené na energetiku, tepelnou techniku a optimalizaci procesů.</p>
+                </div>
+            </div>
+        </div>
+    </section>    <!-- Topics Section -->
+    <section id="topics" class="section section-gray">
+        <div class="container">
+            <h2 class="section-title">Okruhy témat</h2>
+            <p class="section-description">Každé téma zahrnuje teoretickou část, praktické příklady, cvičení a materiály ke stažení</p>
+            <div class="lectures-grid">
+                <a href="temata/00-umela-inteligence/index.html" class="lecture-card">
+                    <div class="lecture-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>00 - Využití umělé inteligence</h3>
+                    <p>Moderní AI nástroje ve fyzice a chemii, automatizace výpočtů a analýz</p>
+                    <div class="lecture-meta">
+                        <span><i class="fas fa-clock"></i> 2 hodiny</span>
+                        <span><i class="fas fa-brain"></i> AI nástroje</span>
+                    </div>
+                </a>
+
+                <a href="temata/01-uvod-bilance/index.html" class="lecture-card">
+                    <div class="lecture-icon">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <h3>01 - Úvod a bilance</h3>
+                    <p>Základní principy materiálových a energetických bilancí</p>
+                    <div class="lecture-meta">
+                        <span><i class="fas fa-clock"></i> 3 hodiny</span>
+                        <span><i class="fas fa-calculator"></i> Výpočty</span>
+                    </div>
+                </a>
+
+                <a href="temata/02-prestup-prostup-tepla/index.html" class="lecture-card">
+                    <div class="lecture-icon">
+                        <i class="fas fa-thermometer-half"></i>
+                    </div>
+                    <h3>02 - Přestup a prostup tepla</h3>
+                    <p>Tepelná vedivost, konvekce a sálání - praktické aplikace</p>
+                    <div class="lecture-meta">
+                        <span><i class="fas fa-clock"></i> 4 hodiny</span>
+                        <span><i class="fas fa-fire"></i> Termodynamika</span>
+                    </div>
+                </a>
+
+                <a href="temata/03-tlakove-ztraty/index.html" class="lecture-card">
+                    <div class="lecture-icon">
+                        <i class="fas fa-tint"></i>
+                    </div>
+                    <h3>03 - Tlakové ztráty, čerpadla, ventilátory</h3>
+                    <p>Proudění tekutin, hydraulické výpočty a návrh systémů</p>
+                    <div class="lecture-meta">
+                        <span><i class="fas fa-clock"></i> 4 hodiny</span>
+                        <span><i class="fas fa-water"></i> Hydraulika</span>
+                    </div>
+                </a>
+
+                <a href="temata/04-matematicke-praktikum/index.html" class="lecture-card">
+                    <div class="lecture-icon">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <h3>04 - Matematické praktikum</h3>
+                    <p>Numerické metody, Python, Excel - praktické nástroje</p>
+                    <div class="lecture-meta">
+                        <span><i class="fas fa-clock"></i> 3 hodiny</span>
+                        <span><i class="fab fa-python"></i> Programování</span>
+                    </div>
+                </a>
+
+                <a href="temata/05-fyzikalni-chemie/index.html" class="lecture-card">
+                    <div class="lecture-icon">
+                        <i class="fas fa-atom"></i>
+                    </div>
+                    <h3>05 - Základy fyzikální chemie</h3>
+                    <p>Termodynamika, kinetika reakcí, fázové rovnováhy</p>
+                    <div class="lecture-meta">
+                        <span><i class="fas fa-clock"></i> 4 hodiny</span>
+                        <span><i class="fas fa-flask"></i> Experimenty</span>
+                    </div>
+                </a>
+
+                <a href="temata/06-usazovani/index.html" class="lecture-card">
+                    <div class="lecture-icon">
+                        <i class="fas fa-filter"></i>
+                    </div>
+                    <h3>06 - Usazování, gravitační odstředivé pole</h3>
+                    <p>Separační procesy, sedimentace a filtrace</p>
+                    <div class="lecture-meta">
+                        <span><i class="fas fa-clock"></i> 3 hodiny</span>
+                        <span><i class="fas fa-cogs"></i> Separace</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section section-gray">
+        <div class="container">
+            <h2 class="section-title">Semestrální projekty</h2>
+            <p class="section-description">Komplexní projekty zaměřené na praktické aplikace v energetice a tepelné technice</p>
+            <div class="projects-grid">
+                <a href="projekty/projekt1/" class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fas fa-battery-half"></i>
+                        </div>
+                        <div class="project-badge">Projekt 1</div>
+                    </div>
+                    <h3>Akumulace tepla v budovách</h3>
+                    <p>Analýza tepelných akumulačních systémů pro optimalizaci spotřeby energie s důrazem na peak-shaving a flexibilitu dodávek.</p>
+                    <div class="project-stats">
+                        <span class="stat-item"><i class="fas fa-piggy-bank"></i> Úspora 35%</span>
+                        <span class="stat-item"><i class="fas fa-chart-line"></i> ROI 4.2 roky</span>
+                    </div>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Excel</span>
+                        <span class="tech-tag">HTML</span>
+                    </div>
+                </a>
+                
+                <a href="projekty/projekt2/" class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fas fa-recycle"></i>
+                        </div>
+                        <div class="project-badge">Projekt 2</div>
+                    </div>
+                    <h3>Rekuperace tepla v jídelně</h3>
+                    <p>Návrh systému zpětného získávání tepla z odvětrávaného vzduchu jídelny pro předehřev čerstvého vzduchu.</p>
+                    <div class="project-stats">
+                        <span class="stat-item"><i class="fas fa-piggy-bank"></i> Úspora 156 MWh</span>
+                        <span class="stat-item"><i class="fas fa-chart-line"></i> ROI 3.2 roky</span>
+                    </div>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Excel</span>
+                        <span class="tech-tag">HTML</span>
+                    </div>
+                </a>
+                
+                <a href="projekty/projekt3/" class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <div class="project-badge">Projekt 3</div>
+                    </div>
+                    <h3>Tepelné čerpadlo vs kotel</h3>
+                    <p>Komplexní TCO analýza (Total Cost of Ownership) různých technologií vytápění pro rodinný dům.</p>
+                    <div class="project-stats">
+                        <span class="stat-item"><i class="fas fa-piggy-bank"></i> Úspora 180k Kč</span>
+                        <span class="stat-item"><i class="fas fa-leaf"></i> -65% CO₂</span>
+                    </div>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Excel</span>
+                        <span class="tech-tag">HTML</span>
+                    </div>
+                </a>
+                
+                <a href="projekty/projekt4/" class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fas fa-school"></i>
+                        </div>
+                        <div class="project-badge">Projekt 4</div>
+                    </div>
+                    <h3>Tepelná izolace školy</h3>
+                    <p>Energetický audit školní budovy s návrhem variant zateplení a ekonomickým vyhodnocením nejvhodnější varianty.</p>
+                    <div class="project-stats">
+                        <span class="stat-item"><i class="fas fa-piggy-bank"></i> Úspora 99.7%</span>
+                        <span class="stat-item"><i class="fas fa-chart-line"></i> ROI 0.9 roky</span>
+                    </div>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Excel</span>
+                        <span class="tech-tag">HTML</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>    <!-- Materials Section -->
+    <section id="materials" class="section">
+        <div class="container">
+            <h2 class="section-title">Materiály a nástroje</h2>
+            <div class="exercises-grid">
+                <div class="exercise-card">
+                    <div class="exercise-icon">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <h3>Praktické výpočty</h3>
+                    <p>Sbírka řešených příkladů z oblasti tepelné techniky, hydrauliky a fyzikální chemie</p>
+                    <a href="cvičení/" class="btn btn-outline">Procházet příklady</a>
+                </div>
+                
+                <div class="exercise-card">
+                    <div class="exercise-icon">
+                        <i class="fas fa-file-excel"></i>
+                    </div>
+                    <h3>Excel šablony</h3>
+                    <p>Připravené tabulky pro výpočty bilancí, tepelných přestupů a ekonomických analýz</p>
+                    <a href="cvičení/excel/" class="btn btn-outline">Stáhnout šablony</a>
+                </div>
+                
+                <div class="exercise-card">
+                    <div class="exercise-icon">
+                        <i class="fab fa-python"></i>
+                    </div>
+                    <h3>Python skripty</h3>
+                    <p>Numerické simulace, vizualizace dat a automatizace výpočtů v Pythonu</p>
+                    <a href="cvičení/python/" class="btn btn-outline">Zobrazit kódy</a>
+                </div>
+                
+                <div class="exercise-card">
+                    <div class="exercise-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>AI nástroje</h3>
+                    <p>Využití umělé inteligence pro analýzu dat, optimalizaci a generování kódu</p>
+                    <a href="cvičení/ai-tools/" class="btn btn-outline">Učit se s AI</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="section-title">Kontakt a informace</h2>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <h3>Vyučující</h3>
+                    <p><strong>Slavek Kilkovsky</strong><br>
+                       Učitel fyziky a chemie<br>
+                       Gymnázium Globe</p>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-school"></i>
+                    </div>
+                    <h3>Škola</h3>
+                    <p><strong>Gymnázium Globe</strong><br>
+                       <a href="https://gymglobe.cz" target="_blank">gymglobe.cz</a><br>
+                       Moderní gymnázium s inovativním přístupem</p>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-github"></i>
+                    </div>
+                    <h3>Zdrojové kódy</h3>
+                    <p>Všechny materiály, skripty a projekty jsou dostupné na GitHub<br>
+                       <a href="#" target="_blank">github.com/praktické-aplikace</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <h4><i class="fas fa-atom"></i> Praktické aplikace fyziky a chemie</h4>
+                    <p>Moderní výuka s praktickým zaměřením</p>
+                </div>
+                <div class="footer-right">
+                    <p>&copy; 2024 Gymnázium Globe. Vytvořeno s ❤️ pro studenty.</p>
+                    <div class="footer-links">
+                        <a href="https://gymglobe.cz" target="_blank">Gymnázium Globe</a>
+                        <a href="#" onclick="scrollToTop()">⬆ Nahoru</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

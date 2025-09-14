@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neutralizace Kyseliny a Hydroxidu</title>
+    
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>Neutralizace kyseliny a hydroxidu</h1>
+        </header>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <p>
+                Vypočtěte složení roztoku (v hmotnostních procentech) vzniklého smícháním 
+                <strong>1800 g roztoku kyseliny sírové</strong> ($w(\text{H}_2\text{SO}_4) = 0{,}12$) 
+                a <strong>1200 g roztoku hydroxidu draselného</strong> ($w(\text{KOH}) = 0{,}15$).
+            </p>
+            
+            <div class="reaction-scheme">
+                <h4>⚗️ Chemická reakce</h4>
+                <p>Proběhne neutralizační reakce podle rovnice:</p>
+                <div class="chemical-equation">
+                    $$\text{H}_2\text{SO}_4 + 2\,\text{KOH} \rightarrow \text{K}_2\text{SO}_4 + 2\,\text{H}_2\text{O}$$
+                </div>
+            </div>
+        </section>
+
+        <section id="vstupni-data">
+            <h2>Vstupní data a molární hmotnosti</h2>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Symbol</th>
+                        <th>Látka</th>
+                        <th>Molární hmotnost ($M_r$)</th>
+                        <th>Jednotka</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="variable">A</td>
+                        <td>Kyselina sírová ($\text{H}_2\text{SO}_4$)</td>
+                        <td class="value">98,1</td>
+                        <td class="unit">g/mol</td>
+                    </tr>
+                    <tr>
+                        <td class="variable">B</td>
+                        <td>Hydroxid draselný (KOH)</td>
+                        <td class="value">56,1</td>
+                        <td class="unit">g/mol</td>
+                    </tr>
+                    <tr>
+                        <td class="variable">C</td>
+                        <td>Síran draselný ($\text{K}_2\text{SO}_4$)</td>
+                        <td class="value">174,3</td>
+                        <td class="unit">g/mol</td>
+                    </tr>
+                    <tr>
+                        <td class="variable">D</td>
+                        <td>Voda ($\text{H}_2\text{O}$)</td>
+                        <td class="value">18,0</td>
+                        <td class="unit">g/mol</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="balance-diagram">
+                <h4>📊 Bilanční schéma</h4>
+                <p><strong>Vstup 1:</strong> 1800 g roztoku H₂SO₄ (12 %)</p>
+                <p><strong>Vstup 2:</strong> 1200 g roztoku KOH (15 %)</p>
+                <p>⬇️</p>
+                <p><strong>Směšovač s chemickou reakcí</strong></p>
+                <p>⬇️</p>
+                <p><strong>Výstup:</strong> Směs produktů a nezreagovaných látek</p>
+            </div>
+        </section>
+
+        <section id="kliucova-slozka">
+            <h2>Klíčový krok: Určení klíčové složky</h2>
+            <p>
+                Před sestavením bilance musíme zjistit, zda je některého z reaktantů více, než může zreagovat. 
+                Ten, kterého je méně (vzhledem ke stechiometrii), se spotřebuje celý - nazývá se <strong>klíčová složka</strong>.
+            </p>
+            
+            <div class="calculation-step">
+                <h4>Výpočet množství reaktantů</h4>
+                
+                <p><strong>1. Množství čisté H₂SO₄ na vstupu:</strong></p>
+                $$m_A = 1800 \text{ g} \times 0{,}12 = 216 \text{ g}$$
+                $$n_A = \frac{216 \text{ g}}{98{,}1 \text{ g/mol}} = 2{,}202 \text{ mol}$$
+                
+                <p><strong>2. Množství čistého KOH na vstupu:</strong></p>
+                $$m_B = 1200 \text{ g} \times 0{,}15 = 180 \text{ g}$$
+                $$n_B = \frac{180 \text{ g}}{56{,}1 \text{ g/mol}} = 3{,}209 \text{ mol}$$
+                
+                <p><strong>3. Porovnání stechiometrických poměrů:</strong></p>
+                
+                <div class="formula-box">
+                    <strong>Stechiometrické vztahy:</strong>
+                    <p>Ze stechiometrické rovnice: $\frac{n_B}{n_A} = \frac{2}{1} = 2$</p>
+                    <p>Skutečný poměr na vstupu: $\frac{n_B}{n_A} = \frac{3{,}209}{2{,}202} = 1{,}457$</p>
+                </div>
+            </div>
+            
+            <div class="key-component">
+                <h4>🔑 Závěr o klíčové složce</h4>
+                <p>
+                    Protože skutečný poměr <strong>1,457</strong> je menší než stechiometrický poměr <strong>2</strong>, 
+                    máme relativně méně hydroxidu draselného (KOH).
+                </p>
+                <p>
+                    <strong>KOH je klíčová složka</strong> - zreaguje všechen a ve výsledném roztoku nebude přítomen 
+                    ($w_{B3} = 0$).
+                </p>
+                <p>
+                    <strong>H₂SO₄ je v přebytku</strong> - její část v roztoku zbyde.
+                </p>
+            </div>
+        </section>
+
+        <section id="hmotnostni-bilance">
+            <h2>Hmotnostní bilance</h2>
+            <p>
+                Sestavíme hmotnostní bilanci pro každou složku. Základní rovnice je:
+            </p>
+            
+            <div class="formula-box">
+                <strong>Obecná bilanční rovnice:</strong>
+                $$\sum (\text{vstupy}_i) + \text{vznik}_i = \sum (\text{výstupy}_i) + \text{spotřeba}_i$$
+            </div>
+            
+            <div class="calculation-step">
+                <h4>Sestavení bilančních rovnic</h4>
+                
+                <p><strong>1. Celková hmotnostní bilance:</strong></p>
+                $$m_1 + m_2 = m_3$$
+                $$1800 + 1200 = m_3 \Rightarrow m_3 = 3000 \text{ g}$$
+                
+                <p><strong>2. Bilance složky A (H₂SO₄):</strong></p>
+                $$m_1 \cdot w_{A1} = m_3 \cdot w_{A3} + \text{spotřeba H₂SO₄}$$
+                
+                <p><strong>3. Bilance složky B (KOH):</strong></p>
+                $$m_2 \cdot w_{B2} = \text{spotřeba KOH}$$
+                
+                <p><strong>4. Bilance složky C (K₂SO₄):</strong></p>
+                $$\text{vznik K₂SO₄} = m_3 \cdot w_{C3}$$
+                
+                <p><strong>5. Bilance složky D (H₂O):</strong></p>
+                $$m_1 \cdot w_{D1} + m_2 \cdot w_{D2} + \text{vznik H₂O} = m_3 \cdot w_{D3}$$
+            </div>
+            
+            <div class="calculation-step">
+                <h4>Výpočet stechiometrických množství</h4>
+                
+                <p>Protože KOH je klíčová složka, veškerý KOH zreaguje:</p>
+                
+                <p><strong>Spotřeba KOH:</strong> 180 g (veškerý KOH)</p>
+                
+                <p><strong>Spotřeba H₂SO₄ ze stechiometrie:</strong></p>
+                <p>Ze stechiometrie: 1 mol H₂SO₄ reaguje s 2 mol KOH</p>
+                $$n_{\text{spotřeba H₂SO₄}} = \frac{n_B}{2} = \frac{3{,}209}{2} = 1{,}605 \text{ mol}$$
+                $$m_{\text{spotřeba H₂SO₄}} = 1{,}605 \times 98{,}1 = 157{,}4 \text{ g}$$
+                
+                <p><strong>Vznik K₂SO₄:</strong></p>
+                $$n_{\text{vznik K₂SO₄}} = \frac{n_B}{2} = 1{,}605 \text{ mol}$$
+                $$m_{\text{vznik K₂SO₄}} = 1{,}605 \times 174{,}3 = 279{,}8 \text{ g}$$
+                
+                <p><strong>Vznik H₂O:</strong></p>
+                $$n_{\text{vznik H₂O}} = n_B = 3{,}209 \text{ mol}$$
+                $$m_{\text{vznik H₂O}} = 3{,}209 \times 18{,}0 = 57{,}8 \text{ g}$$
+            </div>
+            
+            <div class="calculation-step">
+                <h4>Výpočet složení výsledného roztoku</h4>
+                
+                <p><strong>Nezreagovaná H₂SO₄:</strong></p>
+                $$m_{\text{zbytek H₂SO₄}} = 216 - 157{,}4 = 58{,}6 \text{ g}$$
+                $$w_{A3} = \frac{58{,}6}{3000} = 0{,}0195 = 1{,}95\,\%$$
+                
+                <p><strong>Vzniklý K₂SO₄:</strong></p>
+                $$w_{C3} = \frac{279{,}8}{3000} = 0{,}0933 = 9{,}33\,\%$$
+                
+                <p><strong>Celková voda (původní + vzniklá):</strong></p>
+                <p>Původní voda v roztocích:</p>
+                $$m_{\text{H₂O původní}} = 1800 \times 0{,}88 + 1200 \times 0{,}85 = 1584 + 1020 = 2604 \text{ g}$$
+                $$m_{\text{H₂O celková}} = 2604 + 57{,}8 = 2661{,}8 \text{ g}$$
+                $$w_{D3} = \frac{2661{,}8}{3000} = 0{,}8873 = 88{,}73\,\%$$
+            </div>
+        </section>
+        
+        <section id="vysledek">
+            <h2>Výsledné složení roztoku</h2>
+            
+            <div class="result-box">
+                <p><strong>Výsledný roztok (celkem 3000 g) má složení:</strong></p>
+                <p>Nezreagovaná kyselina sírová: <span>1,95 %</span></p>
+                <p>Vzniklý síran draselný: <span>9,33 %</span></p>
+                <p>Voda (původní + vzniklá): <span>88,73 %</span></p>
+            </div>
+            
+            <div class="final-table">
+                <h3>📋 Finální bilanční tabulka</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Složka</th>
+                            <th>Vstup 1 [g]</th>
+                            <th>Vstup 2 [g]</th>
+                            <th>Výstup [g]</th>
+                            <th>Výstup [%]</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>H₂SO₄</strong></td>
+                            <td>216,0</td>
+                            <td>0</td>
+                            <td><strong>58,6</strong></td>
+                            <td><strong>1,95</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>KOH</strong></td>
+                            <td>0</td>
+                            <td>180,0</td>
+                            <td><strong>0</strong></td>
+                            <td><strong>0</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>K₂SO₄</strong></td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td><strong>279,8</strong></td>
+                            <td><strong>9,33</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>H₂O</strong></td>
+                            <td>1584,0</td>
+                            <td>1020,0</td>
+                            <td><strong>2661,6</strong></td>
+                            <td><strong>88,73</strong></td>
+                        </tr>
+                        <tr>
+                            <th>Celkem</th>
+                            <th>1800,0</th>
+                            <th>1200,0</th>
+                            <th><strong>3000,0</strong></th>
+                            <th><strong>100,00</strong></th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="zhodnoceni">
+            <h2>Zhodnocení a praktické poznámky</h2>
+            
+            <div class="note-box">
+                <h4>🧪 Chemické pozorování</h4>
+                <p>
+                    <strong>Neutralizace byla neúplná</strong> - ve výsledném roztoku zbylo 1,95 % nezreagované kyseliny sírové. 
+                    Roztok je tedy stále <strong>kyselý</strong> s pH < 7.
+                </p>
+                <p>
+                    Pro úplnou neutralizaci by bylo potřeba více KOH podle stechiometrického poměru 2:1.
+                </p>
+            </div>
+            
+            <div class="note-box">
+                <h4>⚖️ Verifikace bilance</h4>
+                <p><strong>Kontrola hmotnostní bilance:</strong></p>
+                <ul>
+                    <li>Vstupy: 1800 + 1200 = 3000 g ✓</li>
+                    <li>Výstupy: 58,6 + 0 + 279,8 + 2661,6 = 3000 g ✓</li>
+                    <li>Součet hmotnostních zlomků: 0,0195 + 0 + 0,0933 + 0,8873 = 1,0001 ≈ 1 ✓</li>
+                </ul>
+            </div>
+            
+            <div class="note-box">
+                <h4>🏭 Praktické aplikace</h4>
+                <p>Tento typ výpočtu se používá v:</p>
+                <ul>
+                    <li><strong>Chemickém průmyslu:</strong> Návrh reaktorů a dávkování reaktantů</li>
+                    <li><strong>Úpravě vody:</strong> Neutralizace kyselých nebo zásaditých odpadních vod</li>
+                    <li><strong>Farmacii:</strong> Syntéza léčiv s kontrolou stechiometrie</li>
+                    <li><strong>Potravinářství:</strong> Regulace pH potravin a nápojů</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
