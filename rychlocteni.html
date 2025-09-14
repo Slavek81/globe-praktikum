@@ -1,0 +1,1502 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rychločtení pro studenty | Praktické aplikace fyziky a chemie</title>
+    <meta name="description" content="Komplexní průvodce rychločtením pro studenty. Naučte se vědecky podložené techniky, jak číst učebnice, odborné články a efektivně se připravovat na zkoušky.">
+    <meta name="keywords" content="rychločtení, studium, studenti, efektivní učení, čtení s porozuměním">
+
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- External Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+
+    <style>
+        /* Custom styles for speed reading page using main CSS variables */
+        .reading-hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 120px 0 80px;
+            text-align: center;
+        }
+
+        .reading-hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .reading-hero p {
+            font-size: clamp(1.1rem, 2vw, 1.3rem);
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+        }
+
+        /* Navigation override */
+        .reading-nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+            padding: 1rem 0;
+        }
+
+        .reading-nav ul {
+            display: flex;
+            list-style: none;
+            justify-content: center;
+            align-items: center;
+            padding: 0;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin: 0;
+        }
+
+        .reading-nav a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: var(--border-radius);
+            transition: all 0.3s ease;
+        }
+
+        .reading-nav a:hover {
+            background: var(--background-light);
+            color: var(--primary-color);
+        }
+
+        /* Special Boxes consistent with main theme */
+        .info-box, .practice-box, .formula-box, .warning-box {
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            margin: 1.5rem 0;
+            border-left: 4px solid;
+        }
+
+        .info-box {
+            background: #e3f2fd;
+            border-color: var(--primary-color);
+        }
+
+        .practice-box {
+            background: #f3e5f5;
+            border-color: #9c27b0;
+        }
+
+        .formula-box {
+            background: #e8f5e8;
+            border-color: var(--secondary-color);
+        }
+
+        .warning-box {
+            background: #fff3e0;
+            border-color: var(--accent-color);
+        }
+
+        /* Interactive Elements */
+        .interactive-container {
+            background: white;
+            border-radius: var(--border-radius-lg);
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            margin: 2rem 0;
+        }
+
+        /* Buttons consistent with main theme */
+        .btn-reading-primary {
+            background: var(--primary-color);
+            color: white;
+            padding: 0.75rem 2rem;
+            border-radius: var(--border-radius);
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-block;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .btn-reading-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            color: white;
+        }
+
+        .btn-reading-secondary {
+            background: var(--accent-color);
+            color: white;
+            padding: 0.75rem 2rem;
+            border-radius: var(--border-radius);
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-block;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .btn-reading-secondary:hover {
+            background: #e67e22;
+            transform: translateY(-2px);
+            color: white;
+        }
+
+        /* Stats grid using existing grid system */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-top: 0.5rem;
+        }
+
+        /* Reading test specific styles */
+        .reading-text {
+            font-family: 'Georgia', serif;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            background: white;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            border: 2px solid var(--border-color);
+            margin: 1rem 0;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .highlight-word {
+            background: #ffeb3b;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+
+        /* Progress bar */
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #e0e0e0;
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 1rem 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--secondary-color), var(--primary-color));
+            transition: width 0.3s ease;
+        }
+
+        /* Badges */
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin: 0.25rem;
+        }
+
+        .badge-bronze {
+            background: #cd7f32;
+            color: white;
+        }
+
+        .badge-silver {
+            background: #c0c0c0;
+            color: white;
+        }
+
+        .badge-gold {
+            background: #ffd700;
+            color: #333;
+        }
+
+        /* Utility classes */
+        .text-center { text-align: center; }
+        .mt-1 { margin-top: 0.5rem; }
+        .mt-2 { margin-top: 1rem; }
+        .mt-3 { margin-top: 1.5rem; }
+        .mb-1 { margin-bottom: 0.5rem; }
+        .mb-2 { margin-bottom: 1rem; }
+        .mb-3 { margin-bottom: 1.5rem; }
+        .hidden { display: none; }
+        .flex { display: flex; }
+        .flex-center { display: flex; align-items: center; justify-content: center; }
+        .gap-1 { gap: 0.5rem; }
+        .gap-2 { gap: 1rem; }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .reading-nav ul {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .reading-hero {
+                padding: 100px 0 60px;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="reading-nav">
+        <div class="container">
+            <ul>
+                <li><a href="index.html">Domů</a></li>
+                <li><a href="#uvod">Úvod</a></li>
+                <li><a href="#veda">Věda</a></li>
+                <li><a href="#techniky">Techniky</a></li>
+                <li><a href="#testy">Testy</a></li>
+                <li><a href="#obory">Obory</a></li>
+                <li><a href="#navyky">Návyky</a></li>
+                <li><a href="#nastroje">Nástroje</a></li>
+                <li><a href="#gamifikace">Pokrok</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="reading-hero" id="uvod">
+        <div class="container">
+            <h1>Učte se rychleji, ne déle</h1>
+            <p>Průvodce rychločtením pro moderního studenta. V dnešní informační době je schopnost rychle zpracovat text klíčovou dovedností. Objevte, jak vám rychločtení může ušetřit desítky hodin studia, zlepšit porozumění a snížit stres před zkouškami.</p>
+            <div class="flex-center gap-2 mt-3">
+                <a href="#testy" class="btn-reading-primary">Otestovat rychlost</a>
+                <a href="#techniky" class="btn-reading-secondary">Naučit se techniky</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Why Speed Reading Section -->
+    <section id="proc-rychlocteni" class="section">
+        <div class="container">
+            <h2 class="section-title">Více než jen rychlost: Skutečné výhody pro vaše studium</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <h3 class="section-subtitle">⏰ Úspora času</h3>
+                    <p>Zvládněte povinnou četbu za zlomek času a získejte více prostoru pro opakování nebo volný čas. Průměrný student ušetří 2-3 hodiny denně.</p>
+                </div>
+                <div class="card">
+                    <h3 class="section-subtitle">🎯 Zlepšení soustředění</h3>
+                    <p>Aktivní techniky rychločtení nutí mozek být neustále v pozoru a omezují myšlenkové bloudění. Výsledkem je vyšší koncentrace.</p>
+                </div>
+                <div class="card">
+                    <h3 class="section-subtitle">🧠 Lepší porozumění a paměť</h3>
+                    <p>Naučíte se identifikovat klíčové myšlenky a strukturu textu, což vede k efektivnějšímu ukládání informací do dlouhodobé paměti.</p>
+                </div>
+                <div class="card">
+                    <h3 class="section-subtitle">😌 Snížení stresu</h3>
+                    <p>Pocit, že máte své studijní materiály pod kontrolou, je k nezaplacení. Méně stresu znamená lepší výsledky.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scientific Foundation Section -->
+    <section id="veda" class="section section-gray">
+        <div class="container">
+            <h2 class="section-title">Jak to funguje? Věda za rychlým čtením</h2>
+
+            <div class="card-grid">
+                <div class="card">
+                    <h3 class="section-subtitle">🧬 Neurověda: Trénink pro váš mozek a oči</h3>
+                    <p>Rychločtení není magie, ale trénink efektivních očních pohybů (tzv. <strong>sakád</strong>). Místo čtení slovo po slovu se učíte vnímat skupiny slov (<strong>chunky</strong>) najednou.</p>
+
+                    <div class="info-box">
+                        <h4><strong>Klíčové mozkové oblasti při rychločtení:</strong></h4>
+                        <ul>
+                            <li><strong>VWFA (Visual Word Form Area)</strong> - rozpoznávání slov</li>
+                            <li><strong>Parietální kůra</strong> - řízení očních pohybů</li>
+                            <li><strong>Frontální oblasti</strong> - prediktivní čtení</li>
+                        </ul>
+                    </div>
+
+                    <p>Váš mozek má obrovskou kapacitu pro zpracování vizuálních informací. Cílem je "krmit" ho informacemi rychleji, aby se nenudil a neodbíhal.</p>
+                </div>
+
+                <div class="card">
+                    <h3 class="section-subtitle">🧠 Neuroplasticita a trénink</h3>
+                    <p>Intenzivní trénink rychločtení vyvolává měřitelné změny v mozku už po 6 týdnech:</p>
+
+                    <div class="formula-box">
+                        <h4><strong>Vědecké poznatky:</strong></h4>
+                        <ul>
+                            <li>Zlepšení myelinace o ~10% (rychlejší přenos signálů)</li>
+                            <li>Zvýšení dendritické hustoty ve VWFA</li>
+                            <li>Přestavba fronto-parietální konektivity</li>
+                        </ul>
+
+                        <p class="mt-2"><strong>Optimální trénink:</strong> 15 min / 2× denně > dlouhé bloky >45 min</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3 class="section-subtitle">⚡ Kognitivní psychologie: Překonání brzd</h3>
+                    <p>Největší brzdou je <strong>subvokalizace</strong> – tichý hlas v hlavě, který "říká" každé slovo.</p>
+
+                    <div class="warning-box">
+                        <h4><strong>Rychlostní limity:</strong></h4>
+                        <ul>
+                            <li>Mluvená řeč: 200-250 slov/min</li>
+                            <li>Kapacita mozku: 600+ slov/min</li>
+                            <li>Cíl rychločtení: 400-600 slov/min s 75%+ porozuměním</li>
+                        </ul>
+                    </div>
+
+                    <p>Další brzdou je <strong>regrese</strong> – zbytečné vracení se v textu. Tréninkem a zvýšením soustředění se tento zlozvyk dá výrazně omezit.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Techniques Section -->
+    <section id="techniky" class="section">
+        <div class="container">
+            <h2 class="section-title">Jeden styl nestačí: Přizpůsobte techniku typu textu</h2>
+
+            <div class="card-grid">
+                <div class="card">
+                    <h3 class="section-subtitle">📚 Učebnice a skripta: Hledání struktury</h3>
+                    <p><strong>Technika:</strong> Přehledové čtení (Skimming)</p>
+
+                    <div class="practice-box">
+                        <h4><strong>Postup:</strong></h4>
+                        <ol>
+                            <li>Projděte si obsah a názvy kapitol</li>
+                            <li>Přečtěte nadpisy a podnadpisy</li>
+                            <li>Všimněte si tučně zvýrazněných slov</li>
+                            <li>Prohlédněte grafy a obrázky</li>
+                            <li>Přečtěte shrnutí na konci kapitoly</li>
+                            <li>Teprve pak se ponořte do detailů</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3 class="section-subtitle">🔬 Vědecké články: Extrakce podstatného</h3>
+                    <p><strong>Technika:</strong> Strategické čtení (model IMRAD)</p>
+
+                    <div class="practice-box">
+                        <h4><strong>Postup IMRAD:</strong></h4>
+                        <ol>
+                            <li><strong>Abstrakt:</strong> Přečtěte celý - určí relevanci</li>
+                            <li><strong>Závěr:</strong> Hlavní zjištění a interpretace</li>
+                            <li><strong>Úvod:</strong> Rychle pro kontext</li>
+                            <li><strong>Metodika/Výsledky:</strong> Pouze skenování dat a grafů</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3 class="section-subtitle">⚙️ Technická dokumentace: Cílené vyhledávání</h3>
+                    <p><strong>Technika:</strong> Vyhledávací čtení (Scanning)</p>
+
+                    <div class="practice-box">
+                        <h4><strong>Postup:</strong></h4>
+                        <p>Víte, co hledáte (klíčové slovo, definici, parametr). Vaše oči aktivně přeskakují text a hledají vizuální "kotvy" – čísla, velká písmena, specifické termíny.</p>
+                        <p><strong>Tip:</strong> Nečtěte věty, ale filtrujte obsah podle vizuálních znaků.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Core Techniques -->
+            <h3 class="section-subtitle text-center mt-3">Základní techniky rychločtení</h3>
+
+            <div class="card-grid">
+                <div class="card">
+                    <h4><strong>1. Eliminace subvokalizace</strong></h4>
+                    <p>Subvokalizace je největší překážkou - omezuje na rychlost mluvení.</p>
+
+                    <div class="info-box">
+                        <h5><strong>Techniky:</strong></h5>
+                        <ul>
+                            <li><strong>Ukazatel:</strong> Pohybujte prstem pod textem</li>
+                            <li><strong>Žvýkačka:</strong> Zaměstnejte řečové svaly</li>
+                            <li><strong>Počítání:</strong> V duchu počítejte 1-2-3-4...</li>
+                        </ul>
+                    </div>
+
+                    <div class="formula-box">
+                        <h5><strong>Rychlost čtení:</strong></h5>
+                        <p>WPM = počet slov / čas [min]</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h4><strong>2. Rozšiřování zrakového rozpětí</strong></h4>
+                    <p>Naučte se vnímat skupiny slov najednou místo slova po slovu.</p>
+
+                    <div class="practice-box">
+                        <h5><strong>Cvičení 3-2-1:</strong></h5>
+                        <ol>
+                            <li>Začněte s třísloupcovým textem</li>
+                            <li>Fixujte pohled pouze 2× na řádek</li>
+                            <li>Postupně přejděte na 1 fixaci uprostřed</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h4><strong>3. Minimalizace regresí</strong></h4>
+                    <p>Omezte zbytečné vracení se v textu koncentrovaným pohybem vpřed.</p>
+
+                    <div class="practice-box">
+                        <h5><strong>Techniky:</strong></h5>
+                        <ul>
+                            <li>Používejte ukazovátko pouze vpřed</li>
+                            <li>Nastavte si mentální "zákaz návratu"</li>
+                            <li>Důvěřujte své paměti - většinou si pamatujete více, než si myslíte</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Tests Section -->
+    <section id="testy" class="section section-gray">
+        <div class="container">
+            <h2 class="section-title">Zjistěte, jak na tom jste: Otestujte svou rychlost a porozumění</h2>
+
+            <!-- Speed Test -->
+            <div class="interactive-container">
+                <h3 class="section-subtitle">📊 Test rychlosti čtení</h3>
+                <p>Přečtěte si následující text přirozenou rychlostí. Klikněte na "Start" před začátkem a na "Hotovo" ihned po dočtení.</p>
+
+                <div class="reading-text" id="reading-text">
+                    <p>Rychločtení je systematický soubor technik, které zvyšují rychlost zpracování textu při zachování nebo dokonce zlepšení porozumění. Není to o přeskakování slov, ale o efektivnějším a koncentrovanějším přístupu k textu. Pro studenty technických oborů je rychločtení obzvláště důležité, protože musí zpracovat obrovské množství informací – odborné články, normy, skripta, dokumentace k zařízením.</p>
+
+                    <p>Vědecký výzkum ukazuje, že rychločtení aktivuje specifické mozkové sítě. Vizuální oblasti V1 a V2 se podílejí na primárním zrakovém zpracování písmen. VWFA (Visual Word Form Area) v levém fusiformním gyru specificky reaguje na grafémy. Dorsální "oční" smyčka propojuje parietální kůru se sekundární zrakovou kůrou a moduluje sakády a fixace.</p>
+
+                    <p>Trénink rychločtení vyvolává měřitelné neuroplastické změny. Po šesti týdnech intenzivního cvičení se zlepšuje myelinace dlouhých drah o přibližně deset procent, což znamená rychlejší přenos nervových signálů. Zvyšuje se dendritická hustota ve VWFA a přestavuje se fronto-parietální konektivita, což vede k lepšímu řízení pozornosti.</p>
+
+                    <p>Největší překážkou rychlého čtení je subvokalizace - vnitřní vyslovování slov při čtení. Tento návyk omezuje rychlost čtení na rychlost mluvení, což je přibližně 200-250 slov za minutu. Mozek však dokáže zpracovat informace mnohem rychleji, až 600 a více slov za minutu při zachování dobrého porozumění.</p>
+
+                    <p>Pro efektivní studium je klíčové přizpůsobit techniku čtení typu textu. U učebnic a skript se osvědčuje přehledové čtení - nejprve si projdeme obsah, nadpisy, grafy a shrnutí. U vědeckých článků používáme strategické čtení podle modelu IMRAD - abstrakt, závěr, úvod a teprve pak metodiku s výsledky. Technickou dokumentaci čteme pomocí cíleného vyhledávání specifických informací.</p>
+                </div>
+
+                <div class="flex-center gap-2 mt-2">
+                    <button id="start-reading-test" class="btn-reading-primary">Start</button>
+                    <button id="stop-reading-test" class="btn-reading-secondary" disabled>Hotovo</button>
+                </div>
+
+                <div id="reading-result" class="mt-2 text-center hidden">
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-value" id="wpm-result">0</div>
+                            <div class="stat-label">slov za minutu</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value" id="time-result">0</div>
+                            <div class="stat-label">sekund</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value" id="level-result">Začátečník</div>
+                            <div class="stat-label">úroveň</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Comprehension Test -->
+            <div class="interactive-container">
+                <h3 class="section-subtitle">🎯 Test porozumění</h3>
+                <p>Nyní bez nahlížení do textu odpovězte na následující otázky:</p>
+
+                <form id="comprehension-test">
+                    <div class="card mt-2">
+                        <h4>1. Jaký je přibližný počet slov za minutu, který dokáže zpracovat mozek?</h4>
+                        <label><input type="radio" name="q1" value="a"> 200-250</label><br>
+                        <label><input type="radio" name="q1" value="b"> 400-500</label><br>
+                        <label><input type="radio" name="q1" value="c"> 600+</label><br>
+                        <label><input type="radio" name="q1" value="d"> 1000+</label>
+                    </div>
+
+                    <div class="card mt-2">
+                        <h4>2. Co je VWFA?</h4>
+                        <label><input type="radio" name="q2" value="a"> Rychlost čtení</label><br>
+                        <label><input type="radio" name="q2" value="b"> Visual Word Form Area</label><br>
+                        <label><input type="radio" name="q2" value="c"> Techniku rychločtení</label><br>
+                        <label><input type="radio" name="q2" value="d"> Typ dokumentu</label>
+                    </div>
+
+                    <div class="card mt-2">
+                        <h4>3. O kolik procent se zlepší myelinace po 6 týdnech tréninku?</h4>
+                        <label><input type="radio" name="q3" value="a"> 5%</label><br>
+                        <label><input type="radio" name="q3" value="b"> 10%</label><br>
+                        <label><input type="radio" name="q3" value="c"> 15%</label><br>
+                        <label><input type="radio" name="q3" value="d"> 20%</label>
+                    </div>
+
+                    <div class="card mt-2">
+                        <h4>4. Co znamená IMRAD model?</h4>
+                        <label><input type="radio" name="q4" value="a"> Techniku pro čtení učebnic</label><br>
+                        <label><input type="radio" name="q4" value="b"> Model pro čtení vědeckých článků</label><br>
+                        <label><input type="radio" name="q4" value="c"> Způsob měření rychlosti</label><br>
+                        <label><input type="radio" name="q4" value="d"> Typ subvokalizace</label>
+                    </div>
+
+                    <div class="card mt-2">
+                        <h4>5. Jak často by měl být ideálně trénink rychločtení?</h4>
+                        <label><input type="radio" name="q5" value="a"> 1× denně dlouho</label><br>
+                        <label><input type="radio" name="q5" value="b"> 15 min / 2× denně</label><br>
+                        <label><input type="radio" name="q5" value="c"> Pouze o víkendech</label><br>
+                        <label><input type="radio" name="q5" value="d"> Jednou týdně</label>
+                    </div>
+
+                    <button type="button" id="evaluate-comprehension" class="btn-reading-primary mt-2">Vyhodnotit</button>
+                </form>
+
+                <div id="comprehension-result" class="mt-2 hidden">
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-value" id="comprehension-score">0%</div>
+                            <div class="stat-label">porozumění</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value" id="efficiency-score">0</div>
+                            <div class="stat-label">efektivita</div>
+                        </div>
+                    </div>
+                    <div id="comprehension-feedback" class="info-box mt-2"></div>
+                </div>
+            </div>
+
+            <!-- Visual Span Exercise -->
+            <div class="interactive-container">
+                <h3 class="section-subtitle">👁️ Cvičení zrakového rozpětí</h3>
+                <p>Sledujte zvýrazněná slova a snažte se vnímat celé skupiny najednou:</p>
+
+                <div class="flex-center gap-2 mb-2">
+                    <label>Slov na fixaci:</label>
+                    <input type="range" id="words-per-fixation" min="1" max="7" value="3" style="width: 200px;">
+                    <span id="fixation-value">3</span>
+                </div>
+
+                <div class="reading-text" id="span-exercise-text" style="height: 200px;">
+                    <!-- Text will be populated by JavaScript -->
+                </div>
+
+                <div class="flex-center gap-2">
+                    <button id="start-span-exercise" class="btn-reading-primary">Start cvičení</button>
+                    <button id="stop-span-exercise" class="btn-reading-secondary">Stop</button>
+                </div>
+
+                <canvas id="span-progress-chart" width="400" height="200" class="mt-2" style="max-width: 100%;"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <!-- Field-Specific Strategies Section -->
+    <section id="obory" class="section">
+        <div class="container">
+            <h2 class="section-title">Rychločtení v praxi: Tipy na míru vašemu oboru</h2>
+            <p class="text-center mb-3">Každý obor má své specifické nároky na čtení. Přizpůsobte si techniky podle typu materiálů, se kterými pracujete.</p>
+
+            <div class="card-grid">
+                <div class="card">
+                    <h3 class="section-subtitle">🎭 Humanitní a sociální vědy</h3>
+                    <p><em>Filozofie, Historie, Sociologie, Psychologie</em></p>
+
+                    <div class="practice-box">
+                        <h4><strong>Klíčové strategie:</strong></h4>
+                        <ul>
+                            <li>Rychločtení pro sekundární literaturu a přehled</li>
+                            <li>Analytické čtení pro primární zdroje</li>
+                            <li>Důraz na argumentaci a logické struktury</li>
+                            <li>Mapování autorských pozic před detailním čtením</li>
+                        </ul>
+                    </div>
+
+                    <div class="info-box">
+                        <p><strong>Tip:</strong> Použijte rychlé čtení k získání kontextu, pak zpomalte na klíčových pasážích s argumenty.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3 class="section-subtitle">🔬 Přírodní vědy a medicína</h3>
+                    <p><em>Biologie, Chemie, Fyzika, Lékařství</em></p>
+
+                    <div class="practice-box">
+                        <h4><strong>Klíčové strategie:</strong></h4>
+                        <ul>
+                            <li>Skenování grafů a tabulek pro rychlé trends</li>
+                            <li>Zpomalení u vzorců a metodických postupů</li>
+                            <li>Rychločtení teoretických úvodů</li>
+                            <li>Zaměření na čísla, jednotky a přesné hodnoty</li>
+                        </ul>
+                    </div>
+
+                    <div class="warning-box">
+                        <p><strong>Pozor:</strong> U popisů experimentů a vzorců vždy zpomalte - přesnost je klíčová.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3 class="section-subtitle">💻 Technické obory a IT</h3>
+                    <p><em>Informatika, Strojírenství, Elektrotechnika</em></p>
+
+                    <div class="practice-box">
+                        <h4><strong>Klíčové strategie:</strong></h4>
+                        <ul>
+                            <li>Skenování dokumentací a manuálů</li>
+                            <li>Rychlé hledání příkladů kódu a syntaxe</li>
+                            <li>Filtrování podle vizuálních znaků (závorky, operátory)</li>
+                            <li>Rychločtení blogů a článků o nových technologiích</li>
+                        </ul>
+                    </div>
+
+                    <div class="info-box">
+                        <p><strong>Tip:</strong> Využijte Ctrl+F pro rychlé vyhledávání funkcí a parametrů v dlouhých dokumentacích.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3 class="section-subtitle">⚖️ Právo a ekonomie</h3>
+                    <p><em>Právní texty, Ekonomické analýzy, Business</em></p>
+
+                    <div class="practice-box">
+                        <h4><strong>Klíčové strategie:</strong></h4>
+                        <ul>
+                            <li>Strukturální analýza zákonů a rozsudků</li>
+                            <li>Rychlé získání přehledu o případech</li>
+                            <li>Identifikace klíčových paragrafů a precedentů</li>
+                            <li>Extrakce hypotéz a závěrů z ekonomických studií</li>
+                        </ul>
+                    </div>
+
+                    <div class="formula-box">
+                        <p><strong>IMRAD pro ekonomické studie:</strong> Abstrakt → Závěry → Hypotézy → Data a metodika</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Habits and Routines Section -->
+    <section id="navyky" class="section section-gray">
+        <div class="container">
+            <h2 class="section-title">Jak si udržet a dále zlepšovat své dovednosti</h2>
+
+            <div class="card-grid">
+                <div class="card">
+                    <h3 class="section-subtitle">📅 Pravidelný trénink</h3>
+                    <div class="practice-box">
+                        <h4><strong>Optimální rozvrh:</strong></h4>
+                        <ul>
+                            <li><strong>Denně:</strong> 15-20 minut</li>
+                            <li><strong>Frekvence:</strong> 2× denně je lepší než 1× dlouho</li>
+                            <li><strong>Postupnost:</strong> Začněte jednoduchými texty</li>
+                            <li><strong>Důslednost:</strong> Konzistence > intenzita</li>
+                        </ul>
+                    </div>
+
+                    <div class="info-box">
+                        <p><strong>Vědecký základ:</strong> Kratší, častější seance vyvolají robustnější LTP (Long-Term Potentiation) než dlouhé bloky.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3 class="section-subtitle">🎯 Účelné čtení</h3>
+                    <div class="practice-box">
+                        <h4><strong>Před každým čtením si položte otázky:</strong></h4>
+                        <ul>
+                            <li>Co se z tohoto textu potřebuji dozvědět?</li>
+                            <li>Jak podrobně potřebuji informace zpracovat?</li>
+                            <li>Mám na to dostatek času nebo potřebuji jen přehled?</li>
+                            <li>Kde pravděpodobně najdu klíčové informace?</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3 class="section-subtitle">👆 Používejte ukazovátko</h3>
+                    <p>Nejjednodušší a nejúčinnější technika pro okamžité zlepšení.</p>
+
+                    <div class="practice-box">
+                        <h4><strong>Možnosti ukazovátek:</strong></h4>
+                        <ul>
+                            <li><strong>Prst:</strong> Vždy k dispozici</li>
+                            <li><strong>Tužka/pero:</strong> Přesnější vedení</li>
+                            <li><strong>Kurzor myši:</strong> Pro digitální texty</li>
+                            <li><strong>Bílý papír:</strong> Zakrývání řádků pod textem</li>
+                        </ul>
+                    </div>
+
+                    <div class="warning-box">
+                        <p><strong>Pozor:</strong> Ukazovátko vede pohyb očí, ne naopak. Udržujte konstantní rychlost.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3 class="section-subtitle">🔇 Eliminace rušivých vlivů</h3>
+                    <div class="practice-box">
+                        <h4><strong>Checklist pro ideální prostředí:</strong></h4>
+                        <ul>
+                            <li>📱 Vypnuté notifikace</li>
+                            <li>🎵 Bez hudby s texty</li>
+                            <li>💡 Dostatečné světlo</li>
+                            <li>🪑 Pohodlné sezení</li>
+                            <li>🌡️ Optimální teplota (20-22°C)</li>
+                        </ul>
+                    </div>
+
+                    <div class="formula-box">
+                        <h4><strong>Koncentrace a výkon:</strong></h4>
+                        <p>Výkon = Dovednost × Koncentrace²</p>
+                        <p>Koncentrace má exponenciální vliv na výsledek!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Digital Tools Section -->
+    <section id="nastroje" class="section">
+        <div class="container">
+            <h2 class="section-title">Váš digitální trenér: Aplikace a nástroje</h2>
+
+            <div class="interactive-container">
+                <h3 class="section-subtitle">🛠️ Doporučené nástroje a aplikace</h3>
+
+                <div style="overflow-x: auto;">
+                    <table style="width: 100%; border-collapse: collapse; margin: 2rem 0;">
+                        <thead>
+                            <tr style="background: var(--primary-color); color: white;">
+                                <th style="padding: 1rem; border: 1px solid #ddd;">Nástroj</th>
+                                <th style="padding: 1rem; border: 1px solid #ddd;">Typ</th>
+                                <th style="padding: 1rem; border: 1px solid #ddd;">Klíčová funkce</th>
+                                <th style="padding: 1rem; border: 1px solid #ddd;">Cena</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="padding: 1rem; border: 1px solid #ddd;"><strong>Spreeder</strong></td>
+                                <td style="padding: 1rem; border: 1px solid #ddd;">Webová aplikace</td>
+                                <td style="padding: 1rem; border: 1px solid #ddd;">RSVP - zobrazuje slova jedno po druhém na stejném místě</td>
+                                <td style="padding: 1rem; border: 1px solid #ddd;">Zdarma</td>
+                            </tr>
+                            <tr style="background: var(--background-light);">
+                                <td style="padding: 1rem; border: 1px solid #ddd;"><strong>Readsy</strong></td>
+                                <td style="padding: 1rem; border: 1px solid #ddd;">Online nástroj</td>
+                                <td style="padding: 1rem; border: 1px solid #ddd;">Zkopírujte text a aplikace ho zobrazí pomocí různých technik</td>
+                                <td style="padding: 1rem; border: 1px solid #ddd;">Zdarma</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 1rem; border: 1px solid #ddd;"><strong>BeeLine Reader</strong></td>
+                                <td style="padding: 1rem; border: 1px solid #ddd;">Rozšíření prohlížeče</td>
+                                <td style="padding: 1rem; border: 1px solid #ddd;">Barevné gradienty pro snadnější sledování řádků</td>
+                                <td style="padding: 1rem; border: 1px solid #ddd;">Částečně zdarma</td>
+                            </tr>
+                            <tr style="background: var(--background-light);">
+                                <td style="padding: 1rem; border: 1px solid #ddd;"><strong>Kindle/Pocket</strong></td>
+                                <td style="padding: 1rem; border: 1px solid #ddd;">Čtecí aplikace</td>
+                                <td style="padding: 1rem; border: 1px solid #ddd;">Upravitelný font a šířka sloupce pro rychlejší čtení</td>
+                                <td style="padding: 1rem; border: 1px solid #ddd;">Zdarma</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 1rem; border: 1px solid #ddd;"><strong>Notion/Obsidian</strong></td>
+                                <td style="padding: 1rem; border: 1px solid #ddd;">Poznámkové aplikace</td>
+                                <td style="padding: 1rem; border: 1px solid #ddd;">Propojte rychločtení s aktivním učením a poznámkami</td>
+                                <td style="padding: 1rem; border: 1px solid #ddd;">Freemium</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="card-grid mt-3">
+                <div class="card">
+                    <h3 class="section-subtitle">🎮 RSVP trenéry</h3>
+                    <p><strong>Rapid Serial Visual Presentation</strong> - slova se zobrazují jedno po druhém na stejném místě.</p>
+
+                    <div class="info-box">
+                        <h4><strong>Výhody RSVP:</strong></h4>
+                        <ul>
+                            <li>Eliminuje sakády (pohyby očí)</li>
+                            <li>Potlačuje subvokalizaci</li>
+                            <li>Nuceně zvyšuje tempo</li>
+                            <li>Ideální pro krátké texty a novinové články</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3 class="section-subtitle">📖 Optimalizace čtecích aplikací</h3>
+                    <p>Jednoduché úpravy, které zvýší rychlost až o 20%:</p>
+
+                    <div class="practice-box">
+                        <h4><strong>Nastavení pro rychlé čtení:</strong></h4>
+                        <ul>
+                            <li><strong>Font:</strong> Sans-serif (Arial, Calibri)</li>
+                            <li><strong>Velikost:</strong> 12-14pt pro desktop</li>
+                            <li><strong>Řádkování:</strong> 1.2-1.4</li>
+                            <li><strong>Šířka sloupce:</strong> 50-70 znaků</li>
+                            <li><strong>Kontrast:</strong> Černý text na bílém pozadí</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3 class="section-subtitle">🤖 AI asistenti pro shrnutí</h3>
+                    <p>Využijte AI pro předběžné zpracování dlouhých textů:</p>
+
+                    <div class="info-box">
+                        <h4><strong>Užitečné AI nástroje:</strong></h4>
+                        <ul>
+                            <li><strong>ChatGPT/Claude:</strong> Shrnutí článků</li>
+                            <li><strong>Perplexity:</strong> Výzkum a zdroje</li>
+                            <li><strong>Scholarcy:</strong> Specializace na akademické texty</li>
+                            <li><strong>SummarizeBot:</strong> Automatické shrnutí PDF</li>
+                        </ul>
+                    </div>
+
+                    <div class="warning-box">
+                        <p><strong>Pozor:</strong> AI shrnutí použijte jako orientaci, ne jako náhradu za čtení originálu!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gamification and Progress Section -->
+    <section id="gamifikace" class="section section-gray">
+        <div class="container">
+            <h2 class="section-title">Sledování pokroku a motivace</h2>
+
+            <!-- User Stats Dashboard -->
+            <div class="interactive-container">
+                <h3 class="section-subtitle">📊 Váš pokrok</h3>
+                <div id="user-dashboard">
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-value" id="total-sessions">0</div>
+                            <div class="stat-label">Celkem sezení</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value" id="avg-wpm">0</div>
+                            <div class="stat-label">Průměrná rychlost</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value" id="avg-comprehension">0%</div>
+                            <div class="stat-label">Průměrné porozumění</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value" id="current-streak">0</div>
+                            <div class="stat-label">Aktuální série</div>
+                        </div>
+                    </div>
+
+                    <div class="mt-3">
+                        <h4>Aktuální úroveň: <span id="current-level">Začátečník</span></h4>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="level-progress" style="width: 0%"></div>
+                        </div>
+                        <p class="text-center mt-1">XP: <span id="current-xp">0</span> / <span id="next-level-xp">100</span></p>
+                    </div>
+                </div>
+
+                <div class="mt-3">
+                    <h4>Získané odznaky:</h4>
+                    <div id="badges-container">
+                        <p class="text-center">Zatím žádné odznaky. Začněte cvičit!</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Progress Chart -->
+            <div class="interactive-container">
+                <h3 class="section-subtitle">📈 Graf pokroku</h3>
+                <canvas id="progress-chart" width="400" height="200" style="max-width: 100%;"></canvas>
+            </div>
+
+            <!-- Achievements System -->
+            <div class="card-grid mt-3">
+                <div class="card">
+                    <h3 class="section-subtitle">🏆 Systém dosažení</h3>
+
+                    <div class="practice-box">
+                        <h4><strong>Rychlostní odznaky:</strong></h4>
+                        <ul>
+                            <li><span class="badge badge-bronze">Rychlík</span> 300+ WPM</li>
+                            <li><span class="badge badge-silver">Speedster</span> 450+ WPM 3× za sebou</li>
+                            <li><span class="badge badge-gold">Blesk</span> 600+ WPM s 80%+ porozuměním</li>
+                        </ul>
+                    </div>
+
+                    <div class="info-box">
+                        <h4><strong>Přesnostní odznaky:</strong></h4>
+                        <ul>
+                            <li><span class="badge badge-bronze">Sokol</span> Regrese <15%</li>
+                            <li><span class="badge badge-silver">Hawkeye</span> Regrese <5% ve 2 sezeních</li>
+                            <li><span class="badge badge-gold">Scholar</span> 90%+ retention po 24h</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3 class="section-subtitle">📅 Týdenní výzvy</h3>
+                    <div id="weekly-challenges">
+                        <div class="challenge-item">
+                            <h4>🎯 Aktuální výzva</h4>
+                            <p id="current-challenge">Přečtěte 5 článků s porozuměním 80%+</p>
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="challenge-progress" style="width: 0%"></div>
+                            </div>
+                            <p>Pokrok: <span id="challenge-completion">0/5</span></p>
+                        </div>
+                    </div>
+
+                    <div class="mt-2">
+                        <button id="new-challenge" class="btn-reading-secondary">Nová výzva</button>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3 class="section-subtitle">⚡ Reading Efficiency Score (RES)</h3>
+                    <p>Komplexní metrika kombinující rychlost, porozumění a čas:</p>
+
+                    <div class="formula-box">
+                        <h4><strong>Vzorec RES:</strong></h4>
+                        <p>RES = (Porozumění × WPM) / (100 × Čas [min])</p>
+                        <p>Cíl: RES > 65 = efektivní čtení</p>
+                    </div>
+
+                    <div class="stats-grid mt-2">
+                        <div class="stat-item">
+                            <div class="stat-value" id="current-res">0</div>
+                            <div class="stat-label">Aktuální RES</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value" id="best-res">0</div>
+                            <div class="stat-label">Nejlepší RES</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <h4><i class="fas fa-bolt"></i> Rychločtení pro studenty</h4>
+                    <p>Komplexní průvodce založený na vědeckých poznatcích z neurovědy a kognitivní psychologie</p>
+                </div>
+                <div class="footer-right">
+                    <p>&copy; 2024 Gymnázium Globe. Vytvořeno s ❤️ pro efektivní studium.</p>
+                    <div class="footer-links">
+                        <a href="index.html">← Zpět na hlavní stránku</a>
+                        <a href="#" onclick="scrollToTop()">⬆ Nahoru</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // ===== CORE READING TEST FUNCTIONALITY =====
+        let startTime, endTime;
+        const testWordCount = 342;
+
+        // ===== DATA MANAGEMENT AND PERSISTENCE =====
+        class ReadingDataManager {
+            constructor() {
+                this.loadData();
+            }
+
+            loadData() {
+                const saved = localStorage.getItem('readingData');
+                this.data = saved ? JSON.parse(saved) : {
+                    sessions: [],
+                    totalSessions: 0,
+                    bestWpm: 0,
+                    bestComprehension: 0,
+                    bestRES: 0,
+                    currentStreak: 0,
+                    xp: 0,
+                    level: 1,
+                    badges: [],
+                    lastSessionDate: null,
+                    challengeProgress: 0,
+                    challengeTarget: 5
+                };
+            }
+
+            saveData() {
+                localStorage.setItem('readingData', JSON.stringify(this.data));
+            }
+
+            addSession(wpm, comprehension, timeSeconds) {
+                const res = this.calculateRES(wpm, comprehension, timeSeconds / 60);
+
+                const session = {
+                    date: new Date().toISOString(),
+                    wpm: wpm,
+                    comprehension: comprehension,
+                    timeSeconds: timeSeconds,
+                    res: res
+                };
+
+                this.data.sessions.push(session);
+                this.data.totalSessions++;
+
+                // Update best scores
+                if (wpm > this.data.bestWpm) this.data.bestWpm = wpm;
+                if (comprehension > this.data.bestComprehension) this.data.bestComprehension = comprehension;
+                if (res > this.data.bestRES) this.data.bestRES = res;
+
+                // Update streak
+                this.updateStreak();
+
+                // Add XP and check for level up
+                const xpGain = Math.round(res * 2);
+                this.data.xp += xpGain;
+                this.checkLevelUp();
+
+                // Check for badges
+                this.checkBadges(wpm, comprehension, res);
+
+                // Update challenge progress
+                if (comprehension >= 80) {
+                    this.data.challengeProgress = Math.min(this.data.challengeProgress + 1, this.data.challengeTarget);
+                }
+
+                this.saveData();
+                this.updateDashboard();
+
+                return { xpGain, session };
+            }
+
+            calculateRES(wpm, comprehension, timeMinutes) {
+                return Math.round((comprehension * wpm) / (100 * timeMinutes));
+            }
+
+            updateStreak() {
+                const today = new Date().toDateString();
+                if (this.data.lastSessionDate === today) {
+                    return; // Already had session today
+                }
+
+                const yesterday = new Date();
+                yesterday.setDate(yesterday.getDate() - 1);
+
+                if (this.data.lastSessionDate === yesterday.toDateString()) {
+                    this.data.currentStreak++;
+                } else if (this.data.lastSessionDate !== today) {
+                    this.data.currentStreak = 1;
+                }
+
+                this.data.lastSessionDate = today;
+            }
+
+            checkLevelUp() {
+                const xpNeeded = this.data.level * 100;
+                if (this.data.xp >= xpNeeded) {
+                    this.data.level++;
+                    this.showNotification(`🎉 Gratulujeme! Dosáhli jste úrovně ${this.data.level}!`, 'success');
+                }
+            }
+
+            checkBadges(wpm, comprehension, res) {
+                const newBadges = [];
+
+                // Speed badges
+                if (wpm >= 300 && !this.data.badges.includes('rychlik')) {
+                    newBadges.push('rychlik');
+                }
+                if (wpm >= 450 && !this.data.badges.includes('speedster')) {
+                    const recentSessions = this.data.sessions.slice(-3);
+                    if (recentSessions.length === 3 && recentSessions.every(s => s.wpm >= 450)) {
+                        newBadges.push('speedster');
+                    }
+                }
+                if (wpm >= 600 && comprehension >= 80 && !this.data.badges.includes('blesk')) {
+                    newBadges.push('blesk');
+                }
+
+                // Accuracy badges
+                if (comprehension >= 90 && !this.data.badges.includes('scholar')) {
+                    newBadges.push('scholar');
+                }
+
+                // Streak badges
+                if (this.data.currentStreak >= 7 && !this.data.badges.includes('consistent')) {
+                    newBadges.push('consistent');
+                }
+
+                // RES badges
+                if (res >= 65 && !this.data.badges.includes('efficient')) {
+                    newBadges.push('efficient');
+                }
+
+                newBadges.forEach(badge => {
+                    this.data.badges.push(badge);
+                    this.showNotification(`🏆 Nový odznak: ${this.getBadgeName(badge)}!`, 'success');
+                });
+            }
+
+            getBadgeName(badge) {
+                const names = {
+                    'rychlik': 'Rychlík',
+                    'speedster': 'Speedster',
+                    'blesk': 'Blesk',
+                    'scholar': 'Scholar',
+                    'consistent': 'Vytrvalý',
+                    'efficient': 'Efektivní'
+                };
+                return names[badge] || badge;
+            }
+
+            showNotification(message, type = 'info') {
+                const notification = document.createElement('div');
+                notification.style.cssText = `
+                    position: fixed; top: 20px; right: 20px; z-index: 9999;
+                    padding: 1rem 1.5rem; border-radius: 8px; color: white;
+                    background: ${type === 'success' ? 'var(--secondary-color)' : 'var(--primary-color)'};
+                    box-shadow: var(--shadow); max-width: 300px;
+                `;
+                notification.textContent = message;
+
+                document.body.appendChild(notification);
+
+                setTimeout(() => {
+                    notification.remove();
+                }, 5000);
+            }
+
+            updateDashboard() {
+                // Update stats
+                const totalSessionsEl = document.getElementById('total-sessions');
+                const currentStreakEl = document.getElementById('current-streak');
+
+                if (totalSessionsEl) totalSessionsEl.textContent = this.data.totalSessions;
+                if (currentStreakEl) currentStreakEl.textContent = this.data.currentStreak;
+
+                // Calculate averages
+                if (this.data.sessions.length > 0) {
+                    const avgWpm = Math.round(this.data.sessions.reduce((sum, s) => sum + s.wpm, 0) / this.data.sessions.length);
+                    const avgComp = Math.round(this.data.sessions.reduce((sum, s) => sum + s.comprehension, 0) / this.data.sessions.length);
+
+                    const avgWpmEl = document.getElementById('avg-wpm');
+                    const avgCompEl = document.getElementById('avg-comprehension');
+
+                    if (avgWpmEl) avgWpmEl.textContent = avgWpm;
+                    if (avgCompEl) avgCompEl.textContent = avgComp + '%';
+                }
+
+                // Update level progress
+                const currentLevelXp = (this.data.level - 1) * 100;
+                const nextLevelXp = this.data.level * 100;
+                const progress = ((this.data.xp - currentLevelXp) / (nextLevelXp - currentLevelXp)) * 100;
+
+                const currentLevelEl = document.getElementById('current-level');
+                const levelProgressEl = document.getElementById('level-progress');
+                const currentXpEl = document.getElementById('current-xp');
+                const nextLevelXpEl = document.getElementById('next-level-xp');
+
+                if (currentLevelEl) currentLevelEl.textContent = this.getLevelName(this.data.level);
+                if (levelProgressEl) levelProgressEl.style.width = progress + '%';
+                if (currentXpEl) currentXpEl.textContent = this.data.xp;
+                if (nextLevelXpEl) nextLevelXpEl.textContent = nextLevelXp;
+
+                // Update RES scores
+                const bestResEl = document.getElementById('best-res');
+                if (bestResEl) bestResEl.textContent = this.data.bestRES;
+
+                // Update badges
+                this.updateBadgesDisplay();
+
+                // Update challenge progress
+                const challengeCompletionEl = document.getElementById('challenge-completion');
+                const challengeProgressEl = document.getElementById('challenge-progress');
+
+                if (challengeCompletionEl) challengeCompletionEl.textContent = `${this.data.challengeProgress}/${this.data.challengeTarget}`;
+                if (challengeProgressEl) challengeProgressEl.style.width = (this.data.challengeProgress / this.data.challengeTarget * 100) + '%';
+            }
+
+            getLevelName(level) {
+                const levels = ['Začátečník', 'Mírně pokročilý', 'Pokročilý', 'Velmi dobrý', 'Expert', 'Mistr', 'Guru'];
+                return levels[Math.min(level - 1, levels.length - 1)];
+            }
+
+            updateBadgesDisplay() {
+                const container = document.getElementById('badges-container');
+                if (!container) return;
+
+                container.innerHTML = '';
+
+                if (this.data.badges.length === 0) {
+                    container.innerHTML = '<p class="text-center">Zatím žádné odznaky. Začněte cvičit!</p>';
+                    return;
+                }
+
+                this.data.badges.forEach(badge => {
+                    const badgeElement = document.createElement('span');
+                    badgeElement.className = `badge badge-gold`;
+                    badgeElement.textContent = this.getBadgeName(badge);
+                    container.appendChild(badgeElement);
+                });
+            }
+        }
+
+        // Initialize data manager
+        const dataManager = new ReadingDataManager();
+
+        // ===== READING TEST EVENT HANDLERS =====
+        document.addEventListener('DOMContentLoaded', function() {
+            const startBtn = document.getElementById('start-reading-test');
+            const stopBtn = document.getElementById('stop-reading-test');
+
+            if (startBtn) {
+                startBtn.addEventListener('click', function() {
+                    startTime = new Date().getTime();
+                    this.disabled = true;
+                    if (stopBtn) stopBtn.disabled = false;
+                    const resultEl = document.getElementById('reading-result');
+                    if (resultEl) resultEl.classList.add('hidden');
+                });
+            }
+
+            if (stopBtn) {
+                stopBtn.addEventListener('click', function() {
+                    endTime = new Date().getTime();
+                    const timeSeconds = (endTime - startTime) / 1000;
+                    const timeMinutes = timeSeconds / 60;
+                    const wpm = Math.round(testWordCount / timeMinutes);
+
+                    const wpmResultEl = document.getElementById('wpm-result');
+                    const timeResultEl = document.getElementById('time-result');
+                    const levelResultEl = document.getElementById('level-result');
+
+                    if (wpmResultEl) wpmResultEl.textContent = wpm;
+                    if (timeResultEl) timeResultEl.textContent = Math.round(timeSeconds);
+
+                    let level;
+                    if (wpm < 200) level = 'Začátečník';
+                    else if (wpm < 300) level = 'Mírně pokročilý';
+                    else if (wpm < 400) level = 'Pokročilý';
+                    else if (wpm < 500) level = 'Velmi dobrý';
+                    else level = 'Expert';
+
+                    if (levelResultEl) levelResultEl.textContent = level;
+
+                    const resultEl = document.getElementById('reading-result');
+                    if (resultEl) resultEl.classList.remove('hidden');
+
+                    this.disabled = true;
+                    if (startBtn) startBtn.disabled = false;
+
+                    // Store test results for potential session save
+                    window.currentTestResults = { wpm, timeSeconds };
+                });
+            }
+
+            // ===== COMPREHENSION TEST =====
+            const evaluateBtn = document.getElementById('evaluate-comprehension');
+            if (evaluateBtn) {
+                evaluateBtn.addEventListener('click', function() {
+                    const answers = {q1: 'c', q2: 'b', q3: 'b', q4: 'b', q5: 'b'};
+                    let correct = 0;
+
+                    for (let [question, correctAnswer] of Object.entries(answers)) {
+                        const selected = document.querySelector(`input[name="${question}"]:checked`);
+                        if (selected && selected.value === correctAnswer) {
+                            correct++;
+                        }
+                    }
+
+                    const percentage = Math.round((correct / 5) * 100);
+                    const comprehensionScoreEl = document.getElementById('comprehension-score');
+                    if (comprehensionScoreEl) comprehensionScoreEl.textContent = percentage + '%';
+
+                    // Calculate RES if reading test was done
+                    const wpmResultEl = document.getElementById('wpm-result');
+                    const wpm = wpmResultEl ? parseInt(wpmResultEl.textContent) || 0 : 0;
+                    let res = 0;
+                    if (wpm > 0 && window.currentTestResults) {
+                        const timeMinutes = window.currentTestResults.timeSeconds / 60;
+                        res = Math.round((percentage * wpm) / (100 * timeMinutes));
+
+                        // Save complete session
+                        const results = dataManager.addSession(wpm, percentage, window.currentTestResults.timeSeconds);
+                        dataManager.showNotification(`+${results.xpGain} XP získáno!`, 'success');
+                    }
+
+                    const efficiencyScoreEl = document.getElementById('efficiency-score');
+                    const currentResEl = document.getElementById('current-res');
+                    if (efficiencyScoreEl) efficiencyScoreEl.textContent = res;
+                    if (currentResEl) currentResEl.textContent = res;
+
+                    let feedback = '';
+                    if (percentage >= 80) feedback = '🎉 Výborné porozumění! Můžete se soustředit na zvyšování rychlosti.';
+                    else if (percentage >= 60) feedback = '✅ Dobré porozumění. Zkuste zpomalit a soustředit se více na obsah.';
+                    else feedback = '⚠️ Porozumění by mohlo být lepší. Zkuste techniky aktivního čtení.';
+
+                    const feedbackEl = document.getElementById('comprehension-feedback');
+                    if (feedbackEl) feedbackEl.textContent = feedback;
+
+                    const resultEl = document.getElementById('comprehension-result');
+                    if (resultEl) resultEl.classList.remove('hidden');
+                });
+            }
+
+            // ===== VISUAL SPAN EXERCISE =====
+            const spanText = "Efektivní rychločtení vyžaduje systematický trénink očních pohybů a koncentrace pozornosti. Moderní neurověda potvrzuje, že lidský mozek má obrovskou kapacitu pro zpracování vizuálních informací, kterou standardní vzdělávací systém plně nevyužívá. Techniky jako eliminace subvokalizace a rozšiřování zrakového rozpětí dokážou dramaticky zvýšit rychlost čtení při zachování nebo dokonce zlepšení porozumění textu.".split(' ');
+
+            let spanExerciseInterval;
+            let spanCurrentIndex = 0;
+
+            const wordsPerFixationEl = document.getElementById('words-per-fixation');
+            const fixationValueEl = document.getElementById('fixation-value');
+
+            if (wordsPerFixationEl && fixationValueEl) {
+                wordsPerFixationEl.addEventListener('input', function() {
+                    fixationValueEl.textContent = this.value;
+                });
+            }
+
+            const startSpanBtn = document.getElementById('start-span-exercise');
+            if (startSpanBtn) {
+                startSpanBtn.addEventListener('click', function() {
+                    spanCurrentIndex = 0;
+                    const wordsPerFixation = wordsPerFixationEl ? parseInt(wordsPerFixationEl.value) : 3;
+
+                    spanExerciseInterval = setInterval(() => {
+                        const textContainer = document.getElementById('span-exercise-text');
+                        if (!textContainer) return;
+
+                        textContainer.innerHTML = '';
+
+                        spanText.forEach((word, index) => {
+                            const span = document.createElement('span');
+                            span.textContent = word + ' ';
+
+                            if (index >= spanCurrentIndex && index < spanCurrentIndex + wordsPerFixation) {
+                                span.classList.add('highlight-word');
+                            }
+
+                            textContainer.appendChild(span);
+                        });
+
+                        spanCurrentIndex += wordsPerFixation;
+                        if (spanCurrentIndex >= spanText.length) {
+                            clearInterval(spanExerciseInterval);
+                            textContainer.innerHTML = '<div class="text-center"><strong>Cvičení dokončeno! 🎉</strong></div>';
+                        }
+                    }, 1000);
+                });
+            }
+
+            const stopSpanBtn = document.getElementById('stop-span-exercise');
+            if (stopSpanBtn) {
+                stopSpanBtn.addEventListener('click', function() {
+                    clearInterval(spanExerciseInterval);
+                    const textContainer = document.getElementById('span-exercise-text');
+                    if (textContainer) {
+                        textContainer.innerHTML = '<div class="text-center">Cvičení zastaveno.</div>';
+                    }
+                });
+            }
+
+            // ===== CHALLENGE SYSTEM =====
+            const challenges = [
+                "Přečtěte 5 článků s porozuměním 80%+",
+                "Dosáhněte rychlosti 400+ WPM při 75%+ porozumění",
+                "Absolvujte 7 tréninků v řadě",
+                "Zlepšete svou průměrnou rychlost o 50 WPM",
+                "Dosáhněte RES skóre 70+",
+                "Přečtěte 10 odstavců pomocí techniky skenování",
+                "Cvičte zrakové rozpětí 15 minut denně po 3 dny"
+            ];
+
+            const newChallengeBtn = document.getElementById('new-challenge');
+            if (newChallengeBtn) {
+                newChallengeBtn.addEventListener('click', function() {
+                    const newChallenge = challenges[Math.floor(Math.random() * challenges.length)];
+                    const currentChallengeEl = document.getElementById('current-challenge');
+                    if (currentChallengeEl) currentChallengeEl.textContent = newChallenge;
+
+                    // Reset challenge progress
+                    dataManager.data.challengeProgress = 0;
+                    dataManager.data.challengeTarget = Math.floor(Math.random() * 5) + 3; // 3-7 target
+                    dataManager.saveData();
+                    dataManager.updateDashboard();
+                });
+            }
+
+            // Initialize dashboard
+            dataManager.updateDashboard();
+
+            // Render mathematics if KaTeX is available
+            if (typeof renderMathInElement !== 'undefined') {
+                renderMathInElement(document.body, {
+                    delimiters: [
+                        {left: '$$', right: '$$', display: true},
+                        {left: '$', right: '$', display: false}
+                    ]
+                });
+            }
+
+            // Show welcome message for first-time users
+            if (dataManager.data.totalSessions === 0) {
+                setTimeout(() => {
+                    dataManager.showNotification('👋 Vítejte! Začněte testem rychlosti pro získání prvních XP.', 'info');
+                }, 2000);
+            }
+        });
+
+        // Scroll to top function
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+    </script>
+</body>
+</html>
