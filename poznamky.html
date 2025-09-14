@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jak psát poznámky | Praktické aplikace fyziky a chemie</title>
+    <meta name="description" content="Kompletní průvodce efektivním psaním poznámek podle nejnovějších vědeckých poznatků pro studenty gymnázia.">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --note-primary: #3b82f6;
+            --note-secondary: #1e40af;
+            --note-accent: #f59e0b;
+            --note-success: #10b981;
+            --note-warning: #f59e0b;
+            --note-danger: #ef4444;
+        }
+
+        .note-hero {
+            background: linear-gradient(135deg, var(--note-primary) 0%, var(--note-secondary) 100%);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .note-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .note-hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .section {
+            padding: 3rem 0;
+        }
+
+        .section-gray {
+            background-color: var(--background-light);
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .main-content {
+            background: var(--background);
+            border-radius: var(--border-radius-lg);
+            padding: 2rem;
+            box-shadow: var(--shadow);
+        }
+
+        .sidebar {
+            background: var(--background);
+            border-radius: var(--border-radius-lg);
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+        }
+
+        .sidebar h3 {
+            color: var(--note-primary);
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar li {
+            margin-bottom: 0.5rem;
+        }
+
+        .sidebar a {
+            color: var(--text-light);
+            text-decoration: none;
+            padding: 0.5rem;
+            border-radius: var(--border-radius);
+            display: block;
+            transition: all 0.2s ease;
+        }
+
+        .sidebar a:hover, .sidebar a.active {
+            background: var(--note-primary);
+            color: white;
+        }
+
+        .method-card {
+            background: var(--background);
+            border-radius: var(--border-radius-lg);
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+            border-left: 4px solid var(--note-primary);
+        }
+
+        .method-card h3 {
+            color: var(--note-primary);
+            margin-bottom: 1rem;
+        }
+
+        .tip-box {
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid var(--note-primary);
+            border-radius: var(--border-radius);
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+
+        .tip-box.warning {
+            background: rgba(245, 158, 11, 0.1);
+            border-color: var(--note-warning);
+        }
+
+        .tip-box.success {
+            background: rgba(16, 185, 129, 0.1);
+            border-color: var(--note-success);
+        }
+
+        .tip-box .icon {
+            color: var(--note-primary);
+            margin-right: 0.5rem;
+        }
+
+        .tip-box.warning .icon {
+            color: var(--note-warning);
+        }
+
+        .tip-box.success .icon {
+            color: var(--note-success);
+        }
+
+        .checklist {
+            background: var(--background);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .checklist ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .checklist li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            padding: 0.5rem;
+            background: var(--background-light);
+            border-radius: var(--border-radius);
+        }
+
+        .checklist li i {
+            color: var(--note-success);
+            margin-right: 0.75rem;
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .comparison-card {
+            padding: 1.5rem;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow);
+        }
+
+        .comparison-card.good {
+            background: rgba(16, 185, 129, 0.1);
+            border: 2px solid var(--note-success);
+        }
+
+        .comparison-card.bad {
+            background: rgba(239, 68, 68, 0.1);
+            border: 2px solid var(--note-danger);
+        }
+
+        .comparison-card h4 {
+            margin-bottom: 1rem;
+        }
+
+        .comparison-card.good h4 {
+            color: var(--note-success);
+        }
+
+        .comparison-card.bad h4 {
+            color: var(--note-danger);
+        }
+
+        @media (max-width: 768px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .sidebar {
+                position: static;
+                order: -1;
+            }
+
+            .note-hero h1 {
+                font-size: 2rem;
+            }
+
+            .comparison-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="nav-brand">
+                <h1><i class="fas fa-atom"></i> Praktické aplikace fyziky a chemie</h1>
+                <p class="subtitle">Gymnázium Globe</p>
+            </div>
+            <nav class="nav">
+                <a href="index.html" class="nav-link">Domů</a>
+                <a href="index.html#about" class="nav-link">O předmětu</a>
+                <a href="index.html#topics" class="nav-link">Okruhy témat</a>
+                <a href="index.html#projects" class="nav-link">Projekty</a>
+                <a href="index.html#materials" class="nav-link">Materiály</a>
+                <a href="index.html#contact" class="nav-link">Kontakt</a>
+            </nav>
+            <div class="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="note-hero">
+        <div class="container">
+            <h1><i class="fas fa-pen-fancy"></i> Jak psát poznámky</h1>
+            <p>Architekt myšlenek: Kompletní průvodce uměním a vědou psaní poznámek</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="section">
+        <div class="container">
+            <div class="content-grid">
+                <div class="main-content">
+                    <!-- Úvod -->
+                    <section id="uvod">
+                        <h2>Úvod do efektivního psaní poznámek</h2>
+                        <p>Většina studentů přistupuje k učení neefektivně: pohodlně se usadí na přednášce a mechanicky si píšou poznámky, které si pak několikrát přečtou. Bohužel současný vědecký výzkum ukazuje, že tento přístup není optimální.</p>
+
+                        <div class="tip-box">
+                            <i class="fas fa-lightbulb icon"></i>
+                            <strong>Klíčové pozorování:</strong> Jak si děláte poznámky je důležitější než co si zapisujete. Nejlepší metody optimalizují především funkci kódování, která aktivně zapojuje čtenáře do obsahu.
+                        </div>
+
+                        <div class="checklist">
+                            <h3>Základní tipy pro efektivní psaní poznámek</h3>
+                            <ul>
+                                <li><i class="fas fa-check"></i> <strong>Pište vlastními slovy:</strong> Pomáhá lépe formulovat myšlenky a porozumět látce</li>
+                                <li><i class="fas fa-check"></i> <strong>Používejte zkratky a symboly:</strong> Zrychluje psaní a zjednodušuje zápis</li>
+                                <li><i class="fas fa-check"></i> <strong>Buďte struční a výstižní:</strong> Vyhněte se zbytečným detailům</li>
+                                <li><i class="fas fa-check"></i> <strong>Pravidelně se k poznámkám vracejte:</strong> Umožňuje opakování a upevňování</li>
+                                <li><i class="fas fa-check"></i> <strong>Využívejte vizualizaci:</strong> Obrázky, schémata a grafy pomáhají paměti</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <!-- Dvě funkce poznámek -->
+                    <section id="funkce">
+                        <h2>Dvě základní funkce poznámek</h2>
+                        <div class="method-card">
+                            <h3><i class="fas fa-brain"></i> Funkce kódování (Encoding)</h3>
+                            <p>Všechny mentální operace během psaní: naslouchání, výběr, parafráze, vytváření vztahů. Hlubší zpracování → silnější paměťová stopa.</p>
+                        </div>
+
+                        <div class="method-card">
+                            <h3><i class="fas fa-archive"></i> Funkce externího úložiště (Storing)</h3>
+                            <p>Fyzický/digitální záznam, ke kterému se lze vracet a procvičovat si jej. Umožňuje opakované vybavování (retrieval practice).</p>
+                        </div>
+
+                        <div class="tip-box success">
+                            <i class="fas fa-info-circle icon"></i>
+                            <strong>Praktický důsledek:</strong> Pokud poznámky nikdy nereviduješ, využíváš jen encoding; pokud je pouze opisuješ a pak opakovaně čteš, spoléháš jen na storing. Silný výsledek vzniká kombinací obou.
+                        </div>
+                    </section>
+
+                    <!-- Generativní vs. negenerativní -->
+                    <section id="generativni">
+                        <h2>Generativní vs. negenerativní psaní poznámek</h2>
+
+                        <div class="comparison-grid">
+                            <div class="comparison-card good">
+                                <h4><i class="fas fa-thumbs-up"></i> Generativní psaní</h4>
+                                <ul>
+                                    <li>Shrnování a parafrázování vlastními slovy</li>
+                                    <li>Restrukturalizace informací</li>
+                                    <li>Hlubší zpracování</li>
+                                    <li>Lepší dlouhodobé vybavování</li>
+                                    <li>Zapojení do kognitivní úlohy vyššího řádu</li>
+                                </ul>
+                            </div>
+
+                            <div class="comparison-card bad">
+                                <h4><i class="fas fa-thumbs-down"></i> Negenerativní psaní</h4>
+                                <ul>
+                                    <li>Doslovný přepis</li>
+                                    <li>Mělčí forma zpracování</li>
+                                    <li>Běžné při používání notebooku</li>
+                                    <li>Nižší efektivita učení</li>
+                                    <li>Pasivní přístup</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="tip-box warning">
+                            <i class="fas fa-exclamation-triangle icon"></i>
+                            <strong>Pozor na výjimky:</strong> Když je informací příliš mnoho a látka je komplikovaná, může se vaše pracovní paměť zahltit. V takovém případě je lepší dočasně přepisovat a poznámky upravit až později.
+                        </div>
+                    </section>
+
+                    <!-- Co rozhodně nefunguje -->
+                    <section id="chyby">
+                        <h2>Co rozhodně nefunguje?</h2>
+
+                        <div class="method-card">
+                            <h3><i class="fas fa-times-circle" style="color: var(--note-danger);"></i> Bezmyšlenkovité přepisování</h3>
+                            <p>Jakmile jen mechanicky přepisujete bez zapojení mozku, nevryjí se vám vědomosti do paměti. <strong>Řešení:</strong> Píšte vlastními slovy a přemýšlejte o souvislostech.</p>
+                        </div>
+
+                        <div class="method-card">
+                            <h3><i class="fas fa-mobile-alt" style="color: var(--note-danger);"></i> Vyrušování během psaní</h3>
+                            <p>Drobné vyrušování výrazně zpomaluje učení a zhoršuje porozumění. <strong>Řešení:</strong> Mobil do tašky, notebook offline, maximální koncentrace.</p>
+                        </div>
+
+                        <div class="method-card">
+                            <h3><i class="fas fa-book-open" style="color: var(--note-danger);"></i> Poznámky s "otevřenou knihou"</h3>
+                            <p>Čtení a současné psaní poznámek je pasivní zpracování s malým vlivem na paměť. <strong>Řešení:</strong> Nejprve přečíst celou kapitolu, pak knížku zavřít a psát poznámky z paměti.</p>
+                        </div>
+                    </section>
+
+                    <!-- Efektivní metody -->
+                    <section id="metody">
+                        <h2>Efektivní metody psaní poznámek</h2>
+
+                        <div class="method-card">
+                            <h3><i class="fas fa-print"></i> Vytisknuté slidy + vlastní poznámky</h3>
+                            <p>Vytisknuté slidy vám ušetří kognitivní kapacitu. Nemusíte přepisovat fakta a můžete se soustředit na přemýšlení. K slidům si vlastními slovy doplňujte výklad z hodiny.</p>
+
+                            <div class="tip-box">
+                                <i class="fas fa-star icon"></i>
+                                <strong>Tip:</strong> Vymyslete si vlastní symboly - například vykřičník v kruhu pro věci důležité ke zkoušce, čárku v kruhu pro věci, které se nemusíte učit.
+                            </div>
+                        </div>
+
+                        <div class="method-card">
+                            <h3><i class="fas fa-edit"></i> Předvyplněné poznámky (Guided Notes)</h3>
+                            <p>Poznámky nebo slidy, které jsou pouze částečně vyplněné. Studenti se musejí koncentrovat a doplňovat prázdná místa. Studie prokazují vysokou efektivnost této metody.</p>
+                        </div>
+
+                        <div class="method-card">
+                            <h3><i class="fas fa-project-diagram"></i> Myšlenkové mapy</h3>
+                            <p>Myšlenkové mapy zrcadlí způsob fungování mozku. Pomohou vám pochopit vztahy mezi koncepty, vidět souvislosti a vytvořit bohaté neuronové propojení.</p>
+
+                            <div class="tip-box success">
+                                <i class="fas fa-check icon"></i>
+                                <strong>Kdy tvořit:</strong> Myšlenkové mapy tvořte až po dočtení celé kapitoly nebo poslechnutí přednášky - lépe uvidíte vztahy mezi informacemi.
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Pero vs. klávesnice -->
+                    <section id="pero-klavesnice">
+                        <h2>Pero vs. klávesnice: Co říká věda?</h2>
+
+                        <div class="comparison-grid">
+                            <div class="comparison-card good">
+                                <h4><i class="fas fa-pen"></i> Psaní rukou</h4>
+                                <ul>
+                                    <li>Aktivuje rozsáhlejší vzorce mozkové konektivity</li>
+                                    <li>Vynucuje generativní proces (shrnování)</li>
+                                    <li>Žádné riziko rozptýlení</li>
+                                    <li>Silnější paměťové stopy</li>
+                                    <li>Přirozené "zábradlí" pro efektivnost</li>
+                                </ul>
+                            </div>
+
+                            <div class="comparison-card bad">
+                                <h4><i class="fas fa-laptop"></i> Psaní na klávesnici</h4>
+                                <ul>
+                                    <li>Tendence k doslovnému přepisu</li>
+                                    <li>Vysoký potenciál pro rozptýlení</li>
+                                    <li>"Daň za rozptýlení"</li>
+                                    <li>Vyžaduje více sebekázně</li>
+                                    <li>Ale: lepší organizace a prohledávatelnost</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="tip-box">
+                            <i class="fas fa-balance-scale icon"></i>
+                            <strong>Pragmatický přístup:</strong> Klíčem je přijetí generativního systému bez ohledu na nástroj. Psaní rukou poskytuje přirozené zábradlí, psaní na klávesnici vyžaduje více disciplíny.
+                        </div>
+                    </section>
+
+                    <!-- Struktura a forma -->
+                    <section id="struktura">
+                        <h2>Struktura a forma poznámek</h2>
+
+                        <div class="checklist">
+                            <h3>Pravidla pro strukturu</h3>
+                            <ul>
+                                <li><i class="fas fa-check"></i> Různé úrovně nadpisů</li>
+                                <li><i class="fas fa-check"></i> Myšlenky uspořádané podle hierarchie tématu</li>
+                                <li><i class="fas fa-check"></i> <strong>Důležité informace tučně</strong></li>
+                                <li><i class="fas fa-check"></i> <em>Příklady z praxe kurzívou</em></li>
+                                <li><i class="fas fa-check"></i> Nejasnosti podtrhněte červeně</li>
+                                <li><i class="fas fa-check"></i> Extra důležité věci zvláště zvýrazněte</li>
+                            </ul>
+                        </div>
+
+                        <div class="method-card">
+                            <h3><i class="fas fa-tools"></i> Úprava poznámek</h3>
+                            <p>Když se vrátíte domů, poznámky si uhlaďte, uspořádejte a doplňte. Zaměřte se na nejasnosti - vyhledejte další zdroje nebo se zeptejte na příští přednášce.</p>
+                        </div>
+                    </section>
+
+                    <!-- Alternativní metoda -->
+                    <section id="alternativa">
+                        <h2>Alternativní metoda: Žádné poznámky</h2>
+
+                        <div class="method-card">
+                            <h3><i class="fas fa-ear"></i> Pouze poslouchání + otázky</h3>
+                            <p>Místo poznámek si pište otázky. Celou kognitivní kapacitu věnujte poslouchání a pochopení. Vhodné zejména když máte dostatek studijních materiálů.</p>
+
+                            <div class="checklist">
+                                <h4>Otázky pro udržení pozornosti:</h4>
+                                <ul>
+                                    <li><i class="fas fa-question"></i> Proč to tak je?</li>
+                                    <li><i class="fas fa-question"></i> Proč to tak není?</li>
+                                    <li><i class="fas fa-question"></i> Jak to navazuje na předchozí učivo?</li>
+                                    <li><i class="fas fa-question"></i> Jak bych to mohl použít?</li>
+                                    <li><i class="fas fa-question"></i> Jaký příklad se k tomu pojí?</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Závěr -->
+                    <section id="zaver">
+                        <h2>Poznámkami to nekončí</h2>
+
+                        <div class="tip-box warning">
+                            <i class="fas fa-exclamation-triangle icon"></i>
+                            <strong>Důležité upozornění:</strong> Pouhé psaní poznámek vás na zkoušku nepřipraví! Důležitější než si poznámky tvořit je se z nich učit.
+                        </div>
+
+                        <div class="method-card">
+                            <h3><i class="fas fa-graduation-cap"></i> Aktivní učení z poznámek</h3>
+                            <p>Své poznámky si nečtěte pasivně. Místo toho:</p>
+                            <ul>
+                                <li>Dostávejte vědomosti z paměti</li>
+                                <li>Říkejte si, co si pamatujete</li>
+                                <li>Následně si to ověřte</li>
+                                <li>Doučte se to, co jste neuměli</li>
+                            </ul>
+                        </div>
+
+                        <div class="tip-box success">
+                            <i class="fas fa-lightbulb icon"></i>
+                            <strong>Závěrečné poznání:</strong> Neexistuje jen jeden správný způsob psaní poznámek. Záleží na tom, co se učíte, kolik toho je, a jaké máte možnosti. Volete vždy takový přístup, který je pro danou situaci nejvhodnější.
+                        </div>
+                    </section>
+                </div>
+
+                <!-- Sidebar -->
+                <div class="sidebar">
+                    <h3><i class="fas fa-list"></i> Obsah</h3>
+                    <ul>
+                        <li><a href="#uvod">Úvod</a></li>
+                        <li><a href="#funkce">Dvě funkce poznámek</a></li>
+                        <li><a href="#generativni">Generativní vs. negenerativní</a></li>
+                        <li><a href="#chyby">Co nefunguje?</a></li>
+                        <li><a href="#metody">Efektivní metody</a></li>
+                        <li><a href="#pero-klavesnice">Pero vs. klávesnice</a></li>
+                        <li><a href="#struktura">Struktura a forma</a></li>
+                        <li><a href="#alternativa">Alternativní metoda</a></li>
+                        <li><a href="#zaver">Závěr</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <h4>Praktické aplikace fyziky a chemie</h4>
+                    <p>Gymnázium Globe</p>
+                </div>
+                <div class="footer-right">
+                    <p>Školní rok 2024/2025</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Aktivní navigace v sidebaru
+        document.addEventListener('DOMContentLoaded', function() {
+            const sidebarLinks = document.querySelectorAll('.sidebar a');
+            const sections = document.querySelectorAll('section[id]');
+
+            function updateActiveSection() {
+                const scrollPosition = window.scrollY + 150;
+
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.offsetHeight;
+                    const sectionId = section.getAttribute('id');
+
+                    if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                        sidebarLinks.forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href') === `#${sectionId}`) {
+                                link.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            }
+
+            window.addEventListener('scroll', updateActiveSection);
+            updateActiveSection();
+        });
+    </script>
+</body>
+</html>
