@@ -42,42 +42,6 @@
             opacity: 0.9;
         }
 
-        /* Navigation override */
-        .reading-nav {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            box-shadow: var(--shadow);
-            padding: 1rem 0;
-        }
-
-        .reading-nav ul {
-            display: flex;
-            list-style: none;
-            justify-content: center;
-            align-items: center;
-            padding: 0;
-            flex-wrap: wrap;
-            gap: 2rem;
-            margin: 0;
-        }
-
-        .reading-nav a {
-            color: var(--text-color);
-            text-decoration: none;
-            font-weight: 500;
-            padding: 0.5rem 1rem;
-            border-radius: var(--border-radius);
-            transition: all 0.3s ease;
-        }
-
-        .reading-nav a:hover {
-            background: var(--background-light);
-            color: var(--primary-color);
-        }
 
         /* Special Boxes consistent with main theme */
         .info-box, .practice-box, .formula-box, .warning-box {
@@ -262,11 +226,6 @@
 
         /* Responsive adjustments */
         @media (max-width: 768px) {
-            .reading-nav ul {
-                flex-direction: column;
-                gap: 0.5rem;
-            }
-
             .reading-hero {
                 padding: 100px 0 60px;
             }
@@ -279,22 +238,29 @@
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="reading-nav">
+    <!-- Header -->
+    <header class="header">
         <div class="container">
-            <ul>
-                <li><a href="index.html">Domů</a></li>
-                <li><a href="#uvod">Úvod</a></li>
-                <li><a href="#veda">Věda</a></li>
-                <li><a href="#techniky">Techniky</a></li>
-                <li><a href="#testy">Testy</a></li>
-                <li><a href="#obory">Obory</a></li>
-                <li><a href="#navyky">Návyky</a></li>
-                <li><a href="#nastroje">Nástroje</a></li>
-                <li><a href="#gamifikace">Pokrok</a></li>
-            </ul>
+            <div class="nav-brand">
+                <h1><i class="fas fa-atom"></i> Praktické aplikace fyziky a chemie</h1>
+                <p class="subtitle">Gymnázium Globe</p>
+            </div>
+            <nav class="nav">
+                <a href="index.html" class="nav-link">Domů</a>
+                <a href="#uvod" class="nav-link">Úvod</a>
+                <a href="#veda" class="nav-link">Věda</a>
+                <a href="#techniky" class="nav-link">Techniky</a>
+                <a href="#testy" class="nav-link">Testy</a>
+                <a href="#obory" class="nav-link">Obory</a>
+                <a href="#navyky" class="nav-link">Návyky</a>
+                <a href="#nastroje" class="nav-link">Nástroje</a>
+                <a href="#gamifikace" class="nav-link">Pokrok</a>
+            </nav>
+            <div class="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
         </div>
-    </nav>
+    </header>
 
     <!-- Hero Section -->
     <header class="reading-hero" id="uvod">
