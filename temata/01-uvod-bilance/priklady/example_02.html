@@ -134,26 +134,81 @@
             </article>
 
             <article>
-                <h3>Krok 2: Výpočet teoretické ceny za ohřev</h3>
-                <p>Abychom mohli vypočítat cenu, musíme energii převést z joulů (J) na kilowatthodiny (kWh), 
+                <h3>Krok 2: Výpočet teoretické doby ohřevu</h3>
+                <p>Pokud by konvice pracovala se 100% účinností (veškerý příkon by se přeměnil na teplo předané vodě),
+                můžeme vypočítat teoretickou dobu ohřevu.</p>
+
+                <div class="formula-box">
+                    <strong>Vzorec pro teoretickou dobu ohřevu:</strong>
+                    $$t_{\text{teoretický}} = \frac{Q}{P_{\text{příkon}}}$$
+
+                    <p><strong>Kde:</strong></p>
+                    <ul>
+                        <li>$t_{\text{teoretický}}$ je teoretická doba ohřevu <span class="unit">[s]</span></li>
+                        <li>$Q$ je potřebné teplo <span class="unit">[J]</span></li>
+                        <li>$P_{\text{příkon}}$ je štítkový příkon konvice <span class="unit">[W]</span></li>
+                    </ul>
+                </div>
+
+                <p><strong>Výpočet:</strong></p>
+                $$t_{\text{teoretický}} = \frac{376\,200}{1\,600} = 235{,}1 \text{ s} = 3 \text{ min } 55 \text{ s}$$
+
+                <p>Při 100% účinnosti by konvice ohřála vodu za <strong>3 minuty a 55 sekund</strong>.
+                Ve skutečnosti trvá ohřev 300 sekund (5 minut), což potvrzuje existenci energetických ztrát.</p>
+            </article>
+
+            <article>
+                <h3>Krok 3: Výpočet teoretické ceny za ohřev</h3>
+                <p>Abychom mohli vypočítat cenu, musíme energii převést z joulů (J) na kilowatthodiny (kWh),
                 což je jednotka, ve které se účtuje elektrická energie.</p>
-                
+
                 <p>Převodní vztah: $1 \text{ kWh} = 3\,600\,000 \text{ J}$</p>
-                
+
                 <p><strong>Převod energie:</strong></p>
                 $$E_{\text{kWh}} = \frac{Q}{3\,600\,000} = \frac{376\,200}{3\,600\,000} = 0{,}1045 \text{ kWh}$$
-                
+
                 <div class="formula-box">
                     <strong>Vzorec pro cenu:</strong>
-                    $$\text{Cena} = E_{\text{kWh}} \cdot C$$
+                    $$\text{Cena}_{\text{teoretická}} = E_{\text{kWh}} \cdot C$$
                 </div>
-                
-                <p><strong>Výpočet ceny:</strong></p>
-                $$\text{Cena} = 0{,}1045 \cdot 5 = 0{,}52 \text{ Kč}$$
+
+                <p><strong>Výpočet teoretické ceny (pouze za energii pro ohřev vody):</strong></p>
+                $$\text{Cena}_{\text{teoretická}} = 0{,}1045 \cdot 5 = 0{,}52 \text{ Kč}$$
+
+                <p>Toto je minimální teoretická cena, kdyby veškerá energie šla pouze do ohřevu vody (100% účinnost).</p>
             </article>
             
             <article>
-                <h3>Krok 3: Výpočet skutečného výkonu a účinnosti</h3>
+                <h3>Krok 4: Výpočet skutečné ceny za ohřev</h3>
+                <p>Vzhledem k tomu, že konvice má účinnost nižší než 100%, skutečná spotřeba energie bude vyšší.
+                Můžeme ji vypočítat ze skutečné doby ohřevu a štítkového příkonu konvice.</p>
+
+                <div class="formula-box">
+                    <strong>Vzorec pro skutečnou spotřebu energie:</strong>
+                    $$E_{\text{skutečná}} = P_{\text{příkon}} \cdot t_{\text{měřený}}$$
+                </div>
+
+                <p><strong>Výpočet skutečné spotřeby:</strong></p>
+                $$E_{\text{skutečná}} = 1\,600 \cdot 300 = 480\,000 \text{ J}$$
+
+                <p><strong>Převod na kWh:</strong></p>
+                $$E_{\text{skutečná\,kWh}} = \frac{480\,000}{3\,600\,000} = 0{,}1333 \text{ kWh}$$
+
+                <p><strong>Výpočet skutečné ceny:</strong></p>
+                $$\text{Cena}_{\text{skutečná}} = 0{,}1333 \cdot 5 = 0{,}67 \text{ Kč}$$
+
+                <div class="note" style="background-color: #fff3cd; border-color: #ffc107;">
+                    <p><strong>Porovnání cen:</strong></p>
+                    <ul>
+                        <li><strong>Teoretická cena (100% účinnost):</strong> 0,52 Kč</li>
+                        <li><strong>Skutečná cena (78,4% účinnost):</strong> 0,67 Kč</li>
+                        <li><strong>Rozdíl:</strong> 0,15 Kč (29% navíc kvůli ztrátám)</li>
+                    </ul>
+                </div>
+            </article>
+
+            <article>
+                <h3>Krok 5: Výpočet skutečného výkonu a účinnosti</h3>
                 <p>Ze změřené doby ohřevu a tepla skutečně předaného vodě můžeme vypočítat 
                 <strong>skutečný (užitečný) výkon</strong> konvice.</p>
                 
@@ -188,8 +243,11 @@
             <h2>Výsledky</h2>
             <div class="result-box">
                 <p>Teplo potřebné k ohřátí vody: <span>376,2 kJ</span></p>
+                <p>Teoretická doba ohřevu (100% účinnost): <span>3 min 55 s</span></p>
                 <p>Teoretická cena za ohřev: <span>0,52 Kč</span></p>
                 <hr style="border-top: 2px solid #28a745; border-bottom: none; margin: 25px auto; width: 60%;">
+                <p>Skutečná doba ohřevu (změřená): <span>5 min</span></p>
+                <p>Skutečná cena za ohřev: <span>0,67 Kč</span></p>
                 <p>Skutečný výkon konvice: <span>1254 W</span></p>
                 <p>Účinnost konvice: <span>78,4 %</span></p>
             </div>
@@ -199,11 +257,19 @@
             <h2>Vyhodnocení a komentář</h2>
             <div class="note">
                 <p>
-                    Z výpočtů vyplývá, že konvice má skutečný výkon <strong>1254 W</strong>, 
+                    Z výpočtů vyplývá, že konvice má skutečný výkon <strong>1254 W</strong>,
                     přestože její štítkový příkon je 1600 W. Rozdíl mezi těmito hodnotami představuje energetické ztráty.
                 </p>
+
+                <p><strong>Klíčová zjištění:</strong></p>
+                <ul>
+                    <li><strong>Časová úspora při 100% účinnosti:</strong> Konvice by mohla ohřát vodu o 65 sekund rychleji (3:55 vs 5:00)</li>
+                    <li><strong>Finanční ztráty:</strong> Kvůli účinnosti 78,4% platíme o 29% více za každý ohřev (0,67 Kč místo 0,52 Kč)</li>
+                    <li><strong>Roční náklady:</strong> Při denním použití 3× denně je rozdíl 164 Kč ročně (730 Kč vs 566 Kč)</li>
+                </ul>
+
                 <p>
-                    <strong>Účinnost 78,4 %</strong> znamená, že přibližně 78 % elektrické energie se skutečně 
+                    <strong>Účinnost 78,4 %</strong> znamená, že přibližně 78 % elektrické energie se skutečně
                     přemění na teplo, které ohřeje vodu. Zbylých 21,6 % energie se ztratí do okolí:
                 </p>
                 <ul>
@@ -213,7 +279,7 @@
                     <li>Spotřeba na zvukové a světelné projevy konvice</li>
                 </ul>
                 <p>
-                    Jedná se o <strong>typickou hodnotu pro běžné domácí spotřebiče</strong> tohoto typu. 
+                    Jedná se o <strong>typickou hodnotu pro běžné domácí spotřebiče</strong> tohoto typu.
                     Moderní kvalitní rychlovarné konvice dosahují účinnosti 75-85 %.
                 </p>
             </div>
