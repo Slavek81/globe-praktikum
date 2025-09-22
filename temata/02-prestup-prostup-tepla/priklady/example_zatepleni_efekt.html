@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Efekt zateplení</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>Efekt zateplení</h1>
+        </header>
+
+        <section class="problem-statement">
+            <h2>Zadání úlohy</h2>
+            <div class="task-description">
+                <p>Porovnejte tepelné ztráty obvodové stěny před a po přidání tepelné izolace.
+                Vypočítejte úsporu energie a ekonomickou návratnost investice do zateplení.</p>
+
+                <h3>Dané hodnoty:</h3>
+                <ul>
+                    <li><strong>Rozměry stěny:</strong> 12 m × 2.8 m (plocha 33.6 m²)</li>
+                    <li><strong>Původní skladba (nezatepleno):</strong>
+                        <ul>
+                            <li>Vnitřní omítka: 1.5 cm, λ = 0.8 W/(m·K)</li>
+                            <li>Tvárnice: 25 cm, λ = 0.12 W/(m·K)</li>
+                            <li>Vnější omítka: 1.5 cm, λ = 0.8 W/(m·K)</li>
+                        </ul>
+                    </li>
+                    <li><strong>Nová skladba (zatepleno):</strong>
+                        <ul>
+                            <li>Vnitřní omítka: 1.5 cm, λ = 0.8 W/(m·K)</li>
+                            <li>Tvárnice: 25 cm, λ = 0.12 W/(m·K)</li>
+                            <li><strong>Tepelná izolace EPS: 12 cm, λ = 0.04 W/(m·K)</strong></li>
+                            <li>Vnější omítka: 1.5 cm, λ = 0.8 W/(m·K)</li>
+                        </ul>
+                    </li>
+                    <li><strong>Podmínky:</strong> Ti = 22°C, Te = -8°C, αi = 8 W/(m²·K), αe = 25 W/(m²·K)</li>
+                    <li><strong>Náklady na zateplení:</strong> 1,800 Kč/m²</li>
+                    <li><strong>Cena tepla:</strong> 1.80 Kč/kWh</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="solution">
+            <h2>Řešení</h2>
+
+            <div class="step">
+                <h3>1. Výpočet pro původní stěnu (nezatepleno)</h3>
+
+                <div class="calculation">
+                    <p><strong>Tepelné odpory jednotlivých vrstev:</strong></p>
+                    <p>$$R_{si} = \frac{1}{8} = 0.125 \text{ m²·K/W}$$</p>
+                    <p>$$R_1 = \frac{0.015}{0.8} = 0.019 \text{ m²·K/W}$$</p>
+                    <p>$$R_2 = \frac{0.25}{0.12} = 2.083 \text{ m²·K/W}$$</p>
+                    <p>$$R_3 = \frac{0.015}{0.8} = 0.019 \text{ m²·K/W}$$</p>
+                    <p>$$R_{se} = \frac{1}{25} = 0.040 \text{ m²·K/W}$$</p>
+
+                    <p><strong>Celkový odpor původní stěny:</strong></p>
+                    <p>$$R_{celk,puv} = 0.125 + 0.019 + 2.083 + 0.019 + 0.040 = 2.286 \text{ m²·K/W}$$</p>
+
+                    <p><strong>Součinitel prostupu původní stěny:</strong></p>
+                    <p>$$U_{puv} = \frac{1}{2.286} = 0.437 \text{ W/(m²·K)}$$</p>
+                </div>
+            </div>
+
+            <div class="step">
+                <h3>2. Výpočet pro zateplenou stěnu</h3>
+
+                <div class="calculation">
+                    <p><strong>Přidáme odpor tepelné izolace:</strong></p>
+                    <p>$$R_{izolace} = \frac{0.12}{0.04} = 3.000 \text{ m²·K/W}$$</p>
+
+                    <p><strong>Celkový odpor zateplené stěny:</strong></p>
+                    <p>$$R_{celk,nova} = R_{celk,puv} + R_{izolace} = 2.286 + 3.000 = 5.286 \text{ m²·K/W}$$</p>
+
+                    <p><strong>Součinitel prostupu zateplené stěny:</strong></p>
+                    <p>$$U_{nova} = \frac{1}{5.286} = 0.189 \text{ W/(m²·K)}$$</p>
+                </div>
+
+                <div class="note success">
+                    <p><strong>Splnění normy:</strong> U = 0.189 W/(m²·K) < 0.30 W/(m²·K) ✓</p>
+                </div>
+            </div>
+
+            <div class="step">
+                <h3>3. Porovnání tepelných toků</h3>
+
+                <div class="calculation">
+                    <p>Teplotní rozdíl: ΔT = 22 - (-8) = 30 K</p>
+
+                    <p><strong>Tepelný tok původní stěnou:</strong></p>
+                    <p>$$\dot{Q}_{puv} = U_{puv} \times A \times \Delta T = 0.437 \times 33.6 \times 30 = 441 \text{ W}$$</p>
+
+                    <p><strong>Tepelný tok zateplenou stěnou:</strong></p>
+                    <p>$$\dot{Q}_{nova} = U_{nova} \times A \times \Delta T = 0.189 \times 33.6 \times 30 = 191 \text{ W}$$</p>
+
+                    <p><strong>Úspora tepelného toku:</strong></p>
+                    <p>$$\Delta \dot{Q} = 441 - 191 = 250 \text{ W}$$</p>
+                    <p><strong>Relativní úspora:</strong> 250/441 = 56.7%</p>
+                </div>
+            </div>
+
+            <div class="step">
+                <h3>4. Ekonomické hodnocení</h3>
+
+                <div class="calculation">
+                    <p><strong>Roční úspora energie:</strong></p>
+                    <p>$$E_{uspora} = \Delta \dot{Q} \times 24 \times 200 \div 1000 = 250 \times 24 \times 200 \div 1000 = 1\,200 \text{ kWh/rok}$$</p>
+                    <p><em>(předpokládáme 200 topných dnů)</em></p>
+
+                    <p><strong>Roční úspora nákladů:</strong></p>
+                    <p>$$N_{uspora} = 1\,200 \times 1.80 = 2\,160 \text{ Kč/rok}$$</p>
+
+                    <p><strong>Investiční náklady:</strong></p>
+                    <p>$$I = 33.6 \times 1\,800 = 60\,480 \text{ Kč}$$</p>
+
+                    <p><strong>Doba návratnosti:</strong></p>
+                    <p>$$t_{navrat} = \frac{I}{N_{uspora}} = \frac{60\,480}{2\,160} = 28.0 \text{ let}$$</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="calculator">
+            <h2>Interaktivní kalkulačka efektu zateplení</h2>
+            <div class="calculator-panel">
+                <div class="input-group">
+                    <label for="area">Plocha stěny [m²]:</label>
+                    <input type="number" id="area" value="33.6" step="0.1" min="1">
+                </div>
+                <div class="input-group">
+                    <label for="insThickness">Tloušťka izolace [cm]:</label>
+                    <input type="number" id="insThickness" value="12" step="1" min="1" max="50">
+                </div>
+                <div class="input-group">
+                    <label for="insLambda">Tepelná vodivost izolace [W/(m·K)]:</label>
+                    <input type="number" id="insLambda" value="0.04" step="0.001" min="0.001">
+                </div>
+                <div class="input-group">
+                    <label for="tempDiff">Teplotní rozdíl [K]:</label>
+                    <input type="number" id="tempDiff" value="30" step="1" min="1">
+                </div>
+                <div class="input-group">
+                    <label for="heatPrice">Cena tepla [Kč/kWh]:</label>
+                    <input type="number" id="heatPrice" value="1.80" step="0.01" min="0">
+                </div>
+                <div class="input-group">
+                    <label for="instCost">Náklady na zateplení [Kč/m²]:</label>
+                    <input type="number" id="instCost" value="1800" step="10" min="0">
+                </div>
+                <button onclick="calculateInsulation()">Vypočítat efekt zateplení</button>
+            </div>
+
+            <div id="results" class="results">
+                <h3>Výsledky:</h3>
+                <div class="comparison-table">
+                    <table>
+                        <tr>
+                            <th></th>
+                            <th>Původní stěna</th>
+                            <th>Zateplená stěna</th>
+                            <th>Zlepšení</th>
+                        </tr>
+                        <tr>
+                            <td>Součinitel prostupu U [W/(m²·K)]</td>
+                            <td id="uOld">0.437</td>
+                            <td id="uNew">0.189</td>
+                            <td id="uImprovement">56.7%</td>
+                        </tr>
+                        <tr>
+                            <td>Tepelný tok [W]</td>
+                            <td id="qOld">441</td>
+                            <td id="qNew">191</td>
+                            <td id="qSaving">250 W</td>
+                        </tr>
+                        <tr>
+                            <td>Roční náklady [Kč]</td>
+                            <td id="costOld">3,814</td>
+                            <td id="costNew">1,654</td>
+                            <td id="costSaving">2,160</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="economic-results">
+                    <div class="result-item highlight">
+                        <strong>Investiční náklady:</strong> <span id="investment">60,480</span> Kč
+                    </div>
+                    <div class="result-item highlight">
+                        <strong>Doba návratnosti:</strong> <span id="payback">28.0</span> let
+                    </div>
+                    <div class="result-item highlight">
+                        <strong>Roční úspora energie:</strong> <span id="energySaving">1,200</span> kWh
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="conclusion">
+            <h2>Závěr</h2>
+            <div class="summary">
+                <p>Zateplení má výrazný pozitivní efekt na tepelně-izolační vlastnosti:</p>
+                <ul>
+                    <li><strong>Snížení součinitele prostupu</strong> z 0.437 na 0.189 W/(m²·K) (57% zlepšení)</li>
+                    <li><strong>Úspora tepelného toku</strong> o 250 W (56.7%)</li>
+                    <li><strong>Roční úspora nákladů</strong> 2,160 Kč</li>
+                    <li><strong>Doba návratnosti</strong> 28 let je přijatelná pro stavební investici</li>
+                </ul>
+
+                <div class="note tip">
+                    <p><strong>Tip:</strong> Kratší dobu návratnosti dosáhnete:</p>
+                    <ul>
+                        <li>Při vyšších cenách energie</li>
+                        <li>V extrémních klimatických podmínkách</li>
+                        <li>Při zateplování celého domu najednou (nižší jednotkové náklady)</li>
+                        <li>Využitím dotačních programů (Nová zelená úsporám apod.)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        function calculateInsulation() {
+            // Získání hodnot z formuláře
+            const area = parseFloat(document.getElementById('area').value);
+            const insThickness = parseFloat(document.getElementById('insThickness').value) / 100; // m
+            const insLambda = parseFloat(document.getElementById('insLambda').value);
+            const tempDiff = parseFloat(document.getElementById('tempDiff').value);
+            const heatPrice = parseFloat(document.getElementById('heatPrice').value);
+            const instCost = parseFloat(document.getElementById('instCost').value);
+
+            // Konstanty původní stěny
+            const rSi = 1/8;
+            const r1 = 0.015/0.8;
+            const r2 = 0.25/0.12;
+            const r3 = 0.015/0.8;
+            const rSe = 1/25;
+            const rOriginal = rSi + r1 + r2 + r3 + rSe;
+
+            // Výpočty původní stěny
+            const uOld = 1 / rOriginal;
+            const qOld = uOld * area * tempDiff;
+
+            // Výpočty zateplené stěny
+            const rInsulation = insThickness / insLambda;
+            const rNew = rOriginal + rInsulation;
+            const uNew = 1 / rNew;
+            const qNew = uNew * area * tempDiff;
+
+            // Úspory
+            const qSaving = qOld - qNew;
+            const improvementPercent = (qSaving / qOld) * 100;
+            const annualEnergySaving = qSaving * 24 * 200 / 1000; // kWh/rok
+            const annualCostSaving = annualEnergySaving * heatPrice;
+
+            // Náklady a návratnost
+            const investment = area * instCost;
+            const payback = investment / annualCostSaving;
+
+            // Roční náklady
+            const costOld = (qOld * 24 * 200 / 1000) * heatPrice;
+            const costNew = (qNew * 24 * 200 / 1000) * heatPrice;
+
+            // Zobrazení výsledků
+            document.getElementById('uOld').textContent = uOld.toFixed(3);
+            document.getElementById('uNew').textContent = uNew.toFixed(3);
+            document.getElementById('uImprovement').textContent = improvementPercent.toFixed(1) + '%';
+
+            document.getElementById('qOld').textContent = Math.round(qOld);
+            document.getElementById('qNew').textContent = Math.round(qNew);
+            document.getElementById('qSaving').textContent = Math.round(qSaving) + ' W';
+
+            document.getElementById('costOld').textContent = Math.round(costOld).toLocaleString('cs-CZ');
+            document.getElementById('costNew').textContent = Math.round(costNew).toLocaleString('cs-CZ');
+            document.getElementById('costSaving').textContent = Math.round(annualCostSaving).toLocaleString('cs-CZ');
+
+            document.getElementById('investment').textContent = Math.round(investment).toLocaleString('cs-CZ');
+            document.getElementById('payback').textContent = payback.toFixed(1);
+            document.getElementById('energySaving').textContent = Math.round(annualEnergySaving).toLocaleString('cs-CZ');
+        }
+
+        // Spustit výpočet při načtení stránky
+        window.onload = calculateInsulation;
+    </script>
+</body>
+</html>

@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chladič automobilu</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>Chladič automobilu</h1>
+        </header>
+
+        <section class="problem-statement">
+            <h2>Zadání úlohy</h2>
+            <div class="task-description">
+                <p>Analyzujte tepelnou bilanci chladiče automobilu jako výměníku tepla mezi chladicí kapalinou
+                a proudícím vzduchem. Vypočítejte účinnost chlazení a potřebnou plochu chladiče.</p>
+
+                <h3>Dané hodnoty:</h3>
+                <ul>
+                    <li><strong>Motor:</strong> výkon 75 kW, účinnost 35%</li>
+                    <li><strong>Chladicí kapalina (směs voda-glycol):</strong>
+                        <ul>
+                            <li>Vstupní teplota: T<sub>h,in</sub> = 95°C</li>
+                            <li>Výstupní teplota: T<sub>h,out</sub> = 80°C</li>
+                            <li>Hmotnostní tok: ṁ<sub>h</sub> = 2.5 kg/s</li>
+                            <li>Měrná tepelná kapacita: c<sub>p,h</sub> = 3,800 J/(kg·K)</li>
+                        </ul>
+                    </li>
+                    <li><strong>Vzduch:</strong>
+                        <ul>
+                            <li>Vstupní teplota: T<sub>c,in</sub> = 25°C</li>
+                            <li>Výstupní teplota: T<sub>c,out</sub> = ?</li>
+                            <li>Hmotnostní tok: ṁ<sub>c</sub> = 8.0 kg/s</li>
+                            <li>Měrná tepelná kapacita: c<sub>p,c</sub> = 1,005 J/(kg·K)</li>
+                        </ul>
+                    </li>
+                    <li><strong>Chladič:</strong> celkový součinitel prostupu U = 120 W/(m²·K)</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="solution">
+            <h2>Řešení</h2>
+
+            <div class="step">
+                <h3>1. Energetická bilance motoru</h3>
+                <div class="calculation">
+                    <p><strong>Teplo které musí odvést chladič:</strong></p>
+                    <p>Při účinnosti 35% se zbývajících 65% energie přemění na teplo:</p>
+                    <p>$$Q_{waste} = P_{motor} \times (1 - \eta) = 75 \times (1 - 0.35) = 48.75 \text{ kW}$$</p>
+                    <p>Ne veškeré odpadní teplo jde přes chladič, část odvede výfuk a sálání.</p>
+                    <p>Předpokládáme, že chladič odvede cca 60% = 29.3 kW</p>
+                </div>
+            </div>
+
+            <div class="step">
+                <h3>2. Tepelný výkon chladiče</h3>
+                <div class="calculation">
+                    <p><strong>Tepelný výkon ze strany chladicí kapaliny:</strong></p>
+                    <p>$$\dot{Q} = \dot{m}_h \times c_{p,h} \times (T_{h,in} - T_{h,out})$$</p>
+                    <p>$$\dot{Q} = 2.5 \times 3{,}800 \times (95 - 80) = 2.5 \times 3{,}800 \times 15$$</p>
+                    <p>$$\dot{Q} = 142{,}500 \text{ W} = 142.5 \text{ kW}$$</p>
+
+                    <div class="note warning">
+                        <p><strong>Pozorování:</strong> Výkon chladiče 142.5 kW je vyšší než odpadní teplo motoru 48.75 kW.
+                        To znamená, že jsme pracovali s příliš vysokým průtokem. V reálném systému by se teploty vyrovnaly.</p>
+                    </div>
+
+                    <p><strong>Přepočítáme s realistickým tepelným výkonem 30 kW:</strong></p>
+                    <p>Potřebný průtok: $\dot{m}_h = \frac{30{,}000}{3{,}800 \times 15} = 0.526$ kg/s</p>
+                </div>
+            </div>
+
+            <div class="step">
+                <h3>3. Výstupní teplota vzduchu</h3>
+                <div class="calculation">
+                    <p><strong>Z energetické bilance vzduchu:</strong></p>
+                    <p>$$\dot{Q} = \dot{m}_c \times c_{p,c} \times (T_{c,out} - T_{c,in})$$</p>
+                    <p>$$30{,}000 = 8.0 \times 1{,}005 \times (T_{c,out} - 25)$$</p>
+                    <p>$$T_{c,out} - 25 = \frac{30{,}000}{8.0 \times 1{,}005} = 3.73 \text{ K}$$</p>
+                    <p>$$T_{c,out} = 25 + 3.73 = 28.73°\text{C}$$</p>
+                </div>
+            </div>
+
+            <div class="step">
+                <h3>4. Logaritmický teplotní rozdíl</h3>
+                <div class="calculation">
+                    <p><strong>Pro protiproudý výměník:</strong></p>
+                    <p>ΔT<sub>max</sub> = T<sub>h,in</sub> - T<sub>c,out</sub> = 95 - 28.73 = 66.27 K</p>
+                    <p>ΔT<sub>min</sub> = T<sub>h,out</sub> - T<sub>c,in</sub> = 80 - 25 = 55.0 K</p>
+
+                    <p>$$\Delta T_{log} = \frac{\Delta T_{max} - \Delta T_{min}}{\ln(\Delta T_{max}/\Delta T_{min})}$$</p>
+                    <p>$$\Delta T_{log} = \frac{66.27 - 55.0}{\ln(66.27/55.0)} = \frac{11.27}{\ln(1.205)} = \frac{11.27}{0.187} = 60.3 \text{ K}$$</p>
+                </div>
+            </div>
+
+            <div class="step">
+                <h3>5. Potřebná plocha chladiče</h3>
+                <div class="calculation">
+                    <p><strong>Ze základní rovnice výměníku tepla:</strong></p>
+                    <p>$$\dot{Q} = U \times A \times \Delta T_{log}$$</p>
+                    <p>$$A = \frac{\dot{Q}}{U \times \Delta T_{log}} = \frac{30{,}000}{120 \times 60.3} = \frac{30{,}000}{7{,}236} = 4.14 \text{ m²}$$</p>
+                </div>
+            </div>
+
+            <div class="step">
+                <h3>6. Účinnost výměníku</h3>
+                <div class="calculation">
+                    <p><strong>Tepelné kapacity proudů:</strong></p>
+                    <p>$C_h = \dot{m}_h \times c_{p,h} = 0.526 \times 3{,}800 = 1{,}999$ W/K</p>
+                    <p>$C_c = \dot{m}_c \times c_{p,c} = 8.0 \times 1{,}005 = 8{,}040$ W/K</p>
+                    <p>$C_{min} = \min(C_h, C_c) = 1{,}999$ W/K</p>
+
+                    <p><strong>Maximální možný tepelný tok:</strong></p>
+                    <p>$$\dot{Q}_{max} = C_{min} \times (T_{h,in} - T_{c,in}) = 1{,}999 \times (95 - 25) = 139{,}930 \text{ W}$$</p>
+
+                    <p><strong>Účinnost výměníku:</strong></p>
+                    <p>$$\varepsilon = \frac{\dot{Q}}{\dot{Q}_{max}} = \frac{30{,}000}{139{,}930} = 0.214 = 21.4\%$$</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="calculator">
+            <h2>Kalkulačka chladiče automobilu</h2>
+            <div class="calculator-panel">
+                <div class="input-group">
+                    <label for="motorPower">Výkon motoru [kW]:</label>
+                    <input type="number" id="motorPower" value="75" step="1" min="10">
+                </div>
+                <div class="input-group">
+                    <label for="efficiency">Účinnost motoru [%]:</label>
+                    <input type="number" id="efficiency" value="35" step="1" min="20" max="50">
+                </div>
+                <div class="input-group">
+                    <label for="coolantIn">Vstupní teplota chladicí kapaliny [°C]:</label>
+                    <input type="number" id="coolantIn" value="95" step="1" min="70" max="120">
+                </div>
+                <div class="input-group">
+                    <label for="coolantOut">Výstupní teplota chladicí kapaliny [°C]:</label>
+                    <input type="number" id="coolantOut" value="80" step="1" min="60" max="100">
+                </div>
+                <div class="input-group">
+                    <label for="airIn">Vstupní teplota vzduchu [°C]:</label>
+                    <input type="number" id="airIn" value="25" step="1" min="-10" max="50">
+                </div>
+                <div class="input-group">
+                    <label for="airFlow">Hmotnostní tok vzduchu [kg/s]:</label>
+                    <input type="number" id="airFlow" value="8.0" step="0.1" min="1">
+                </div>
+                <div class="input-group">
+                    <label for="uCoeff">Součinitel prostupu U [W/(m²·K)]:</label>
+                    <input type="number" id="uCoeff" value="120" step="10" min="50" max="300">
+                </div>
+                <button onclick="calculateRadiator()">Vypočítat chladič</button>
+            </div>
+
+            <div id="results" class="results">
+                <h3>Výsledky návrhu chladiče:</h3>
+                <div class="result-item">
+                    <strong>Odpadní teplo motoru:</strong> <span id="wasteHeat">48.8</span> kW
+                </div>
+                <div class="result-item">
+                    <strong>Tepelný výkon chladiče:</strong> <span id="radiatorPower">30.0</span> kW
+                </div>
+                <div class="result-item">
+                    <strong>Potřebný průtok chladicí kapaliny:</strong> <span id="coolantFlow">0.53</span> kg/s
+                </div>
+                <div class="result-item">
+                    <strong>Výstupní teplota vzduchu:</strong> <span id="airOut">28.7</span> °C
+                </div>
+                <div class="result-item">
+                    <strong>Logaritmický teplotní rozdíl:</strong> <span id="logTempDiff">60.3</span> K
+                </div>
+                <div class="result-item highlight">
+                    <strong>Potřebná plocha chladiče:</strong> <span id="radiatorArea">4.14</span> m²
+                </div>
+                <div class="result-item">
+                    <strong>Účinnost výměníku:</strong> <span id="effectiveness">21.4</span> %
+                </div>
+            </div>
+        </section>
+
+        <section class="technical-notes">
+            <h2>Technické poznámky</h2>
+            <div class="notes-grid">
+                <div class="note-item">
+                    <h4>🌡️ Provozní teploty</h4>
+                    <p><strong>Chladicí kapalina:</strong> 80-95°C<br>
+                    <strong>Termostat:</strong> otevírání při 85-90°C<br>
+                    <strong>Ventilátor:</strong> zapínání při 95-100°C</p>
+                </div>
+                <div class="note-item">
+                    <h4>🔄 Typy chladičů</h4>
+                    <p><strong>Trubkový:</strong> jednoduché, levné<br>
+                    <strong>Lamelový:</strong> vyšší účinnost<br>
+                    <strong>Hliníkový:</strong> lehký, dobrá vodivost</p>
+                </div>
+                <div class="note-item">
+                    <h4>💨 Proudění vzduchu</h4>
+                    <p><strong>Při jízdě:</strong> přirozené proudění<br>
+                    <strong>Ve městě:</strong> elektrický ventilátor<br>
+                    <strong>Rychlost:</strong> 3-8 m/s při jízdě</p>
+                </div>
+                <div class="note-item">
+                    <h4>⚙️ Faktory účinnosti</h4>
+                    <p><strong>Znečištění:</strong> snižuje účinnost<br>
+                    <strong>Geometrie:</strong> počet lamel<br>
+                    <strong>Materiál:</strong> hliník vs. měď</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="conclusion">
+            <h2>Závěr</h2>
+            <div class="summary">
+                <p>Chladič automobilu je efektivní výměník tepla s následujícími charakteristikami:</p>
+                <ul>
+                    <li><strong>Plocha chladiče 4.14 m²</strong> je potřebná pro odvod 30 kW tepla</li>
+                    <li><strong>Účinnost 21.4%</strong> je typická pro automobilové chladiče</li>
+                    <li><strong>Logaritmický teplotní rozdíl 60.3 K</strong> umožňuje efektivní přenos</li>
+                    <li><strong>Průtok chladicí kapaliny 0.53 kg/s</strong> zajišťuje dostatečné chlazení</li>
+                </ul>
+
+                <div class="note tip">
+                    <p><strong>Praktické aplikace:</strong></p>
+                    <ul>
+                        <li>Návrh chladicích systémů vozidel</li>
+                        <li>Optimalizace geometrie chladiče</li>
+                        <li>Řízení ventilátorů podle teploty</li>
+                        <li>Diagnostika přehřívání motoru</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        function calculateRadiator() {
+            // Získání hodnot z formuláře
+            const motorPower = parseFloat(document.getElementById('motorPower').value) * 1000; // W
+            const efficiency = parseFloat(document.getElementById('efficiency').value) / 100;
+            const coolantIn = parseFloat(document.getElementById('coolantIn').value);
+            const coolantOut = parseFloat(document.getElementById('coolantOut').value);
+            const airIn = parseFloat(document.getElementById('airIn').value);
+            const airFlow = parseFloat(document.getElementById('airFlow').value);
+            const uCoeff = parseFloat(document.getElementById('uCoeff').value);
+
+            // Konstanty
+            const cpCoolant = 3800; // J/(kg·K)
+            const cpAir = 1005; // J/(kg·K)
+
+            // Výpočty
+            const wasteHeat = motorPower * (1 - efficiency) / 1000; // kW
+            const radiatorPower = wasteHeat * 0.6; // 60% přes chladič, kW
+            const radiatorPowerW = radiatorPower * 1000; // W
+
+            // Potřebný průtok chladicí kapaliny
+            const tempDiffCoolant = coolantIn - coolantOut;
+            const coolantFlow = radiatorPowerW / (cpCoolant * tempDiffCoolant);
+
+            // Výstupní teplota vzduchu
+            const airOut = airIn + radiatorPowerW / (airFlow * cpAir);
+
+            // Logaritmický teplotní rozdíl (protiproud)
+            const deltaTmax = coolantIn - airOut;
+            const deltaTmin = coolantOut - airIn;
+            const logTempDiff = (deltaTmax - deltaTmin) / Math.log(deltaTmax / deltaTmin);
+
+            // Potřebná plocha chladiče
+            const radiatorArea = radiatorPowerW / (uCoeff * logTempDiff);
+
+            // Účinnost výměníku
+            const Ch = coolantFlow * cpCoolant;
+            const Cc = airFlow * cpAir;
+            const Cmin = Math.min(Ch, Cc);
+            const qMax = Cmin * (coolantIn - airIn);
+            const effectiveness = (radiatorPowerW / qMax) * 100;
+
+            // Zobrazení výsledků
+            document.getElementById('wasteHeat').textContent = wasteHeat.toFixed(1);
+            document.getElementById('radiatorPower').textContent = radiatorPower.toFixed(1);
+            document.getElementById('coolantFlow').textContent = coolantFlow.toFixed(2);
+            document.getElementById('airOut').textContent = airOut.toFixed(1);
+            document.getElementById('logTempDiff').textContent = logTempDiff.toFixed(1);
+            document.getElementById('radiatorArea').textContent = radiatorArea.toFixed(2);
+            document.getElementById('effectiveness').textContent = effectiveness.toFixed(1);
+        }
+
+        // Spustit výpočet při načtení stránky
+        window.onload = calculateRadiator;
+    </script>
+</body>
+</html>

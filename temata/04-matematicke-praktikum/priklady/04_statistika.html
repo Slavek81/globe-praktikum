@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Statistická analýza - Měření pH</title>
+    <link rel="stylesheet" href="unified-style.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+    </script>
+</head>
+<body>
+    <main>
+        <header>
+            <h1>Statistická analýza</h1>
+            <p>Vyhodnocení přesnosti měření pH pufrového roztoku</p>
+        </header>
+
+        <section class="intro-box">
+            <p>Statistická analýza je nezbytná pro vyhodnocení kvality a spolehlivosti experimentálních dat. V tomto příkladu analyzujeme sérii měření pH a určíme nejistotu výsledku pomocí základních statistických metod.</p>
+        </section>
+
+        <section class="section">
+            <h2>Úvod do problému</h2>
+            <p>Při měření fyzikálních veličin vždy dochází k náhodným chybám. Statistická analýza nám pomáhá:</p>
+            <ul>
+                <li>Určit nejlepší odhad měřené veličiny</li>
+                <li>Kvantifikovat nejistotu měření</li>
+                <li>Identifikovat a vyloučit hrubé chyby</li>
+                <li>Posoudit kvalitu experimentální metody</li>
+            </ul>
+
+            <div class="formula-box">
+                <strong>Základní statistické charakteristiky:</strong><br>
+                <strong>Aritmetický průměr:</strong> $\bar{x} = \frac{1}{n} \sum_{i=1}^{n} x_i$<br>
+                <strong>Směrodatná odchylka:</strong> $s = \sqrt{\frac{1}{n-1} \sum_{i=1}^{n} (x_i - \bar{x})^2}$<br>
+                <strong>Směrodatná chyba průměru:</strong> $s_{\bar{x}} = \frac{s}{\sqrt{n}}$
+            </div>
+        </section>
+
+        <section class="section section-gray">
+            <h2>Experimentální data</h2>
+            <p>Deset po sobě jdoucích měření pH pufrového roztoku (teoretická hodnota pH = 7.00):</p>
+            <table>
+                <tr>
+                    <th>Měření č.</th>
+                    <th>pH [-]</th>
+                    <th>Odchylka od průměru</th>
+                    <th>(Odchylka)²</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td class="value">7.02</td>
+                    <td class="value">+0.01</td>
+                    <td class="value">0.0001</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td class="value">6.98</td>
+                    <td class="value">-0.03</td>
+                    <td class="value">0.0009</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td class="value">7.01</td>
+                    <td class="value">0.00</td>
+                    <td class="value">0.0000</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td class="value">6.99</td>
+                    <td class="value">-0.02</td>
+                    <td class="value">0.0004</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td class="value">7.03</td>
+                    <td class="value">+0.02</td>
+                    <td class="value">0.0004</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td class="value">7.00</td>
+                    <td class="value">-0.01</td>
+                    <td class="value">0.0001</td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td class="value">6.97</td>
+                    <td class="value">-0.04</td>
+                    <td class="value">0.0016</td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td class="value">7.02</td>
+                    <td class="value">+0.01</td>
+                    <td class="value">0.0001</td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td class="value">7.01</td>
+                    <td class="value">0.00</td>
+                    <td class="value">0.0000</td>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td class="value">7.04</td>
+                    <td class="value">+0.03</td>
+                    <td class="value">0.0009</td>
+                </tr>
+            </table>
+        </section>
+
+        <section class="section">
+            <h2>Výpočet základních statistik</h2>
+
+            <h3>Krok 1: Aritmetický průměr</h3>
+            <div class="formula-box">
+                $$\bar{x} = \frac{7.02 + 6.98 + 7.01 + 6.99 + 7.03 + 7.00 + 6.97 + 7.02 + 7.01 + 7.04}{10}$$
+                $$\bar{x} = \frac{70.07}{10} = 7.007 \text{ pH}$$
+            </div>
+
+            <h3>Krok 2: Směrodatná odchylka</h3>
+            <div class="formula-box">
+                $$s = \sqrt{\frac{\sum (x_i - \bar{x})^2}{n-1}} = \sqrt{\frac{0.0045}{9}} = \sqrt{0.0005} = 0.022 \text{ pH}$$
+            </div>
+
+            <h3>Krok 3: Směrodatná chyba průměru</h3>
+            <div class="formula-box">
+                $$s_{\bar{x}} = \frac{s}{\sqrt{n}} = \frac{0.022}{\sqrt{10}} = \frac{0.022}{3.16} = 0.007 \text{ pH}$$
+            </div>
+        </section>
+
+        <section class="section section-gray">
+            <h2>Statistické vyhodnocení</h2>
+            <table>
+                <tr>
+                    <th>Statistická charakteristika</th>
+                    <th>Hodnota</th>
+                    <th>Interpretace</th>
+                </tr>
+                <tr>
+                    <td class="variable">Průměr $\bar{x}$</td>
+                    <td class="value">7.007 pH</td>
+                    <td>Nejlepší odhad skutečné hodnoty</td>
+                </tr>
+                <tr>
+                    <td class="variable">Medián</td>
+                    <td class="value">7.005 pH</td>
+                    <td>Prostřední hodnota (5. a 6. hodnota)</td>
+                </tr>
+                <tr>
+                    <td class="variable">Směrodatná odchylka $s$</td>
+                    <td class="value">0.022 pH</td>
+                    <td>Rozptyl jednotlivých měření</td>
+                </tr>
+                <tr>
+                    <td class="variable">Směrodatná chyba $s_{\bar{x}}$</td>
+                    <td class="value">0.007 pH</td>
+                    <td>Nejistota průměru</td>
+                </tr>
+                <tr>
+                    <td class="variable">Variační koeficient</td>
+                    <td class="value">0.31%</td>
+                    <td>Relativní rozptyl dat</td>
+                </tr>
+            </table>
+        </section>
+
+        <section class="section">
+            <h2>Test normality a odlehlých hodnot</h2>
+
+            <h3>Grubbs test pro odlehlé hodnoty</h3>
+            <p>Testujeme, zda nejextrémnější hodnoty (6.97 a 7.04) jsou statisticky významně odlišné:</p>
+
+            <div class="formula-box">
+                <strong>Grubbs statistika:</strong><br>
+                $$G = \frac{|x_{ext} - \bar{x}|}{s}$$
+                <br>
+                Pro 6.97: $G_1 = \frac{|6.97 - 7.007|}{0.022} = 1.68$<br>
+                Pro 7.04: $G_2 = \frac{|7.04 - 7.007|}{0.022} = 1.50$
+            </div>
+
+            <p>Kritická hodnota pro n=10 a α=0.05 je G_krit = 2.29. Obě hodnoty jsou pod kritickou hodnotou, tudíž žádné odlehlé hodnoty nebyly detekovány.</p>
+        </section>
+
+        <section class="section section-gray">
+            <h2>Grafické znázornění</h2>
+            <div id="statisticsPlot" style="width:100%;height:400px;"></div>
+            <div id="histogramPlot" style="width:100%;height:300px;"></div>
+        </section>
+
+        <section class="section">
+            <h2>Interval spolehlivosti</h2>
+            <p>Pro 95% interval spolehlivosti použijeme t-rozdělení:</p>
+
+            <div class="formula-box">
+                <strong>95% interval spolehlivosti:</strong><br>
+                $$\bar{x} \pm t_{0.025,9} \cdot s_{\bar{x}}$$
+                <br>
+                kde $t_{0.025,9} = 2.262$ (tabulková hodnota)
+            </div>
+
+            <div class="formula-box">
+                $$CI_{95\%} = 7.007 \pm 2.262 \times 0.007 = 7.007 \pm 0.016$$
+                $$CI_{95\%} = [6.991; 7.023] \text{ pH}$$
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Interaktivní kalkulátor</h2>
+            <div class="formula-box">
+                <h3>Statistická analýza dat</h3>
+                <label>Zadejte naměřené hodnoty (oddělené čárkami):</label><br>
+                <textarea id="dataInput" rows="3" cols="50">7.02, 6.98, 7.01, 6.99, 7.03, 7.00, 6.97, 7.02, 7.01, 7.04</textarea>
+                <br><br>
+                <button onclick="calculateStatistics()">Vypočítej statistiky</button>
+                <br><br>
+                <div id="statisticsResult"></div>
+            </div>
+        </section>
+
+        <section class="result-box">
+            <h2>Výsledek analýzy</h2>
+            <p>pH pufrového roztoku: <span>7.007 ± 0.016</span> (95% interval spolehlivosti)</p>
+            <p>Směrodatná odchylka: <span>0.022 pH</span></p>
+            <p>Přesnost měření: <span>±0.31%</span></p>
+            <p>Závěr: <span>Měření je v souladu s teoretickou hodnotou pH = 7.00</span></p>
+        </section>
+
+        <section class="note">
+            <h3>Poznámky k statistické analýze</h3>
+            <ul>
+                <li><strong>Počet měření:</strong> Pro spolehlivou statistiku je potřeba alespoň 5-10 měření</li>
+                <li><strong>Normální rozdělení:</strong> Základní statistické metody předpokládají normální rozdělení dat</li>
+                <li><strong>Odlehlé hodnoty:</strong> Mohou významně ovlivnit průměr a směrodatnou odchylku</li>
+                <li><strong>Interval spolehlivosti:</strong> Rozsah, ve kterém se s danou pravděpodobností nachází skutečná hodnota</li>
+            </ul>
+        </section>
+    </main>
+
+    <script>
+        // Experimentální data
+        const pHData = [7.02, 6.98, 7.01, 6.99, 7.03, 7.00, 6.97, 7.02, 7.01, 7.04];
+
+        // Vytvoření grafů při načtení stránky
+        window.onload = function() {
+            createStatisticsPlots();
+        };
+
+        function createStatisticsPlots() {
+            // Graf průběhu měření
+            const trace1 = {
+                y: pHData,
+                x: Array.from({length: pHData.length}, (_, i) => i + 1),
+                mode: 'lines+markers',
+                type: 'scatter',
+                name: 'Naměřené hodnoty',
+                line: { color: 'blue', width: 2 },
+                marker: { size: 8, color: 'blue' }
+            };
+
+            const mean = pHData.reduce((a, b) => a + b) / pHData.length;
+            const trace2 = {
+                y: Array(pHData.length).fill(mean),
+                x: Array.from({length: pHData.length}, (_, i) => i + 1),
+                mode: 'lines',
+                type: 'scatter',
+                name: `Průměr (${mean.toFixed(3)})`,
+                line: { color: 'red', width: 2, dash: 'dash' }
+            };
+
+            const layout1 = {
+                title: 'Průběh měření pH',
+                xaxis: { title: 'Číslo měření' },
+                yaxis: { title: 'pH [-]' },
+                showlegend: true
+            };
+
+            Plotly.newPlot('statisticsPlot', [trace1, trace2], layout1);
+
+            // Histogram
+            const trace3 = {
+                x: pHData,
+                type: 'histogram',
+                nbinsx: 5,
+                name: 'Četnost',
+                marker: { color: 'lightblue', line: { color: 'black', width: 1 } }
+            };
+
+            const layout2 = {
+                title: 'Histogram naměřených hodnot',
+                xaxis: { title: 'pH [-]' },
+                yaxis: { title: 'Četnost' },
+                showlegend: false
+            };
+
+            Plotly.newPlot('histogramPlot', [trace3], layout2);
+        }
+
+        function calculateStatistics() {
+            const input = document.getElementById('dataInput').value;
+            const data = input.split(',').map(x => parseFloat(x.trim())).filter(x => !isNaN(x));
+
+            if (data.length < 3) {
+                document.getElementById('statisticsResult').innerHTML = '<strong style="color: red;">Zadejte alespoň 3 hodnoty!</strong>';
+                return;
+            }
+
+            const n = data.length;
+            const mean = data.reduce((a, b) => a + b) / n;
+
+            // Směrodatná odchylka
+            const variance = data.reduce((acc, x) => acc + Math.pow(x - mean, 2), 0) / (n - 1);
+            const stdDev = Math.sqrt(variance);
+
+            // Směrodatná chyba průměru
+            const stdError = stdDev / Math.sqrt(n);
+
+            // Medián
+            const sortedData = [...data].sort((a, b) => a - b);
+            const median = n % 2 === 0
+                ? (sortedData[n/2 - 1] + sortedData[n/2]) / 2
+                : sortedData[Math.floor(n/2)];
+
+            // Variační koeficient
+            const cv = (stdDev / mean) * 100;
+
+            // 95% interval spolehlivosti (přibližně pro velká n)
+            const tValue = n <= 30 ? 2.0 : 1.96; // zjednodušená t-hodnota
+            const marginError = tValue * stdError;
+
+            // Minimum a maximum
+            const min = Math.min(...data);
+            const max = Math.max(...data);
+
+            document.getElementById('statisticsResult').innerHTML = `
+                <strong>Výsledky statistické analýzy:</strong><br>
+                Počet měření: ${n}<br>
+                Průměr: ${mean.toFixed(4)}<br>
+                Medián: ${median.toFixed(4)}<br>
+                Směrodatná odchylka: ${stdDev.toFixed(4)}<br>
+                Směrodatná chyba průměru: ${stdError.toFixed(4)}<br>
+                Variační koeficient: ${cv.toFixed(2)}%<br>
+                Minimum: ${min.toFixed(3)}<br>
+                Maximum: ${max.toFixed(3)}<br>
+                Rozsah: ${(max - min).toFixed(3)}<br>
+                <br>
+                <strong>95% interval spolehlivosti:</strong><br>
+                [${(mean - marginError).toFixed(4)}; ${(mean + marginError).toFixed(4)}]
+            `;
+        }
+    </script>
+</body>
+</html>

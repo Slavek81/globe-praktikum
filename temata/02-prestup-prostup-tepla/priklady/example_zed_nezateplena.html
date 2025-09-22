@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nezateplená cihlová zeď</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>Nezateplená cihlová zeď</h1>
+        </header>
+
+        <section class="problem-statement">
+            <h2>Zadání úlohy</h2>
+            <div class="task-description">
+                <p>Obvodová stěna rodinného domu je postavena z klasických cihel bez tepelné izolace.
+                Vypočítejte tepelné ztráty touto stěnou během topné sezóny a určete roční náklady na vytápění.</p>
+
+                <h3>Dané hodnoty:</h3>
+                <ul>
+                    <li><strong>Rozměry stěny:</strong> 8 m × 3 m (plocha 24 m²)</li>
+                    <li><strong>Skladba stěny:</strong>
+                        <ul>
+                            <li>Vnitřní omítka: 2 cm, λ = 0.8 W/(m·K)</li>
+                            <li>Cihlové zdivo: 30 cm, λ = 0.7 W/(m·K)</li>
+                            <li>Vnější omítka: 2 cm, λ = 0.8 W/(m·K)</li>
+                        </ul>
+                    </li>
+                    <li><strong>Teploty:</strong> vnitřní 21°C, venkovní -5°C</li>
+                    <li><strong>Součinitele přestupu:</strong> αᵢ = 8 W/(m²·K), αₑ = 25 W/(m²·K)</li>
+                    <li><strong>Topná sezóna:</strong> 180 dnů</li>
+                    <li><strong>Cena tepla:</strong> 1.50 Kč/kWh</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="solution">
+            <h2>Řešení</h2>
+
+            <div class="step">
+                <h3>1. Výpočet tepelných odporů jednotlivých vrstev</h3>
+                <p>Tepelný odpor každé vrstvy vypočítáme podle vzorce:</p>
+                <p>$$R = \frac{d}{\lambda}$$</p>
+
+                <div class="calculation">
+                    <p><strong>Odpor přestupu na vnitřní straně:</strong></p>
+                    <p>$$R_{si} = \frac{1}{\alpha_i} = \frac{1}{8} = 0.125 \text{ m²·K/W}$$</p>
+
+                    <p><strong>Odpor vnitřní omítky:</strong></p>
+                    <p>$$R_1 = \frac{d_1}{\lambda_1} = \frac{0.02}{0.8} = 0.025 \text{ m²·K/W}$$</p>
+
+                    <p><strong>Odpor cihlového zdiva:</strong></p>
+                    <p>$$R_2 = \frac{d_2}{\lambda_2} = \frac{0.30}{0.7} = 0.429 \text{ m²·K/W}$$</p>
+
+                    <p><strong>Odpor vnější omítky:</strong></p>
+                    <p>$$R_3 = \frac{d_3}{\lambda_3} = \frac{0.02}{0.8} = 0.025 \text{ m²·K/W}$$</p>
+
+                    <p><strong>Odpor přestupu na vnější straně:</strong></p>
+                    <p>$$R_{se} = \frac{1}{\alpha_e} = \frac{1}{25} = 0.040 \text{ m²·K/W}$$</p>
+                </div>
+            </div>
+
+            <div class="step">
+                <h3>2. Celkový tepelný odpor stěny</h3>
+                <div class="calculation">
+                    <p>$$R_{celk} = R_{si} + R_1 + R_2 + R_3 + R_{se}$$</p>
+                    <p>$$R_{celk} = 0.125 + 0.025 + 0.429 + 0.025 + 0.040 = 0.644 \text{ m²·K/W}$$</p>
+                </div>
+            </div>
+
+            <div class="step">
+                <h3>3. Součinitel prostupu tepla</h3>
+                <div class="calculation">
+                    <p>$$U = \frac{1}{R_{celk}} = \frac{1}{0.644} = 1.55 \text{ W/(m²·K)}$$</p>
+                </div>
+                <div class="note warning">
+                    <p><strong>Poznámka:</strong> Tato hodnota je výrazně vyšší než požadavky normy ČSN 73 0540-2,
+                    která pro obvodové stěny vyžaduje U ≤ 0.30 W/(m²·K)!</p>
+                </div>
+            </div>
+
+            <div class="step">
+                <h3>4. Tepelný tok stěnou</h3>
+                <div class="calculation">
+                    <p>Teplotní rozdíl: ΔT = 21 - (-5) = 26 K</p>
+                    <p>$$\dot{Q} = U \cdot A \cdot \Delta T = 1.55 \times 24 \times 26 = 967 \text{ W}$$</p>
+                </div>
+            </div>
+
+            <div class="step">
+                <h3>5. Roční ztráty a náklady</h3>
+                <div class="calculation">
+                    <p><strong>Denní ztráta energie:</strong></p>
+                    <p>$$E_{den} = \dot{Q} \times 24 = 967 \times 24 = 23.2 \text{ kWh/den}$$</p>
+
+                    <p><strong>Ztráta za topnou sezónu:</strong></p>
+                    <p>$$E_{sezona} = E_{den} \times 180 = 23.2 \times 180 = 4\,176 \text{ kWh}$$</p>
+
+                    <p><strong>Roční náklady:</strong></p>
+                    <p>$$N = E_{sezona} \times \text{cena} = 4\,176 \times 1.50 = 6\,264 \text{ Kč}$$</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="calculator">
+            <h2>Interaktivní kalkulačka</h2>
+            <div class="calculator-panel">
+                <div class="input-group">
+                    <label for="thickness1">Tloušťka vnitřní omítky [cm]:</label>
+                    <input type="number" id="thickness1" value="2" step="0.1" min="0">
+                </div>
+                <div class="input-group">
+                    <label for="thickness2">Tloušťka zdiva [cm]:</label>
+                    <input type="number" id="thickness2" value="30" step="1" min="1">
+                </div>
+                <div class="input-group">
+                    <label for="thickness3">Tloušťka vnější omítky [cm]:</label>
+                    <input type="number" id="thickness3" value="2" step="0.1" min="0">
+                </div>
+                <div class="input-group">
+                    <label for="area">Plocha stěny [m²]:</label>
+                    <input type="number" id="area" value="24" step="1" min="1">
+                </div>
+                <div class="input-group">
+                    <label for="tempIn">Vnitřní teplota [°C]:</label>
+                    <input type="number" id="tempIn" value="21" step="1">
+                </div>
+                <div class="input-group">
+                    <label for="tempOut">Venkovní teplota [°C]:</label>
+                    <input type="number" id="tempOut" value="-5" step="1">
+                </div>
+                <div class="input-group">
+                    <label for="price">Cena tepla [Kč/kWh]:</label>
+                    <input type="number" id="price" value="1.50" step="0.01" min="0">
+                </div>
+                <button onclick="calculateWall()">Vypočítat</button>
+            </div>
+
+            <div id="results" class="results">
+                <h3>Výsledky:</h3>
+                <div class="result-item">
+                    <strong>Součinitel prostupu U:</strong> <span id="uValue">1.55</span> W/(m²·K)
+                </div>
+                <div class="result-item">
+                    <strong>Tepelný tok:</strong> <span id="heatFlow">967</span> W
+                </div>
+                <div class="result-item">
+                    <strong>Denní ztráta:</strong> <span id="dailyLoss">23.2</span> kWh
+                </div>
+                <div class="result-item">
+                    <strong>Roční náklady:</strong> <span id="annualCost">6,264</span> Kč
+                </div>
+            </div>
+        </section>
+
+        <section class="conclusion">
+            <h2>Závěr</h2>
+            <div class="summary">
+                <p>Nezateplená cihlová stěna má velmi špatné tepelně-izolační vlastnosti:</p>
+                <ul>
+                    <li><strong>Součinitel prostupu U = 1.55 W/(m²·K)</strong> je 5× vyšší než požaduje norma</li>
+                    <li><strong>Tepelné ztráty 967 W</strong> jen touto jednou stěnou jsou značné</li>
+                    <li><strong>Roční náklady 6,264 Kč</strong> jen za ztráty jednou stěnou</li>
+                    <li>Stěna je <strong>vhodným kandidátem na zateplení</strong></li>
+                </ul>
+                <div class="note tip">
+                    <p><strong>Doporučení:</strong> Přidání 10 cm tepelné izolace (EPS λ = 0.04 W/(m·K))
+                    by snížilo součinitel prostupu na U ≈ 0.28 W/(m²·K) a ušetřilo by cca 80% nákladů!</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        function calculateWall() {
+            // Získání hodnot z formuláře
+            const d1 = parseFloat(document.getElementById('thickness1').value) / 100; // převod na metry
+            const d2 = parseFloat(document.getElementById('thickness2').value) / 100;
+            const d3 = parseFloat(document.getElementById('thickness3').value) / 100;
+            const area = parseFloat(document.getElementById('area').value);
+            const tempIn = parseFloat(document.getElementById('tempIn').value);
+            const tempOut = parseFloat(document.getElementById('tempOut').value);
+            const price = parseFloat(document.getElementById('price').value);
+
+            // Tepelné vodivosti [W/(m·K)]
+            const lambda1 = 0.8; // vnitřní omítka
+            const lambda2 = 0.7; // cihlové zdivo
+            const lambda3 = 0.8; // vnější omítka
+
+            // Součinitele přestupu [W/(m²·K)]
+            const alphaI = 8;
+            const alphaE = 25;
+
+            // Výpočet tepelných odporů
+            const Rsi = 1 / alphaI;
+            const R1 = d1 / lambda1;
+            const R2 = d2 / lambda2;
+            const R3 = d3 / lambda3;
+            const Rse = 1 / alphaE;
+
+            const Rtotal = Rsi + R1 + R2 + R3 + Rse;
+            const U = 1 / Rtotal;
+
+            // Tepelný tok
+            const deltaT = tempIn - tempOut;
+            const heatFlow = U * area * deltaT;
+
+            // Denní a roční ztráty
+            const dailyLoss = heatFlow * 24 / 1000; // kWh
+            const seasonLoss = dailyLoss * 180; // kWh za sezónu
+            const annualCost = seasonLoss * price;
+
+            // Zobrazení výsledků
+            document.getElementById('uValue').textContent = U.toFixed(2);
+            document.getElementById('heatFlow').textContent = Math.round(heatFlow);
+            document.getElementById('dailyLoss').textContent = dailyLoss.toFixed(1);
+            document.getElementById('annualCost').textContent = Math.round(annualCost).toLocaleString('cs-CZ');
+        }
+
+        // Spustit výpočet při načtení stránky
+        window.onload = calculateWall;
+    </script>
+</body>
+</html>

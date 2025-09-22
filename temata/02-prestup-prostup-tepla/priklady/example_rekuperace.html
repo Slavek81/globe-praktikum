@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rekuperační výměník</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>Rekuperační výměník</h1>
+        </header>
+
+        <section class="problem-statement">
+            <h2>Zadání úlohy</h2>
+            <div class="task-description">
+                <p>Navrhněte rekuperační výměník tepla pro větrání rodinného domu.
+                Vypočítejte účinnost rekuperace a roční úspory energie při předehřevu přiváděného vzduchu
+                odváděným vzduchem z domu.</p>
+
+                <h3>Dané hodnoty:</h3>
+                <ul>
+                    <li><strong>Větrání domu:</strong>
+                        <ul>
+                            <li>Objem domu: 400 m³</li>
+                            <li>Výměna vzduchu: 0.5 h⁻¹</li>
+                            <li>Objemový tok vzduchu: V̇ = 200 m³/h</li>
+                        </ul>
+                    </li>
+                    <li><strong>Teploty v zimě:</strong>
+                        <ul>
+                            <li>Venkovní vzduch: T<sub>ext</sub> = -10°C</li>
+                            <li>Vnitřní vzduch: T<sub>int</sub> = 22°C</li>
+                            <li>Odváděný vzduch: T<sub>out,in</sub> = 20°C (lehce chladnější)</li>
+                        </ul>
+                    </li>
+                    <li><strong>Vlastnosti vzduchu:</strong>
+                        <ul>
+                            <li>Hustota: ρ = 1.2 kg/m³</li>
+                            <li>Měrná tepelná kapacita: c<sub>p</sub> = 1,005 J/(kg·K)</li>
+                        </ul>
+                    </li>
+                    <li><strong>Rekuperátor:</strong>
+                        <ul>
+                            <li>Celkový součinitel prostupu: U = 350 W/(m²·K)</li>
+                            <li>Účinnost: η = 85%</li>
+                        </ul>
+                    </li>
+                    <li><strong>Ekonomické údaje:</strong>
+                        <ul>
+                            <li>Cena tepla: 2.20 Kč/kWh</li>
+                            <li>Topná sezóna: 210 dnů</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="solution">
+            <h2>Řešení</h2>
+
+            <div class="step">
+                <h3>1. Hmotnostní tok vzduchu</h3>
+                <div class="calculation">
+                    <p><strong>Převod objemového toku na hmotnostní:</strong></p>
+                    <p>$$\dot{m} = \rho \times \dot{V} = 1.2 \times \frac{200}{3600} = 1.2 \times 0.0556 = 0.0667 \text{ kg/s}$$</p>
+                    <p><em>(objemový tok převeden na m³/s)</em></p>
+                </div>
+            </div>
+
+            <div class="step">
+                <h3>2. Tepelná ztráta bez rekuperace</h3>
+                <div class="calculation">
+                    <p><strong>Energie potřebná k ohřevu venkovního vzduchu:</strong></p>
+                    <p>$$\dot{Q}_{bez} = \dot{m} \times c_p \times (T_{int} - T_{ext})$$</p>
+                    <p>$$\dot{Q}_{bez} = 0.0667 \times 1{,}005 \times (22 - (-10))$$</p>
+                    <p>$$\dot{Q}_{bez} = 0.0667 \times 1{,}005 \times 32 = 2{,}144 \text{ W}$$</p>
+                </div>
+            </div>
+
+            <div class="step">
+                <h3>3. Účinnost rekuperace</h3>
+                <div class="calculation">
+                    <p><strong>Teoreticky získatelné teplo z odváděného vzduchu:</strong></p>
+                    <p>$$\dot{Q}_{max} = \dot{m} \times c_p \times (T_{out,in} - T_{ext})$$</p>
+                    <p>$$\dot{Q}_{max} = 0.0667 \times 1{,}005 \times (20 - (-10)) = 2{,}010 \text{ W}$$</p>
+
+                    <p><strong>Skutečně získané teplo při účinnosti 85%:</strong></p>
+                    <p>$$\dot{Q}_{zisk} = \eta \times \dot{Q}_{max} = 0.85 \times 2{,}010 = 1{,}709 \text{ W}$$</p>
+
+                    <p><strong>Teplota přiváděného vzduchu po rekuperaci:</strong></p>
+                    <p>$$T_{supply} = T_{ext} + \frac{\dot{Q}_{zisk}}{\dot{m} \times c_p}$$</p>
+                    <p>$$T_{supply} = -10 + \frac{1{,}709}{0.0667 \times 1{,}005} = -10 + 25.5 = 15.5°\text{C}$$</p>
+                </div>
+            </div>
+
+            <div class="step">
+                <h3>4. Úspora energie</h3>
+                <div class="calculation">
+                    <p><strong>Tepelná zátěž po rekuperaci:</strong></p>
+                    <p>$$\dot{Q}_{s\_rek} = \dot{m} \times c_p \times (T_{int} - T_{supply})$$</p>
+                    <p>$$\dot{Q}_{s\_rek} = 0.0667 \times 1{,}005 \times (22 - 15.5) = 435 \text{ W}$$</p>
+
+                    <p><strong>Úspora tepelného výkonu:</strong></p>
+                    <p>$$\Delta \dot{Q} = \dot{Q}_{bez} - \dot{Q}_{s\_rek} = 2{,}144 - 435 = 1{,}709 \text{ W}$$</p>
+
+                    <p><strong>Účinnost rekuperace:</strong></p>
+                    <p>$$\eta_{rek} = \frac{\Delta \dot{Q}}{\dot{Q}_{bez}} = \frac{1{,}709}{2{,}144} = 0.797 = 79.7\%$$</p>
+                </div>
+            </div>
+
+            <div class="step">
+                <h3>5. Potřebná plocha výměníku</h3>
+                <div class="calculation">
+                    <p><strong>Logaritmický teplotní rozdíl:</strong></p>
+                    <p>Vstup: teplý vzduch 20°C → studený vzduch -10°C, ΔT₁ = 30 K</p>
+                    <p>Výstup: teplý vzduch ~17°C → studený vzduch 15.5°C, ΔT₂ ≈ 1.5 K</p>
+
+                    <p>$$\Delta T_{log} = \frac{30 - 1.5}{\ln(30/1.5)} = \frac{28.5}{\ln(20)} = \frac{28.5}{3.0} = 9.5 \text{ K}$$</p>
+
+                    <p><strong>Potřebná plocha:</strong></p>
+                    <p>$$A = \frac{\dot{Q}_{zisk}}{U \times \Delta T_{log}} = \frac{1{,}709}{350 \times 9.5} = 0.514 \text{ m²}$$</p>
+                </div>
+            </div>
+
+            <div class="step">
+                <h3>6. Roční úspory</h3>
+                <div class="calculation">
+                    <p><strong>Roční úspora energie:</strong></p>
+                    <p>$$E_{rok} = \Delta \dot{Q} \times 24 \times 210 \div 1000$$</p>
+                    <p>$$E_{rok} = 1{,}709 \times 24 \times 210 \div 1000 = 8{,}601 \text{ kWh/rok}$$</p>
+
+                    <p><strong>Roční úspora nákladů:</strong></p>
+                    <p>$$N_{rok} = 8{,}601 \times 2.20 = 18{,}922 \text{ Kč/rok}$$</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="calculator">
+            <h2>Kalkulačka rekuperace</h2>
+            <div class="calculator-panel">
+                <div class="input-group">
+                    <label for="houseVolume">Objem domu [m³]:</label>
+                    <input type="number" id="houseVolume" value="400" step="10" min="100">
+                </div>
+                <div class="input-group">
+                    <label for="airChanges">Výměna vzduchu [h⁻¹]:</label>
+                    <input type="number" id="airChanges" value="0.5" step="0.1" min="0.3" max="2.0">
+                </div>
+                <div class="input-group">
+                    <label for="tempExt">Venkovní teplota [°C]:</label>
+                    <input type="number" id="tempExt" value="-10" step="1" min="-30" max="10">
+                </div>
+                <div class="input-group">
+                    <label for="tempInt">Vnitřní teplota [°C]:</label>
+                    <input type="number" id="tempInt" value="22" step="1" min="18" max="25">
+                </div>
+                <div class="input-group">
+                    <label for="tempOut">Teplota odváděného vzduchu [°C]:</label>
+                    <input type="number" id="tempOut" value="20" step="1" min="15" max="24">
+                </div>
+                <div class="input-group">
+                    <label for="efficiency">Účinnost rekuperátoru [%]:</label>
+                    <input type="number" id="efficiency" value="85" step="1" min="60" max="95">
+                </div>
+                <div class="input-group">
+                    <label for="uValue">Součinitel prostupu U [W/(m²·K)]:</label>
+                    <input type="number" id="uValue" value="350" step="10" min="200" max="500">
+                </div>
+                <div class="input-group">
+                    <label for="heatPrice">Cena tepla [Kč/kWh]:</label>
+                    <input type="number" id="heatPrice" value="2.20" step="0.01" min="1.00">
+                </div>
+                <div class="input-group">
+                    <label for="heatingDays">Topných dnů/rok:</label>
+                    <input type="number" id="heatingDays" value="210" step="1" min="150" max="250">
+                </div>
+                <button onclick="calculateRecuperation()">Vypočítat rekuperaci</button>
+            </div>
+
+            <div id="results" class="results">
+                <h3>Výsledky rekuperace:</h3>
+                <div class="result-item">
+                    <strong>Objemový tok vzduchu:</strong> <span id="airFlow">200</span> m³/h
+                </div>
+                <div class="result-item">
+                    <strong>Tepelná ztráta bez rekuperace:</strong> <span id="lossWithout">2.14</span> kW
+                </div>
+                <div class="result-item">
+                    <strong>Získané teplo z rekuperace:</strong> <span id="recoveredHeat">1.71</span> kW
+                </div>
+                <div class="result-item">
+                    <strong>Teplota vzduchu po rekuperaci:</strong> <span id="supplyTemp">15.5</span> °C
+                </div>
+                <div class="result-item">
+                    <strong>Tepelná zátěž s rekuperací:</strong> <span id="lossWithRec">0.44</span> kW
+                </div>
+                <div class="result-item highlight">
+                    <strong>Účinnost rekuperace:</strong> <span id="recEfficiency">79.7</span> %
+                </div>
+                <div class="result-item highlight">
+                    <strong>Potřebná plocha výměníku:</strong> <span id="exchangerArea">0.51</span> m²
+                </div>
+                <div class="result-item success">
+                    <strong>Roční úspora energie:</strong> <span id="annualSaving">8,601</span> kWh
+                </div>
+                <div class="result-item success">
+                    <strong>Roční úspora nákladů:</strong> <span id="costSaving">18,922</span> Kč
+                </div>
+            </div>
+        </section>
+
+        <section class="types-comparison">
+            <h2>Typy rekuperačních výměníků</h2>
+            <div class="types-grid">
+                <div class="type-item">
+                    <h4>🔄 Deskový výměník</h4>
+                    <p><strong>Účinnost:</strong> 60-90%<br>
+                    <strong>Výhody:</strong> kompaktní, levný<br>
+                    <strong>Nevýhody:</strong> možnost zamrzání</p>
+                </div>
+                <div class="type-item">
+                    <h4>🌀 Rotační výměník</h4>
+                    <p><strong>Účinnost:</strong> 70-85%<br>
+                    <strong>Výhody:</strong> vyšší účinnost, přenos vlhkosti<br>
+                    <strong>Nevýhody:</strong> pohyblivé části, údržba</p>
+                </div>
+                <div class="type-item">
+                    <h4>🔥 Tepelné čerpadlo</h4>
+                    <p><strong>Účinnost:</strong> 200-400%<br>
+                    <strong>Výhody:</strong> velmi vysoká účinnost<br>
+                    <strong>Nevýhody:</strong> vyšší pořizovací náklady</p>
+                </div>
+                <div class="type-item">
+                    <h4>💧 S přenosem vlhkosti</h4>
+                    <p><strong>Účinnost:</strong> 70-85% + vlhkost<br>
+                    <strong>Výhody:</strong> udržuje vlhkost vzduchu<br>
+                    <strong>Nevýhody:</strong> složitější konstrukce</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="conclusion">
+            <h2>Závěr</h2>
+            <div class="summary">
+                <p>Rekuperační výměník je velmi efektivní způsob úspory energie při větrání:</p>
+                <ul>
+                    <li><strong>Účinnost rekuperace 79.7%</strong> výrazně snižuje tepelné ztráty větráním</li>
+                    <li><strong>Úspora 8,601 kWh/rok</strong> představuje významnou energetickou úsporu</li>
+                    <li><strong>Návratnost investice</strong> je typicky 3-7 let</li>
+                    <li><strong>Předehřev vzduchu z -10°C na 15.5°C</strong> zvyšuje komfort bydlení</li>
+                    <li><strong>Potřebná plocha 0.51 m²</strong> je kompaktní a dobře realizovatelná</li>
+                </ul>
+
+                <div class="note tip">
+                    <p><strong>Praktické výhody rekuperace:</strong></p>
+                    <ul>
+                        <li>Dramatické snížení nákladů na vytápění</li>
+                        <li>Zlepšení kvality vnitřního vzduchu</li>
+                        <li>Eliminace průvanu studeného vzduchu</li>
+                        <li>Možnost letního chlazení (noční větrání)</li>
+                        <li>Ekologický přínos - snížení CO₂ emisí</li>
+                    </ul>
+                </div>
+
+                <div class="note warning">
+                    <p><strong>Pozor na:</strong></p>
+                    <ul>
+                        <li>Zamrzání kondenzátu při extrémních mrazech</li>
+                        <li>Nutnost pravidelné údržby a čištění</li>
+                        <li>Správné seřízení průtoků vzduchu</li>
+                        <li>Kvalitní izolaci vzduchovodů</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        function calculateRecuperation() {
+            // Získání hodnot z formuláře
+            const houseVolume = parseFloat(document.getElementById('houseVolume').value);
+            const airChanges = parseFloat(document.getElementById('airChanges').value);
+            const tempExt = parseFloat(document.getElementById('tempExt').value);
+            const tempInt = parseFloat(document.getElementById('tempInt').value);
+            const tempOut = parseFloat(document.getElementById('tempOut').value);
+            const efficiency = parseFloat(document.getElementById('efficiency').value) / 100;
+            const uValue = parseFloat(document.getElementById('uValue').value);
+            const heatPrice = parseFloat(document.getElementById('heatPrice').value);
+            const heatingDays = parseFloat(document.getElementById('heatingDays').value);
+
+            // Konstanty vzduchu
+            const rho = 1.2; // kg/m³
+            const cp = 1005; // J/(kg·K)
+
+            // Výpočty
+            const airFlowVolume = houseVolume * airChanges; // m³/h
+            const massFlow = rho * airFlowVolume / 3600; // kg/s
+
+            // Tepelné ztráty bez rekuperace
+            const lossWithout = massFlow * cp * (tempInt - tempExt) / 1000; // kW
+
+            // Maximální získatelné teplo
+            const maxRecoverable = massFlow * cp * (tempOut - tempExt) / 1000; // kW
+
+            // Skutečně získané teplo
+            const recoveredHeat = efficiency * maxRecoverable; // kW
+
+            // Teplota vzduchu po rekuperaci
+            const supplyTemp = tempExt + (recoveredHeat * 1000) / (massFlow * cp);
+
+            // Tepelná zátěž s rekuperací
+            const lossWithRec = massFlow * cp * (tempInt - supplyTemp) / 1000; // kW
+
+            // Účinnost rekuperace
+            const recEfficiency = ((lossWithout - lossWithRec) / lossWithout) * 100;
+
+            // Plocha výměníku (zjednodušený výpočet)
+            const deltaTmax = tempOut - tempExt;
+            const deltaTmin = Math.max(1, tempOut - supplyTemp); // min 1K aby nedělilo nulou
+            const logTempDiff = (deltaTmax - deltaTmin) / Math.log(deltaTmax / deltaTmin);
+            const exchangerArea = (recoveredHeat * 1000) / (uValue * logTempDiff);
+
+            // Roční úspory
+            const annualSaving = (recoveredHeat * 24 * heatingDays); // kWh
+            const costSaving = annualSaving * heatPrice;
+
+            // Zobrazení výsledků
+            document.getElementById('airFlow').textContent = Math.round(airFlowVolume);
+            document.getElementById('lossWithout').textContent = lossWithout.toFixed(2);
+            document.getElementById('recoveredHeat').textContent = recoveredHeat.toFixed(2);
+            document.getElementById('supplyTemp').textContent = supplyTemp.toFixed(1);
+            document.getElementById('lossWithRec').textContent = lossWithRec.toFixed(2);
+            document.getElementById('recEfficiency').textContent = recEfficiency.toFixed(1);
+            document.getElementById('exchangerArea').textContent = exchangerArea.toFixed(2);
+            document.getElementById('annualSaving').textContent = Math.round(annualSaving).toLocaleString('cs-CZ');
+            document.getElementById('costSaving').textContent = Math.round(costSaving).toLocaleString('cs-CZ');
+        }
+
+        // Spustit výpočet při načtení stránky
+        window.onload = calculateRecuperation;
+    </script>
+</body>
+</html>

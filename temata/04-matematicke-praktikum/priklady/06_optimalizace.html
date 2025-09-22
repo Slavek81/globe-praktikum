@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Optimalizace procesů - Tlaková nádoba</title>
+    <link rel="stylesheet" href="unified-style.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+    </script>
+</head>
+<body>
+    <main>
+        <header>
+            <h1>Optimalizace procesů</h1>
+            <p>Minimalizace nákladů na výrobu tlakové nádoby</p>
+        </header>
+
+        <section class="intro-box">
+            <p>Optimalizace je matematická metoda pro nalezení nejlepšího řešení při splnění daných omezení. V inženýrské praxi se často snažíme minimalizovat náklady, maximalizovat výkon nebo najít optimální rozměry konstrukce.</p>
+        </section>
+
+        <section class="section">
+            <h2>Úvod do problému</h2>
+            <p>Navrhujeme válcovou tlakovou nádobu pro chemický proces. Cílem je minimalizovat náklady na materiál při splnění požadavků na objem a bezpečnost.</p>
+
+            <div class="formula-box">
+                <strong>Geometrie válcové nádoby:</strong><br>
+                <strong>Objem:</strong> $V = \pi r^2 h$<br>
+                <strong>Povrch:</strong> $S = 2\pi r^2 + 2\pi r h$ (dno + víko + plášť)<br>
+                <strong>Náklady:</strong> $C = k \cdot S$ (kde $k$ je cena za m²)
+            </div>
+        </section>
+
+        <section class="section section-gray">
+            <h2>Zadání úlohy</h2>
+            <table>
+                <tr>
+                    <th>Parametr</th>
+                    <th>Hodnota</th>
+                    <th>Jednotka</th>
+                </tr>
+                <tr>
+                    <td class="variable">Požadovaný objem</td>
+                    <td class="value">10</td>
+                    <td class="unit">m³</td>
+                </tr>
+                <tr>
+                    <td class="variable">Cena materiálu</td>
+                    <td class="value">500</td>
+                    <td class="unit">Kč/m²</td>
+                </tr>
+                <tr>
+                    <td class="variable">Minimální poloměr</td>
+                    <td class="value">0.5</td>
+                    <td class="unit">m</td>
+                </tr>
+                <tr>
+                    <td class="variable">Maximální výška</td>
+                    <td class="value">6</td>
+                    <td class="unit">m</td>
+                </tr>
+            </table>
+
+            <p><strong>Úkol:</strong> Najděte rozměry nádoby (poloměr $r$ a výšku $h$), které minimalizují náklady na materiál.</p>
+        </section>
+
+        <section class="section">
+            <h2>Formulace optimalizačního problému</h2>
+
+            <h3>Účelová funkce (minimalizace nákladů):</h3>
+            <div class="formula-box">
+                $$C(r, h) = 500 \cdot (2\pi r^2 + 2\pi r h) = 1000\pi(r^2 + rh)$$
+            </div>
+
+            <h3>Omezující podmínky:</h3>
+            <div class="formula-box">
+                <strong>1. Objemová podmínka:</strong> $\pi r^2 h = 10$<br>
+                <strong>2. Geometrická omezení:</strong> $r \geq 0.5$ m, $h \leq 6$ m<br>
+                <strong>3. Fyzikální podmínky:</strong> $r > 0$, $h > 0$
+            </div>
+
+            <p>Z objemové podmínky můžeme vyjádřit výšku:</p>
+            <div class="formula-box">
+                $$h = \frac{10}{\pi r^2}$$
+            </div>
+        </section>
+
+        <section class="section section-gray">
+            <h2>Substituce a redukce problému</h2>
+            <p>Dosadíme $h$ do účelové funkce a převedeme na problém jedné proměnné:</p>
+
+            <div class="formula-box">
+                $$C(r) = 1000\pi\left(r^2 + r \cdot \frac{10}{\pi r^2}\right)$$
+                $$C(r) = 1000\pi\left(r^2 + \frac{10}{\pi r}\right)$$
+                $$C(r) = 1000\pi r^2 + \frac{10000}{r}$$
+            </div>
+
+            <h3>Definiční obor:</h3>
+            <p>Z podmínky $h \leq 6$ m získáme:</p>
+            <div class="formula-box">
+                $$\frac{10}{\pi r^2} \leq 6 \quad \Rightarrow \quad r^2 \geq \frac{10}{6\pi} \quad \Rightarrow \quad r \geq \sqrt{\frac{10}{6\pi}} \approx 0.729 \text{ m}$$
+            </div>
+            <p>Kombinací s podmínkou $r \geq 0.5$ m dostáváme: $r \geq 0.729$ m</p>
+        </section>
+
+        <section class="section">
+            <h2>Nalezení optima pomocí derivace</h2>
+
+            <h3>První derivace:</h3>
+            <div class="formula-box">
+                $$C'(r) = 2000\pi r - \frac{10000}{r^2}$$
+            </div>
+
+            <h3>Podmínka pro extremum:</h3>
+            <div class="formula-box">
+                $$C'(r) = 0 \quad \Rightarrow \quad 2000\pi r - \frac{10000}{r^2} = 0$$
+                $$2000\pi r = \frac{10000}{r^2}$$
+                $$2000\pi r^3 = 10000$$
+                $$r^3 = \frac{10000}{2000\pi} = \frac{5}{\pi}$$
+                $$r = \sqrt[3]{\frac{5}{\pi}} \approx 1.084 \text{ m}$$
+            </div>
+
+            <h3>Kontrola druhé derivace:</h3>
+            <div class="formula-box">
+                $$C''(r) = 2000\pi + \frac{20000}{r^3}$$
+            </div>
+            <p>Pro $r > 0$ je $C''(r) > 0$, tudíž se jedná o minimum.</p>
+        </section>
+
+        <section class="section section-gray">
+            <h2>Výpočet optimálních rozměrů</h2>
+
+            <table>
+                <tr>
+                    <th>Parametr</th>
+                    <th>Výpočet</th>
+                    <th>Hodnota</th>
+                </tr>
+                <tr>
+                    <td class="variable">Optimální poloměr</td>
+                    <td>$r = \sqrt[3]{\frac{5}{\pi}}$</td>
+                    <td class="value">1.084 m</td>
+                </tr>
+                <tr>
+                    <td class="variable">Optimální výška</td>
+                    <td>$h = \frac{10}{\pi r^2}$</td>
+                    <td class="value">2.168 m</td>
+                </tr>
+                <tr>
+                    <td class="variable">Poměr h/r</td>
+                    <td>$\frac{h}{r} = \frac{2 \cdot 1.084}{1.084}$</td>
+                    <td class="value">2.0</td>
+                </tr>
+                <tr>
+                    <td class="variable">Minimální náklady</td>
+                    <td>$C = 1000\pi(r^2 + rh)$</td>
+                    <td class="value">22 281 Kč</td>
+                </tr>
+            </table>
+
+            <div class="note">
+                <strong>Zajímavý výsledek:</strong> U optimální nádoby je výška vždy dvojnásobek poloměru ($h = 2r$). Toto je obecné pravidlo pro cylindrické nádoby s pevným objemem.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Grafické znázornění</h2>
+            <div id="optimizationPlot" style="width:100%;height:400px;"></div>
+            <div id="costComparison" style="width:100%;height:300px;"></div>
+        </section>
+
+        <section class="section section-gray">
+            <h2>Srovnání s alternativními návrhy</h2>
+            <table>
+                <tr>
+                    <th>Návrh</th>
+                    <th>r [m]</th>
+                    <th>h [m]</th>
+                    <th>Objem [m³]</th>
+                    <th>Náklady [Kč]</th>
+                    <th>Rozdíl</th>
+                </tr>
+                <tr style="background-color: #d4edda;">
+                    <td><strong>Optimální</strong></td>
+                    <td class="value">1.084</td>
+                    <td class="value">2.168</td>
+                    <td class="value">10.00</td>
+                    <td class="value">22 281</td>
+                    <td class="value">-</td>
+                </tr>
+                <tr>
+                    <td>Krychlový</td>
+                    <td class="value">1.336</td>
+                    <td class="value">1.784</td>
+                    <td class="value">10.00</td>
+                    <td class="value">23 562</td>
+                    <td class="value">+1 281</td>
+                </tr>
+                <tr>
+                    <td>Vysoký úzký</td>
+                    <td class="value">0.8</td>
+                    <td class="value">4.974</td>
+                    <td class="value">10.00</td>
+                    <td class="value">27 991</td>
+                    <td class="value">+5 710</td>
+                </tr>
+                <tr>
+                    <td>Nízký široký</td>
+                    <td class="value">1.5</td>
+                    <td class="value">1.415</td>
+                    <td class="value">10.00</td>
+                    <td class="value">24 740</td>
+                    <td class="value">+2 459</td>
+                </tr>
+            </table>
+        </section>
+
+        <section class="section">
+            <h2>Interaktivní kalkulátor</h2>
+            <div class="formula-box">
+                <h3>Optimalizace tlakové nádoby</h3>
+                <label>Požadovaný objem [m³]:</label>
+                <input type="number" id="volume" value="10" step="0.1" min="1">
+                <br><br>
+                <label>Cena materiálu [Kč/m²]:</label>
+                <input type="number" id="price" value="500" step="10" min="100">
+                <br><br>
+                <label>Minimální poloměr [m]:</label>
+                <input type="number" id="minRadius" value="0.5" step="0.1" min="0.1">
+                <br><br>
+                <label>Maximální výška [m]:</label>
+                <input type="number" id="maxHeight" value="6" step="0.1" min="1">
+                <br><br>
+                <button onclick="optimizeVessel()">Optimalizuj nádobu</button>
+                <br><br>
+                <div id="optimizationResult"></div>
+            </div>
+        </section>
+
+        <section class="result-box">
+            <h2>Výsledek optimalizace</h2>
+            <p>Optimální rozměry tlakové nádoby:</p>
+            <p>Poloměr: <span>1.084 m</span></p>
+            <p>Výška: <span>2.168 m</span> (= 2 × poloměr)</p>
+            <p>Minimální náklady: <span>22 281 Kč</span></p>
+            <p>Úspora oproti neoptimálním návrhům: <span>5-25%</span></p>
+        </section>
+
+        <section class="note">
+            <h3>Poznámky k optimalizaci</h3>
+            <ul>
+                <li><strong>Obecné pravidlo:</strong> Pro cylindrické nádoby s minimálním povrchem je h = 2r</li>
+                <li><strong>Praktické aspekty:</strong> Reálné návrhy musí zohlednit také výrobní náklady, dopravu a montáž</li>
+                <li><strong>Bezpečnostní faktory:</strong> Tlakové nádoby vyžadují dodatečné zesílení stěn</li>
+                <li><strong>Standardizace:</strong> Výrobci často používají standardní rozměry místo optimálních</li>
+            </ul>
+        </section>
+    </main>
+
+    <script>
+        // Vytvoření grafů při načtení stránky
+        window.onload = function() {
+            createOptimizationPlots();
+        };
+
+        function createOptimizationPlots() {
+            // Graf nákladové funkce
+            const rValues = [];
+            const costValues = [];
+            for (let r = 0.5; r <= 2.5; r += 0.05) {
+                const h = 10 / (Math.PI * r * r);
+                if (h <= 6) {
+                    const cost = 1000 * Math.PI * r * r + 10000 / r;
+                    rValues.push(r);
+                    costValues.push(cost);
+                }
+            }
+
+            const optimalR = Math.pow(5 / Math.PI, 1/3);
+            const optimalCost = 1000 * Math.PI * optimalR * optimalR + 10000 / optimalR;
+
+            const trace1 = {
+                x: rValues,
+                y: costValues,
+                mode: 'lines',
+                type: 'scatter',
+                name: 'Nákladová funkce',
+                line: { color: 'blue', width: 3 }
+            };
+
+            const trace2 = {
+                x: [optimalR],
+                y: [optimalCost],
+                mode: 'markers',
+                type: 'scatter',
+                name: `Optimum (r=${optimalR.toFixed(3)}m)`,
+                marker: { size: 12, color: 'red', symbol: 'star' }
+            };
+
+            const layout1 = {
+                title: 'Optimalizace nákladů tlakové nádoby',
+                xaxis: { title: 'Poloměr [m]' },
+                yaxis: { title: 'Náklady [Kč]' },
+                showlegend: true
+            };
+
+            Plotly.newPlot('optimizationPlot', [trace1, trace2], layout1);
+
+            // Srovnání různých návrhů
+            const designs = ['Optimální', 'Krychlový', 'Vysoký úzký', 'Nízký široký'];
+            const costs = [22281, 23562, 27991, 24740];
+            const colors = ['green', 'blue', 'red', 'orange'];
+
+            const trace3 = {
+                x: designs,
+                y: costs,
+                type: 'bar',
+                marker: { color: colors }
+            };
+
+            const layout2 = {
+                title: 'Srovnání nákladů různých návrhů',
+                xaxis: { title: 'Typ návrhu' },
+                yaxis: { title: 'Náklady [Kč]' }
+            };
+
+            Plotly.newPlot('costComparison', [trace3], layout2);
+        }
+
+        function optimizeVessel() {
+            const V = parseFloat(document.getElementById('volume').value);
+            const k = parseFloat(document.getElementById('price').value);
+            const rMin = parseFloat(document.getElementById('minRadius').value);
+            const hMax = parseFloat(document.getElementById('maxHeight').value);
+
+            // Výpočet kritického poloměru z omezení výšky
+            const rCritical = Math.sqrt(V / (Math.PI * hMax));
+
+            // Teoretické optimum (bez omezení)
+            const rOptimal = Math.pow(V / (2 * Math.PI), 1/3);
+
+            // Skutečné optimum s ohledem na omezení
+            const rActual = Math.max(rMin, rCritical, rOptimal);
+            const hActual = V / (Math.PI * rActual * rActual);
+
+            // Výpočet nákladů
+            const surface = 2 * Math.PI * rActual * rActual + 2 * Math.PI * rActual * hActual;
+            const cost = k * surface;
+
+            // Kontrola omezení
+            let constraints = [];
+            if (rActual === rMin && rMin > rOptimal) {
+                constraints.push(`Poloměr omezen minimální hodnotou (${rMin} m)`);
+            }
+            if (rActual === rCritical && rCritical > rOptimal) {
+                constraints.push(`Poloměr omezen maximální výškou (${hMax} m)`);
+            }
+
+            document.getElementById('optimizationResult').innerHTML = `
+                <strong>Výsledky optimalizace:</strong><br>
+                Objem: ${V} m³<br>
+                Optimální poloměr: ${rActual.toFixed(3)} m<br>
+                Optimální výška: ${hActual.toFixed(3)} m<br>
+                Poměr h/r: ${(hActual/rActual).toFixed(2)}<br>
+                Povrch: ${surface.toFixed(2)} m²<br>
+                Náklady: ${cost.toFixed(0)} Kč<br>
+                <br>
+                ${constraints.length > 0 ?
+                  '<strong>Aktivní omezení:</strong><br>' + constraints.join('<br>') :
+                  '<strong>Teoretické optimum dosaženo</strong> (h = 2r)'}
+            `;
+        }
+    </script>
+</body>
+</html>

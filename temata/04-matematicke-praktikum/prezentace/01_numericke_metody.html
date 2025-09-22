@@ -1,0 +1,1317 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Numerické metody pro hledání kořenů funkcí - Matematické praktikum</title>
+    <!-- Import pro renderování LaTeX matematických vzorců -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>Numerické metody pro hledání kořenů funkcí</h1>
+            <p>Kompletní průvodce moderními metodami pro řešení nelineárních rovnic</p>
+        </header>
+
+        <section class="intro-box">
+            <h2>Co jsou numerické metody a proč jsou důležité?</h2>
+            <p>Představte si, že potřebujete najít řešení rovnice jako \(x^3 - 6x^2 + 9x + 1 = 0\). Analytické řešení takových rovnic je často nemožné nebo velmi složité. Proto používáme <strong>numerické metody</strong> - algoritmy, které nám pomohou najít přibližné řešení s libovolnou přesností.</p>
+
+            <div style="background: linear-gradient(135deg, #003f5c, #58508d); color: white; padding: 2rem; border-radius: 16px; margin: 2rem 0; text-align: center;">
+                <h3 style="color: white; margin-bottom: 1rem;">Kořen funkce f(x)</h3>
+                <p style="font-size: 1.2rem; margin-bottom: 0;">je hodnota x*, pro kterou platí <strong>f(x*) = 0</strong></p>
+            </div>
+
+            <h3>Proč potřebujeme numerické metody?</h3>
+            <ul>
+                <li><strong>Analytické řešení neexistuje:</strong> Mnohé rovnice nemají uzavřené algebraické řešení</li>
+                <li><strong>Složitost funkcí:</strong> Komplexní funkce jsou obtížně řešitelné klasickými metodami</li>
+                <li><strong>Rychlost:</strong> Počítače dokáží velmi rychle provádět iterativní výpočty</li>
+                <li><strong>Kontrolovaná přesnost:</strong> Můžeme si zvolit, jak přesné řešení potřebujeme</li>
+            </ul>
+        </section>
+
+        <!-- Newton-Raphson Method -->
+        <section class="unit-section">
+            <h2>1. Newton-Raphsonova metoda</h2>
+            <p><strong>Princip:</strong> Nejrychlejší a nejpoužívanější metoda založená na linearizaci funkce pomocí tečny. Je to geometrická interpretace Taylorova rozvoje prvního řádu.</p>
+
+            <div class="equations">
+                <h3>Iterační vzorec</h3>
+                <p><strong>Základní vzorec:</strong> Pokud máme funkci f(x) a její derivaci f'(x), nová aproximace se počítá jako:
+                $$ x_{k+1} = x_k - \frac{f(x_k)}{f'(x_k)} $$</p>
+
+                <h4>Algoritmus:</h4>
+                <ol>
+                    <li>Zvolíme počáteční odhad x₀</li>
+                    <li>Sestrojíme tečnu v bodě [x₀, f(x₀)]</li>
+                    <li>Najdeme průsečík tečny s osou x → x₁</li>
+                    <li>Opakujeme dokud |x_{k+1} - x_k| < ε</li>
+                </ol>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 2rem 0;">
+                <div class="advantages">
+                    <h4>✅ Výhody:</h4>
+                    <ul>
+                        <li><strong>Kvadratická konvergence:</strong> Počet správných cifer se při každé iteraci zdvojnásobí</li>
+                        <li><strong>Rychlost:</strong> Velmi efektivní pro hladké funkce</li>
+                        <li><strong>Široké použití:</strong> Funguje pro většinu praktických problémů</li>
+                    </ul>
+                </div>
+                <div class="disadvantages">
+                    <h4>❌ Nevýhody:</h4>
+                    <ul>
+                        <li><strong>Vyžaduje derivaci:</strong> Musíme znát nebo spočítat f'(x)</li>
+                        <li><strong>Může divergovat:</strong> Při f'(x) ≈ 0 nebo špatném počátečním odhadu</li>
+                        <li><strong>Lokální metoda:</strong> Najde nejbližší kořen, ne nutně ten požadovaný</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="example">
+                <h3>Vizualizace metody</h3>
+                <div style="background: white; border-radius: 12px; padding: 1rem; margin: 1rem 0; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 2px solid #58508d;">
+                    <div id="newton-graph" style="height: 400px;"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bisection Method -->
+        <section class="unit-section">
+            <h2>2. Metoda půlení intervalu (Bisekce)</h2>
+            <p><strong>Princip:</strong> Nejspolehlivější metoda založená na Bolzanově větě o spojitých funkcích. Garantuje nalezení kořene, pokud existuje v daném intervalu.</p>
+
+            <div class="equations">
+                <h3>Teoretický základ - Bolzanova věta</h3>
+                <p><strong>Věta:</strong> Pokud je funkce f(x) spojitá na intervalu [a,b] a platí f(a)·f(b) < 0, pak existuje alespoň jedno c ∈ (a,b) takové, že f(c) = 0.</p>
+
+                <h4>Algoritmus:</h4>
+                <ol>
+                    <li>Najdeme interval [a,b] kde f(a)·f(b) < 0</li>
+                    <li>Vypočteme střed c = (a + b) / 2</li>
+                    <li>Zkontrolujeme f(c):
+                        <ul>
+                            <li>Pokud f(a)·f(c) < 0 → b = c (kořen je v levé polovině)</li>
+                            <li>Pokud f(b)·f(c) < 0 → a = c (kořen je v pravé polovině)</li>
+                        </ul>
+                    </li>
+                    <li>Opakujeme dokud |b - a| < ε</li>
+                </ol>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 2rem 0;">
+                <div class="advantages">
+                    <h4>✅ Výhody:</h4>
+                    <ul>
+                        <li><strong>Zaručená konvergence:</strong> Vždy najde kořen (pokud existuje)</li>
+                        <li><strong>Velmi robustní:</strong> Funguje i pro "špatné" funkce</li>
+                        <li><strong>Nevyžaduje derivaci:</strong> Stačí pouze funkční hodnoty</li>
+                        <li><strong>Předvídatelná rychlost:</strong> Každá iterace zmenší interval na polovinu</li>
+                    </ul>
+                </div>
+                <div class="disadvantages">
+                    <h4>❌ Nevýhody:</h4>
+                    <ul>
+                        <li><strong>Pomalá konvergence:</strong> Lineární rychlost konvergence</li>
+                        <li><strong>Potřebuje počáteční interval:</strong> Musíme najít [a,b] se změnou znaménka</li>
+                        <li><strong>Jen pro spojité funkce:</strong> Nefunguje u funkcí s nespojitostmi</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="example">
+                <h3>Vizualizace metody</h3>
+                <div style="background: white; border-radius: 12px; padding: 1rem; margin: 1rem 0; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 2px solid #58508d;">
+                    <div id="bisection-graph" style="height: 400px;"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Secant Method -->
+        <section class="unit-section">
+            <h2>3. Metoda sečen</h2>
+            <p><strong>Princip:</strong> Podobá se Newton-Raphsonově metodě, ale derivaci nahrazuje <strong>rozdílovým podílem</strong>. Je to kompromis mezi rychlostí a praktičností.</p>
+
+            <div class="equations">
+                <h3>Iterační vzorec</h3>
+                <p><strong>Základní vzorec:</strong> Derivaci f'(x_k) nahradíme rozdílovým podílem:
+                $$ x_{k+1} = x_k - f(x_k) \cdot \frac{x_k - x_{k-1}}{f(x_k) - f(x_{k-1})} $$</p>
+
+                <h4>Algoritmus:</h4>
+                <ol>
+                    <li>Zvolíme dva počáteční odhady x₀ a x₁</li>
+                    <li>Sestrojíme sečnu body [x₀, f(x₀)] a [x₁, f(x₁)]</li>
+                    <li>Najdeme průsečík sečny s osou x → x₂</li>
+                    <li>Posuneme se: x₀ ← x₁, x₁ ← x₂</li>
+                    <li>Opakujeme proces</li>
+                </ol>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 2rem 0;">
+                <div class="advantages">
+                    <h4>✅ Výhody:</h4>
+                    <ul>
+                        <li><strong>Nepotřebuje derivaci:</strong> Používá pouze funkční hodnoty</li>
+                        <li><strong>Superlineární konvergence:</strong> Rychlost p ≈ 1.618 (zlatý řez!)</li>
+                        <li><strong>Rychlejší než bisekce:</strong> Mnohem efektivnější než lineární metody</li>
+                    </ul>
+                </div>
+                <div class="disadvantages">
+                    <h4>❌ Nevýhody:</h4>
+                    <ul>
+                        <li><strong>Může divergovat:</strong> Není zaručená konvergence</li>
+                        <li><strong>Potřebuje dva počáteční body:</strong> Složitější inicializace</li>
+                        <li><strong>Citlivá na volbu bodů:</strong> Špatné počáteční body mohou způsobit problémy</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="example">
+                <h3>Vizualizace metody</h3>
+                <div style="background: white; border-radius: 12px; padding: 1rem; margin: 1rem 0; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 2px solid #58508d;">
+                    <div id="secant-graph" style="height: 400px;"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Fixed Point Iteration -->
+        <section class="unit-section">
+            <h2>4. Prostá iterace (Fixed-point iteration)</h2>
+            <p><strong>Princip:</strong> Převedeme rovnici f(x) = 0 na tvar x = g(x) a hledáme pevný bod funkce g(x). Nejjednodušší metoda na implementaci.</p>
+
+            <div class="equations">
+                <h3>Teoretický základ</h3>
+                <p><strong>Převod rovnice:</strong> f(x) = 0 → x = g(x)</p>
+                <p><strong>Iterační vzorec:</strong> $$ x_{k+1} = g(x_k) $$</p>
+
+                <h4>Podmínka konvergence</h4>
+                <p><strong>Banachova věta o kontrakci:</strong> Pokud |g'(x)| < 1 v okolí pevného bodu, pak iterace konverguje k tomuto bodu.</p>
+
+                <h4>Pavučinový diagram</h4>
+                <p>Grafická interpretace: Iterace střídavě "skáčou" mezi křivkou y = g(x) a přímkou y = x.</p>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 2rem 0;">
+                <div class="advantages">
+                    <h4>✅ Výhody:</h4>
+                    <ul>
+                        <li><strong>Velmi jednoduchá implementace:</strong> Pouze jeden vzorec</li>
+                        <li><strong>Nevyžaduje derivaci ani interval:</strong> Stačí jedna počáteční hodnota</li>
+                        <li><strong>Universální:</strong> Funguje pro různé typy rovnic</li>
+                    </ul>
+                </div>
+                <div class="disadvantages">
+                    <h4>❌ Nevýhody:</h4>
+                    <ul>
+                        <li><strong>Může snadno divergovat:</strong> Závisí na volbě funkce g(x)</li>
+                        <li><strong>Nutná vhodná transformace:</strong> Není vždy jasné, jak převést f(x) = 0 na x = g(x)</li>
+                        <li><strong>Pomalá konvergence:</strong> Obvykle jen lineární rychlost</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="example">
+                <h3>Vizualizace metody - Pavučinový diagram</h3>
+                <div style="background: white; border-radius: 12px; padding: 1rem; margin: 1rem 0; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 2px solid #58508d;">
+                    <div id="fixed-point-graph" style="height: 400px;"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Regula Falsi -->
+        <section class="unit-section">
+            <h2>5. Regula falsi (Falešná poloha)</h2>
+            <p><strong>Princip:</strong> Kombinuje rychlost metody sečen se spolehlivostí bisekce. Využívá lineární interpolaci, ale zachovává interval se změnou znaménka.</p>
+
+            <div class="equations">
+                <h3>Iterační vzorec</h3>
+                <p><strong>Lineární interpolace:</strong> Průsečík přímky procházející body [a, f(a)] a [b, f(b)] s osou x:
+                $$ c = \frac{a \cdot f(b) - b \cdot f(a)}{f(b) - f(a)} $$</p>
+
+                <h4>Algoritmus:</h4>
+                <ol>
+                    <li>Najdeme interval [a,b] kde f(a)·f(b) < 0</li>
+                    <li>Provedeme lineární interpolaci → průsečík c</li>
+                    <li>Zachováme interval se změnou znaménka:
+                        <ul>
+                            <li>Pokud f(a)·f(c) < 0 → b = c</li>
+                            <li>Pokud f(b)·f(c) < 0 → a = c</li>
+                        </ul>
+                    </li>
+                    <li>Iterujeme s novým intervalem</li>
+                </ol>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 2rem 0;">
+                <div class="advantages">
+                    <h4>✅ Výhody:</h4>
+                    <ul>
+                        <li><strong>Garantovaná konvergence:</strong> Jako bisekce, ale rychlejší</li>
+                        <li><strong>Rychlejší než bisekce:</strong> Využívá sklony funkce</li>
+                        <li><strong>Nepotřebuje derivaci:</strong> Jen funkční hodnoty</li>
+                        <li><strong>Robustní:</strong> Funguje i pro složité funkce</li>
+                    </ul>
+                </div>
+                <div class="disadvantages">
+                    <h4>❌ Nevýhody:</h4>
+                    <ul>
+                        <li><strong>Může "přilnout" k jednomu kraji:</strong> Jeden koncový bod se nemění</li>
+                        <li><strong>Pomalejší než Newton-Raphson:</strong> Jen superlineární konvergence</li>
+                        <li><strong>Složitější než bisekce:</strong> Více výpočtů na iteraci</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="example">
+                <h3>Vizualizace metody</h3>
+                <div style="background: white; border-radius: 12px; padding: 1rem; margin: 1rem 0; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 2px solid #58508d;">
+                    <div id="regula-falsi-graph" style="height: 400px;"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Optimization Section -->
+        <section class="unit-section">
+            <h2>6. Hledání extrémů funkcí (Optimalizace)</h2>
+            <p><strong>Princip:</strong> Mnoho technických problémů vyžaduje nalezení minima nebo maxima funkce - např. minimální náklady, maximální výkon, nebo optimální rozměry konstrukce.</p>
+
+            <div class="intro-box">
+                <h3>Praktické aplikace optimalizace</h3>
+                <ul>
+                    <li><strong>Minimální tloušťka izolace:</strong> Optimalizace mezi úsporou energie a náklady na materiál</li>
+                    <li><strong>Maximální zisk procesu:</strong> Nalezení optimálních provozních podmínek</li>
+                    <li><strong>Optimální rozměry nádoby:</strong> Minimalizace spotřeby materiálu při daném objemu</li>
+                    <li><strong>Energetická účinnost:</strong> Maximalizace výkonu při minimální spotřebě</li>
+                </ul>
+            </div>
+
+            <div class="equations">
+                <h3>Základní teorie</h3>
+                <p><strong>Nutná podmínka pro extremum:</strong> V bodě extrému musí být první derivace rovna nule:</p>
+                $$f'(x^*) = 0$$
+
+                <p><strong>Postačující podmínky:</strong></p>
+                <ul>
+                    <li><strong>Minimum:</strong> \(f''(x^*) > 0\)</li>
+                    <li><strong>Maximum:</strong> \(f''(x^*) < 0\)</li>
+                    <li><strong>Inflexní bod:</strong> \(f''(x^*) = 0\) (není extremum)</li>
+                </ul>
+            </div>
+
+            <h3>Numerické metody pro optimalizaci</h3>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 2rem 0;">
+                <div>
+                    <h4>🔍 Metoda zlatého řezu</h4>
+                    <p><strong>Použití:</strong> Jednorozměrná optimalizace bez derivací</p>
+                    <p><strong>Princip:</strong> Postupné zužování intervalu v poměru zlatého řezu (φ ≈ 1.618)</p>
+                    <div style="background: #f8f9fa; padding: 1rem; border-radius: 8px; margin: 1rem 0;">
+                        <strong>Algoritmus:</strong>
+                        <ol style="margin: 0.5rem 0;">
+                            <li>Rozdělíme interval [a,b] v poměru zlatého řezu</li>
+                            <li>Vyhodnotíme funkci ve dvou vnitřních bodech</li>
+                            <li>Eliminujeme část intervalu s horší hodnotou</li>
+                            <li>Opakujeme až do požadované přesnosti</li>
+                        </ol>
+                    </div>
+                </div>
+                <div>
+                    <h4>📈 Newton-Raphsonova metoda pro optimalizaci</h4>
+                    <p><strong>Použití:</strong> Rychlé hledání extrémů když známe derivace</p>
+                    <p><strong>Princip:</strong> Hledáme kořeny první derivace</p>
+                    <div style="background: #f8f9fa; padding: 1rem; border-radius: 8px; margin: 1rem 0;">
+                        <strong>Vzorec:</strong>
+                        $$x_{k+1} = x_k - \frac{f'(x_k)}{f''(x_k)}$$
+                        <p style="margin: 0.5rem 0;"><strong>Výhoda:</strong> Kvadratická konvergence</p>
+                        <p style="margin: 0;"><strong>Nevýhoda:</strong> Potřebuje druhou derivaci</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="example">
+                <h3>Praktický příklad: Optimální tloušťka izolace</h3>
+                <div style="background: white; border-radius: 12px; padding: 1.5rem; margin: 1rem 0; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 2px solid #58508d;">
+
+                    <h4>Zadání problému:</h4>
+                    <p>Určete optimální tloušťku izolace pro minimalizace celkových nákladů = náklady na izolaci + náklady na ztráty tepla.</p>
+
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 1.5rem 0;">
+                        <div>
+                            <h5>Nákladová funkce:</h5>
+                            <div class="equations">
+                                $$C(x) = k_1 \cdot x + \frac{k_2}{x + x_0}$$
+                            </div>
+                            <ul style="font-size: 0.9rem;">
+                                <li>\(x\) = tloušťka izolace [m]</li>
+                                <li>\(k_1\) = cena izolace [Kč/m]</li>
+                                <li>\(k_2\) = náklady na ztráty [Kč·m]</li>
+                                <li>\(x_0\) = původní izolace [m]</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h5>Řešení optimalizace:</h5>
+                            <div class="equations">
+                                $$C'(x) = k_1 - \frac{k_2}{(x + x_0)^2} = 0$$
+                                $$x_{opt} = \sqrt{\frac{k_2}{k_1}} - x_0$$
+                            </div>
+                            <div style="background: #d4edda; padding: 0.8rem; border-radius: 6px; margin-top: 1rem;">
+                                <strong>Výsledek:</strong> Optimální tloušťka závisí na poměru nákladů na energii a materiál
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="insulation-optimization" style="height: 350px; margin-top: 1rem;"></div>
+                </div>
+            </div>
+
+            <div class="example">
+                <h3>Numerické řešení pomocí iterativních metod</h3>
+                <div style="background: white; border-radius: 12px; padding: 1.5rem; margin: 1rem 0; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 2px solid #58508d;">
+
+                    <h4>1. Metoda zlatého řezu</h4>
+                    <p><strong>Princip:</strong> Postupně zužujeme interval s minimem bez použití derivací.</p>
+
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 1rem 0;">
+                        <div>
+                            <h5>Algoritmus:</h5>
+                            <ol style="font-size: 0.9rem;">
+                                <li>Zvolíme počáteční interval [a, b] = [0.001, 0.4]</li>
+                                <li>Rozdělíme interval v poměru zlatého řezu: φ = 1.618</li>
+                                <li>Vypočteme body: x₁ = a + (b-a)/φ², x₂ = a + (b-a)/φ</li>
+                                <li>Vyhodnotíme C(x₁) a C(x₂)</li>
+                                <li>Eliminujeme horší polovinu intervalu</li>
+                                <li>Opakujeme do dosažení přesnosti</li>
+                            </ol>
+                        </div>
+                        <div>
+                            <h5>Iterace pro náš příklad:</h5>
+                            <div id="golden-section-result" style="font-family: monospace; font-size: 0.8rem; background: #f8f9fa; padding: 0.8rem; border-radius: 6px;">
+                                <button onclick="runGoldenSection()" style="padding: 0.5rem; background: #007bff; color: white; border: none; border-radius: 4px; margin-bottom: 0.5rem;">
+                                    Spusť metodu zlatého řezu
+                                </button>
+                                <div id="golden-iterations"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h4>2. Newton-Raphsonova metoda pro optimalizaci</h4>
+                    <p><strong>Princip:</strong> Hledáme kořen první derivace funkce C'(x) = 0.</p>
+
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 1rem 0;">
+                        <div>
+                            <h5>Matematické odvození:</h5>
+                            <div style="background: #f8f9fa; padding: 1rem; border-radius: 6px; font-size: 0.9rem;">
+                                <strong>Nákladová funkce:</strong><br>
+                                \(C(x) = k_1 \cdot x + \frac{k_2}{x + x_0}\)<br><br>
+                                <strong>První derivace:</strong><br>
+                                \(C'(x) = k_1 - \frac{k_2}{(x + x_0)^2}\)<br><br>
+                                <strong>Druhá derivace:</strong><br>
+                                \(C''(x) = \frac{2k_2}{(x + x_0)^3}\)<br><br>
+                                <strong>Newton-Raphsonův vzorec:</strong><br>
+                                \(x_{n+1} = x_n - \frac{C'(x_n)}{C''(x_n)}\)
+                            </div>
+                        </div>
+                        <div>
+                            <h5>Iterace pro náš příklad:</h5>
+                            <div id="newton-optimization-result" style="font-family: monospace; font-size: 0.8rem; background: #f8f9fa; padding: 0.8rem; border-radius: 6px;">
+                                <button onclick="runNewtonOptimization()" style="padding: 0.5rem; background: #28a745; color: white; border: none; border-radius: 4px; margin-bottom: 0.5rem;">
+                                    Spusť Newton-Raphsonovu metodu
+                                </button>
+                                <div id="newton-opt-iterations"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h4>Srovnání metod</h4>
+                    <table style="width: 100%; margin-top: 1rem;">
+                        <tr>
+                            <th>Aspekt</th>
+                            <th>Metoda zlatého řezu</th>
+                            <th>Newton-Raphson</th>
+                        </tr>
+                        <tr>
+                            <td><strong>Rychlost konvergence</strong></td>
+                            <td>Lineární (φ ≈ 1.618)</td>
+                            <td>Kvadratická</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Požadavky</strong></td>
+                            <td>Pouze funkční hodnoty</td>
+                            <td>První a druhá derivace</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Spolehlivost</strong></td>
+                            <td>Velmi spolehlivá</td>
+                            <td>Může divergovat při špatném odhadu</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Implementace</strong></td>
+                            <td>Jednoduchá</td>
+                            <td>Střední složitost</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="example">
+                <h3>Interaktivní kalkulátor optimalizace</h3>
+                <div style="background: #f8f9fa; border-radius: 12px; padding: 1.5rem; margin: 1rem 0; border: 2px solid #28a745;">
+                    <h4>Optimalizace tloušťky izolace</h4>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1rem 0;">
+                        <div>
+                            <label>Cena izolace k₁ [Kč/m]:</label>
+                            <input type="number" id="k1" value="1500" step="100" style="width: 100%; padding: 0.5rem; margin: 0.3rem 0;">
+
+                            <label>Náklady na ztráty k₂ [Kč·m]:</label>
+                            <input type="number" id="k2" value="150" step="10" style="width: 100%; padding: 0.5rem; margin: 0.3rem 0;">
+                        </div>
+                        <div>
+                            <label>Původní tloušťka x₀ [m]:</label>
+                            <input type="number" id="x0" value="0.10" step="0.01" style="width: 100%; padding: 0.5rem; margin: 0.3rem 0;">
+
+                            <button onclick="optimizeInsulation()" style="width: 100%; padding: 0.8rem; background: #28a745; color: white; border: none; border-radius: 6px; font-size: 1rem; margin-top: 1rem;">
+                                Vypočítej optimum
+                            </button>
+                        </div>
+                    </div>
+                    <div id="optimization-result" style="background: white; padding: 1rem; border-radius: 8px; margin-top: 1rem; border-left: 4px solid #28a745;"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Comparison Section -->
+        <section class="unit-section">
+            <h2>7. Srovnání metod</h2>
+
+            <h3>Rychlost konvergence</h3>
+            <table>
+                <tr><th>Metoda</th><th>Řád konvergence (p)</th><th>Rychlost</th><th>Požadavky</th></tr>
+                <tr><td><strong>Newton-Raphson</strong></td><td>p = 2 (kvadratická)</td><td>Nejrychlejší</td><td>Derivace, dobrý odhad</td></tr>
+                <tr><td><strong>Metoda sečen</strong></td><td>p ≈ 1.618 (superlineární)</td><td>Velmi rychlá</td><td>Dva počáteční body</td></tr>
+                <tr><td><strong>Regula falsi</strong></td><td>p ≈ 1 až 2</td><td>Rychlá</td><td>Interval se změnou znaménka</td></tr>
+                <tr><td><strong>Bisekce</strong></td><td>p = 1 (lineární)</td><td>Pomalá, ale jistá</td><td>Interval se změnou znaménka</td></tr>
+                <tr><td><strong>Prostá iterace</strong></td><td>p = 1 (lineární)</td><td>Závisí na g(x)</td><td>Vhodná transformace</td></tr>
+            </table>
+
+            <h3>Kdy použít kterou metodu?</h3>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 2rem 0;">
+                <div>
+                    <h4>Pro maximální rychlost:</h4>
+                    <ul>
+                        <li><strong>Newton-Raphson:</strong> Když známe derivaci a máme dobrý počáteční odhad</li>
+                        <li><strong>Metoda sečen:</strong> Když neznáme derivaci, ale chceme rychlost</li>
+                    </ul>
+
+                    <h4>Pro spolehlivost:</h4>
+                    <ul>
+                        <li><strong>Bisekce:</strong> Když potřebujeme jistotu konvergence</li>
+                        <li><strong>Regula falsi:</strong> Kompromis mezi rychlostí a spolehlivostí</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Pro jednoduchost:</h4>
+                    <ul>
+                        <li><strong>Prostá iterace:</strong> Pro jednoduché problémy nebo když je obtížné implementovat jiné metody</li>
+                    </ul>
+
+                    <h4>Praktické doporučení:</h4>
+                    <ol>
+                        <li>Začněte bislekcí pro nalezení přibližného řešení</li>
+                        <li>Přepněte na Newton-Raphson pro rychlé zpřesnění</li>
+                        <li>Jako záložní plán použijte regula falsi</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="example">
+                <h3>Srovnání rychlosti konvergence</h3>
+                <div style="background: white; border-radius: 12px; padding: 1rem; margin: 1rem 0; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 2px solid #58508d;">
+                    <div id="convergence-comparison" style="height: 400px;"></div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        // Configure MathJax
+        window.MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)']],
+                displayMath: [['$$', '$$']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+
+        // Graph functions
+        function createNewtonGraph() {
+            const x = [];
+            const y = [];
+            for (let i = -1; i <= 4; i += 0.01) {
+                x.push(i);
+                y.push(i*i*i - 6*i*i + 9*i + 1);
+            }
+
+            // Newton iterations
+            let xVal = 0.5;
+            const iterations = [xVal];
+            const tangentLines = [];
+
+            for (let i = 0; i < 4; i++) {
+                const fx = xVal*xVal*xVal - 6*xVal*xVal + 9*xVal + 1;
+                const dfx = 3*xVal*xVal - 12*xVal + 9;
+
+                const xTan = [];
+                const yTan = [];
+                for (let t = xVal - 1; t <= xVal + 1; t += 0.01) {
+                    xTan.push(t);
+                    yTan.push(fx + dfx * (t - xVal));
+                }
+
+                tangentLines.push({
+                    x: xTan,
+                    y: yTan,
+                    mode: 'lines',
+                    line: {color: 'blue', dash: 'dash', width: 2},
+                    name: `Tečna ${i+1}`,
+                    showlegend: i === 0
+                });
+
+                xVal = xVal - fx / dfx;
+                iterations.push(xVal);
+            }
+
+            const traces = [
+                {
+                    x: x,
+                    y: y,
+                    mode: 'lines',
+                    line: {color: '#bc5090', width: 3},
+                    name: 'f(x) = x³ - 6x² + 9x + 1'
+                },
+                {
+                    x: x,
+                    y: new Array(x.length).fill(0),
+                    mode: 'lines',
+                    line: {color: 'black', width: 1},
+                    showlegend: false
+                },
+                {
+                    x: iterations,
+                    y: iterations.map(xi => xi*xi*xi - 6*xi*xi + 9*xi + 1),
+                    mode: 'markers',
+                    marker: {color: 'red', size: 8},
+                    name: 'Iterace'
+                },
+                ...tangentLines
+            ];
+
+            const layout = {
+                title: 'Newton-Raphson metoda',
+                xaxis: {title: 'x', range: [-1, 4]},
+                yaxis: {title: 'f(x)', range: [-5, 10]},
+                showlegend: false,
+                margin: {l: 40, r: 40, t: 40, b: 40}
+            };
+
+            Plotly.newPlot('newton-graph', traces, layout, {responsive: true});
+        }
+
+        function createBisectionGraph() {
+            const x = [];
+            const y = [];
+            for (let i = 0.5; i <= 2.5; i += 0.01) {
+                x.push(i);
+                y.push(i*i*i - i - 1);
+            }
+
+            let a = 1.0, b = 2.0;
+            const intervals = [];
+            const midpoints = [];
+
+            for (let i = 0; i < 5; i++) {
+                const c = (a + b) / 2;
+                const fc = c*c*c - c - 1;
+                const fa = a*a*a - a - 1;
+
+                midpoints.push({
+                    x: [c],
+                    y: [fc],
+                    mode: 'markers',
+                    marker: {color: 'blue', size: 8},
+                    name: `Střed ${i+1}`,
+                    showlegend: false
+                });
+
+                if (fa * fc < 0) {
+                    b = c;
+                } else {
+                    a = c;
+                }
+            }
+
+            const traces = [
+                {
+                    x: x,
+                    y: y,
+                    mode: 'lines',
+                    line: {color: '#ff6361', width: 3},
+                    name: 'f(x) = x³ - x - 1'
+                },
+                {
+                    x: x,
+                    y: new Array(x.length).fill(0),
+                    mode: 'lines',
+                    line: {color: 'black', width: 1},
+                    showlegend: false
+                },
+                ...midpoints
+            ];
+
+            const layout = {
+                title: 'Metoda bisekce',
+                xaxis: {title: 'x', range: [0.8, 2.2]},
+                yaxis: {title: 'f(x)', range: [-2, 3]},
+                showlegend: false,
+                margin: {l: 40, r: 40, t: 40, b: 40}
+            };
+
+            Plotly.newPlot('bisection-graph', traces, layout, {responsive: true});
+        }
+
+        function createSecantGraph() {
+            const x = [];
+            const y = [];
+            for (let i = -2; i <= 4; i += 0.01) {
+                x.push(i);
+                y.push(i*i - i - 3);
+            }
+
+            let x0 = 3.0, x1 = 3.5;
+            const iterations = [x0, x1];
+            const secantLines = [];
+
+            for (let i = 0; i < 4; i++) {
+                const fx0 = x0*x0 - x0 - 3;
+                const fx1 = x1*x1 - x1 - 3;
+
+                const slope = (fx1 - fx0) / (x1 - x0);
+                const xSec = [];
+                const ySec = [];
+
+                for (let t = x0 - 1; t <= x1 + 0.5; t += 0.01) {
+                    xSec.push(t);
+                    ySec.push(fx1 + slope * (t - x1));
+                }
+
+                secantLines.push({
+                    x: xSec,
+                    y: ySec,
+                    mode: 'lines',
+                    line: {color: 'green', dash: 'dash', width: 2},
+                    name: `Sečna ${i+1}`,
+                    showlegend: i === 0
+                });
+
+                const xNew = x1 - fx1 * (x1 - x0) / (fx1 - fx0);
+                iterations.push(xNew);
+                x0 = x1;
+                x1 = xNew;
+            }
+
+            const traces = [
+                {
+                    x: x,
+                    y: y,
+                    mode: 'lines',
+                    line: {color: '#ffa600', width: 3},
+                    name: 'f(x) = x² - x - 3'
+                },
+                {
+                    x: x,
+                    y: new Array(x.length).fill(0),
+                    mode: 'lines',
+                    line: {color: 'black', width: 1},
+                    showlegend: false
+                },
+                {
+                    x: iterations,
+                    y: iterations.map(xi => xi*xi - xi - 3),
+                    mode: 'markers',
+                    marker: {color: 'red', size: 8},
+                    name: 'Iterace'
+                },
+                ...secantLines
+            ];
+
+            const layout = {
+                title: 'Metoda sečen',
+                xaxis: {title: 'x', range: [-2, 4]},
+                yaxis: {title: 'f(x)', range: [-4, 10]},
+                showlegend: false,
+                margin: {l: 40, r: 40, t: 40, b: 40}
+            };
+
+            Plotly.newPlot('secant-graph', traces, layout, {responsive: true});
+        }
+
+        function createFixedPointGraph() {
+            const x = [];
+            const y = [];
+            const yLine = [];
+            for (let i = 0; i <= 2; i += 0.01) {
+                x.push(i);
+                y.push(Math.cos(i));
+                yLine.push(i);
+            }
+
+            let xVal = 0.5;
+            const iterationsX = [xVal];
+            const iterationsY = [0];
+            const cobwebLines = [];
+
+            for (let i = 0; i < 6; i++) {
+                const gx = Math.cos(xVal);
+
+                cobwebLines.push({
+                    x: [xVal, xVal],
+                    y: [i === 0 ? 0 : xVal, gx],
+                    mode: 'lines',
+                    line: {color: 'purple', dash: 'dot'},
+                    showlegend: false
+                });
+
+                cobwebLines.push({
+                    x: [xVal, gx],
+                    y: [gx, gx],
+                    mode: 'lines',
+                    line: {color: 'purple', dash: 'dot'},
+                    showlegend: false
+                });
+
+                iterationsX.push(xVal);
+                iterationsY.push(gx);
+                xVal = gx;
+                iterationsX.push(xVal);
+                iterationsY.push(xVal);
+            }
+
+            const traces = [
+                {
+                    x: x,
+                    y: y,
+                    mode: 'lines',
+                    line: {color: '#58508d', width: 3},
+                    name: 'y = cos(x)'
+                },
+                {
+                    x: x,
+                    y: yLine,
+                    mode: 'lines',
+                    line: {color: 'gray', dash: 'dash'},
+                    name: 'y = x'
+                },
+                {
+                    x: iterationsX,
+                    y: iterationsY,
+                    mode: 'markers+lines',
+                    marker: {color: 'red', size: 6},
+                    line: {color: 'red', width: 2},
+                    name: 'Iterace'
+                },
+                ...cobwebLines
+            ];
+
+            const layout = {
+                title: 'Prostá iterace - pavučinový diagram',
+                xaxis: {title: 'x', range: [0, 1.5]},
+                yaxis: {title: 'y', range: [0, 1.5]},
+                showlegend: false,
+                margin: {l: 40, r: 40, t: 40, b: 40}
+            };
+
+            Plotly.newPlot('fixed-point-graph', traces, layout, {responsive: true});
+        }
+
+        function createRegulaFalsiGraph() {
+            const x = [];
+            const y = [];
+            for (let i = 0.5; i <= 2.5; i += 0.01) {
+                x.push(i);
+                y.push(i*i*i - i - 1);
+            }
+
+            let a = 1.0, b = 2.0;
+            const iterations = [];
+            const interpolationLines = [];
+
+            for (let i = 0; i < 5; i++) {
+                const fa = a*a*a - a - 1;
+                const fb = b*b*b - b - 1;
+                const c = (a * fb - b * fa) / (fb - fa);
+
+                interpolationLines.push({
+                    x: [a, b],
+                    y: [fa, fb],
+                    mode: 'lines',
+                    line: {color: 'purple', dash: 'dash'},
+                    name: `Interpolace ${i+1}`,
+                    showlegend: i === 0
+                });
+
+                iterations.push(c);
+
+                const fc = c*c*c - c - 1;
+                if (fa * fc < 0) {
+                    b = c;
+                } else {
+                    a = c;
+                }
+            }
+
+            const traces = [
+                {
+                    x: x,
+                    y: y,
+                    mode: 'lines',
+                    line: {color: '#003f5c', width: 3},
+                    name: 'f(x) = x³ - x - 1'
+                },
+                {
+                    x: x,
+                    y: new Array(x.length).fill(0),
+                    mode: 'lines',
+                    line: {color: 'black', width: 1},
+                    showlegend: false
+                },
+                {
+                    x: iterations,
+                    y: iterations.map(xi => xi*xi*xi - xi - 1),
+                    mode: 'markers',
+                    marker: {color: 'red', size: 8},
+                    name: 'Iterace'
+                },
+                ...interpolationLines
+            ];
+
+            const layout = {
+                title: 'Regula falsi',
+                xaxis: {title: 'x', range: [0.5, 2.5]},
+                yaxis: {title: 'f(x)', range: [-2, 3]},
+                showlegend: false,
+                margin: {l: 40, r: 40, t: 40, b: 40}
+            };
+
+            Plotly.newPlot('regula-falsi-graph', traces, layout, {responsive: true});
+        }
+
+        function createConvergenceComparison() {
+            const iterations = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+            const newton = [1, 0.1, 0.001, 0.000001, 0.000000001, 0, 0, 0, 0, 0, 0];
+            const secant = [1, 0.5, 0.1, 0.01, 0.001, 0.0001, 0.00001, 0, 0, 0, 0];
+            const bisection = [1, 0.5, 0.25, 0.125, 0.0625, 0.03125, 0.015625, 0.0078125, 0.00390625, 0.001953125, 0.0009765625];
+            const regulaFalsi = [1, 0.3, 0.08, 0.02, 0.005, 0.001, 0.0002, 0.00004, 0.000008, 0.000002, 0.0000005];
+
+            const traces = [
+                {
+                    x: iterations,
+                    y: newton,
+                    mode: 'lines+markers',
+                    name: 'Newton-Raphson',
+                    line: {color: '#bc5090', width: 3}
+                },
+                {
+                    x: iterations,
+                    y: secant,
+                    mode: 'lines+markers',
+                    name: 'Metoda sečen',
+                    line: {color: '#ff6361', width: 3}
+                },
+                {
+                    x: iterations,
+                    y: regulaFalsi,
+                    mode: 'lines+markers',
+                    name: 'Regula falsi',
+                    line: {color: '#ffa600', width: 3}
+                },
+                {
+                    x: iterations,
+                    y: bisection,
+                    mode: 'lines+markers',
+                    name: 'Bisekce',
+                    line: {color: '#58508d', width: 3}
+                }
+            ];
+
+            const layout = {
+                title: 'Srovnání rychlosti konvergence',
+                xaxis: {title: 'Počet iterací'},
+                yaxis: {title: 'Absolutní chyba', type: 'log', range: [-10, 0]},
+                showlegend: true,
+                margin: {l: 60, r: 40, t: 40, b: 40}
+            };
+
+            Plotly.newPlot('convergence-comparison', traces, layout, {responsive: true});
+        }
+
+        function createInsulationOptimizationGraph() {
+            // Realistic parameters for building insulation
+            const k1 = 1500;  // Kč/m (realistic cost of insulation material)
+            const k2 = 150;   // Kč·m (realistic annual energy loss costs)
+            const x0 = 0.10;  // m (realistic existing insulation thickness)
+
+            // Generate thickness values - extended range to show minimum
+            const x = [];
+            const cost = [];
+            const insulationCost = [];
+            const energyCost = [];
+
+            for (let thickness = 0.001; thickness <= 0.40; thickness += 0.001) {
+                const totalCost = k1 * thickness + k2 / (thickness + x0);
+                const insul = k1 * thickness;
+                const energy = k2 / (thickness + x0);
+
+                x.push(thickness);
+                cost.push(totalCost);
+                insulationCost.push(insul);
+                energyCost.push(energy);
+            }
+
+            // Calculate optimal thickness
+            const xOpt = Math.sqrt(k2 / k1) - x0;
+            const costOpt = k1 * xOpt + k2 / (xOpt + x0);
+
+            const traces = [
+                {
+                    x: x,
+                    y: cost,
+                    mode: 'lines',
+                    name: 'Celkové náklady',
+                    line: {color: '#bc5090', width: 4}
+                },
+                {
+                    x: x,
+                    y: insulationCost,
+                    mode: 'lines',
+                    name: 'Náklady na izolaci',
+                    line: {color: '#ff6361', width: 2, dash: 'dash'}
+                },
+                {
+                    x: x,
+                    y: energyCost,
+                    mode: 'lines',
+                    name: 'Náklady na ztráty',
+                    line: {color: '#58508d', width: 2, dash: 'dot'}
+                },
+                {
+                    x: [xOpt],
+                    y: [costOpt],
+                    mode: 'markers',
+                    name: `Optimum (${xOpt.toFixed(3)} m)`,
+                    marker: {color: '#28a745', size: 12, symbol: 'star'}
+                }
+            ];
+
+            const layout = {
+                title: 'Optimalizace tloušťky izolace',
+                xaxis: {title: 'Tloušťka dodatečné izolace [m]'},
+                yaxis: {title: 'Náklady [Kč]'},
+                showlegend: true,
+                margin: {l: 60, r: 40, t: 40, b: 40}
+            };
+
+            Plotly.newPlot('insulation-optimization', traces, layout, {responsive: true});
+        }
+
+        function optimizeInsulation() {
+            const k1 = parseFloat(document.getElementById('k1').value);
+            const k2 = parseFloat(document.getElementById('k2').value);
+            const x0 = parseFloat(document.getElementById('x0').value);
+
+            // Calculate optimal thickness
+            const xOpt = Math.sqrt(k2 / k1) - x0;
+            const costOpt = k1 * xOpt + k2 / (xOpt + x0);
+
+            // Calculate costs at zero additional insulation
+            const costZero = k2 / x0;
+            const savings = costZero - costOpt;
+            const savingsPercent = ((costZero - costOpt) / costZero * 100);
+
+            // Update result display
+            document.getElementById('optimization-result').innerHTML = `
+                <h5>Výsledky optimalizace:</h5>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                    <div>
+                        <strong>Optimální tloušťka:</strong> ${xOpt.toFixed(3)} m<br>
+                        <strong>Celková tloušťka:</strong> ${(xOpt + x0).toFixed(3)} m<br>
+                        <strong>Minimální náklady:</strong> ${costOpt.toFixed(0)} Kč
+                    </div>
+                    <div>
+                        <strong>Úspora oproti x=0:</strong> ${savings.toFixed(0)} Kč<br>
+                        <strong>Relativní úspora:</strong> ${savingsPercent.toFixed(1)}%<br>
+                        <strong>Poměr k₂/k₁:</strong> ${(k2/k1).toFixed(1)}
+                    </div>
+                </div>
+                <div style="background: #d4edda; padding: 0.8rem; border-radius: 6px; margin-top: 1rem;">
+                    <strong>Závěr:</strong> Optimální tloušťka je úměrná druhé odmocnině z poměru energetických a materiálových nákladů.
+                </div>
+            `;
+
+            // Update graph with new parameters
+            updateInsulationGraph(k1, k2, x0);
+        }
+
+        function updateInsulationGraph(k1, k2, x0) {
+            const x = [];
+            const cost = [];
+            const insulationCost = [];
+            const energyCost = [];
+
+            for (let thickness = 0.001; thickness <= 0.5; thickness += 0.001) {
+                const totalCost = k1 * thickness + k2 / (thickness + x0);
+                const insul = k1 * thickness;
+                const energy = k2 / (thickness + x0);
+
+                x.push(thickness);
+                cost.push(totalCost);
+                insulationCost.push(insul);
+                energyCost.push(energy);
+            }
+
+            const xOpt = Math.sqrt(k2 / k1) - x0;
+            const costOpt = k1 * xOpt + k2 / (xOpt + x0);
+
+            const traces = [
+                {
+                    x: x,
+                    y: cost,
+                    mode: 'lines',
+                    name: 'Celkové náklady',
+                    line: {color: '#bc5090', width: 4}
+                },
+                {
+                    x: x,
+                    y: insulationCost,
+                    mode: 'lines',
+                    name: 'Náklady na izolaci',
+                    line: {color: '#ff6361', width: 2, dash: 'dash'}
+                },
+                {
+                    x: x,
+                    y: energyCost,
+                    mode: 'lines',
+                    name: 'Náklady na ztráty',
+                    line: {color: '#58508d', width: 2, dash: 'dot'}
+                },
+                {
+                    x: [Math.max(0.001, xOpt)],
+                    y: [costOpt],
+                    mode: 'markers',
+                    name: `Optimum (${Math.max(0.001, xOpt).toFixed(3)} m)`,
+                    marker: {color: '#28a745', size: 12, symbol: 'star'}
+                }
+            ];
+
+            const layout = {
+                title: 'Optimalizace tloušťky izolace',
+                xaxis: {title: 'Tloušťka dodatečné izolace [m]'},
+                yaxis: {title: 'Náklady [Kč]'},
+                showlegend: true,
+                margin: {l: 60, r: 40, t: 40, b: 40}
+            };
+
+            Plotly.newPlot('insulation-optimization', traces, layout, {responsive: true});
+        }
+
+        function runGoldenSection() {
+            const k1 = 1500;
+            const k2 = 150;
+            const x0 = 0.10;
+
+            // Golden ratio
+            const phi = (1 + Math.sqrt(5)) / 2; // ≈ 1.618
+            const resphi = 2 - phi; // ≈ 0.618
+
+            // Cost function
+            function cost(x) {
+                return k1 * x + k2 / (x + x0);
+            }
+
+            // Initial interval
+            let a = 0.001;
+            let b = 0.4;
+            let tolerance = 1e-6;
+            let iterations = [];
+
+            // Initial points
+            let x1 = a + resphi * (b - a);
+            let x2 = b - resphi * (b - a);
+            let f1 = cost(x1);
+            let f2 = cost(x2);
+
+            iterations.push({
+                iter: 0,
+                a: a,
+                b: b,
+                x1: x1,
+                x2: x2,
+                f1: f1,
+                f2: f2,
+                interval: b - a
+            });
+
+            let iter = 1;
+            while (Math.abs(b - a) > tolerance && iter < 20) {
+                if (f1 < f2) {
+                    b = x2;
+                    x2 = x1;
+                    f2 = f1;
+                    x1 = a + resphi * (b - a);
+                    f1 = cost(x1);
+                } else {
+                    a = x1;
+                    x1 = x2;
+                    f1 = f2;
+                    x2 = b - resphi * (b - a);
+                    f2 = cost(x2);
+                }
+
+                iterations.push({
+                    iter: iter,
+                    a: a,
+                    b: b,
+                    x1: x1,
+                    x2: x2,
+                    f1: f1,
+                    f2: f2,
+                    interval: b - a
+                });
+
+                iter++;
+            }
+
+            const optimum = (a + b) / 2;
+
+            let output = `<strong>Metoda zlatého řezu - Iterace:</strong><br>`;
+            output += `iter |   a     |   b     | x1    | x2    | f1    | f2    | interval<br>`;
+            output += `-----|---------|---------|-------|-------|-------|-------|----------<br>`;
+
+            for (let i = 0; i < Math.min(8, iterations.length); i++) {
+                const it = iterations[i];
+                output += `${i.toString().padStart(2)} | ${it.a.toFixed(3)} | ${it.b.toFixed(3)} | ${it.x1.toFixed(3)} | ${it.x2.toFixed(3)} | ${it.f1.toFixed(1)} | ${it.f2.toFixed(1)} | ${it.interval.toFixed(6)}<br>`;
+            }
+
+            output += `<br><strong>Výsledek:</strong> x* = ${optimum.toFixed(6)} m<br>`;
+            output += `<strong>Náklady:</strong> C* = ${cost(optimum).toFixed(1)} Kč<br>`;
+            output += `<strong>Počet iterací:</strong> ${iter}<br>`;
+            output += `<strong>Přesnost:</strong> ±${((b-a)/2).toExponential(2)} m`;
+
+            document.getElementById('golden-iterations').innerHTML = output;
+        }
+
+        function runNewtonOptimization() {
+            const k1 = 1500;
+            const k2 = 150;
+            const x0 = 0.10;
+
+            // First derivative: C'(x) = k1 - k2/(x + x0)^2
+            function firstDerivative(x) {
+                return k1 - k2 / Math.pow(x + x0, 2);
+            }
+
+            // Second derivative: C''(x) = 2*k2/(x + x0)^3
+            function secondDerivative(x) {
+                return 2 * k2 / Math.pow(x + x0, 3);
+            }
+
+            // Cost function
+            function cost(x) {
+                return k1 * x + k2 / (x + x0);
+            }
+
+            // Newton-Raphson iteration
+            let x = 0.2; // Initial guess
+            let tolerance = 1e-10;
+            let iterations = [];
+
+            iterations.push({
+                iter: 0,
+                x: x,
+                f_prime: firstDerivative(x),
+                f_double_prime: secondDerivative(x),
+                cost: cost(x)
+            });
+
+            let iter = 1;
+            while (iter < 10) {
+                const fp = firstDerivative(x);
+                const fpp = secondDerivative(x);
+
+                if (Math.abs(fpp) < 1e-15) break; // Avoid division by zero
+
+                const x_new = x - fp / fpp;
+
+                iterations.push({
+                    iter: iter,
+                    x: x_new,
+                    f_prime: firstDerivative(x_new),
+                    f_double_prime: fpp,
+                    cost: cost(x_new),
+                    change: Math.abs(x_new - x)
+                });
+
+                if (Math.abs(x_new - x) < tolerance) break;
+
+                x = x_new;
+                iter++;
+            }
+
+            let output = `<strong>Newton-Raphsonova metoda - Iterace:</strong><br>`;
+            output += `iter |   x     | C'(x)  | C''(x) | C(x)  | změna<br>`;
+            output += `-----|---------|--------|--------|-------|--------<br>`;
+
+            for (let i = 0; i < iterations.length; i++) {
+                const it = iterations[i];
+                const change = i > 0 ? it.change.toExponential(2) : "-";
+                output += `${i.toString().padStart(2)} | ${it.x.toFixed(5)} | ${it.f_prime.toFixed(2)} | ${it.f_double_prime.toFixed(1)} | ${it.cost.toFixed(1)} | ${change}<br>`;
+            }
+
+            const finalX = iterations[iterations.length - 1].x;
+            output += `<br><strong>Výsledek:</strong> x* = ${finalX.toFixed(6)} m<br>`;
+            output += `<strong>Náklady:</strong> C* = ${cost(finalX).toFixed(1)} Kč<br>`;
+            output += `<strong>Počet iterací:</strong> ${iter}<br>`;
+            output += `<strong>Konvergence:</strong> Kvadratická (velmi rychlá)<br>`;
+
+            // Compare with analytical solution
+            const analytical = Math.sqrt(k2 / k1) - x0;
+            output += `<strong>Analytické řešení:</strong> ${analytical.toFixed(6)} m<br>`;
+            output += `<strong>Rozdíl:</strong> ${Math.abs(finalX - analytical).toExponential(2)} m`;
+
+            document.getElementById('newton-opt-iterations').innerHTML = output;
+        }
+
+        // Initialize graphs when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(() => {
+                createNewtonGraph();
+                createBisectionGraph();
+                createSecantGraph();
+                createFixedPointGraph();
+                createRegulaFalsiGraph();
+                createConvergenceComparison();
+                createInsulationOptimizationGraph();
+            }, 100);
+        });
+    </script>
+</body>
+</html>

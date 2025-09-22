@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Konvektivní výměna tepla - chladič procesoru</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>Konvektivní výměna tepla - chladič procesoru</h1>
+        </header>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <p>
+                Vypočítejte tepelný výkon, který musí chladič procesoru odvést konvekcí.
+                Určete také, jaký je rozdíl teplot mezi povrchem procesoru a okolním vzduchem.
+            </p>
+        </section>
+
+        <section id="vstupni-data">
+            <h2>Vstupní data</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Veličina</th>
+                        <th>Symbol</th>
+                        <th>Hodnota</th>
+                        <th>Jednotka</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Tepelný výkon procesoru</td>
+                        <td class="variable">$P_{CPU}$</td>
+                        <td><span class="value">65</span></td>
+                        <td class="unit">W</td>
+                    </tr>
+                    <tr>
+                        <td>Plocha chladiče</td>
+                        <td class="variable">A</td>
+                        <td><span class="value">0.05</span></td>
+                        <td class="unit">m²</td>
+                    </tr>
+                    <tr>
+                        <td>Teplota okolního vzduchu</td>
+                        <td class="variable">$t_{amb}$</td>
+                        <td><span class="value">25</span></td>
+                        <td class="unit">°C</td>
+                    </tr>
+                    <tr>
+                        <td>Maximální teplota procesoru</td>
+                        <td class="variable">$t_{CPU,max}$</td>
+                        <td><span class="value">70</span></td>
+                        <td class="unit">°C</td>
+                    </tr>
+                    <tr>
+                        <td>Součinitel přestupu tepla (bez ventilátoru)</td>
+                        <td class="variable">$h_{natural}$</td>
+                        <td><span class="value">10</span></td>
+                        <td class="unit">W/(m²·K)</td>
+                    </tr>
+                    <tr>
+                        <td>Součinitel přestupu tepla (s ventilátorem)</td>
+                        <td class="variable">$h_{forced}$</td>
+                        <td><span class="value">50</span></td>
+                        <td class="unit">W/(m²·K)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+
+            <article>
+                <h3>Krok 1: Newtonův zákon ochlazování</h3>
+                <p>Konvektivní výměna tepla se řídí Newtonovým zákonem ochlazování.</p>
+
+                <div class="formula-box">
+                    <strong>Vzorec pro konvektivní přestup tepla:</strong>
+                    $$\dot{Q} = h \cdot A \cdot \Delta T$$
+
+                    <p><strong>Kde:</strong></p>
+                    <ul>
+                        <li>$\dot{Q}$ je tepelný tok <span class="unit">[W]</span></li>
+                        <li>$h$ je součinitel přestupu tepla <span class="unit">[W/(m²·K)]</span></li>
+                        <li>$A$ je plocha <span class="unit">[m²]</span></li>
+                        <li>$\Delta T$ je rozdíl teplot <span class="unit">[K]</span></li>
+                    </ul>
+                </div>
+
+                <p><strong>Přeuspořádáme vzorec pro výpočet rozdílu teplot:</strong></p>
+                $$\Delta T = \frac{\dot{Q}}{h \cdot A}$$
+            </article>
+
+            <article>
+                <h3>Krok 2: Výpočet bez ventilátoru (přirozená konvekce)</h3>
+                <p>Nejdřív spočítáme, jak se procesor ohřeje bez aktivního chlazení.</p>
+
+                <p><strong>Rozdíl teplot při přirozené konvekci:</strong></p>
+                $$\Delta T_{natural} = \frac{P_{CPU}}{h_{natural} \cdot A} = \frac{65}{10 \cdot 0.05} = \frac{65}{0.5} = 130 \text{ K}$$
+
+                <p><strong>Teplota procesoru bez ventilátoru:</strong></p>
+                $$t_{CPU} = t_{amb} + \Delta T_{natural} = 25 + 130 = 155 \text{ °C}$$
+
+                <div class="note">
+                    <p>
+                        <strong>Pozor!</strong> Teplota 155°C je daleko nad bezpečnou mezí (70°C).
+                        Procesor by se bez aktivního chlazení poškodil!
+                    </p>
+                </div>
+            </article>
+
+            <article>
+                <h3>Krok 3: Výpočet s ventilátorem (nucená konvekce)</h3>
+                <p>Nyní spočítáme účinek ventilátoru, který zvyšuje součinitel přestupu tepla.</p>
+
+                <p><strong>Rozdíl teplot při nucené konvekci:</strong></p>
+                $$\Delta T_{forced} = \frac{P_{CPU}}{h_{forced} \cdot A} = \frac{65}{50 \cdot 0.05} = \frac{65}{2.5} = 26 \text{ K}$$
+
+                <p><strong>Teplota procesoru s ventilátorem:</strong></p>
+                $$t_{CPU} = t_{amb} + \Delta T_{forced} = 25 + 26 = 51 \text{ °C}$$
+
+                <div class="note">
+                    <p>
+                        <strong>Výborně!</strong> Teplota 51°C je bezpečně pod maximální povolenou teplotou 70°C.
+                        Ventilátor velmi efektivně snižuje teplotu procesoru.
+                    </p>
+                </div>
+            </article>
+
+            <article>
+                <h3>Krok 4: Srovnání účinnosti chlazení</h3>
+                <p>Porovnáme účinnost přirozeného a nuceného chlazení.</p>
+
+                <p><strong>Snížení teploty díky ventilátoru:</strong></p>
+                $$\Delta t_{snížení} = t_{natural} - t_{forced} = 155 - 51 = 104 \text{ °C}$$
+
+                <p><strong>Relativní zlepšení:</strong></p>
+                $$\text{Zlepšení} = \frac{h_{forced}}{h_{natural}} = \frac{50}{10} = 5\times$$
+
+                <p><strong>Poměr rozdílů teplot:</strong></p>
+                $$\frac{\Delta T_{natural}}{\Delta T_{forced}} = \frac{130}{26} = 5\times$$
+            </article>
+        </section>
+
+        <section id="vysledek">
+            <h2>Výsledky</h2>
+            <div class="result-box">
+                <p>Teplota bez ventilátoru: <span>155°C</span> (nebezpečné!)</p>
+                <p>Teplota s ventilátorem: <span>51°C</span> (bezpečné)</p>
+                <hr style="border-top: 2px solid #28a745; border-bottom: none; margin: 25px auto; width: 60%;">
+                <p>Snížení teploty: <span>104°C</span></p>
+                <p>Zlepšení chlazení: <span>5× lepší</span></p>
+                <p>Tepelný výkon: <span>65 W</span> (konstantní)</p>
+            </div>
+        </section>
+
+        <section id="vyhodnoceni">
+            <h2>Vyhodnocení a komentář</h2>
+            <div class="note">
+                <p>
+                    <strong>Kritická role aktivního chlazení:</strong> Bez ventilátoru by se procesor přehřál
+                    a poškodil. Ventilátor zvyšuje součinitel přestupu tepla z 10 na 50 W/(m²·K),
+                    což znamená 5× lepší chlazení.
+                </p>
+                <p>
+                    <strong>Fyzikální princip:</strong> Ventilátor zvyšuje rychlost vzduchu kolem chladiče.
+                    Rychlejší pohyb vzduchu rychleji odnáší zahřátý vzduch a přivádí chladnější,
+                    což výrazně zvyšuje přestup tepla konvekcí.
+                </p>
+                <p>
+                    <strong>Praktické aplikace:</strong> Stejný princip používají chladiče v autech,
+                    klimatizace, nebo chladiče v elektrorozvodech. Všude tam, kde potřebujeme
+                    efektivně odvést teplo, kombinujeme velkou plochu s nuceným prouděním vzduchu.
+                </p>
+                <p>
+                    <strong>Energetická bilance:</strong> Ventilátor spotřebuje asi 2-5 W, ale umožní
+                    bezpečný provoz 65W procesoru - výborný poměr investované a chráněné energie!
+                </p>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

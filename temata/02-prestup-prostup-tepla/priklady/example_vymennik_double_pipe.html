@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Double pipe výměník se zanášením</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>Double pipe výměník se zanášením</h1>
+        </header>
+
+        <section class="problem-statement">
+            <h2>Zadání úlohy</h2>
+            <div class="task-description">
+                <p>Navrhnout double pipe (trubka v trubce) výměník tepla pro ohřev motorového oleje.
+                Vypočítat vliv zanášení na účinnost výměníku během provozu.</p>
+
+                <h3>Dané hodnoty:</h3>
+                <ul>
+                    <li><strong>Horké medium:</strong> Horká voda, průtok 0.5 kg/s</li>
+                    <li><strong>Teploty vody:</strong> vstup 80°C → výstup 60°C</li>
+                    <li><strong>Studené medium:</strong> Motorový olej, průtok 0.3 kg/s</li>
+                    <li><strong>Teploty oleje:</strong> vstup 20°C → výstup 50°C</li>
+                    <li><strong>Geometrie:</strong>
+                        <ul>
+                            <li>Vnitřní trubka: ⌀25/22 mm (vnější/vnitřní průměr)</li>
+                            <li>Vnější trubka: ⌀40/36 mm</li>
+                            <li>Materiál: nerezová ocel, λ = 15 W/(m·K)</li>
+                        </ul>
+                    </li>
+                    <li><strong>Fyzikální vlastnosti:</strong>
+                        <ul>
+                            <li>Voda: cp = 4180 J/(kg·K), αi = 2000 W/(m²·K)</li>
+                            <li>Olej: cp = 2100 J/(kg·K), αo = 400 W/(m²·K)</li>
+                        </ul>
+                    </li>
+                    <li><strong>Zanášení po 1 roce provozu:</strong>
+                        <ul>
+                            <li>Vodní strana: Rf,i = 0.0002 m²·K/W</li>
+                            <li>Olejová strana: Rf,o = 0.0005 m²·K/W</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="solution">
+            <h2>Řešení</h2>
+
+            <div class="step">
+                <h3>1. Ověření energetické bilance</h3>
+                <div class="calculation">
+                    <p><strong>Tepelný výkon předaný vodou:</strong></p>
+                    <p>$$\dot{Q}_v = \dot{m}_v \cdot c_{p,v} \cdot (T_{v,in} - T_{v,out}) = 0.5 \times 4180 \times (80-60) = 41\,800 \text{ W}$$</p>
+
+                    <p><strong>Tepelný výkon přijatý olejem:</strong></p>
+                    <p>$$\dot{Q}_o = \dot{m}_o \cdot c_{p,o} \cdot (T_{o,out} - T_{o,in}) = 0.3 \times 2100 \times (50-20) = 18\,900 \text{ W}$$</p>
+
+                    <div class="note warning">
+                        <p><strong>Pozorování:</strong> Nesoulad v energetické bilanci (41 800 ≠ 18 900 W) naznačuje,
+                        že zadané hodnoty nejsou v rovnováze. V praxi by se musely upravit průtoky nebo teploty.</p>
+                        <p>Pro výpočet použijeme Q̇ = 30 000 W jako kompromis.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step">
+                <h3>2. Logaritmický teplotní rozdíl (protiproud)</h3>
+                <div class="calculation">
+                    <p><strong>Teplotní rozdíly na koncích:</strong></p>
+                    <p>ΔT₁ = 80 - 50 = 30 K (horký vstup - studený výstup)</p>
+                    <p>ΔT₂ = 60 - 20 = 40 K (horký výstup - studený vstup)</p>
+
+                    <p><strong>Logaritmický teplotní rozdíl:</strong></p>
+                    <p>$$\Delta T_{log} = \frac{\Delta T_1 - \Delta T_2}{\ln(\Delta T_1/\Delta T_2)} = \frac{30-40}{\ln(30/40)} = \frac{-10}{-0.288} = 34.7 \text{ K}$$</p>
+                </div>
+            </div>
+
+            <div class="step">
+                <h3>3. Součinitel prostupu tepla - čistý výměník</h3>
+                <div class="calculation">
+                    <p><strong>Průměry:</strong></p>
+                    <p>di = 0.022 m, do = 0.025 m</p>
+
+                    <p><strong>Tepelný odpor stěny trubky:</strong></p>
+                    <p>$$R_{wall} = \frac{d_o \ln(d_o/d_i)}{2\lambda} = \frac{0.025 \times \ln(0.025/0.022)}{2 \times 15} = \frac{0.025 \times 0.128}{30} = 1.07 \times 10^{-4} \text{ m²·K/W}$$</p>
+
+                    <p><strong>Celkový tepelný odpor (vztažený na vnější povrch):</strong></p>
+                    <p>$$\frac{1}{U_o} = \frac{d_o}{\alpha_i d_i} + R_{wall} + \frac{1}{\alpha_o}$$</p>
+                    <p>$$\frac{1}{U_o} = \frac{0.025}{2000 \times 0.022} + 1.07 \times 10^{-4} + \frac{1}{400}$$</p>
+                    <p>$$\frac{1}{U_o} = 0.000568 + 0.000107 + 0.0025 = 0.003175 \text{ m²·K/W}$$</p>
+
+                    <p><strong>Součinitel prostupu čistého výměníku (vnější plocha):</strong></p>
+                    <p>$$U_{clean} = \frac{1}{0.003175} = 315 \text{ W/(m²·K)}$$</p>
+
+                    <div class="note">
+                        <p><strong>Poznámka:</strong> U je vztaženo k vnější ploše trubky (obvyklejší v praxi).
+                        Možné je i vztažení k vnitřní ploše, ale pak se liší hodnoty U a potřebné plochy.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step">
+                <h3>4. Součinitel prostupu tepla - zanášený výměník</h3>
+                <div class="calculation">
+                    <p><strong>Přidání odporů zanášení (vztaženo na vnější plochu):</strong></p>
+                    <p>$$\frac{1}{U_{fouled}} = \frac{1}{U_{clean}} + R_{f,i} \frac{d_o}{d_i} + R_{f,o}$$</p>
+                    <p>$$\frac{1}{U_{fouled}} = 0.003175 + 0.0002 \times \frac{0.025}{0.022} + 0.0005$$</p>
+                    <p>$$\frac{1}{U_{fouled}} = 0.003175 + 0.000227 + 0.0005 = 0.003902 \text{ m²·K/W}$$</p>
+
+                    <p><strong>Součinitel prostupu po zanášení:</strong></p>
+                    <p>$$U_{fouled} = \frac{1}{0.003902} = 256 \text{ W/(m²·K)}$$</p>
+
+                    <p><strong>Snížení účinnosti vlivem zanášení:</strong></p>
+                    <p>$$\text{Snížení} = \frac{U_{clean} - U_{fouled}}{U_{clean}} \times 100\% = \frac{315-256}{315} \times 100\% = 18.7\%$$</p>
+                </div>
+            </div>
+
+            <div class="step">
+                <h3>5. Potřebná délka výměníku</h3>
+                <div class="calculation">
+                    <p><strong>Plocha na jednotku délky (vnější povrch):</strong></p>
+                    <p>$$A_{spec} = \pi \times d_o = \pi \times 0.025 = 0.0785 \text{ m²/m}$$</p>
+
+                    <p><strong>Čistý výměník:</strong></p>
+                    <p>$$A_{clean} = \frac{\dot{Q}}{U_{clean} \times \Delta T_{log}} = \frac{30\,000}{315 \times 34.7} = 2.75 \text{ m²}$$</p>
+                    <p>$$L_{clean} = \frac{A_{clean}}{A_{spec}} = \frac{2.75}{0.0785} = 35.0 \text{ m}$$</p>
+
+                    <p><strong>Zanášený výměník:</strong></p>
+                    <p>$$A_{fouled} = \frac{\dot{Q}}{U_{fouled} \times \Delta T_{log}} = \frac{30\,000}{256 \times 34.7} = 3.38 \text{ m²}$$</p>
+                    <p>$$L_{fouled} = \frac{A_{fouled}}{A_{spec}} = \frac{3.38}{0.0785} = 43.1 \text{ m}$$</p>
+
+                    <p><strong>Navýšení délky vlivem zanášení:</strong></p>
+                    <p>$$\text{Navýšení} = \frac{43.1 - 35.0}{35.0} \times 100\% = 23.1\%$$</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="calculator">
+            <h2>Interaktivní kalkulačka double pipe výměníku</h2>
+            <div class="calculator-panel">
+                <div class="input-group">
+                    <label for="heatLoad">Tepelný výkon [kW]:</label>
+                    <input type="number" id="heatLoad" value="30" step="1" min="1">
+                </div>
+                <div class="input-group">
+                    <label for="deltaT">Logaritmický ΔT [K]:</label>
+                    <input type="number" id="deltaT" value="34.7" step="0.1" min="1">
+                </div>
+                <div class="input-group">
+                    <label for="innerDiam">Vnitřní průměr [mm]:</label>
+                    <input type="number" id="innerDiam" value="22" step="1" min="5">
+                </div>
+                <div class="input-group">
+                    <label for="outerDiam">Vnější průměr [mm]:</label>
+                    <input type="number" id="outerDiam" value="25" step="1" min="6">
+                </div>
+                <div class="input-group">
+                    <label for="alphaInner">αᵢ (vnitřní) [W/(m²·K)]:</label>
+                    <input type="number" id="alphaInner" value="2000" step="100" min="100">
+                </div>
+                <div class="input-group">
+                    <label for="alphaOuter">αₒ (vnější) [W/(m²·K)]:</label>
+                    <input type="number" id="alphaOuter" value="400" step="10" min="10">
+                </div>
+                <div class="input-group">
+                    <label for="thermalCond">λ materiálu [W/(m·K)]:</label>
+                    <input type="number" id="thermalCond" value="15" step="1" min="1">
+                </div>
+                <div class="input-group">
+                    <label for="foulingInner">Rf,i (zanášení vnitřní) [m²·K/W]:</label>
+                    <input type="number" id="foulingInner" value="0.0002" step="0.0001" min="0">
+                </div>
+                <div class="input-group">
+                    <label for="foulingOuter">Rf,o (zanášení vnější) [m²·K/W]:</label>
+                    <input type="number" id="foulingOuter" value="0.0005" step="0.0001" min="0">
+                </div>
+                <button onclick="calculateExchanger()">Vypočítat výměník</button>
+            </div>
+
+            <div id="results" class="results">
+                <h3>Výsledky:</h3>
+                <div class="comparison-table">
+                    <table>
+                        <tr>
+                            <th></th>
+                            <th>Čistý výměník</th>
+                            <th>Se zanášením</th>
+                            <th>Zhoršení</th>
+                        </tr>
+                        <tr>
+                            <td>Součinitel U [W/(m²·K)]</td>
+                            <td id="uClean">358</td>
+                            <td id="uFouled">291</td>
+                            <td id="uDecrease">18.7%</td>
+                        </tr>
+                        <tr>
+                            <td>Potřebná plocha [m²]</td>
+                            <td id="areaClean">2.41</td>
+                            <td id="areaFouled">2.97</td>
+                            <td id="areaIncrease">23.2%</td>
+                        </tr>
+                        <tr>
+                            <td>Délka výměníku [m]</td>
+                            <td id="lengthClean">34.9</td>
+                            <td id="lengthFouled">43.0</td>
+                            <td id="lengthIncrease">23.2%</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="economic-results">
+                    <div class="result-item highlight">
+                        <strong>Ekvivalentní tloušťka usazenin (vnitřní):</strong> <span id="thicknessInner">0.12</span> mm
+                    </div>
+                    <div class="result-item highlight">
+                        <strong>Ekvivalentní tloušťka usazenin (vnější):</strong> <span id="thicknessOuter">0.30</span> mm
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="conclusion">
+            <h2>Závěr</h2>
+            <div class="summary">
+                <p>Double pipe výměník je jednoduchý, ale efektivní typ výměníku s jasně vyčíslitelným vlivem zanášení:</p>
+                <ul>
+                    <li><strong>Čistý výměník:</strong> U = 315 W/(m²·K) (vnější plocha), délka 35.0 m</li>
+                    <li><strong>Po roce provozu:</strong> U = 256 W/(m²·K), potřebná délka 43.1 m</li>
+                    <li><strong>Vliv zanášení:</strong> 18.7% snížení účinnosti, 23.1% navýšení délky</li>
+                    <li><strong>Usazeniny:</strong> ekvivalentní tloušťka 0.12-0.30 mm</li>
+                </ul>
+
+                <div class="note tip">
+                    <p><strong>Praktická doporučení:</strong></p>
+                    <ul>
+                        <li>Navrhnout výměník s 25% rezervou na zanášení</li>
+                        <li>Použít vyšší rychlosti proudění (>1 m/s) pro snížení zanášení</li>
+                        <li>Plánovat pravidelné čištění každých 6-12 měsíců</li>
+                        <li>Monitorovat tlakové ztráty jako indikátor zanášení</li>
+                        <li>U olejů zvážit filtraci a úpravu teploty</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        function calculateExchanger() {
+            // Získání hodnot z formuláře
+            const Q = parseFloat(document.getElementById('heatLoad').value) * 1000; // kW na W
+            const deltaT = parseFloat(document.getElementById('deltaT').value);
+            const di = parseFloat(document.getElementById('innerDiam').value) / 1000; // mm na m
+            const do_val = parseFloat(document.getElementById('outerDiam').value) / 1000; // mm na m
+            const alphaI = parseFloat(document.getElementById('alphaInner').value);
+            const alphaO = parseFloat(document.getElementById('alphaOuter').value);
+            const lambda = parseFloat(document.getElementById('thermalCond').value);
+            const RfI = parseFloat(document.getElementById('foulingInner').value);
+            const RfO = parseFloat(document.getElementById('foulingOuter').value);
+
+            // Výpočet tepelného odporu stěny (vztaženo na vnější plochu)
+            const Rwall = (do_val * Math.log(do_val / di)) / (2 * lambda);
+
+            // Čistý výměník (vztaženo na vnější plochu)
+            const resistanceClean = (do_val / (alphaI * di)) + Rwall + (1 / alphaO);
+            const UClean = 1 / resistanceClean;
+
+            // Zanášený výměník (vztaženo na vnější plochu)
+            const resistanceFouled = resistanceClean + RfI * (do_val / di) + RfO;
+            const UFouled = 1 / resistanceFouled;
+
+            // Plochy a délky (vztaženo na vnější plochu)
+            const areaSpecific = Math.PI * do_val; // m²/m (vnější plocha)
+            const areaClean = Q / (UClean * deltaT);
+            const areaFouled = Q / (UFouled * deltaT);
+            const lengthClean = areaClean / areaSpecific;
+            const lengthFouled = areaFouled / areaSpecific;
+
+            // Procenta zhoršení
+            const uDecrease = ((UClean - UFouled) / UClean) * 100;
+            const areaIncrease = ((areaFouled - areaClean) / areaClean) * 100;
+
+            // Ekvivalentní tloušťky (λ = 0.6 W/(m·K) pro usazeniny)
+            const thicknessInner = RfI * 0.6 * 1000; // mm
+            const thicknessOuter = RfO * 0.6 * 1000; // mm
+
+            // Zobrazení výsledků
+            document.getElementById('uClean').textContent = Math.round(UClean);
+            document.getElementById('uFouled').textContent = Math.round(UFouled);
+            document.getElementById('uDecrease').textContent = uDecrease.toFixed(1) + '%';
+
+            document.getElementById('areaClean').textContent = areaClean.toFixed(2);
+            document.getElementById('areaFouled').textContent = areaFouled.toFixed(2);
+            document.getElementById('areaIncrease').textContent = areaIncrease.toFixed(1) + '%';
+
+            document.getElementById('lengthClean').textContent = lengthClean.toFixed(1);
+            document.getElementById('lengthFouled').textContent = lengthFouled.toFixed(1);
+            document.getElementById('lengthIncrease').textContent = areaIncrease.toFixed(1) + '%';
+
+            document.getElementById('thicknessInner').textContent = thicknessInner.toFixed(2);
+            document.getElementById('thicknessOuter').textContent = thicknessOuter.toFixed(2);
+        }
+
+        // Spustit výpočet při načtení stránky
+        window.onload = calculateExchanger;
+    </script>
+</body>
+</html>

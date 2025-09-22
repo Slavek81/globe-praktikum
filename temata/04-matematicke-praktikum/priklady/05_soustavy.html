@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soustavy lineárních rovnic - Míchání roztoků</title>
+    <link rel="stylesheet" href="unified-style.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+    </script>
+</head>
+<body>
+    <main>
+        <header>
+            <h1>Soustavy lineárních rovnic</h1>
+            <p>Řešení problému míchání chemických roztoků</p>
+        </header>
+
+        <section class="intro-box">
+            <p>Soustavy lineárních rovnic se často vyskytují v chemických výpočtech, zejména při míchání roztoků různých koncentrací. V tomto příkladu se naučíme řešit praktický problém pomocí eliminačních metod.</p>
+        </section>
+
+        <section class="section">
+            <h2>Úvod do problému</h2>
+            <p>V chemické laboratoři často potřebujeme připravit roztok požadované koncentrace smícháním dvou nebo více roztoků. Tento problém se řeší pomocí soustavy lineárních rovnic založené na bilančních rovnicích.</p>
+
+            <div class="formula-box">
+                <strong>Základní principy:</strong><br>
+                <strong>Hmotnostní bilance:</strong> Celková hmotnost = součet hmotností složek<br>
+                <strong>Látkové bilance:</strong> Celkové množství látky = součet množství v jednotlivých složkách
+            </div>
+        </section>
+
+        <section class="section section-gray">
+            <h2>Zadání úlohy</h2>
+            <p><strong>Úkol:</strong> Určete, kolik gramů 20% roztoku NaCl a kolik gramů 5% roztoku NaCl musíme smíchat, abychom získali 300 g roztoku o koncentraci 12%.</p>
+
+            <table>
+                <tr>
+                    <th>Parametr</th>
+                    <th>Hodnota</th>
+                    <th>Jednotka</th>
+                </tr>
+                <tr>
+                    <td class="variable">Koncentrace roztoku A</td>
+                    <td class="value">20</td>
+                    <td class="unit">% hmot.</td>
+                </tr>
+                <tr>
+                    <td class="variable">Koncentrace roztoku B</td>
+                    <td class="value">5</td>
+                    <td class="unit">% hmot.</td>
+                </tr>
+                <tr>
+                    <td class="variable">Požadovaná koncentrace</td>
+                    <td class="value">12</td>
+                    <td class="unit">% hmot.</td>
+                </tr>
+                <tr>
+                    <td class="variable">Celková hmotnost</td>
+                    <td class="value">300</td>
+                    <td class="unit">g</td>
+                </tr>
+            </table>
+        </section>
+
+        <section class="section">
+            <h2>Formulace soustavy rovnic</h2>
+            <p>Označme:</p>
+            <ul>
+                <li>$x$ = hmotnost 20% roztoku [g]</li>
+                <li>$y$ = hmotnost 5% roztoku [g]</li>
+            </ul>
+
+            <h3>Sestavení rovnic:</h3>
+            <div class="formula-box">
+                <strong>1. Hmotnostní bilance:</strong><br>
+                $$x + y = 300$$
+
+                <strong>2. Látková bilance pro NaCl:</strong><br>
+                $$0.20x + 0.05y = 0.12 \times 300$$
+                $$0.20x + 0.05y = 36$$
+            </div>
+
+            <p>Získali jsme soustavu dvou lineárních rovnic o dvou neznámých:</p>
+            <div class="formula-box">
+                $$\begin{cases}
+                x + y = 300 \\
+                0.20x + 0.05y = 36
+                \end{cases}$$
+            </div>
+        </section>
+
+        <section class="section section-gray">
+            <h2>Řešení eliminační metodou</h2>
+
+            <h3>Metoda dosazení</h3>
+            <p><strong>Krok 1:</strong> Z první rovnice vyjádříme $y$:</p>
+            <div class="formula-box">
+                $$y = 300 - x$$
+            </div>
+
+            <p><strong>Krok 2:</strong> Dosadíme do druhé rovnice:</p>
+            <div class="formula-box">
+                $$0.20x + 0.05(300 - x) = 36$$
+                $$0.20x + 15 - 0.05x = 36$$
+                $$0.15x = 36 - 15$$
+                $$0.15x = 21$$
+                $$x = \frac{21}{0.15} = 140 \text{ g}$$
+            </div>
+
+            <p><strong>Krok 3:</strong> Vypočítáme $y$:</p>
+            <div class="formula-box">
+                $$y = 300 - 140 = 160 \text{ g}$$
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Ověření výsledku</h2>
+            <p>Kontrola správnosti řešení:</p>
+
+            <h3>Kontrola hmotnostní bilance:</h3>
+            <div class="formula-box">
+                $$x + y = 140 + 160 = 300 \text{ g} \quad \checkmark$$
+            </div>
+
+            <h3>Kontrola látkové bilance:</h3>
+            <div class="formula-box">
+                \begin{align}
+                \text{Hmotnost NaCl} &= 0.20 \times 140 + 0.05 \times 160 \\
+                &= 28 + 8 = 36 \text{ g} \\
+                \text{Koncentrace} &= \frac{36}{300} \times 100\% = 12\% \quad \checkmark
+                \end{align}
+            </div>
+        </section>
+
+        <section class="section section-gray">
+            <h2>Alternativní metoda - Gaussova eliminace</h2>
+            <p>Pro komplexnější soustavy používáme Gaussovu eliminaci s rozšířenou maticí:</p>
+
+            <div class="formula-box">
+                $$\left(\begin{array}{cc|c}
+                1 & 1 & 300 \\
+                0.2 & 0.05 & 36
+                \end{array}\right)$$
+            </div>
+
+            <p><strong>Krok 1:</strong> Eliminace - vynulujeme prvek pod diagonálou:</p>
+            <div class="formula-box">
+                $$R_2 \leftarrow R_2 - 0.2 \cdot R_1$$
+                $$\left(\begin{array}{cc|c}
+                1 & 1 & 300 \\
+                0 & -0.15 & -24
+                \end{array}\right)$$
+            </div>
+
+            <p><strong>Krok 2:</strong> Zpětná substituce:</p>
+            <div class="formula-box">
+                $$-0.15y = -24 \quad \Rightarrow \quad y = 160$$
+                $$x + 160 = 300 \quad \Rightarrow \quad x = 140$$
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Grafické znázornění</h2>
+            <div class="schema-container">
+                <svg width="500" height="350" viewBox="0 0 500 350">
+                    <!-- Osy -->
+                    <line x1="50" y1="300" x2="450" y2="300" stroke="black" stroke-width="2"/>
+                    <line x1="50" y1="300" x2="50" y2="50" stroke="black" stroke-width="2"/>
+
+                    <!-- Popisky os -->
+                    <text x="250" y="330" text-anchor="middle">x [g] - hmotnost 20% roztoku</text>
+                    <text x="20" y="175" text-anchor="middle" transform="rotate(-90 20 175)">y [g] - hmotnost 5% roztoku</text>
+
+                    <!-- Škála -->
+                    <text x="50" y="320">0</text>
+                    <text x="150" y="320">100</text>
+                    <text x="250" y="320">200</text>
+                    <text x="350" y="320">300</text>
+
+                    <text x="35" y="305">0</text>
+                    <text x="25" y="255">100</text>
+                    <text x="25" y="205">200</text>
+                    <text x="25" y="155">300</text>
+
+                    <!-- Přímka 1: x + y = 300 -->
+                    <line x1="50" y1="50" x2="350" y2="300" stroke="blue" stroke-width="3"/>
+                    <text x="180" y="40" fill="blue">x + y = 300</text>
+
+                    <!-- Přímka 2: 0.20x + 0.05y = 36 -->
+                    <line x1="50" y1="220" x2="250" y2="300" stroke="red" stroke-width="3"/>
+                    <text x="80" y="210" fill="red">0.20x + 0.05y = 36</text>
+
+                    <!-- Průsečík -->
+                    <circle cx="190" cy="180" r="6" fill="green" stroke="black" stroke-width="2"/>
+                    <text x="200" y="175" fill="green" font-weight="bold">(140, 160)</text>
+
+                    <!-- Mřížka -->
+                    <defs>
+                        <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+                            <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#e0e0e0" stroke-width="1"/>
+                        </pattern>
+                    </defs>
+                    <rect x="50" y="50" width="300" height="250" fill="url(#grid)"/>
+                </svg>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Interaktivní kalkulátor</h2>
+            <div class="formula-box">
+                <h3>Řešení soustavy 2×2</h3>
+                <p>Zadejte koeficienty soustavy ax + by = c, dx + ey = f:</p>
+
+                <table style="margin: 20px 0;">
+                    <tr>
+                        <td><input type="number" id="a" value="1" step="0.01" style="width: 60px;"></td>
+                        <td>x +</td>
+                        <td><input type="number" id="b" value="1" step="0.01" style="width: 60px;"></td>
+                        <td>y =</td>
+                        <td><input type="number" id="c" value="300" step="0.01" style="width: 60px;"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="number" id="d" value="0.2" step="0.01" style="width: 60px;"></td>
+                        <td>x +</td>
+                        <td><input type="number" id="e" value="0.05" step="0.01" style="width: 60px;"></td>
+                        <td>y =</td>
+                        <td><input type="number" id="f" value="36" step="0.01" style="width: 60px;"></td>
+                    </tr>
+                </table>
+
+                <button onclick="solveSystem()">Vyřeš soustavu</button>
+                <br><br>
+                <div id="systemResult"></div>
+            </div>
+        </section>
+
+        <section class="result-box">
+            <h2>Výsledek</h2>
+            <p>Musíme smíchat:</p>
+            <p><span>140 g</span> roztoku o koncentraci <span>20%</span></p>
+            <p><span>160 g</span> roztoku o koncentraci <span>5%</span></p>
+            <p>Získáme <span>300 g</span> roztoku o koncentraci <span>12%</span></p>
+        </section>
+
+        <section class="section section-gray">
+            <h2>Praktické aplikace</h2>
+            <h3>Další příklady použití:</h3>
+            <ul>
+                <li><strong>Chemie:</strong> Příprava roztoků, neutralizace kyselin a zásad</li>
+                <li><strong>Farmaceutický průmysl:</strong> Míchání léčivých preparátů</li>
+                <li><strong>Potravinářství:</strong> Úprava obsahu tuku, cukru, alkoholu</li>
+                <li><strong>Hutnictví:</strong> Příprava slitin s požadovaným složením</li>
+            </ul>
+
+            <h3>Strategie řešení složitějších problémů:</h3>
+            <ul>
+                <li><strong>3 a více roztoků:</strong> Soustava 3×3 nebo větší</li>
+                <li><strong>Vícesložkové systémy:</strong> Více bilančních rovnic</li>
+                <li><strong>Omezující podmínky:</strong> Nerovnosti, fyzikální omezení</li>
+            </ul>
+        </section>
+
+        <section class="note">
+            <h3>Poznámky k metodám řešení</h3>
+            <ul>
+                <li><strong>Dosazovací metoda:</strong> Nejjednodušší pro soustavy 2×2</li>
+                <li><strong>Sčítací metoda:</strong> Vhodná při vhodných koeficientech</li>
+                <li><strong>Gaussova eliminace:</strong> Univerzální metoda pro větší soustavy</li>
+                <li><strong>Determinanty (Cramerovo pravidlo):</strong> Elegantní, ale výpočetně náročnější</li>
+            </ul>
+        </section>
+    </main>
+
+    <script>
+        function solveSystem() {
+            // Načtení koeficientů
+            const a = parseFloat(document.getElementById('a').value);
+            const b = parseFloat(document.getElementById('b').value);
+            const c = parseFloat(document.getElementById('c').value);
+            const d = parseFloat(document.getElementById('d').value);
+            const e = parseFloat(document.getElementById('e').value);
+            const f = parseFloat(document.getElementById('f').value);
+
+            // Výpočet determinantu hlavní matice
+            const det = a * e - b * d;
+
+            if (Math.abs(det) < 1e-10) {
+                document.getElementById('systemResult').innerHTML =
+                    '<strong style="color: red;">Soustava nemá jednoznačné řešení (determinant = 0)</strong>';
+                return;
+            }
+
+            // Cramerovo pravidlo
+            const detX = c * e - b * f;
+            const detY = a * f - c * d;
+
+            const x = detX / det;
+            const y = detY / det;
+
+            // Kontrola řešení
+            const check1 = a * x + b * y;
+            const check2 = d * x + e * y;
+
+            document.getElementById('systemResult').innerHTML = `
+                <strong>Řešení soustavy:</strong><br>
+                x = ${x.toFixed(4)}<br>
+                y = ${y.toFixed(4)}<br>
+                <br>
+                <strong>Kontrola:</strong><br>
+                ${a}×${x.toFixed(2)} + ${b}×${y.toFixed(2)} = ${check1.toFixed(4)} (má být ${c})<br>
+                ${d}×${x.toFixed(2)} + ${e}×${y.toFixed(2)} = ${check2.toFixed(4)} (má být ${f})<br>
+                <br>
+                <strong>Determinant:</strong> ${det.toFixed(6)}
+            `;
+        }
+    </script>
+</body>
+</html>

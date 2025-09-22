@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Přestup a prostup tepla - Vzorce a konstanty</title>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            }
+        };
+    </script>
+    <style>
+        @media print {
+            @page {
+                margin: 2cm;
+                size: A4;
+            }
+            body {
+                font-family: 'Times New Roman', serif;
+                font-size: 12px;
+                line-height: 1.4;
+                margin: 0;
+                padding: 0;
+            }
+            .page-break { page-break-before: always; }
+        }
+
+        body {
+            font-family: 'Times New Roman', serif;
+            font-size: 12px;
+            line-height: 1.4;
+            margin: 20px;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c5530;
+            border-bottom: 3px solid #2c5530;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            color: #2c5530;
+            border-bottom: 2px solid #2c5530;
+            padding-bottom: 5px;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        h3 {
+            color: #555;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .formula-box {
+            border: 2px solid #2c5530;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            background-color: #f8f9fa;
+        }
+
+        .formula-title {
+            font-weight: bold;
+            color: #2c5530;
+            margin-bottom: 10px;
+        }
+
+        .units {
+            color: #666;
+            font-style: italic;
+            margin-top: 5px;
+        }
+
+        .constants-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+
+        .constants-table th,
+        .constants-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        .constants-table th {
+            background-color: #2c5530;
+            color: white;
+            font-weight: bold;
+        }
+
+        .constants-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .note {
+            background-color: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 15px 0;
+        }
+
+        .example {
+            background-color: #e8f5e8;
+            border: 1px solid #c3e6c3;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 15px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Přestup a prostup tepla<br>Vzorce a konstanty</h1>
+
+    <h2>1. Základní mechanismy přenosu tepla</h2>
+
+    <div class="formula-box">
+        <div class="formula-title">Vedení tepla - Fourierův zákon</div>
+        $$\dot{Q} = -\lambda A \frac{dT}{dx} = \frac{\lambda A \Delta T}{d}$$
+        <div class="units">
+            <strong>Kde:</strong><br>
+            Q̇ - tepelný tok [W]<br>
+            λ - tepelná vodivost [W/(m·K)]<br>
+            A - plocha kolmá na směr toku tepla [m²]<br>
+            d - tloušťka vrstvy [m]<br>
+            ΔT - teplotní rozdíl [K]
+        </div>
+    </div>
+
+    <div class="formula-box">
+        <div class="formula-title">Konvekce - Newtonův zákon ochlazování</div>
+        $$\dot{Q} = h A (T_s - T_f)$$
+        <div class="units">
+            <strong>Kde:</strong><br>
+            Q̇ - tepelný tok [W]<br>
+            h - součinitel přestupu tepla [W/(m²·K)]<br>
+            A - plocha teplosměnné plochy [m²]<br>
+            T<sub>s</sub> - teplota povrchu [K]<br>
+            T<sub>f</sub> - teplota tekutiny [K]
+        </div>
+    </div>
+
+    <div class="formula-box">
+        <div class="formula-title">Sálání - Stefan-Boltzmannův zákon</div>
+        $$\dot{Q} = \varepsilon \sigma A (T_1^4 - T_2^4)$$
+        <div class="units">
+            <strong>Kde:</strong><br>
+            Q̇ - tepelný tok [W]<br>
+            ε - emisivita povrchu [-]<br>
+            σ - Stefan-Boltzmannova konstanta = 5.67×10⁻⁸ [W/(m²·K⁴)]<br>
+            A - plocha [m²]<br>
+            T<sub>1</sub>, T<sub>2</sub> - absolutní teploty [K]
+        </div>
+    </div>
+
+    <h2>2. Prostup tepla vícevrstvými konstrukcemi</h2>
+
+    <div class="formula-box">
+        <div class="formula-title">Tepelný odpor vrstvy</div>
+        $$R = \frac{d}{\lambda}$$
+        <div class="units">
+            <strong>Kde:</strong><br>
+            R - tepelný odpor [m²·K/W]<br>
+            d - tloušťka vrstvy [m]<br>
+            λ - tepelná vodivost [W/(m·K)]
+        </div>
+    </div>
+
+    <div class="formula-box">
+        <div class="formula-title">Celkový tepelný odpor (sériové řazení)</div>
+        $$R_{celk} = R_1 + R_2 + R_3 + ... = \sum_{i=1}^{n} \frac{d_i}{\lambda_i}$$
+        <div class="units">
+            Pro vícevrstvou stěnu s n vrstvami
+        </div>
+    </div>
+
+    <div class="formula-box">
+        <div class="formula-title">Součinitel prostupu tepla</div>
+        $$U = \frac{1}{R_{celk}} \quad \text{nebo} \quad \frac{1}{U} = \frac{1}{\alpha_1} + \sum_{i=1}^{n} \frac{d_i}{\lambda_i} + \frac{1}{\alpha_2}$$
+        <div class="units">
+            <strong>Kde:</strong><br>
+            U - součinitel prostupu tepla [W/(m²·K)]<br>
+            α<sub>1</sub>, α<sub>2</sub> - součinitele přestupu tepla na površích [W/(m²·K)]
+        </div>
+    </div>
+
+    <div class="formula-box">
+        <div class="formula-title">Tepelný tok vícevrstvou stěnou</div>
+        $$\dot{Q} = U A \Delta T = \frac{A \Delta T}{R_{celk}}$$
+    </div>
+
+    <div class="page-break"></div>
+
+    <h2>3. Válcové konstrukce (potrubí)</h2>
+
+    <div class="formula-box">
+        <div class="formula-title">Tepelný odpor válcové vrstvy (na jednotku délky)</div>
+        $$R' = \frac{\ln(r_o/r_i)}{2\pi\lambda}$$
+        <div class="units">
+            <strong>Kde:</strong><br>
+            R' - tepelný odpor na jednotku délky [m·K/W]<br>
+            r<sub>o</sub> - vnější poloměr [m]<br>
+            r<sub>i</sub> - vnitřní poloměr [m]<br>
+            λ - tepelná vodivost [W/(m·K)]
+        </div>
+    </div>
+
+    <div class="formula-box">
+        <div class="formula-title">Tepelný tok válcovým potrubím (na jednotku délky)</div>
+        $$\dot{q} = \frac{\Delta T}{R'_{celk}} = \frac{2\pi \Delta T}{\frac{1}{\alpha_i r_i} + \sum \frac{\ln(r_{o,j}/r_{i,j})}{\lambda_j} + \frac{1}{\alpha_o r_o}}$$
+        <div class="units">
+            q̇ - tepelný tok na jednotku délky [W/m]
+        </div>
+    </div>
+
+    <div class="formula-box">
+        <div class="formula-title">Součinitel prostupu tepla U pro válcové konstrukce</div>
+        <p><strong>Vztažený na vnější plochu (obvyklé):</strong></p>
+        $$\frac{1}{U_o} = \frac{r_o}{\alpha_i r_i} + \frac{r_o \ln(r_o/r_i)}{\lambda} + \frac{1}{\alpha_o}$$
+        <p><strong>Pro vícevrstvou konstrukci:</strong></p>
+        $$\frac{1}{U_o} = \frac{r_o}{\alpha_i r_i} + r_o \sum_{j=1}^{n} \frac{\ln(r_{o,j}/r_{i,j})}{\lambda_j} + \frac{1}{\alpha_o}$$
+        <p><strong>Vztažený na vnitřní plochu (alternativní):</strong></p>
+        $$\frac{1}{U_i} = \frac{1}{\alpha_i} + \frac{r_i \ln(r_o/r_i)}{\lambda} + \frac{r_i}{\alpha_o r_o}$$
+        <div class="units">
+            <strong>Kde:</strong><br>
+            U<sub>o</sub> - součinitel prostupu vztažený na vnější plochu [W/(m²·K)]<br>
+            U<sub>i</sub> - součinitel prostupu vztažený na vnitřní plochu [W/(m²·K)]<br>
+            α<sub>i</sub>, α<sub>o</sub> - součinitele přestupu tepla [W/(m²·K)]
+        </div>
+    </div>
+
+    <div class="formula-box">
+        <div class="formula-title">Celkový tepelný tok válcovým potrubím</div>
+        $$\dot{Q} = U \times A \times \Delta T = U_o \times (2\pi r_o L) \times \Delta T$$
+        $$\dot{Q} = \dot{q} \times L$$
+        <div class="units">
+            <strong>Kde:</strong><br>
+            Q̇ - celkový tepelný tok [W]<br>
+            A = 2πr<sub>o</sub>L - vnější plocha potrubí [m²]<br>
+            L - délka potrubí [m]<br>
+            q̇ - tepelný tok na jednotku délky [W/m]
+        </div>
+    </div>
+
+    <h2>4. Výměníky tepla</h2>
+
+    <div class="formula-box">
+        <div class="formula-title">Základní rovnice výměníku</div>
+        $$\dot{Q} = U A \Delta T_{log}$$
+        <div class="units">
+            ΔT<sub>log</sub> - logaritmický střední teplotní rozdíl [K]
+        </div>
+    </div>
+
+    <div class="formula-box">
+        <div class="formula-title">Logaritmický teplotní rozdíl</div>
+        $$\Delta T_{log} = \frac{\Delta T_{max} - \Delta T_{min}}{\ln(\Delta T_{max}/\Delta T_{min})}$$
+        <p><strong>Skutečný tepelný tok s korekčním faktorem:</strong></p>
+        $$\dot{Q} = U \times A \times \Delta T_m = U \times A \times \Delta T_{log} \times F$$
+        <div class="units">
+            <strong>Pro souproud:</strong><br>
+            ΔT<sub>max</sub> = T<sub>h,in</sub> - T<sub>c,in</sub><br>
+            ΔT<sub>min</sub> = T<sub>h,out</sub> - T<sub>c,out</sub><br><br>
+            <strong>Pro protiproud:</strong><br>
+            ΔT<sub>max</sub> = T<sub>h,in</sub> - T<sub>c,out</sub><br>
+            ΔT<sub>min</sub> = T<sub>h,out</sub> - T<sub>c,in</sub><br><br>
+            <strong>Korekční faktor F:</strong><br>
+            F = 1.0 pro protiproud<br>
+            F = 0.5-0.95 pro ostatní uspořádání<br>
+            ΔT<sub>m</sub> - střední efektivní teplotní rozdíl [K]
+        </div>
+    </div>
+
+    <div class="formula-box">
+        <div class="formula-title">Energetická bilance výměníku</div>
+        $$\dot{Q} = \dot{m}_h c_{p,h} (T_{h,in} - T_{h,out}) = \dot{m}_c c_{p,c} (T_{c,out} - T_{c,in})$$
+        <div class="units">
+            ṁ - hmotnostní tok [kg/s]<br>
+            c<sub>p</sub> - měrná tepelná kapacita [J/(kg·K)]
+        </div>
+    </div>
+
+    <h2>5. Fyzikální konstanty</h2>
+
+    <table class="constants-table">
+        <tr>
+            <th>Konstanta</th>
+            <th>Symbol</th>
+            <th>Hodnota</th>
+            <th>Jednotka</th>
+        </tr>
+        <tr>
+            <td>Stefan-Boltzmannova konstanta</td>
+            <td>σ</td>
+            <td>5.67 × 10⁻⁸</td>
+            <td>W/(m²·K⁴)</td>
+        </tr>
+        <tr>
+            <td>Absolutní nula</td>
+            <td>T₀</td>
+            <td>-273.15</td>
+            <td>°C</td>
+        </tr>
+        <tr>
+            <td>Převod: °C → K</td>
+            <td>T[K]</td>
+            <td>T[°C] + 273.15</td>
+            <td>K</td>
+        </tr>
+    </table>
+
+    <h2>6. Typické hodnoty součinitelů přestupu tepla</h2>
+
+    <table class="constants-table">
+        <tr>
+            <th>Typ přenosu</th>
+            <th>Médium</th>
+            <th>h [W/(m²·K)]</th>
+        </tr>
+        <tr>
+            <td>Přirozená konvekce</td>
+            <td>Vzduch</td>
+            <td>3 - 15</td>
+        </tr>
+        <tr>
+            <td>Nucená konvekce</td>
+            <td>Vzduch (v = 5-20 m/s)</td>
+            <td>20 - 100</td>
+        </tr>
+        <tr>
+            <td>Nucená konvekce</td>
+            <td>Voda (laminární)</td>
+            <td>500 - 1500</td>
+        </tr>
+        <tr>
+            <td>Nucená konvekce</td>
+            <td>Voda (turbulentní)</td>
+            <td>1500 - 5000</td>
+        </tr>
+        <tr>
+            <td>Var vody</td>
+            <td>Nukleátní vření</td>
+            <td>3000 - 10000</td>
+        </tr>
+        <tr>
+            <td>Kondenzace páry</td>
+            <td>Na vertikální stěně</td>
+            <td>5000 - 15000</td>
+        </tr>
+    </table>
+
+    <div class="note">
+        <strong>Poznámka:</strong> Uvedené hodnoty jsou orientační a závisí na konkrétních podmínkách (teplota, tlak, rychlost proudění, geometrie).
+    </div>
+
+    <div class="page-break"></div>
+
+    <h2>7. Praktické postupy výpočtů</h2>
+
+    <div class="example">
+        <h3>Postup výpočtu prostupu tepla stěnou:</h3>
+        <ol>
+            <li>Identifikujte všechny vrstvy a jejich vlastnosti (d, λ)</li>
+            <li>Vypočítajte tepelný odpor každé vrstvy: R<sub>i</sub> = d<sub>i</sub>/λ<sub>i</sub></li>
+            <li>Sečtěte všechny odpory: R<sub>celk</sub> = ΣR<sub>i</sub></li>
+            <li>Vypočítajte součinitel prostupu: U = 1/R<sub>celk</sub></li>
+            <li>Vypočítajte tepelný tok: Q̇ = U × A × ΔT</li>
+        </ol>
+    </div>
+
+    <div class="example">
+        <h3>Postup návrhu výměníku tepla:</h3>
+        <ol>
+            <li>Stanovte požadovaný tepelný výkon Q̇</li>
+            <li>Určete teplotní podmínky (vstupní/výstupní teploty)</li>
+            <li>Vypočítajte logaritmický teplotní rozdíl ΔT<sub>log</sub></li>
+            <li>Odhadněte celkový součinitel prostupu tepla U</li>
+            <li>Vypočítajte potřebnou plochu: A = Q̇/(U × ΔT<sub>log</sub>)</li>
+        </ol>
+    </div>
+
+    <div class="page-break"></div>
+
+    <h2>8. Výměníky tepla</h2>
+
+    <h3>8.1 Základní vztahy pro výměníky</h3>
+
+    <p><strong>Energetická bilance výměníku:</strong></p>
+    <p>Q̇<sub>horký</sub> = Q̇<sub>studený</sub></p>
+    <p>ṁ<sub>h</sub> × c<sub>p,h</sub> × (T<sub>h,vstup</sub> - T<sub>h,výstup</sub>) = ṁ<sub>s</sub> × c<sub>p,s</sub> × (T<sub>s,výstup</sub> - T<sub>s,vstup</sub>)</p>
+
+    <p><strong>Základní rovnice přenosu tepla ve výměníku:</strong></p>
+    <p>Q̇ = U × A × ΔT<sub>log</sub></p>
+
+    <p><strong>Logaritmický teplotní rozdíl (protiproud):</strong></p>
+    <p>ΔT<sub>log</sub> = (ΔT<sub>max</sub> - ΔT<sub>min</sub>) / ln(ΔT<sub>max</sub>/ΔT<sub>min</sub>)</p>
+
+    <p><strong>Korekční faktor F pro komplexní výměníky:</strong></p>
+    <p>ΔT<sub>skutečný</sub> = F × ΔT<sub>log,protiproud</sub></p>
+    <p>Q̇ = U × A × F × ΔT<sub>log,protiproud</sub></p>
+
+    <table class="constants-table">
+        <tr>
+            <th>Typ proudění</th>
+            <th>Korekční faktor F</th>
+        </tr>
+        <tr>
+            <td>Protiproud</td>
+            <td>F = 1.0</td>
+        </tr>
+        <tr>
+            <td>Křížotok - oba nemíchané</td>
+            <td>F = 0.8-0.95</td>
+        </tr>
+        <tr>
+            <td>Křížotok - jedno míchané</td>
+            <td>F = 0.7-0.9</td>
+        </tr>
+        <tr>
+            <td>Souproud</td>
+            <td>F = 0.5-0.8</td>
+        </tr>
+        <tr>
+            <td>Shell-and-tube (1 průchod)</td>
+            <td>F = 0.8-0.95</td>
+        </tr>
+    </table>
+
+    <h3>8.2 Celkový součinitel prostupu tepla U</h3>
+
+    <p><strong>Obecný vztah s zanášením:</strong></p>
+    <p>1/U = 1/α<sub>h</sub> + d<sub>stěna</sub>/λ<sub>stěna</sub> + 1/α<sub>s</sub> + R<sub>f,h</sub> + R<sub>f,s</sub></p>
+
+    <h4>Deskové výměníky:</h4>
+    <p><strong>1/U = 1/α<sub>h</sub> + t<sub>deska</sub>/λ<sub>deska</sub> + 1/α<sub>s</sub> + R<sub>f,h</sub> + R<sub>f,s</sub></strong></p>
+    <p>kde: t<sub>deska</sub> = 0.5-2 mm, λ<sub>deska</sub> ≈ 15 W/(m·K) pro nerez</p>
+
+    <h4>Trubkové výměníky (vztaženo na vnější povrch - obvyklejší):</h4>
+    <p><strong>1/U<sub>o</sub> = d<sub>o</sub>/(α<sub>i</sub>×d<sub>i</sub>) + d<sub>o</sub>×ln(d<sub>o</sub>/d<sub>i</sub>)/(2λ<sub>trubka</sub>) + 1/α<sub>o</sub> + R<sub>f,i</sub>×(d<sub>o</sub>/d<sub>i</sub>) + R<sub>f,o</sub></strong></p>
+
+    <h4>Trubkové výměníky (vztaženo na vnitřní povrch - alternativní):</h4>
+    <p><strong>1/U<sub>i</sub> = 1/α<sub>i</sub> + d<sub>i</sub>×ln(d<sub>o</sub>/d<sub>i</sub>)/(2λ<sub>trubka</sub>) + d<sub>i</sub>/(α<sub>o</sub>×d<sub>o</sub>) + R<sub>f,i</sub> + R<sub>f,o</sub>×(d<sub>i</sub>/d<sub>o</sub>)</strong></p>
+
+    <div class="note">
+        <strong>Poznámka:</strong> V praxi se častěji používá vztahování na vnější plochu (U<sub>o</sub>), protože vnější plocha je snáze měřitelná a častěji se používá pro specifikace výměníků.
+    </div></p>
+
+    <h3>8.3 Součinitele zanášení R<sub>f</sub> [m²·K/W]</h3>
+
+    <table class="constants-table">
+        <tr>
+            <th>Typ tekutiny</th>
+            <th>Podmínky</th>
+            <th>R<sub>f</sub> [m²·K/W]</th>
+        </tr>
+        <tr>
+            <td>Destilovaná voda</td>
+            <td>Čistá, T &lt; 50°C</td>
+            <td>0.0001</td>
+        </tr>
+        <tr>
+            <td>Pitná voda</td>
+            <td>Městská voda</td>
+            <td>0.0002</td>
+        </tr>
+        <tr>
+            <td>Tvrdá voda</td>
+            <td>Vysoký obsah Ca²⁺, Mg²⁺</td>
+            <td>0.0005</td>
+        </tr>
+        <tr>
+            <td>Mořská voda</td>
+            <td>Vysoká salinita</td>
+            <td>0.0001-0.0008</td>
+        </tr>
+        <tr>
+            <td>Motorové oleje</td>
+            <td>Čisté</td>
+            <td>0.0002</td>
+        </tr>
+        <tr>
+            <td>Topné oleje</td>
+            <td>T &gt; 250°C</td>
+            <td>0.0009</td>
+        </tr>
+        <tr>
+            <td>Spaliny</td>
+            <td>Obsahují saze</td>
+            <td>0.002</td>
+        </tr>
+        <tr>
+            <td>Čistá pára</td>
+            <td>Kondenzace</td>
+            <td>0.0001</td>
+        </tr>
+        <tr>
+            <td>Vzduch (čistý)</td>
+            <td>Filtrovaný</td>
+            <td>0.0002</td>
+        </tr>
+        <tr>
+            <td>Vzduch (průmyslový)</td>
+            <td>Prach, oleje</td>
+            <td>0.0009</td>
+        </tr>
+    </table>
+
+    <h3>8.4 Typické hodnoty součinitelů přestupu tepla α [W/(m²·K)]</h3>
+
+    <table class="constants-table">
+        <tr>
+            <th>Medium</th>
+            <th>Podmínky</th>
+            <th>α [W/(m²·K)]</th>
+        </tr>
+        <tr>
+            <td>Kondenzace páry</td>
+            <td>Vertikální stěna</td>
+            <td>5 000 - 15 000</td>
+        </tr>
+        <tr>
+            <td>Var vody</td>
+            <td>Nukleátní vření</td>
+            <td>3 000 - 10 000</td>
+        </tr>
+        <tr>
+            <td>Voda - turbulentní</td>
+            <td>v = 1-3 m/s</td>
+            <td>1 500 - 5 000</td>
+        </tr>
+        <tr>
+            <td>Voda - laminární</td>
+            <td>v &lt; 0.5 m/s</td>
+            <td>500 - 1 500</td>
+        </tr>
+        <tr>
+            <td>Oleje</td>
+            <td>Turbulentní proudění</td>
+            <td>200 - 800</td>
+        </tr>
+        <tr>
+            <td>Spaliny</td>
+            <td>Nucené proudění</td>
+            <td>50 - 200</td>
+        </tr>
+        <tr>
+            <td>Vzduch - nucené</td>
+            <td>v = 5-20 m/s</td>
+            <td>20 - 100</td>
+        </tr>
+        <tr>
+            <td>Vzduch - přirozené</td>
+            <td>Konvekce</td>
+            <td>3 - 15</td>
+        </tr>
+    </table>
+
+    <h3>8.5 Typické hodnoty celkových součinitelů U [W/(m²·K)]</h3>
+
+    <table class="constants-table">
+        <tr>
+            <th>Typ výměníku</th>
+            <th>Horké medium</th>
+            <th>Studené medium</th>
+            <th>U [W/(m²·K)]</th>
+        </tr>
+        <tr>
+            <td>Kondenzátor</td>
+            <td>Kondenzace páry</td>
+            <td>Voda</td>
+            <td>1 000 - 3 000</td>
+        </tr>
+        <tr>
+            <td>Výparník</td>
+            <td>Voda/pára</td>
+            <td>Var vody</td>
+            <td>800 - 2 500</td>
+        </tr>
+        <tr>
+            <td>Ohřívák vody</td>
+            <td>Horká voda</td>
+            <td>Studená voda</td>
+            <td>800 - 1 500</td>
+        </tr>
+        <tr>
+            <td>Chladič oleje</td>
+            <td>Olej</td>
+            <td>Voda</td>
+            <td>200 - 600</td>
+        </tr>
+        <tr>
+            <td>Ohřívák vzduchu</td>
+            <td>Horká voda/pára</td>
+            <td>Vzduch</td>
+            <td>30 - 150</td>
+        </tr>
+        <tr>
+            <td>Spalinový ohřívák</td>
+            <td>Spaliny</td>
+            <td>Vzduch</td>
+            <td>15 - 60</td>
+        </tr>
+        <tr>
+            <td>Vzduch-vzduch</td>
+            <td>Teplý vzduch</td>
+            <td>Studený vzduch</td>
+            <td>8 - 25</td>
+        </tr>
+    </table>
+
+    <h3>8.6 Příčiny a důsledky zanášení</h3>
+
+    <p><strong>Hlavní příčiny zanášení:</strong></p>
+    <ul>
+        <li><strong>Krystalizace:</strong> Usazování solí z tvrdé vody (CaCO₃, CaSO₄)</li>
+        <li><strong>Biologické zanášení:</strong> Růst řas, bakterií a biofilmu</li>
+        <li><strong>Koroze:</strong> Oxidace kovových povrchů</li>
+        <li><strong>Částice:</strong> Usazování prachu, písku, sedimentů</li>
+        <li><strong>Chemické reakce:</strong> Polymerace, karbonizace</li>
+    </ul>
+
+    <p><strong>Důsledky zanášení:</strong></p>
+    <ul>
+        <li>Snížení tepelného toku (až o 50%)</li>
+        <li>Zvýšení tlakových ztrát</li>
+        <li>Snížení účinnosti systému</li>
+        <li>Vyšší provozní náklady</li>
+    </ul>
+
+    <p><strong>Prevence zanášení:</strong></p>
+    <ul>
+        <li>Úprava vody (změkčování, odvápnění)</li>
+        <li>Chemické inhibitory zanášení</li>
+        <li>Vyšší rychlosti proudění (&gt;1 m/s)</li>
+        <li>Pravidelné čištění</li>
+        <li>Přerozměrování s rezervou na zanášení</li>
+    </ul>
+
+    <h3>8.7 Efektivnost výměníku</h3>
+
+    <p><strong>Definice efektivnosti:</strong></p>
+    <p>ε = Q̇<sub>skutečné</sub> / Q̇<sub>max</sub></p>
+
+    <p><strong>Maximální možný přenos tepla:</strong></p>
+    <p>Q̇<sub>max</sub> = Ċ<sub>min</sub> × (T<sub>h,vstup</sub> - T<sub>s,vstup</sub>)</p>
+
+    <p><strong>Tepelná kapacita proudu:</strong></p>
+    <p>Ċ = ṁ × c<sub>p</sub> [W/K]</p>
+
+    <p><strong>Typické efektivnosti:</strong></p>
+    <ul>
+        <li>Protiproudý výměník: 85-95%</li>
+        <li>Křížotokový výměník: 60-80%</li>
+        <li>Souproudý výměník: 40-60%</li>
+        <li>Rekuperátor vzduchu: 70-90%</li>
+    </ul>
+
+    <h2>9. Tabulky vlastností materiálů</h2>
+
+    <h3>9.1 Tepelné vodivosti běžných materiálů λ [W/(m·K)]</h3>
+
+    <h4>Kovy a slitiny (při 20°C)</h4>
+    <table class="constants-table">
+        <tr>
+            <th>Materiál</th>
+            <th>λ [W/(m·K)]</th>
+            <th>Poznámka</th>
+        </tr>
+        <tr>
+            <td>Stříbro</td>
+            <td>429</td>
+            <td>Nejvyšší vodivost</td>
+        </tr>
+        <tr>
+            <td>Měď</td>
+            <td>401</td>
+            <td>Elektrotechnika, výměníky</td>
+        </tr>
+        <tr>
+            <td>Zlato</td>
+            <td>317</td>
+            <td>Elektronika</td>
+        </tr>
+        <tr>
+            <td>Hliník</td>
+            <td>237</td>
+            <td>Lehký, korozivzdorný</td>
+        </tr>
+        <tr>
+            <td>Mosaz</td>
+            <td>109</td>
+            <td>Instalatérské práce</td>
+        </tr>
+        <tr>
+            <td>Železo</td>
+            <td>80</td>
+            <td>Konstrukční ocel</td>
+        </tr>
+        <tr>
+            <td>Nerezová ocel</td>
+            <td>15-25</td>
+            <td>Výměníky, potrubí</td>
+        </tr>
+        <tr>
+            <td>Litina</td>
+            <td>55</td>
+            <td>Radiátory, potrubí</td>
+        </tr>
+    </table>
+
+    <h4>Stavební materiály (při 20°C)</h4>
+    <table class="constants-table">
+        <tr>
+            <th>Materiál</th>
+            <th>λ [W/(m·K)]</th>
+            <th>Poznámka</th>
+        </tr>
+        <tr>
+            <td>Beton prostý</td>
+            <td>1.4-2.0</td>
+            <td>Závisí na složení</td>
+        </tr>
+        <tr>
+            <td>Cihla plná pálená</td>
+            <td>0.6-0.8</td>
+            <td>Tradiční zdivo</td>
+        </tr>
+        <tr>
+            <td>Cihla děrovaná</td>
+            <td>0.35-0.5</td>
+            <td>Moderní zdivo</td>
+        </tr>
+        <tr>
+            <td>Tvárnice betonové</td>
+            <td>0.12-0.25</td>
+            <td>Velmi rozšířené</td>
+        </tr>
+        <tr>
+            <td>Pórobeton</td>
+            <td>0.08-0.18</td>
+            <td>Nízká hustota</td>
+        </tr>
+        <tr>
+            <td>Omítka vápenná</td>
+            <td>0.7-0.9</td>
+            <td>Vnitřní, vnější</td>
+        </tr>
+        <tr>
+            <td>Sádrokarton</td>
+            <td>0.25</td>
+            <td>Příčky, podhledy</td>
+        </tr>
+        <tr>
+            <td>Dřevo (across grain)</td>
+            <td>0.12-0.18</td>
+            <td>Smrk, borovice</td>
+        </tr>
+    </table>
+
+    <h4>Izolační materiály (při 20°C)</h4>
+    <table class="constants-table">
+        <tr>
+            <th>Materiál</th>
+            <th>λ [W/(m·K)]</th>
+            <th>Poznámka</th>
+        </tr>
+        <tr>
+            <td>Vakuum</td>
+            <td>0 (teoreticky)</td>
+            <td>Ideální izolace</td>
+        </tr>
+        <tr>
+            <td>Aerogel</td>
+            <td>0.013-0.014</td>
+            <td>Superizolace</td>
+        </tr>
+        <tr>
+            <td>Polyuretanová pěna</td>
+            <td>0.022-0.028</td>
+            <td>Střešní izolace</td>
+        </tr>
+        <tr>
+            <td>Polystyren EPS</td>
+            <td>0.035-0.045</td>
+            <td>Nejběžnější</td>
+        </tr>
+        <tr>
+            <td>Polystyren XPS</td>
+            <td>0.028-0.036</td>
+            <td>Sokly, podlahy</td>
+        </tr>
+        <tr>
+            <td>Minerální vata</td>
+            <td>0.035-0.045</td>
+            <td>Stěny, střechy</td>
+        </tr>
+        <tr>
+            <td>Skelná vata</td>
+            <td>0.035-0.050</td>
+            <td>Izolace potrubí</td>
+        </tr>
+        <tr>
+            <td>Celulóza foukání</td>
+            <td>0.040-0.045</td>
+            <td>Ekologická</td>
+        </tr>
+        <tr>
+            <td>Konopí desky</td>
+            <td>0.038-0.042</td>
+            <td>Přírodní</td>
+        </tr>
+    </table>
+
+    <h4>Ostatní materiály</h4>
+    <table class="constants-table">
+        <tr>
+            <th>Materiál</th>
+            <th>λ [W/(m·K)]</th>
+            <th>Poznámka</th>
+        </tr>
+        <tr>
+            <td>Sklo okenní</td>
+            <td>0.76</td>
+            <td>Single pane</td>
+        </tr>
+        <tr>
+            <td>Voda</td>
+            <td>0.60</td>
+            <td>Při 20°C</td>
+        </tr>
+        <tr>
+            <td>Led</td>
+            <td>2.22</td>
+            <td>Při 0°C</td>
+        </tr>
+        <tr>
+            <td>Vzduch (klidný)</td>
+            <td>0.026</td>
+            <td>Při 20°C</td>
+        </tr>
+        <tr>
+            <td>Argon</td>
+            <td>0.018</td>
+            <td>Výplň skel</td>
+        </tr>
+        <tr>
+            <td>Krypton</td>
+            <td>0.0095</td>
+            <td>Prémiové okna</td>
+        </tr>
+    </table>
+
+    <h3>9.2 Typické hodnoty součinitele prostupu tepla U [W/(m²·K)]</h3>
+
+    <h4>Stavební konstrukce</h4>
+    <table class="constants-table">
+        <tr>
+            <th>Typ konstrukce</th>
+            <th>Popis</th>
+            <th>U [W/(m²·K)]</th>
+        </tr>
+        <tr>
+            <td>Stěny - nezateplené</td>
+            <td>Cihla 30 cm + omítky</td>
+            <td>1.2-1.8</td>
+        </tr>
+        <tr>
+            <td>Stěny - zateplené</td>
+            <td>+ EPS 10 cm</td>
+            <td>0.20-0.30</td>
+        </tr>
+        <tr>
+            <td>Stěny - pasivní dům</td>
+            <td>+ EPS 25 cm</td>
+            <td>0.10-0.15</td>
+        </tr>
+        <tr>
+            <td>Okna - jednosklo</td>
+            <td>Staré okna</td>
+            <td>5.0-6.0</td>
+        </tr>
+        <tr>
+            <td>Okna - dvojsklo</td>
+            <td>Klasická izolační skla</td>
+            <td>2.5-3.0</td>
+        </tr>
+        <tr>
+            <td>Okna - trojsklo</td>
+            <td>Moderní nízkoenergetická</td>
+            <td>0.8-1.2</td>
+        </tr>
+        <tr>
+            <td>Okna - pasivní</td>
+            <td>Trojsklo + rámy</td>
+            <td>0.6-0.8</td>
+        </tr>
+        <tr>
+            <td>Střechy - nezateplené</td>
+            <td>Pouze krytina</td>
+            <td>3.0-5.0</td>
+        </tr>
+        <tr>
+            <td>Střechy - zateplené</td>
+            <td>+ minerální vata 20 cm</td>
+            <td>0.15-0.25</td>
+        </tr>
+        <tr>
+            <td>Podlahy na terénu</td>
+            <td>Beton + izolace 10 cm</td>
+            <td>0.25-0.35</td>
+        </tr>
+    </table>
+
+    <h3>9.3 Orientační náklady izolací [Kč/m²]</h3>
+
+    <table class="constants-table">
+        <tr>
+            <th>Typ izolace</th>
+            <th>Tloušťka</th>
+            <th>Materiál [Kč/m²]</th>
+            <th>Práce [Kč/m²]</th>
+            <th>Celkem [Kč/m²]</th>
+        </tr>
+        <tr>
+            <td>EPS fasáda</td>
+            <td>10 cm</td>
+            <td>400-600</td>
+            <td>800-1200</td>
+            <td>1200-1800</td>
+        </tr>
+        <tr>
+            <td>EPS fasáda</td>
+            <td>15 cm</td>
+            <td>600-900</td>
+            <td>800-1200</td>
+            <td>1400-2100</td>
+        </tr>
+        <tr>
+            <td>Minerální vata</td>
+            <td>15 cm</td>
+            <td>500-800</td>
+            <td>800-1200</td>
+            <td>1300-2000</td>
+        </tr>
+        <tr>
+            <td>Foukaná celulóza</td>
+            <td>25 cm</td>
+            <td>300-500</td>
+            <td>200-400</td>
+            <td>500-900</td>
+        </tr>
+        <tr>
+            <td>Okna - výměna</td>
+            <td>Komplet</td>
+            <td>8000-15000</td>
+            <td>2000-4000</td>
+            <td>10000-19000</td>
+        </tr>
+    </table>
+
+    <h3>9.4 Orientační ceny energií [Kč/kWh] - 2024</h3>
+
+    <table class="constants-table">
+        <tr>
+            <th>Typ energie</th>
+            <th>Domácnosti</th>
+            <th>Poznámka</th>
+        </tr>
+        <tr>
+            <td>Elektřina</td>
+            <td>6.0-8.0</td>
+            <td>Včetně distribuce a poplatků</td>
+        </tr>
+        <tr>
+            <td>Zemní plyn</td>
+            <td>2.5-3.5</td>
+            <td>Včetně distribuce a poplatků</td>
+        </tr>
+        <tr>
+            <td>Dálkové teplo</td>
+            <td>1.8-2.5</td>
+            <td>Závisí na lokalitě</td>
+        </tr>
+        <tr>
+            <td>Dřevo - polena</td>
+            <td>1.2-1.8</td>
+            <td>Vlastní příprava</td>
+        </tr>
+        <tr>
+            <td>Pelety</td>
+            <td>1.8-2.4</td>
+            <td>Kvalitní pelety</td>
+        </tr>
+        <tr>
+            <td>Tepelné čerpadlo</td>
+            <td>2.0-3.0</td>
+            <td>COP = 3-4, elektřina</td>
+        </tr>
+    </table>
+
+    <h2>10. Jednotky a převody</h2>
+
+    <table class="constants-table">
+        <tr>
+            <th>Veličina</th>
+            <th>Jednotka SI</th>
+            <th>Další běžné jednotky</th>
+            <th>Převodní vztahy</th>
+        </tr>
+        <tr>
+            <td>Tepelný tok</td>
+            <td>W</td>
+            <td>kW, cal/s, Btu/h</td>
+            <td>1 kW = 1000 W<br>1 Btu/h = 0.293 W</td>
+        </tr>
+        <tr>
+            <td>Tepelná vodivost</td>
+            <td>W/(m·K)</td>
+            <td>kcal/(h·m·°C)</td>
+            <td>1 kcal/(h·m·°C) = 1.163 W/(m·K)</td>
+        </tr>
+        <tr>
+            <td>Součinitel prostupu</td>
+            <td>W/(m²·K)</td>
+            <td>kcal/(h·m²·°C)</td>
+            <td>1 kcal/(h·m²·°C) = 1.163 W/(m²·K)</td>
+        </tr>
+        <tr>
+            <td>Tepelný odpor</td>
+            <td>m²·K/W</td>
+            <td>h·m²·°C/kcal</td>
+            <td>1 h·m²·°C/kcal = 0.86 m²·K/W</td>
+        </tr>
+    </table>
+
+    <div class="note">
+        <strong>Upozornění:</strong> Při výpočtech vždy používejte jednotky SI pro konzistentní výsledky. Teploty v termodynamických výpočtech uvádějte v Kelvinech.
+    </div>
+
+</body>
+</html>

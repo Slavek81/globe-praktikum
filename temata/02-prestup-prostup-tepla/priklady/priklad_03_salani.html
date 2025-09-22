@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tepelné sálání - solární kolektor</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>Tepelné sálání - solární kolektor na střeše</h1>
+        </header>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <p>
+                Vypočítejte tepelný výkon, který solární kolektor přijme ze Slunce sáláním.
+                Určete také ztráty sáláním při různých provozních teplotách kolektoru
+                a najděte optimální provozní teplotu.
+            </p>
+        </section>
+
+        <section id="vstupni-data">
+            <h2>Vstupní data</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Veličina</th>
+                        <th>Symbol</th>
+                        <th>Hodnota</th>
+                        <th>Jednotka</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Plocha kolektoru</td>
+                        <td class="variable">A</td>
+                        <td><span class="value">4</span></td>
+                        <td class="unit">m²</td>
+                    </tr>
+                    <tr>
+                        <td>Sluneční ozáření</td>
+                        <td class="variable">$G$</td>
+                        <td><span class="value">800</span></td>
+                        <td class="unit">W/m²</td>
+                    </tr>
+                    <tr>
+                        <td>Absorptivita povrchu</td>
+                        <td class="variable">$\alpha$</td>
+                        <td><span class="value">0.9</span></td>
+                        <td class="unit">-</td>
+                    </tr>
+                    <tr>
+                        <td>Emisivita povrchu</td>
+                        <td class="variable">$\varepsilon$</td>
+                        <td><span class="value">0.1</span></td>
+                        <td class="unit">-</td>
+                    </tr>
+                    <tr>
+                        <td>Teplota okolí</td>
+                        <td class="variable">$T_{amb}$</td>
+                        <td><span class="value">20</span></td>
+                        <td class="unit">°C</td>
+                    </tr>
+                    <tr>
+                        <td>Stefan-Boltzmannova konstanta</td>
+                        <td class="variable">$\sigma$</td>
+                        <td><span class="value">5.67×10⁻⁸</span></td>
+                        <td class="unit">W/(m²·K⁴)</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Varianty provozních teplot</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Varianta</th>
+                        <th>Teplota kolektoru</th>
+                        <th>Použití</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>A</td>
+                        <td><span class="value">40°C</span></td>
+                        <td>Ohřev bazénu</td>
+                    </tr>
+                    <tr>
+                        <td>B</td>
+                        <td><span class="value">60°C</span></td>
+                        <td>Teplá užitková voda</td>
+                    </tr>
+                    <tr>
+                        <td>C</td>
+                        <td><span class="value">80°C</span></td>
+                        <td>Vytápění</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+
+            <article>
+                <h3>Krok 1: Stefan-Boltzmannův zákon</h3>
+                <p>Tepelné sálání se řídí Stefan-Boltzmannovým zákonem.</p>
+
+                <div class="formula-box">
+                    <strong>Vzorec pro tepelné sálání:</strong>
+                    $$\dot{Q}_{rad} = \varepsilon \cdot \sigma \cdot A \cdot T^4$$
+
+                    <p><strong>Kde:</strong></p>
+                    <ul>
+                        <li>$\dot{Q}_{rad}$ je sálavý tepelný tok <span class="unit">[W]</span></li>
+                        <li>$\varepsilon$ je emisivita povrchu <span class="unit">[-]</span></li>
+                        <li>$\sigma$ je Stefan-Boltzmannova konstanta <span class="unit">[W/(m²·K⁴)]</span></li>
+                        <li>$A$ je plocha <span class="unit">[m²]</span></li>
+                        <li>$T$ je absolutní teplota <span class="unit">[K]</span></li>
+                    </ul>
+                </div>
+
+                <p><strong>Pro výměnu sálání mezi dvěma povrchy:</strong></p>
+                $$\dot{Q}_{net} = \varepsilon \cdot \sigma \cdot A \cdot (T_{hot}^4 - T_{cold}^4)$$
+            </article>
+
+            <article>
+                <h3>Krok 2: Příjem energie ze Slunce</h3>
+                <p>Kolektor přijímá sluneční energii podle absorptivity povrchu.</p>
+
+                <p><strong>Absorbovaný sluneční výkon:</strong></p>
+                $$\dot{Q}_{sun} = \alpha \cdot G \cdot A = 0.9 \times 800 \times 4 = 2880 \text{ W}$$
+
+                <div class="note">
+                    <p>
+                        <strong>Absorptivita α = 0.9</strong> znamená, že kolektor pohltí 90% dopadajícího
+                        slunečního záření. Moderní selektivní povrchy dosahují α > 0.95.
+                    </p>
+                </div>
+            </article>
+
+            <article>
+                <h3>Krok 3: Výpočet ztrát sáláním pro různé teploty</h3>
+                <p>Spočítáme ztráty sáláním pro každou provozní teplotu.</p>
+
+                <p><strong>Převod teplot na Kelviny:</strong></p>
+                $$T_{amb} = 20 + 273.15 = 293.15 \text{ K}$$
+
+                <p><strong>Varianta A: 40°C (313.15 K)</strong></p>
+                $$T_{kol,A} = 40 + 273.15 = 313.15 \text{ K}$$
+                $$\dot{Q}_{loss,A} = 0.1 \times 5.67 \times 10^{-8} \times 4 \times (313.15^4 - 293.15^4)$$
+                $$\dot{Q}_{loss,A} = 2.268 \times 10^{-7} \times (9.62 \times 10^9 - 7.41 \times 10^9) = 50 \text{ W}$$
+
+                <p><strong>Varianta B: 60°C (333.15 K)</strong></p>
+                $$T_{kol,B} = 60 + 273.15 = 333.15 \text{ K}$$
+                $$\dot{Q}_{loss,B} = 2.268 \times 10^{-7} \times (333.15^4 - 293.15^4)$$
+                $$\dot{Q}_{loss,B} = 2.268 \times 10^{-7} \times (1.23 \times 10^{10} - 7.41 \times 10^9) = 111 \text{ W}$$
+
+                <p><strong>Varianta C: 80°C (353.15 K)</strong></p>
+                $$T_{kol,C} = 80 + 273.15 = 353.15 \text{ K}$$
+                $$\dot{Q}_{loss,C} = 2.268 \times 10^{-7} \times (353.15^4 - 293.15^4)$$
+                $$\dot{Q}_{loss,C} = 2.268 \times 10^{-7} \times (1.55 \times 10^{10} - 7.41 \times 10^9) = 184 \text{ W}$$
+            </article>
+
+            <article>
+                <h3>Krok 4: Čistý užitečný výkon</h3>
+                <p>Odečteme ztráty od příjmu energie ze Slunce.</p>
+
+                <p><strong>Čistý výkon pro každou variantu:</strong></p>
+                $$\dot{Q}_{net,A} = \dot{Q}_{sun} - \dot{Q}_{loss,A} = 2880 - 50 = 2830 \text{ W}$$
+                $$\dot{Q}_{net,B} = \dot{Q}_{sun} - \dot{Q}_{loss,B} = 2880 - 111 = 2769 \text{ W}$$
+                $$\dot{Q}_{net,C} = \dot{Q}_{sun} - \dot{Q}_{loss,C} = 2880 - 184 = 2696 \text{ W}$$
+
+                <p><strong>Účinnost kolektoru:</strong></p>
+                $$\eta_A = \frac{2830}{2880} \times 100\% = 98.3\%$$
+                $$\eta_B = \frac{2769}{2880} \times 100\% = 96.1\%$$
+                $$\eta_C = \frac{2696}{2880} \times 100\% = 93.6\%$$
+            </article>
+        </section>
+
+        <section id="vysledek">
+            <h2>Výsledky</h2>
+            <div class="result-box">
+                <p>Příjem ze Slunce: <span>2880 W</span></p>
+                <hr style="border-top: 2px solid #28a745; border-bottom: none; margin: 15px auto; width: 60%;">
+                <p>40°C - Ztráty: <span>50 W</span>, Čistý výkon: <span>2830 W</span> (98.3%)</p>
+                <p>60°C - Ztráty: <span>111 W</span>, Čistý výkon: <span>2769 W</span> (96.1%)</p>
+                <p>80°C - Ztráty: <span>184 W</span>, Čistý výkon: <span>2696 W</span> (93.6%)</p>
+            </div>
+        </section>
+
+        <section id="vyhodnoceni">
+            <h2>Vyhodnocení a komentář</h2>
+            <div class="note">
+                <p>
+                    <strong>Závislost na teplotě:</strong> Ztráty sáláním rostou se čtvrtou mocninou teploty!
+                    Při zvýšení teploty z 40°C na 80°C se ztráty zvýší téměř 4×.
+                    Proto jsou nízkooteplotní aplikace efektivnější.
+                </p>
+                <p>
+                    <strong>Selektivní povrchy:</strong> Moderní kolektory mají vysokou absorptivitu (α ≈ 0.95)
+                    ale nízkou emisivita (ε ≈ 0.05). To maximalizuje příjem energie a minimalizuje ztráty.
+                    V našem příkladu by to snížilo ztráty na polovinu!
+                </p>
+                <p>
+                    <strong>Praktické aplikace:</strong> Nízké teploty (40°C) jsou ideální pro bazény,
+                    střední teploty (60°C) pro teplou vodu a vysoké teploty (80°C) jen pro vytápění
+                    v zimě, kdy je nižší sluneční ozáření.
+                </p>
+                <p>
+                    <strong>Energetická bilance:</strong> I při 80°C je účinnost přes 93%, což dokazuje
+                    výhodnost solárního ohřevu. Ztráty sáláním jsou malé díky nízké emisivitě povrchu.
+                </p>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

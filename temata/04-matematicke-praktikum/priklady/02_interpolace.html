@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lineární interpolace - Hustota ethanolu</title>
+    <link rel="stylesheet" href="unified-style.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+    </script>
+</head>
+<body>
+    <main>
+        <header>
+            <h1>Lineární interpolace</h1>
+            <p>Výpočet hustoty ethanolu při různých teplotách</p>
+        </header>
+
+        <section class="intro-box">
+            <p>Interpolace je matematická metoda pro odhad hodnot mezi známými datovými body. V tomto příkladu použijeme lineární interpolaci k určení hustoty ethanolu při teplotě, pro kterou nemáme přímé měření.</p>
+        </section>
+
+        <section class="section">
+            <h2>Úvod do problému</h2>
+            <p>V chemickém laboratorním praktiku často potřebujeme znát fyzikální vlastnosti látek při specifických podmínkách. Hustota ethanolu se mění s teplotou, ale tabulky obvykle obsahují pouze hodnoty pro určité teploty.</p>
+
+            <div class="formula-box">
+                <strong>Lineární interpolace:</strong><br>
+                $$y = y_1 + \frac{x - x_1}{x_2 - x_1}(y_2 - y_1)$$
+                <br>kde:
+                <ul>
+                    <li>$(x_1, y_1)$ a $(x_2, y_2)$ jsou známé datové body</li>
+                    <li>$x$ je hodnota, pro kterou hledáme $y$</li>
+                    <li>$y$ je interpolovaná hodnota</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section section-gray">
+            <h2>Tabulková data</h2>
+            <p>Hustota čistého ethanolu při různých teplotách:</p>
+            <table>
+                <tr>
+                    <th>Teplota [°C]</th>
+                    <th>Hustota [g/cm³]</th>
+                </tr>
+                <tr>
+                    <td class="value">10</td>
+                    <td class="value">0.7969</td>
+                </tr>
+                <tr>
+                    <td class="value">15</td>
+                    <td class="value">0.7937</td>
+                </tr>
+                <tr>
+                    <td class="value">20</td>
+                    <td class="value">0.7893</td>
+                </tr>
+                <tr>
+                    <td class="value">25</td>
+                    <td class="value">0.7851</td>
+                </tr>
+                <tr>
+                    <td class="value">30</td>
+                    <td class="value">0.7808</td>
+                </tr>
+            </table>
+        </section>
+
+        <section class="section">
+            <h2>Zadání úlohy</h2>
+            <p><strong>Úkol:</strong> Určete hustotu ethanolu při teplotě 23°C pomocí lineární interpolace.</p>
+
+            <h3>Identifikace sousedních bodů</h3>
+            <p>Pro teplotu 23°C najdeme nejbližší hodnoty v tabulce:</p>
+            <ul>
+                <li>Nižší bod: $(x_1, y_1) = (20°C, 0.7893 \text{ g/cm}^3)$</li>
+                <li>Vyšší bod: $(x_2, y_2) = (25°C, 0.7851 \text{ g/cm}^3)$</li>
+                <li>Hledaná hodnota: $x = 23°C$</li>
+            </ul>
+        </section>
+
+        <section class="section section-gray">
+            <h2>Výpočet krok za krokem</h2>
+
+            <h3>Krok 1: Dosazení do vzorce</h3>
+            <div class="formula-box">
+                $$y = 0.7893 + \frac{23 - 20}{25 - 20}(0.7851 - 0.7893)$$
+            </div>
+
+            <h3>Krok 2: Výpočet rozdílů</h3>
+            <table>
+                <tr>
+                    <th>Výraz</th>
+                    <th>Hodnota</th>
+                </tr>
+                <tr>
+                    <td class="variable">$x - x_1 = 23 - 20$</td>
+                    <td class="value">3°C</td>
+                </tr>
+                <tr>
+                    <td class="variable">$x_2 - x_1 = 25 - 20$</td>
+                    <td class="value">5°C</td>
+                </tr>
+                <tr>
+                    <td class="variable">$y_2 - y_1 = 0.7851 - 0.7893$</td>
+                    <td class="value">-0.0042 g/cm³</td>
+                </tr>
+            </table>
+
+            <h3>Krok 3: Finální výpočet</h3>
+            <div class="formula-box">
+                $$y = 0.7893 + \frac{3}{5} \times (-0.0042)$$
+                $$y = 0.7893 - 0.6 \times 0.0042$$
+                $$y = 0.7893 - 0.00252$$
+                $$y = 0.78678 \text{ g/cm}^3$$
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Grafické znázornění</h2>
+            <div class="schema-container">
+                <svg width="500" height="300" viewBox="0 0 500 300">
+                    <!-- Osy -->
+                    <line x1="50" y1="250" x2="450" y2="250" stroke="black" stroke-width="2"/>
+                    <line x1="50" y1="250" x2="50" y2="50" stroke="black" stroke-width="2"/>
+
+                    <!-- Popisky os -->
+                    <text x="250" y="280" text-anchor="middle">Teplota [°C]</text>
+                    <text x="20" y="150" text-anchor="middle" transform="rotate(-90 20 150)">Hustota [g/cm³]</text>
+
+                    <!-- Škála X -->
+                    <text x="90" y="270">10</text>
+                    <text x="170" y="270">20</text>
+                    <text x="250" y="270">30</text>
+
+                    <!-- Datové body -->
+                    <circle cx="90" cy="80" r="4" fill="blue"/>
+                    <circle cx="130" cy="95" r="4" fill="blue"/>
+                    <circle cx="170" cy="120" r="4" fill="blue"/>
+                    <circle cx="210" cy="145" r="4" fill="blue"/>
+                    <circle cx="250" cy="170" r="4" fill="blue"/>
+
+                    <!-- Interpolační úsečka -->
+                    <line x1="170" y1="120" x2="210" y2="145" stroke="red" stroke-width="3"/>
+
+                    <!-- Interpolovaný bod -->
+                    <circle cx="194" cy="135" r="5" fill="red"/>
+                    <text x="200" y="130" fill="red">23°C</text>
+
+                    <!-- Hodnoty -->
+                    <text x="95" y="75">0.7969</text>
+                    <text x="175" y="115">0.7893</text>
+                    <text x="215" y="140">0.7851</text>
+                </svg>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Interaktivní kalkulátor</h2>
+            <div class="formula-box">
+                <h3>Interpolace hustoty ethanolu</h3>
+                <label>Teplota pro interpolaci [°C]:</label>
+                <input type="number" id="temperature" value="23" step="0.1" min="10" max="30">
+                <br><br>
+                <button onclick="interpolateDensity()">Vypočítej hustotu</button>
+                <br><br>
+                <div id="result"></div>
+                <div id="calculation"></div>
+            </div>
+        </section>
+
+        <section class="result-box">
+            <h2>Výsledek</h2>
+            <p>Hustota ethanolu při teplotě <span>23°C</span> je:</p>
+            <p><span>0.7868 g/cm³</span></p>
+            <p>Relativní chyba oproti přesné hodnotě: <span>< 0.1%</span></p>
+        </section>
+
+        <section class="section section-gray">
+            <h2>Praktické aplikace</h2>
+            <h3>Výhody lineární interpolace:</h3>
+            <ul>
+                <li><strong>Jednoduchost:</strong> Snadný výpočet, nevyžaduje složité algoritmy</li>
+                <li><strong>Rychlost:</strong> Okamžitý výsledek pro interpolaci mezi dvěma body</li>
+                <li><strong>Přesnost:</strong> Dostatečně přesná pro malé intervaly</li>
+            </ul>
+
+            <h3>Omezení:</h3>
+            <ul>
+                <li><strong>Pouze mezi body:</strong> Není vhodná pro extrapolaci</li>
+                <li><strong>Linearita:</strong> Předpokládá lineární závislost mezi body</li>
+                <li><strong>Přesnost:</strong> Menší přesnost při velkých intervalech</li>
+            </ul>
+        </section>
+
+        <section class="note">
+            <h3>Poznámky k aplikaci</h3>
+            <ul>
+                <li><strong>Laboratorní praxe:</strong> Interpolace se používá při kalibraci přístrojů</li>
+                <li><strong>Fyzikální vlastnosti:</strong> Ideální pro hustotu, viskozitu, teploty tání</li>
+                <li><strong>Kontrola výsledku:</strong> Vždy zkontrolujte, zda výsledek dává fyzikální smysl</li>
+                <li><strong>Přesnost měření:</strong> Výsledek nemůže být přesnější než vstupní data</li>
+            </ul>
+        </section>
+    </main>
+
+    <script>
+        // Tabulka hustot ethanolu
+        const densityData = [
+            {temp: 10, density: 0.7969},
+            {temp: 15, density: 0.7937},
+            {temp: 20, density: 0.7893},
+            {temp: 25, density: 0.7851},
+            {temp: 30, density: 0.7808}
+        ];
+
+        function interpolateDensity() {
+            const targetTemp = parseFloat(document.getElementById('temperature').value);
+
+            // Najdi sousední body
+            let x1, y1, x2, y2;
+            for (let i = 0; i < densityData.length - 1; i++) {
+                if (targetTemp >= densityData[i].temp && targetTemp <= densityData[i + 1].temp) {
+                    x1 = densityData[i].temp;
+                    y1 = densityData[i].density;
+                    x2 = densityData[i + 1].temp;
+                    y2 = densityData[i + 1].density;
+                    break;
+                }
+            }
+
+            if (x1 === undefined) {
+                document.getElementById('result').innerHTML = '<strong style="color: red;">Teplota mimo rozsah dat (10-30°C)</strong>';
+                return;
+            }
+
+            // Lineární interpolace
+            const interpolatedDensity = y1 + (targetTemp - x1) / (x2 - x1) * (y2 - y1);
+
+            document.getElementById('result').innerHTML = `
+                <strong>Výsledek interpolace:</strong><br>
+                Hustota při ${targetTemp}°C: ${interpolatedDensity.toFixed(4)} g/cm³
+            `;
+
+            document.getElementById('calculation').innerHTML = `
+                <h4>Detailní výpočet:</h4>
+                <p>Použité body: (${x1}°C, ${y1}) a (${x2}°C, ${y2})</p>
+                <p>Vzorec: y = ${y1} + (${targetTemp} - ${x1})/(${x2} - ${x1}) × (${y2} - ${y1})</p>
+                <p>y = ${y1} + ${((targetTemp - x1)/(x2 - x1)).toFixed(3)} × ${(y2 - y1).toFixed(4)}</p>
+                <p>y = ${interpolatedDensity.toFixed(4)} g/cm³</p>
+            `;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vedení tepla stěnou</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>Vedení tepla vícevrstvou stěnou</h1>
+        </header>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <p>
+                Vypočítejte tepelný tok procházející vícevrstvou stěnou domu a porovnejte tepelné ztráty před a po zateplení.
+                Určete také roční úsporu nákladů na vytápění.
+            </p>
+        </section>
+
+        <section id="vstupni-data">
+            <h2>Vstupní data</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Veličina</th>
+                        <th>Symbol</th>
+                        <th>Hodnota</th>
+                        <th>Jednotka</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Plocha stěny</td>
+                        <td class="variable">A</td>
+                        <td><span class="value">50</span></td>
+                        <td class="unit">m²</td>
+                    </tr>
+                    <tr>
+                        <td>Vnitřní teplota</td>
+                        <td class="variable">$t_{in}$</td>
+                        <td><span class="value">20</span></td>
+                        <td class="unit">°C</td>
+                    </tr>
+                    <tr>
+                        <td>Venkovní teplota</td>
+                        <td class="variable">$t_{out}$</td>
+                        <td><span class="value">-10</span></td>
+                        <td class="unit">°C</td>
+                    </tr>
+                    <tr>
+                        <td>Topná sezóna</td>
+                        <td class="variable">$t_{season}$</td>
+                        <td><span class="value">2000</span></td>
+                        <td class="unit">h/rok</td>
+                    </tr>
+                    <tr>
+                        <td>Cena plynu</td>
+                        <td class="variable">$c_{gas}$</td>
+                        <td><span class="value">2.5</span></td>
+                        <td class="unit">Kč/kWh</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Složení stěny před zateplením</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Vrstva</th>
+                        <th>Tloušťka d [m]</th>
+                        <th>Tepelná vodivost λ [W/(m·K)]</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Omítka vnitřní</td>
+                        <td><span class="value">0.02</span></td>
+                        <td><span class="value">0.9</span></td>
+                    </tr>
+                    <tr>
+                        <td>Cihla</td>
+                        <td><span class="value">0.30</span></td>
+                        <td><span class="value">0.8</span></td>
+                    </tr>
+                    <tr>
+                        <td>Omítka vnější</td>
+                        <td><span class="value">0.02</span></td>
+                        <td><span class="value">0.9</span></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Složení stěny po zateplení</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Vrstva</th>
+                        <th>Tloušťka d [m]</th>
+                        <th>Tepelná vodivost λ [W/(m·K)]</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Omítka vnitřní</td>
+                        <td><span class="value">0.02</span></td>
+                        <td><span class="value">0.9</span></td>
+                    </tr>
+                    <tr>
+                        <td>Cihla</td>
+                        <td><span class="value">0.30</span></td>
+                        <td><span class="value">0.8</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Polystyren (nový)</strong></td>
+                        <td><span class="value">0.10</span></td>
+                        <td><span class="value">0.04</span></td>
+                    </tr>
+                    <tr>
+                        <td>Omítka vnější</td>
+                        <td><span class="value">0.02</span></td>
+                        <td><span class="value">0.9</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+
+            <article>
+                <h3>Krok 1: Tepelný odpor před zateplením</h3>
+                <p>Spočítáme tepelný odpor každé vrstvy a pak celkový tepelný odpor stěny.</p>
+
+                <div class="formula-box">
+                    <strong>Vzorec pro tepelný odpor vrstvy:</strong>
+                    $$R = \frac{d}{\lambda}$$
+
+                    <p><strong>Kde:</strong></p>
+                    <ul>
+                        <li>$R$ je tepelný odpor <span class="unit">[m²K/W]</span></li>
+                        <li>$d$ je tloušťka vrstvy <span class="unit">[m]</span></li>
+                        <li>$\lambda$ je tepelná vodivost <span class="unit">[W/(m·K)]</span></li>
+                    </ul>
+                </div>
+
+                <p><strong>Výpočet tepelných odporů jednotlivých vrstev:</strong></p>
+                $$R_1 = \frac{0.02}{0.9} = 0.022 \text{ m²K/W} \quad \text{(vnitřní omítka)}$$
+                $$R_2 = \frac{0.30}{0.8} = 0.375 \text{ m²K/W} \quad \text{(cihla)}$$
+                $$R_3 = \frac{0.02}{0.9} = 0.022 \text{ m²K/W} \quad \text{(vnější omítka)}$$
+
+                <p><strong>Celkový tepelný odpor před zateplením:</strong></p>
+                $$R_{celk,pred} = R_1 + R_2 + R_3 = 0.022 + 0.375 + 0.022 = 0.419 \text{ m²K/W}$$
+            </article>
+
+            <article>
+                <h3>Krok 2: Tepelný odpor po zateplení</h3>
+                <p>Přidáme vrstvu polystyrenu a spočítáme nový celkový odpor.</p>
+
+                <p><strong>Tepelný odpor polystyrenu:</strong></p>
+                $$R_{polystyren} = \frac{0.10}{0.04} = 2.500 \text{ m²K/W}$$
+
+                <p><strong>Celkový tepelný odpor po zateplení:</strong></p>
+                $$R_{celk,po} = R_1 + R_2 + R_{polystyren} + R_3$$
+                $$R_{celk,po} = 0.022 + 0.375 + 2.500 + 0.022 = 2.919 \text{ m²K/W}$$
+            </article>
+
+            <article>
+                <h3>Krok 3: Výpočet tepelných toků</h3>
+                <p>Tepelný tok vypočítáme podle Fourierova zákona.</p>
+
+                <div class="formula-box">
+                    <strong>Vzorec pro tepelný tok:</strong>
+                    $$\dot{Q} = \frac{A \cdot \Delta T}{R_{celk}} = U \cdot A \cdot \Delta T$$
+
+                    <p><strong>Kde:</strong></p>
+                    <ul>
+                        <li>$\dot{Q}$ je tepelný tok <span class="unit">[W]</span></li>
+                        <li>$U = 1/R_{celk}$ je součinitel prostupu tepla <span class="unit">[W/(m²·K)]</span></li>
+                        <li>$A$ je plocha <span class="unit">[m²]</span></li>
+                        <li>$\Delta T$ je rozdíl teplot <span class="unit">[K]</span></li>
+                    </ul>
+                </div>
+
+                <p><strong>Rozdíl teplot:</strong></p>
+                $$\Delta T = t_{in} - t_{out} = 20 - (-10) = 30 \text{ K}$$
+
+                <p><strong>Tepelný tok před zateplením:</strong></p>
+                $$\dot{Q}_{pred} = \frac{50 \cdot 30}{0.419} = \frac{1500}{0.419} = 3581 \text{ W} = 3.58 \text{ kW}$$
+
+                <p><strong>Tepelný tok po zateplení:</strong></p>
+                $$\dot{Q}_{po} = \frac{50 \cdot 30}{2.919} = \frac{1500}{2.919} = 514 \text{ W} = 0.51 \text{ kW}$$
+            </article>
+
+            <article>
+                <h3>Krok 4: Úspora energie a nákladů</h3>
+                <p>Vypočítáme roční úsporu energie a nákladů na vytápění.</p>
+
+                <p><strong>Úspora tepelného výkonu:</strong></p>
+                $$\Delta \dot{Q} = \dot{Q}_{pred} - \dot{Q}_{po} = 3.58 - 0.51 = 3.07 \text{ kW}$$
+
+                <p><strong>Relativní úspora:</strong></p>
+                $$\text{Úspora} = \frac{\Delta \dot{Q}}{\dot{Q}_{pred}} \cdot 100\% = \frac{3.07}{3.58} \cdot 100\% = 85.8\%$$
+
+                <p><strong>Roční úspora energie:</strong></p>
+                $$E_{uspora} = \Delta \dot{Q} \cdot t_{season} = 3.07 \cdot 2000 = 6140 \text{ kWh/rok}$$
+
+                <p><strong>Roční úspora nákladů:</strong></p>
+                $$N_{uspora} = E_{uspora} \cdot c_{gas} = 6140 \cdot 2.5 = 15\,350 \text{ Kč/rok}$$
+            </article>
+        </section>
+
+        <section id="vysledek">
+            <h2>Výsledky</h2>
+            <div class="result-box">
+                <p>Tepelný tok před zateplením: <span>3.58 kW</span></p>
+                <p>Tepelný tok po zateplení: <span>0.51 kW</span></p>
+                <hr style="border-top: 2px solid #28a745; border-bottom: none; margin: 25px auto; width: 60%;">
+                <p>Úspora tepelného výkonu: <span>3.07 kW (85.8%)</span></p>
+                <p>Roční úspora energie: <span>6140 kWh</span></p>
+                <p>Roční úspora nákladů: <span>15 350 Kč</span></p>
+            </div>
+        </section>
+
+        <section id="vyhodnoceni">
+            <h2>Vyhodnocení a komentář</h2>
+            <div class="note">
+                <p>
+                    <strong>Účinek zateplení je dramatický!</strong> Přidání pouhých 10 cm polystyrenu snížilo tepelné ztráty
+                    o více než 85%. To je způsobeno tím, že polystyren má velmi nízkou tepelnou vodivost
+                    (λ = 0.04 W/(m·K)) ve srovnání s cihlou (λ = 0.8 W/(m·K)).
+                </p>
+                <p>
+                    <strong>Ekonomické hodnocení:</strong> Při roční úspoře 15 350 Kč se investice do zateplení
+                    (typicky 300-500 Kč/m²) vrátí během 10-15 let. Navíc se zvýší komfort bydlení díky
+                    teplejším vnitřním povrchům stěn.
+                </p>
+                <p>
+                    <strong>Fyzikální vysvětlení:</strong> Polystyren obsahuje vzduch uzavřený v malých buňkách.
+                    Vzduch je výborný izolant (λ = 0.026 W/(m·K)), ale musí být nehybný - proto funguje
+                    uzavřený v pěnových materiálech.
+                </p>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

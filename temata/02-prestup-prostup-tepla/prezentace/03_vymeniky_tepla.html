@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Výměníky tepla</title>
+    <!-- Import pro renderování LaTeX matematických vzorců -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>Výměníky tepla</h1>
+            <p>Jak efektivně předávat teplo mezi různými proudy bez jejich smíchání</p>
+        </header>
+
+        <section class="intro-box">
+            <h2>Co je výměník tepla a k čemu slouží?</h2>
+            <p>Výměník tepla je zařízení, které předává tepelnou energii z jednoho proudu tekutiny do druhého, aniž by se tyto proudy smíchaly. Je to klíčové zařízení v mnoha technických aplikacích.</p>
+            <p><strong>Základní princip:</strong> Horký proud odevzdává teplo studenému proudu přes tepelně vodivou stěnu. Celkově se do systému nepřidává ani neubírá žádné teplo - pouze se přesouvá!</p>
+            <ul>
+                <li><strong>Ohřívání:</strong> Studený proud se ohřívá (například ohřev vody)</li>
+                <li><strong>Chlazení:</strong> Horký proud se ochlazuje (například chlazení motoru)</li>
+                <li><strong>Rekuperace:</strong> Využití odpadního tepla (např. větrání s rekuperací)</li>
+                <li><strong>Klimatizace:</strong> Tepelná čerpadla, chladicí systémy</li>
+            </ul>
+            <p>Výměníky tepla najdeme všude kolem nás - od radiátorů v autě až po tepelná čerpadla!</p>
+        </section>
+
+        <!-- TYPY VÝMĚNÍKŮ -->
+        <section id="heat-exchanger-types" class="unit-section">
+            <h2>1. Základní typy výměníků tepla</h2>
+            <p><strong>Rozdělení podle konstrukce:</strong> Každý typ má své výhody a je vhodný pro jiné aplikace.</p>
+
+            <div class="schema-container">
+                <svg width="500" height="300" viewBox="0 0 500 300">
+                    <defs><marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#333" /></marker></defs>
+                    <text x="200" y="20" font-family="Verdana" font-size="14">Typy výměníků tepla</text>
+
+                    <!-- Trubkový výměník -->
+                    <text x="60" y="50" font-family="Verdana" font-size="12" font-weight="bold">A) Trubka v trubce</text>
+                    <rect x="50" y="60" width="150" height="30" fill="#E6F3FF" stroke="#005A9C" stroke-width="2"/>
+                    <rect x="70" y="70" width="110" height="10" fill="#FFE4E1" stroke="#FF6347" stroke-width="2"/>
+                    <line x1="20" y1="75" x2="50" y2="75" stroke="red" stroke-width="3" marker-end="url(#arrow)" />
+                    <line x1="200" y1="75" x2="230" y2="75" stroke="red" stroke-width="3" marker-end="url(#arrow)" />
+                    <line x1="230" y1="65" x2="200" y2="65" stroke="blue" stroke-width="3" marker-start="url(#arrow)" />
+                    <line x1="50" y1="65" x2="20" y2="65" stroke="blue" stroke-width="3" marker-start="url(#arrow)" />
+
+                    <!-- Deskový výměník -->
+                    <text x="300" y="50" font-family="Verdana" font-size="12" font-weight="bold">B) Deskový</text>
+                    <rect x="280" y="60" width="5" height="60" fill="#CD853F" stroke="#A0522D" stroke-width="1"/>
+                    <rect x="290" y="60" width="5" height="60" fill="#CD853F" stroke="#A0522D" stroke-width="1"/>
+                    <rect x="300" y="60" width="5" height="60" fill="#CD853F" stroke="#A0522D" stroke-width="1"/>
+                    <rect x="310" y="60" width="5" height="60" fill="#CD853F" stroke="#A0522D" stroke-width="1"/>
+                    <rect x="320" y="60" width="5" height="60" fill="#CD853F" stroke="#A0522D" stroke-width="1"/>
+                    <line x1="250" y1="75" x2="280" y2="75" stroke="red" stroke-width="3" marker-end="url(#arrow)" />
+                    <line x1="325" y1="75" x2="355" y2="75" stroke="red" stroke-width="3" marker-end="url(#arrow)" />
+                    <line x1="250" y1="105" x2="280" y2="105" stroke="blue" stroke-width="3" marker-end="url(#arrow)" />
+                    <line x1="325" y1="105" x2="355" y2="105" stroke="blue" stroke-width="3" marker-end="url(#arrow)" />
+
+                    <!-- Křížotokový výměník -->
+                    <text x="110" y="170" font-family="Verdana" font-size="12" font-weight="bold">C) Křížotokový</text>
+                    <rect x="100" y="180" width="120" height="80" fill="#F0F8FF" stroke="#4682B4" stroke-width="2"/>
+                    <line x1="70" y1="220" x2="100" y2="220" stroke="red" stroke-width="3" marker-end="url(#arrow)" />
+                    <line x1="220" y1="220" x2="250" y2="220" stroke="red" stroke-width="3" marker-end="url(#arrow)" />
+                    <line x1="160" y1="150" x2="160" y2="180" stroke="blue" stroke-width="3" marker-end="url(#arrow)" />
+                    <line x1="160" y1="260" x2="160" y2="290" stroke="blue" stroke-width="3" marker-end="url(#arrow)" />
+
+                    <!-- Chladič (žebrovaný) -->
+                    <text x="330" y="170" font-family="Verdana" font-size="12" font-weight="bold">D) Žebrovaný</text>
+                    <rect x="320" y="180" width="100" height="10" fill="#B0C4DE" stroke="#4682B4" stroke-width="2"/>
+                    <rect x="325" y="190" width="90" height="3" fill="#2F4F4F"/>
+                    <rect x="325" y="195" width="90" height="3" fill="#2F4F4F"/>
+                    <rect x="325" y="200" width="90" height="3" fill="#2F4F4F"/>
+                    <rect x="325" y="205" width="90" height="3" fill="#2F4F4F"/>
+                    <rect x="325" y="210" width="90" height="3" fill="#2F4F4F"/>
+                    <rect x="325" y="215" width="90" height="3" fill="#2F4F4F"/>
+                    <line x1="290" y1="185" x2="320" y2="185" stroke="red" stroke-width="3" marker-end="url(#arrow)" />
+                    <line x1="420" y1="185" x2="450" y2="185" stroke="red" stroke-width="3" marker-end="url(#arrow)" />
+                </svg>
+            </div>
+
+            <div class="example">
+                <h3>Srovnání typů výměníků</h3>
+                <table>
+                    <tr><th>Typ</th><th>Konstrukce</th><th>Výhody</th><th>Nevýhody</th><th>Použití</th></tr>
+                    <tr><td><strong>Trubka v trubce</strong></td><td>Jedna trubka v druhé</td><td>Jednoduchý, levný</td><td>Malý výkon</td><td>Malé aplikace</td></tr>
+                    <tr><td><strong>Deskový</strong></td><td>Systém desek</td><td>Kompaktní, účinný</td><td>Pouze čisté tekutiny</td><td>Vytápění, klimatizace</td></tr>
+                    <tr><td><strong>Křížotokový</strong></td><td>Proudy se kříží</td><td>Dobrá účinnost</td><td>Střední složitost</td><td>Klimatizace, ventilace</td></tr>
+                    <tr><td><strong>Žebrovaný</strong></td><td>Žebra zvětšují povrch</td><td>Velký povrch</td><td>Pouze pro plyn/vzduch</td><td>Chladiče aut, PC</td></tr>
+                </table>
+
+                <h4>Kde je najdeme v praxi?</h4>
+                <p><strong>Domácnost:</strong> Radiátory topení, chladič lednice, kondenzátor klimatizace<br>
+                <strong>Auto:</strong> Chladič motoru, výparník klimatizace, intercooler<br>
+                <strong>Průmysl:</strong> Destilační kolony, chemické reaktory, tepelná čerpadla</p>
+            </div>
+        </section>
+
+        <!-- PROUDĚNÍ VE VÝMĚNÍKU -->
+        <section id="flow-patterns" class="unit-section">
+            <h2>2. Způsoby proudění ve výměníku</h2>
+            <p><strong>Uspořádání proudů:</strong> Podle toho, jak jsou směrované vstupní a výstupní proudy, rozlišujeme různé způsoby proudění. Každý má jinou účinnost přenosu tepla.</p>
+
+            <div class="schema-container">
+                <svg width="600" height="280" viewBox="0 0 600 280">
+                    <text x="300" y="20" font-family="Verdana" font-size="16" font-weight="bold" text-anchor="middle">Způsoby proudění</text>
+
+                    <!-- Souproud -->
+                    <text x="120" y="50" font-family="Verdana" font-size="14" font-weight="bold" text-anchor="middle">Souproud (paralelně)</text>
+                    <rect x="40" y="60" width="160" height="50" fill="#E6F3FF" stroke="#005A9C" stroke-width="2"/>
+
+                    <!-- Horký proud vstupuje zleva, vystupuje zprava -->
+                    <line x1="10" y1="75" x2="40" y2="75" stroke="red" stroke-width="4" marker-end="url(#arrow)" />
+                    <line x1="200" y1="75" x2="230" y2="75" stroke="orange" stroke-width="4" marker-end="url(#arrow)" />
+                    <text x="5" y="72" font-family="Verdana" font-size="10" fill="red">80°C</text>
+                    <text x="235" y="72" font-family="Verdana" font-size="10" fill="orange">60°C</text>
+
+                    <!-- Studený proud také vstupuje zleva, vystupuje zprava -->
+                    <line x1="10" y1="95" x2="40" y2="95" stroke="blue" stroke-width="4" marker-end="url(#arrow)" />
+                    <line x1="200" y1="95" x2="230" y2="95" stroke="lightblue" stroke-width="4" marker-end="url(#arrow)" />
+                    <text x="5" y="108" font-family="Verdana" font-size="10" fill="blue">20°C</text>
+                    <text x="235" y="108" font-family="Verdana" font-size="10" fill="lightblue">40°C</text>
+
+                    <text x="120" y="130" font-family="Verdana" font-size="11" text-anchor="middle">Horký: 80°C → 60°C</text>
+                    <text x="120" y="145" font-family="Verdana" font-size="11" text-anchor="middle">Studený: 20°C → 40°C</text>
+
+                    <!-- Protiproud -->
+                    <text x="480" y="50" font-family="Verdana" font-size="14" font-weight="bold" text-anchor="middle">Protiproud (opačně)</text>
+                    <rect x="400" y="60" width="160" height="50" fill="#FFE4E1" stroke="#FF6347" stroke-width="2"/>
+
+                    <!-- Horký proud vstupuje zleva, vystupuje zprava -->
+                    <line x1="370" y1="75" x2="400" y2="75" stroke="red" stroke-width="4" marker-end="url(#arrow)" />
+                    <line x1="560" y1="75" x2="590" y2="75" stroke="orange" stroke-width="4" marker-end="url(#arrow)" />
+                    <text x="350" y="72" font-family="Verdana" font-size="11" fill="red" font-weight="bold">80°C</text>
+                    <text x="530" y="72" font-family="Verdana" font-size="11" fill="orange" font-weight="bold">50°C</text>
+
+                    <!-- Studený proud vstupuje ZPRAVA, vystupuje ZLEVA (protiproud!) -->
+                    <line x1="590" y1="95" x2="560" y2="95" stroke="blue" stroke-width="4" marker-end="url(#arrow)" />
+                    <line x1="400" y1="95" x2="370" y2="95" stroke="lightblue" stroke-width="4" marker-end="url(#arrow)" />
+                    <text x="530" y="108" font-family="Verdana" font-size="11" fill="blue" font-weight="bold">20°C</text>
+                    <text x="320" y="108" font-family="Verdana" font-size="11" fill="lightblue" font-weight="bold">50°C</text>
+
+                    <text x="480" y="130" font-family="Verdana" font-size="11" text-anchor="middle">Horký: 80°C → 50°C</text>
+                    <text x="480" y="145" font-family="Verdana" font-size="11" text-anchor="middle">Studený: 20°C ← 50°C</text>
+
+                    <!-- Křížový tok -->
+                    <text x="300" y="190" font-family="Verdana" font-size="14" font-weight="bold" text-anchor="middle">Křížový tok</text>
+                    <rect x="240" y="200" width="120" height="60" fill="#F0F8FF" stroke="#4682B4" stroke-width="2"/>
+
+                    <!-- Horký proud horizontálně -->
+                    <line x1="210" y1="220" x2="240" y2="220" stroke="red" stroke-width="4" marker-end="url(#arrow)" />
+                    <line x1="360" y1="220" x2="390" y2="220" stroke="orange" stroke-width="4" marker-end="url(#arrow)" />
+                    <text x="205" y="217" font-family="Verdana" font-size="10" fill="red">80°C</text>
+                    <text x="395" y="217" font-family="Verdana" font-size="10" fill="orange">65°C</text>
+
+                    <!-- Studený proud vertikálně -->
+                    <line x1="280" y1="170" x2="280" y2="200" stroke="blue" stroke-width="4" marker-end="url(#arrow)" />
+                    <line x1="320" y1="260" x2="320" y2="290" stroke="lightblue" stroke-width="4" marker-end="url(#arrow)" />
+                    <text x="265" y="167" font-family="Verdana" font-size="10" fill="blue">20°C</text>
+                    <text x="305" y="305" font-family="Verdana" font-size="10" fill="lightblue">45°C</text>
+
+                    <!-- Definice šipek -->
+                    <defs>
+                        <marker id="arrow" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+                            <polygon points="0 0, 10 3.5, 0 7" fill="black" />
+                        </marker>
+                    </defs>
+                </svg>
+            </div>
+
+            <div class="equations">
+                <h3>Energetická bilance výměníku</h3>
+
+                <h4>Pro média bez změny fáze (ohřívání/ochlazování)</h4>
+                <p><strong>Zákon zachování energie:</strong> Teplo odevzdané horkým proudem = teplo přijaté studeným proudem.</p>
+                $$\dot{Q}_h = \dot{Q}_s$$
+                $$\dot{m}_h \cdot c_{p,h} \cdot (T_{h,in} - T_{h,out}) = \dot{m}_s \cdot c_{p,s} \cdot (T_{s,out} - T_{s,in})$$
+
+                <h4>Pro média se změnou fáze</h4>
+
+                <p><strong>Kondenzace (pára → kapalina):</strong></p>
+                $$\dot{Q}_{kondenzace} = \dot{m}_{para} \cdot r_{kondenzace}$$
+
+                <p><strong>Var (kapalina → pára):</strong></p>
+                $$\dot{Q}_{var} = \dot{m}_{kapalina} \cdot r_{var}$$
+
+                <p><strong>Kombinovaný proces (ochlazení + kondenzace):</strong></p>
+                $$\dot{Q}_{celkem} = \dot{m} \cdot c_{p} \cdot (T_{sat} - T_{out}) + \dot{m} \cdot r + \dot{m} \cdot c_{p,l} \cdot (T_{sat} - T_{final})$$
+
+                <p><strong>Kde:</strong><br>
+                • \(r\) - měrné skupenské teplo [J/kg] (voda: r = 2 260 000 J/kg)<br>
+                • \(T_{sat}\) - teplota sytosti (teplota varu/kondenzace) [K]<br>
+                • \(c_{p,l}\) - měrná tepelná kapacita kapaliny [J/(kg·K)]</p>
+
+                <h4>Základní rovnice přenosu tepla</h4>
+                $$\dot{Q} = U \cdot A \cdot \Delta T_{log}$$
+
+                <p>kde:<br>
+                • \(U\) - celkový součinitel prostupu tepla [W/(m²·K)]<br>
+                • \(A\) - plocha teplosměnné plochy [m²]<br>
+                • \(\Delta T_{log}\) - logaritmický teplotní rozdíl [K]</p>
+
+                <div class="note">
+                    <p><strong>Praktické příklady:</strong></p>
+                    <p>• <strong>Kondenzátor páry:</strong> Pára při 100°C kondenzuje a předává 2260 kJ/kg<br>
+                    • <strong>Výparník:</strong> Voda při 100°C se odpařuje a spotřebuje 2260 kJ/kg<br>
+                    • <strong>Chladič motoru:</strong> Jen ochlazování bez změny fáze<br>
+                    • <strong>Klimatizace:</strong> Odpařování chladiva (změna fáze) + ohřev vzduchu</p>
+                </div>
+            </div>
+
+            <div class="example">
+                <h3>Porovnání účinnosti</h3>
+                <table>
+                    <tr><th>Způsob proudění</th><th>Účinnost</th><th>ΔT na konci</th><th>Výhody</th><th>Nevýhody</th></tr>
+                    <tr><td><strong>Protiproud</strong></td><td>Nejvyšší</td><td>Malý</td><td>Nejlepší přenos tepla</td><td>Složitější konstrukce</td></tr>
+                    <tr><td><strong>Křížový tok</strong></td><td>Střední</td><td>Střední</td><td>Kompromis účinnost/složitost</td><td>Střední výkon</td></tr>
+                    <tr><td><strong>Souproud</strong></td><td>Nejnižší</td><td>Velký</td><td>Jednoduchá konstrukce</td><td>Nižší účinnost</td></tr>
+                </table>
+
+                <h4>Proč je protiproud nejlepší?</h4>
+                <p><strong>Souproud:</strong> Oba proudy se ohřívají/ochlazují současně → teplotní rozdíl rychle klesá<br>
+                <strong>Protiproud:</strong> Horký výstup se setkává se studeným vstupem → konstantní vysoký teplotní rozdíl<br>
+                <strong>Výsledek:</strong> Protiproud může dosáhnout vyšších konečných teplot</p>
+            </div>
+        </section>
+
+        <!-- NÁVRH VÝMĚNÍKU -->
+        <section id="heat-exchanger-design" class="unit-section">
+            <h2>3. Návrh výměníku tepla</h2>
+            <p><strong>Postup návrhu:</strong> Pro daný tepelný výkon musíme určit potřebnou plochu teplosměnné plochy. Klíčové je správně určit součinitel prostupu tepla U.</p>
+
+            <div class="schema-container">
+                <svg width="700" height="300" viewBox="0 0 700 300">
+                    <!-- Definice šipek MUSÍ být na začátku -->
+                    <defs>
+                        <marker id="arrow" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+                            <polygon points="0 0, 10 3.5, 0 7" fill="#333" />
+                        </marker>
+                    </defs>
+
+                    <text x="350" y="25" font-family="Verdana" font-size="16" font-weight="bold" text-anchor="middle">Postup návrhu výměníku tepla</text>
+
+                    <!-- Kroky návrhu v řadě s většími rozestupy -->
+                    <rect x="50" y="50" width="120" height="70" fill="#FFE4E1" stroke="#FF6347" stroke-width="2" rx="8"/>
+                    <text x="110" y="80" font-family="Verdana" font-size="14" text-anchor="middle" font-weight="bold">1. Tepelný</text>
+                    <text x="110" y="100" font-family="Verdana" font-size="14" text-anchor="middle" font-weight="bold">výkon Q̇ [W]</text>
+
+                    <rect x="240" y="50" width="120" height="70" fill="#E6F3FF" stroke="#4682B4" stroke-width="2" rx="8"/>
+                    <text x="300" y="80" font-family="Verdana" font-size="14" text-anchor="middle" font-weight="bold">2. Teplotní</text>
+                    <text x="300" y="100" font-family="Verdana" font-size="14" text-anchor="middle" font-weight="bold">rozdíl ΔT [K]</text>
+
+                    <rect x="430" y="50" width="120" height="70" fill="#F0E68C" stroke="#BDB76B" stroke-width="2" rx="8"/>
+                    <text x="490" y="80" font-family="Verdana" font-size="14" text-anchor="middle" font-weight="bold">3. Součinitel</text>
+                    <text x="490" y="100" font-family="Verdana" font-size="14" text-anchor="middle" font-weight="bold">U [W/(m²·K)]</text>
+
+                    <!-- Horizontální šipky mezi kroky - VNĚ polí -->
+                    <line x1="180" y1="85" x2="230" y2="85" stroke="#333" stroke-width="3" marker-end="url(#arrow)"/>
+                    <line x1="370" y1="85" x2="420" y2="85" stroke="#333" stroke-width="3" marker-end="url(#arrow)"/>
+
+                    <!-- Poznámky pod kroky -->
+                    <text x="110" y="140" font-family="Verdana" font-size="11" text-anchor="middle" fill="#666">z bilance</text>
+                    <text x="300" y="140" font-family="Verdana" font-size="11" text-anchor="middle" fill="#666">vstup/výstup</text>
+                    <text x="490" y="140" font-family="Verdana" font-size="11" text-anchor="middle" fill="#666">z tabulek</text>
+
+                    <!-- Výsledek dole uprostřed -->
+                    <rect x="250" y="200" width="200" height="80" fill="#98FB98" stroke="#32CD32" stroke-width="3" rx="10"/>
+                    <text x="350" y="230" font-family="Verdana" font-size="16" text-anchor="middle" font-weight="bold">4. Plocha teplosměnné</text>
+                    <text x="350" y="250" font-family="Verdana" font-size="16" text-anchor="middle" font-weight="bold">plochy A [m²]</text>
+                    <text x="350" y="270" font-family="Verdana" font-size="14" text-anchor="middle" font-weight="bold">A = Q̇ / (U · ΔT)</text>
+
+                    <!-- Šipky dolů k výsledku - končí s velkým odstupem od textového pole pro Safari -->
+                    <!-- Z levého pole -->
+                    <line x1="110" y1="130" x2="110" y2="160" stroke="#666" stroke-width="2"/>
+                    <line x1="110" y1="160" x2="280" y2="160" stroke="#666" stroke-width="2"/>
+                    <line x1="280" y1="160" x2="280" y2="175" stroke="#666" stroke-width="3" marker-end="url(#arrow)"/>
+
+                    <!-- Ze středního pole -->
+                    <line x1="300" y1="130" x2="300" y2="165" stroke="#666" stroke-width="2"/>
+                    <line x1="300" y1="165" x2="320" y2="165" stroke="#666" stroke-width="2"/>
+                    <line x1="320" y1="165" x2="320" y2="175" stroke="#666" stroke-width="3" marker-end="url(#arrow)"/>
+
+                    <!-- Z pravého pole -->
+                    <line x1="490" y1="130" x2="490" y2="160" stroke="#666" stroke-width="2"/>
+                    <line x1="490" y1="160" x2="420" y2="160" stroke="#666" stroke-width="2"/>
+                    <line x1="420" y1="160" x2="420" y2="175" stroke="#666" stroke-width="3" marker-end="url(#arrow)"/>
+                </svg>
+            </div>
+
+            <div class="equations">
+                <h3>Celkový součinitel prostupu tepla</h3>
+                <p><strong>Analogie elektrických odporů:</strong> Tepelné odpory se skládají v sérii.
+                $$ \frac{1}{U} = \frac{1}{\alpha_h} + \frac{d_{stena}}{\lambda_{stena}} + \frac{1}{\alpha_s} + R_{f,h} + R_{f,s} $$</p>
+
+                <h4>Výpočet pro deskové výměníky</h4>
+                <p><strong>Deskový výměník:</strong> Teplosměnná plocha je tvořena rovinnými deskami.</p>
+                $$ \frac{1}{U} = \frac{1}{\alpha_h} + \frac{t_{deska}}{\lambda_{deska}} + \frac{1}{\alpha_s} + R_{f,h} + R_{f,s} $$
+                <p>kde:<br>
+                • \(t_{deska}\) - tloušťka desky (obvykle 0.5-2 mm)<br>
+                • \(\lambda_{deska}\) - tepelná vodivost materiálu desky (nerez: 15 W/(m·K))</p>
+
+                <h4>Výpočet pro kruhové (trubkové) výměníky</h4>
+                <p><strong>Trubkový výměník:</strong> Teplosměnná plocha je vnější nebo vnitřní povrch trubky.</p>
+                $$ \frac{1}{U_i} = \frac{1}{\alpha_i} + \frac{d_i \ln(d_o/d_i)}{2\lambda_{trubka}} + \frac{d_i}{\alpha_o d_o} + R_{f,i} + R_{f,o} \frac{d_i}{d_o} $$
+                $$ \frac{1}{U_o} = \frac{d_o}{\alpha_i d_i} + \frac{d_o \ln(d_o/d_i)}{2\lambda_{trubka}} + \frac{1}{\alpha_o} + R_{f,i} \frac{d_o}{d_i} + R_{f,o} $$
+                <p>kde:<br>
+                • \(U_i\) - součinitel vztažený na vnitřní povrch [W/(m²·K)]<br>
+                • \(U_o\) - součinitel vztažený na vnější povrch [W/(m²·K)]<br>
+                • \(d_i, d_o\) - vnitřní a vnější průměr trubky [m]<br>
+                • \(\alpha_i, \alpha_o\) - součinitele přestupu tepla uvnitř/vně trubky [W/(m²·K)]</p>
+
+                <h4>Součinitele zanášení (fouling factors)</h4>
+                <p><strong>Co je zanášení?</strong> Postupné usazování nečistot na teplosměnných plochách snižuje přenos tepla.</p>
+                <p><strong>Příčiny zanášení:</strong><br>
+                • <strong>Krystalizace:</strong> Usazování solí z tvrdé vody (CaCO₃, CaSO₄)<br>
+                • <strong>Biologické zanášení:</strong> Růst řas, bakterií a biofilmu<br>
+                • <strong>Koroze:</strong> Oxidace kovových povrchů<br>
+                • <strong>Částice:</strong> Usazování prachu, písku, sedimentů<br>
+                • <strong>Chemické reakce:</strong> Polymerace, karbonizace při vysokých teplotách</p>
+
+                <p><strong>Jak zanášení vzniká:</strong><br>
+                1. <strong>Počáteční fáze:</strong> Čisté povrchy, nominální přenos tepla<br>
+                2. <strong>Usazování:</strong> Nečistoty se zachytávají na drsnostech povrchu<br>
+                3. <strong>Růst vrstvy:</strong> Postupné narůstání tloušťky nečistot<br>
+                4. <strong>Asymptotický stav:</strong> Rovnováha mezi usazováním a odnosem</p>
+
+                <p><strong>Důsledky zanášení:</strong><br>
+                • Snížení tepelného toku (až o 50%)<br>
+                • Zvýšení tlakových ztrát<br>
+                • Snížení účinnosti celého systému<br>
+                • Nutnost častějšího čištění<br>
+                • Vyšší provozní náklady</p>
+
+                <h4>Tabulka typických hodnot součinitelů zanášení R_f [m²·K/W]</h4>
+                <table style="width: 100%; border-collapse: collapse; margin: 15px 0;">
+                    <tr><th style="border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2;">Typ tekutiny</th><th style="border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2;">Podmínky</th><th style="border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2;">R_f [m²·K/W]</th><th style="border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2;">Ekvivalent tloušťky*</th></tr>
+                    <tr><td style="border: 1px solid #ddd; padding: 8px;"><strong>Destilovaná voda</strong></td><td style="border: 1px solid #ddd; padding: 8px;">Čistá, nízké teploty</td><td style="border: 1px solid #ddd; padding: 8px; color: green;">0.0001</td><td style="border: 1px solid #ddd; padding: 8px;">0.06 mm</td></tr>
+                    <tr><td style="border: 1px solid #ddd; padding: 8px;"><strong>Pitná voda</strong></td><td style="border: 1px solid #ddd; padding: 8px;">Městská voda, &lt;50°C</td><td style="border: 1px solid #ddd; padding: 8px; color: green;">0.0002</td><td style="border: 1px solid #ddd; padding: 8px;">0.12 mm</td></tr>
+                    <tr><td style="border: 1px solid #ddd; padding: 8px;"><strong>Tvrdá voda</strong></td><td style="border: 1px solid #ddd; padding: 8px;">Vysoký obsah Ca²⁺, Mg²⁺</td><td style="border: 1px solid #ddd; padding: 8px; color: orange;">0.0005</td><td style="border: 1px solid #ddd; padding: 8px;">0.3 mm</td></tr>
+                    <tr><td style="border: 1px solid #ddd; padding: 8px;"><strong>Mořská voda</strong></td><td style="border: 1px solid #ddd; padding: 8px;">Vysoká salinita</td><td style="border: 1px solid #ddd; padding: 8px; color: orange;">0.0001-0.0008</td><td style="border: 1px solid #ddd; padding: 8px;">0.06-0.5 mm</td></tr>
+                    <tr><td style="border: 1px solid #ddd; padding: 8px;"><strong>Motorové oleje</strong></td><td style="border: 1px solid #ddd; padding: 8px;">Čisté, provozní teploty</td><td style="border: 1px solid #ddd; padding: 8px; color: green;">0.0002</td><td style="border: 1px solid #ddd; padding: 8px;">0.03 mm</td></tr>
+                    <tr><td style="border: 1px solid #ddd; padding: 8px;"><strong>Topné oleje</strong></td><td style="border: 1px solid #ddd; padding: 8px;">Vysoké teploty &gt;250°C</td><td style="border: 1px solid #ddd; padding: 8px; color: red;">0.0009</td><td style="border: 1px solid #ddd; padding: 8px;">0.15 mm</td></tr>
+                    <tr><td style="border: 1px solid #ddd; padding: 8px;"><strong>Spaliny</strong></td><td style="border: 1px solid #ddd; padding: 8px;">Obsahují saze a částice</td><td style="border: 1px solid #ddd; padding: 8px; color: red;">0.002</td><td style="border: 1px solid #ddd; padding: 8px;">0.3 mm</td></tr>
+                    <tr><td style="border: 1px solid #ddd; padding: 8px;"><strong>Čistá pára</strong></td><td style="border: 1px solid #ddd; padding: 8px;">Kondenzace, bez nečistot</td><td style="border: 1px solid #ddd; padding: 8px; color: green;">0.0001</td><td style="border: 1px solid #ddd; padding: 8px;">-</td></tr>
+                    <tr><td style="border: 1px solid #ddd; padding: 8px;"><strong>Průmyslová pára</strong></td><td style="border: 1px solid #ddd; padding: 8px;">Může obsahovat oleje</td><td style="border: 1px solid #ddd; padding: 8px; color: orange;">0.0003</td><td style="border: 1px solid #ddd; padding: 8px;">-</td></tr>
+                    <tr><td style="border: 1px solid #ddd; padding: 8px;"><strong>Vzduch</strong></td><td style="border: 1px solid #ddd; padding: 8px;">Čistý, filtrovaný</td><td style="border: 1px solid #ddd; padding: 8px; color: green;">0.0002</td><td style="border: 1px solid #ddd; padding: 8px;">-</td></tr>
+                    <tr><td style="border: 1px solid #ddd; padding: 8px;"><strong>Průmyslový vzduch</strong></td><td style="border: 1px solid #ddd; padding: 8px;">Obsahuje prach, oleje</td><td style="border: 1px solid #ddd; padding: 8px; color: red;">0.0009</td><td style="border: 1px solid #ddd; padding: 8px;">-</td></tr>
+                </table>
+                <p><strong>*Ekvivalentní tloušťka:</strong> Vypočteno pro λ = 0.6 W/(m·K) (typická tepelná vodivost usazenin)</p>
+
+                <h4>Strategie prevence a řešení zanášení</h4>
+                <table style="width: 100%; border-collapse: collapse; margin: 15px 0;">
+                    <tr><th style="border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2;">Metoda</th><th style="border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2;">Princip</th><th style="border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2;">Aplikace</th><th style="border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2;">Účinnost</th></tr>
+                    <tr><td style="border: 1px solid #ddd; padding: 8px;"><strong>Úprava vody</strong></td><td style="border: 1px solid #ddd; padding: 8px;">Změkčování, odvápnění</td><td style="border: 1px solid #ddd; padding: 8px;">Topné systémy, chladiče</td><td style="border: 1px solid #ddd; padding: 8px; color: green;">Vysoká</td></tr>
+                    <tr><td style="border: 1px solid #ddd; padding: 8px;"><strong>Chemické inhibitory</strong></td><td style="border: 1px solid #ddd; padding: 8px;">Přídavek rozptylujících látek</td><td style="border: 1px solid #ddd; padding: 8px;">Chladicí okruhy</td><td style="border: 1px solid #ddd; padding: 8px; color: orange;">Střední</td></tr>
+                    <tr><td style="border: 1px solid #ddd; padding: 8px;"><strong>Vyšší rychlosti</strong></td><td style="border: 1px solid #ddd; padding: 8px;">Mechanický odnos částic</td><td style="border: 1px solid #ddd; padding: 8px;">Všechny typy</td><td style="border: 1px solid #ddd; padding: 8px; color: orange;">Střední</td></tr>
+                    <tr><td style="border: 1px solid #ddd; padding: 8px;"><strong>Pravidelné čištění</strong></td><td style="border: 1px solid #ddd; padding: 8px;">Mechanické/chemické čištění</td><td style="border: 1px solid #ddd; padding: 8px;">Údržbářsky náročné</td><td style="border: 1px solid #ddd; padding: 8px; color: green;">Vysoká</td></tr>
+                    <tr><td style="border: 1px solid #ddd; padding: 8px;"><strong>Přerozměrování</strong></td><td style="border: 1px solid #ddd; padding: 8px;">Větší plocha s rezervou</td><td style="border: 1px solid #ddd; padding: 8px;">Kritické aplikace</td><td style="border: 1px solid #ddd; padding: 8px; color: green;">Vysoká</td></tr>
+                </table>
+
+                <p><strong>Logaritmický teplotní rozdíl:</strong> Pro proměnný teplotní rozdíl podél výměníku.
+                $$ \Delta T_{log} = \frac{\Delta T_{max} - \Delta T_{min}}{\ln(\Delta T_{max}/\Delta T_{min})} $$</p>
+
+                <h4>Korekční faktor F pro komplexní výměníky</h4>
+                <p><strong>Pro výměníky s komplikovaným prouděním:</strong> Skutečný teplotní rozdíl se liší od logaritmického.
+                $$ \Delta T_{skutečný} = F \times \Delta T_{log,protiproud} $$</p>
+                <p><strong>Kde:</strong><br>
+                • \(F\) - korekční faktor (-) [0.5 ≤ F ≤ 1.0]<br>
+                • F = 1.0 pro ideální protiproud<br>
+                • F < 1.0 pro ostatní uspořádání (souproud, křížotok)</p>
+
+                <p><strong>Typické hodnoty faktoru F:</strong></p>
+                <table style="width: 100%; border-collapse: collapse; margin: 15px 0;">
+                    <tr><th style="border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2;">Typ proudění</th><th style="border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2;">Korekční faktor F</th><th style="border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2;">Poznámka</th></tr>
+                    <tr><td style="border: 1px solid #ddd; padding: 8px;"><strong>Protiproud</strong></td><td style="border: 1px solid #ddd; padding: 8px; color: green; font-weight: bold;">F = 1.0</td><td style="border: 1px solid #ddd; padding: 8px;">Ideální případ</td></tr>
+                    <tr><td style="border: 1px solid #ddd; padding: 8px;"><strong>Křížotok - oba nemíchané</strong></td><td style="border: 1px solid #ddd; padding: 8px;">F = 0.8-0.95</td><td style="border: 1px solid #ddd; padding: 8px;">Nejčastější případ</td></tr>
+                    <tr><td style="border: 1px solid #ddd; padding: 8px;"><strong>Křížotok - jedno míchané</strong></td><td style="border: 1px solid #ddd; padding: 8px;">F = 0.7-0.9</td><td style="border: 1px solid #ddd; padding: 8px;">Chladiče vzduchu</td></tr>
+                    <tr><td style="border: 1px solid #ddd; padding: 8px;"><strong>Souproud</strong></td><td style="border: 1px solid #ddd; padding: 8px; color: red;">F = 0.5-0.8</td><td style="border: 1px solid #ddd; padding: 8px;">Nejhorší účinnost</td></tr>
+                    <tr><td style="border: 1px solid #ddd; padding: 8px;"><strong>Shell-and-tube (1 průchod)</strong></td><td style="border: 1px solid #ddd; padding: 8px;">F = 0.8-0.95</td><td style="border: 1px solid #ddd; padding: 8px;">Závisí na počtu trubek</td></tr>
+                </table>
+
+                <div class="note">
+                    <p><strong>💡 Praktické použití faktoru F:</strong></p>
+                    <p>• <strong>Návrh:</strong> F > 0.8 pro ekonomickou efektivnost<br>
+                    • <strong>Pokud F < 0.8:</strong> Zvážit více průchodů nebo jiné uspořádání<br>
+                    • <strong>Výpočet:</strong> Q̇ = U × A × F × ΔT<sub>log,protiproud</sub></p>
+                </div>
+
+                <h4>Teplotní profily ve výměníku</h4>
+                <div class="schema-container">
+                    <svg width="700" height="350" viewBox="0 0 700 350">
+                        <text x="350" y="25" font-family="Verdana" font-size="16" font-weight="bold" text-anchor="middle">Teplotní profily - souproud vs. protiproud</text>
+
+                        <!-- SOUPROUD - vlevo -->
+                        <text x="150" y="55" font-family="Verdana" font-size="14" font-weight="bold" text-anchor="middle">SOUPROUD</text>
+
+                        <!-- Osy souproud -->
+                        <line x1="50" y1="250" x2="250" y2="250" stroke="#333" stroke-width="2"/>
+                        <line x1="50" y1="250" x2="50" y2="80" stroke="#333" stroke-width="2"/>
+                        <text x="40" y="85" font-family="Verdana" font-size="12" text-anchor="end">T[°C]</text>
+                        <text x="255" y="265" font-family="Verdana" font-size="12">Délka výměníku</text>
+
+                        <!-- Teplotní čáry souproud -->
+                        <!-- Horký proud -->
+                        <path d="M 60 100 Q 100 110, 150 130 Q 200 150, 240 170" stroke="red" stroke-width="3" fill="none"/>
+                        <text x="65" y="95" font-family="Verdana" font-size="11" fill="red" font-weight="bold">80°C</text>
+                        <text x="210" y="165" font-family="Verdana" font-size="11" fill="red" font-weight="bold">60°C</text>
+
+                        <!-- Studený proud -->
+                        <path d="M 60 230 Q 100 220, 150 200 Q 200 185, 240 190" stroke="blue" stroke-width="3" fill="none"/>
+                        <text x="65" y="245" font-family="Verdana" font-size="11" fill="blue" font-weight="bold">20°C</text>
+                        <text x="210" y="205" font-family="Verdana" font-size="11" fill="blue" font-weight="bold">40°C</text>
+
+                        <!-- ΔT značení souproud -->
+                        <line x1="70" y1="100" x2="70" y2="230" stroke="green" stroke-width="2" stroke-dasharray="5,5"/>
+                        <text x="75" y="165" font-family="Verdana" font-size="12" fill="green" font-weight="bold">ΔT_max = 60K</text>
+
+                        <line x1="230" y1="170" x2="230" y2="190" stroke="orange" stroke-width="2" stroke-dasharray="5,5"/>
+                        <text x="175" y="210" font-family="Verdana" font-size="12" fill="orange" font-weight="bold">ΔT_min = 20K</text>
+
+                        <!-- PROTIPROUD - vpravo -->
+                        <text x="550" y="55" font-family="Verdana" font-size="14" font-weight="bold" text-anchor="middle">PROTIPROUD</text>
+
+                        <!-- Osy protiproud -->
+                        <line x1="450" y1="250" x2="650" y2="250" stroke="#333" stroke-width="2"/>
+                        <line x1="450" y1="250" x2="450" y2="80" stroke="#333" stroke-width="2"/>
+                        <text x="440" y="85" font-family="Verdana" font-size="12" text-anchor="end">T[°C]</text>
+                        <text x="655" y="265" font-family="Verdana" font-size="12">Délka výměníku</text>
+
+                        <!-- Teplotní čáry protiproud -->
+                        <!-- Horký proud -->
+                        <path d="M 460 100 Q 500 120, 550 140 Q 600 160, 640 180" stroke="red" stroke-width="3" fill="none"/>
+                        <text x="465" y="95" font-family="Verdana" font-size="11" fill="red" font-weight="bold">80°C</text>
+                        <text x="610" y="175" font-family="Verdana" font-size="11" fill="red" font-weight="bold">50°C</text>
+
+                        <!-- Studený proud (protiproud!) -->
+                        <path d="M 640 230 Q 600 210, 550 190 Q 500 170, 460 150" stroke="blue" stroke-width="3" fill="none"/>
+                        <text x="615" y="245" font-family="Verdana" font-size="11" fill="blue" font-weight="bold">20°C</text>
+                        <text x="420" y="145" font-family="Verdana" font-size="11" fill="blue" font-weight="bold">50°C</text>
+
+                        <!-- ΔT značení protiproud -->
+                        <line x1="470" y1="100" x2="470" y2="150" stroke="green" stroke-width="2" stroke-dasharray="5,5"/>
+                        <text x="475" y="125" font-family="Verdana" font-size="12" fill="green" font-weight="bold">ΔT_max = 30K</text>
+
+                        <line x1="630" y1="180" x2="630" y2="230" stroke="orange" stroke-width="2" stroke-dasharray="5,5"/>
+                        <text x="575" y="215" font-family="Verdana" font-size="12" fill="orange" font-weight="bold">ΔT_min = 30K</text>
+
+                        <!-- Výsledky -->
+                        <rect x="50" y="280" width="250" height="50" fill="#FFE4E1" stroke="#FF6347" stroke-width="2" rx="5"/>
+                        <text x="175" y="300" font-family="Verdana" font-size="12" text-anchor="middle" font-weight="bold">ΔT_log = (60-20)/ln(60/20) = 36.4K</text>
+                        <text x="175" y="315" font-family="Verdana" font-size="11" text-anchor="middle">Účinnost: Nižší</text>
+
+                        <rect x="450" y="280" width="200" height="50" fill="#E8F5E8" stroke="#32CD32" stroke-width="2" rx="5"/>
+                        <text x="550" y="300" font-family="Verdana" font-size="12" text-anchor="middle" font-weight="bold">ΔT_log = (30-30)/ln(30/30) = 30K</text>
+                        <text x="550" y="315" font-family="Verdana" font-size="11" text-anchor="middle">Účinnost: Vyšší</text>
+
+                        <!-- Definice šipek -->
+                        <defs>
+                            <marker id="arrow" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+                                <polygon points="0 0, 10 3.5, 0 7" fill="#333" />
+                            </marker>
+                        </defs>
+                    </svg>
+                </div>
+                <p>kde:<br>
+                • \(\alpha_h, \alpha_s\) - součinitele přestupu tepla na horké/studené straně [W/(m²·K)]<br>
+                • \(d_{stena}\) - tloušťka stěny [m]<br>
+                • \(\lambda_{stena}\) - tepelná vodivost materiálu stěny [W/(m·K)]</p>
+
+                <h4>Typické hodnoty součinitelů přestupu tepla α [W/(m²·K)]</h4>
+                <table style="width: 100%; border-collapse: collapse; margin: 15px 0;">
+                    <tr><th style="border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2;">Medium</th><th style="border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2;">Podmínky</th><th style="border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2;">α [W/(m²·K)]</th></tr>
+                    <tr><td style="border: 1px solid #ddd; padding: 8px;"><strong>Kondenzace páry</strong></td><td style="border: 1px solid #ddd; padding: 8px;">Na vertikální stěně</td><td style="border: 1px solid #ddd; padding: 8px; color: green; font-weight: bold;">5 000 - 15 000</td></tr>
+                    <tr><td style="border: 1px solid #ddd; padding: 8px;"><strong>Var vody</strong></td><td style="border: 1px solid #ddd; padding: 8px;">Nukleátní vření</td><td style="border: 1px solid #ddd; padding: 8px; color: green; font-weight: bold;">3 000 - 10 000</td></tr>
+                    <tr><td style="border: 1px solid #ddd; padding: 8px;"><strong>Voda</strong></td><td style="border: 1px solid #ddd; padding: 8px;">Turbulentní proudění v trubkách</td><td style="border: 1px solid #ddd; padding: 8px;">1 500 - 5 000</td></tr>
+                    <tr><td style="border: 1px solid #ddd; padding: 8px;"><strong>Voda</strong></td><td style="border: 1px solid #ddd; padding: 8px;">Laminární proudění v trubkách</td><td style="border: 1px solid #ddd; padding: 8px;">500 - 1 500</td></tr>
+                    <tr><td style="border: 1px solid #ddd; padding: 8px;"><strong>Oleje</strong></td><td style="border: 1px solid #ddd; padding: 8px;">Turbulentní proudění</td><td style="border: 1px solid #ddd; padding: 8px;">200 - 800</td></tr>
+                    <tr><td style="border: 1px solid #ddd; padding: 8px;"><strong>Spaliny</strong></td><td style="border: 1px solid #ddd; padding: 8px;">Nucené proudění příčně přes trubky</td><td style="border: 1px solid #ddd; padding: 8px;">50 - 200</td></tr>
+                    <tr><td style="border: 1px solid #ddd; padding: 8px;"><strong>Vzduch</strong></td><td style="border: 1px solid #ddd; padding: 8px;">Nucené proudění (v = 5-20 m/s)</td><td style="border: 1px solid #ddd; padding: 8px;">20 - 100</td></tr>
+                    <tr><td style="border: 1px solid #ddd; padding: 8px;"><strong>Vzduch</strong></td><td style="border: 1px solid #ddd; padding: 8px;">Přirozená konvekce</td><td style="border: 1px solid #ddd; padding: 8px; color: red;">3 - 15</td></tr>
+                </table>
+
+                <h4>Typické hodnoty celkových součinitelů prostupu tepla U [W/(m²·K)]</h4>
+                <table style="width: 100%; border-collapse: collapse; margin: 15px 0;">
+                    <tr><th style="border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2;">Typ výměníku</th><th style="border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2;">Horké medium</th><th style="border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2;">Studené medium</th><th style="border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2;">U [W/(m²·K)]</th></tr>
+                    <tr><td style="border: 1px solid #ddd; padding: 8px;"><strong>Kondenzátor</strong></td><td style="border: 1px solid #ddd; padding: 8px;">Kondenzace páry</td><td style="border: 1px solid #ddd; padding: 8px;">Voda</td><td style="border: 1px solid #ddd; padding: 8px; color: green; font-weight: bold;">1 000 - 3 000</td></tr>
+                    <tr><td style="border: 1px solid #ddd; padding: 8px;"><strong>Výparník</strong></td><td style="border: 1px solid #ddd; padding: 8px;">Voda/pára</td><td style="border: 1px solid #ddd; padding: 8px;">Var vody</td><td style="border: 1px solid #ddd; padding: 8px; color: green; font-weight: bold;">800 - 2 500</td></tr>
+                    <tr><td style="border: 1px solid #ddd; padding: 8px;"><strong>Ohřívák vody</strong></td><td style="border: 1px solid #ddd; padding: 8px;">Horká voda</td><td style="border: 1px solid #ddd; padding: 8px;">Studená voda</td><td style="border: 1px solid #ddd; padding: 8px;">800 - 1 500</td></tr>
+                    <tr><td style="border: 1px solid #ddd; padding: 8px;"><strong>Chladič oleje</strong></td><td style="border: 1px solid #ddd; padding: 8px;">Olej</td><td style="border: 1px solid #ddd; padding: 8px;">Voda</td><td style="border: 1px solid #ddd; padding: 8px;">200 - 600</td></tr>
+                    <tr><td style="border: 1px solid #ddd; padding: 8px;"><strong>Ohřívák vzduchu</strong></td><td style="border: 1px solid #ddd; padding: 8px;">Horká voda/pára</td><td style="border: 1px solid #ddd; padding: 8px;">Vzduch</td><td style="border: 1px solid #ddd; padding: 8px;">30 - 150</td></tr>
+                    <tr><td style="border: 1px solid #ddd; padding: 8px;"><strong>Spalinový ohřívák</strong></td><td style="border: 1px solid #ddd; padding: 8px;">Spaliny</td><td style="border: 1px solid #ddd; padding: 8px;">Vzduch</td><td style="border: 1px solid #ddd; padding: 8px;">15 - 60</td></tr>
+                    <tr><td style="border: 1px solid #ddd; padding: 8px;"><strong>Vzduch-vzduch</strong></td><td style="border: 1px solid #ddd; padding: 8px;">Teplý vzduch</td><td style="border: 1px solid #ddd; padding: 8px;">Studený vzduch</td><td style="border: 1px solid #ddd; padding: 8px; color: red;">8 - 25</td></tr>
+                </table>
+
+                <div class="note">
+                    <p><strong>💡 Praktické pozorování:</strong></p>
+                    <p>• <strong>Nejvyšší U:</strong> Kondenzátory a výparníky (změna fáze) - až 3000 W/(m²·K)<br>
+                    • <strong>Střední U:</strong> Kapalina-kapalina (voda-voda) - 800-1500 W/(m²·K)<br>
+                    • <strong>Nejnižší U:</strong> Plyn-plyn (vzduch-vzduch) - jen 8-25 W/(m²·K)<br>
+                    • <strong>Pravidlo:</strong> Čím více plynů, tím nižší součinitel přestupu!</p>
+                </div>
+            </div>
+
+            <div class="example">
+                <h3>Konkrétní příklad: Návrh trubkového výměníku</h3>
+                <p><strong>Zadání:</strong> Navrhnout výměník pro ohřev 2 kg/s vody z 20°C na 60°C pomocí kondenzující páry při 100°C.</p>
+                <h4>Krok 1: Tepelný výkon</h4>
+                <p>\( \dot{Q} = \dot{m} \cdot c_p \cdot \Delta T = 2 \cdot 4180 \cdot (60-20) = 334\,400 \text{ W} \)</p>
+
+                <h4>Krok 2: Teplotní rozdíl</h4>
+                <p>Pára kondenzuje při konstantní teplotě 100°C, voda se ohřívá z 20°C na 60°C<br>
+                \( \Delta T_{max} = 100 - 20 = 80 \text{ K} \) (na vstupu vody)<br>
+                \( \Delta T_{min} = 100 - 60 = 40 \text{ K} \) (na výstupu vody)<br>
+                \( \Delta T_{log} = \frac{80-40}{\ln(80/40)} = \frac{40}{0.693} = 57.7 \text{ K} \)</p>
+
+                <h4>Krok 3: Součinitel prostupu tepla</h4>
+                <p>Pro kondenzaci páry na vnější straně trubky a nucené proudění vody uvnitř:<br>
+                Typická hodnota: U ≈ 1000 W/(m²·K)</p>
+
+                <h4>Krok 4: Potřebná plocha</h4>
+                <p>\( A = \frac{\dot{Q}}{U \cdot \Delta T_{log}} = \frac{334\,400}{1000 \cdot 57.7} = 5.8 \text{ m}^2 \)</p>
+
+                <div class="result-box">
+                    <p>Potřebná teplosměnná plocha: <span>5.8 m²</span></p>
+                    <p>Při použití trubek ⌀25 mm: délka ≈ 74 m trubek</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- APLIKACE VÝMĚNÍKŮ -->
+        <section id="applications" class="unit-section">
+            <h2>4. Praktické aplikace výměníků</h2>
+            <p><strong>Všude kolem nás:</strong> Výměníky tepla jsou nedílnou součástí našeho každodenního života i průmyslových procesů.</p>
+
+            <div class="example">
+                <h3>Výměníky v domácnosti</h3>
+                <table>
+                    <tr><th>Zařízení</th><th>Typ výměníku</th><th>Funkce</th><th>Horký proud</th><th>Studený proud</th></tr>
+                    <tr><td><strong>Radiátor topení</strong></td><td>Žebrovaný</td><td>Vytápění místnosti</td><td>Teplá voda (80°C)</td><td>Vzduch v místnosti</td></tr>
+                    <tr><td><strong>Chladič auta</strong></td><td>Křížotokový</td><td>Chlazení motoru</td><td>Chladicí kapalina</td><td>Vzduch (ventilátor)</td></tr>
+                    <tr><td><strong>Kondenzátor lednice</strong></td><td>Trubkový</td><td>Odvod tepla</td><td>Chladivo (plyn)</td><td>Vzduch v kuchyni</td></tr>
+                    <tr><td><strong>Výparník klimatizace</strong></td><td>Žebrovaný</td><td>Chlazení vzduchu</td><td>Teplý vzduch</td><td>Chladivo (kapalina)</td></tr>
+                    <tr><td><strong>Rekuperátor</strong></td><td>Deskový</td><td>Úspora energie při větrání</td><td>Odpadní vzduch</td><td>Čerstvý vzduch</td></tr>
+                </table>
+
+                <h4>Speciální případy</h4>
+                <p><strong>Tepelné čerpadlo:</strong> Kombinace výparníku a kondenzátoru<br>
+                • Výparník: Odebírá teplo ze země/vzduchu/vody<br>
+                • Kondenzátor: Odevzdává teplo do topného systému<br>
+                • Efektivita: 1 kW elektřiny → 3-4 kW tepla!</p>
+
+                <p><strong>Rekuperace:</strong> Využití odpadního tepla<br>
+                • Větrání: Ohřev čerstvého vzduchu odpadním vzduchem<br>
+                • Úspora energie: 50-90% tepelných ztrát větrání<br>
+                • Kvalita vzduchu: Stálý přívod čerstvého vzduchu</p>
+            </div>
+        </section>
+
+        <!-- ÚČINNOST VÝMĚNÍKŮ -->
+        <section id="efficiency" class="unit-section">
+            <h2>5. Účinnost výměníků tepla</h2>
+            <p><strong>Jak měřit úspěšnost?</strong> Účinnost výměníku porovnává skutečný přenos tepla s teoreticky maximálním možným přenosem.</p>
+
+            <div class="equations">
+                <h3>Definice účinnosti</h3>
+                <p><strong>Účinnost (efektivnost):</strong> Poměr skutečného a maximálního možného přenosu tepla.
+                $$ \varepsilon = \frac{\dot{Q}_{skutecne}}{\dot{Q}_{max}} $$</p>
+                <p><strong>Maximální možný přenos:</strong> Omezen proudem s menší tepelnou kapacitou.
+                $$ \dot{Q}_{max} = \dot{C}_{min} \cdot (T_{h,in} - T_{s,in}) $$</p>
+                <p><strong>Tepelná kapacita proudu:</strong>
+                $$ \dot{C} = \dot{m} \cdot c_p $$</p>
+                <p>kde:<br>
+                • \(\dot{C}_{min}\) - menší z tepelných kapacit proudů [W/K]<br>
+                • \(T_{h,in}, T_{s,in}\) - vstupní teploty horkého a studeného proudu [K]</p>
+            </div>
+
+            <div class="example">
+                <h3>Faktory ovlivňující účinnost</h3>
+                <table>
+                    <tr><th>Faktor</th><th>Vliv na účinnost</th><th>Jak zlepšit</th><th>Omezení</th></tr>
+                    <tr><td><strong>Plocha A</strong></td><td>Větší plocha → vyšší účinnost</td><td>Více/větší trubky, žebra</td><td>Velikost, cena</td></tr>
+                    <tr><td><strong>Součinitel U</strong></td><td>Vyšší U → vyšší účinnost</td><td>Vyšší rychlosti, lepší materiál</td><td>Tlakové ztráty</td></tr>
+                    <tr><td><strong>Typ proudění</strong></td><td>Protiproud > Křížotok > Souproud</td><td>Návrh protiproudý</td><td>Konstrukční složitost</td></tr>
+                    <tr><td><strong>Rychlost proudění</strong></td><td>Vyšší rychlost → lepší přestup</td><td>Vyšší průtoky</td><td>Tlakové ztráty, energie čerpadel</td></tr>
+                </table>
+
+                <h4>Typické účinnosti</h4>
+                <p><strong>Dobře navržený protiproudý výměník:</strong> 85-95%<br>
+                <strong>Křížotokový výměník:</strong> 60-80%<br>
+                <strong>Jednoduchý souproudý výměník:</strong> 40-60%<br>
+                <strong>Rekuperátor vzduchu:</strong> 70-90%</p>
+
+                <div class="note">
+                    <p><strong>Kompromis:</strong> Vyšší účinnost = větší výměník = vyšší cena. Optimální je najít ekonomické optimum!</p>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

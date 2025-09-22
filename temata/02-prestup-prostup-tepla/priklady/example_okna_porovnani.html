@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staré vs. nové okno</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>Staré vs. nové okno</h1>
+        </header>
+
+        <section class="problem-statement">
+            <h2>Zadání úlohy</h2>
+            <div class="task-description">
+                <p>Porovnejte tepelné ztráty starým jednoduchým oknem a novým trojsklem.
+                Vypočítejte ekonomickou návratnost investice do výměny oken.</p>
+
+                <h3>Dané hodnoty:</h3>
+                <ul>
+                    <li><strong>Rozměry okna:</strong> 1.5 m × 1.2 m (plocha 1.8 m²)</li>
+                    <li><strong>Staré okno:</strong>
+                        <ul>
+                            <li>Jednosklo 4 mm, λ = 1.0 W/(m·K)</li>
+                            <li>Dřevěný rám (zanedbáváme pro jednoduchost)</li>
+                            <li>Součinitel prostupu U = 5.5 W/(m²·K)</li>
+                        </ul>
+                    </li>
+                    <li><strong>Nové okno (trojsklo):</strong>
+                        <ul>
+                            <li>3× sklo 4 mm + 2× mezera 16 mm s argonem</li>
+                            <li>Low-E povlaky pro snížení sálání</li>
+                            <li>Plastový rám s tepelnou izolací</li>
+                            <li>Součinitel prostupu U = 0.7 W/(m²·K)</li>
+                        </ul>
+                    </li>
+                    <li><strong>Podmínky:</strong> Ti = 21°C, Te = -10°C</li>
+                    <li><strong>Cena nového okna:</strong> 12,000 Kč</li>
+                    <li><strong>Cena tepla:</strong> 2.00 Kč/kWh</li>
+                    <li><strong>Topná sezóna:</strong> 200 dnů/rok</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="solution">
+            <h2>Řešení</h2>
+
+            <div class="step">
+                <h3>1. Teoretický výpočet starého okna</h3>
+                <div class="calculation">
+                    <p><strong>Pro zajímavost - výpočet jednoskla:</strong></p>
+                    <p>Odpory přestupu: $R_{si} = \frac{1}{8} = 0.125$ m²·K/W, $R_{se} = \frac{1}{25} = 0.040$ m²·K/W</p>
+                    <p>Odpor skla: $R_{sklo} = \frac{0.004}{1.0} = 0.004$ m²·K/W</p>
+                    <p>$$U_{teorie} = \frac{1}{0.125 + 0.004 + 0.040} = \frac{1}{0.169} = 5.9 \text{ W/(m²·K)}$$</p>
+                    <p><em>Skutečná hodnota U = 5.5 W/(m²·K) zahrnuje tepelné mosty rámu.</em></p>
+                </div>
+            </div>
+
+            <div class="step">
+                <h3>2. Porovnání tepelných toků</h3>
+                <div class="calculation">
+                    <p>Teplotní rozdíl: ΔT = 21 - (-10) = 31 K</p>
+
+                    <p><strong>Tepelný tok starým oknem:</strong></p>
+                    <p>$$\dot{Q}_{stare} = U_{stare} \times A \times \Delta T = 5.5 \times 1.8 \times 31 = 307 \text{ W}$$</p>
+
+                    <p><strong>Tepelný tok novým oknem:</strong></p>
+                    <p>$$\dot{Q}_{nove} = U_{nove} \times A \times \Delta T = 0.7 \times 1.8 \times 31 = 39 \text{ W}$$</p>
+
+                    <p><strong>Úspora tepelného toku:</strong></p>
+                    <p>$$\Delta \dot{Q} = 307 - 39 = 268 \text{ W}$$</p>
+                    <p><strong>Relativní úspora:</strong> 268/307 = 87.3%</p>
+                </div>
+            </div>
+
+            <div class="step">
+                <h3>3. Roční energetické a ekonomické úspory</h3>
+                <div class="calculation">
+                    <p><strong>Roční úspora energie:</strong></p>
+                    <p>$$E_{uspora} = \Delta \dot{Q} \times 24 \times 200 \div 1000$$</p>
+                    <p>$$E_{uspora} = 268 \times 24 \times 200 \div 1000 = 1\,286 \text{ kWh/rok}$$</p>
+
+                    <p><strong>Roční úspora nákladů:</strong></p>
+                    <p>$$N_{uspora} = 1\,286 \times 2.00 = 2\,572 \text{ Kč/rok}$$</p>
+
+                    <p><strong>Doba návratnosti:</strong></p>
+                    <p>$$t_{navrat} = \frac{12\,000}{2\,572} = 4.7 \text{ let}$$</p>
+                </div>
+            </div>
+
+            <div class="step">
+                <h3>4. Životní cyklus a celková úspora</h3>
+                <div class="calculation">
+                    <p><strong>Předpokládaná životnost okna:</strong> 25 let</p>
+
+                    <p><strong>Celková úspora za životnost:</strong></p>
+                    <p>$$N_{celkem} = 2\,572 \times 25 = 64\,300 \text{ Kč}$$</p>
+
+                    <p><strong>Čistý zisk:</strong></p>
+                    <p>$$Zisk = 64\,300 - 12\,000 = 52\,300 \text{ Kč}$$</p>
+
+                    <p><strong>Rentabilita investice:</strong></p>
+                    <p>$$ROI = \frac{52\,300}{12\,000} \times 100\% = 436\%$$</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="calculator">
+            <h2>Kalkulačka výměny oken</h2>
+            <div class="calculator-panel">
+                <div class="input-group">
+                    <label for="windowArea">Plocha okna [m²]:</label>
+                    <input type="number" id="windowArea" value="1.8" step="0.1" min="0.1">
+                </div>
+                <div class="input-group">
+                    <label for="uOld">Součinitel prostupu staré okno U [W/(m²·K)]:</label>
+                    <input type="number" id="uOld" value="5.5" step="0.1" min="1">
+                </div>
+                <div class="input-group">
+                    <label for="uNew">Součinitel prostupu nové okno U [W/(m²·K)]:</label>
+                    <input type="number" id="uNew" value="0.7" step="0.1" min="0.1">
+                </div>
+                <div class="input-group">
+                    <label for="tempIn">Vnitřní teplota [°C]:</label>
+                    <input type="number" id="tempIn" value="21" step="1">
+                </div>
+                <div class="input-group">
+                    <label for="tempOut">Venkovní teplota [°C]:</label>
+                    <input type="number" id="tempOut" value="-10" step="1">
+                </div>
+                <div class="input-group">
+                    <label for="heatingDays">Topných dnů/rok:</label>
+                    <input type="number" id="heatingDays" value="200" step="1" min="100" max="300">
+                </div>
+                <div class="input-group">
+                    <label for="energyPrice">Cena tepla [Kč/kWh]:</label>
+                    <input type="number" id="energyPrice" value="2.00" step="0.01" min="0">
+                </div>
+                <div class="input-group">
+                    <label for="windowCost">Cena nového okna [Kč]:</label>
+                    <input type="number" id="windowCost" value="12000" step="100" min="0">
+                </div>
+                <div class="input-group">
+                    <label for="lifespan">Životnost okna [let]:</label>
+                    <input type="number" id="lifespan" value="25" step="1" min="10" max="50">
+                </div>
+                <button onclick="calculateWindows()">Vypočítat návratnost</button>
+            </div>
+
+            <div id="results" class="results">
+                <h3>Výsledky porovnání:</h3>
+                <div class="comparison-table">
+                    <table>
+                        <tr>
+                            <th></th>
+                            <th>Staré okno</th>
+                            <th>Nové okno</th>
+                            <th>Úspora</th>
+                        </tr>
+                        <tr>
+                            <td>Součinitel prostupu U [W/(m²·K)]</td>
+                            <td id="displayUOld">5.5</td>
+                            <td id="displayUNew">0.7</td>
+                            <td id="uImprovement">87.3%</td>
+                        </tr>
+                        <tr>
+                            <td>Tepelný tok [W]</td>
+                            <td id="qOldResult">307</td>
+                            <td id="qNewResult">39</td>
+                            <td id="qSavingResult">268 W</td>
+                        </tr>
+                        <tr>
+                            <td>Roční náklady [Kč]</td>
+                            <td id="costOldResult">2,948</td>
+                            <td id="costNewResult">376</td>
+                            <td id="costSavingResult">2,572</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="economic-results">
+                    <div class="result-item highlight">
+                        <strong>Investiční náklady:</strong> <span id="investment">12,000</span> Kč
+                    </div>
+                    <div class="result-item highlight">
+                        <strong>Doba návratnosti:</strong> <span id="paybackTime">4.7</span> let
+                    </div>
+                    <div class="result-item highlight">
+                        <strong>Roční úspora energie:</strong> <span id="annualEnergySaving">1,286</span> kWh
+                    </div>
+                    <div class="result-item success">
+                        <strong>Celková úspora za životnost:</strong> <span id="totalSaving">64,300</span> Kč
+                    </div>
+                    <div class="result-item success">
+                        <strong>Čistý zisk:</strong> <span id="netProfit">52,300</span> Kč
+                    </div>
+                    <div class="result-item success">
+                        <strong>Rentabilita (ROI):</strong> <span id="roi">436</span> %
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="additional-benefits">
+            <h2>Další přínosy výměny oken</h2>
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <h4>🔇 Lepší akustická izolace</h4>
+                    <p>Trojsklo výrazně snižuje pronikání hluku z venku</p>
+                </div>
+                <div class="benefit-item">
+                    <h4>🌡️ Vyšší povrchová teplota</h4>
+                    <p>Menší tepelný komfort, méně kondenzace</p>
+                </div>
+                <div class="benefit-item">
+                    <h4>🏠 Vyšší hodnota nemovitosti</h4>
+                    <p>Modernizace zvyšuje tržní cenu domu</p>
+                </div>
+                <div class="benefit-item">
+                    <h4>🌍 Snížení CO₂ emisí</h4>
+                    <p>Nižší spotřeba energie = menší ekologická stopa</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="conclusion">
+            <h2>Závěr</h2>
+            <div class="summary">
+                <p>Výměna starých oken za moderna trojskla je velmi výhodná investice:</p>
+                <ul>
+                    <li><strong>Návratnost 4.7 let</strong> je výborná pro stavební investici</li>
+                    <li><strong>Úspora energie 87.3%</strong> je dramatická</li>
+                    <li><strong>Rentabilita 436%</strong> za životnost je vynikající</li>
+                    <li><strong>Čistý zisk 52,300 Kč</strong> na jedno okno za 25 let</li>
+                </ul>
+
+                <div class="note tip">
+                    <p><strong>Doporučení:</strong></p>
+                    <ul>
+                        <li>Výměnu oken realizovat při renovaci fasády</li>
+                        <li>Zvážit dotační programy (Panel, Zelená úsporám)</li>
+                        <li>Investovat do kvalitních oken s certifikátem</li>
+                        <li>Nezapomenout na správné osazení (těsnost)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        function calculateWindows() {
+            // Získání hodnot z formuláře
+            const area = parseFloat(document.getElementById('windowArea').value);
+            const uOld = parseFloat(document.getElementById('uOld').value);
+            const uNew = parseFloat(document.getElementById('uNew').value);
+            const tempIn = parseFloat(document.getElementById('tempIn').value);
+            const tempOut = parseFloat(document.getElementById('tempOut').value);
+            const heatingDays = parseFloat(document.getElementById('heatingDays').value);
+            const energyPrice = parseFloat(document.getElementById('energyPrice').value);
+            const windowCost = parseFloat(document.getElementById('windowCost').value);
+            const lifespan = parseFloat(document.getElementById('lifespan').value);
+
+            // Výpočty
+            const tempDiff = tempIn - tempOut;
+            const qOld = uOld * area * tempDiff;
+            const qNew = uNew * area * tempDiff;
+            const qSaving = qOld - qNew;
+            const improvementPercent = (qSaving / qOld) * 100;
+
+            // Roční úspory
+            const annualEnergySaving = qSaving * 24 * heatingDays / 1000; // kWh
+            const annualCostSaving = annualEnergySaving * energyPrice;
+
+            // Ekonomické ukazatele
+            const paybackTime = windowCost / annualCostSaving;
+            const totalSaving = annualCostSaving * lifespan;
+            const netProfit = totalSaving - windowCost;
+            const roi = (netProfit / windowCost) * 100;
+
+            // Roční náklady
+            const costOld = (qOld * 24 * heatingDays / 1000) * energyPrice;
+            const costNew = (qNew * 24 * heatingDays / 1000) * energyPrice;
+
+            // Zobrazení výsledků
+            document.getElementById('displayUOld').textContent = uOld.toFixed(1);
+            document.getElementById('displayUNew').textContent = uNew.toFixed(1);
+            document.getElementById('uImprovement').textContent = improvementPercent.toFixed(1) + '%';
+
+            document.getElementById('qOldResult').textContent = Math.round(qOld);
+            document.getElementById('qNewResult').textContent = Math.round(qNew);
+            document.getElementById('qSavingResult').textContent = Math.round(qSaving) + ' W';
+
+            document.getElementById('costOldResult').textContent = Math.round(costOld).toLocaleString('cs-CZ');
+            document.getElementById('costNewResult').textContent = Math.round(costNew).toLocaleString('cs-CZ');
+            document.getElementById('costSavingResult').textContent = Math.round(annualCostSaving).toLocaleString('cs-CZ');
+
+            document.getElementById('investment').textContent = Math.round(windowCost).toLocaleString('cs-CZ');
+            document.getElementById('paybackTime').textContent = paybackTime.toFixed(1);
+            document.getElementById('annualEnergySaving').textContent = Math.round(annualEnergySaving).toLocaleString('cs-CZ');
+            document.getElementById('totalSaving').textContent = Math.round(totalSaving).toLocaleString('cs-CZ');
+            document.getElementById('netProfit').textContent = Math.round(netProfit).toLocaleString('cs-CZ');
+            document.getElementById('roi').textContent = Math.round(roi);
+        }
+
+        // Spustit výpočet při načtení stránky
+        window.onload = calculateWindows;
+    </script>
+</body>
+</html>

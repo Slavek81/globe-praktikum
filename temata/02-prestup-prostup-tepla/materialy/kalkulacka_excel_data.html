@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Kalkulačka prostupu tepla - Data pro Excel</title>
+    <style>
+        body { font-family: Arial; margin: 20px; }
+        h1, h2 { color: #2c5530; }
+        table { border-collapse: collapse; margin: 10px 0; }
+        th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+        th { background-color: #f0f0f0; font-weight: bold; }
+        .formula { background-color: #e8f5e8; font-family: monospace; }
+        .input { background-color: #fff3cd; }
+        .output { background-color: #e8f5e8; }
+        .note { background-color: #f8f9fa; padding: 10px; border-left: 4px solid #007bff; margin: 10px 0; }
+    </style>
+</head>
+<body>
+    <h1>Kalkulačka prostupu tepla - Excel šablona</h1>
+
+    <div class="note">
+        <strong>Instrukce:</strong> Zkopírujte níže uvedené tabulky do Excelu. Žluté buňky jsou pro vstupní data, zelené obsahují vzorce pro výpočty.
+    </div>
+
+    <h2>1. Kalkulačka pro rovinnou stěnu</h2>
+
+    <table>
+        <tr><th colspan="4">PROSTUP TEPLA ROVINNOU STĚNOU</th></tr>
+        <tr><th>Parametr</th><th>Symbol</th><th>Hodnota</th><th>Jednotka</th></tr>
+
+        <tr><td colspan="4"><strong>VSTUPNÍ DATA</strong></td></tr>
+        <tr class="input"><td>Teplota vnitřní</td><td>T_in</td><td>20</td><td>°C</td></tr>
+        <tr class="input"><td>Teplota venkovní</td><td>T_out</td><td>-15</td><td>°C</td></tr>
+        <tr class="input"><td>Plocha stěny</td><td>A</td><td>10</td><td>m²</td></tr>
+        <tr class="input"><td>Součinitel přestupu vnitřní</td><td>alpha_i</td><td>8</td><td>W/(m²·K)</td></tr>
+        <tr class="input"><td>Součinitel přestupu venkovní</td><td>alpha_e</td><td>25</td><td>W/(m²·K)</td></tr>
+
+        <tr><td colspan="4"><strong>VRSTVY STĚNY</strong></td></tr>
+        <tr class="input"><td>Vrstva 1 - tloušťka</td><td>d1</td><td>0.015</td><td>m</td></tr>
+        <tr class="input"><td>Vrstva 1 - tepelná vodivost</td><td>lambda1</td><td>0.8</td><td>W/(m·K)</td></tr>
+        <tr class="input"><td>Vrstva 2 - tloušťka</td><td>d2</td><td>0.25</td><td>m</td></tr>
+        <tr class="input"><td>Vrstva 2 - tepelná vodivost</td><td>lambda2</td><td>1.4</td><td>W/(m·K)</td></tr>
+        <tr class="input"><td>Vrstva 3 - tloušťka</td><td>d3</td><td>0.10</td><td>m</td></tr>
+        <tr class="input"><td>Vrstva 3 - tepelná vodivost</td><td>lambda3</td><td>0.04</td><td>W/(m·K)</td></tr>
+        <tr class="input"><td>Vrstva 4 - tloušťka</td><td>d4</td><td>0.015</td><td>m</td></tr>
+        <tr class="input"><td>Vrstva 4 - tepelná vodivost</td><td>lambda4</td><td>0.8</td><td>W/(m·K)</td></tr>
+
+        <tr><td colspan="4"><strong>VÝPOČTY</strong></td></tr>
+        <tr class="output"><td>Odpor přestupu vnitřní</td><td>R_si</td><td class="formula">=1/alpha_i</td><td>m²·K/W</td></tr>
+        <tr class="output"><td>Odpor vrstvy 1</td><td>R1</td><td class="formula">=d1/lambda1</td><td>m²·K/W</td></tr>
+        <tr class="output"><td>Odpor vrstvy 2</td><td>R2</td><td class="formula">=d2/lambda2</td><td>m²·K/W</td></tr>
+        <tr class="output"><td>Odpor vrstvy 3</td><td>R3</td><td class="formula">=d3/lambda3</td><td>m²·K/W</td></tr>
+        <tr class="output"><td>Odpor vrstvy 4</td><td>R4</td><td class="formula">=d4/lambda4</td><td>m²·K/W</td></tr>
+        <tr class="output"><td>Odpor přestupu venkovní</td><td>R_se</td><td class="formula">=1/alpha_e</td><td>m²·K/W</td></tr>
+        <tr class="output"><td>Celkový odpor</td><td>R_total</td><td class="formula">=R_si+R1+R2+R3+R4+R_se</td><td>m²·K/W</td></tr>
+        <tr class="output"><td>Součinitel prostupu</td><td>U</td><td class="formula">=1/R_total</td><td>W/(m²·K)</td></tr>
+        <tr class="output"><td>Teplotní rozdíl</td><td>dT</td><td class="formula">=T_in-T_out</td><td>K</td></tr>
+        <tr class="output"><td>Tepelný tok</td><td>Q</td><td class="formula">=U*A*dT</td><td>W</td></tr>
+        <tr class="output"><td>Roční spotřeba (8760h)</td><td>E_year</td><td class="formula">=Q*8760/1000</td><td>kWh/rok</td></tr>
+    </table>
+
+    <h2>2. Kalkulačka pro válcové potrubí</h2>
+
+    <table>
+        <tr><th colspan="4">PROSTUP TEPLA VÁLCOVÝM POTRUBÍM</th></tr>
+        <tr><th>Parametr</th><th>Symbol</th><th>Hodnota</th><th>Jednotka</th></tr>
+
+        <tr><td colspan="4"><strong>VSTUPNÍ DATA</strong></td></tr>
+        <tr class="input"><td>Teplota média</td><td>T_medium</td><td>80</td><td>°C</td></tr>
+        <tr class="input"><td>Teplota okolí</td><td>T_ambient</td><td>20</td><td>°C</td></tr>
+        <tr class="input"><td>Délka potrubí</td><td>L</td><td>10</td><td>m</td></tr>
+        <tr class="input"><td>Součinitel přestupu vnitřní</td><td>alpha_i</td><td>500</td><td>W/(m²·K)</td></tr>
+        <tr class="input"><td>Součinitel přestupu venkovní</td><td>alpha_o</td><td>25</td><td>W/(m²·K)</td></tr>
+
+        <tr><td colspan="4"><strong>ROZMĚRY POTRUBÍ</strong></td></tr>
+        <tr class="input"><td>Vnitřní průměr</td><td>d_i</td><td>0.050</td><td>m</td></tr>
+        <tr class="input"><td>Vnější průměr potrubí</td><td>d_1</td><td>0.060</td><td>m</td></tr>
+        <tr class="input"><td>Vnější průměr izolace</td><td>d_o</td><td>0.160</td><td>m</td></tr>
+
+        <tr><td colspan="4"><strong>MATERIÁLY</strong></td></tr>
+        <tr class="input"><td>Tepelná vodivost potrubí</td><td>lambda_pipe</td><td>50</td><td>W/(m·K)</td></tr>
+        <tr class="input"><td>Tepelná vodivost izolace</td><td>lambda_ins</td><td>0.04</td><td>W/(m·K)</td></tr>
+
+        <tr><td colspan="4"><strong>VÝPOČTY</strong></td></tr>
+        <tr class="output"><td>Poloměr vnitřní</td><td>r_i</td><td class="formula">=d_i/2</td><td>m</td></tr>
+        <tr class="output"><td>Poloměr vnější potrubí</td><td>r_1</td><td class="formula">=d_1/2</td><td>m</td></tr>
+        <tr class="output"><td>Poloměr vnější izolace</td><td>r_o</td><td class="formula">=d_o/2</td><td>m</td></tr>
+
+        <tr class="output"><td>Odpor přestupu vnitřní</td><td>R_i</td><td class="formula">=1/(alpha_i*2*PI()*r_i)</td><td>m·K/W</td></tr>
+        <tr class="output"><td>Odpor stěny potrubí</td><td>R_pipe</td><td class="formula">=LN(r_1/r_i)/(2*PI()*lambda_pipe)</td><td>m·K/W</td></tr>
+        <tr class="output"><td>Odpor izolace</td><td>R_ins</td><td class="formula">=LN(r_o/r_1)/(2*PI()*lambda_ins)</td><td>m·K/W</td></tr>
+        <tr class="output"><td>Odpor přestupu venkovní</td><td>R_o</td><td class="formula">=1/(alpha_o*2*PI()*r_o)</td><td>m·K/W</td></tr>
+        <tr class="output"><td>Celkový odpor na 1m</td><td>R_total_per_m</td><td class="formula">=R_i+R_pipe+R_ins+R_o</td><td>m·K/W</td></tr>
+
+        <tr class="output"><td>Teplotní rozdíl</td><td>dT</td><td class="formula">=T_medium-T_ambient</td><td>K</td></tr>
+        <tr class="output"><td>Tepelný tok na 1m</td><td>q</td><td class="formula">=dT/R_total_per_m</td><td>W/m</td></tr>
+        <tr class="output"><td>Celkový tepelný tok</td><td>Q_total</td><td class="formula">=q*L</td><td>W</td></tr>
+        <tr class="output"><td>Roční ztráta (8760h)</td><td>E_loss_year</td><td class="formula">=Q_total*8760/1000</td><td>kWh/rok</td></tr>
+    </table>
+
+    <h2>3. Výpočet teplot v konstrukci</h2>
+
+    <table>
+        <tr><th colspan="4">TEPLOTY V KONSTRUKCI</th></tr>
+        <tr><th>Pozice</th><th>Teplota</th><th>Vzorec pro Excel</th><th>Jednotka</th></tr>
+
+        <tr><td>Vnitřní povrch</td><td>T_si</td><td class="formula">=T_in-Q*R_si/A</td><td>°C</td></tr>
+        <tr><td>Za vrstvou 1</td><td>T1</td><td class="formula">=T_si-Q*R1/A</td><td>°C</td></tr>
+        <tr><td>Za vrstvou 2</td><td>T2</td><td class="formula">=T1-Q*R2/A</td><td>°C</td></tr>
+        <tr><td>Za vrstvou 3</td><td>T3</td><td class="formula">=T2-Q*R3/A</td><td>°C</td></tr>
+        <tr><td>Vnější povrch</td><td>T_se</td><td class="formula">=T3-Q*R4/A</td><td>°C</td></tr>
+    </table>
+
+    <h2>4. Výpočet teplot pro potrubí</h2>
+
+    <table>
+        <tr><th colspan="4">TEPLOTY V POTRUBÍ</th></tr>
+        <tr><th>Pozice</th><th>Teplota</th><th>Vzorec pro Excel</th><th>Jednotka</th></tr>
+
+        <tr><td>Vnitřní povrch</td><td>T_pipe_inner</td><td class="formula">=T_medium-q*R_i</td><td>°C</td></tr>
+        <tr><td>Vnější povrch potrubí</td><td>T_pipe_outer</td><td class="formula">=T_pipe_inner-q*R_pipe</td><td>°C</td></tr>
+        <tr><td>Vnější povrch izolace</td><td>T_ins_outer</td><td class="formula">=T_pipe_outer-q*R_ins</td><td>°C</td></tr>
+    </table>
+
+    <h2>5. Srovnání variant</h2>
+
+    <table>
+        <tr><th colspan="5">SROVNÁNÍ VARIANT IZOLACE</th></tr>
+        <tr><th>Varianta</th><th>Tloušťka izolace [mm]</th><th>Tepelný tok [W]</th><th>Roční ztráta [kWh]</th><th>Úspora [%]</th></tr>
+
+        <tr class="input"><td>Bez izolace</td><td>0</td><td class="formula">=Q_bez_izolace</td><td class="formula">=Q_bez_izolace*8760/1000</td><td>0</td></tr>
+        <tr class="input"><td>Izolace 50mm</td><td>50</td><td class="formula">=Q_50mm</td><td class="formula">=Q_50mm*8760/1000</td><td class="formula">=(1-Q_50mm/Q_bez_izolace)*100</td></tr>
+        <tr class="input"><td>Izolace 100mm</td><td>100</td><td class="formula">=Q_100mm</td><td class="formula">=Q_100mm*8760/1000</td><td class="formula">=(1-Q_100mm/Q_bez_izolace)*100</td></tr>
+        <tr class="input"><td>Izolace 150mm</td><td>150</td><td class="formula">=Q_150mm</td><td class="formula">=Q_150mm*8760/1000</td><td class="formula">=(1-Q_150mm/Q_bez_izolace)*100</td></tr>
+    </table>
+
+    <div class="note">
+        <strong>Pokyny pro použití v Excelu:</strong>
+        <ol>
+            <li>Zkopírujte tabulky do Excelu (každou na samostatný list)</li>
+            <li>Žluté buňky jsou pro vstupní data - změňte podle vašich potřeb</li>
+            <li>Do zelených buněk vložte uvedené vzorce (bez znaku =)</li>
+            <li>Referenční názvy buněk můžete nahradit odkazy typu C3, D5 apod.</li>
+            <li>Vzorce používají funkce PI() a LN() - přeložte do češtiny pokud máte český Excel</li>
+            <li>Vytvorte grafy pro vizualizaci výsledků</li>
+        </ol>
+    </div>
+
+    <div class="note">
+        <strong>Typické hodnoty pro rychlé testování:</strong><br>
+        <strong>Součinitele přestupu tepla α [W/(m²·K)]:</strong><br>
+        - Vzduch v místnosti: 8-10<br>
+        - Venkovní vzduch: 20-25<br>
+        - Proudící voda: 500-2000<br>
+        - Pára: 5000-15000<br><br>
+
+        <strong>Tepelné vodivosti λ [W/(m·K)]:</strong><br>
+        - Beton: 1.4-1.7<br>
+        - Cihla: 0.6-0.8<br>
+        - Minerální vata: 0.035-0.045<br>
+        - Polystyren: 0.035-0.045<br>
+        - Ocel: 45-55<br>
+        - Měď: 400
+    </div>
+
+</body>
+</html>

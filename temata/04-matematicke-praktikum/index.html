@@ -4,12 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>04 - Matematické praktikum | Praktické aplikace fyziky a chemie</title>
-    <meta name="description" content="Numerické metody, Python, Excel - praktické nástroje.">
+    <meta name="description" content="Numerické metody, interpolace, aproximace a statistická analýza dat pro řešení praktických úloh.">
     <link rel="stylesheet" href="../../css/main.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+        window.MathJax = {
+            tex: {inlineMath: [['$', '$'], ['\\(', '\\)']]},
+            svg: {fontCache: 'global'}
+        };
+    </script>
 </head>
 <body>
     <!-- Header -->
@@ -22,59 +30,325 @@
             <nav class="nav">
                 <a href="../../index.html" class="nav-link">Domů</a>
             </nav>
+            <div class="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
         </div>
     </header>
 
-    <!-- Topic Header -->
+    <!-- Lecture Header -->
     <section class="page-hero">
         <div class="container">
             <div class="lecture-hero-content">
                 <div class="lecture-number">04</div>
                 <div class="lecture-info">
                     <h1>Matematické praktikum</h1>
-                    <p class="lecture-subtitle">Numerické metody, Python, Excel - praktické nástroje</p>
+                    <p class="lecture-subtitle">Numerické metody a analýza dat pro praktické aplikace</p>
                     <div class="lecture-meta-hero">
-                        <span><i class="fas fa-clock"></i> 3 hodiny</span>
-                        <span><i class="fab fa-python"></i> Programování</span>
-                        <span><i class="fas fa-calculator"></i> Simulace</span>
+                        <span><i class="fas fa-clock"></i> 4 hodiny</span>
+                        <span><i class="fas fa-users"></i> Interaktivní cvičení</span>
+                        <span><i class="fas fa-calculator"></i> Python & Excel</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Content Under Development -->
+    <!-- Quick Navigation -->
     <section class="section">
         <div class="container">
-            <div class="development-notice">
-                <div class="notice-icon">
-                    <i class="fas fa-hard-hat"></i>
+            <div class="quick-nav">
+                <a href="#objectives" class="quick-nav-item">
+                    <i class="fas fa-target"></i>
+                    <span>Cíle</span>
+                </a>
+                <a href="#presentations" class="quick-nav-item">
+                    <i class="fas fa-presentation"></i>
+                    <span>Prezentace</span>
+                </a>
+                <a href="#theory" class="quick-nav-item">
+                    <i class="fas fa-book"></i>
+                    <span>Teorie</span>
+                </a>
+                <a href="#examples" class="quick-nav-item">
+                    <i class="fas fa-calculator"></i>
+                    <span>Příklady</span>
+                </a>
+                <a href="#materials" class="quick-nav-item">
+                    <i class="fas fa-download"></i>
+                    <span>Materiály</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Learning Objectives -->
+    <section id="objectives" class="section section-gray">
+        <div class="container">
+            <h2 class="section-title">Cíle přednášky</h2>
+            <div class="objectives-grid">
+                <div class="objective-card">
+                    <div class="objective-icon">
+                        <i class="fas fa-square-root-alt"></i>
+                    </div>
+                    <h3>Numerické metody</h3>
+                    <p>Pochopení a aplikace numerických metod pro hledání kořenů funkcí, řešení rovnic a soustav rovnic.</p>
                 </div>
-                <h2>Obsah se připravuje</h2>
-                <p>Na obsahu tohoto tématu intenzivně pracujeme. Brzy zde najdete:</p>
-                <div class="upcoming-content">
-                    <div class="content-item">
-                        <i class="fas fa-target"></i>
-                        <span>Cíle a očekávané výstupy</span>
+                <div class="objective-card">
+                    <div class="objective-icon">
+                        <i class="fas fa-chart-line"></i>
                     </div>
-                    <div class="content-item">
-                        <i class="fas fa-presentation"></i>
-                        <span>Interaktivní prezentace</span>
+                    <h3>Interpolace a aproximace</h3>
+                    <p>Zvládnutí technik interpolace dat a aproximace funkcí pomocí polynomů a regresních metod.</p>
+                </div>
+                <div class="objective-card">
+                    <div class="objective-icon">
+                        <i class="fas fa-chart-bar"></i>
                     </div>
-                    <div class="content-item">
+                    <h3>Statistická analýza</h3>
+                    <p>Aplikace statistických metod pro zpracování experimentálních dat a vyhodnocování nejistot měření.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Theoretical Foundations -->
+    <section id="theory" class="section">
+        <div class="container">
+            <h2 class="section-title">Teoretické základy</h2>
+
+            <div class="theory-section">
+                <h3>1. Numerické metody</h3>
+                <p>Numerické metody jsou algoritmy pro přibližné řešení matematických problémů, které nelze řešit analyticky nebo je analytické řešení příliš složité.</p>
+
+                <div class="formula-box">
+                    <h4>Newton-Raphsonova metoda</h4>
+                    <p>$$x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}$$</p>
+                    <p>Rychlá kvadratická konvergence pro hladké funkce s dobrou počáteční aproximací.</p>
+                </div>
+
+                <div class="formula-box">
+                    <h4>Metoda bisekce</h4>
+                    <p>$$c = \frac{a + b}{2}$$</p>
+                    <p>Spolehlivá metoda s lineární konvergencí, vhodná pro spojité funkce měnící znaménko.</p>
+                </div>
+            </div>
+
+            <div class="theory-section">
+                <h3>2. Interpolace a aproximace</h3>
+                <p>Interpolace hledá funkci procházející přesně zadanými body, zatímco aproximace minimalizuje celkovou chybu.</p>
+
+                <div class="formula-box">
+                    <h4>Lagrangeův interpolační polynom</h4>
+                    <p>$$L(x) = \sum_{j=0}^{n} y_j \prod_{k=0, k \neq j}^{n} \frac{x - x_k}{x_j - x_k}$$</p>
+                    <p>Polynom stupně nejvýše n procházející n+1 body.</p>
+                </div>
+
+                <div class="formula-box">
+                    <h4>Metoda nejmenších čtverců</h4>
+                    <p>$$S = \sum_{i=1}^{n} [y_i - f(x_i)]^2 \rightarrow \min$$</p>
+                    <p>Minimalizace součtu čtverců odchylek pro nalezení nejlepší aproximace.</p>
+                </div>
+            </div>
+
+            <div class="theory-section">
+                <h3>3. Statistická analýza</h3>
+                <p>Statistické metody umožňují analyzovat experimentální data, určovat nejistoty a testovat hypotézy.</p>
+
+                <div class="formula-box">
+                    <h4>Průměr a směrodatná odchylka</h4>
+                    <p>$$\bar{x} = \frac{1}{n}\sum_{i=1}^{n} x_i$$</p>
+                    <p>$$s = \sqrt{\frac{1}{n-1}\sum_{i=1}^{n} (x_i - \bar{x})^2}$$</p>
+                    <p>Základní charakteristiky souboru dat.</p>
+                </div>
+
+                <div class="formula-box">
+                    <h4>Nejistota typu A</h4>
+                    <p>$$u_A = \frac{s}{\sqrt{n}}$$</p>
+                    <p>Standardní nejistota průměru z n nezávislých měření.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Presentations -->
+    <section id="presentations" class="section section-gray">
+        <div class="container">
+            <h2 class="section-title">Interaktivní prezentace</h2>
+            <div class="presentations-grid">
+                <a href="prezentace/01_numericke_metody.html" class="presentation-card" target="_blank">
+                    <div class="presentation-preview">
+                        <i class="fas fa-square-root-alt"></i>
+                    </div>
+                    <div class="presentation-info">
+                        <h3>Numerické metody</h3>
+                        <p>Newton-Raphson, bisekce, sečna, pevný bod a regula falsi metody pro hledání kořenů funkcí</p>
+                        <div class="presentation-meta">
+                            <span><i class="fas fa-external-link-alt"></i> Otevře v novém okně</span>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="prezentace/02_interpolace_aproximace.html" class="presentation-card" target="_blank">
+                    <div class="presentation-preview">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="presentation-info">
+                        <h3>Interpolace a aproximace</h3>
+                        <p>Lineární a polynomická interpolace, kubické spliny, metoda nejmenších čtverců a regrese</p>
+                        <div class="presentation-meta">
+                            <span><i class="fas fa-external-link-alt"></i> Otevře v novém okně</span>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="prezentace/03_statistika_analyza.html" class="presentation-card" target="_blank">
+                    <div class="presentation-preview">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <div class="presentation-info">
+                        <h3>Statistika a analýza dat</h3>
+                        <p>Popisná statistika, testování hypotéz, korelace, ANOVA, chi-kvadrát test a analýza nejistot</p>
+                        <div class="presentation-meta">
+                            <span><i class="fas fa-external-link-alt"></i> Otevře v novém okně</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Examples Section -->
+    <section id="examples" class="section">
+        <div class="container">
+            <h2 class="section-title">Praktické příklady</h2>
+
+            <div class="examples-categories">
+                <div class="example-category">
+                    <h3><i class="fas fa-square-root-alt"></i> Numerické metody</h3>
+                    <div class="example-list">
+                        <a href="priklady/01_koren_funkce.html" class="example-item" target="_blank">
+                            <h4>1. Hledání kořene rovnice</h4>
+                            <p>Newton-Raphsonova metoda pro $x^3 - 2x - 5 = 0$</p>
+                            <span class="difficulty easy">Začátečník</span>
+                        </a>
+                        <a href="priklady/05_soustavy.html" class="example-item" target="_blank">
+                            <h4>2. Řešení soustavy rovnic</h4>
+                            <p>Gaussova eliminační metoda pro systém tří rovnic</p>
+                            <span class="difficulty medium">Středně pokročilý</span>
+                        </a>
+                        <a href="priklady/06_optimalizace.html" class="example-item" target="_blank">
+                            <h4>3. Optimalizace procesu</h4>
+                            <p>Nalezení optima kvadratické funkce pomocí derivace</p>
+                            <span class="difficulty medium">Středně pokročilý</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="example-category">
+                    <h3><i class="fas fa-chart-line"></i> Interpolace a aproximace</h3>
+                    <div class="example-list">
+                        <a href="priklady/02_interpolace.html" class="example-item" target="_blank">
+                            <h4>4. Lineární interpolace</h4>
+                            <p>Interpolace tlaku při různých teplotách</p>
+                            <span class="difficulty easy">Začátečník</span>
+                        </a>
+                        <a href="priklady/03_regrese.html" class="example-item" target="_blank">
+                            <h4>5. Regresní analýza</h4>
+                            <p>Proložení experimentálních dat lineární funkcí</p>
+                            <span class="difficulty medium">Středně pokročilý</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="example-category">
+                    <h3><i class="fas fa-chart-bar"></i> Statistická analýza</h3>
+                    <div class="example-list">
+                        <a href="priklady/04_statistika.html" class="example-item" target="_blank">
+                            <h4>6. Analýza měření hustoty</h4>
+                            <p>Výpočet průměru, směrodatné odchylky a nejistoty</p>
+                            <span class="difficulty easy">Začátečník</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Materials -->
+    <section class="section bg-white" id="materials">
+        <div class="container">
+            <h2 class="section-title"><i class="fas fa-download"></i> Studijní materiály</h2>
+            <div class="materials-grid">
+                <div class="material-card">
+                    <div class="material-icon" style="color: #2563eb;">
+                        <i class="fas fa-file-code"></i>
+                    </div>
+                    <h3>Python skripty</h3>
+                    <p>Připravené skripty pro numerické metody, interpolaci a statistiku v Pythonu.</p>
+                    <a href="materialy/python_skripty.zip" class="btn btn-outline" download>
+                        <i class="fas fa-download"></i> Stáhnout skripty
+                    </a>
+                </div>
+
+                <div class="material-card">
+                    <div class="material-icon" style="color: #10b981;">
+                        <i class="fas fa-file-excel"></i>
+                    </div>
+                    <h3>Excel šablony</h3>
+                    <p>Připravené Excel soubory s makry pro řešení typických úloh a analýzu dat.</p>
+                    <a href="materialy/excel_sablony.zip" class="btn btn-outline" download>
+                        <i class="fas fa-download"></i> Stáhnout šablony
+                    </a>
+                </div>
+
+                <div class="material-card">
+                    <div class="material-icon" style="color: #f59e0b;">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <h3>Teoretické podklady</h3>
+                    <p>Kompletní teorie numerických metod, interpolace a statistiky v PDF.</p>
+                    <a href="materialy/teorie_matematicke_praktikum.pdf" class="btn btn-outline" download>
+                        <i class="fas fa-download"></i> Stáhnout PDF
+                    </a>
+                </div>
+
+                <div class="material-card">
+                    <div class="material-icon" style="color: #ef4444;">
                         <i class="fas fa-book"></i>
-                        <span>Teoretické základy</span>
                     </div>
-                    <div class="content-item">
-                        <i class="fas fa-calculator"></i>
-                        <span>Praktické příklady</span>
-                    </div>
-                    <div class="content-item">
-                        <i class="fas fa-download"></i>
-                        <span>Materiály ke stažení</span>
-                    </div>
+                    <h3>Návody a postupy</h3>
+                    <p>Krok za krokem návody pro Python, Excel a statistické software.</p>
+                    <a href="materialy/navody.pdf" class="btn btn-outline" download>
+                        <i class="fas fa-download"></i> Stáhnout návody
+                    </a>
                 </div>
-                <p class="notice-update">Poslední aktualizace: <strong>14. září 2024</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Practice Tools -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title"><i class="fas fa-tools"></i> Praktické nástroje</h2>
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <h3>Online kalkulátor kořenů</h3>
+                    <p>Interaktivní nástroj pro hledání kořenů funkcí různými metodami.</p>
+                    <a href="https://www.wolframalpha.com/" target="_blank" class="btn btn-secondary">Otevřít nástroj</a>
+                </div>
+
+                <div class="tool-card">
+                    <h3>Python online</h3>
+                    <p>Google Colab pro spouštění Python skriptů přímo v prohlížeči.</p>
+                    <a href="https://colab.research.google.com/" target="_blank" class="btn btn-secondary">Otevřít Colab</a>
+                </div>
+
+                <div class="tool-card">
+                    <h3>Desmos grafický kalkulátor</h3>
+                    <p>Výkonný online nástroj pro vykreslování funkcí a analýzu dat.</p>
+                    <a href="https://www.desmos.com/calculator" target="_blank" class="btn btn-secondary">Otevřít Desmos</a>
+                </div>
             </div>
         </div>
     </section>
@@ -92,6 +366,14 @@
             </div>
         </div>
     </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Gymnázium Globe. Vytvořeno pro předmět Praktické aplikace fyziky a chemie.</p>
+            <p>Kontakt: <a href="mailto:kilkovsky@gymglobe.cz">kilkovsky@gymglobe.cz</a></p>
+        </div>
+    </footer>
 
     <script src="../../js/main.js"></script>
 </body>

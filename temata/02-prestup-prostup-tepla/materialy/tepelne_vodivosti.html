@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabulky tepelných vodivostí materiálů</title>
+    <style>
+        @media print {
+            @page {
+                margin: 1.5cm;
+                size: A4;
+            }
+            body {
+                font-family: 'Times New Roman', serif;
+                font-size: 11px;
+                line-height: 1.3;
+                margin: 0;
+                padding: 0;
+            }
+            .page-break { page-break-before: always; }
+        }
+
+        body {
+            font-family: 'Times New Roman', serif;
+            font-size: 11px;
+            line-height: 1.3;
+            margin: 15px;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c5530;
+            border-bottom: 3px solid #2c5530;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+
+        h2 {
+            color: #2c5530;
+            border-bottom: 2px solid #2c5530;
+            padding-bottom: 5px;
+            margin-top: 25px;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        .materials-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 10px 0;
+            font-size: 10px;
+        }
+
+        .materials-table th,
+        .materials-table td {
+            border: 1px solid #333;
+            padding: 4px 6px;
+            text-align: left;
+        }
+
+        .materials-table th {
+            background-color: #2c5530;
+            color: white;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .materials-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .materials-table tr:nth-child(odd) {
+            background-color: #ffffff;
+        }
+
+        .category-header {
+            background-color: #e8f5e8 !important;
+            font-weight: bold;
+            font-style: italic;
+            color: #2c5530;
+        }
+
+        .note {
+            background-color: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 5px;
+            padding: 8px;
+            margin: 10px 0;
+            font-size: 10px;
+        }
+
+        .temp-range {
+            font-style: italic;
+            color: #666;
+        }
+
+        .lambda-value {
+            text-align: center;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Tabulky tepelných vodivostí materiálů</h1>
+
+    <div class="note">
+        <strong>Poznámka:</strong> Hodnoty tepelných vodivostí λ jsou uvedeny při standardních podmínkách (20°C, atmosférický tlak), pokud není uvedeno jinak. Tepelná vodivost se může měnit s teplotou, vlhkostí a dalšími faktory.
+    </div>
+
+    <h2>Stavební materiály</h2>
+
+    <table class="materials-table">
+        <tr>
+            <th>Materiál</th>
+            <th>Hustota<br>[kg/m³]</th>
+            <th>λ [W/(m·K)]</th>
+            <th>Poznámky</th>
+        </tr>
+
+        <tr class="category-header">
+            <td colspan="4">ZDIVO A BETONY</td>
+        </tr>
+        <tr>
+            <td>Beton prostý</td>
+            <td>2200-2400</td>
+            <td class="lambda-value">1.4-1.7</td>
+            <td>Běžný stavební beton</td>
+        </tr>
+        <tr>
+            <td>Beton železový</td>
+            <td>2400-2500</td>
+            <td class="lambda-value">1.6-2.0</td>
+            <td>S ocelovou výztuží</td>
+        </tr>
+        <tr>
+            <td>Beton lehký</td>
+            <td>800-1200</td>
+            <td class="lambda-value">0.3-0.6</td>
+            <td>S lehkými kameniva</td>
+        </tr>
+        <tr>
+            <td>Pórobeton</td>
+            <td>400-800</td>
+            <td class="lambda-value">0.1-0.25</td>
+            <td>Ytong, Hebel</td>
+        </tr>
+        <tr>
+            <td>Cihla plná pálená</td>
+            <td>1600-1900</td>
+            <td class="lambda-value">0.6-0.8</td>
+            <td>Tradiční cihlové zdivo</td>
+        </tr>
+        <tr>
+            <td>Cihla děrovaná</td>
+            <td>1200-1400</td>
+            <td class="lambda-value">0.35-0.5</td>
+            <td>S dutinami</td>
+        </tr>
+        <tr>
+            <td>Tvárnice betonové plné</td>
+            <td>1800-2200</td>
+            <td class="lambda-value">0.9-1.4</td>
+            <td>Standardní tvárnice</td>
+        </tr>
+        <tr>
+            <td>Tvárnice betonové duté</td>
+            <td>1000-1400</td>
+            <td class="lambda-value">0.3-0.7</td>
+            <td>S dutinami</td>
+        </tr>
+
+        <tr class="category-header">
+            <td colspan="4">IZOLAČNÍ MATERIÁLY</td>
+        </tr>
+        <tr>
+            <td>Polystyren EPS</td>
+            <td>15-30</td>
+            <td class="lambda-value">0.035-0.045</td>
+            <td>Expandovaný polystyren</td>
+        </tr>
+        <tr>
+            <td>Polystyren XPS</td>
+            <td>25-45</td>
+            <td class="lambda-value">0.025-0.035</td>
+            <td>Extrudovaný polystyren</td>
+        </tr>
+        <tr>
+            <td>Minerální vata</td>
+            <td>20-200</td>
+            <td class="lambda-value">0.035-0.045</td>
+            <td>Skleněná/kamenná vata</td>
+        </tr>
+        <tr>
+            <td>Polyuretanová pěna</td>
+            <td>30-50</td>
+            <td class="lambda-value">0.02-0.03</td>
+            <td>Nejvyšší izolační schopnost</td>
+        </tr>
+        <tr>
+            <td>Fenolická pěna</td>
+            <td>35-50</td>
+            <td class="lambda-value">0.018-0.025</td>
+            <td>Velmi dobrá izolace</td>
+        </tr>
+        <tr>
+            <td>Celulózová izolace</td>
+            <td>30-60</td>
+            <td class="lambda-value">0.038-0.042</td>
+            <td>Ekologická izolace</td>
+        </tr>
+        <tr>
+            <td>Korek</td>
+            <td>100-300</td>
+            <td class="lambda-value">0.04-0.06</td>
+            <td>Přírodní izolace</td>
+        </tr>
+        <tr>
+            <td>Dřevovláknité desky</td>
+            <td>150-300</td>
+            <td class="lambda-value">0.04-0.05</td>
+            <td>Přírodní izolace</td>
+        </tr>
+
+        <tr class="category-header">
+            <td colspan="4">DŘEVO A DŘEVĚNÉ MATERIÁLY</td>
+        </tr>
+        <tr>
+            <td>Smrk, jedle</td>
+            <td>400-500</td>
+            <td class="lambda-value">0.09-0.13</td>
+            <td>Podél vláken</td>
+        </tr>
+        <tr>
+            <td>Dub, buk</td>
+            <td>600-800</td>
+            <td class="lambda-value">0.15-0.20</td>
+            <td>Tvrdé listnaté dřevo</td>
+        </tr>
+        <tr>
+            <td>Překližka</td>
+            <td>500-700</td>
+            <td class="lambda-value">0.12-0.16</td>
+            <td>Lepené vrstvy</td>
+        </tr>
+        <tr>
+            <td>OSB desky</td>
+            <td>550-650</td>
+            <td class="lambda-value">0.10-0.14</td>
+            <td>Orientované třískové desky</td>
+        </tr>
+        <tr>
+            <td>Dřevotříska</td>
+            <td>300-800</td>
+            <td class="lambda-value">0.08-0.15</td>
+            <td>Podle hustoty</td>
+        </tr>
+    </table>
+
+    <div class="page-break"></div>
+
+    <h2>Kovy a slitiny</h2>
+
+    <table class="materials-table">
+        <tr>
+            <th>Materiál</th>
+            <th>Hustota<br>[kg/m³]</th>
+            <th>λ [W/(m·K)]</th>
+            <th>Poznámky</th>
+        </tr>
+
+        <tr class="category-header">
+            <td colspan="4">ČISTÉ KOVY</td>
+        </tr>
+        <tr>
+            <td>Stříbro</td>
+            <td>10500</td>
+            <td class="lambda-value">429</td>
+            <td>Nejvyšší tepelná vodivost</td>
+        </tr>
+        <tr>
+            <td>Měď</td>
+            <td>8960</td>
+            <td class="lambda-value">401</td>
+            <td>Elektroinstalace, výměníky</td>
+        </tr>
+        <tr>
+            <td>Zlato</td>
+            <td>19300</td>
+            <td class="lambda-value">317</td>
+            <td>Elektronika</td>
+        </tr>
+        <tr>
+            <td>Hliník</td>
+            <td>2702</td>
+            <td class="lambda-value">237</td>
+            <td>Lehký kov, výměníky</td>
+        </tr>
+        <tr>
+            <td>Žehlivo</td>
+            <td>7870</td>
+            <td class="lambda-value">80</td>
+            <td>Čisté železo</td>
+        </tr>
+        <tr>
+            <td>Zinek</td>
+            <td>7140</td>
+            <td class="lambda-value">116</td>
+            <td>Povrchové úpravy</td>
+        </tr>
+        <tr>
+            <td>Olovo</td>
+            <td>11340</td>
+            <td class="lambda-value">35</td>
+            <td>Ochranný materiál</td>
+        </tr>
+
+        <tr class="category-header">
+            <td colspan="4">SLITINY A OCELI</td>
+        </tr>
+        <tr>
+            <td>Ocel uhlíková</td>
+            <td>7850</td>
+            <td class="lambda-value">45-55</td>
+            <td>Konstrukce, potrubí</td>
+        </tr>
+        <tr>
+            <td>Ocel nerezová</td>
+            <td>8000</td>
+            <td class="lambda-value">15-25</td>
+            <td>Potravinářství, chemie</td>
+        </tr>
+        <tr>
+            <td>Ocel nástrojová</td>
+            <td>7800</td>
+            <td class="lambda-value">25-35</td>
+            <td>Vysoká tvrdost</td>
+        </tr>
+        <tr>
+            <td>Slitina Al-Si</td>
+            <td>2700</td>
+            <td class="lambda-value">120-180</td>
+            <td>Odlitky, elektronika</td>
+        </tr>
+        <tr>
+            <td>Mosaz</td>
+            <td>8500</td>
+            <td class="lambda-value">85-120</td>
+            <td>Cu-Zn slitina</td>
+        </tr>
+        <tr>
+            <td>Bronz</td>
+            <td>8800</td>
+            <td class="lambda-value">50-90</td>
+            <td>Cu-Sn slitina</td>
+        </tr>
+    </table>
+
+    <h2>Tekutiny</h2>
+
+    <table class="materials-table">
+        <tr>
+            <th>Tekutina</th>
+            <th>Teplota [°C]</th>
+            <th>λ [W/(m·K)]</th>
+            <th>Poznámky</th>
+        </tr>
+
+        <tr class="category-header">
+            <td colspan="4">VODA A VODNÍ ROZTOKY</td>
+        </tr>
+        <tr>
+            <td>Voda destilovaná</td>
+            <td>20</td>
+            <td class="lambda-value">0.598</td>
+            <td>Maximum při 130°C</td>
+        </tr>
+        <tr>
+            <td>Voda</td>
+            <td>0</td>
+            <td class="lambda-value">0.561</td>
+            <td>Bod tuhnutí</td>
+        </tr>
+        <tr>
+            <td>Voda</td>
+            <td>100</td>
+            <td class="lambda-value">0.679</td>
+            <td>Bod varu</td>
+        </tr>
+        <tr>
+            <td>Led</td>
+            <td>0</td>
+            <td class="lambda-value">2.22</td>
+            <td>Krystalická struktura</td>
+        </tr>
+        <tr>
+            <td>Ethylenglykol (50%)</td>
+            <td>20</td>
+            <td class="lambda-value">0.38</td>
+            <td>Nemrznoucí směs</td>
+        </tr>
+        <tr>
+            <td>Propylenglykol (50%)</td>
+            <td>20</td>
+            <td class="lambda-value">0.35</td>
+            <td>Potravinářský nemrznoucí</td>
+        </tr>
+
+        <tr class="category-header">
+            <td colspan="4">PLYNY</td>
+        </tr>
+        <tr>
+            <td>Vzduch suchý</td>
+            <td>20</td>
+            <td class="lambda-value">0.0257</td>
+            <td>Atmosférický tlak</td>
+        </tr>
+        <tr>
+            <td>Vzduch</td>
+            <td>0</td>
+            <td class="lambda-value">0.0243</td>
+            <td>Zimní podmínky</td>
+        </tr>
+        <tr>
+            <td>Vzduch</td>
+            <td>100</td>
+            <td class="lambda-value">0.0314</td>
+            <td>Vysoké teploty</td>
+        </tr>
+        <tr>
+            <td>Vodní pára</td>
+            <td>100</td>
+            <td class="lambda-value">0.0248</td>
+            <td>Sytá pára</td>
+        </tr>
+        <tr>
+            <td>Oxid uhličitý CO₂</td>
+            <td>20</td>
+            <td class="lambda-value">0.0166</td>
+            <td>Chladivo</td>
+        </tr>
+        <tr>
+            <td>Argon</td>
+            <td>20</td>
+            <td class="lambda-value">0.0177</td>
+            <td>Inertní plyn</td>
+        </tr>
+
+        <tr class="category-header">
+            <td colspan="4">OLEJE A KAPALINY</td>
+        </tr>
+        <tr>
+            <td>Motorový olej</td>
+            <td>20</td>
+            <td class="lambda-value">0.15</td>
+            <td>SAE 10W-40</td>
+        </tr>
+        <tr>
+            <td>Transformátorový olej</td>
+            <td>20</td>
+            <td class="lambda-value">0.12</td>
+            <td>Elektroizolační</td>
+        </tr>
+        <tr>
+            <td>Ethanol</td>
+            <td>20</td>
+            <td class="lambda-value">0.17</td>
+            <td>Alkohol</td>
+        </tr>
+        <tr>
+            <td>Glykol</td>
+            <td>20</td>
+            <td class="lambda-value">0.26</td>
+            <td>Nemrznoucí kapalina</td>
+        </tr>
+    </table>
+
+    <div class="page-break"></div>
+
+    <h2>Ostatní materiály</h2>
+
+    <table class="materials-table">
+        <tr>
+            <th>Materiál</th>
+            <th>Hustota<br>[kg/m³]</th>
+            <th>λ [W/(m·K)]</th>
+            <th>Poznámky</th>
+        </tr>
+
+        <tr class="category-header">
+            <td colspan="4">PLASTY A POLYMERY</td>
+        </tr>
+        <tr>
+            <td>Polyethylen PE</td>
+            <td>910-925</td>
+            <td class="lambda-value">0.33-0.50</td>
+            <td>Potrubí, obaly</td>
+        </tr>
+        <tr>
+            <td>Polystyren PS</td>
+            <td>1050</td>
+            <td class="lambda-value">0.08-0.13</td>
+            <td>Compaktní forma</td>
+        </tr>
+        <tr>
+            <td>PVC tvrdé</td>
+            <td>1400</td>
+            <td class="lambda-value">0.16-0.25</td>
+            <td>Potrubí, profily</td>
+        </tr>
+        <tr>
+            <td>Polypropylen PP</td>
+            <td>900</td>
+            <td class="lambda-value">0.12-0.22</td>
+            <td>Automotive, obaly</td>
+        </tr>
+        <tr>
+            <td>Nylon PA</td>
+            <td>1130</td>
+            <td class="lambda-value">0.25</td>
+            <td>Textil, technika</td>
+        </tr>
+        <tr>
+            <td>Teflon PTFE</td>
+            <td>2200</td>
+            <td class="lambda-value">0.25</td>
+            <td>Chemická odolnost</td>
+        </tr>
+
+        <tr class="category-header">
+            <td colspan="4">SKLA A KERAMIKY</td>
+        </tr>
+        <tr>
+            <td>Sklo okenní</td>
+            <td>2500</td>
+            <td class="lambda-value">0.76</td>
+            <td>Standardní tabule</td>
+        </tr>
+        <tr>
+            <td>Sklo borosilikátové</td>
+            <td>2230</td>
+            <td class="lambda-value">1.2</td>
+            <td>Laboratorní sklo</td>
+        </tr>
+        <tr>
+            <td>Porcelán</td>
+            <td>2300</td>
+            <td class="lambda-value">1.0-1.5</td>
+            <td>Izolátory</td>
+        </tr>
+        <tr>
+            <td>Keramika technická</td>
+            <td>3000-4000</td>
+            <td class="lambda-value">2-30</td>
+            <td>Podle složení</td>
+        </tr>
+        <tr>
+            <td>Žáruvzdorné cihly</td>
+            <td>1800-2200</td>
+            <td class="lambda-value">0.8-1.4</td>
+            <td>Pece, kotle</td>
+        </tr>
+
+        <tr class="category-header">
+            <td colspan="4">PŘÍRODNÍ MATERIÁLY</td>
+        </tr>
+        <tr>
+            <td>Zemina suchá</td>
+            <td>1500</td>
+            <td class="lambda-value">0.3-0.8</td>
+            <td>Závisí na vlhkosti</td>
+        </tr>
+        <tr>
+            <td>Zemina vlhká</td>
+            <td>1800</td>
+            <td class="lambda-value">1.0-2.5</td>
+            <td>Vysoká vodivost</td>
+        </tr>
+        <tr>
+            <td>Písek suchý</td>
+            <td>1500</td>
+            <td class="lambda-value">0.15-0.35</td>
+            <td>Základy</td>
+        </tr>
+        <tr>
+            <td>Sníh</td>
+            <td>100-500</td>
+            <td class="lambda-value">0.05-0.25</td>
+            <td>Podle hustoty</td>
+        </tr>
+        <tr>
+            <td>Kámen (žula)</td>
+            <td>2600</td>
+            <td class="lambda-value">1.7-4.0</td>
+            <td>Přírodní kámen</td>
+        </tr>
+        <tr>
+            <td>Kámen (vápenec)</td>
+            <td>2200</td>
+            <td class="lambda-value">1.3-1.7</td>
+            <td>Sedimentární hornina</td>
+        </tr>
+    </table>
+
+    <div class="note">
+        <strong>Důležité poznámky k použití tabulek:</strong>
+        <ul style="margin: 5px 0; padding-left: 15px;">
+            <li>Hodnoty jsou orientační a mohou se lišit podle konkrétní specifikace výrobce</li>
+            <li>Tepelná vodivost se mění s teplotou - u většiny materiálů roste s teplotou</li>
+            <li>U porézních materiálů výrazně ovlivňuje vodivost vlhkost</li>
+            <li>U anizotropních materiálů (dřevo) se vodivost liší podle směru</li>
+            <li>Pro přesné výpočty vždy používejte hodnoty z technických listů výrobce</li>
+        </ul>
+    </div>
+
+    <div class="note">
+        <strong>Zdroje a normy:</strong><br>
+        ČSN EN 12524 - Stavební materiály a výrobky - Hygrotermální vlastnosti<br>
+        ČSN 73 0540 - Tepelná ochrana budov<br>
+        VDI Heat Atlas - Technické hodnoty pro kovy a slitiny
+    </div>
+
+</body>
+</html>

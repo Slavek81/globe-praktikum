@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regresní analýza - Hookův zákon</title>
+    <link rel="stylesheet" href="unified-style.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+    </script>
+</head>
+<body>
+    <main>
+        <header>
+            <h1>Regresní analýza</h1>
+            <p>Určení pružinové konstanty pomocí lineární regrese</p>
+        </header>
+
+        <section class="intro-box">
+            <p>Regresní analýza je statistická metoda pro nalezení vztahu mezi závislou a nezávislou proměnnou. V tomto příkladu použijeme lineární regresi k určení pružinové konstanty podle Hookova zákona.</p>
+        </section>
+
+        <section class="section">
+            <h2>Úvod do problému</h2>
+            <p>Hookův zákon popisuje lineární vztah mezi silou působící na pružinu a jejím prodloužením:</p>
+
+            <div class="formula-box">
+                <strong>Hookův zákon:</strong><br>
+                $$F = k \cdot x$$
+                <br>kde:
+                <ul>
+                    <li>$F$ je síla v newtonech [N]</li>
+                    <li>$k$ je pružinová konstanta [N/m]</li>
+                    <li>$x$ je prodloužení v metrech [m]</li>
+                </ul>
+            </div>
+
+            <p>Pro lineární regresi ve tvaru $y = ax + b$ můžeme psát:</p>
+            <div class="formula-box">
+                $$F = k \cdot x + 0$$
+                <p>kde směrnice $a = k$ a $b = 0$ (pružina bez zatížení se nedeformuje)</p>
+            </div>
+        </section>
+
+        <section class="section section-gray">
+            <h2>Experimentální data</h2>
+            <p>Naměřené hodnoty síly a prodloužení pružiny:</p>
+            <table>
+                <tr>
+                    <th>Zatížení [N]</th>
+                    <th>Prodloužení [mm]</th>
+                    <th>Prodloužení [m]</th>
+                </tr>
+                <tr>
+                    <td class="value">0.5</td>
+                    <td class="value">2.1</td>
+                    <td class="value">0.0021</td>
+                </tr>
+                <tr>
+                    <td class="value">1.0</td>
+                    <td class="value">4.3</td>
+                    <td class="value">0.0043</td>
+                </tr>
+                <tr>
+                    <td class="value">1.5</td>
+                    <td class="value">6.2</td>
+                    <td class="value">0.0062</td>
+                </tr>
+                <tr>
+                    <td class="value">2.0</td>
+                    <td class="value">8.1</td>
+                    <td class="value">0.0081</td>
+                </tr>
+                <tr>
+                    <td class="value">2.5</td>
+                    <td class="value">10.4</td>
+                    <td class="value">0.0104</td>
+                </tr>
+                <tr>
+                    <td class="value">3.0</td>
+                    <td class="value">12.3</td>
+                    <td class="value">0.0123</td>
+                </tr>
+            </table>
+        </section>
+
+        <section class="section">
+            <h2>Metoda nejmenších čtverců</h2>
+            <p>Pro nalezení nejlepší přímky používáme metodu nejmenších čtverců:</p>
+
+            <div class="formula-box">
+                <strong>Vzorce pro lineární regresi:</strong><br>
+                $$a = \frac{n\sum xy - \sum x \sum y}{n\sum x^2 - (\sum x)^2}$$
+                $$b = \frac{\sum y - a\sum x}{n}$$
+                <br>kde $n$ je počet měření
+            </div>
+
+            <p>Pro Hookův zákon očekáváme $b \approx 0$, takže se zaměříme na výpočet směrnice $a = k$.</p>
+        </section>
+
+        <section class="section section-gray">
+            <h2>Výpočet krok za krokem</h2>
+
+            <h3>Krok 1: Příprava pomocných součtů</h3>
+            <table>
+                <tr>
+                    <th>$x$ [m]</th>
+                    <th>$y$ [N]</th>
+                    <th>$x^2$ [m²]</th>
+                    <th>$xy$ [N·m]</th>
+                </tr>
+                <tr>
+                    <td>0.0021</td>
+                    <td>0.5</td>
+                    <td>4.41×10⁻⁶</td>
+                    <td>1.05×10⁻³</td>
+                </tr>
+                <tr>
+                    <td>0.0043</td>
+                    <td>1.0</td>
+                    <td>1.85×10⁻⁵</td>
+                    <td>4.30×10⁻³</td>
+                </tr>
+                <tr>
+                    <td>0.0062</td>
+                    <td>1.5</td>
+                    <td>3.84×10⁻⁵</td>
+                    <td>9.30×10⁻³</td>
+                </tr>
+                <tr>
+                    <td>0.0081</td>
+                    <td>2.0</td>
+                    <td>6.56×10⁻⁵</td>
+                    <td>1.62×10⁻²</td>
+                </tr>
+                <tr>
+                    <td>0.0104</td>
+                    <td>2.5</td>
+                    <td>1.08×10⁻⁴</td>
+                    <td>2.60×10⁻²</td>
+                </tr>
+                <tr>
+                    <td>0.0123</td>
+                    <td>3.0</td>
+                    <td>1.51×10⁻⁴</td>
+                    <td>3.69×10⁻²</td>
+                </tr>
+            </table>
+
+            <h3>Krok 2: Výpočet součtů</h3>
+            <table>
+                <tr>
+                    <th>Parametr</th>
+                    <th>Hodnota</th>
+                </tr>
+                <tr>
+                    <td class="variable">$n$</td>
+                    <td class="value">6</td>
+                </tr>
+                <tr>
+                    <td class="variable">$\sum x$</td>
+                    <td class="value">0.0434 m</td>
+                </tr>
+                <tr>
+                    <td class="variable">$\sum y$</td>
+                    <td class="value">10.5 N</td>
+                </tr>
+                <tr>
+                    <td class="variable">$\sum x^2$</td>
+                    <td class="value">3.91×10⁻⁴ m²</td>
+                </tr>
+                <tr>
+                    <td class="variable">$\sum xy$</td>
+                    <td class="value">0.0936 N·m</td>
+                </tr>
+            </table>
+
+            <h3>Krok 3: Výpočet směrnice (pružinové konstanty)</h3>
+            <div class="formula-box">
+                $$k = a = \frac{6 \times 0.0936 - 0.0434 \times 10.5}{6 \times 3.91 \times 10^{-4} - (0.0434)^2}$$
+                $$k = \frac{0.5616 - 0.4557}{2.346 \times 10^{-3} - 1.883 \times 10^{-3}}$$
+                $$k = \frac{0.1059}{4.63 \times 10^{-4}} = 228.7 \text{ N/m}$$
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Grafické znázornění</h2>
+            <div id="regressionPlot" style="width:100%;height:400px;"></div>
+        </section>
+
+        <section class="section section-gray">
+            <h2>Statistické vyhodnocení</h2>
+
+            <h3>Korelační koeficient</h3>
+            <div class="formula-box">
+                $$r = \frac{n\sum xy - \sum x \sum y}{\sqrt{(n\sum x^2 - (\sum x)^2)(n\sum y^2 - (\sum y)^2)}}$$
+            </div>
+
+            <table>
+                <tr>
+                    <th>Statistický parametr</th>
+                    <th>Hodnota</th>
+                    <th>Interpretace</th>
+                </tr>
+                <tr>
+                    <td class="variable">Korelační koeficient $r$</td>
+                    <td class="value">0.9967</td>
+                    <td>Velmi silná lineární závislost</td>
+                </tr>
+                <tr>
+                    <td class="variable">Determinační koeficient $r^2$</td>
+                    <td class="value">0.9935</td>
+                    <td>99.35% variability vysvětleno modelem</td>
+                </tr>
+                <tr>
+                    <td class="variable">Střední kvadratická chyba</td>
+                    <td class="value">0.027 N</td>
+                    <td>Průměrná odchylka od modelu</td>
+                </tr>
+            </table>
+        </section>
+
+        <section class="section">
+            <h2>Interaktivní kalkulátor</h2>
+            <div class="formula-box">
+                <h3>Regresní analýza pro Hookův zákon</h3>
+                <p>Zadejte naměřené hodnoty (oddělené čárkami):</p>
+                <label>Prodloužení [mm]:</label>
+                <input type="text" id="extensions" value="2.1, 4.3, 6.2, 8.1, 10.4, 12.3" style="width: 300px;">
+                <br><br>
+                <label>Síly [N]:</label>
+                <input type="text" id="forces" value="0.5, 1.0, 1.5, 2.0, 2.5, 3.0" style="width: 300px;">
+                <br><br>
+                <button onclick="calculateRegression()">Vypočítej regresi</button>
+                <br><br>
+                <div id="regressionResult"></div>
+            </div>
+        </section>
+
+        <section class="result-box">
+            <h2>Výsledek</h2>
+            <p>Pružinová konstanta určená regresní analýzou:</p>
+            <p><span>k = 228.7 N/m</span></p>
+            <p>Korelační koeficient: <span>r = 0.997</span></p>
+            <p>Kvalita modelu: <span>Výborná</span> (r² = 99.35%)</p>
+        </section>
+
+        <section class="note">
+            <h3>Poznámky k regresní analýze</h3>
+            <ul>
+                <li><strong>Korelační koeficient:</strong> r > 0.95 indikuje velmi dobrou lineární závislost</li>
+                <li><strong>Fyzikální smysl:</strong> Výsledek odpovídá typickým hodnotám pro laboratorní pružiny</li>
+                <li><strong>Chyby měření:</strong> Malé odchylky od přímky jsou způsobeny experimentálními chybami</li>
+                <li><strong>Aplikace:</strong> Metoda se používá pro kalibraci senzorů a charakterizaci materiálů</li>
+            </ul>
+        </section>
+    </main>
+
+    <script>
+        // Experimentální data
+        const extensions = [2.1, 4.3, 6.2, 8.1, 10.4, 12.3]; // mm
+        const forces = [0.5, 1.0, 1.5, 2.0, 2.5, 3.0]; // N
+        const extensionsM = extensions.map(x => x / 1000); // převod na metry
+
+        // Vytvoření grafu při načtení stránky
+        window.onload = function() {
+            createRegressionPlot();
+        };
+
+        function createRegressionPlot() {
+            // Výpočet regrese
+            const n = forces.length;
+            const sumX = extensionsM.reduce((a, b) => a + b, 0);
+            const sumY = forces.reduce((a, b) => a + b, 0);
+            const sumXY = extensionsM.reduce((acc, x, i) => acc + x * forces[i], 0);
+            const sumX2 = extensionsM.reduce((acc, x) => acc + x * x, 0);
+
+            const k = (n * sumXY - sumX * sumY) / (n * sumX2 - sumX * sumX);
+
+            // Body pro regresní přímku
+            const xRegression = [0, Math.max(...extensionsM)];
+            const yRegression = xRegression.map(x => k * x);
+
+            // Vytvoření grafu
+            const trace1 = {
+                x: extensionsM,
+                y: forces,
+                mode: 'markers',
+                type: 'scatter',
+                name: 'Naměřené hodnoty',
+                marker: { size: 10, color: 'blue' }
+            };
+
+            const trace2 = {
+                x: xRegression,
+                y: yRegression,
+                mode: 'lines',
+                type: 'scatter',
+                name: `Regresní přímka (k = ${k.toFixed(1)} N/m)`,
+                line: { color: 'red', width: 3 }
+            };
+
+            const layout = {
+                title: 'Hookův zákon - Regresní analýza',
+                xaxis: { title: 'Prodloužení [m]' },
+                yaxis: { title: 'Síla [N]' },
+                showlegend: true
+            };
+
+            Plotly.newPlot('regressionPlot', [trace1, trace2], layout);
+        }
+
+        function calculateRegression() {
+            // Načtení dat z inputů
+            const extensionsInput = document.getElementById('extensions').value.split(',').map(x => parseFloat(x.trim()));
+            const forcesInput = document.getElementById('forces').value.split(',').map(x => parseFloat(x.trim()));
+
+            if (extensionsInput.length !== forcesInput.length) {
+                document.getElementById('regressionResult').innerHTML = '<strong style="color: red;">Počet hodnot prodloužení a sil se musí shodovat!</strong>';
+                return;
+            }
+
+            const extensionsMInput = extensionsInput.map(x => x / 1000); // převod na metry
+            const n = forcesInput.length;
+
+            // Výpočet pomocných součtů
+            const sumX = extensionsMInput.reduce((a, b) => a + b, 0);
+            const sumY = forcesInput.reduce((a, b) => a + b, 0);
+            const sumXY = extensionsMInput.reduce((acc, x, i) => acc + x * forcesInput[i], 0);
+            const sumX2 = extensionsMInput.reduce((acc, x) => acc + x * x, 0);
+            const sumY2 = forcesInput.reduce((acc, y) => acc + y * y, 0);
+
+            // Výpočet regresních parametrů
+            const k = (n * sumXY - sumX * sumY) / (n * sumX2 - sumX * sumX);
+            const b = (sumY - k * sumX) / n;
+
+            // Korelační koeficient
+            const r = (n * sumXY - sumX * sumY) / Math.sqrt((n * sumX2 - sumX * sumX) * (n * sumY2 - sumY * sumY));
+
+            document.getElementById('regressionResult').innerHTML = `
+                <strong>Výsledky regresní analýzy:</strong><br>
+                Pružinová konstanta k = ${k.toFixed(1)} N/m<br>
+                Posun b = ${b.toFixed(4)} N<br>
+                Korelační koeficient r = ${r.toFixed(4)}<br>
+                Determinační koeficient r² = ${(r*r).toFixed(4)}<br>
+                <br>
+                <strong>Regresní rovnice:</strong> F = ${k.toFixed(1)} × x + ${b.toFixed(4)}
+            `;
+        }
+    </script>
+</body>
+</html>
