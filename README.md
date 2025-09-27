@@ -93,13 +93,12 @@ Pro vlastní doménu (např. `fyzika-chemie.gymglobe.cz`):
 
 ## 📊 Obsah stránky
 
-### Přednášky (6 témat)
+### Přednášky (5 témat)
 1. **Využití umělé inteligence** - AI nástroje pro studium
-2. **Úvod a bilance** - Materiálové a energetické bilance  
-3. **Přestup a prostup tepla** - Tepelná vedivost, konvekce, sálání
-4. **Tlakové ztráty** - Proudění tekutin, čerpadla, ventilátory
-5. **Matematické praktikum** - Python, Excel, numerické metody
-6. **Fyzikální chemie** - Termodynamika, kinetika, fázové rovnováhy
+2. **Matematické praktikum** - Python, Excel, numerické metody
+3. **Úvod a bilance** - Materiálové a energetické bilance
+4. **Kinematika** - Pohyb těles, rychlost, zrychlení, dráha
+5. **Dynamika** - Síly, Newtonovy zákony, hybnost a energie
 
 ### Semestrální projekty (4 projekty)
 1. **Akumulace tepla** - PCM systémy, úspora 35%, ROI 4.2 roky
