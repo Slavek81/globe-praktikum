@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kinematika - Studium pohybu pro střední školy</title>
+    <!-- Import pro renderování LaTeX matematických vzorců -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>Průvodce Kinematikou</h1>
+            <p>Pojďme společně odhalit tajemství pohybu těles kolem nás!</p>
+        </header>
+
+        <section class="intro-box">
+            <h2>Co je kinematika a proč ji studujeme?</h2>
+            <p>Představte si, že sledujete auto jedoucí po silnici, míč letící vzduchem nebo kapku vody padající z kohoutku. Všechna tato tělesa mají něco společného - pohybují se! A právě studium tohoto pohybu je kinematika.</p>
+            <p><strong>Kinematika</strong> je část mechaniky, která se zabývá <strong>popisem pohybu těles</strong> v čase a prostoru. Nezajímáme se o příčiny pohybu (síly), ale pouze o to, <strong>jak se tělesa pohybují</strong>.</p>
+        </section>
+
+        <!-- ZÁKLADNÍ POJMY KINEMATIKY -->
+        <section id="basics" class="unit-section">
+            <h2>Základní pojmy kinematiky</h2>
+
+            <h3>🔴 1. Hmotný bod</h3>
+            <p><strong>Definice:</strong> Idealizovaný objekt, který má hmotnost, ale jeho <strong>rozměry jsou zanedbatelné</strong> ve srovnání s délkou trajektorie nebo rozměry prostoru.</p>
+            <p><strong>Kdy jej používáme?</strong></p>
+            <ul>
+                <li>🚗 Auto jedoucí z Prahy do Brna (auto je malé oproti trase)</li>
+                <li>✈️ Letadlo na transkontinentálním letu</li>
+                <li>🌍 Země obíhající Slunce</li>
+                <li>🏃‍♂️ Běžec na atletickém oválu</li>
+            </ul>
+
+            <h3>⚖️ 2. Těžiště</h3>
+            <p><strong>Definice:</strong> Speciální bod tělesa, který se chová tak, jako by v něm byla soustředěna celá hmotnost tělesa.</p>
+            <p><strong>Praktický význam:</strong> Při studiu pohybu tělesa jako celku sledujeme právě pohyb jeho těžiště.</p>
+            <p><strong>Příklad:</strong> Skokan do vody může dělat piruety, ale jeho těžiště opisuje jednoduchou parabolu.</p>
+
+
+            <h3>📍 3. Trajektorie</h3>
+            <p><strong>Definice:</strong> Geometrická čára, kterou hmotný bod opisuje během svého pohybu v prostoru. Je to "stopa", kterou za sebou zanechává pohybující se těleso.</p>
+            <p><strong>Typy trajektorií:</strong></p>
+            <ul>
+                <li>📏 <strong>Přímka:</strong> auto jedoucí po rovné silnici</li>
+                <li>⭕ <strong>Kružnice:</strong> kámen točený na provázku, satelit obíhající Zemi</li>
+                <li>📈 <strong>Parabola:</strong> vržený míč, proud vody z hadice</li>
+                <li>🌀 <strong>Složitější křivky:</strong> let včely, pohyb listu ve větru</li>
+            </ul>
+
+            <h3>📐 4. Dráha vs. Posunutí</h3>
+            <div class="comparison-box">
+                <div class="comparison-item">
+                    <h4>📏 Dráha (s)</h4>
+                    <p><strong>Definice:</strong> Celková délka trajektorie, kterou hmotný bod urazil</p>
+                    <p><strong>Typ:</strong> Skalární veličina (pouze velikost)</p>
+                    <p><strong>Jednotka:</strong> metr [m]</p>
+                    <p><strong>Příklad:</strong> Uběhli jste 400 m na atletickém oválu</p>
+                </div>
+                <div class="comparison-item">
+                    <h4>➡️ Posunutí ($\vec{\Delta r}$)</h4>
+                    <p><strong>Definice:</strong> Vektorová veličina popisující změnu polohy (z počátečního do konečného bodu)</p>
+                    <p><strong>Typ:</strong> Vektorová veličina (velikost + směr)</p>
+                    <p><strong>Jednotka:</strong> metr [m]</p>
+                    <p><strong>Příklad:</strong> Po oběhnutí oválu je posunutí = 0 m</p>
+                </div>
+            </div>
+
+
+            <h3>📊 5. Skalární vs. Vektorové veličiny</h3>
+            <div class="comparison-box">
+                <div class="comparison-item">
+                    <h4>📏 Skalární veličiny</h4>
+                    <p><strong>Popis:</strong> Určeny pouze <strong>velikostí</strong> (číselná hodnota + jednotka)</p>
+                    <p><strong>Příklady:</strong></p>
+                    <ul>
+                        <li>⏰ Čas: 10 sekund</li>
+                        <li>🌡️ Teplota: 20 °C</li>
+                        <li>⚖️ Hmotnost: 5 kg</li>
+                        <li>📏 Dráha: 100 m</li>
+                        <li>⚡ Energie: 50 J</li>
+                    </ul>
+                </div>
+                <div class="comparison-item">
+                    <h4>➡️ Vektorové veličiny</h4>
+                    <p><strong>Popis:</strong> Určeny <strong>velikostí, směrem a orientací</strong></p>
+                    <p><strong>Znázornění:</strong> Šipka (délka = velikost, směr = směr)</p>
+                    <p><strong>Příklady:</strong></p>
+                    <ul>
+                        <li>📍 Posunutí: 5 m na severovýchod</li>
+                        <li>🚗 Rychlost: 60 km/h na západ</li>
+                        <li>📉 Zrychlení: 9,81 m/s² dolů</li>
+                        <li>💪 Síla: 10 N doprava</li>
+                    </ul>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- ROVNOMĚRNÝ POHYB -->
+        <section id="uniform" class="unit-section">
+            <h2>1. Rovnoměrný přímočarý pohyb</h2>
+            <p><strong>Princip:</strong> Nejjednodušší druh pohybu. Těleso se pohybuje stále stejnou rychlostí po přímce. Představte si auto jedoucí konstantní rychlostí po rovné silnici.</p>
+
+            <div class="schema-container">
+                <svg width="400" height="120" viewBox="0 0 400 120">
+                    <defs><marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#333" /></marker></defs>
+                    <text x="180" y="20" font-family="Verdana" font-size="12">Rovnoměrný pohyb</text>
+                    <!-- Trajektorie -->
+                    <line x1="50" y1="60" x2="350" y2="60" stroke="#005A9C" stroke-width="3"/>
+                    <!-- Těleso v různých časech -->
+                    <circle cx="80" cy="60" r="8" fill="#ff6b6b"/>
+                    <text x="75" y="45" font-family="Verdana" font-size="10">t=0s</text>
+                    <circle cx="150" cy="60" r="8" fill="#ff6b6b"/>
+                    <text x="140" y="45" font-family="Verdana" font-size="10">t=1s</text>
+                    <circle cx="220" cy="60" r="8" fill="#ff6b6b"/>
+                    <text x="210" y="45" font-family="Verdana" font-size="10">t=2s</text>
+                    <circle cx="290" cy="60" r="8" fill="#ff6b6b"/>
+                    <text x="280" y="45" font-family="Verdana" font-size="10">t=3s</text>
+                    <!-- Rychlostní vektor -->
+                    <line x1="290" y1="60" x2="330" y2="60" stroke="#009688" stroke-width="3" marker-end="url(#arrow)" />
+                    <text x="300" y="80" font-family="Verdana" font-size="10" fill="#009688">v = konst.</text>
+                </svg>
+            </div>
+
+            <div class="equations">
+                <h3>Kinematické rovnice</h3>
+                <p><strong>Základní rovnice dráhy:</strong> Dráha je přímo úměrná času.
+                $$ s = v \cdot t $$</p>
+                <p><strong>Rychlost:</strong> Zůstává konstantní po celou dobu pohybu.
+                $$ v = \text{konstantní} $$</p>
+                <p><strong>Zrychlení:</strong> Je nulové, protože se rychlost nemění.
+                $$ a = 0 $$</p>
+            </div>
+
+            <div class="example">
+                <h3>Konkrétní příklad</h3>
+                <p><strong>Zadání:</strong> Auto jede konstantní rychlostí 60 km/h po rovné silnici. Kolik kilometrů ujede za 2 hodiny? Jaká je jeho rychlost v m/s?</p>
+                <p><strong>Výpočet:</strong>
+                <br>1. <strong>Převod jednotek:</strong> \( v = 60 \, \text{km/h} = \frac{60 \times 1000}{3600} = 16{,}67 \, \text{m/s} \)
+                <br>2. <strong>Dráha za 2 hodiny:</strong> \( s = v \cdot t = 60 \times 2 = 120 \, \text{km} \)
+                <br>3. <strong>Kontrola v základních jednotkách:</strong> \( s = 16{,}67 \times 7200 = 120{,}000 \, \text{m} = 120 \, \text{km} \) ✓
+                </p>
+                <h4>Tabulka pohybu</h4>
+                <table>
+                    <tr><th>Čas [h]</th><th>Rychlost [km/h]</th><th>Ujetá dráha [km]</th><th>Celková dráha [km]</th></tr>
+                    <tr><td>0</td><td>60</td><td>0</td><td>0</td></tr>
+                    <tr><td>1</td><td>60</td><td>60</td><td>60</td></tr>
+                    <tr><td>2</td><td>60</td><td>60</td><td><code>120</code></td></tr>
+                </table>
+            </div>
+
+            <!-- Interaktivní simulace rychlosti -->
+            <div class="interactive-simulation">
+                <h3>⚡ Interaktivní simulace rychlosti</h3>
+                <div class="demo-area" id="speed-demo-area">
+                    <div class="moving-object" id="speed-demo-ball"></div>
+                    <div class="track-marker" style="left: 20px;">Start</div>
+                    <div class="track-marker" style="right: 20px;">Cíl</div>
+                </div>
+
+                <div class="slider-container">
+                    <label>Rychlost: <span id="speed-value">50</span> km/h</label>
+                    <input type="range" class="slider" id="speed-slider" min="10" max="100" value="50" oninput="updateSpeedDemo()">
+                </div>
+
+                <div class="simulation-controls">
+                    <button onclick="startSpeedDemo()" class="sim-button start-btn">
+                        ▶️ Spustit pohyb
+                    </button>
+                    <button onclick="resetSpeedDemo()" class="sim-button reset-btn">
+                        🔄 Reset
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ROVNOMĚRNĚ ZRYCHLENÝ POHYB -->
+        <section id="accelerated" class="unit-section">
+            <h2>2. Rovnoměrně zrychlený pohyb</h2>
+            <p><strong>Princip:</strong> Těleso se pohybuje s konstantním zrychlením. Rychlost se lineárně zvyšuje nebo snižuje. Představte si auto, které plynule přidává plyn nebo brzdí.</p>
+
+            <div class="schema-container">
+                <svg width="400" height="140" viewBox="0 0 400 140">
+                    <defs><marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#333" /></marker></defs>
+                    <text x="150" y="20" font-family="Verdana" font-size="12">Rovnoměrně zrychlený pohyb</text>
+                    <!-- Trajektorie -->
+                    <line x1="50" y1="80" x2="350" y2="80" stroke="#005A9C" stroke-width="3"/>
+                    <!-- Těleso v různých časech s různými rychlostmi -->
+                    <circle cx="80" cy="80" r="6" fill="#ff6b6b"/>
+                    <line x1="80" y1="80" x2="100" y2="80" stroke="#009688" stroke-width="2" marker-end="url(#arrow)" />
+                    <text x="75" y="65" font-family="Verdana" font-size="10">t=0s</text>
+                    <text x="75" y="100" font-family="Verdana" font-size="8">v=0</text>
+
+                    <circle cx="140" cy="80" r="6" fill="#ff6b6b"/>
+                    <line x1="140" y1="80" x2="170" y2="80" stroke="#009688" stroke-width="2" marker-end="url(#arrow)" />
+                    <text x="135" y="65" font-family="Verdana" font-size="10">t=1s</text>
+                    <text x="135" y="100" font-family="Verdana" font-size="8">v=10m/s</text>
+
+                    <circle cx="220" cy="80" r="6" fill="#ff6b6b"/>
+                    <line x1="220" y1="80" x2="260" y2="80" stroke="#009688" stroke-width="2" marker-end="url(#arrow)" />
+                    <text x="215" y="65" font-family="Verdana" font-size="10">t=2s</text>
+                    <text x="215" y="100" font-family="Verdana" font-size="8">v=20m/s</text>
+
+                    <circle cx="320" cy="80" r="6" fill="#ff6b6b"/>
+                    <line x1="320" y1="80" x2="370" y2="80" stroke="#009688" stroke-width="2" marker-end="url(#arrow)" />
+                    <text x="315" y="65" font-family="Verdana" font-size="10">t=3s</text>
+                    <text x="315" y="100" font-family="Verdana" font-size="8">v=30m/s</text>
+
+                    <text x="150" y="130" font-family="Verdana" font-size="10" fill="#e74c3c">a = 10 m/s²</text>
+                </svg>
+            </div>
+
+            <div class="equations">
+                <h3>Odvození kinematických rovnic</h3>
+                <p><strong>1. Rychlost v čase (z definice zrychlení):</strong></p>
+                <p>Zrychlení je definováno jako změna rychlosti za čas: $$ a = \frac{\Delta v}{\Delta t} = \frac{v - v_0}{t - 0} $$</p>
+                <p>Vyjádříme rychlost v: $$ a \cdot t = v - v_0 $$</p>
+                <p>První kinematická rovnice: $$ v = v_0 + a \cdot t $$</p>
+
+                <p><strong>2. Dráha v čase (z průměrné rychlosti):</strong></p>
+                <p>Průměrná rychlost při konstantním zrychlení: $$ \bar{v} = \frac{v_0 + v}{2} $$</p>
+                <p>Dráha je průměrná rychlost krát čas: $$ s = \bar{v} \cdot t = \frac{v_0 + v}{2} \cdot t $$</p>
+                <p>Dosadíme $v = v_0 + at$: $$ s = \frac{v_0 + (v_0 + at)}{2} \cdot t = \frac{2v_0 + at}{2} \cdot t $$</p>
+                <p>Druhá kinematická rovnice: $$ s = v_0 \cdot t + \frac{1}{2} a \cdot t^2 $$</p>
+
+                <p><strong>3. Rychlost vs. dráha (eliminace času):</strong></p>
+                <p>Z první rovnice vyjádříme čas: $$ t = \frac{v - v_0}{a} $$</p>
+                <p>Dosadíme do druhé rovnice: $$ s = v_0 \cdot \frac{v - v_0}{a} + \frac{1}{2} a \cdot \left(\frac{v - v_0}{a}\right)^2 $$</p>
+                <p>Upravíme: $$ s = \frac{v_0(v - v_0)}{a} + \frac{(v - v_0)^2}{2a} = \frac{2v_0(v - v_0) + (v - v_0)^2}{2a} $$</p>
+                <p>$$ s = \frac{(v - v_0)(2v_0 + v - v_0)}{2a} = \frac{(v - v_0)(v + v_0)}{2a} = \frac{v^2 - v_0^2}{2a} $$</p>
+                <p>Třetí kinematická rovnice: $$ v^2 = v_0^2 + 2 a \cdot s $$</p>
+            </div>
+
+            <div class="example">
+                <h3>Konkrétní příklad</h3>
+                <p><strong>Zadání:</strong> Auto stojí na semaforech a začne zrychlovat konstantním zrychlením 2 m/s². Jakou rychlost bude mít po 5 sekundách a kolik metrů za tu dobu ujede?</p>
+                <p><strong>Výpočet:</strong>
+                <br>1. <strong>Počáteční podmínky:</strong> \( v_0 = 0 \, \text{m/s} \), \( a = 2 \, \text{m/s}^2 \), \( t = 5 \, \text{s} \)
+                <br>2. <strong>Rychlost po 5s:</strong> \( v = v_0 + a \cdot t = 0 + 2 \times 5 = 10 \, \text{m/s} \)
+                <br>3. <strong>Ujetá dráha:</strong> \( s = v_0 \cdot t + \frac{1}{2} a \cdot t^2 = 0 \times 5 + \frac{1}{2} \times 2 \times 5^2 = 25 \, \text{m} \)
+                <br>4. <strong>Kontrola:</strong> \( v^2 = v_0^2 + 2as \implies 10^2 = 0^2 + 2 \times 2 \times 25 = 100 \) ✓
+                </p>
+                <h4>Tabulka pohybu</h4>
+                <table>
+                    <tr><th>Čas [s]</th><th>Rychlost [m/s]</th><th>Dráha za interval [m]</th><th>Celková dráha [m]</th></tr>
+                    <tr><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+                    <tr><td>1</td><td>2</td><td>1</td><td>1</td></tr>
+                    <tr><td>2</td><td>4</td><td>3</td><td>4</td></tr>
+                    <tr><td>3</td><td>6</td><td>5</td><td>9</td></tr>
+                    <tr><td>4</td><td>8</td><td>7</td><td>16</td></tr>
+                    <tr><td>5</td><td><code>10</code></td><td>9</td><td><code>25</code></td></tr>
+                </table>
+            </div>
+
+            <!-- Interaktivní simulace zrychlení -->
+            <div class="interactive-simulation">
+                <h3>🚀 Interaktivní simulace zrychlení</h3>
+                <div class="demo-area" id="accel-demo-area">
+                    <div class="moving-object" id="accel-demo-ball"></div>
+                    <div class="track-marker" style="left: 20px;">Start</div>
+                    <div class="track-marker" style="right: 20px;">Cíl</div>
+                </div>
+
+                <div class="slider-container">
+                    <label>Zrychlení: <span id="accel-value">5</span> m/s²</label>
+                    <input type="range" class="slider" id="accel-slider" min="1" max="10" value="5" step="0.5" oninput="updateAccelDemo()">
+                </div>
+
+                <div class="simulation-controls">
+                    <button onclick="startAccelDemo()" class="sim-button start-btn">
+                        ▶️ Spustit zrychlení
+                    </button>
+                    <button onclick="resetAccelDemo()" class="sim-button reset-btn">
+                        🔄 Reset
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- VOLNÝ PÁD -->
+        <section id="freefall" class="unit-section">
+            <h2>3. Volný pád</h2>
+            <p><strong>Princip:</strong> Speciální případ rovnoměrně zrychleného pohybu. Těleso spadá volně v gravitačním poli Země s konstantním zrychlením g = 9,81 m/s². Představte si kámen puštený z výšky.</p>
+
+            <div class="schema-container">
+                <svg width="300" height="200" viewBox="0 0 300 200">
+                    <defs><marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#333" /></marker></defs>
+                    <text x="120" y="20" font-family="Verdana" font-size="12">Volný pád</text>
+                    <!-- Vertikální trajektorie -->
+                    <line x1="150" y1="40" x2="150" y2="180" stroke="#005A9C" stroke-width="3"/>
+                    <!-- Těleso v různých časech -->
+                    <circle cx="150" cy="50" r="6" fill="#ff6b6b"/>
+                    <text x="160" y="55" font-family="Verdana" font-size="10">t=0s, v=0</text>
+
+                    <circle cx="150" cy="90" r="6" fill="#ff6b6b"/>
+                    <text x="160" y="95" font-family="Verdana" font-size="10">t=1s, v=9,8m/s</text>
+
+                    <circle cx="150" cy="150" r="6" fill="#ff6b6b"/>
+                    <text x="160" y="155" font-family="Verdana" font-size="10">t=2s, v=19,6m/s</text>
+
+                    <!-- Gravitační zrychlení -->
+                    <line x1="150" y1="150" x2="150" y2="175" stroke="#e74c3c" stroke-width="3" marker-end="url(#arrow)" />
+                    <text x="80" y="170" font-family="Verdana" font-size="10" fill="#e74c3c">g = 9,81 m/s²</text>
+
+                    <!-- Výška -->
+                    <text x="20" y="110" font-family="Verdana" font-size="10">h</text>
+                    <line x1="30" y1="50" x2="30" y2="180" stroke="#666" stroke-width="1"/>
+                    <line x1="25" y1="50" x2="35" y2="50" stroke="#666" stroke-width="1"/>
+                    <line x1="25" y1="180" x2="35" y2="180" stroke="#666" stroke-width="1"/>
+                </svg>
+            </div>
+
+            <div class="equations">
+                <h3>Odvození rovnic pro volný pád</h3>
+                <p><strong>Volný pád jako speciální případ:</strong></p>
+                <p>Volný pád je rovnoměrně zrychlený pohyb s $v_0 = 0$ a $a = g = 9{,}81 \, \text{m/s}^2$.</p>
+
+                <p><strong>1. Rychlost při volném pádu:</strong></p>
+                <p>Z obecné rovnice $v = v_0 + at$ s $v_0 = 0$ a $a = g$:</p>
+                <p>$$ v = 0 + g \cdot t = g \cdot t $$</p>
+
+                <p><strong>2. Výška pádu:</strong></p>
+                <p>Z obecné rovnice $s = v_0 t + \frac{1}{2}at^2$ s $v_0 = 0$ a $a = g$:</p>
+                <p>$$ h = 0 \cdot t + \frac{1}{2} g \cdot t^2 = \frac{1}{2} g \cdot t^2 $$</p>
+
+                <p><strong>3. Rychlost vs. výška:</strong></p>
+                <p>Z obecné rovnice $v^2 = v_0^2 + 2as$ s $v_0 = 0$, $a = g$ a $s = h$:</p>
+                <p>$$ v^2 = 0^2 + 2 \cdot g \cdot h = 2gh $$</p>
+                <p>Tedy: $$ v = \sqrt{2gh} $$</p>
+
+                <p><strong>Poznámka:</strong> Tyto rovnice platí pro pád bez počáteční rychlosti. Pro házení vzhůru musíme uvažovat $v_0 \neq 0$ a $a = -g$.</p>
+            </div>
+
+            <div class="example">
+                <h3>Konkrétní příklad</h3>
+                <p><strong>Zadání:</strong> Z okna ve výšce 20 metrů spadne květináč. Za jak dlouho dopadne na zem a jakou rychlostí?</p>
+                <p><strong>Výpočet:</strong>
+                <br>1. <strong>Dáno:</strong> \( h = 20 \, \text{m} \), \( g = 9{,}81 \, \text{m/s}^2 \), \( v_0 = 0 \)
+                <br>2. <strong>Čas pádu:</strong> \( h = \frac{1}{2} g t^2 \implies t = \sqrt{\frac{2h}{g}} = \sqrt{\frac{2 \times 20}{9{,}81}} = \sqrt{4{,}08} = 2{,}02 \, \text{s} \)
+                <br>3. <strong>Rychlost při dopadu:</strong> \( v = g \cdot t = 9{,}81 \times 2{,}02 = 19{,}8 \, \text{m/s} \)
+                <br>4. <strong>Kontrola:</strong> \( v^2 = 2gh \implies v = \sqrt{2 \times 9{,}81 \times 20} = \sqrt{392{,}4} = 19{,}8 \, \text{m/s} \) ✓
+                </p>
+                <h4>Tabulka pádu</h4>
+                <table>
+                    <tr><th>Čas [s]</th><th>Rychlost [m/s]</th><th>Výška pádu [m]</th><th>Zbývající výška [m]</th></tr>
+                    <tr><td>0</td><td>0</td><td>0</td><td>20</td></tr>
+                    <tr><td>0,5</td><td>4,9</td><td>1,2</td><td>18,8</td></tr>
+                    <tr><td>1,0</td><td>9,8</td><td>4,9</td><td>15,1</td></tr>
+                    <tr><td>1,5</td><td>14,7</td><td>11,0</td><td>9,0</td></tr>
+                    <tr><td>2,02</td><td><code>19,8</code></td><td><code>20,0</code></td><td>0</td></tr>
+                </table>
+            </div>
+
+            <!-- Simulace volného pádu -->
+            <div class="interactive-simulation">
+                <h3>🍎 Simulace volného pádu</h3>
+                <div class="demo-area vertical" id="fall-demo-area">
+                    <div class="falling-object" id="fall-demo-ball"></div>
+                    <div class="height-marker" style="top: 20px;">h = 20m</div>
+                    <div class="height-marker" style="bottom: 20px;">Země</div>
+                </div>
+
+                <div class="slider-container">
+                    <label>Výška: <span id="fall-height-value">20</span> m</label>
+                    <input type="range" class="slider" id="fall-height-slider" min="5" max="50" value="20" oninput="updateFallDemo()">
+                </div>
+
+                <div class="simulation-controls">
+                    <button onclick="startFallDemo()" class="sim-button start-btn">
+                        ▶️ Spustit pád
+                    </button>
+                    <button onclick="resetFallDemo()" class="sim-button reset-btn">
+                        🔄 Reset
+                    </button>
+                </div>
+
+                <div id="fall-info" class="simulation-info">
+                    <strong>📊 Parametry pádu:</strong><br>
+                    <span id="fall-data">Nastavte výšku a spusťte simulaci</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- PRAKTICKÉ APLIKACE -->
+        <section id="applications" class="unit-section">
+            <h2>4. Praktické aplikace kinematiky</h2>
+            <p><strong>Kde kinematiku potkáváme:</strong> Kinematika není jen školní předmět - používá se všude kolem nás!</p>
+
+            <div class="example">
+                <h3>Reálné příklady použití</h3>
+                <ul>
+                    <li><strong>Doprava:</strong> Brzdná dráha aut, letadla na dráze, trajektorie projektilů</li>
+                    <li><strong>Sport:</strong> Hod míčem, skok do dálky, rychlost běžce</li>
+                    <li><strong>Technika:</strong> GPS navigace, robotika, kontrola pohybu strojů</li>
+                    <li><strong>Astronomie:</strong> Pohyb planet, družic, komet</li>
+                </ul>
+
+                <h4>Brzdná dráha automobilu</h4>
+                <p>Jeden z nejdůležitějších praktických výpočtů! Při rychlosti 50 km/h a zpomalení 7 m/s²:</p>
+                <p>Převod: \( v_0 = 50 \, \text{km/h} = 13{,}89 \, \text{m/s} \)</p>
+                <p>Brzdná dráha: \( s = \frac{v_0^2}{2a} = \frac{13{,}89^2}{2 \times 7} = \frac{192{,}9}{14} = 13{,}8 \, \text{m} \)</p>
+
+                <table>
+                    <tr><th>Rychlost [km/h]</th><th>Rychlost [m/s]</th><th>Brzdná dráha [m]</th></tr>
+                    <tr><td>30</td><td>8,33</td><td>5,0</td></tr>
+                    <tr><td>50</td><td>13,89</td><td>13,8</td></tr>
+                    <tr><td>90</td><td>25,00</td><td>44,6</td></tr>
+                    <tr><td>130</td><td>36,11</td><td>93,2</td></tr>
+                </table>
+            </div>
+        </section>
+
+        <!-- VRH ŠIKMO VZHŮRU -->
+        <section id="projectile" class="unit-section">
+            <h2>4. Vrh šikmo vzhůru</h2>
+            <p><strong>Princip:</strong> Kombinace dvou nezávislých pohybů - vodorovného rovnoměrného a svislého rovnoměrně zrychleného. Představte si míč vhozený pod úhlem nebo dělostřelecký granát.</p>
+
+            <div class="schema-container">
+                <svg width="400" height="200" viewBox="0 0 400 200">
+                    <defs><marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#333" /></marker></defs>
+                    <text x="150" y="20" font-family="Verdana" font-size="12">Vrh šikmo vzhůru</text>
+
+                    <!-- Parabolická trajektorie -->
+                    <path d="M 50 150 Q 200 50 350 150" stroke="#e74c3c" stroke-width="3" fill="none"/>
+                    <text x="180" y="40" font-family="Verdana" font-size="11" fill="#e74c3c">Parabola</text>
+
+                    <!-- Počáteční rychlost a její rozklad -->
+                    <line x1="50" y1="150" x2="90" y2="110" stroke="#3498db" stroke-width="3" marker-end="url(#arrow)"/>
+                    <text x="95" y="125" font-family="Verdana" font-size="10" fill="#3498db">v₀</text>
+
+                    <!-- Úhel -->
+                    <path d="M 70 150 A 20 20 0 0 0 80 140" stroke="#666" stroke-width="1" fill="none"/>
+                    <text x="75" y="165" font-family="Verdana" font-size="10">α</text>
+
+                    <!-- Komponenty rychlosti -->
+                    <line x1="50" y1="150" x2="90" y2="150" stroke="#27ae60" stroke-width="2" marker-end="url(#arrow)"/>
+                    <text x="60" y="165" font-family="Verdana" font-size="9" fill="#27ae60">vₓ</text>
+
+                    <line x1="50" y1="150" x2="50" y2="110" stroke="#f39c12" stroke-width="2" marker-end="url(#arrow)"/>
+                    <text x="30" y="130" font-family="Verdana" font-size="9" fill="#f39c12">vᵧ</text>
+
+                    <!-- Maximální výška -->
+                    <circle cx="200" cy="50" r="4" fill="#e74c3c"/>
+                    <text x="205" y="45" font-family="Verdana" font-size="10">h_max</text>
+
+                    <!-- Dosah -->
+                    <line x1="50" y1="170" x2="350" y2="170" stroke="#666" stroke-width="1"/>
+                    <text x="180" y="185" font-family="Verdana" font-size="10">Dosah R</text>
+                </svg>
+            </div>
+
+            <div class="equations">
+                <h3>Odvození rovnic vrhu šikmo vzhůru</h3>
+                <p><strong>1. Rozklad počáteční rychlosti:</strong></p>
+                <p>Počáteční rychlost v₀ rozložíme na dvě kolmé složky:</p>
+                <p>$$ v_{x0} = v_0 \cos \alpha \quad \text{(vodorovná složka)} $$</p>
+                <p>$$ v_{y0} = v_0 \sin \alpha \quad \text{(svislá složka)} $$</p>
+
+                <p><strong>2. Pohyb v jednotlivých směrech:</strong></p>
+                <p><strong>Vodorovný směr (x):</strong> Rovnoměrný pohyb (bez zrychlení)</p>
+                <p>$$ x = v_{x0} \cdot t = v_0 \cos \alpha \cdot t $$</p>
+                <p>$$ v_x = v_{x0} = v_0 \cos \alpha = \text{konstantní} $$</p>
+
+                <p><strong>Svislý směr (y):</strong> Rovnoměrně zrychlený pohyb (a = -g)</p>
+                <p>$$ y = v_{y0} \cdot t - \frac{1}{2} g t^2 = v_0 \sin \alpha \cdot t - \frac{1}{2} g t^2 $$</p>
+                <p>$$ v_y = v_{y0} - g t = v_0 \sin \alpha - g t $$</p>
+
+                <p><strong>3. Trajektorie (eliminace času):</strong></p>
+                <p>Z rovnice pro x vyjádříme čas: $t = \frac{x}{v_0 \cos \alpha}$</p>
+                <p>Dosadíme do rovnice pro y:</p>
+                <p>$$ y = x \tan \alpha - \frac{g x^2}{2 v_0^2 \cos^2 \alpha} $$</p>
+
+                <p><strong>4. Důležité parametry:</strong></p>
+                <p><strong>Čas letu:</strong> $$ T = \frac{2 v_0 \sin \alpha}{g} $$</p>
+                <p><strong>Dosah:</strong> $$ R = \frac{v_0^2 \sin 2\alpha}{g} $$</p>
+                <p><strong>Maximální výška:</strong> $$ h_{max} = \frac{v_0^2 \sin^2 \alpha}{2g} $$</p>
+            </div>
+
+            <div class="example">
+                <h3>Konkrétní příklad</h3>
+                <p><strong>Zadání:</strong> Míč je vhozen počáteční rychlostí 20 m/s pod úhlem 45°. Vypočítejte dosah, maximální výšku a čas letu.</p>
+                <p><strong>Výpočet:</strong>
+                <br>1. <strong>Dáno:</strong> \( v_0 = 20 \, \text{m/s} \), \( \alpha = 45° \), \( g = 9{,}81 \, \text{m/s}^2 \)
+                <br>2. <strong>Dosah:</strong> \( R = \frac{v_0^2 \sin 2\alpha}{g} = \frac{20^2 \sin(2 \times 45°)}{9{,}81} = \frac{400 \times 1}{9{,}81} = 40{,}8 \, \text{m} \)
+                <br>3. <strong>Maximální výška:</strong> \( h_{max} = \frac{v_0^2 \sin^2 \alpha}{2g} = \frac{20^2 \sin^2 45°}{2 \times 9{,}81} = \frac{400 \times 0{,}5}{19{,}62} = 10{,}2 \, \text{m} \)
+                <br>4. <strong>Čas letu:</strong> \( T = \frac{2 v_0 \sin \alpha}{g} = \frac{2 \times 20 \times \sin 45°}{9{,}81} = \frac{40 \times 0{,}707}{9{,}81} = 2{,}88 \, \text{s} \)
+                </p>
+                <h4>Parametry vrhu</h4>
+                <table>
+                    <tr><th>Parametr</th><th>Vzorec</th><th>Hodnota</th></tr>
+                    <tr><td>Dosah R</td><td>v₀²sin(2α)/g</td><td><code>40,8 m</code></td></tr>
+                    <tr><td>Max. výška h_max</td><td>v₀²sin²α/(2g)</td><td><code>10,2 m</code></td></tr>
+                    <tr><td>Čas letu T</td><td>2v₀sinα/g</td><td><code>2,88 s</code></td></tr>
+                    <tr><td>Úhel pro max. dosah</td><td>45°</td><td><code>45°</code></td></tr>
+                </table>
+            </div>
+
+            <!-- Simulace vrhu šikmo vzhůru -->
+            <div class="interactive-simulation">
+                <h3>🎯 Simulace vrhu šikmo vzhůru</h3>
+                <div class="demo-area" id="projectile-demo-area" style="height: 200px; background: linear-gradient(to bottom, #87ceeb 0%, #90ee90 80%, #8b4513 100%);">
+                    <div id="cannon" style="position: absolute; bottom: 20px; left: 20px; font-size: 30px;">🏹</div>
+                    <div id="projectile-ball" style="width: 15px; height: 15px; background: #ff4500; border-radius: 50%; position: absolute; bottom: 30px; left: 30px; display: none;"></div>
+                    <div id="target" style="position: absolute; bottom: 20px; right: 50px; font-size: 30px;">🎯</div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 15px 0;">
+                    <div class="slider-container">
+                        <label>Rychlost: <span id="velocity-value">20</span> m/s</label>
+                        <input type="range" class="slider" id="velocity-slider" min="10" max="40" value="20" oninput="updateVelocity()">
+                    </div>
+                    <div class="slider-container">
+                        <label>Úhel: <span id="angle-value">45</span>°</label>
+                        <input type="range" class="slider" id="angle-slider" min="15" max="75" value="45" oninput="updateAngle()">
+                    </div>
+                </div>
+
+                <div class="simulation-controls">
+                    <button onclick="fireProjectile()" class="sim-button start-btn">
+                        🔥 Vystřel!
+                    </button>
+                    <button onclick="resetProjectile()" class="sim-button reset-btn">
+                        🔄 Reset
+                    </button>
+                </div>
+
+                <div id="projectile-info" class="simulation-info" style="display: none;">
+                    <strong>📊 Parametry vrhu:</strong><br>
+                    <span id="flight-data"></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- POHYB PO KRUŽNICI -->
+        <section id="circular" class="unit-section">
+            <h2>5. Pohyb po kružnici</h2>
+            <p><strong>Princip:</strong> Těleso se pohybuje po kružnici konstantní rychlostí, ale směr rychlosti se neustále mění. Proto existuje dostředivé zrychlení směřující do středu kružnice.</p>
+
+            <div class="schema-container">
+                <svg width="400" height="200" viewBox="0 0 400 200">
+                    <defs><marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#333" /></marker></defs>
+                    <text x="150" y="20" font-family="Verdana" font-size="12">Pohyb po kružnici</text>
+
+                    <!-- Kružnice -->
+                    <circle cx="200" cy="100" r="70" stroke="#005A9C" stroke-width="3" fill="none"/>
+
+                    <!-- Střed -->
+                    <circle cx="200" cy="100" r="3" fill="#333"/>
+                    <text x="205" y="105" font-family="Verdana" font-size="10">O</text>
+
+                    <!-- Těleso na kružnici -->
+                    <circle cx="270" cy="100" r="6" fill="#e74c3c"/>
+
+                    <!-- Poloměr -->
+                    <line x1="200" y1="100" x2="270" y2="100" stroke="#666" stroke-width="2"/>
+                    <text x="225" y="95" font-family="Verdana" font-size="10">r</text>
+
+                    <!-- Rychlostní vektor (tečna) -->
+                    <line x1="270" y1="100" x2="270" y2="60" stroke="#27ae60" stroke-width="3" marker-end="url(#arrow)"/>
+                    <text x="275" y="75" font-family="Verdana" font-size="10" fill="#27ae60">v⃗</text>
+
+                    <!-- Dostředivé zrychlení -->
+                    <line x1="270" y1="100" x2="240" y2="100" stroke="#e74c3c" stroke-width="3" marker-end="url(#arrow)"/>
+                    <text x="245" y="115" font-family="Verdana" font-size="10" fill="#e74c3c">a⃗_d</text>
+
+                    <!-- Úhel ω -->
+                    <path d="M 220 100 A 20 20 0 0 0 210 85" stroke="#f39c12" stroke-width="2"/>
+                    <text x="215" y="85" font-family="Verdana" font-size="10" fill="#f39c12">ω</text>
+                </svg>
+            </div>
+
+            <div class="equations">
+                <h3>Odvození rovnic kruhového pohybu</h3>
+                <p><strong>1. Úhlové veličiny:</strong></p>
+                <p>Za čas T (perioda) urazí těleso celou kružnici (2πr), tedy úhel 2π radiánů:</p>
+                <p>$$ \omega = \frac{2\pi}{T} = 2\pi f $$</p>
+                <p>kde ω je úhlová rychlost [rad/s], f je frekvence [Hz]</p>
+
+                <p><strong>2. Vztah mezi lineární a úhlovou rychlostí:</strong></p>
+                <p>Obvodová rychlost je:</p>
+                <p>$$ v = \frac{2\pi r}{T} = \omega \cdot r $$</p>
+
+                <p><strong>3. Dostředivé zrychlení:</strong></p>
+                <p>Přestože velikost rychlosti je konstantní, její směr se mění. Změna směru způsobuje zrychlení:</p>
+                <p>$$ a_d = \frac{v^2}{r} = \omega^2 r = \frac{4\pi^2 r}{T^2} $$</p>
+                <p>Toto zrychlení směřuje do středu kružnice (dostředivé).</p>
+
+                <p><strong>4. Dostředivá síla:</strong></p>
+                <p>Podle 2. Newtonova zákona musí působit síla:</p>
+                <p>$$ F_d = m \cdot a_d = \frac{m v^2}{r} = m \omega^2 r $$</p>
+            </div>
+
+            <div class="example">
+                <h3>Konkrétní příklad</h3>
+                <p><strong>Zadání:</strong> Satelit obíhá Zemi ve výšce 400 km nad povrchem. Poloměr oběžné dráhy je 6800 km. Jaká je jeho obvodová rychlost a perioda oběhu?</p>
+                <p><strong>Výpočet:</strong>
+                <br>1. <strong>Dáno:</strong> \( r = 6{,}8 \times 10^6 \, \text{m} \), \( g = 9{,}81 \, \text{m/s}^2 \) (na povrchu)
+                <br>2. <strong>Pro kruhový oběh:</strong> gravitační síla = dostředivá síla
+                <br>3. <strong>Obvodová rychlost:</strong> \( v = \sqrt{\frac{GM}{r}} \approx \sqrt{gr} = \sqrt{9{,}81 \times 6{,}8 \times 10^6} = 7{,}7 \, \text{km/s} \)
+                <br>4. <strong>Perioda:</strong> \( T = \frac{2\pi r}{v} = \frac{2\pi \times 6{,}8 \times 10^6}{7700} = 5540 \, \text{s} = 92{,}3 \, \text{min} \)
+                </p>
+                <h4>Parametry kruhového pohybu</h4>
+                <table>
+                    <tr><th>Veličina</th><th>Vzorec</th><th>Jednotka</th><th>Příklad</th></tr>
+                    <tr><td>Úhlová rychlost ω</td><td>2π/T</td><td>rad/s</td><td>0,00113</td></tr>
+                    <tr><td>Obvodová rychlost v</td><td>ωr</td><td>m/s</td><td><code>7700</code></td></tr>
+                    <tr><td>Dostředivé zrychlení</td><td>v²/r</td><td>m/s²</td><td>8,7</td></tr>
+                    <tr><td>Perioda T</td><td>2πr/v</td><td>s</td><td><code>5540</code></td></tr>
+                </table>
+            </div>
+
+            <!-- Simulace kruhového pohybu -->
+            <div class="interactive-simulation">
+                <h3>🌀 Simulace kruhového pohybu</h3>
+                <div class="demo-area" id="circular-demo-area" style="height: 200px;">
+                    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+                        <div style="position: relative; width: 140px; height: 140px;">
+                            <div style="position: absolute; top: 50%; left: 50%; width: 2px; height: 2px; background: #333; transform: translate(-50%, -50%);"></div>
+                            <div id="planet" style="position: absolute; top: 0; left: 50%; width: 20px; height: 20px; background: #3498db; border-radius: 50%; transform: translateX(-50%); transform-origin: 50% 70px;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="slider-container">
+                    <label>Úhlová rychlost: <span id="omega-value">2</span> rad/s</label>
+                    <input type="range" class="slider" id="omega-slider" min="0.5" max="5" value="2" step="0.1" oninput="updateOmega()">
+                </div>
+
+                <div class="simulation-controls">
+                    <button onclick="startCircularMotion()" class="sim-button start-btn">
+                        ▶️ Spustit rotaci
+                    </button>
+                    <button onclick="stopCircularMotion()" class="sim-button reset-btn">
+                        ⏹️ Stop
+                    </button>
+                </div>
+
+                <div id="circular-info" class="simulation-info">
+                    <strong>📊 Parametry rotace:</strong><br>
+                    <span id="circular-data">Nastavte úhlovou rychlost a spusťte rotaci</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- INTERAKTIVNÍ KALKULÁTORY -->
+        <section id="calculators" class="unit-section">
+            <h2>4. Interaktivní kalkulátory</h2>
+            <p><strong>Praktické nástroje pro rychlé výpočty kinematických úloh</strong></p>
+
+            <!-- Kalkulátor pro rovnoměrný pohyb -->
+            <div class="calculator-container">
+                <h3>🚗 Kalkulátor rovnoměrného pohybu</h3>
+                <div class="calc-inputs">
+                    <div class="input-group">
+                        <label for="uniform-distance">Dráha s [m]:</label>
+                        <input type="number" id="uniform-distance" placeholder="např. 100">
+                    </div>
+                    <div class="input-group">
+                        <label for="uniform-velocity">Rychlost v [m/s]:</label>
+                        <input type="number" id="uniform-velocity" placeholder="např. 20">
+                    </div>
+                    <div class="input-group">
+                        <label for="uniform-time">Čas t [s]:</label>
+                        <input type="number" id="uniform-time" placeholder="např. 5">
+                    </div>
+                    <button onclick="calculateUniform()" class="calc-button">Vypočítat</button>
+                </div>
+                <div id="uniform-result" class="calc-result"></div>
+            </div>
+
+            <!-- Kalkulátor pro zrychlený pohyb -->
+            <div class="calculator-container">
+                <h3>🏎️ Kalkulátor zrychleného pohybu</h3>
+                <div class="calc-inputs">
+                    <div class="input-group">
+                        <label for="accel-v0">Počáteční rychlost v₀ [m/s]:</label>
+                        <input type="number" id="accel-v0" placeholder="např. 0">
+                    </div>
+                    <div class="input-group">
+                        <label for="accel-a">Zrychlení a [m/s²]:</label>
+                        <input type="number" id="accel-a" placeholder="např. 2">
+                    </div>
+                    <div class="input-group">
+                        <label for="accel-t">Čas t [s]:</label>
+                        <input type="number" id="accel-t" placeholder="např. 5">
+                    </div>
+                    <button onclick="calculateAccelerated()" class="calc-button">Vypočítat</button>
+                </div>
+                <div id="accel-result" class="calc-result"></div>
+            </div>
+
+            <!-- Kalkulátor pro volný pád -->
+            <div class="calculator-container">
+                <h3>📉 Kalkulátor volného pádu</h3>
+                <div class="calc-inputs">
+                    <div class="input-group">
+                        <label for="fall-height">Výška h [m]:</label>
+                        <input type="number" id="fall-height" placeholder="např. 20">
+                    </div>
+                    <div class="input-group">
+                        <label for="fall-time">Čas t [s] (nepovinné):</label>
+                        <input type="number" id="fall-time" placeholder="nebo nechte prázdné">
+                    </div>
+                    <button onclick="calculateFreeFall()" class="calc-button">Vypočítat</button>
+                </div>
+                <div id="fall-result" class="calc-result"></div>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        // Kalkulátor rovnoměrného pohybu
+        function calculateUniform() {
+            const distance = parseFloat(document.getElementById('uniform-distance').value);
+            const velocity = parseFloat(document.getElementById('uniform-velocity').value);
+            const time = parseFloat(document.getElementById('uniform-time').value);
+
+            let result = '<h4>Výsledky:</h4>';
+
+            // Výpočet na základě zadaných hodnot
+            if (distance && velocity && !time) {
+                const calcTime = distance / velocity;
+                result += `<p><strong>Čas:</strong> t = s/v = ${distance}/${velocity} = <span class="highlight">${calcTime.toFixed(2)} s</span></p>`;
+            } else if (distance && time && !velocity) {
+                const calcVelocity = distance / time;
+                result += `<p><strong>Rychlost:</strong> v = s/t = ${distance}/${time} = <span class="highlight">${calcVelocity.toFixed(2)} m/s</span></p>`;
+            } else if (velocity && time && !distance) {
+                const calcDistance = velocity * time;
+                result += `<p><strong>Dráha:</strong> s = v×t = ${velocity}×${time} = <span class="highlight">${calcDistance.toFixed(2)} m</span></p>`;
+            } else if (distance && velocity && time) {
+                // Kontrola
+                const checkTime = distance / velocity;
+                const checkDistance = velocity * time;
+                result += `<p><strong>Kontrola:</strong></p>`;
+                result += `<p>• Čas z dráhy a rychlosti: ${checkTime.toFixed(2)} s</p>`;
+                result += `<p>• Dráha z rychlosti a času: ${checkDistance.toFixed(2)} m</p>`;
+                if (Math.abs(checkTime - time) < 0.01) {
+                    result += `<p style="color: green;">✓ Hodnoty jsou konzistentní!</p>`;
+                } else {
+                    result += `<p style="color: red;">❌ Hodnoty nejsou konzistentní!</p>`;
+                }
+            } else {
+                result += '<p style="color: red;">❌ Zadejte prosím dvě ze tří hodnot!</p>';
+            }
+
+            document.getElementById('uniform-result').innerHTML = result;
+        }
+
+        // Kalkulátor zrychleného pohybu
+        function calculateAccelerated() {
+            const v0 = parseFloat(document.getElementById('accel-v0').value) || 0;
+            const a = parseFloat(document.getElementById('accel-a').value);
+            const t = parseFloat(document.getElementById('accel-t').value);
+
+            if (!a || !t) {
+                document.getElementById('accel-result').innerHTML = '<p style="color: red;">❌ Zadejte zrychlení a čas!</p>';
+                return;
+            }
+
+            const v = v0 + a * t;
+            const s = v0 * t + 0.5 * a * t * t;
+            const vCheck = Math.sqrt(v0 * v0 + 2 * a * s);
+
+            let result = '<h4>Výsledky:</h4>';
+            result += `<p><strong>Konečná rychlost:</strong> v = v₀ + at = ${v0} + ${a}×${t} = <span class="highlight">${v.toFixed(2)} m/s</span></p>`;
+            result += `<p><strong>Ujetá dráha:</strong> s = v₀t + ½at² = ${v0}×${t} + ½×${a}×${t}² = <span class="highlight">${s.toFixed(2)} m</span></p>`;
+            result += `<p><strong>Kontrola:</strong> v = √(v₀² + 2as) = √(${v0}² + 2×${a}×${s.toFixed(2)}) = ${vCheck.toFixed(2)} m/s</p>`;
+            if (Math.abs(v - vCheck) < 0.01) {
+                result += `<p style="color: green;">✓ Kontrola prošla!</p>`;
+            }
+
+            document.getElementById('accel-result').innerHTML = result;
+        }
+
+        // Kalkulátor volného pádu
+        function calculateFreeFall() {
+            const height = parseFloat(document.getElementById('fall-height').value);
+            const time = parseFloat(document.getElementById('fall-time').value);
+            const g = 9.81;
+
+            let result = '<h4>Výsledky:</h4>';
+
+            if (height && !time) {
+                // Výpočet času z výšky
+                const calcTime = Math.sqrt(2 * height / g);
+                const velocity = g * calcTime;
+                result += `<p><strong>Čas pádu:</strong> t = √(2h/g) = √(2×${height}/9.81) = <span class="highlight">${calcTime.toFixed(2)} s</span></p>`;
+                result += `<p><strong>Rychlost při dopadu:</strong> v = gt = 9.81×${calcTime.toFixed(2)} = <span class="highlight">${velocity.toFixed(2)} m/s</span></p>`;
+                result += `<p><strong>Kontrola:</strong> v = √(2gh) = √(2×9.81×${height}) = ${Math.sqrt(2 * g * height).toFixed(2)} m/s ✓</p>`;
+            } else if (time && !height) {
+                // Výpočet výšky z času
+                const calcHeight = 0.5 * g * time * time;
+                const velocity = g * time;
+                result += `<p><strong>Výška pádu:</strong> h = ½gt² = ½×9.81×${time}² = <span class="highlight">${calcHeight.toFixed(2)} m</span></p>`;
+                result += `<p><strong>Rychlost při dopadu:</strong> v = gt = 9.81×${time} = <span class="highlight">${velocity.toFixed(2)} m/s</span></p>`;
+            } else if (height && time) {
+                // Kontrola obou hodnot
+                const calcTime = Math.sqrt(2 * height / g);
+                const calcHeight = 0.5 * g * time * time;
+                const velocity = g * time;
+                result += `<p><strong>Rychlost při dopadu:</strong> v = gt = 9.81×${time} = <span class="highlight">${velocity.toFixed(2)} m/s</span></p>`;
+                result += `<p><strong>Kontrola času:</strong> t = √(2h/g) = ${calcTime.toFixed(2)} s</p>`;
+                result += `<p><strong>Kontrola výšky:</strong> h = ½gt² = ${calcHeight.toFixed(2)} m</p>`;
+                if (Math.abs(calcTime - time) < 0.01) {
+                    result += `<p style="color: green;">✓ Hodnoty jsou konzistentní!</p>`;
+                } else {
+                    result += `<p style="color: red;">❌ Hodnoty nejsou konzistentní!</p>`;
+                }
+            } else {
+                result += '<p style="color: red;">❌ Zadejte výšku nebo čas!</p>';
+            }
+
+            document.getElementById('fall-result').innerHTML = result;
+        }
+
+        // === INTERAKTIVNÍ SIMULACE ===
+
+        // Simulace rychlosti
+        function updateSpeedDemo() {
+            const speed = document.getElementById('speed-slider').value;
+            document.getElementById('speed-value').textContent = speed;
+        }
+
+        function startSpeedDemo() {
+            const ball = document.getElementById('speed-demo-ball');
+            const speed = parseInt(document.getElementById('speed-slider').value);
+
+            // Reset pozice
+            ball.style.transition = 'none';
+            ball.style.left = '20px';
+
+            // Force reflow
+            ball.offsetHeight;
+
+            // Spuštění animace - rychlost ovlivňuje dobu trvání
+            ball.style.transition = `left ${10/speed}s linear`;
+            ball.style.left = '90%';
+
+            // Reset po dokončení
+            setTimeout(() => {
+                ball.style.left = '20px';
+                ball.style.transition = 'none';
+            }, (10/speed + 0.1) * 1000);
+        }
+
+        function resetSpeedDemo() {
+            const ball = document.getElementById('speed-demo-ball');
+            ball.style.transition = 'none';
+            ball.style.left = '20px';
+        }
+
+        // Simulace zrychlení
+        function updateAccelDemo() {
+            document.getElementById('accel-value').textContent = document.getElementById('accel-slider').value;
+        }
+
+        function startAccelDemo() {
+            const ball = document.getElementById('accel-demo-ball');
+            const accel = parseFloat(document.getElementById('accel-slider').value);
+
+            // Reset pozice
+            ball.style.transition = 'none';
+            ball.style.left = '20px';
+
+            // Force reflow
+            ball.offsetHeight;
+
+            // Výpočet realistické doby pro dráhu - s = 0.5 * a * t^2
+            const distance = 0.7; // relativní vzdálenost
+            const duration = Math.sqrt(2 * distance / accel) * 2; // násobek pro vizuální efekt
+
+            // Křivka zrychlení - ease-out simuluje konstantní zrychlení
+            ball.style.transition = `left ${duration}s cubic-bezier(0.25, 0.46, 0.45, 0.94)`;
+            ball.style.left = '90%';
+
+            // Reset po dokončení
+            setTimeout(() => {
+                ball.style.left = '20px';
+                ball.style.transition = 'none';
+            }, (duration + 0.1) * 1000);
+        }
+
+        function resetAccelDemo() {
+            const ball = document.getElementById('accel-demo-ball');
+            ball.style.transition = 'none';
+            ball.style.left = '20px';
+        }
+
+        // Simulace volného pádu
+        function updateFallDemo() {
+            const height = document.getElementById('fall-height-slider').value;
+            document.getElementById('fall-height-value').textContent = height;
+
+            // Aktualizace značky výšky
+            const marker = document.querySelector('.height-marker');
+            if (marker) {
+                marker.textContent = `h = ${height}m`;
+            }
+        }
+
+        function startFallDemo() {
+            const ball = document.getElementById('fall-demo-ball');
+            const height = parseFloat(document.getElementById('fall-height-slider').value);
+            const g = 9.81;
+
+            // Reset pozice
+            ball.style.transition = 'none';
+            ball.style.top = '20px';
+
+            // Force reflow
+            ball.offsetHeight;
+
+            // Výpočet času pádu: t = √(2h/g)
+            const fallTime = Math.sqrt(2 * height / g);
+            const finalVelocity = g * fallTime;
+
+            // Animace pádu - ease-in simuluje gravitační zrychlení
+            ball.style.transition = `top ${fallTime}s cubic-bezier(0.55, 0.055, 0.675, 0.19)`;
+            ball.style.top = 'calc(100% - 35px)';
+
+            // Zobrazení informací
+            document.getElementById('fall-data').innerHTML = `
+                Čas pádu: ${fallTime.toFixed(2)} s |
+                Rychlost při dopadu: ${finalVelocity.toFixed(1)} m/s |
+                Výška: ${height} m
+            `;
+
+            // Reset po dokončení
+            setTimeout(() => {
+                ball.style.top = '20px';
+                ball.style.transition = 'none';
+            }, (fallTime + 0.5) * 1000);
+        }
+
+        function resetFallDemo() {
+            const ball = document.getElementById('fall-demo-ball');
+            ball.style.transition = 'none';
+            ball.style.top = '20px';
+            document.getElementById('fall-data').textContent = 'Nastavte výšku a spusťte simulaci';
+        }
+
+        // === SIMULACE VRHU ŠIKMO VZHŮRU ===
+
+        function updateVelocity() {
+            document.getElementById('velocity-value').textContent = document.getElementById('velocity-slider').value;
+        }
+
+        function updateAngle() {
+            document.getElementById('angle-value').textContent = document.getElementById('angle-slider').value;
+        }
+
+        function fireProjectile() {
+            const projectile = document.getElementById('projectile-ball');
+            const velocity = parseInt(document.getElementById('velocity-slider').value);
+            const angle = parseInt(document.getElementById('angle-slider').value);
+
+            // Převod do radiánů
+            const angleRad = angle * Math.PI / 180;
+
+            // Rozklad rychlosti
+            const vx = velocity * Math.cos(angleRad);  // m/s
+            const vy = velocity * Math.sin(angleRad);  // m/s
+
+            // Konstanty
+            const g = 9.81;                           // m/s²
+            const pxPerM = 8;                         // škálovací faktor metr → pixel
+            const startX = 30;                        // startovní pozice v px
+            const startY = 0;                         // zem v aréně
+
+            // Předvýpočet parametrů pro zobrazení
+            const flightTime = 2 * vy / g;
+            const range = vx * flightTime;
+            const maxHeight = (vy * vy) / (2 * g);
+
+            // Reset projektilu
+            cancelAnimationFrame(projectile.rafId || 0);
+            projectile.style.display = 'block';
+            projectile.style.transition = 'none';
+            projectile.style.transform = 'translate(0, 0)';
+
+            // Zobrazit parametry letu
+            document.getElementById('flight-data').innerHTML = `
+                Doba letu: ${flightTime.toFixed(1)} s |
+                Dosah: ${range.toFixed(1)} m |
+                Max. výška: ${maxHeight.toFixed(1)} m
+            `;
+            document.getElementById('projectile-info').style.display = 'block';
+
+            let t0 = null;
+            function step(timestamp) {
+                if (!t0) t0 = timestamp;
+                const t = (timestamp - t0) / 1000;    // čas v sekundách od výstřelu
+
+                // Fyzikální rovnice vrhu šikmo vzhůru
+                const x = vx * t;                      // vodorovná poloha (m)
+                const y = vy * t - 0.5 * g * t * t;    // svislá poloha (m)
+
+                if (y < 0) return;                     // dopad -> stop animaci
+
+                // Převod na pixely a render
+                const screenX = x * pxPerM;
+                const screenY = y * pxPerM;
+                projectile.style.transform = `translate(${screenX}px, ${-screenY}px)`;
+
+                projectile.rafId = requestAnimationFrame(step);
+            }
+            projectile.rafId = requestAnimationFrame(step);
+        }
+
+        function resetProjectile() {
+            const projectile = document.getElementById('projectile-ball');
+
+            // Zruš běžící animaci
+            cancelAnimationFrame(projectile.rafId || 0);
+            projectile.rafId = null;
+
+            // Reset stylů
+            projectile.style.transition = 'none';
+            projectile.style.transform = 'translate(0, 0)';
+            projectile.style.display = 'none';
+
+            // Skryj informace o letu
+            document.getElementById('projectile-info').style.display = 'none';
+        }
+
+        // === SIMULACE KRUHOVÉHO POHYBU ===
+
+        let circularAnimation = null;
+
+        function updateOmega() {
+            const omega = document.getElementById('omega-slider').value;
+            document.getElementById('omega-value').textContent = omega;
+
+            if (circularAnimation) {
+                const period = (2 * Math.PI / omega).toFixed(1);
+                const frequency = (omega / (2 * Math.PI)).toFixed(2);
+                const radius = 70; // px radius
+                const linearVelocity = (omega * radius * 0.01).toFixed(2); // převod na rozumné jednotky
+
+                document.getElementById('circular-data').innerHTML = `
+                    Perioda: ${period} s | Frekvence: ${frequency} Hz | Obvodová rychlost: ${linearVelocity} px/s
+                `;
+            }
+        }
+
+        function startCircularMotion() {
+            const planet = document.getElementById('planet');
+            const omega = parseFloat(document.getElementById('omega-slider').value);
+
+            // Výpočet periody z úhlové rychlosti
+            const period = (2 * Math.PI / omega);
+
+            // Zapnout CSS animaci
+            planet.style.animation = `rotate ${period.toFixed(2)}s linear infinite`;
+            circularAnimation = true;
+
+            // Aktualizovat informace
+            updateOmega();
+        }
+
+        function stopCircularMotion() {
+            const planet = document.getElementById('planet');
+
+            // Vypnout animaci
+            planet.style.animation = '';
+            circularAnimation = false;
+
+            // Reset informací
+            document.getElementById('circular-data').textContent = 'Nastavte úhlovou rychlost a spusťte rotaci';
+        }
+
+        // Inicializace při načtení stránky
+        document.addEventListener('DOMContentLoaded', function() {
+            // Inicializace hodnot sliderů
+            updateSpeedDemo();
+            updateAccelDemo();
+            updateFallDemo();
+            updateVelocity();
+            updateAngle();
+            updateOmega();
+        });
+    </script>
+</body>
+</html>

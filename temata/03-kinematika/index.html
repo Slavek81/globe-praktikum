@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03 - Kinematika | Fyzika - opakování a prohloubení</title>
+    <meta name="description" content="Opakování kinematiky - pohyb těles, rychlost, zrychlení s důrazem na výpočty a řešení praktických příkladů.">
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+        window.MathJax = {
+            tex: {inlineMath: [['$', '$'], ['\\(', '\\)']]},
+            svg: {fontCache: 'global'}
+        };
+    </script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="nav-brand">
+                <h1><a href="../../index.html" style="color: inherit; text-decoration: none;"><i class="fas fa-atom"></i> Fyzika - opakování a prohloubení</a></h1>
+                <p class="subtitle">03 - Kinematika</p>
+            </div>
+            <nav class="nav">
+                <a href="../../index.html" class="nav-link">Domů</a>
+            </nav>
+            <div class="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Lecture Header -->
+    <section class="page-hero">
+        <div class="container">
+            <div class="lecture-hero-content">
+                <div class="lecture-number">03</div>
+                <div class="lecture-info">
+                    <h1>Kinematika</h1>
+                    <p class="lecture-subtitle">Opakování mechaniky - pohyb těles, rychlost, zrychlení s důrazem na výpočty</p>
+                    <div class="lecture-meta-hero">
+                        <span><i class="fas fa-clock"></i> 3 hodiny</span>
+                        <span><i class="fas fa-chart-line"></i> Opakování</span>
+                        <span><i class="fas fa-calculator"></i> Výpočty pohybu</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Navigation -->
+    <section class="section">
+        <div class="container">
+            <div class="quick-nav">
+                <a href="#objectives" class="quick-nav-item">
+                    <i class="fas fa-target"></i>
+                    <span>Cíle</span>
+                </a>
+                <a href="#presentations" class="quick-nav-item">
+                    <i class="fas fa-presentation"></i>
+                    <span>Prezentace</span>
+                </a>
+                <a href="#theory" class="quick-nav-item">
+                    <i class="fas fa-book"></i>
+                    <span>Teorie</span>
+                </a>
+                <a href="#materials" class="quick-nav-item">
+                    <i class="fas fa-download"></i>
+                    <span>Materiály</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Learning Objectives -->
+    <section id="objectives" class="section section-gray">
+        <div class="container">
+            <h2 class="section-title">Cíle přednášky</h2>
+            <div class="objectives-grid">
+                <div class="objective-card">
+                    <div class="objective-icon">
+                        <i class="fas fa-running"></i>
+                    </div>
+                    <h3>Porozumět pohybu</h3>
+                    <p>Základní typy pohybu: přímočarý, rovnoměrný, rovnoměrně zrychlený, volný pád</p>
+                </div>
+                <div class="objective-card">
+                    <div class="objective-icon">
+                        <i class="fas fa-tachometer-alt"></i>
+                    </div>
+                    <h3>Zvládnout rychlost</h3>
+                    <p>Rozdíl mezi průměrnou a okamžitou rychlostí, výpočty rychlosti z dráhy a času</p>
+                </div>
+                <div class="objective-card">
+                    <div class="objective-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Pochopit zrychlení</h3>
+                    <p>Zrychlení jako změna rychlosti v čase, gravitační zrychlení, praktické výpočty</p>
+                </div>
+                <div class="objective-card">
+                    <div class="objective-icon">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <h3>Řešit příklady</h3>
+                    <p>Praktické výpočty s kinematickými rovnicemi, grafy pohybu, reálné situace</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Theoretical Foundations -->
+    <section id="theory" class="section">
+        <div class="container">
+            <h2 class="section-title">Teoretické základy</h2>
+
+            <div class="theory-content">
+                <div class="theory-block">
+                    <h3><i class="fas fa-running"></i> Základní pojmy</h3>
+                    <div class="definitions">
+                        <div class="definition-item">
+                            <h4>Pohyb</h4>
+                            <p>Změna polohy tělesa v čase vzhledem k jiným tělesům (vztažná soustava).</p>
+                        </div>
+                        <div class="definition-item">
+                            <h4>Dráha s [m]</h4>
+                            <p>Délka trajektorie, kterou těleso urazilo za určitý čas. Skalární veličina, vždy kladná.</p>
+                        </div>
+                        <div class="definition-item">
+                            <h4>Posunutí $\vec{r}$ [m]</h4>
+                            <p>Vektorová veličina udávající přímou vzdálenost mezi počáteční a koncovou polohou.</p>
+                        </div>
+                        <div class="definition-item">
+                            <h4>Rychlost v [m/s]</h4>
+                            <p>Vektorová veličina charakterizující rychlost změny polohy tělesa v čase.</p>
+                        </div>
+                        <div class="definition-item">
+                            <h4>Zrychlení a [m/s²]</h4>
+                            <p>Vektorová veličina charakterizující rychlost změny rychlosti v čase.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="theory-block">
+                    <h3><i class="fas fa-calculator"></i> Kinematické rovnice</h3>
+                    <div class="equations">
+                        <div class="equation-block">
+                            <h4>Rovnoměrný přímočarý pohyb:</h4>
+                            <div class="equation">$$s = v \cdot t$$</div>
+                            <div class="equation">$$v = \text{konstantní}$$</div>
+                            <p class="equation-note">kde s je dráha [m], v rychlost [m/s], t čas [s]</p>
+                        </div>
+
+                        <div class="equation-block">
+                            <h4>Rovnoměrně zrychlený pohyb:</h4>
+                            <div class="equation">$$v = v_0 + a \cdot t$$</div>
+                            <div class="equation">$$s = v_0 \cdot t + \frac{1}{2} a \cdot t^2$$</div>
+                            <div class="equation">$$v^2 = v_0^2 + 2 a \cdot s$$</div>
+                            <p class="equation-note">kde $v_0$ je počáteční rychlost [m/s], a zrychlení [m/s²]</p>
+                        </div>
+
+                        <div class="equation-block">
+                            <h4>Volný pád:</h4>
+                            <div class="equation">$$h = \frac{1}{2} g \cdot t^2$$</div>
+                            <div class="equation">$$v = g \cdot t$$</div>
+                            <div class="equation">$$v^2 = 2 g \cdot h$$</div>
+                            <p class="equation-note">kde g = 9,81 m/s² je gravitační zrychlení, h výška [m]</p>
+                        </div>
+
+                        <div class="equation-block">
+                            <h4>Vrh šikmo vzhůru:</h4>
+                            <div class="equation">$$v_x = v_0 \cos \alpha = \text{konstantní}$$</div>
+                            <div class="equation">$$v_y = v_0 \sin \alpha - g \cdot t$$</div>
+                            <div class="equation">$$y = x \tan \alpha - \frac{g x^2}{2 v_0^2 \cos^2 \alpha}$$</div>
+                            <div class="equation">$$R = \frac{v_0^2 \sin 2\alpha}{g}$$</div>
+                            <div class="equation">$$h_{max} = \frac{v_0^2 \sin^2 \alpha}{2g}$$</div>
+                            <p class="equation-note">kde α je úhel vrhu, v₀ počáteční rychlost, R dosah, h_max maximální výška</p>
+                        </div>
+
+                        <div class="equation-block">
+                            <h4>Pohyb po kružnici:</h4>
+                            <div class="equation">$$\omega = \frac{2\pi}{T} = 2\pi f$$</div>
+                            <div class="equation">$$v = \omega \cdot r$$</div>
+                            <div class="equation">$$a_d = \frac{v^2}{r} = \omega^2 \cdot r$$</div>
+                            <div class="equation">$$F_d = m \cdot a_d = \frac{m v^2}{r}$$</div>
+                            <p class="equation-note">kde ω je úhlová rychlost [rad/s], T perioda [s], f frekvence [Hz], a_d dostředivé zrychlení, F_d dostředivá síla</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="theory-block">
+                    <h3><i class="fas fa-chart-line"></i> Typy pohybu</h3>
+                    <div class="conservation-laws">
+                        <div class="law-item">
+                            <h4>Rovnoměrný pohyb:</h4>
+                            <div class="law-equation">Rychlost je konstantní, zrychlení je nulové</div>
+                        </div>
+                        <div class="law-item">
+                            <h4>Rovnoměrně zrychlený pohyb:</h4>
+                            <div class="law-equation">Zrychlení je konstantní, rychlost se lineárně mění</div>
+                        </div>
+                        <div class="law-item">
+                            <h4>Rovnoměrně zpomalený pohyb:</h4>
+                            <div class="law-equation">Záporné zrychlení, rychlost klesá</div>
+                        </div>
+                        <div class="law-item">
+                            <h4>Volný pád:</h4>
+                            <div class="law-equation">Speciální případ rovnoměrně zrychleného pohybu s g = 9,81 m/s²</div>
+                        </div>
+                        <div class="law-item">
+                            <h4>Vrh šikmo vzhůru:</h4>
+                            <div class="law-equation">Kombinace vodorovného rovnoměrného a svislého zrychleného pohybu</div>
+                        </div>
+                        <div class="law-item">
+                            <h4>Pohyb po kružnici:</h4>
+                            <div class="law-equation">Konstantní rychlost, ale měnící se směr - dostředivé zrychlení</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Presentations -->
+    <section id="presentations" class="section section-gray">
+        <div class="container">
+            <h2 class="section-title">Interaktivní prezentace</h2>
+            <div class="presentations-grid">
+                <a href="prezentace/kinematika_prezentace.html" class="presentation-card" target="_blank">
+                    <div class="presentation-preview">
+                        <i class="fas fa-running"></i>
+                    </div>
+                    <div class="presentation-info">
+                        <h3>Kinematika - pohyb těles</h3>
+                        <p>Kompletní přehled kinematiky s důrazem na výpočty a praktické příklady</p>
+                        <div class="presentation-meta">
+                            <span><i class="fas fa-external-link-alt"></i> Otevře v novém okně</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Materials Section -->
+    <section id="materials" class="section">
+        <div class="container">
+            <h2 class="section-title">Materiály ke stažení</h2>
+            <div class="materials-grid">
+                <div class="material-card">
+                    <div class="material-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <h3>Kinematické rovnice a definice</h3>
+                    <p>Kompletní přehled všech kinematických pojmů, definic a vztahů v PDF</p>
+                    <div class="material-meta">
+                        <span><i class="fas fa-file-pdf"></i> PDF</span>
+                        <span><i class="fas fa-download"></i> 359 KB</span>
+                    </div>
+                    <a href="materialy/kinematicke_rovnice_definice.pdf" target="_blank" style="display: inline-block; background: #2563eb; color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: 500; transition: background 0.2s;">Otevřít PDF</a>
+                </div>
+                <div class="material-card">
+                    <div class="material-icon">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <h3>Excel kalkulačka</h3>
+                    <p>Kompletní sada všech 49 vyřešených příkladů s detailními řešeními, fyzikálními vzorci a grafy</p>
+                    <div class="material-meta">
+                        <span><i class="fas fa-file-excel"></i> XLSX</span>
+                        <span><i class="fas fa-download"></i> 103.7 KB</span>
+                    </div>
+                    <a href="materialy/kinematika_kalkulacka.xlsx" target="_blank" style="display: inline-block; background: #10b981; color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: 500; transition: background 0.2s;">Otevřít Excel</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="../../js/main.js"></script>
+</body>
+</html>

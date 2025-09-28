@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kinematika - Zadání příkladů (1-49)</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c5282;
+            border-bottom: 3px solid #2c5282;
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            color: #2a4365;
+            margin: 40px 0 20px 0;
+            background: linear-gradient(90deg, #e2e8f0, #f7fafc);
+            padding: 15px 20px;
+            border-radius: 10px;
+            border-left: 5px solid #3182ce;
+            font-size: 20px;
+        }
+
+        .priklad {
+            background-color: white;
+            margin: 25px 0;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-left: 5px solid #3182ce;
+            overflow: hidden;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .priklad:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .priklad-header {
+            background: linear-gradient(135deg, #3182ce, #2b6cb0);
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .priklad-cislo {
+            background: rgba(255,255,255,0.2);
+            padding: 8px 15px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 18px;
+            min-width: 30px;
+            text-align: center;
+        }
+
+        .priklad-title {
+            flex: 1;
+            font-weight: 500;
+            font-size: 16px;
+        }
+
+        .priklad-content {
+            padding: 20px;
+        }
+
+        .zadani {
+            background: linear-gradient(135deg, #f7fafc, #edf2f7);
+            padding: 18px;
+            border-radius: 10px;
+            border: 1px solid #cbd5e0;
+        }
+
+        .zadani h3 {
+            color: #2b6cb0;
+            margin: 0 0 15px 0;
+            font-size: 16px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .zadani h3:before {
+            content: "📝";
+            font-size: 18px;
+        }
+
+        .zadani-text {
+            color: #2b6cb0;
+            margin: 0;
+            font-size: 15px;
+            line-height: 1.7;
+            font-weight: bold;
+        }
+
+        .zadani-text ol, .zadani-text ul {
+            margin: 10px 0;
+            padding-left: 25px;
+        }
+
+        .zadani-text li {
+            margin: 8px 0;
+        }
+
+        .hodnoty {
+            background: linear-gradient(135deg, #bee3f8, #90cdf4);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 600;
+            color: #1a365d;
+        }
+
+        .sekce-popis {
+            background: linear-gradient(135deg, #fef5e7, #fed7aa);
+            padding: 15px 20px;
+            border-radius: 10px;
+            border-left: 4px solid #ed8936;
+            margin-bottom: 20px;
+            font-style: italic;
+            color: #c05621;
+            font-weight: 500;
+        }
+
+        .statistiky {
+            background: linear-gradient(135deg, #e6fffa, #b2f5ea);
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            text-align: center;
+            color: #234e52;
+            font-weight: 600;
+            font-size: 18px;
+        }
+
+        .zdroj {
+            text-align: center;
+            margin-top: 50px;
+            padding: 25px;
+            background: linear-gradient(135deg, #e2e8f0, #edf2f7);
+            border-radius: 15px;
+            border-top: 4px solid #3182ce;
+        }
+
+        .zdroj h3 {
+            color: #2c5282;
+            margin: 0 0 10px 0;
+        }
+
+        .zdroj a {
+            color: #3182ce;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .zdroj a:hover {
+            text-decoration: underline;
+        }
+
+        /* Matematické vzorce */
+        .math {
+            font-family: 'Times New Roman', serif;
+            font-style: italic;
+            color: #2b6cb0;
+            font-weight: 500;
+        }
+
+        /* Responzivní design */
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+
+            .priklad-header {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+
+            .priklad-cislo {
+                align-self: center;
+            }
+
+            .priklad-content {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Kinematika - Zadání příkladů</h1>
+
+    <div class="statistiky">
+        📚 Kompletních <strong>49 příkladů</strong> z kinematiky - pouze zadání pro procvičení
+    </div>
+
+    <h2>🚗 Rovnoměrný přímočarý pohyb (1-21)</h2>
+    <div class="sekce-popis">
+        Pohyb při konstantní rychlosti, průměrná rychlost, složené pohyby.
+    </div>
+
+    <!-- Příklad 1 -->
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">1</div>
+            <div class="priklad-title">Automobil - základní výpočty</div>
+        </div>
+        <div class="priklad-content">
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <p class="zadani-text">Automobil jede rychlostí <span class="hodnoty">60 km·h⁻¹</span>.</p>
+                <ol>
+                    <li>Jakou dráhu urazí za <span class="hodnoty">20 minut</span>?</li>
+                    <li>Zakreslete graf závislosti dráhy na čase, rychlosti na čase a zrychlení na čase.</li>
+                    <li>Jaký význam má plocha pod grafem znázorňující časový průběh rychlosti?</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <!-- Příklad 2 -->
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">2</div>
+            <div class="priklad-title">Motocykl - rovnoměrný pohyb</div>
+        </div>
+        <div class="priklad-content">
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <p class="zadani-text">Předpokládejme, že se motocykl pohybuje rovnoměrně rychlostí <span class="hodnoty">72 km·h⁻¹</span>.</p>
+                <ol type="a">
+                    <li>Vypočítejte dráhu, kterou urazí za <span class="hodnoty">10 sekund</span>.</li>
+                    <li>Nakreslete graf závislosti dráhy na čase a rychlosti na čase.</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <!-- Příklad 3 -->
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">3</div>
+            <div class="priklad-title">Grafy závislostí</div>
+        </div>
+        <div class="priklad-content">
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <p class="zadani-text">Nakreslete graf závislosti dráhy na čase a rychlosti na čase pro zadané grafy v-t, s-t.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Příklad 4 -->
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">4</div>
+            <div class="priklad-title">Průměrná rychlost - časové úseky</div>
+        </div>
+        <div class="priklad-content">
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <p class="zadani-text">Auto jelo <span class="hodnoty">1 hodinu</span> rychlostí <span class="hodnoty">50 km·h⁻¹</span> a <span class="hodnoty">45 minut</span> rychlostí <span class="hodnoty">20 m·s⁻¹</span>. Vypočítejte jeho průměrnou rychlost.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Příklad 5 -->
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">5</div>
+            <div class="priklad-title">Průměrná rychlost - zlomky času</div>
+        </div>
+        <div class="priklad-content">
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <p class="zadani-text">Automobil jel <span class="hodnoty">¾ celkové doby jízdy</span> rychlostí <span class="hodnoty">54 km·h⁻¹</span> a zbývající dobu jízdy rychlostí <span class="hodnoty">72 km·h⁻¹</span>. Vypočítejte jeho průměrnou rychlost.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Příklad 6 -->
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">6</div>
+            <div class="priklad-title">Průměrná rychlost - zlomky dráhy</div>
+        </div>
+        <div class="priklad-content">
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <p class="zadani-text">Automobil projel <span class="hodnoty">¾ celkové dráhy</span> rychlostí <span class="hodnoty">54 km·h⁻¹</span> a zbývající část dráhy rychlostí <span class="hodnoty">72 km·h⁻¹</span>. Vypočítejte jeho průměrnou rychlost.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Příklad 7 -->
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">7</div>
+            <div class="priklad-title">Cyklista s větrem</div>
+        </div>
+        <div class="priklad-content">
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <p class="zadani-text">Cyklista jede do určitého místa s větrem v zádech rychlostí <span class="hodnoty">8 m·s⁻¹</span> a nazpět proti větru rychlostí <span class="hodnoty">4 m·s⁻¹</span>. Jaká je jeho průměrná rychlost?</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Příklad 8 -->
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">8</div>
+            <div class="priklad-title">Pohyb tam a zpět</div>
+        </div>
+        <div class="priklad-content">
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <p class="zadani-text">Těleso se pohybuje z A do B <span class="hodnoty">10 minut</span> rychlostí <span class="hodnoty">50 km·h⁻¹</span> a zpět se vrací rychlostí <span class="hodnoty">110 km·h⁻¹</span>. Určete průměrnou rychlost v m·s⁻¹ a km·h⁻¹. Nakreslete graf závislosti rychlosti na čase.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Příklad 9 -->
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">9</div>
+            <div class="priklad-title">Petr - chůze a stoupání</div>
+        </div>
+        <div class="priklad-content">
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <p class="zadani-text">Petr šel <span class="hodnoty">dvě hodiny</span> rychlostí <span class="hodnoty">6 km·h⁻¹</span> a potom <span class="hodnoty">jednu hodinu</span> stoupal do kopce rychlostí <span class="hodnoty">3 km·h⁻¹</span>. Jaká byla jeho průměrná rychlost? Nakreslete graf závislosti rychlosti na čase a dráhy na čase.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Příklad 10 -->
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">10</div>
+            <div class="priklad-title">Automobil - čtvrtina dráhy</div>
+        </div>
+        <div class="priklad-content">
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <p class="zadani-text">Automobil projel <span class="hodnoty">¼ celkové dráhy</span> rychlostí <span class="hodnoty">90 km·h⁻¹</span> a zbývající část dráhy rychlostí <span class="hodnoty">75 km·h⁻¹</span>. Určete průměrnou rychlost v m·s⁻¹ a v km·h⁻¹. Nakreslete graf rychlosti a dráhy v závislosti na čase.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Příklad 11 -->
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">11</div>
+            <div class="priklad-title">Analýza grafů dvou aut</div>
+        </div>
+        <div class="priklad-content">
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <p class="zadani-text">Na obr. I. a II. jsou nakresleny grafy závislosti dráhy na čase automobilu 1 a 2. Pro oba případy určete:</p>
+                <ol type="a">
+                    <li>jak velkou rychlostí se pohybuje auto 1 a auto 2</li>
+                    <li>jaký fyzikální význam mají body A, B, C a D?</li>
+                    <li>jak daleko a kdy se auta setkají?</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <!-- Příklad 12 -->
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">12</div>
+            <div class="priklad-title">Policejní auto a křižovatka</div>
+        </div>
+        <div class="priklad-content">
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <p class="zadani-text">Policejní automobil P je ve vzdálenosti <span class="hodnoty">800 m</span> od křižovatky a blíží se k ní konstantní rychlostí <span class="hodnoty">80 km·h⁻¹</span>. Automobil M přijíždějící po vedlejší silnici je ve stejném okamžiku ve vzdálenosti <span class="hodnoty">600 m</span> od křižovatky. Jakou rychlostí (v km·h⁻¹ i m·s⁻¹) se pohybuje automobil M, jestliže se obě auta na křižovatce srazí? Narysujte grafy závislostí v-t a s-t pro oba automobily.                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Příklad 13 -->
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">13</div>
+            <div class="priklad-title">Dohánění dvou těles</div>
+        </div>
+        <div class="priklad-content">
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <p class="zadani-text">Dvě tělesa se současně začala pohybovat ze dvou bodů M a N ležících na ose x stejným směrem podél této osy. Počáteční body jsou vzdáleny <span class="hodnoty">100 m</span> od sebe, těleso pohybující se z bodu M má rychlost <span class="hodnoty">5 m·s⁻¹</span>, druhé pohybující se z bodu N má rychlost <span class="hodnoty">3 m·s⁻¹</span>. Kdy první těleso dostihne druhé? Jaké vzdálenosti do té doby obě tělesa urazí? Narysujte pro obě tělesa grafy závislostí v-t a s-t.                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Příklad 14 -->
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">14</div>
+            <div class="priklad-title">Chodec - dva časové úseky</div>
+        </div>
+        <div class="priklad-content">
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <p class="zadani-text">Chodec pohybující se stálou rychlostí ušel za prvních <span class="hodnoty">6 sekund</span> vzdálenost <span class="hodnoty">9 m</span>, v dalších <span class="hodnoty">4 sekundách</span> vzdálenost <span class="hodnoty">8 m</span>. Jaká byla jeho rychlost v prvních 6 s a dalších 4 s? Jaká byla jeho průměrná rychlost v prvních 10 sekundách (v km·h⁻¹ a m·s⁻¹)? Narysujte grafy závislostí v-t a s-t při jeho pohybu.                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Příklad 15 -->
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">15</div>
+            <div class="priklad-title">Dva automobily - porovnání</div>
+        </div>
+        <div class="priklad-content">
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <p class="zadani-text">Automobil ujel první polovinu vzdálenosti rychlostí <span class="hodnoty">30 km·h⁻¹</span> a druhou rychlostí <span class="hodnoty">50 km·h⁻¹</span>. Druhý automobil, který se začal pohybovat ve stejném okamžiku, se pohyboval po stejné trajektorii stálou rychlostí <span class="hodnoty">40 km·h⁻¹</span>. Který z automobilů dorazil do cíle dříve?                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Příklad 16 -->
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">16</div>
+            <div class="priklad-title">Loď a cestující na palubě</div>
+        </div>
+        <div class="priklad-content">
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <p class="zadani-text">Na hladině jezera pluje loď. Její rychlost vzhledem k vodě je <span class="hodnoty">3 km·h⁻¹</span>. Po palubě lodi jde cestující A rychlostí <span class="hodnoty">3 km·h⁻¹</span> ve směru pohybu lodi, cestující B jde proti směru pohybu lodi rychlostí <span class="hodnoty">3 km·h⁻¹</span>, cestující C stojí na jednom místě paluby. Jakou rychlostí se pohybují jednotliví cestující vzhledem k vodě v jezeře?                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Příklad 17 -->
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">17</div>
+            <div class="priklad-title">Motorový člun - proudící řeka</div>
+        </div>
+        <div class="priklad-content">
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <p class="zadani-text">Motorový člun se pohybuje vzhledem k vodě stálou rychlostí <span class="hodnoty">12 m·s⁻¹</span>. Rychlost vodního proudu v řece je <span class="hodnoty">2 m·s⁻¹</span>. Určete:                    <ol type="a">
+                        <li>Pod jakým úhlem vzhledem k vodnímu proudu musí člun plout, aby se stále pohyboval kolmo ke břehům řeky?</li>
+                        <li>Za jak dlouho přepluje napříč řeku, jestliže jsou břehy od sebe vzdáleny <span class="hodnoty">800 m</span>?</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Příklad 18 -->
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">18</div>
+            <div class="priklad-title">Veslaři přeplavují řeku</div>
+        </div>
+        <div class="priklad-content">
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <p class="zadani-text">Veslaři se plaví přes řeku širokou <span class="hodnoty">0,7 km</span>, v níž voda teče rychlostí <span class="hodnoty">0,8 m·s⁻¹</span> a čelo lodi udržují kolmo ke břehu. Je-li rychlost lodi vzhledem k vodě <span class="hodnoty">0,6 m·s⁻¹</span>, vypočítejte:                    <ol type="a">
+                        <li>rychlost lodi vzhledem ke břehu;</li>
+                        <li>čas potřebný k přeplutí řeky;</li>
+                        <li>příčné posunutí místa, kde loď přistane u druhého břehu.</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Příklad 19 -->
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">19</div>
+            <div class="priklad-title">Déšť a jedoucí auto</div>
+        </div>
+        <div class="priklad-content">
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <p class="zadani-text">Déšť padá svisle rychlostí <span class="hodnoty">8 m·s⁻¹</span> vzhledem k zemi. Na okně auta svírají stopy dešťových kapek s vodorovným směrem úhel <span class="hodnoty">30°</span>. Jaká je rychlost auta?                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Příklad 20 -->
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">20</div>
+            <div class="priklad-title">Chlapec plave v řece</div>
+        </div>
+        <div class="priklad-content">
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <p class="zadani-text">Chlapec plave vzhledem k vodě stálou rychlostí <span class="hodnoty">0,85 m·s⁻¹</span>. Rychlost proudu v řece je <span class="hodnoty">0,4 m·s⁻¹</span> a šířka řeky je <span class="hodnoty">60 m</span>. Vypočítejte:                    <ol type="a">
+                        <li>jak velká je výsledná rychlost chlapce vzhledem k břehům řeky, pohybuje-li se kolmo k proudu;</li>
+                        <li>za jakou dobu chlapec přeplave řeku?</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Příklad 21 -->
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">21</div>
+            <div class="priklad-title">Míč ve vlaku</div>
+        </div>
+        <div class="priklad-content">
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <p class="zadani-text">Ve vagónu vlaku pohybujícího se stálou rychlostí <span class="hodnoty">24 m·s⁻¹</span> je vyhozen míč počáteční rychlostí <span class="hodnoty">7 m·s⁻¹</span>. Určete rychlost míče vzhledem k zemi, jestliže byl vyhozen:                    <ol type="a">
+                        <li>ve směru pohybu vlaku;</li>
+                        <li>opačným směrem, než se pohybuje vlak;</li>
+                        <li>kolmo na směr pohybu vlaku.</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h2>⚡ Rovnoměrně zrychlený pohyb (22-35)</h2>
+    <div class="sekce-popis">
+        Pohyb s konstantním zrychlením, rozjíždění, brždění, složené pohyby s různými zrychleními.
+    </div>
+
+    <!-- Příklad 22 -->
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">22</div>
+            <div class="priklad-title">Lokomotiva se rozjíždí</div>
+        </div>
+        <div class="priklad-content">
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <p class="zadani-text">Lokomotiva se rozjíždí z klidu rovnoměrně zrychleně a dosáhne rychlosti <span class="hodnoty">10 m·s⁻¹</span> za <span class="hodnoty">10 sekund</span>.                    <ol type="a">
+                        <li>Vypočítejte zrychlení.</li>
+                        <li>Nakreslete graf závislosti rychlosti na čase a zrychlení na čase.</li>
+                        <li>Použijte graf závislosti rychlosti na čase k určení vzdálenosti, kterou lokomotiva urazí.</li>
+                        <li>Zakreslete graf závislosti dráhy na čase.</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Příklad 23 -->
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">23</div>
+            <div class="priklad-title">Automobil - rozjezd z klidu</div>
+        </div>
+        <div class="priklad-content">
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <p class="zadani-text">Automobil se rozjíždí z klidu a za <span class="hodnoty">20 sekund</span> dosáhne rychlosti <span class="hodnoty">90 km·h⁻¹</span>. Za předpokladu, že se pohybuje rovnoměrně zrychleně, vypočítejte zrychlení a dráhu, kterou urazí během této doby. Nakreslete graf závislosti rychlosti na čase.                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Příklad 24 -->
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">24</div>
+            <div class="priklad-title">Rychlost ve vzdálenosti</div>
+        </div>
+        <div class="priklad-content">
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <p class="zadani-text">Těleso se pohybuje z klidu se zrychlením <span class="hodnoty">8 m·s⁻²</span>. Vypočítejte jeho rychlost ve vzdálenosti <span class="hodnoty">100 m</span> od počátku pohybu.                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Příklad 25 -->
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">25</div>
+            <div class="priklad-title">Hmotný bod s počáteční rychlostí</div>
+        </div>
+        <div class="priklad-content">
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <p class="zadani-text">Počáteční rychlost přímočarého pohybu hmotného bodu je <span class="hodnoty">10 m·s⁻¹</span>. Předpokládejte, že jeho zrychlení je <span class="hodnoty">3 m·s⁻²</span>. Vypočítejte rychlost tohoto hmotného bodu po <span class="hodnoty">5 s</span> od začátku měření. Načrtněte graf závislosti rychlosti na čase a určete vzdálenost, kterou během tohoto časového intervalu hmotný bod urazil.                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Příklad 26 -->
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">26</div>
+            <div class="priklad-title">Vlak - změna rychlosti</div>
+        </div>
+        <div class="priklad-content">
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <p class="zadani-text">Rychlost vlaku se během <span class="hodnoty">40 s</span> změnila z <span class="hodnoty">36 km·h⁻¹</span> na <span class="hodnoty">18 km·h⁻¹</span>. Vypočítejte zrychlení a uraženou vzdálenost. Výsledek ověřte pomocí grafu závislosti rychlosti na čase.                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Příklad 27 -->
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">27</div>
+            <div class="priklad-title">Automobil - zvýšení rychlosti</div>
+        </div>
+        <div class="priklad-content">
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <p class="zadani-text">Automobil pohybující se zpočátku rychlostí <span class="hodnoty">80 km·h⁻¹</span> zvýšil během <span class="hodnoty">10 s</span> svou rychlost na <span class="hodnoty">100 km·h⁻¹</span>. Určete zrychlení a ujetou vzdálenost.                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Příklad 28 -->
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">28</div>
+            <div class="priklad-title">Automobil - nouzové brždění</div>
+        </div>
+        <div class="priklad-content">
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <p class="zadani-text">Automobil jedoucí rychlostí <span class="hodnoty">50 km·h⁻¹</span> musí zastavit na vzdálenosti <span class="hodnoty">12,5 m</span>. Vypočítejte jeho zrychlení a čas potřebný k zastavení.                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Příklad 29 -->
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">29</div>
+            <div class="priklad-title">Vlak - snížení rychlosti</div>
+        </div>
+        <div class="priklad-content">
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <p class="zadani-text">Vlak během <span class="hodnoty">40 s</span> rovnoměrně sníží svou rychlost z <span class="hodnoty">80 km·h⁻¹</span> na <span class="hodnoty">60 km·h⁻¹</span>. Vypočítejte zrychlení a vzdálenost, kterou při tom urazí.                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Příklad 30 -->
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">30</div>
+            <div class="priklad-title">Elektron v elektrickém poli</div>
+        </div>
+        <div class="priklad-content">
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <p class="zadani-text">V elektrickém poli katodové trubice je elektron rovnoměrně urychlen z <span class="hodnoty">5 km·s⁻¹</span> na <span class="hodnoty">20 000 km·s⁻¹</span> na vzdálenosti <span class="hodnoty">10 mm</span>. Jaké je jeho zrychlení?                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Příklad 31 -->
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">31</div>
+            <div class="priklad-title">Cyklista - zrychlování</div>
+        </div>
+        <div class="priklad-content">
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <p class="zadani-text">Cyklista jedoucí rychlostí <span class="hodnoty">3 m·s⁻¹</span> začne zrychlovat a za <span class="hodnoty">8 s</span> dosáhne rychlosti <span class="hodnoty">7 m·s⁻¹</span>. Předpokládejte, že se pohybuje rovnoměrně zrychleně a určete velikost zrychlení i vzdálenost, kterou cyklista při zrychlování ujel.                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Příklad 32 -->
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">32</div>
+            <div class="priklad-title">Graf zrychlení na čase</div>
+        </div>
+        <div class="priklad-content">
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <p class="zadani-text">K zadanému grafu závislosti zrychlení na čase nakreslete graf závislosti rychlosti na čase. Předpokládejte však nulovou počáteční rychlost.                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Příklad 33 -->
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">33</div>
+            <div class="priklad-title">Dva automobily - různá zrychlení</div>
+        </div>
+        <div class="priklad-content">
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <p class="zadani-text">Dvě auta se pohybují ze stejného místa. První již má rychlost <span class="hodnoty">2 m·s⁻¹</span> a rovnoměrně zrychluje o <span class="hodnoty">0,5 m·s⁻²</span>. Druhé bylo původně v klidu a až <span class="hodnoty">5 s</span> po startu prvního se rozjíždí se zrychlením <span class="hodnoty">1 m·s⁻²</span>. Spočítejte:                    <ol type="a">
+                        <li>kdy budou mít auta stejnou rychlost a jaká bude její hodnota;</li>
+                        <li>za jak dlouho od počátku měření a v jaké vzdálenosti od počátku se potkají;</li>
+                        <li>nakreslete grafy závislosti rychlosti a dráhy na čase.</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Příklad 34 -->
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">34</div>
+            <div class="priklad-title">Dva motocykly - srážka</div>
+        </div>
+        <div class="priklad-content">
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <p class="zadani-text">Dva motocykly jsou <span class="hodnoty">4 km</span> od sebe a pohybují se proti sobě. První má rychlost <span class="hodnoty">2 m·s⁻¹</span> a zrychlení <span class="hodnoty">0,25 m·s⁻²</span>, druhý má počáteční rychlost <span class="hodnoty">4 m·s⁻¹</span> a zrychlení <span class="hodnoty">0,5 m·s⁻²</span>. Určete kdy a v jaké vzdálenosti od výchozího bodu prvního motocyklu se srazí.                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Příklad 35 -->
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">35</div>
+            <div class="priklad-title">Dvě tělesa ze stejného bodu</div>
+        </div>
+        <div class="priklad-content">
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <p class="zadani-text">Dvě tělesa se pohybují současně ze stejného bodu. První má počáteční rychlost <span class="hodnoty">6 m·s⁻¹</span> a zrychlení <span class="hodnoty">0,2 m·s⁻²</span>, druhé má počáteční rychlost <span class="hodnoty">2 m·s⁻¹</span> a zrychlení <span class="hodnoty">3 m·s⁻²</span>. Určete:                    <ol type="a">
+                        <li>kdy budou mít tělesa stejnou rychlost a jak bude velká;</li>
+                        <li>za jak dlouho a v jaké vzdálenosti se potkají;</li>
+                        <li>nakreslete grafy závislosti rychlosti a dráhy na čase.</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h2>🪨 Volný pád (36-39)</h2>
+    <div class="sekce-popis">
+        Pohyb tělesa pod vlivem gravitace bez odporu vzduchu.
+    </div>
+
+    <!-- Příklad 36 -->
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">36</div>
+            <div class="priklad-title">Kámen spadá z výšky</div>
+        </div>
+        <div class="priklad-content">
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <p class="zadani-text">Za jak dlouho spadne kámen z výšky <span class="hodnoty">80 m</span>? Odpovídá vypočtený výsledek skutečnosti? Zdůvodněte.                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Příklad 37 -->
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">37</div>
+            <div class="priklad-title">Automobil - náraz a pád</div>
+        </div>
+        <div class="priklad-content">
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <p class="zadani-text">Automobil narazil do překážky rychlostí <span class="hodnoty">60 km·h⁻¹</span>. Z jaké výšky by musel spadnout, aby získal stejnou rychlost?                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Příklad 38 -->
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">38</div>
+            <div class="priklad-title">Změna rychlosti při pádu</div>
+        </div>
+        <div class="priklad-content">
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <p class="zadani-text">Určete čas, za který se rychlost padajícího tělesa zvýší z <span class="hodnoty">10 m·s⁻¹</span> na <span class="hodnoty">30 m·s⁻¹</span>.                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Příklad 39 -->
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">39</div>
+            <div class="priklad-title">Dráha v páté sekundě</div>
+        </div>
+        <div class="priklad-content">
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <p class="zadani-text">Jakou vzdálenost urazí těleso během páté sekundy volného pádu?                </div>
+            </div>
+        </div>
+    </div>
+
+    <h2>🎡 Pohyb po kružnici (40-46)</h2>
+    <div class="sekce-popis">
+        Rotační pohyb, úhlová rychlost, frekvence, perioda.
+    </div>
+
+    <!-- Příklad 40 -->
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">40</div>
+            <div class="priklad-title">Gramofon</div>
+        </div>
+        <div class="priklad-content">
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <p class="zadani-text">Gramofon se za minutu otočí <span class="hodnoty">33 krát</span>. Vypočítejte:                    <ol type="a">
+                        <li>Perioda a frekvence</li>
+                        <li>Úhlová a obvodová rychlost: (pro r = <span class="hodnoty">0,12 m</span>)</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Příklad 41 -->
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">41</div>
+            <div class="priklad-title">Kolo bicyklu</div>
+        </div>
+        <div class="priklad-content">
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <p class="zadani-text">Kolo bicyklu má průměr <span class="hodnoty">0,5 m</span> a vykoná <span class="hodnoty">7 otáček za sekundu</span>. Určete úhlovou rychlost a rychlost otáčení bodu na plášti kola.                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Příklad 42 -->
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">42</div>
+            <div class="priklad-title">Hřídel - otáčky</div>
+        </div>
+        <div class="priklad-content">
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <p class="zadani-text">Určete úhlovou rychlost hřídele, která vykoná <span class="hodnoty">120 otáček za 1 minutu</span>. Najděte periodu a frekvenci tohoto pohybu.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Příklad 43 -->
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">43</div>
+            <div class="priklad-title">Zemský rovník</div>
+        </div>
+        <div class="priklad-content">
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <p class="zadani-text">Jaká je rychlost bodů na zemském rovníku? Uvažujte poloměr Země <span class="hodnoty">6 378 km</span>, úhlová rychlost otáčení Země je <span class="hodnoty">7,29·10⁻⁵ rad/s</span>. Určete také frekvenci.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Příklad 44 -->
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">44</div>
+            <div class="priklad-title">Pulsar</div>
+        </div>
+        <div class="priklad-content">
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <p class="zadani-text">Pulsar o průměru <span class="hodnoty">15 km</span> rotuje s frekvencí <span class="hodnoty">9 Hz</span>. Vypočtěte rychlost bodu na rovníku pulsaru.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Příklad 45 -->
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">45</div>
+            <div class="priklad-title">Pneumatika vozidla</div>
+        </div>
+        <div class="priklad-content">
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <p class="zadani-text">Vozidlo má pneumatiky o průměru <span class="hodnoty">0,55 m</span>. Zjistěte úhlovou rychlost bodu na vnějším obvodu pneumatiky, jestliže se auto pohybuje rychlostí <span class="hodnoty">30 m/s</span>.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Příklad 46 -->
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">46</div>
+            <div class="priklad-title">Umělá družice</div>
+        </div>
+        <div class="priklad-content">
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <p class="zadani-text">Umělá družice obíhá okolo Země po kruhové orbitě o poloměru <span class="hodnoty">42 250 km</span>. Jakou rychlostí se pohybuje, jestliže okolo Země obletí jednou za <span class="hodnoty">24 h</span>?</p>
+            </div>
+        </div>
+    </div>
+
+    <h2>🔄 Převody úhlů (47-49)</h2>
+    <div class="sekce-popis">
+        Úhlové jednotky jsou základem rotačního pohybu. V technických aplikacích se setkáváme se stupni (°), v matematice a fyzice s radiány (rad). Tato sekce procvičuje převody mezi těmito jednotkami a jejich praktické využití v kinematice.
+    </div>
+
+    <!-- Příklad 47 -->
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">47</div>
+            <div class="priklad-title">Stupně na radiány</div>
+        </div>
+        <div class="priklad-content">
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <p class="zadani-text">Najděte odpovídající úhly v radiánech:<br>
+                    <span class="hodnoty">45°, 30°, 60°, 90°, 180°, 270°, 50°, 75°</span></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Příklad 48 -->
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">48</div>
+            <div class="priklad-title">Radiány na stupně</div>
+        </div>
+        <div class="priklad-content">
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <p class="zadani-text">Najděte odpovídající úhly ve stupních:<br>
+                    <span class="hodnoty">1 rad, π rad, π/2 rad, π/3 rad, π/4 rad, π/6 rad, π/8 rad</span></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Příklad 49 -->
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">49</div>
+            <div class="priklad-title">Závěrečné převody úhlů</div>
+        </div>
+        <div class="priklad-content">
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <p class="zadani-text">Kompletní tabulka převodů - dokončete chybějící hodnoty:<br>
+                    <span class="hodnoty">Převeďte zbývající kombinace z předchozích příkladů a vytvořte si kompletní přehledovou tabulku pro rychlé používání.</span></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="zdroj">
+        <h3>Zdroj materiálu</h3>
+        <p><a href="https://smd.gytool.cz/downloads/3-2-KINEMATIKA_BAR.pdf" target="_blank">SMD GYTOOL - Kinematika</a></p>
+        <p style="margin-top: 10px; color: #666; font-size: 14px;">Kompletní sbírka 49 příkladů z kinematiky - jen zadání pro procvičení</p>
+        <p style="margin-top: 5px; font-size: 12px; color: #888;">Vytvořeno pro výukové účely</p>
+    </div>
+</body>
+</html>

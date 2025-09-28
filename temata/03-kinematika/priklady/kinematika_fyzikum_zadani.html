@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kinematika - Zadání příkladů (1-38)</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c5282;
+            border-bottom: 3px solid #2c5282;
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            color: #2a4365;
+            margin: 40px 0 20px 0;
+            background: linear-gradient(90deg, #e2e8f0, #f7fafc);
+            padding: 15px 20px;
+            border-radius: 10px;
+            border-left: 5px solid #3182ce;
+            font-size: 20px;
+        }
+
+        .priklad {
+            background-color: white;
+            margin: 25px 0;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-left: 5px solid #3182ce;
+            overflow: hidden;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .priklad:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .priklad-header {
+            background: linear-gradient(135deg, #3182ce, #2b6cb0);
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .priklad-cislo {
+            background: rgba(255,255,255,0.2);
+            padding: 8px 15px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 18px;
+            min-width: 30px;
+            text-align: center;
+        }
+
+        .priklad-title {
+            flex: 1;
+            font-weight: 500;
+            font-size: 16px;
+        }
+
+        .priklad-content {
+            padding: 20px;
+        }
+
+        .zadani {
+            background: linear-gradient(135deg, #f7fafc, #edf2f7);
+            padding: 18px;
+            border-radius: 10px;
+            border: 1px solid #cbd5e0;
+        }
+
+        .zadani h3 {
+            color: #2b6cb0;
+            margin: 0 0 15px 0;
+            font-size: 16px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .zadani h3:before {
+            content: "📝";
+            font-size: 18px;
+        }
+
+        .zadani-text {
+            color: #2d3748;
+            margin: 0;
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        .zadani-text strong {
+            color: #2b6cb0;
+        }
+
+        .zadani-text ol, .zadani-text ul {
+            margin: 10px 0;
+            padding-left: 25px;
+        }
+
+        .zadani-text li {
+            margin: 8px 0;
+        }
+
+
+        .hodnoty {
+            background: linear-gradient(135deg, #bee3f8, #90cdf4);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 600;
+            color: #1a365d;
+        }
+
+        .sekce-popis {
+            background: linear-gradient(135deg, #fef5e7, #fed7aa);
+            padding: 15px 20px;
+            border-radius: 10px;
+            border-left: 4px solid #ed8936;
+            margin-bottom: 20px;
+            font-style: italic;
+            color: #c05621;
+            font-weight: 500;
+        }
+
+        .statistiky {
+            background: linear-gradient(135deg, #e6fffa, #b2f5ea);
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            text-align: center;
+            color: #234e52;
+            font-weight: 600;
+            font-size: 18px;
+        }
+
+        .zdroj {
+            text-align: center;
+            margin-top: 50px;
+            padding: 25px;
+            background: linear-gradient(135deg, #e2e8f0, #edf2f7);
+            border-radius: 15px;
+            border-top: 4px solid #3182ce;
+        }
+
+        .zdroj h3 {
+            color: #2c5282;
+            margin: 0 0 10px 0;
+        }
+
+        .zdroj a {
+            color: #3182ce;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .zdroj a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responzivní design */
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+
+            .priklad-header {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .priklad-cislo {
+                align-self: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Kinematika - Kompletní sbírka příkladů</h1>
+
+    <div class="statistiky">
+        📚 Kompletních <strong>38 příkladů</strong> z kinematiky ze stránky Fyzikum.cz
+    </div>
+
+    <h2>🧮 Převody jednotek a základní výpočty (1-6)</h2>
+    <div class="sekce-popis">
+        Základní práce s jednotkami, převody a výpočty fyzikálních veličin.
+    </div>
+
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">1</div>
+            <div class="priklad-title">Deštivé počasí v Italii</div>
+        </div>
+        <div class="priklad-content">
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <div class="zadani-text"><strong>Při přívalovém dešti v italském městě Tutti Mangiano spadlo <span class="hodnoty">50 litrů</span> srážek na <span class="hodnoty">metr čtverečný</span>. Vyjádřete úhrn srážce jako výšku sloupce v mm.</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">2</div>
+            <div class="priklad-title">Zdravotnická injekce</div>
+        </div>
+        <div class="priklad-content">
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <div class="zadani-text"><strong>Zdravotní sestra Cassandra zachraňuje životy. Má roztok atropinu v koncentraci <span class="hodnoty">0,5 g/litr</span> a injekční stříkačku o průměru <span class="hodnoty">12 mm</span>. O jakou vzdálenost musí stlačit píst stříkačky, aby pacientovi vpravila <span class="hodnoty">2 mg</span> atropinu? Zvládnete život zachránit i vy, nebo pacienta zabijete v důsledku neznalosti převodů jednotek?</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">3</div>
+            <div class="priklad-title">PSI tlak v pneumatice</div>
+        </div>
+        <div class="priklad-content">
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <div class="zadani-text"><strong>Na pneumatice je uvedeno "inflate to <span class="hodnoty">50 psi</span>". PSI znamená "pounds per square inch". Vyjádřete v jednotkách běžného metrického systému, tedy jako kg/m². Jakou veličinu vlastně tato jednotka určuje?</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">4</div>
+            <div class="priklad-title">Doba jízdy ponorky</div>
+        </div>
+        <div class="priklad-content">
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <div class="zadani-text"><strong>Ponorka vyjela v čase <span class="hodnoty">8:41:37</span> a do cíle dorazila v <span class="hodnoty">11:14:26</span>. Vyjádřete dobu jízdy v hodinách jako desetinné číslo.</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">5</div>
+            <div class="priklad-title">Převody jednotek hustoty a rychlosti</div>
+        </div>
+        <div class="priklad-content">
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <div class="zadani-text"><strong>a) Odvoďte převodní vztah mezi jednotkami hustoty kg/m³ a g/cm³, tedy 1 g/cm³ = …</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">6</div>
+            <div class="priklad-title">Rychlost světla v astronomických jednotkách</div>
+        </div>
+        <div class="priklad-content">
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <div class="zadani-text"><strong>Vžijte se do světa, kde základní jednotkou času je den a základní jednotkou vzdálenosti je astronomická jednotka (AU), čili vzdálenost Země-Slunce (asi 150 mil. km). Jakou hodnotu pak bude mít rychlost světla?</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h2>🎯 Vektory a složení rychlostí (7-8)</h2>
+    <div class="sekce-popis">
+        Práce s vektory, složení sil a rychlostí v různých směrech.
+    </div>
+
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">7</div>
+            <div class="priklad-title">Složení sil na ořech</div>
+        </div>
+        <div class="priklad-content">
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <div class="zadani-text"><strong>Mějme dvě síly, tedy dva vektory, o velikosti <span class="hodnoty">2 N</span> a <span class="hodnoty">1 N</span>, které působí na ořech. Mohou působit různými směry.</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">8</div>
+            <div class="priklad-title">Tereza plave přes Labe</div>
+        </div>
+        <div class="priklad-content">
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <div class="zadani-text"><strong>Tereza plave přes Labe, protože spadl most. Proud má rychlost <span class="hodnoty">2 km/h</span> a v klidné vodě Terka plave rychlostí <span class="hodnoty">4 km/h</span>. Labe je široké <span class="hodnoty">60 m</span>.</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h2>🏃‍♂️ Rovnoměrný pohyb a střední rychlost (9-13)</h2>
+    <div class="sekce-popis">
+        Výpočty rychlosti, času a dráhy při rovnoměrném pohybu, střední rychlost.
+    </div>
+
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">9</div>
+            <div class="priklad-title">Anakin na Milešovce - průměrná rychlost</div>
+        </div>
+        <div class="priklad-content">
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <div class="zadani-text"><strong>Anakin každé ráno leze na Milešovku, aby se podíval zblízka na oblaka. Cestou nahoru jde rychlostí <span class="hodnoty">3 km/h</span>, nahoře se hned otočí a cestou dolů běží rychlostí <span class="hodnoty">6 km/h</span>. Jaká je jeho průměrná rychlost na celé trase?</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">10</div>
+            <div class="priklad-title">Loď Helmut po řece</div>
+        </div>
+        <div class="priklad-content">
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <div class="zadani-text"><strong>Loď Helmut pluje po řece z Prasákova do Sviňákova po proudu a cesta trvá <span class="hodnoty">40 minut</span>. Zpět pluje proti proudu a cesta trvá <span class="hodnoty">70 minut</span>. Jak dlouho by lodi trvalo ujet stejnou vzdálenost, kdyby plula po klidné hladině?</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">11</div>
+            <div class="priklad-title">Alík a Baryk - setkání na trase Praha-Brno</div>
+        </div>
+        <div class="priklad-content">
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <div class="zadani-text"><strong>Alík vyjíždí z Prahy do Brna rychlostí <span class="hodnoty">130 km/h</span>, zatímco Baryk vyjíždí z Brna rychlostí <span class="hodnoty">100 km/h</span>. Vzdálenost Praha Brno budiž <span class="hodnoty">200 km</span>.</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">12</div>
+            <div class="priklad-title">Rumcajs a Cipísek - honička od zámku</div>
+        </div>
+        <div class="priklad-content">
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <div class="zadani-text"><strong>Rumcajs vyběhl ze zámku a běží rychlostí <span class="hodnoty">5 m/s</span>. Za <span class="hodnoty">10 minut</span> po něm vyběhl Cipísek, který má mladé hnáty a běží rychlostí <span class="hodnoty">8 m/s</span>. Jak daleko od zámku Rumcajse dohoní? Řešte početně i graficky!</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">13</div>
+            <div class="priklad-title">Arnold - grafy v(t) a s(t) složeného pohybu</div>
+        </div>
+        <div class="priklad-content">
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <div class="zadani-text"><strong>Arnold nejprve půl hodiny běží rychlostí <span class="hodnoty">10 km/h</span>, poté dvě hodiny plave rychlostí <span class="hodnoty">3 km/h</span>, následně půl hodiny obědvá ve školní jídelně a nakonec dvacet minut jede na kole rychlostí <span class="hodnoty">24 km/h</span>. Nakreslete graf závislosti v(t) a s(t).</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h2>⚡ Zrychlení a zrychlený pohyb (14-17)</h2>
+    <div class="sekce-popis">
+        Výpočty zrychlení z rychlosti a času, různé druhy zrychleného pohybu.
+    </div>
+
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">14</div>
+            <div class="priklad-title">Formule F1 - zrychlení na 100 km/h</div>
+        </div>
+        <div class="priklad-content">
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <div class="zadani-text"><strong>Formule F1 zrychlí z <span class="hodnoty">0 na 100 km/h</span> zhruba za <span class="hodnoty">2,5 sekundy</span>. Jaké je její průměrné zrychlení? Pozor na jednotky.</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">15</div>
+            <div class="priklad-title">Auto brzdí ze 50 na 20 km/h</div>
+        </div>
+        <div class="priklad-content">
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <div class="zadani-text"><strong>Auto jedoucí rychlostí <span class="hodnoty">50 km/h</span> prudce brzdí se zrychlením <span class="hodnoty">-4 m/s²</span>. Za jak dlouho zpomalí na <span class="hodnoty">20 km/h</span>?</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">16</div>
+            <div class="priklad-title">Vlak - analýza grafu v(t) a zrychlení</div>
+        </div>
+        <div class="priklad-content">
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <div class="zadani-text"><strong>Určete zrychlení vlaku v jednotlivých úsecích na základě grafu v(t). [kredit: Fyzikální olympiáda]</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">17</div>
+            <div class="priklad-title">Kombinované úlohy bez kalkulačky</div>
+        </div>
+        <div class="priklad-content">
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <div class="zadani-text"><strong>Počítejte následující úlohy (bez kalkulačky):</strong>
+                </div>
+                <ul>
+                    <li>a) Tadej Pogačar během pěti sekund zrychlil z 6 m/s na 14 m/s. Jaké je jeho zrychlení?</li>
+                    <li>b) Tramvaj jela počáteční rychlostí 4 m/s a po dobu půl minuty zrychlovala se zrychlením 0,5 m/s². Jaká byla její výsledná rychlost?</li>
+                    <li>c) Ze smrku spadla šiška na zem. Pád trval 1,4 sekundy. Jakou rychlostí šiška dopadla?</li>
+                    <li>d) Vlak po dobu jedné minuty zrychloval se zrychlením 0,3 m/s², až dosáhl rychlosti 30 m/s. Jaká byla jeho počáteční rychlost?</li>
+                    <li>e) Auto při najíždění na dálnici zrychlilo ze 72 km/h na 126 km/h, přičemž jeho zrychlení bylo 2,5 m/s². Určete, za jak dlouho auto výsledné rychlosti dosáhlo. Nezapomeňte na převod jednotek!</li>
+                    <li>f) Auto jedoucí rychlostí 54 km/h prudce brzdí se zrychlením -4 m/s². Za jak dlouho zastaví?</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <h2>📐 Dráha zrychleného pohybu (18-24)</h2>
+    <div class="sekce-popis">
+        Výpočty dráhy při zrychleném pohybu, brzdná dráha, kinematické rovnice.
+    </div>
+
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">18</div>
+            <div class="priklad-title">Karolína a volný pád kamene do propasti</div>
+        </div>
+        <div class="priklad-content">
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <div class="zadani-text"><strong>Karolína stojí nad propastí a upustí do ní kámen. Kámen dopadl na dno po <span class="hodnoty">čtyřech sekundách</span> letu.</strong>
+                </div>
+                <ul>
+                    <li>a) Jak hluboká je propast? Mohla by to být Macocha? Diskutujte.</li>
+                    <li>b) Jakou rychlostí kámen dopadl na zem?</li>
+                    <li>c) Nakreslete graf uražené dráhy v závislosti na čase, tedy určete celkovou uraženou dráhu po uplynutí 1 s, 2 s, 3 s a 4 s.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">19</div>
+            <div class="priklad-title">Ondra a klíče - volný pád ze 4. patra</div>
+        </div>
+        <div class="priklad-content">
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <div class="zadani-text"><strong>Ondra pouští klíče Martinovi ze čtvrtého patra (<span class="hodnoty">11 metrů</span> nad Martinovou hlavou). Za jak dlouho po upuštění klíče Martinovi rozrazí hlavu? Bude mít čas odříkat si otčenáš?</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">20</div>
+            <div class="priklad-title">Štepán obr - volný pád z výšky 170 m</div>
+        </div>
+        <div class="priklad-content">
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <div class="zadani-text"><strong>Štepán si přál k Vánocům, aby byl 100x větší. Přání se mu splnilo a nyní měří na výšku <span class="hodnoty">170 metrů</span>. Na oslavu této velké události hned z výšky svého majestátu, tedy z výšky <span class="hodnoty">170 m</span>, upustil kámen. Neuvažujte odpor vzduchu, berte g=10 m/s² a odpovězte na otázky:</strong>
+                </div>
+                <ul>
+                    <li>a) V jaké výšce nad zemí se kámen nachází 2,5 sekundy po vypuštění?</li>
+                    <li>b) Za jak dlouho bude kámen ve výšce 100 m?</li>
+                    <li>c) Jakou rychlostí kámen poletí ve výšce 100 m?</li>
+                    <li>d) Jakou dráhu urazí kámen během čtvrté sekundy letu?</li>
+                    <li>e) Jakou rychlostí kámen dopadne na zem?</li>
+                    <li>f) V jaké výšce bude kámen ve chvíli, kdy letí rychlostí 50 m/s?</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">21</div>
+            <div class="priklad-title">Erik a jeho pekáč - zrychlení z 50 na 90 km/h</div>
+        </div>
+        <div class="priklad-content">
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <div class="zadani-text"><strong>Erik hned na konci obce sešlápl plyn svého pekáče až k podlaze a se zrychlením <span class="hodnoty">1,5 m/s²</span> zrychlil z <span class="hodnoty">50 km/h</span> na <span class="hodnoty">90 km/h</span>. Jakou vzdálenost mezitím ujel? Počítejte dvěma různými způsoby – jednak na základě průměrné rychlosti a jednak ze vztahu mezi dráhou a zrychlením.</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">22</div>
+            <div class="priklad-title">Auto - brzdná dráha při různých rychlostech</div>
+        </div>
+        <div class="priklad-content">
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <div class="zadani-text"><strong>Auto může obecně zpomalovat se zrychlením maximálně a = <span class="hodnoty">-6 m/s²</span>.</strong>
+                </div>
+                <ul>
+                    <li>a) Jak dlouhá je brzdná dráha, pokud auto jede v obci rychlostí v₀ = 50 km/h? Řešte nejprve obecně (jen pomocí písmen) a poté pro konkrétní zadané hodnoty.</li>
+                    <li>b) Co kdyby auto jelo nepovolenou rychlostí 60 km/h? Jak se prodlouží brzdná dráha?</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">23</div>
+            <div class="priklad-title">Vlak s medvídky - brždění před stromem</div>
+        </div>
+        <div class="priklad-content">
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <div class="zadani-text"><strong>Těžký nákladní vlak s padesáti vagony gumových medvídků jel rychlostí <span class="hodnoty">90 km/h</span>, když strojvedoucí <span class="hodnoty">300 metrů</span> před sebou spatřil strom padlý přes trať. Okamžitě aktivoval brzdný systém, který je schopen brzdit se zrychlením <span class="hodnoty">0,8 m/s²</span>. Jakou rychlostí do stromu vlak narazil? Přežijí to medvídci?</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">24</div>
+            <div class="priklad-title">Pan Jouda - analýza grafu v(t) fotbalisty</div>
+        </div>
+        <div class="priklad-content">
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <div class="zadani-text"><strong>Výborný fotbalový útočník pan Jouda se při průniku do vápna pohyboval podle grafu rychlosti v(t) na obrázku výše. Určete co nejjednodušeji celkovou uraženou dráhu a zrychlení na jednotlivých úsecích.</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h2>🪨 Volný pád (25-26)</h2>
+    <div class="sekce-popis">
+        Výpočty při volném pádu, doba pádu, dopadová rychlost.
+    </div>
+
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">25</div>
+            <div class="priklad-title">Helmut - volný pád chleba do Machochy</div>
+        </div>
+        <div class="priklad-content">
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <div class="zadani-text"><strong>Zopakujme si volný pád. Helmut stojí na kraji propasti Machocha s hloubkou h = <span class="hodnoty">138 m</span> a neuvážlivě upustil chleba s máslem a salámem. Odpor vzduchu velkoryse zanedbáme.</strong>
+                </div>
+                <ul>
+                    <li>a) Vyjádřete dobu letu t a dopadovou rychlost v obecně, tedy pro obecnou hloubku h.</li>
+                    <li>b) Určete dobu letu a dopadovou rychlost pro zadaný případ propasti Macocha.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">26</div>
+            <div class="priklad-title">Důkaz vztahu pro brzdné dráhy</div>
+        </div>
+        <div class="priklad-content">
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <div class="zadani-text"><strong>Brzdná dráha při rovnoměrně zpomaleném pohybu až do zastavení lze vyjádřit vztahem s = ½at², tedy stejně jako dráha pro rovnoměrně zrychlený pohyb. Dokažte toto tvrzení.</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h2>⬆️ Svislý vrh (27-29)</h2>
+    <div class="sekce-popis">
+        Pohyb tělesa vyhozaného svisle vzhůru, doba výstupu a pádu.
+    </div>
+
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">27</div>
+            <div class="priklad-title">Ivánek - svislý vrh kyje vzhru</div>
+        </div>
+        <div class="priklad-content">
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <div class="zadani-text"><strong>Budeme se nyní zabývat svislým vrhem, tedy situací, kdy vyhodíte něco svisle nahoru, předmět dosáhne nejvyššího bodu a poté zase začne padat. Uvažujte g = <span class="hodnoty">10 m/s²</span>.</strong>
+                </div>
+                <ul>
+                    <li>a) Pokud Ivánek vyhodí kyj svisle vzhůru rychlostí 20 m/s, za jak dlouho spadne na zem?</li>
+                    <li>b) Jakou rychlostí spadne na zem?</li>
+                    <li>c) Jak vysoko vystoupá?</li>
+                    <li>d) Nakreslete graf rychlosti v(t) a výšky kyje h(t) v závislosti na čase.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">28</div>
+            <div class="priklad-title">Horáček vs. Pažout - soubo v házení sluchátek</div>
+        </div>
+        <div class="priklad-content">
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <div class="zadani-text"><strong>Horáček a Pažout se hádají, kdo vyhodí výše ukradené utržené sluchátko. Pokud víme, že Horáček vyhodí sluchátko o <span class="hodnoty">50%</span> větší rychlostí, kolikrát výše sluchátko vystoupá?</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">29</div>
+            <div class="priklad-title">Umímeto - chyba v grafu odrážejícího se hopíku</div>
+        </div>
+        <div class="priklad-content">
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <div class="zadani-text"><strong>V jinak dobré internetové cvičebnici Umímeto je uveden obrázek výše, který má znázorňovat závislost výšky hopíku na čase, když se odráží od podlahy. Co je v obrázku špatně? Jak by obrázek měl vypadat správně? Na základě čeho si snadno můžeme všimnout, že je špatně?</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h2>➡️ Vodorovný vrh (30-32)</h2>
+    <div class="sekce-popis">
+        Pohyb tělesa vyhozaného vodorovně z určité výšky.
+    </div>
+
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">30</div>
+            <div class="priklad-title">Tomáš - vodorovný vrh mobilu do lomu</div>
+        </div>
+        <div class="priklad-content">
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <div class="zadani-text"><strong>Tomáš si chce vylít zlost, a proto si stoupnul na horní okraj lomu a mrštil svým mobilním telefonem vodorovným směrem do vody s počáteční rychlostí <span class="hodnoty">18 m/s</span>. Mobil po chvilce dopadl <span class="hodnoty">45 m</span> horizontálně před něj do vody. Odpor vzduchu zanedbáme, uvažujme g = <span class="hodnoty">10 m/s²</span>.</strong>
+                </div>
+                <ul>
+                    <li>a) Jakou dobu mobil letěl?</li>
+                    <li>b) Jak vysoko je okraj lomu nad hladinou?</li>
+                    <li>c) Jakou velikost měla svislá složka dopadové rychlosti?</li>
+                    <li>d) Jakou celkovou velikost měla dopadová rychlost a jaký svírala úhel s hladinou?</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">31</div>
+            <div class="priklad-title">Odvozování vztahu pro vodorovný vrh</div>
+        </div>
+        <div class="priklad-content">
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <div class="zadani-text"><strong>Odvoďte vztah pro horizontální délku d vodorovného vrhu při počáteční rychlosti v₀, výšce místa vrhu h a gravitačním zrychlení g.</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">32</div>
+            <div class="priklad-title">Martin - humanitární shazování čokolády</div>
+        </div>
+        <div class="priklad-content">
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <div class="zadani-text"><strong>Martin se stal humanitárním letcem, který z letadla shazuje balíky plné čokolády. Letí ve výšce <span class="hodnoty">200 m</span> nad zemí rychlostí <span class="hodnoty">60 m/s</span>. Míří na matraci umístěnou na zemi. V jaké vzdálenosti před matrací musí balík vypustit?</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h2>⚽ Šikmý vrh (33-38)</h2>
+    <div class="sekce-popis">
+        Pohyb tělesa vyhozaného pod úhlem, optimální úhel vrhu, parabola.
+    </div>
+
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">33</div>
+            <div class="priklad-title">Lionel Messi - šikmý vrh přes fotbalové hřiště</div>
+        </div>
+        <div class="priklad-content">
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <div class="zadani-text"><strong>Lionel Messi se chlubí, že překopne celé fotbalové hřiště. Vykopává od brány rychlostí v₀ = <span class="hodnoty">126 km/h</span> pod úhlem α = <span class="hodnoty">30°</span> vůči zemi, přičemž na stadionu předem radši odsáli veškerý vzduch. Překopne hřiště? Řešte nejprve obecně a pak pro konkrétní hodnoty.</strong>
+                </div>
+                <ul>
+                    <li>a) V jaké vzdálenosti míč dopadne?</li>
+                    <li>b) Jak vysoko míč vystoupá?</li>
+                    <li>c) Jaká bude dopadová rychlost míče?</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">34</div>
+            <div class="priklad-title">Optimální úhel pro maximální dostřel</div>
+        </div>
+        <div class="priklad-content">
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <div class="zadani-text"><strong>Pod jakým úhlem je potřeba vystřelit, aby střela dopadla co nejdál? Tedy pro danou počáteční rychlost se snažíme najít úhel výstřelu vůči zemi, aby byl dostřel maximální.</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">35</div>
+            <div class="priklad-title">Vojín - nastavení úhlu granátometu</div>
+        </div>
+        <div class="priklad-content">
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <div class="zadani-text"><strong>V jedné z řady dalších nesmyslných válek má neznámý vojín za úkol nastavit hlaveň granátometu tak, aby granát dopadl do vzdálenosti <span class="hodnoty">400 m</span>, přičemž ví, že úsťová rychlost výstřelu je <span class="hodnoty">100 m/s</span>. Pod jakým úhlem vůči svislému směru je třeba hlaveň nastavit? Řešte nejprve obecně.</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">36</div>
+            <div class="priklad-title">Důkaz parabolické trajektorie šikmého vrhu</div>
+        </div>
+        <div class="priklad-content">
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <div class="zadani-text"><strong>Dokažte, že trajektorií šikmého vrhu je parabola (při zanedbání odporu vzduchu). Tedy chceme ukázat, že body trajektorie y(x) tvoří parabolu. Určete rovnici této paraboly.</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">37</div>
+            <div class="priklad-title">Pokročilý - šikmý vrh ze svahu</div>
+        </div>
+        <div class="priklad-content">
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <div class="zadani-text"><strong>*Odvoďte vztah pro horizontální vzdálenost šikmého vrhu v případě, že střílíme z kopce, tedy ze svahu s úhlem β, přičemž úhel výstřelu α měříme vůči vodorovnému směru.</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">38</div>
+            <div class="priklad-title">Pokročilý - šikmý vrh z výšky</div>
+        </div>
+        <div class="priklad-content">
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <div class="zadani-text"><strong>*Odvoďte vztah pro horizontální vzdálenost šikmého vrhu v případě, že střílíme sice na rovné zemi, ale z výšky h.</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="zdroj">
+        <p><strong>Zdroj:</strong> <a href="https://fyzikum.cz/ucebnice/kinematika-resene/" target="_blank" style="color: #3182ce; text-decoration: none;">Fyzikum.cz - Kinematika řešené příklady</a></div>
+        <p style="margin-top: 10px; color: #666;">Kompletní sbírka všech 38 příkladů • Vytvořeno pro výukové účely</div>
+        <p style="margin-top: 5px; font-size: 12px; color: #888;">* označuje pokročilejší příklady</div>
+    </div>
+</body>
+</html>
