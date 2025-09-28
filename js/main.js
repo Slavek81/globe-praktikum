@@ -238,6 +238,31 @@ function initializePerformanceOptimizations() {
     });
 }
 
+/**
+ * NotebookLM Example toggles
+ */
+function toggleExample(exampleId) {
+    const content = document.getElementById(exampleId);
+    const header = content.previousElementSibling;
+    const icon = header.querySelector('i');
+
+    if (content.classList.contains('active')) {
+        content.classList.remove('active');
+        icon.style.transform = 'rotate(0deg)';
+    } else {
+        // Close all other examples
+        document.querySelectorAll('.example-content.active').forEach(activeContent => {
+            activeContent.classList.remove('active');
+            const activeHeader = activeContent.previousElementSibling;
+            const activeIcon = activeHeader.querySelector('i');
+            activeIcon.style.transform = 'rotate(0deg)';
+        });
+
+        content.classList.add('active');
+        icon.style.transform = 'rotate(180deg)';
+    }
+}
+
 // Initialize performance optimizations
 document.addEventListener('DOMContentLoaded', function() {
     initializeLoadingAnimations();

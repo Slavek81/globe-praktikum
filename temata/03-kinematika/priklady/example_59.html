@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loď Helmut na řece - řešený příklad</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>59. Loď Helmut na řece</h1>
+            <p>Kinematika - řešený příklad</p>
+        </header>
+
+        <!-- Motivační úvod pro studenty -->
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Plavba po řece s proudem a proti proudu je klasická situace v dopravě! Kapitáni lodí, piloti hydroplánů i správci trajektů musí počítat s proudem řeky. Princip relativních rychlostí najdeš i u letadel ve větru nebo u pásových dopravníků.
+        </div>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <p>
+                Loď Helmut pluje po řece. Cesta po proudu trvá <strong>40 minut</strong>, cesta zpátky proti proudu <strong>70 minut</strong>. Jak dlouho by trvala stejná cesta na <strong>klidné vodě</strong>?
+            </p>
+        </section>
+
+        <section id="vstupni-data">
+            <h3>Vstupní data</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Veličina</th>
+                        <th>Symbol</th>
+                        <th>Hodnota</th>
+                        <th>Jednotka</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Čas po proudu</td>
+                        <td class="variable">t₁</td>
+                        <td class="value">40</td>
+                        <td class="unit">min</td>
+                    </tr>
+                    <tr>
+                        <td>Čas proti proudu</td>
+                        <td class="variable">t₂</td>
+                        <td class="value">70</td>
+                        <td class="unit">min</td>
+                    </tr>
+                    <tr>
+                        <td>Rychlost lodi (klidná voda)</td>
+                        <td class="variable">v_l</td>
+                        <td class="value">?</td>
+                        <td class="unit">km/h</td>
+                    </tr>
+                    <tr>
+                        <td>Rychlost proudu</td>
+                        <td class="variable">v_p</td>
+                        <td class="value">?</td>
+                        <td class="unit">km/h</td>
+                    </tr>
+                    <tr>
+                        <td>Hledaný čas na klidné vodě</td>
+                        <td class="variable">t_klid</td>
+                        <td class="value">?</td>
+                        <td class="unit">min</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+            <p>Použijeme principy relativních rychlostí a harmonického průměru.</p>
+
+            <div class="calculation-step">
+                <h4>Krok 1: Analýza situace a rychlostí</h4>
+                <p>Na řece s proudem se rychlosti skládají vektorově:</p>
+
+                <div class="equation-logic-box">
+                    <strong>Logika výběru:</strong> Po proudu se rychlosti sčítají (v_l + v_p), proti proudu se odčítají (v_l - v_p). Vzdálenost zůstává stejná.
+                </div>
+
+                <div class="warning-box">
+                    <strong>Pozor na směry!</strong> Proud pomáhá při jízdě po proudu a brzdí při jízdě proti proudu. Musíme rozlišovat rychlost lodi vůči vodě a vůči břehu.
+                </div>
+
+                <div class="note-box">
+                    <strong>Vztahy rychlostí:</strong>
+                    <ul>
+                        <li>Po proudu: v_celková = v_l + v_p</li>
+                        <li>Proti proudu: v_celková = v_l - v_p</li>
+                        <li>Na klidné vodě: v_celková = v_l</li>
+                        <li>Vzdálenost s zůstává stejná ve všech případech</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 2: Sestavení rovnic</h4>
+                <p>Ze vztahu s = v × t pro každou část cesty:</p>
+
+                <div class="equation-logic-box">
+                    <strong>Proč tyto rovnice?</strong> Vzdálenost je stejná ve všech třech případech, mění se pouze rychlost podle směru proudu.
+                </div>
+
+                <div class="formula-box">
+                    <p><strong>Po proudu:</strong></p>
+                    $$s = (v_l + v_p) \times t_1 = (v_l + v_p) \times 40$$
+                    <p><strong>Proti proudu:</strong></p>
+                    $$s = (v_l - v_p) \times t_2 = (v_l - v_p) \times 70$$
+                    <p><strong>Na klidné vodě:</strong></p>
+                    $$s = v_l \times t_{klid}$$
+                </div>
+
+                <div class="analogy-box">
+                    <strong>Praktická analogie:</strong> Jako eskalátor - nahoru jdeš rychleji (eskalátor + kroky), dolů pomaleji (kroky - eskalátor).
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 3: Řešení soustavy rovnic</h4>
+                <p>Z rovnosti vzdáleností:</p>
+
+                <div class="result-box">
+                    <strong>Rovnost vzdáleností:</strong>
+                    $$(v_l + v_p) \times 40 = (v_l - v_p) \times 70$$
+                </div>
+
+                <div class="result-box">
+                    <strong>Úprava rovnice:</strong>
+                    $$40v_l + 40v_p = 70v_l - 70v_p$$
+                    $$110v_p = 30v_l$$
+                    $$v_p = \frac{30}{110}v_l = \frac{3}{11}v_l$$
+                </div>
+
+                <div name="tip-box">
+                    <strong>Tip pro řešení:</strong> Rychlost proudu je 3/11 rychlosti lodi - to je rozumný poměr pro řeku.
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 4: Výpočet času na klidné vodě</h4>
+                <p>Dosadíme zpět do rovnice pro vzdálenost:</p>
+
+                <div class="result-box">
+                    <strong>Vzdálenost z první části:</strong>
+                    $$s = (v_l + v_p) \times 40 = \left(v_l + \frac{3}{11}v_l\right) \times 40 = \frac{14}{11}v_l \times 40$$
+                </div>
+
+                <div class="result-box">
+                    <strong>Čas na klidné vodě:</strong>
+                    $$t_{klid} = \frac{s}{v_l} = \frac{\frac{14}{11}v_l \times 40}{v_l} = \frac{14 \times 40}{11} = \frac{560}{11} = 50{,}9 \text{ min}$$
+                </div>
+
+                <details>
+                    <summary>📊 Pokročilý výpočet</summary>
+                    <div>
+                        <div class="interpretation-box">
+                            <strong>Fyzikální význam:</strong> Čas na klidné vodě (51 min) je mezi časem po proudu (40 min) a proti proudu (70 min), ale není to aritmetický průměr!
+                        </div>
+                    </div>
+                </details>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 5: Ověření harmonickým průměrem</h4>
+                <p>Výsledek lze ověřit pomocí harmonického průměru:</p>
+
+                <div class="result-box">
+                    <strong>Harmonický průměr:</strong>
+                    $$t_{klid} = \frac{2t_1t_2}{t_1 + t_2} = \frac{2 \times 40 \times 70}{40 + 70} = \frac{5600}{110} = 50{,}9 \text{ min}$$
+                </div>
+
+                <div class="tip-box">
+                    <strong>Tip pro zapamatování:</strong> Pro pohyb s proudem a proti proudu platí harmonický průměr časů!
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 6: Kontrola a odpověď</h4>
+
+                <div class="summary-box">
+                    <strong>Odpověď:</strong> Na klidné vodě by cesta trvala přibližně <strong>51 minut</strong>.
+                </div>
+
+                <div class="info-box">
+                    <strong>Kontrola rozumnosti:</strong>
+                    <br>• Čas na klidné vodě (51 min) je mezi časem po proudu (40 min) a proti proudu (70 min) ✓
+                    <br>• Je blíže k aritmetickému průměru (55 min), ale není roven ✓
+                    <br>• Harmonický průměr dává stejný výsledek ✓
+                </div>
+
+                <div class="alternative-method-box">
+                    <strong>Alternativní způsob:</strong> Můžeme řešit graficky - načrtnout grafy vzdálenosti v čase pro všechny tři případy a najít průsečíky.
+                </div>
+
+                <details>
+                    <summary>🤔 Metakognitivní otázky</summary>
+                    <div>
+                        <ul>
+                            <li>Proč je čas na klidné vodě mezi časem po proudu a proti proudu?</li>
+                            <li>Co by se stalo, kdyby proud byl rychlejší než loď?</li>
+                            <li>Jak navigují letadla ve větru pomocí podobných principů?</li>
+                            <li>Zkus odvodit obecný vzorec pro libovolné časy t₁ a t₂!</li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

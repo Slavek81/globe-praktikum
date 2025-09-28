@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Řešení</title>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>68. Ondra pouští klíče</h1>
+            <p>Kinematika - řešený příklad</p>
+        </header>
+
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Volný pád je všude kolem nás - od upuštěných klíčů až po nebezpečné padající předměty ze staveb. Pochopení fyziky volného pádu pomáhá stavbařům a bezpečnostním technikům určovat velikost ochranných zón pod stavbami a může zachránit životy.
+        </div>
+
+        <section>
+            <h2>📋 Zadání</h2>
+            <div class="zadani">
+                <p>Ondra pouští klíče Martinovi ze čtvrtého patra (<strong>11 metrů</strong> nad Martinovou hlavou). Za jak dlouho po upuštění klíče Martinovi rozrazí hlavu? Bude mít čas odříkat si otčenáš?</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>💭 Krok 1: Analýza situace</h2>
+
+            <div class="equation-logic-box">
+                <strong>Logika výběru:</strong> Jde o typický volný pád z klidu. Klíče se upustí (nevyhodí), takže počáteční rychlost je nulová. Používáme rovnici $h = \frac{1}{2}gt^2$ a vyjádříme z ní čas.
+            </div>
+
+            <div class="warning-box">
+                <strong>Pozor na rozdíl!</strong> Při volném pádu rozlišujeme mezi "upuštěním" ($v_0 = 0$) a "vyhozením" ($v_0 \neq 0$). Ondra klíče upustil, takže počáteční rychlost je nulová.
+            </div>
+
+            <div class="note-box">
+                <strong>Dané hodnoty:</strong>
+                <ul>
+                    <li>Výška pádu: $h = 11$ m</li>
+                    <li>Počáteční rychlost: $v_0 = 0$ m·s⁻¹ (upuštění z klidu)</li>
+                    <li>Tíhové zrychlení: $g = 9{,}81$ m·s⁻²</li>
+                    <li>Hledáme: čas pádu $t$</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2>⚙️ Krok 2: Výběr rovnice</h2>
+
+            <div class="equation-logic-box">
+                <strong>Proč tuto rovnici?</strong> Pro volný pád z klidu používáme zjednodušenou kinematickou rovnici, kde se člen $v_0 t$ rovná nule. Známe výšku a gravitační zrychlení, hledáme čas.
+            </div>
+
+            <div class="formula-box">
+                <p><strong>Rovnice volného pádu z klidu:</strong></p>
+                $$h = \frac{1}{2}gt^2$$
+                <p><strong>Vyjádření času pádu:</strong></p>
+                $$t = \sqrt{\frac{2h}{g}}$$
+            </div>
+
+            <div class="analogy-box">
+                <strong>Praktická analogie:</strong> Volný pád je jako skluz po nekonečně strmé skluzavce - každou sekundu získáte stejné "přidané množství" rychlosti díky gravitaci.
+            </div>
+        </section>
+
+        <section>
+            <h2>🔢 Krok 3: Výpočet</h2>
+
+            <div class="calculation-step">
+                <p><strong>Algebraické vyjádření času:</strong></p>
+                $$h = \frac{1}{2}gt^2$$
+                $$t^2 = \frac{2h}{g}$$
+                $$t = \sqrt{\frac{2h}{g}}$$
+
+                <div class="result-box">
+                    <strong>Vzorec pro čas pádu:</strong> $t = \sqrt{\frac{2h}{g}}$
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <p><strong>Dosazení číselných hodnot:</strong></p>
+                $$t = \sqrt{\frac{2h}{g}} = \sqrt{\frac{2 \times 11}{9{,}81}} = \sqrt{\frac{22}{9{,}81}} = \sqrt{2{,}24} \approx 1{,}5 \text{ s}$$
+
+                <div class="result-box">
+                    <strong>Výsledek:</strong> Klíče dopadnou za 1,5 sekundy
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <p><strong>Rychlost dopadu (bonus):</strong></p>
+                $$v = gt = 9{,}81 \times 1{,}5 = 14{,}7 \text{ m·s⁻¹} \approx 53 \text{ km·h⁻¹}$$
+
+                <div class="result-box">
+                    <strong>Rychlost dopadu:</strong> Přibližně 53 km·h⁻¹ - nebezpečné!
+                </div>
+            </div>
+
+            <div class="tip-box">
+                <strong>Tip:</strong> Pro rychlý odhad můžeme použít $g = 10$ m·s⁻², což dá $t = \sqrt{\frac{22}{10}} = \sqrt{2{,}2} \approx 1{,}48$ s
+            </div>
+        </section>
+
+        <section>
+            <h2>✅ Krok 4: Kontrola a odpověď</h2>
+
+            <div class="summary-box">
+                <strong>Odpověď:</strong> Klíče dopadnou na Martinovu hlavu za <strong>1,5 sekundy</strong>. Martin <strong>nestihne</strong> odříkat celý Otčenáš (trvá 15-20 s), možná jen "Otče náš" na začátku.
+            </div>
+
+            <div class="info-box">
+                <strong>Kontrola rozumnosti:</strong> Čas 1,5 s ze čtvrtého patra (11 m) je rozumný. Pro porovnání - pád z prvního patra (3 m) by trval asi 0,8 s. Rychlost dopadu 53 km·h⁻¹ může způsobit vážné zranění.
+            </div>
+
+            <div class="alternative-method-box">
+                <strong>Alternativní způsob:</strong> Můžeme použít energetickou metodu: $mgh = \frac{1}{2}mv^2$, takže $v = \sqrt{2gh}$, a pak $t = \frac{v}{g} = \frac{\sqrt{2gh}}{g} = \sqrt{\frac{2h}{g}}$.
+            </div>
+
+            <details>
+                <summary>🤔 Metakognitivní otázky</summary>
+                <div>
+                    <ul>
+                        <li>Jakou rychlostí budou klíče dopadat na Martinovu hlavu? (Spočítáno: 53 km·h⁻¹)</li>
+                        <li>Z jaké výšky by musel Ondra pustit klíče, aby Martin stihl odříkat celý Otčenáš?</li>
+                        <li>Jak by se změnil čas pádu, kdybychom uvažovali odpor vzduchu?</li>
+                        <li>Proč je důležité znát fyziku volného pádu při práci na stavbách?</li>
+                        <li>Co kdyby byla scéna na Měsíci (g = 1,6 m·s⁻²)?</li>
+                    </ul>
+                </div>
+            </details>
+        </section>
+    </main>
+</body>
+</html>

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Řešení</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>7. Cyklista s větrem v zádech a proti větru</h1>
+            <p>Kinematika - řešený příklad</p>
+        </header>
+
+        <!-- Motivační úvod pro studenty -->
+        <div class="intro-context">
+            <strong>🚴 Praktická aplikace:</strong> Každý cyklista zná tento problém - když vítr fouká do zad, letíme jako na křídlech, ale na zpáteční cestě se plazíme proti větru jako šnek. Vítr dramaticky ovlivňuje naše rychlosti, a proto je důležité umět spočítat realistický čas celé cesty. Totéž platí pro lodní dopravu nebo leteckou!
+        </div>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <p>
+                Cyklista jede do určitého místa s větrem v zádech rychlostí <strong>8 m·s⁻¹</strong> a nazpět proti větru rychlostí <strong>4 m·s⁻¹</strong>. Jaká je jeho <strong>průměrná rychlost</strong>?
+            </p>
+        </section>
+
+        <section id="vstupni-data">
+            <h3>Vstupní data</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Veličina</th>
+                        <th>Symbol</th>
+                        <th>Hodnota</th>
+                        <th>Jednotka</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Rychlost cyklisty s větrem</td>
+                        <td class="variable">v₁</td>
+                        <td class="value">8</td>
+                        <td class="unit">m·s⁻¹</td>
+                    </tr>
+                    <tr>
+                        <td>Rychlost cyklisty proti větru</td>
+                        <td class="variable">v₂</td>
+                        <td class="value">4</td>
+                        <td class="unit">m·s⁻¹</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+            <p>Výpočet rozdělíme do několika logických kroků podle typu kinematické úlohy.</p>
+            
+            <div class="calculation-step">
+                <h4>Krok 1: Analýza situace a převody jednotek</h4>
+                <p>Cyklista jede stejnou dráhu tam i zpět, ale různými rychlostmi kvůli větru. Dráhy jsou sice stejné, ale časy budou různé!</p>
+
+                <div class="equation-logic-box">
+                    <strong>Logika výběru:</strong> Cesta tam i zpět - to zná stejné dráhy, ale různé rychlosti. Pro průměrnou rychlost potřebujeme celkovou dráhu a celkový čas.
+                </div>
+
+                <div class="warning-box">
+                    <strong>Pozor na častou chybu!</strong> Není to (8+4)/2 = 6 m/s! To by platilo jen při stejných časech jízdy, ale cyklista stráví více času jízdou proti větru.
+                </div>
+
+                <div class="note-box">
+                    <strong>Dané hodnoty:</strong>
+                    <ul>
+                        <li>Cesta tam: s₁ = s (neznámá), v₁ = 8 m/s</li>
+                        <li>Cesta zpět: s₂ = s (stejná), v₂ = 4 m/s</li>
+                        <li>Hledáme: průměrnou rychlost vₚ</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="calculation-step">
+                <h4>Krok 2: Výběr fyzikální rovnice</h4>
+                <p>Pro výpočet průměrné rychlosti na cestě tam a zpět potřebujeme určit časy na obou úsecích.</p>
+
+                <div class="equation-logic-box">
+                    <strong>Proč tyto rovnice?</strong> Každý úsek je rovnoměrný pohyb (s = v·t), ale s různými rychlostmi. Čas získáme z t = s/v.
+                </div>
+
+                <div class="formula-box">
+                    <strong>📐 Potřebné rovnice</strong>
+                    <p>$$t = \frac{s}{v} \text{ (čas na každé cestě)}$$</p>
+                    <p>$$v_p = \frac{s_{celková}}{t_{celkový}} \text{ (průměrná rychlost)}$$</p>
+                </div>
+
+                <div class="analogy-box">
+                    <strong>Praktická analogie:</strong> Je to jako když řídíte do práce po dálnici (rychle) a zpět městem (pomalu). I když vzdálenosti jsou stejné, pomalá cesta zpět "váží" více ve výpočtu průměru.
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 3: Výpočet časů na obou cestách</h4>
+                <p>Vypočítáme, jak dlouho trvá cesta tam (s větrem) a zpět (proti větru).</p>
+
+                <div class="result-box">
+                    <strong>📐 Čas cesty tam (s větrem)</strong>
+                    <p>$$t_1 = \frac{s}{v_1} = \frac{s}{8} \text{ s}$$</p>
+                </div>
+
+                <div class="result-box">
+                    <strong>📐 Čas cesty zpět (proti větru)</strong>
+                    <p>$$t_2 = \frac{s}{v_2} = \frac{s}{4} \text{ s}$$</p>
+                </div>
+
+                <div class="tip-box">
+                    <strong>Tip pro pochopení:</strong> Cesta zpět trvá 2× déle než cesta tam (s/4 vs s/8). To ovlivní průměrnou rychlost!
+                </div>
+
+                <details>
+                    <summary>🔍 Porovnání časů (rozbalovací sekce)</summary>
+                    <div>
+                        <strong>Analýza časů:</strong>
+                        <ul>
+                            <li>Cesta tam: t₁ = s/8 s</li>
+                            <li>Cesta zpět: t₂ = s/4 s = 2×(s/8) s</li>
+                            <li>Cyklista stráví dvakrát více času jízdou proti větru!</li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 4: Výpočet průměrné rychlosti</h4>
+                <p>Sečteme celkovou dráhu a celkový čas, pak vypočítáme průměrnou rychlost.</p>
+
+                <div class="result-box">
+                    <strong>📐 Celková dráha a čas</strong>
+                    <p>$$s_{celková} = s + s = 2s$$</p>
+                    <p>$$t_{celkový} = \frac{s}{8} + \frac{s}{4} = \frac{s + 2s}{8} = \frac{3s}{8} \text{ s}$$</p>
+                </div>
+
+                <div class="result-box">
+                    <strong>📐 Průměrná rychlost</strong>
+                    <p>$$v_p = \frac{s_{celková}}{t_{celkový}} = \frac{2s}{\frac{3s}{8}} = 2s \cdot \frac{8}{3s} = \frac{16}{3} = 5{,}33 \text{ m·s}^{-1}$$</p>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 5: Kontrola výsledku a odpověď</h4>
+                <p>Ověříme rozumnost výsledku a formulujeme konečnou odpověď.</p>
+
+                <div class="summary-box">
+                    <strong>Odpověď:</strong>
+                    <p><strong>Průměrná rychlost cyklisty je 5,33 m·s⁻¹ (19,2 km/h).</strong></p>
+                    <p><strong>Ověření:</strong> 5,33 m/s je mezi 4 a 8 m/s, blíže k nižší hodnotě (protože více času jel pomaleji) ✓</p>
+                </div>
+
+                <div class="info-box">
+                    <strong>Kontrola rozumnosti:</strong> Průměrná rychlost 5,33 m/s je blíže k 4 m/s než k 8 m/s, což dává smysl - cyklista stráví dvakrát více času pomalou jízdou proti větru.
+                </div>
+
+                <div class="alternative-method-box">
+                    <strong>Alternativní způsob:</strong> Harmonic Mean: pro cesty se stejnou dráhou je vₚ = 2v₁v₂/(v₁+v₂) = 2×8×4/(8+4) = 64/12 = 5,33 m/s
+                </div>
+
+                <details>
+                    <summary>🤔 Metakognitivní otázky (rozšířené přemýšlení)</summary>
+                    <div>
+                        <ul>
+                            <li>Proč průměrná rychlost není aritmetický průměr (8+4)/2 = 6 m/s?</li>
+                            <li>Jak by se změnil výsledek, kdyby byl vítr slabší (např. 7 a 5 m/s)?</li>
+                            <li>Co by se stalo, kdyby cyklista jel proti větru rychleji než s větrem?</li>
+                            <li>V jakých dalších situacích řešíme podobné úlohy (lodě, letadla)?</li>
+                            <li>Proč harmonic mean dává správný výsledek pro stejné dráhy?</li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

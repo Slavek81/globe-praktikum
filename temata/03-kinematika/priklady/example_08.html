@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Řešení</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>8. Řešení</h1>
+            <p>Kinematika - řešený příklad</p>
+        </header>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <p>
+                Těleso se pohybuje z A do B10 minutrychlostí50 km·h⁻¹a zpět se vrací rychlostí110 km·h⁻¹. Určete průměrnou rychlost v m·s⁻¹ a km·h⁻¹. Nakreslete graf závislosti rychlosti na čase.
+            </p>
+        </section>
+
+        <section id="vstupni-data">
+            <h3>Vstupní data</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Veličina</th>
+                        <th>Symbol</th>
+                        <th>Hodnota</th>
+                        <th>Jednotka</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Doba jízdy tam</td>
+                        <td class="variable">t</td>
+                        <td class="value">10</td>
+                        <td class="unit">minut</td>
+                    </tr>
+                    <tr>
+                        <td>Rychlost tam</td>
+                        <td class="variable">v₁</td>
+                        <td class="value">50</td>
+                        <td class="unit">km·h⁻¹</td>
+                    </tr>
+                    <tr>
+                        <td>Rychlost zpět</td>
+                        <td class="variable">v₂</td>
+                        <td class="value">110</td>
+                        <td class="unit">km·h⁻¹</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+            <p>Výpočet rozdělíme do několika logických kroků podle typu kinematické úlohy.</p>
+            
+            <div class="calculation-step">
+                <h4>Krok 1: Analýza situace a převody jednotek</h4>
+                <p>Analyzujeme typ pohybu a sjednotíme jednotky pro výpočet.</p>
+                
+                <div class="note-box">
+                    <strong>Analýza:</strong>
+                    <p>Identifikujeme typ pohybu a potřebné převody jednotek podle zadání.</p>
+                </div>
+            </div>
+            
+            <div class="calculation-step">
+                <h4>Krok 2: Výběr fyzikální rovnice</h4>
+                <p>Vybereme vhodnou kinematickou rovnici podle typu pohybu.</p>
+                
+                <div class="formula-box">
+                    <strong>Kinematické rovnice:</strong>
+                    <ul>
+                        <li>Rovnoměrný pohyb: $s = v \cdot t$</li>
+                        <li>Zrychlený pohyb: $s = v_0 \cdot t + \frac12 \cdot a \cdot t^2$</li>
+                        <li>Rychlost při zrychleném pohybu: $v = v_0 + a \cdot t$</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 3: Dosazení hodnot a výpočet</h4>
+                <p>Dosadíme známé hodnoty do vybrané rovnice a vypočítáme výsledek.</p>
+                
+                <div class="result-box">
+                    <strong>📐 Dráha cesty tam</strong>
+                    <p>$$s_1 = v_1 \cdot t_1 = 50 \cdot \frac{1}{6} = \frac{50}{6} \text{ km}$$</p>
+
+                    <strong>📐 Čas cesty zpět</strong>
+                    <p>$$t_2 = \frac{s_2}{v_2} = \frac{s_1}{v_2} = \frac{\frac{50}{6}}{110} = \frac{50}{6 \cdot 110} = \frac{5}{66} \text{ h}$$</p>
+
+                    <strong>📐 Konečný výpočet</strong>
+                    <p>$$s_{celková} = 2 \cdot \frac{50}{6} = \frac{50}{3} \text{ km}$$</p>
+                    <p>$$t_{celkový} = \frac{1}{6} + \frac{5}{66} = \frac{11 + 5}{66} = \frac{16}{66} = \frac{8}{33} \text{ h}$$</p>
+                    <p>$$v_p = \frac{\frac{50}{3}}{\frac{8}{33}} = \frac{50 \cdot 33}{3 \cdot 8} = \frac{550}{8} = 68{,}75 \text{ km·h}^{-1}$$</p>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 4: Kontrola výsledku a odpověď</h4>
+                <p>Ověříme rozumnost výsledku a formulujeme odpověď.</p>
+                
+                <div class="summary-box">
+                    <strong>Odpověď:</strong>
+                    <p><strong>Průměrná rychlost je 68,75 km·h⁻¹ = 19,1 m·s⁻¹.</strong></p>
+                    <p><strong>Graf v(t):</strong> Konstantní 50 km/h po dobu 10 min, pak skok na 110 km/h po dobu 4,55 min</p>
+                </div>
+
+                <div class="info-box">
+                    <strong>Kontrola rozumnosti:</strong> Průměrná rychlost 68,75 km/h je mezi 50 a 110 km/h, blíže k nižší hodnotě (potřebuje více času na pomalejší úsek).
+                </div>
+
+                <div class="alternative-method-box">
+                    <strong>Alternativní způsob:</strong> Můžeme přímo počítat: celková dráha 16,67 km za celkový čas 14,55 min = 68,75 km/h
+                </div>
+
+                <details>
+                    <summary>🤔 Metakognitivní otázky (rozšířené přemýšlení)</summary>
+                    <div>
+                        <ul>
+                            <li>Proč průměrná rychlost není (50+110)/2 = 80 km/h?</li>
+                            <li>Jak by se změnil výsledek, kdyby obě rychlosti byly blíže k sobě?</li>
+                            <li>Co by se stalo, kdyby byl zadán čas zpáteční cesty místo první?</li>
+                            <li>V jakých reálných situacích řešíme podobné úlohy?</li>
+                            <li>Proč je důležité správně převádět jednotky času?</li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

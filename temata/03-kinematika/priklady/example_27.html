@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Řešení</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>27. Řešení</h1>
+            <p>Kinematika - řešený příklad</p>
+        </header>
+
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Předjíždění na dálnicích vyžaduje přesné výpočty bezpečných vzdáleností a zrychlení. Moderní automobily disponují různými výkony motorů - sportovní vozy dosahují zrychlení 0-100 km/h za 3-6 sekund, běžné osobní automobily za 8-12 sekund. Systémy adaptivního tempomatu využívají podobné výpočty pro optimální zrychlování.
+        </div>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <p>
+                Automobil pohybující se zpočátku rychlostí <strong>80 km·h⁻¹</strong> zvýšil během <strong>10 s</strong> svou rychlost na <strong>100 km·h⁻¹</strong>. Určete zrychlení a ujetou vzdálenost.
+            </p>
+        </section>
+
+        <section id="vstupni-data">
+            <h3>Vstupní data</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Veličina</th>
+                        <th>Symbol</th>
+                        <th>Hodnota</th>
+                        <th>Jednotka</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Počáteční rychlost</td>
+                        <td class="variable">v₀</td>
+                        <td class="value">80</td>
+                        <td class="unit">km·h⁻¹</td>
+                    </tr>
+                    <tr>
+                        <td>Doba zrychlování</td>
+                        <td class="variable">t</td>
+                        <td class="value">10</td>
+                        <td class="unit">s</td>
+                    </tr>
+                    <tr>
+                        <td>Konečná rychlost</td>
+                        <td class="variable">v</td>
+                        <td class="value">100</td>
+                        <td class="unit">km·h⁻¹</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+            <p>Výpočet rozdělíme do několika logických kroků podle typu kinematické úlohy.</p>
+            
+            <div class="calculation-step">
+                <h4>Krok 1: Analýza situace a převody jednotek</h4>
+                <p>Analyzujeme typ pohybu a sjednotíme jednotky pro výpočet.</p>
+                
+                <div class="equation-logic-box">
+                    <strong>Logika výběru:</strong> Automobil postupně zvyšuje rychlost z 80 na 100 km/h v konstantním čase - jde o rovnoměrně zrychlený pohyb. Na rozdíl od rozjezdu z klidu, auto už má počáteční rychlost, co je typické pro předjíždění.
+                </div>
+
+                <div class="warning-box">
+                    <strong>Pozor na počáteční rychlost!</strong> Nejde o rozjezd z klidu! Auto již jede rychlostí 80 km/h a pak ještě zrychluje. Zapomenutí v₀ ≠ 0 je častá chyba - výsledek by byl špatně o počáteční rychlost!
+                </div>
+
+                <div class="note-box">
+                    <strong>Dané hodnoty:</strong>
+                    <ul>
+                        <li>v₀ = 80 km·h⁻¹ = 80 ÷ 3,6 = 22,22 m·s⁻¹ (počáteční rychlost)</li>
+                        <li>v = 100 km·h⁻¹ = 100 ÷ 3,6 = 27,78 m·s⁻¹ (konečná rychlost)</li>
+                        <li>t = 10 s (doba zrychlování)</li>
+                        <li>Hledáme: zrychlení a ujetou vzdálenost</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="calculation-step">
+                <h4>Krok 2: Výběr fyzikální rovnice</h4>
+                <p>Vybereme vhodnou kinematickou rovnici podle typu pohybu.</p>
+                
+                <div class="equation-logic-box">
+                    <strong>Proč tuto rovnici?</strong> Máme počáteční rychlost (v₀), konečnou rychlost (v) a čas (t). To je ideální situace pro základní kinematickou rovnici. Pro vzdálenost použijeme vzorec s průměrnou rychlostí.
+                </div>
+
+                <div class="formula-box">
+                    <strong>Kinematické rovnice pro zrychlený pohyb:</strong>
+                    <ul>
+                        <li>Zrychlení: $a = \frac{v - v_0}{t}$</li>
+                        <li>Dráha (průměrná rychlost): $s = \frac{v_0 + v}{2} \cdot t$</li>
+                        <li>Kontrolní rovnice: $s = v_0 t + \frac{1}{2}at^2$</li>
+                    </ul>
+                </div>
+
+                <div class="analogy-box">
+                    <strong>Praktická analogie:</strong> Představ si situaci na dálnici - jedeš 80 km/h a potřebuješ předjet kamion. Šlápneš na plyn a za 10 sekund zrychlité na 100 km/h. Během těchto 10 sekund ujedeš určitou vzdálenost - tu musíš znát pro bezpečné předjíždění!
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 3: Dosazení hodnot a výpočet</h4>
+                <p>Dosadíme známé hodnoty do vybrané rovnice a vypočítáme výsledek.</p>
+                
+                <div class="tip-box">
+                    <strong>Tip pro výpočet:</strong> Při předjíždění počítej s průměrnou rychlostí! Nezapomeň, že auto nejede konstantní rychlostí, ale postupně zrychluje z 80 na 100 km/h.
+                </div>
+
+                <div class="result-box">
+                    <strong>Výpočet zrychlení:</strong>
+                    <div class="rovnice-nadpis">📐 Zrychlení při předjíždění</div>
+                    <div class="rovnice-text">
+                        $$a = \frac{v - v_0}{t} = \frac{27{,}78 - 22{,}22}{10} = \frac{5{,}56}{10} = 0{,}556 \text{ m·s}^{-2}$$
+                        <p><strong>Interpretace:</strong> Auto zrychluje o 0,556 m/s každou sekundu - typické pro běžné osobní auto</p>
+                    </div>
+                </div>
+
+                <div class="result-box">
+                    <strong>Výpočet vzdálenosti:</strong>
+                    <div class="rovnice-nadpis">📐 Předjížděcí vzdálenost</div>
+                    <div class="rovnice-text">
+                        $$s = \frac{v_0 + v}{2} \cdot t = \frac{22{,}22 + 27{,}78}{2} \cdot 10 = \frac{50}{2} \cdot 10 = 250 \text{ m}$$
+                        <p><strong>Význam:</strong> Průměrná rychlost během předjíždění byla 25 m/s (90 km/h) po dobu 10 s</p>
+                    </div>
+                </div>
+
+                <div class="result-box">
+                    <strong>Kontrolní výpočet:</strong>
+                    <div class="rovnice-nadpis">📐 Ověření pomocí obecné rovnice</div>
+                    <div class="rovnice-text">
+                        $$s = v_0 t + \frac{1}{2}at^2 = 22{,}22 \cdot 10 + \frac{1}{2} \cdot 0{,}556 \cdot 100 = 222{,}2 + 27{,}8 = 250 \text{ m}$$ ✓
+                    </div>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 4: Kontrola výsledku a odpověď</h4>
+                <p>Ověříme rozumnost výsledku a formulujeme odpověď.</p>
+
+                <div class="summary-box">
+                    <strong>Odpověď:</strong>
+                    <ul>
+                        <li><strong>Zrychlení:</strong> a = 0,556 m·s⁻²</li>
+                        <li><strong>Ujetá vzdálenost:</strong> s = 250 m</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <strong>Kontrola rozumnosti:</strong>
+                    <ul>
+                        <li>Zrychlení 0,556 m/s² je typické pro běžné osobní auto při předjíždění</li>
+                        <li>Vzdálenost 250 m za 10 s odpovídá průměrné rychlosti 90 km/h</li>
+                        <li>Pro bezpečné předjíždění potřebuješ nejméně 500 m volné vzdálenosti!</li>
+                    </ul>
+                </div>
+
+                <div class="alternative-method-box">
+                    <strong>Alternativní způsob:</strong> Můžeme použít i rovnici s = v₀t + ½at². Nejdříve vypočítej zrychlení, pak dosaď: s = 22,22×10 + 0,5×0,556×100 = 222,2 + 27,8 = 250 m ✓
+                </div>
+
+                <div class="interpretation-box">
+                    <strong>Praktický význam:</strong> Při předjíždění z 80 na 100 km/h ujedeš čtvrt kilometru! Proto potřebuješ dostatečnou volnou vzdálenost a musíš počítat s rychlostí protějších vozidel.
+                </div>
+
+                <details>
+                    <summary>🤔 Metakognitivní otázky</summary>
+                    <div>
+                        <ul>
+                            <li>V jakých situacích by řidič potřeboval znát přesnou dráhu rozjezdu při předjíždění?</li>
+                            <li>Proč mají sportovní vozy větší zrychlení než běžné automobily?</li>
+                            <li>Jak by se změnila předjížděcí vzdálenost na mokré vozovce?</li>
+                            <li>Jaký vliv má hmotnost auta na jeho schopnost zrychlovat?</li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

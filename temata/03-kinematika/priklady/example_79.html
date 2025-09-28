@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Řešení</title>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>79. Tomášův mobilní telefon do vody</h1>
+            <p>Kinematika - řešený příklad</p>
+        </header>
+
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Vodorovný vrh je všude kolem nás! Když skáčete z píru do vody, míč vypadne z okna, nebo když pilot shazuje záchranný balík. Pochopení tohoto pohybu je klíčové pro ballistiku, sport i každodenní život.
+        </div>
+
+        <div class="problem-statement">
+            <h2>Zadání</h2>
+            <p>Tomáš si chce vylít zlost, a proto si stoupnul na horní okraj lomu a mrštil svým mobilním telefonem vodorovným směrem do vody s počáteční rychlostí <strong>18 m·s⁻¹</strong>. Mobil po chvilce dopadl <strong>45 m</strong> horizontálně před něj do vody. Odpor vzduchu zanedbáme, uvažujme <strong>g = 10 m·s⁻²</strong>.</p>
+
+            <p><strong>a)</strong> Jakou dobu mobil letěl?</p>
+            <p><strong>b)</strong> Jak vysoko je okraj lomu nad hladinou?</p>
+            <p><strong>c)</strong> Jakou velikost měla svislá složka dopadové rychlosti?</p>
+            <p><strong>d)</strong> Jakou celkovou velikost měla dopadová rychlost a jaký svírala úhel s hladinou?</p>
+        </div>
+
+        <div class="solution">
+            <h2>Řešení</h2>
+
+            <div class="calculation-step">
+                <h3>1. Analýza situace a zadané hodnoty</h3>
+
+                <div class="equation-logic-box">
+                    <strong>Logika výběru:</strong> Jde o vodorovný vrh - telefon má na začátku pouze horizontální rychlost, vertikální složka je nulová. Pohyb se skládá ze dvou nezávislých složek: horizontální rovnoměrný pohyb a vertikální volný pád.
+                </div>
+
+                <div class="note-box">
+                    <strong>Dané hodnoty:</strong>
+                    <ul>
+                        <li>Počáteční horizontální rychlost: $v_{0x} = 18$ m·s⁻¹</li>
+                        <li>Počáteční vertikální rychlost: $v_{0y} = 0$ m·s⁻¹</li>
+                        <li>Horizontální dosah: $d = 45$ m</li>
+                        <li>Gravitační zrychlení: $g = 10$ m·s⁻²</li>
+                        <li>Hledáme: a) čas letu, b) výšku, c) $v_y$, d) $v_{celk}$ a úhel</li>
+                    </ul>
+                </div>
+
+                <div class="warning-box">
+                    <strong>Častá chyba:</strong> Studenti zapomínají, že u vodorovného vrhu je počáteční vertikální rychlost nulová, ale horizontální rychlost zůstává konstantní po celou dobu letu.
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h3>2. Výběr fyzikálních rovnic</h3>
+
+                <div class="equation-logic-box">
+                    <strong>Proč rozdělit na složky?</strong> Vodorovný vrh řešíme jako složený pohyb - horizontální rovnoměrný a vertikální rovnoměrně zrychlený. Obě složky jsou nezávislé, ale probíhají současně.
+                </div>
+
+                <div class="analogy-box">
+                    <strong>Praktická analogie:</strong> Je to jako chůze a žvýkání současně - můžeš dělat obojí nezávisle, ale čas je společný. Horizontálně se telefon pohybuje rovnoměrně, vertikálně padá rychleji a rychleji.
+                </div>
+
+                <div class="formula-box">
+                    <strong>Rovnice vodorovného vrhu:</strong>
+
+                    <p>Horizontální pohyb (rovnoměrný):</p>
+                    $$x = v_{0x} \cdot t$$
+
+                    <p>Vertikální pohyb (volný pád):</p>
+                    $$y = \frac{1}{2}gt^2$$
+
+                    <p>Vertikální rychlost:</p>
+                    $$v_y = gt$$
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h3>3. Část a) - Doba letu</h3>
+
+                <div class="tip-box">
+                    <strong>Užitečný tip:</strong> Z horizontálního pohybu můžeme vypočítat čas letu, protože horizontální rychlost je konstantní a známe uletěnou vzdálenost.
+                </div>
+
+                <div class="result-box">
+                    <p>Z horizontálního pohybu:</p>
+                    $$t = \frac{d}{v_{0x}} = \frac{45 \text{ m}}{18 \text{ m·s⁻¹}} = 2{,}5 \text{ s}$$
+
+                    <p><strong>Odpověď a):</strong> Mobil letěl <strong>2,5 s</strong></p>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h3>4. Část b) - Výška lomu</h3>
+
+                <div class="result-box">
+                    <p>Známe-li čas letu, můžeme vypočítat výšku z vertikálního pohybu:</p>
+                    $$h = \frac{1}{2}gt^2 = \frac{1}{2} \times 10 \times (2{,}5)^2 = 5 \times 6{,}25 = 31{,}25 \text{ m}$$
+
+                    <p><strong>Odpověď b):</strong> Okraj lomu je ve výšce <strong>31,25 m</strong></p>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h3>5. Část c) - Svislá složka dopadové rychlosti</h3>
+
+                <div class="result-box">
+                    <p>Vertikální rychlost při dopadu:</p>
+                    $$v_y = gt = 10 \times 2{,}5 = 25 \text{ m·s⁻¹}$$
+
+                    <p><strong>Odpověď c):</strong> Svislá složka dopadové rychlosti je <strong>25 m·s⁻¹</strong></p>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h3>6. Část d) - Celková dopadová rychlost a úhel</h3>
+
+                <div class="equation-logic-box">
+                    <strong>Proč Pythagorova věta?</strong> Horizontální a vertikální složky rychlosti jsou na sebe kolmé, takže celková rychlost je přeponou pravoúhlého trojúhelníka.
+                </div>
+
+                <div class="result-box">
+                    <p><strong>Celková rychlost:</strong></p>
+                    $$v = \sqrt{v_x^2 + v_y^2} = \sqrt{18^2 + 25^2} = \sqrt{324 + 625} = \sqrt{949} = 30{,}8 \text{ m·s⁻¹}$$
+
+                    <p><strong>Úhel s horizontálou:</strong></p>
+                    $$\tan \alpha = \frac{v_y}{v_x} = \frac{25}{18} = 1{,}39$$
+                    $$\alpha = \arctan(1{,}39) = 54°$$
+
+                    <p><strong>Odpověď d):</strong> Celková dopadová rychlost je <strong>30,8 m·s⁻¹</strong> pod úhlem <strong>54°</strong> k hladině</p>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h3>7. Kontrola a shrnutí</h3>
+
+                <div class="summary-box">
+                    <strong>Všechny odpovědi:</strong>
+                    <ul>
+                        <li><strong>a)</strong> Doba letu: <strong>2,5 s</strong></li>
+                        <li><strong>b)</strong> Výška lomu: <strong>31,25 m</strong></li>
+                        <li><strong>c)</strong> Svislá složka rychlosti: <strong>25 m·s⁻¹</strong></li>
+                        <li><strong>d)</strong> Celková rychlost: <strong>30,8 m·s⁻¹</strong> pod úhlem <strong>54°</strong></li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <strong>Kontrola rozumnosti:</strong>
+                    <ul>
+                        <li>Doba letu 2,5 s je realistická pro vrh z výšky 31 m</li>
+                        <li>Výška 31 m odpovídá přibližně desetipatrovému domu</li>
+                        <li>Dopadová rychlost 111 km·h⁻¹ je značná, ale odpovídá pádu z této výšky</li>
+                        <li>Úhel 54° znamená, že telefon dopadá strmě dolů</li>
+                    </ul>
+                </div>
+
+                <div class="warning-box">
+                    <strong>Bezpečnostní poznámka:</strong> V realitě by odpor vzduchu mírně snížil dosah a rychlost. Navíc házení telefonu z takové výšky je nebezpečné pro lidi dole!
+                </div>
+
+                <div class="alternative-method-box">
+                    <strong>Alternativní kontrola:</strong> Můžeme ověřit výšku pomocí $v_y^2 = 2gh$: $h = \frac{v_y^2}{2g} = \frac{625}{20} = 31{,}25$ m ✓
+                </div>
+            </div>
+        </div>
+
+        <details>
+            <summary>🤔 Metakognitivní otázky</summary>
+            <div>
+                <ul>
+                    <li>Proč zůstává horizontální rychlost konstantní během celého letu? Co by se změnilo s odporem vzduchu?</li>
+                    <li>Jak by se změnila trajektorie, kdyby Tomáš hodil telefon šikmo nahoru místo vodorovně?</li>
+                    <li>Jaký vliv má výška vrhu na horizontální dosah při stejné počáteční rychlosti?</li>
+                    <li>Jak bys vyřešil podobný problém, kdyby telefon dopadl do vody 2 sekundy po hodu?</li>
+                    <li>Proč je úhel dopadu strmější než úhel výhozu (který byl 0°)? Co to říká o trajektorii?</li>
+                </ul>
+            </div>
+        </details>
+    </main>
+</body>
+</html>

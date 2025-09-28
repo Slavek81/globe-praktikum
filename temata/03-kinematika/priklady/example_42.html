@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Řešení</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>42. Řešení</h1>
+            <p>Kinematika - řešený příklad</p>
+        </header>
+
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Průmyslové stroje, větrné elektrárny, centrifugy v laboratořích a výrobní linky - všechny spoléhají na přesnou kontrolu otáček hřídelů. RPM (revolutions per minute) je základní jednotka v technické praxi. Znalost rotační kinematiky umožňuje navrhovat efektivní stroje a optimalizovat jejich výkon.
+        </div>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <p>
+                Určete úhlovou rychlost hřídele, která vykoná <strong>120 otáček za 1 minutu</strong>. Najděte <strong>periodu a frekvenci</strong> tohoto pohybu.
+            </p>
+        </section>
+
+        <section id="vstupni-data">
+            <h3>Vstupní data</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Veličina</th>
+                        <th>Symbol</th>
+                        <th>Hodnota</th>
+                        <th>Jednotka</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Počet otáček za minutu</td>
+                        <td class="variable">n</td>
+                        <td class="value">120</td>
+                        <td class="unit">otáček/min</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+            <p>Výpočet rozdělíme do několika logických kroků podle typu kinematické úlohy.</p>
+            
+            <div class="calculation-step">
+                <h4>Krok 1: Analýza situace a převody jednotek</h4>
+                <p>Analyzujeme typ pohybu a sjednotíme jednotky pro výpočet.</p>
+                
+                <div class="note-box">
+                    <strong>Analýza:</strong>
+                    <p>Identifikujeme typ pohybu a potřebné převody jednotek podle zadání.</p>
+                </div>
+            </div>
+            
+            <div class="calculation-step">
+                <h4>Krok 2: Výběr fyzikální rovnice</h4>
+                <p>Vybereme vhodnou kinematickou rovnici podle typu pohybu.</p>
+                
+                <div class="formula-box">
+                    <strong>Kinematické rovnice:</strong>
+                    <ul>
+                        <li>Rovnoměrný pohyb: $s = v \cdot t$</li>
+                        <li>Zrychlený pohyb: $s = v_0 \cdot t + \frac12 \cdot a \cdot t^2$</li>
+                        <li>Rychlost při zrychleném pohybu: $v = v_0 + a \cdot t$</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 3: Dosazení hodnot a výpočet</h4>
+                <p>Dosadíme známé hodnoty do vybrané rovnice a vypočítáme výsledek.</p>
+                
+                <div class="result-box">
+                    <strong>📐 Převod RPM na základní jednotky</strong>
+                    <p>$$N = 120 \text{ RPM} = \frac{120 \text{ otáček}}{1 \text{ min}} = \frac{120 \text{ otáček}}{60 \text{ s}} = 2 \text{ otáček/s}$$</p>
+
+                    <p><strong>Časové jednotky:</strong></p>
+                    <ul>
+                        <li>Celkový čas: t = 1 min = 60 s</li>
+                        <li>Počet otáček za minutu: N = 120</li>
+                        <li>Počet otáček za sekundu: N/t = 120/60 = 2</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 4: Výpočet frekvence</h4>
+                <p>Frekvence = počet otáček za sekundu</p>
+                <div class="result-box">f = N/t = 120 otáček / 60 s = <strong>2 Hz</strong></div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 5: Výpočet periody</h4>
+                <p>Perioda = čas na jednu otáčku</p>
+                <div class="result-box">T = 1/f = 1/2 = <strong>0,5 s</strong></div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 6: Výpočet úhlové rychlosti</h4>
+                <p>Úhlová rychlost pomocí frekvence:</p>
+                <div class="result-box">ω = 2πf = 2π × 2 = 4π rad/s ≈ <strong>12,57 rad/s</strong></div>
+                <p><strong>Ověření:</strong> ω = 2π/T = 2π/0,5 = 4π rad/s ✅</p>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 7: Kontrola výsledku a odpověď</h4>
+                <p>Interpretace výsledků:</p>
+
+                <div class="result-box">
+                    <strong>Odpověď:</strong>
+                    <ul>
+                        <li>Frekvence: 2 Hz (2 otáčky za sekundu)</li>
+                        <li>Perioda: 0,5 s (doba jedné otáčky)</li>
+                        <li>Úhlová rychlost: 4π ≈ 12,57 rad/s</li>
+                    </ul>
+                    <p><strong>Technický kontext:</strong> 120 RPM představuje pomalé, kontrolované otáčky typické pro těžké průmyslové stroje, míchačky nebo pomalé převody.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Řešení</title>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>63. Zrychlení Formule 1</h1>
+            <p>Kinematika - řešený příklad</p>
+        </header>
+
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Formulové vozy představují vrchol automobilového inženýrství. Jejich neuvěřitelné zrychlení předčí běžná auta i motorky. Porozumění zrychlení vysvětluje, proč jsou tyto stroje tak výjimečné a jak fyzika definuje limity jejich výkonu v motorsportu.
+        </div>
+
+        <section>
+            <h2>📋 Zadání</h2>
+            <div class="zadani">
+                <p>Formule F1 zrychlí z <strong>0 na 100 km·h⁻¹</strong> zhruba za <strong>2,5 sekundy</strong>. Jaké je její průměrné zrychlení? Pozor na jednotky.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>💭 Krok 1: Analýza situace</h2>
+
+            <div class="equation-logic-box">
+                <strong>Logika výběru:</strong> Jde o rovnoměrně zrychlený pohyb z klidu. Použijeme definici průměrného zrychlení jako změny rychlosti za jednotku času. Klíčové je správný převod jednotek.
+            </div>
+
+            <div class="warning-box">
+                <strong>Pozor na jednotky!</strong> Rychlost je zadána v km·h⁻¹, ale čas v sekundách. Musíme převést na stejné jednotky - nejlépe do soustavy SI (m·s⁻¹).
+            </div>
+
+            <div class="note-box">
+                <strong>Dané hodnoty:</strong>
+                <ul>
+                    <li>Počáteční rychlost: $v_0 = 0$ km·h⁻¹ $= 0$ m·s⁻¹</li>
+                    <li>Konečná rychlost: $v = 100$ km·h⁻¹ (musíme převést)</li>
+                    <li>Čas zrychlování: $t = 2{,}5$ s</li>
+                    <li>Hledáme: průměrné zrychlení $a$</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2>⚙️ Krok 2: Výběr rovnice</h2>
+
+            <div class="equation-logic-box">
+                <strong>Proč tuto rovnici?</strong> Zrychlení je definováno jako rychlost změny rychlosti. Pro rovnoměrně zrychlený pohyb je průměrné zrychlení rovno konstantnímu zrychlení.
+            </div>
+
+            <div class="formula-box">
+                <p><strong>Definice průměrného zrychlení:</strong></p>
+                $$a = \frac{\Delta v}{\Delta t} = \frac{v - v_0}{t}$$
+                <p><strong>Převod jednotek rychlosti:</strong></p>
+                $$\text{km·h⁻¹} \div 3{,}6 = \text{m·s⁻¹}$$
+            </div>
+
+            <div class="analogy-box">
+                <strong>Praktická analogie:</strong> Představte si, že řidič formule každou sekundu přidá stejné "množství rychlosti" - podobně jako když pravidelně přidáváte plyn na motorce nebo autě.
+            </div>
+        </section>
+
+        <section>
+            <h2>🔢 Krok 3: Výpočet</h2>
+
+            <h3>Převod jednotek rychlosti</h3>
+
+            <div class="calculation-step">
+                <p><strong>Převod z km·h⁻¹ na m·s⁻¹:</strong></p>
+                $$v = 100 \text{ km·h⁻¹} = \frac{100 \text{ km}}{1 \text{ h}} = \frac{100 \times 1000 \text{ m}}{3600 \text{ s}} = \frac{100000}{3600} \text{ m·s⁻¹}$$
+
+                $$v = 27{,}78 \text{ m·s⁻¹}$$
+
+                <div class="result-box">
+                    <strong>Výsledek:</strong> 100 km·h⁻¹ = 27,78 m·s⁻¹
+                </div>
+            </div>
+
+            <div class="tip-box">
+                <strong>Tip:</strong> Zapamatujte si rychlý převod: km·h⁻¹ ÷ 3,6 = m·s⁻¹ (protože 3600 s / 1000 m = 3,6)
+            </div>
+
+            <h3>Výpočet zrychlení</h3>
+
+            <div class="calculation-step">
+                <p><strong>Dosazení do rovnice zrychlení:</strong></p>
+                $$a = \frac{v - v_0}{t} = \frac{27{,}78 - 0}{2{,}5} = \frac{27{,}78}{2{,}5} = 11{,}11 \text{ m·s⁻²}$$
+
+                <div class="result-box">
+                    <strong>Výsledek:</strong> Průměrné zrychlení F1 je 11,11 m·s⁻²
+                </div>
+            </div>
+
+            <div class="warning-box">
+                <strong>Pozor na jednotky!</strong> Zrychlení má jednotky m·s⁻², ne m·s⁻¹. Jde o změnu rychlosti za sekundu.
+            </div>
+
+            <h3>Porovnání s gravitačním zrychlením</h3>
+
+            <div class="calculation-step">
+                <p><strong>Poměr k tíhovému zrychlení:</strong></p>
+                $$\frac{a_{F1}}{g} = \frac{11{,}11}{9{,}81} = 1{,}13$$
+
+                <p>To znamená, že F1 zrychluje <strong>1,13g</strong> - více než při volném pádu!</p>
+
+                <div class="result-box">
+                    <strong>Interpretace:</strong> Řidič zažívá zrychlení větší než gravitační
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>✅ Krok 4: Kontrola a odpověď</h2>
+
+            <div class="summary-box">
+                <strong>Odpověď:</strong> Průměrné zrychlení Formule F1 je <strong>11,11 m·s⁻²</strong>, což odpovídá <strong>1,13 násobku gravitačního zrychlení</strong>.
+            </div>
+
+            <div class="info-box">
+                <strong>Kontrola rozumnosti:</strong> Zrychlení větší než 1g je extrémní, ale realistické pro F1. Běžné auto dosahuje zrychlení kolem 3-5 m·s⁻², takže F1 je skutečně výjimečná.
+            </div>
+
+            <div class="alternative-method-box">
+                <strong>Alternativní způsob:</strong> Můžeme použít kinamatickou rovnici $s = \frac{1}{2}at^2$ - pokud známe dráhu rozjezdu, ověříme zrychlení: $a = \frac{2s}{t^2}$.
+            </div>
+
+            <details>
+                <summary>🤔 Metakognitivní otázky</summary>
+                <div>
+                    <ul>
+                        <li>Proč normální auto nemůže zrychlit tak rychle? (Tip: přilnavost, hmotnost, výkon)</li>
+                        <li>Jak dlouho by za stejného zrychlení trvalo dosáhnout 200 km·h⁻¹?</li>
+                        <li>Proč F1 používá speciální pneumatiky a křídla pro přítlak?</li>
+                        <li>Jak se liší zrychlení F1 při rozjezdu od brzdění? (Brzdí až 5g!)</li>
+                        <li>Jaké fyzikální omezení určuje maximální zrychlení vozidla?</li>
+                    </ul>
+                </div>
+            </details>
+        </section>
+    </main>
+</body>
+</html>

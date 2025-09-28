@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Řešení</title>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>86. Šikmý vrh ze svahu</h1>
+            <p>Kinematika - řešený příklad</p>
+        </header>
+
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Balistika ze svahu je klíčová v horském terénu! Využívá se při lyžařských skocích, lavině kontrolovaných výbuzích v horách, vojenských operacích v horském terénu, nebo při hasičských zásazích na svazích. Inženýři potřebují tyto výpočty při navrhování skiareálů, vodních trysek na svazích, nebo při práci s bagry a těžební technikou na svazích. Bezpečnostní složky používají tento výpočet pro umístění záchranného vybavení v horách.
+        </div>
+
+        <div class="zadani">
+            <h3>Zadání</h3>
+            <p>Odvoďte vztah pro <strong>horizontální vzdálenost</strong> šikmého vrhu v případě, že střílíme z kopce, tedy ze svahu s úhlem <strong>β</strong>, přičemž úhel výstřelu <strong>α</strong> měříme vůči vodorovnému směru.</p>
+        </div>
+
+        <div class="calculation-step">
+            <h3>1. Analýza geometrie a souřadnic</h3>
+
+            <div class="equation-logic-box">
+                <strong>💭 Logika výběru:</strong> Šikmý vrh ze svahu kombinuje standardní parabolickou trajektorii projectilu s lineární trajektorií svahu. Dopad nastane v průsečíku těchto dvou křivek - musíme vyřešit soustavu rovnic.
+            </div>
+
+            <div class="warning-box">
+                <strong>⚠️ Pozor na geometrii!</strong>
+                <ul>
+                    <li>Úhel svahu β se měří dolů od horizontály (záporný sklon)</li>
+                    <li>Úhel výstřelu α se měří nahoru od horizontály</li>
+                    <li>Horizontální vzdálenost ≠ vzdálenost po svahu!</li>
+                    <li>Opatrně se znaménky a souřadným systémem</li>
+                </ul>
+            </div>
+
+            <div class="note-box">
+                <strong>📝 Geometrické parametry:</strong>
+                <ul>
+                    <li>Úhel svahu: $β$ (dolů od horizontály)</li>
+                    <li>Úhel výstřelu: $α$ (nahoru od horizontály)</li>
+                    <li>Počáteční rychlost: $v_0$ (obecná)</li>
+                    <li>Podmínky: vakuum, start z počátku na svahu</li>
+                    <li><strong>Hledáme:</strong> horizontální vzdálenost $d$ dopadu</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="calculation-step">
+            <h3>2. Rovnice trajektorie projektilu a svahu</h3>
+
+            <div class="equation-logic-box">
+                <strong>🎯 Proč dvě rovnice?</strong> Projektil se pohybuje po parabole (už dokázáno v předchozím příkladě), zatímco svah je přímka. Dopad nastane v bodě, kde se tyto dvě křivky protnou - matematicky řešíme soustavu rovnic.
+            </div>
+
+            <div class="formula-box">
+                <strong>Rovnice trajektorie projektilu (parabola):</strong>
+                $$y = x \tan \alpha - \frac{gx^2}{2v_0^2 \cos^2 \alpha}$$
+
+                <strong>Rovnice svahu (přímka):</strong>
+                $$y = -x \tan \beta$$
+                <p>(záporné znaménko - svah klesá dolů)</p>
+            </div>
+
+            <div class="analogy-box">
+                <strong>⛷️ Praktická analogie:</strong> Představte si lyžaře skákajícího z můstku na sjezdovce. Lyžař letí po parabole (jako všechny projektily), zatímco sjezdovka má konstantní sklon. Dotyk s terénem nastane tam, kde se parabola a přímka potkají.
+            </div>
+        </div>
+
+        <div class="calculation-step">
+            <h3>3. Algebraické řešení soustavy rovnic</h3>
+
+            <div class="tip-box">
+                <strong>💡 Užitečná rada:</strong> Klíčem je položit obě rovnice rovny sobě (stejná hodnota y v bodě dopadu) a vyřešit pro x. Pozor na to, že x = 0 je triviální řešení (počáteční bod) - zajímá nás druhé řešení!
+            </div>
+
+            <p><strong>Podmínka průsečíku (dopad na svah):</strong></p>
+            <div class="formula-box">
+                $$x \tan \alpha - \frac{gx^2}{2v_0^2 \cos^2 \alpha} = -x \tan \beta$$
+
+                <strong>Přeskupení členů:</strong>
+                $$x \tan \alpha + x \tan \beta = \frac{gx^2}{2v_0^2 \cos^2 \alpha}$$
+                $$x(\tan \alpha + \tan \beta) = \frac{gx^2}{2v_0^2 \cos^2 \alpha}$$
+            </div>
+
+            <p><strong>Vydělení x (x ≠ 0) a řešení pro x:</strong></p>
+            <div class="formula-box">
+                $$\tan \alpha + \tan \beta = \frac{gx}{2v_0^2 \cos^2 \alpha}$$
+
+                <strong>Vyjádření horizontální vzdálenosti:</strong>
+                $$x = d = \frac{2v_0^2 \cos^2 \alpha (\tan \alpha + \tan \beta)}{g}$$
+            </div>
+
+            <details>
+                <summary><strong>🔍 Alternativní úprava pomocí trigonometrie</strong></summary>
+                <div>
+                    <p>Můžeme využít identity: $\tan A + \tan B = \frac{\sin(A+B)}{\cos A \cos B}$</p>
+                    $$\tan \alpha + \tan \beta = \frac{\sin(\alpha + \beta)}{\cos \alpha \cos \beta}$$
+                    <p>Což dává alternativní tvar:</p>
+                    $$d = \frac{2v_0^2 \cos^2 \alpha \sin(\alpha + \beta)}{g \cos \alpha \cos \beta} = \frac{2v_0^2 \cos \alpha \sin(\alpha + \beta)}{g \cos \beta}$$
+                </div>
+            </details>
+        </div>
+
+        <div class="calculation-step">
+            <h3>4. Další úpravy a speciální případy</h3>
+
+            <p><strong>Rozšíření výrazu sin α/cos² α:</strong></p>
+            <div class="formula-box">
+                $$d = \frac{2v_0^2 \cos^2 \alpha (\tan \alpha + \tan \beta)}{g}$$
+                $$d = \frac{2v_0^2}{g} \cos^2 \alpha \left(\frac{\sin \alpha}{\cos \alpha} + \frac{\sin \beta}{\cos \beta}\right)$$
+                $$d = \frac{2v_0^2}{g} (\cos \alpha \sin \alpha + \cos^2 \alpha \tan \beta)$$
+
+                <strong>Finální obecný vzorec:</strong>
+                $$\boxed{d = \frac{2v_0^2 \cos^2 \alpha (\tan \alpha + \tan \beta)}{g}}$$
+            </div>
+
+            <div class="summary-box">
+                <strong>📊 Kontrola speciálních případů:</strong>
+                <ul>
+                    <li><strong>β = 0° (rovný terén):</strong> $d = \frac{2v_0^2 \cos^2 \alpha \tan \alpha}{g} = \frac{v_0^2 \sin 2\alpha}{g}$ ✓</li>
+                    <li><strong>α = 45°:</strong> $d = \frac{2v_0^2 \cos^2 45° (1 + \tan \beta)}{g} = \frac{v_0^2 (1 + \tan \beta)}{g}$ ✓</li>
+                    <li><strong>β → 90° (svislý útes):</strong> $d → ∞$ (projektil nikdy nedopadne na svah) ✓</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="calculation-step">
+            <h3>5. Fyzikální interpretace a aplikace</h3>
+
+            <div class="info-box">
+                <strong>🔍 Fyzikální smysl výsledku:</strong>
+                <ul>
+                    <li><strong>Pro β > 0:</strong> svah dolů → větší dostřel než na rovném terénu</li>
+                    <li><strong>Pro β < 0:</strong> svah nahoru → menší dostřel než na rovném terénu</li>
+                    <li><strong>Závislost na (tan α + tan β):</strong> oba úhly se sčítají pozitivně</li>
+                    <li><strong>Koeficient cos² α:</strong> účinnost horizontální složky rychlosti</li>
+                </ul>
+            </div>
+
+            <div class="alternative-method-box">
+                <strong>🔄 Alternativní odvození pomocí času letu:</strong>
+                <p><strong>1. Doba letu:</strong> $t = \frac{2v_0(\sin \alpha + \sin \beta \cos \alpha / \cos \beta)}{g \cos \beta}$</p>
+                <p><strong>2. Horizontální vzdálenost:</strong> $d = v_0 \cos \alpha \cdot t$</p>
+                <p><strong>3. Výsledek:</strong> Stejný vzorec, ale jiná cesta odvození</p>
+            </div>
+
+            <div class="interpretation-box">
+                <strong>🏔️ Praktické aplikace v horském terénu:</strong>
+                <ul>
+                    <li><strong>Lyžařské skoky:</strong> Optimalizace délky skoků podle sklonu doskočiště</li>
+                    <li><strong>Lavinové zabezpečení:</strong> Umístění výbušnin pro kontrolované spouštění lavin</li>
+                    <li><strong>Horská záchrana:</strong> Určení dosahu vrhačů lan nebo záchranného vybavení</li>
+                    <li><strong>Vojenské operace:</strong> Balistika v horském terénu</li>
+                    <li><strong>Stavebnictví:</strong> Práce s výbušninami při budování tunelů a cest</li>
+                </ul>
+            </div>
+
+            <details>
+                <summary>🤔 Metakognitivní otázky</summary>
+                <div>
+                    <ul>
+                        <li>Proč je dostřel ze svahu dolů větší než na rovném terénu? Jak to souvisí s dobou letu?</li>
+                        <li>Existuje optimální úhel výstřelu pro maximální dostřel ze svahu? Je to stále 45°?</li>
+                        <li>Jak by se změnil vzorec při střelbě ze svahu nahoru (β záporné)?</li>
+                        <li>Jaký vliv má sklon svahu na bezpečnost při lyžařských skocích?</li>
+                        <li>Proč se ve vzorci objevuje součet tan α + tan β? Co to říká o geometrii problému?</li>
+                    </ul>
+                </div>
+            </details>
+        </div>
+    </main>
+</body>
+</html>

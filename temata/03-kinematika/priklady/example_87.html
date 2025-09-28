@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Řešení</title>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>87. Šikmý vrh z výšky</h1>
+            <p>Kinematika - řešený příklad</p>
+        </header>
+
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Vrh z výšky je všudypřítomný! Od basketbalových střel a golfových úderů z tee po bombardování z letadel a hasičské žebříky. Pochopení vlivu výšky na trajektorii je klíčové pro přesnost ve sportu, vojenství i záchranných službách. Architekti využívají tyto výpočty při navrhování fontán na různých úrovních, piloti při shazování zásilky, a dokonce i fotbalisté při rozehrávkách z tribun.
+        </div>
+
+        <div class="zadani">
+            <h3>Zadání</h3>
+            <p>Odvoďte vztah pro <strong>horizontální vzdálenost</strong> šikmého vrhu v případě, že střílíme sice na rovné zemi, ale <strong>z výšky h</strong>.</p>
+        </div>
+
+        <div class="calculation-step">
+            <h3>1. Analýza asymetrického problému</h3>
+
+            <div class="equation-logic-box">
+                <strong>💭 Logika výběru:</strong> Na rozdíl od klasického šikmého vrhu zde není trajektorie symetrická. Start je ve výšce h, dopad na zemi (y = 0). Musíme řešit kvadratickou rovnici pro dobu letu, protože počáteční a konečná výška se liší.
+            </div>
+
+            <div class="warning-box">
+                <strong>⚠️ Klíčový rozdíl od klasického vrhu!</strong>
+                <ul>
+                    <li>Trajektorie NENÍ symetrická (start ≠ konec výšky)</li>
+                    <li>Doba stoupání ≠ doba klesání</li>
+                    <li>Optimální úhel pro max. dostřel NENÍ 45°</li>
+                    <li>Dopadová rychlost > počáteční rychlost (vliv potenciální energie)</li>
+                </ul>
+            </div>
+
+            <div class="note-box">
+                <strong>📝 Geometrické parametry:</strong>
+                <ul>
+                    <li>Počáteční výška: $h$ (nad zemí)</li>
+                    <li>Úhel výstřelu: $\alpha$ (vůči horizontále)</li>
+                    <li>Počáteční rychlost: $v_0$ (obecná)</li>
+                    <li>Podmínky: vakuum, rovná zem jako cíl</li>
+                    <li><strong>Hledáme:</strong> horizontální vzdálenost $d$ dopadu</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="calculation-step">
+            <h3>2. Parametrické rovnice pohybu z výšky</h3>
+
+            <div class="equation-logic-box">
+                <strong>🎯 Proč modifikace?</strong> Standardní rovnice šikmého vrhu předpokládají start z bodu (0,0). Zde startujeme z bodu (0,h), takže vertikální rovnice musí započítat počáteční výšku.
+            </div>
+
+            <div class="formula-box">
+                <strong>Horizontální pohyb (nezměněn):</strong>
+                $$x(t) = v_0 \cos \alpha \cdot t$$
+
+                <strong>Vertikální pohyb (s počáteční výškou):</strong>
+                $$y(t) = h + v_0 \sin \alpha \cdot t - \frac{1}{2}gt^2$$
+                <p>(kladné h - startujeme nad zemí)</p>
+            </div>
+
+            <div class="analogy-box">
+                <strong>🏀 Praktická analogie:</strong> Je to jako basketbalista stojící na balkoně - míč má na začátku jak horizontální rychlost (jako běžný hod), tak "výhodu" výšky, která mu dává extra energii. Konečný dostřel je větší než kdyby házel ze země.
+            </div>
+        </div>
+
+        <div class="calculation-step">
+            <h3>3. Řešení kvadratické rovnice pro dobu letu</h3>
+
+            <div class="tip-box">
+                <strong>💡 Užitečná rada:</strong> Doba letu se najde z podmínky y(t) = 0 (dopad na zem). Výsledkem je kvadratická rovnice v t. Používejte kvadratický vzorec a vyberte kladný kořen (záporný čas nemá fyzikální smysl).
+            </div>
+
+            <p><strong>Podmínka dopadu na zem:</strong></p>
+            <div class="formula-box">
+                $$y(t) = 0 \Rightarrow h + v_0 \sin \alpha \cdot t - \frac{1}{2}gt^2 = 0$$
+
+                <strong>Přeuspořádání do standardního tvaru:</strong>
+                $$\frac{1}{2}gt^2 - v_0 \sin \alpha \cdot t - h = 0$$
+                $$gt^2 - 2v_0 \sin \alpha \cdot t - 2h = 0$$
+            </div>
+
+            <p><strong>Aplikace kvadratického vzorce:</strong></p>
+            <div class="formula-box">
+                <strong>Pro rovnici $at^2 + bt + c = 0$:</strong>
+                $$a = g, \quad b = -2v_0 \sin \alpha, \quad c = -2h$$
+
+                <strong>Diskriminant:</strong>
+                $$D = b^2 - 4ac = 4v_0^2 \sin^2 \alpha + 8gh$$
+
+                <strong>Doba letu (kladný kořen):</strong>
+                $$t = \frac{2v_0 \sin \alpha + \sqrt{4v_0^2 \sin^2 \alpha + 8gh}}{2g}$$
+                $$t = \frac{v_0 \sin \alpha + \sqrt{v_0^2 \sin^2 \alpha + 2gh}}{g}$$
+            </div>
+
+            <details>
+                <summary><strong>🔍 Proč jen kladný kořen?</strong></summary>
+                <div>
+                    <p>Záporný kořen by odpovídal "času v minulosti", kdy by projektil býval letěl opačným směrem.</p>
+                    <p>Fyzikálně smysluplný je pouze kladný čas od okamžiku výstřelu.</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="calculation-step">
+            <h3>4. Odvození finálního vzorce pro dostřel</h3>
+
+            <p><strong>Dosazení doby letu do horizontální rovnice:</strong></p>
+            <div class="formula-box">
+                $$d = v_0 \cos \alpha \cdot t$$
+                $$d = v_0 \cos \alpha \cdot \frac{v_0 \sin \alpha + \sqrt{v_0^2 \sin^2 \alpha + 2gh}}{g}$$
+
+                <strong>Finální obecný vzorec:</strong>
+                $$\boxed{d = \frac{v_0 \cos \alpha}{g}\left(v_0 \sin \alpha + \sqrt{v_0^2 \sin^2 \alpha + 2gh}\right)}$$
+            </div>
+
+            <div class="alternative-method-box">
+                <strong>🔄 Alternativní zápis s faktorizací:</strong>
+                $$d = \frac{v_0^2 \sin \alpha \cos \alpha}{g} + \frac{v_0 \cos \alpha \sqrt{v_0^2 \sin^2 \alpha + 2gh}}{g}$$
+                <p>První člen = klasický dostřel, druhý člen = bonus z výšky</p>
+            </div>
+        </div>
+
+        <div class="calculation-step">
+            <h3>5. Kontrola limitních případů a interpretace</h3>
+
+            <div class="summary-box">
+                <strong>📊 Konečná odpověď:</strong>
+                $$d = \frac{v_0 \cos \alpha}{g}\left(v_0 \sin \alpha + \sqrt{v_0^2 \sin^2 \alpha + 2gh}\right)$$
+
+                <strong>Fyzikální význam:</strong>
+                <p>Dostřel z výšky = standardní dostřel + bonus z potenciální energie výšky</p>
+            </div>
+
+            <div class="info-box">
+                <strong>🔍 Ověření limitních případů:</strong>
+                <ul>
+                    <li><strong>h = 0:</strong> $d = \frac{v_0^2 \cos \alpha \sin \alpha + v_0^2 \cos \alpha \sin \alpha}{g} = \frac{v_0^2 \sin(2\alpha)}{g}$ ✓</li>
+                    <li><strong>α = 0° (vodorovný vrh):</strong> $d = v_0 \sqrt{\frac{2h}{g}}$ ✓</li>
+                    <li><strong>α = 90° (svislý vrh):</strong> $d = 0$ (dopadne na místě) ✓</li>
+                    <li><strong>h → ∞:</strong> $d → ∞$ (větší výška = větší dostřel) ✓</li>
+                </ul>
+            </div>
+
+            <div class="interpretation-box">
+                <strong>🎯 Energetické vysvětlení:</strong>
+                <p><strong>Proč je dostřel větší z výšky?</strong></p>
+                <ul>
+                    <li>Počáteční energie = kinetická + potenciální</li>
+                    <li>Při pádu se potenciální energie převádí na kinetickou</li>
+                    <li>Vyšší dopadová rychlost → delší doba letu → větší dostřel</li>
+                    <li>Výška h přidává energii $mgh$, která se využije pro prodloužení letu</li>
+                </ul>
+            </div>
+
+            <details>
+                <summary>🤔 Metakognitivní otázky</summary>
+                <div>
+                    <ul>
+                        <li>Proč trajektorie z výšky není symetrická? Jak to ovlivňuje optimální úhel vrhu?</li>
+                        <li>Je optimální úhel pro maximální dostřel z výšky stále 45°? Nebo je menší/větší?</li>
+                        <li>Jak se liší doba stoupání a doba klesání při vrhu z výšky?</li>
+                        <li>Jaký vliv má výška na bezpečnost při sportovních aktivitách (basketbal, golf)?</li>
+                        <li>Proč ve vzorci přibývá člen $\sqrt{2gh}$? Jak souvisí s volným pádem z výšky h?</li>
+                    </ul>
+                </div>
+            </details>
+        </div>
+    </main>
+</body>
+</html>

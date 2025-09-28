@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>49. Kompletní analýza pohybu | Kinematika</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>49. Kompletní analýza pohybu</h1>
+            <p>Kinematika - řešený příklad</p>
+        </header>
+
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Inženýři v automobilovém průmyslu musí analyzovat kompletne závodít koňské okruhu kombinující různé fáze - rozjezd, rovnoměrnou jízdu, brzdění a průjezd zatacek. Tato analýza pomáhá optimalizovat výkon a bezpečnost vozidel v reálných podmínkách.
+        </div>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <p>
+                Formule projede závodít úsek rozdělený do tří fází:<br>
+                <strong>Fáze 1:</strong> Rozjezd z klidu konstantním zrychlením <strong>4 m/s²</strong> po dobu <strong>5 sekund</strong><br>
+                <strong>Fáze 2:</strong> Rovnoměrná jízda dosaženou rychlostí po vzdálenost <strong>800 m</strong><br>
+                <strong>Fáze 3:</strong> Brzdění na rychlost <strong>10 m/s</strong> konstantním zpomaláním <strong>-6 m/s²</strong><br><br>
+                Vypočítám <strong>celkovou dráhu</strong> a <strong>celkový čas</strong> průjezdu všech tří fází.
+            </p>
+        </section>
+
+        <section id="vstupni-data">
+            <h3>Vstupní data</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Fáze</th>
+                        <th>Typ pohybu</th>
+                        <th>Klíčové hodnoty</th>
+                        <th>Jednotky</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Fáze 1</strong></td>
+                        <td>Zrychlený pohyb</td>
+                        <td>a₁ = 4 m/s², t₁ = 5 s, v₀ = 0</td>
+                        <td>m/s², s, m/s</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Fáze 2</strong></td>
+                        <td>Rovnoměrný pohyb</td>
+                        <td>s₂ = 800 m, v = konstanta</td>
+                        <td>m, m/s</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Fáze 3</strong></td>
+                        <td>Zpomalovaný pohyb</td>
+                        <td>a₃ = -6 m/s², v₃ = 10 m/s</td>
+                        <td>m/s², m/s</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+            <p>Tato úloha kombinuje všechny základní typy pohybu - zrychlený, rovnoměrný a zpomalovaný. Musíme analyzovat každou fázi zvlášť.</p>
+
+            <div class="calculation-step">
+                <h4>Krok 1: Analýza kompletní situace</h4>
+                <p>Identifikujeme všechny tři typy pohybu a jejich posloupnost.</p>
+
+                <div class="equation-logic-box">
+                    <strong>Logika výběru:</strong>
+                    <p>Máme tři navázující fáze:<br>
+                    🔸 <strong>Fáze 1:</strong> Zrychlování z klidu (v₀ = 0) → v₁<br>
+                    🔸 <strong>Fáze 2:</strong> Rovnoměrný pohyb rychlostí v₁<br>
+                    🔸 <strong>Fáze 3:</strong> Zpomalování z v₁ na v₃ = 10 m/s</p>
+                </div>
+
+                <div class="warning-box">
+                    <strong>Pozor na návaznost!</strong>
+                    <p>Končná rychlost každé fáze je počáteční rychlostí následující fáze. Musíme přesně sledovat posloupnost!</p>
+                </div>
+
+                <div class="note-box">
+                    <strong>Dané hodnoty:</strong>
+                    <ul>
+                        <li>Fáze 1: a₁ = 4 m/s², t₁ = 5 s, v₀ = 0 m/s</li>
+                        <li>Fáze 2: s₂ = 800 m, v = konst. (z fáze 1)</li>
+                        <li>Fáze 3: a₃ = -6 m/s², v₃₈ᵢₙ = 10 m/s</li>
+                        <li>Hledáme: celkovou dráhu a celkový čas</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 2: Výpočet Fáze 1 - Rozjezd</h4>
+                <p>Vypočítáme dráhu, konečnou rychlost a čas pro zrychlovací fázi.</p>
+
+                <div class="equation-logic-box">
+                    <strong>Proč tyto rovnice?</strong>
+                    <p>Pro rovnoměrně zrychlený pohyb z klidu používáme kinematické rovnice pro konstantní zrychlení.</p>
+                </div>
+
+                <div class="formula-box">
+                    <strong>Kinematické rovnice pro Fázi 1:</strong>
+                    $$v_1 = v_0 + a_1 \cdot t_1 = 0 + 4 \times 5 = 20 \text{ m/s}$$
+                    $$s_1 = v_0 \cdot t_1 + \frac{1}{2} \cdot a_1 \cdot t_1^2 = 0 \times 5 + \frac{1}{2} \times 4 \times 25 = 50 \text{ m}$$
+                </div>
+
+                <div class="analogy-box">
+                    <strong>Praktická analogie:</strong>
+                    <p>Představte si start formule z boxu - řidič šlápe na plyn a auto se postupně zrychluje. Za 5 sekund dosáhne rychlosti 72 km/h (20 m/s) a ujede 50 metrů.</p>
+                </div>
+
+                <div class="result-box">
+                    <strong>Výsledky Fáze 1:</strong>
+                    <ul>
+                        <li>Dráha: s₁ = 50 m</li>
+                        <li>Končná rychlost: v₁ = 20 m/s</li>
+                        <li>Čas: t₁ = 5 s</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 3: Výpočet Fáze 2 - Rovnoměrná jízda</h4>
+                <p>Vypočítáme čas potřebný pro průjezd 800 m konstantní rychlostí.</p>
+
+                <div class="tip-box">
+                    <strong>Užitečný tip:</strong>
+                    <p>V této fázi se pohybujeme konstantní rychlostí 20 m/s (z fáze 1). Používáme nejjednodušší kinematickou rovnici.</p>
+                </div>
+
+                <div class="formula-box">
+                    <strong>Rovnice pro rovnoměrný pohyb:</strong>
+                    $$s_2 = v_1 \cdot t_2 \Rightarrow t_2 = \frac{s_2}{v_1} = \frac{800}{20} = 40 \text{ s}$$
+                </div>
+
+                <div class="result-box">
+                    <strong>Výsledky Fáze 2:</strong>
+                    <ul>
+                        <li>Dráha: s₂ = 800 m (daná)</li>
+                        <li>Rychlost: v = 20 m/s (konstantní)</li>
+                        <li>Čas: t₂ = 40 s</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 4: Výpočet Fáze 3 - Brzdění</h4>
+                <p>Vypočítáme čas a dráhu pro zpomalování z 20 m/s na 10 m/s.</p>
+
+                <div class="formula-box">
+                    <strong>Kinematické rovnice pro Fázi 3:</strong>
+                    $$v_3 = v_1 + a_3 \cdot t_3 \Rightarrow 10 = 20 + (-6) \times t_3$$
+                    $$t_3 = \frac{10 - 20}{-6} = \frac{-10}{-6} = 1{,}67 \text{ s}$$
+                    $$s_3 = v_1 \cdot t_3 + \frac{1}{2} \cdot a_3 \cdot t_3^2 = 20 \times 1{,}67 + \frac{1}{2} \times (-6) \times (1{,}67)^2$$
+                    $$s_3 = 33{,}4 - 8{,}35 = 25{,}05 \text{ m}$$
+                </div>
+
+                <div class="result-box">
+                    <strong>Výsledky Fáze 3:</strong>
+                    <ul>
+                        <li>Dráha: s₃ = 25,05 m</li>
+                        <li>Počáteční rychlost: 20 m/s</li>
+                        <li>Končná rychlost: 10 m/s</li>
+                        <li>Čas: t₃ = 1,67 s</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 5: Celkové vyhodnocení a odpověď</h4>
+                <p>Sečteme všechny dîlcí výsledky a formulujeme kompletní odpověď.</p>
+
+                <div class="summary-box">
+                    <strong>Odpověď - Kompletní analýza:</strong>
+                    <ul>
+                        <li><strong>Celková dráha:</strong> sᵀᵉᴷᵉ = 50 + 800 + 25,05 = 875,05 m</li>
+                        <li><strong>Celkový čas:</strong> tᵀᵉᴷᵉ = 5 + 40 + 1,67 = 46,67 s</li>
+                        <li><strong>Průměrná rychlost:</strong> vᴘᴱᵝ = 875,05/46,67 = 18,75 m/s</li>
+                        <li><strong>Maximální rychlost:</strong> 20 m/s (72 km/h) v fázích 2 a 3</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <strong>Kontrola rozumnosti:</strong>
+                    <p>✅ Celková dráha 875 m odpovídá krátkému úseku okruhu<br>
+                    ✅ Čas 46,7 s je realistický pro závodní manévr<br>
+                    ✅ Rychlosti 20 m/s (72 km/h) jsou typické pro okruhy<br>
+                    ✅ Zpomalování z 20 na 10 m/s za 1,67 s je rozumné</p>
+                </div>
+
+                <div class="alternative-method-box">
+                    <strong>Alternativní způsob:</strong>
+                    <p>Pro Fázi 3 bychom mohli použít rovnici v² = v₀² + 2as k přímému výpočtu dráhy: s = (v² - v₀²)/(2a) = (100 - 400)/(2×(-6)) = 25 m.</p>
+                </div>
+
+                <details>
+                    <summary>🤔 Metakognitivní otázky</summary>
+                    <div>
+                        <ul>
+                            <li>Jak by se změnil celkový čas, kdyby Fáze 2 byla jen 400 m dlouhá?</li>
+                            <li>Proč je průměrná rychlost (18,75 m/s) menší než maximální (20 m/s)?</li>
+                            <li>Která fáze je nejefektivnější z hlediska času/dráhy?</li>
+                            <li>Jak by ovlivnilo výsledek, kdyby nebyla Fáze 3 (zůstala by rychlost 20 m/s)?</li>
+                            <li>Co je hlavní výhoda rozdělení složitého pohybu na jednodušší fáze?</li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

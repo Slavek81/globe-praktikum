@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Řešení</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>28. Řešení</h1>
+            <p>Kinematika - řešený příklad</p>
+        </header>
+
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Nouze brždění je kritická situace v dopravě, kdy řidič musí zastavit vozidlo v co nejkratší vzdálenosti. Moderní automobily jsou vybaveny ABS (Anti-lock Braking System), EBD (Electronic Brakeforce Distribution) a asistenčními systémy pro nouze brždění. Tyto systémy využívají fyzikální principy maximální přilnavosti pneumatik k vozovce.
+        </div>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <p>
+                Automobil jedoucí rychlostí <strong>50 km·h⁻¹</strong> musí zastavit na vzdálenosti <strong>12,5 m</strong>. Vypočítejte jeho zrychlení a čas potřebný k zastavení.
+            </p>
+        </section>
+
+        <section id="vstupni-data">
+            <h3>Vstupní data</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Veličina</th>
+                        <th>Symbol</th>
+                        <th>Hodnota</th>
+                        <th>Jednotka</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Počáteční rychlost</td>
+                        <td class="variable">v₀</td>
+                        <td class="value">50</td>
+                        <td class="unit">km·h⁻¹</td>
+                    </tr>
+                    <tr>
+                        <td>Brzdná dráha</td>
+                        <td class="variable">s</td>
+                        <td class="value">12,5</td>
+                        <td class="unit">m</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+            <p>Výpočet rozdělíme do několika logických kroků podle typu kinematické úlohy.</p>
+            
+            <div class="calculation-step">
+                <h4>Krok 1: Analýza situace a převody jednotek</h4>
+                <p>Analyzujeme typ pohybu a sjednotíme jednotky pro výpočet.</p>
+                
+                <div class="equation-logic-box">
+                    <strong>Logika výběru:</strong> Auto musí zastavit na velmi krátké vzdálenosti - jde o nouze brždění s maximálním využitím brzdných sil. Jedná se o rovnoměrně zpomalený pohyb s konečnou rychlostí v = 0.
+                </div>
+
+                <div class="warning-box">
+                    <strong>Pozor na extrem!</strong> Brzdná dráha 12,5 m při rychlosti 50 km/h je velmi krátká - očekáváme obrovské zpomalení! Bez ABS by pneumatiky zablokovaly a auto by kouzalo.
+                </div>
+
+                <div class="note-box">
+                    <strong>Dané hodnoty:</strong>
+                    <ul>
+                        <li>v₀ = 50 km·h⁻¹ = 50 ÷ 3,6 = 13,89 m·s⁻¹ (počáteční rychlost)</li>
+                        <li>v = 0 m·s⁻¹ (zastavení)</li>
+                        <li>s = 12,5 m (brzdná dráha)</li>
+                        <li>Hledáme: zrychlení a čas k zastavení</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="calculation-step">
+                <h4>Krok 2: Výběr fyzikální rovnice</h4>
+                <p>Vybereme vhodnou kinematickou rovnici podle typu pohybu.</p>
+                
+                <div class="equation-logic-box">
+                    <strong>Proč tuto rovnici?</strong> Známe počáteční rychlost, konečnou rychlost (nula) a dráhu. Neznáme čas ani zrychlení. Nejlepší je použít kinematickou rovnici bez času: v² = v₀² + 2as.
+                </div>
+
+                <div class="formula-box">
+                    <strong>Kinematické rovnice pro brždění:</strong>
+                    <ul>
+                        <li>Zrychlení bez času: $v^2 = v_0^2 + 2as$</li>
+                        <li>Čas k zastavení: $t = \frac{v - v_0}{a}$</li>
+                        <li>Kontrolní rovnice: $s = v_0 t + \frac{1}{2}at^2$</li>
+                    </ul>
+                </div>
+
+                <div class="analogy-box">
+                    <strong>Praktická analogie:</strong> Představ si že jedeš městem rychlostí 50 km/h a najednou se před tebou objeví dítě. Máš jen 12,5 m na zastavení! Takto krátká vzdálenost vyžaduje maximalne brždění - je to situace, kdy se ABS a moderní bezpečnostní systémy projeví nejvíc.
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 3: Dosazení hodnot a výpočet</h4>
+                <p>Dosadíme známé hodnoty do vybrané rovnice a vypočítáme výsledek.</p>
+                
+                <div class="result-box">
+                    <strong>Výpočet:</strong>
+                    <div class="rovnice-nadpis">📐 Konkrétní výpočet nouzového brždění</div>
+                    <div class="rovnice-text">
+                        <p><strong>Převody jednotek:</strong></p>
+                        $$v_0 = 50 \text{ km·h}^{-1} = 50 ÷ 3{,}6 = 13{,}89 \text{ m·s}^{-1}$$
+                        $$v = 0 \text{ m·s}^{-1} \text{ (zastavení)}$$
+
+                        <p><strong>Brzdné zrychlení (bez znalosti času):</strong></p>
+                        $$v^2 = v_0^2 + 2as \Rightarrow 0^2 = (13{,}89)^2 + 2a \cdot 12{,}5$$
+                        $$a = \frac{-(13{,}89)^2}{2 \cdot 12{,}5} = \frac{-192{,}9}{25} = -7{,}72 \text{ m·s}^{-2}$$
+
+                        <p><strong>Čas k zastavení:</strong></p>
+                        $$t = \frac{v - v_0}{a} = \frac{0 - 13{,}89}{-7{,}72} = \frac{-13{,}89}{-7{,}72} = 1{,}8 \text{ s}$$
+
+                        <p><strong>Kontrola dráhy:</strong></p>
+                        $$s = v_0 t + \frac{1}{2}at^2 = 13{,}89 \cdot 1{,}8 + \frac{1}{2} \cdot (-7{,}72) \cdot 1{,}8^2 = 25 - 12{,}5 = 12{,}5 \text{ m}$$ ✓
+                    </div>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 4: Kontrola výsledku a odpověď</h4>
+                <p>Ověříme rozumnost výsledku a formulujeme odpověď.</p>
+                
+                <div class="result-box">
+                    <strong>Odpověď:</strong>
+                    <p><strong>✅ Odpověď:</strong> Zrychlení: <strong>a = -7,72 m·s⁻²</strong> (nouzové brždění), Čas k zastavení: <strong>t = 1,8 s</strong></p>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

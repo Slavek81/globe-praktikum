@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Řešení</title>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>67. Kámen v propasti</h1>
+            <p>Kinematika - řešený příklad</p>
+        </header>
+
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Volný pád je základní jev v přírodě. Od padajících jablíček přes skoky do vody až po výsadkáře či spadané objekty ze staveb. Porozumění volnému pádu pomáhá odhadnout nebezpečnost pádů z výšky a pochopit důležitost bezpečnostních opatření.
+        </div>
+
+        <section>
+            <h2>📋 Zadání</h2>
+            <div class="zadani">
+                <p>Karolína stojí nad propastí a upustí do ní kámen. Kámen dopadl na dno po <strong>čtyřech sekundách</strong> letu.</p>
+                <ol type="a">
+                    <li>Jak hluboká je propast? Mohla by to být Macocha? Diskutujte.</li>
+                    <li>Jakou rychlostí kámen dopadl na zem?</li>
+                    <li>Nakreslete graf uražené dráhy v závislosti na čase, určete celkovou uraženou dráhu po uplynutí 1 s, 2 s, 3 s a 4 s.</li>
+                </ol>
+            </div>
+        </section>
+
+        <section>
+            <h2>💭 Krok 1: Analýza situace</h2>
+
+            <div class="equation-logic-box">
+                <strong>Logika výběru:</strong> Jde o volný pád z klidu pod vlivem gravitace. Používáme kinematické rovnice pro rovnoměrně zrychlený pohyb s $a = g$ a počáteční rychlostí $v_0 = 0$.
+            </div>
+
+            <div class="warning-box">
+                <strong>Pozor na volný pád!</strong> Volný pád = počáteční rychlost je nulová! Kámen se upustí, nevrhá se dolů. Zanedbáváme odpor vzduchu.
+            </div>
+
+            <div class="note-box">
+                <strong>Dané hodnoty:</strong>
+                <ul>
+                    <li>Počáteční rychlost: $v_0 = 0$ (upuštění z klidu)</li>
+                    <li>Doba pádu: $t = 4$ s</li>
+                    <li>Gravitační zrychlení: $g = 9{,}81$ m·s⁻²</li>
+                    <li>Hledáme: hloubku, rychlost dopadu, graf s(t)</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2>⚙️ Krok 2: Výběr rovnic</h2>
+
+            <div class="equation-logic-box">
+                <strong>Proč tyto rovnice?</strong> Pro volný pád z klidu používáme kinematické rovnice s konstantním zrychlením $g$. Dráha roste kvadraticky s časem, rychlost lineárně.
+            </div>
+
+            <div class="formula-box">
+                <p><strong>Rovnice volného pádu:</strong></p>
+                $$h = v_0 t + \frac{1}{2}gt^2 = \frac{1}{2}gt^2 \quad \text{(z klidu)}$$
+                $$v = v_0 + gt = gt \quad \text{(z klidu)}$$
+                $$t = \sqrt{\frac{2h}{g}} \quad \text{(čas pádu z výšky h)}$$
+            </div>
+
+            <div class="analogy-box">
+                <strong>Praktická analogie:</strong> Volný pád je jako rozjíždějící se auto s konstantním "plynem" - každou sekundu přibyde stejné množství rychlosti, ale ujede se stále více metrů.
+            </div>
+        </section>
+
+        <section>
+            <h2>🔢 Krok 3: Výpočet</h2>
+
+            <h3>a) Hloubka propasti</h3>
+
+            <div class="calculation-step">
+                <p><strong>Výpočet hloubky:</strong></p>
+                $$h = \frac{1}{2}gt^2 = \frac{1}{2} \times 9{,}81 \times 4^2 = \frac{1}{2} \times 9{,}81 \times 16 = 78{,}48 \text{ m}$$
+
+                <div class="result-box">
+                    <strong>Výsledek:</strong> Hloubka propasti je přibližně 78,5 m
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <p><strong>Diskuse - je to Macocha?</strong></p>
+                <p>Propast Macocha v Moravském krasu má hloubku asi 138 m.</p>
+                <p><strong>Porovnání:</strong> 78,5 m < 138 m</p>
+
+                <p>Pro kontrolu - čas pádu v Macoše:</p>
+                $$t_{Macocha} = \sqrt{\frac{2h}{g}} = \sqrt{\frac{2 \times 138}{9{,}81}} = \sqrt{28{,}13} = 5{,}3 \text{ s}$$
+
+                <div class="result-box">
+                    <strong>Závěr:</strong> <strong>Není to Macocha</strong> - je příliš mělká o téměř 60 m!
+                </div>
+            </div>
+
+            <h3>b) Rychlost dopadu</h3>
+
+            <div class="calculation-step">
+                <p><strong>Výpočet rychlosti:</strong></p>
+                $$v = gt = 9{,}81 \times 4 = 39{,}24 \text{ m·s⁻¹} \approx 39{,}2 \text{ m·s⁻¹}$$
+
+                <p><strong>Převod na km·h⁻¹:</strong></p>
+                $$v = 39{,}2 \times 3{,}6 = 141 \text{ km·h⁻¹}$$
+
+                <div class="result-box">
+                    <strong>Výsledek:</strong> Kámen dopadl rychlostí 39,2 m·s⁻¹ = 141 km·h⁻¹
+                </div>
+            </div>
+
+            <div class="warning-box">
+                <strong>Pozor:</strong> Rychlost 141 km·h⁻¹ je smrtelně nebezpečná! Proto jsou bezpečnostní limity pro práce ve výškách tak přísné.
+            </div>
+
+            <h3>c) Graf dráhy s(t)</h3>
+
+            <div class="calculation-step">
+                <p><strong>Výpočet dráhy v jednotlivých časech:</strong></p>
+                $$s(1\text{s}) = \frac{1}{2} \times 9{,}81 \times 1^2 = 4{,}9 \text{ m}$$
+                $$s(2\text{s}) = \frac{1}{2} \times 9{,}81 \times 2^2 = 19{,}6 \text{ m}$$
+                $$s(3\text{s}) = \frac{1}{2} \times 9{,}81 \times 3^2 = 44{,}1 \text{ m}$$
+                $$s(4\text{s}) = \frac{1}{2} \times 9{,}81 \times 4^2 = 78{,}5 \text{ m}$$
+
+                <div class="result-box">
+                    <strong>Body grafu:</strong> (1s, 4,9m), (2s, 19,6m), (3s, 44,1m), (4s, 78,5m)
+                </div>
+            </div>
+
+            <div class="tip-box">
+                <strong>Tip:</strong> Graf s(t) je parabola - kvadratická funkce rostoucí se stále větším sklonem. Rychlost roste lineárně, ale dráha kvadraticky!
+            </div>
+        </section>
+
+        <section>
+            <h2>✅ Krok 4: Kontrola a odpověď</h2>
+
+            <div class="summary-box">
+                <strong>Odpovědi:</strong>
+                <ul>
+                    <li><strong>a)</strong> Hloubka propasti: 78,5 m - <strong>není to Macocha</strong> (ta má 138 m)</li>
+                    <li><strong>b)</strong> Rychlost dopadu: 39,2 m·s⁻¹ = 141 km·h⁻¹</li>
+                    <li><strong>c)</strong> Graf s(t): parabola s body (1s; 4,9m), (2s; 19,6m), (3s; 44,1m), (4s; 78,5m)</li>
+                </ul>
+            </div>
+
+            <div class="info-box">
+                <strong>Kontrola rozumnosti:</strong> Rychlost dopadu 141 km·h⁻¹ je extrémně vysoká - odpovídá pádům z velkých výšek. Hloubka 78,5 m je reálná pro menší propasti či štoly.
+            </div>
+
+            <div class="alternative-method-box">
+                <strong>Alternativní způsob:</strong> Můžeme použít energetickou metodu: potenciální energie $mgh$ se přemění na kinetickou $\frac{1}{2}mv^2$, takže $v = \sqrt{2gh}$.
+            </div>
+
+            <details>
+                <summary>🤔 Metakognitivní otázky</summary>
+                <div>
+                    <ul>
+                        <li>Proč je rychlost dopadu tak vysoká? (Tip: kámen zrychluje celé 4 sekundy!)</li>
+                        <li>Jak by se změnil čas pádu na Měsíci? (g = 1,6 m·s⁻²)</li>
+                        <li>Proč je graf s(t) parabola, ale graf v(t) by byla přímka?</li>
+                        <li>Od jaké výšky je pád smrtelně nebezpečný? (Tip: 30 m ≈ 2,5 s → 90 km·h⁻¹)</li>
+                        <li>Jak by ovlivnil odpor vzduchu skutečné hodnoty?</li>
+                    </ul>
+                </div>
+            </details>
+        </section>
+    </main>
+</body>
+</html>

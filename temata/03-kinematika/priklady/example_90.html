@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Řešení</title>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>90. Kolo bicyklu - úhlová rychlost a rychlost pláště</h1>
+            <p>Kinematika - řešený příklad</p>
+        </header>
+
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Cyklisté používají cyklocomputer pro měření rychlosti - ten počítá na základě otáček kola a jeho obvodu. Profesionální cyklisté při sprintu dosahují kadence až 180 otáček za minutu, zatímco při stoupání používají nižší kadenci ale vyšší převodový poměr. Správné pochopení vztahu mezi úhlovou rychlostí kola a rychlostí bicyklu je klíčové pro optimalizaci výkonu sportovců a návrh efektivních převodových systémů.
+        </div>
+
+        <div class="zadani">
+            <h2>Zadání</h2>
+            <p>Kolo bicyklu má průměr <strong>0,5 m</strong> a vykoná <strong>7 otáček za sekundu</strong>. Určete úhlovou rychlost a rychlost otáčení bodu na plášti kola.</p>
+        </div>
+
+        <div class="reseni">
+            <h2>Řešení</h2>
+
+            <div class="krok">
+                <h3>1. Analýza situace a zadané hodnoty</h3>
+
+                <div class="equation-logic-box">
+                    <strong>Logika výběru:</strong> Jedná se o rotační pohyb tuhého tělesa (kola), kde každý bod na obvodu má stejnou úhlovou rychlost, ale různé body mají různou lineární rychlost podle vzdálenosti od osy otáčení.
+                </div>
+
+                <div class="warning-box">
+                    <strong>Pozor na jednotky!</strong> Frekvence je v Hz (otáčky za sekundu), úhlová rychlost v rad·s⁻¹, lineární rychlost v m·s⁻¹. Nezapomeňte převést průměr na poloměr!
+                </div>
+
+                <div class="note-box">
+                    <strong>Dané hodnoty:</strong>
+                    <ul>
+                        <li>Průměr kola: d = 0,5 m</li>
+                        <li>Poloměr kola: r = d/2 = 0,25 m</li>
+                        <li>Frekvence otáčení: f = 7 otáček/s = 7 Hz</li>
+                        <li>Hledáme: úhlová rychlost ω, rychlost bodu na plášti v</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="krok">
+                <h3>2. Výběr fyzikální rovnice</h3>
+
+                <div class="equation-logic-box">
+                    <strong>Proč tyto rovnice?</strong> Pro kruhový pohyb bez prokluzu platí základní vztahy rotační kinematiky. Úhlová rychlost se vypočítá z frekvence, lineární rychlost pak z úhlové rychlosti a poloměru.
+                </div>
+
+                <div class="formula-box">
+                    $$\omega = 2\pi f \text{ (úhlová rychlost)}$$
+                    $$v = \omega \cdot r \text{ (obvodová rychlost)}$$
+                    $$v_{\text{bicykl}} = v_{\text{plášť}} \text{ (bez prokluzu)}$$
+                </div>
+
+                <div class="analogy-box">
+                    <strong>Praktická analogie:</strong> Kolo bicyklu funguje jako hodiny - každý bod na obvodu se otočí o stejný úhel za stejný čas, ale body vzdálenější od středu urazí větší vzdálenost a mají větší rychlost.
+                </div>
+            </div>
+
+            <div class="krok">
+                <h3>3. Algebraické vyjádření a výpočet</h3>
+
+                <div class="tip-box">
+                    <strong>Užitečný tip:</strong> Vždy nejdříve vypočítejte úhlovou rychlost z frekvence, pak teprve lineární rychlost. Zkontrolujte si, že úhlová rychlost je v radiánech za sekundu!
+                </div>
+
+                <p><strong>Krok 1: Úhlová rychlost</strong></p>
+                <div class="calculation-step">
+                    $$\omega = 2\pi f = 2\pi \times 7 = 14\pi \text{ rad·s⁻¹}$$
+                    $$\omega = 14 \times 3{,}14159 = 43{,}98 \text{ rad·s⁻¹}$$
+                </div>
+
+                <p><strong>Krok 2: Rychlost na plášti kola</strong></p>
+                <div class="calculation-step">
+                    $$v = \omega \times r = 43{,}98 \times 0{,}25 = 11{,}0 \text{ m·s⁻¹}$$
+                    $$v = 11{,}0 \text{ m·s⁻¹} \times 3{,}6 = 39{,}6 \text{ km·h⁻¹}$$
+                </div>
+            </div>
+
+            <div class="krok">
+                <h3>4. Kontrola a interpretace výsledku</h3>
+
+                <div class="summary-box">
+                    <strong>Odpověď:</strong>
+                    <ul>
+                        <li>Úhlová rychlost: <strong>44,0 rad·s⁻¹</strong></li>
+                        <li>Rychlost na plášti: <strong>11,0 m·s⁻¹ (39,6 km·h⁻¹)</strong></li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <strong>Kontrola rozumnosti:</strong> Rychlost 39,6 km/h odpovídá rychlosti zkušeného cyklisty na silnici. Frekvence 7 Hz (420 otáček za minutu) je velmi vysoká - odpovídá rychlému sprintu profesionálního cyklisty.
+                </div>
+
+                <div class="alternative-method-box">
+                    <strong>Alternativní způsob:</strong> Můžeme vypočítat rychlost přímo z obvodu a frekvence: v = obvod × frekvence = 2πr × f = 2π × 0,25 × 7 = 11,0 m·s⁻¹
+                </div>
+            </div>
+        </div>
+
+        <details>
+            <summary>🤔 Metakognitivní otázky</summary>
+            <div>
+                <ul>
+                    <li>Proč má každý bod na obvodu kola stejnou úhlovou rychlost, ale různou lineární rychlost?</li>
+                    <li>Jak by se změnila rychlost bicyklu, kdyby cyklista použil větší převodový poměr?</li>
+                    <li>Proč cyklocomputery potřebují znát přesný obvod kola pro správné měření rychlosti?</li>
+                    <li>Jak souvisí kadence (otáčky pedálů) s otáčkami zadního kola u bicyklu s převody?</li>
+                    <li>Proč jsou při prokluzu kola výpočty rychlosti z otáček nepřesné?</li>
+                </ul>
+            </div>
+        </details>
+    </main>
+</body>
+</html>

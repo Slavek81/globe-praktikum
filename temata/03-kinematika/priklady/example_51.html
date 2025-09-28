@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zdravotnická injekce - řešený příklad</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>51. Zdravotnická injekce</h1>
+            <p>Kinematika - řešený příklad</p>
+        </header>
+
+        <!-- Motivační úvod pro studenty -->
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Přesné dávkování léků může rozhodovat o životě a smrti! Zdravotní sestry musí dokonale ovládat převody jednotek a výpočty objemů. Chyba v přepočtu může být fatální - proto je matematika v medicíně tak důležitá.
+        </div>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <p>
+                Zdravotní sestra Cassandra zachraňuje životy. Má roztok atropinu v koncentraci <strong>0,5 g/litr</strong> a injekční stříkačku o průměru <strong>12 mm</strong>. O jakou vzdálenost musí stlačit píst stříkačky, aby pacientovi vpravila <strong>2 mg</strong> atropinu? Zvládnete život zachránit i vy, nebo pacienta zabijete v důsledku neznalosti převodů jednotek?
+            </p>
+        </section>
+
+        <section id="vstupni-data">
+            <h3>Vstupní data</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Veličina</th>
+                        <th>Symbol</th>
+                        <th>Hodnota</th>
+                        <th>Jednotka</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Koncentrace atropinu</td>
+                        <td class="variable">c</td>
+                        <td class="value">0,5</td>
+                        <td class="unit">g/litr</td>
+                    </tr>
+                    <tr>
+                        <td>Průměr stříkačky</td>
+                        <td class="variable">d</td>
+                        <td class="value">12</td>
+                        <td class="unit">mm</td>
+                    </tr>
+                    <tr>
+                        <td>Požadovaná dávka</td>
+                        <td class="variable">m</td>
+                        <td class="value">2</td>
+                        <td class="unit">mg</td>
+                    </tr>
+                    <tr>
+                        <td>Hledaná vzdálenost</td>
+                        <td class="variable">h</td>
+                        <td class="value">?</td>
+                        <td class="unit">mm</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+            <p>Výpočet rozdělíme na dva kroky: najít potřebný objem roztoku a vypočítat vzdálenost stlačení pístu.</p>
+
+            <div class="calculation-step">
+                <h4>Krok 1: Analýza situace a převody jednotek</h4>
+                <p>Musíme najít, kolik roztoku potřebujeme pro správnou dávku, a pak vypočítat, jak daleko stlačit píst.</p>
+
+                <div class="equation-logic-box">
+                    <strong>Logika výběru:</strong> Nejprve z koncentrace a požadované dávky vypočteme potřebný objem roztoku, pak z geometrie stříkačky vzdálenost stlačení pístu.
+                </div>
+
+                <div class="warning-box">
+                    <strong>Pozor na jednotky!</strong> Pozor na jednotky koncentrace! 0,5 g/litr = 500 mg/litr, ale také = 0,5 mg/ml (protože 1 litr = 1000 ml).
+                </div>
+
+                <div class="note-box">
+                    <strong>Dané hodnoty:</strong>
+                    <ul>
+                        <li>Koncentrace: c = 0,5 g/litr = 500 mg/litr = 0,5 mg/ml</li>
+                        <li>Požadovaná dávka: m = 2 mg</li>
+                        <li>Průměr stříkačky: d = 12 mm = 1,2 cm</li>
+                        <li>Hledáme: vzdálenost stlačení h = ?</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 2: Výběr rovnic</h4>
+                <p>Nejprve vypočteme potřebný objem roztoku, pak použijeme rovnici pro objem válce:</p>
+
+                <div class="equation-logic-box">
+                    <strong>Proč tyto rovnice?</strong> Koncentrace udává hmotnost látky v objemu roztoku. Objem stříkačky je válec s známým průměrem.
+                </div>
+
+                <div class="formula-box">
+                    <p><strong>Objem roztoku z koncentrace:</strong></p>
+                    $$V_{\text{roztok}} = \frac{m}{c}$$
+                    <p><strong>Objem válce (stříkačky):</strong></p>
+                    $$V_{\text{válec}} = S \cdot h = \pi r^2 \cdot h$$
+                </div>
+
+                <div class="analogy-box">
+                    <strong>Praktická analogie:</strong> Jako když mícháme sirup s vodou - koncentrace říká, kolik sirupu je v objemu nápoje. Stříkačka je válec, jako plechovka s pohyblivým dnem.
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 3: Výpočet objemu roztoku</h4>
+                <p>Nejprve vypočteme, kolik ml roztoku potřebujeme:</p>
+
+                <div class="result-box">
+                    <strong>Potřebný objem roztoku:</strong>
+                    $$V = \frac{m}{c} = \frac{2 \text{ mg}}{0{,}5 \text{ mg/ml}} = 4 \text{ ml} = 4 \text{ cm}^3$$
+                </div>
+
+                <div class="tip-box">
+                    <strong>Tip pro převody:</strong> V medicíně: 1 ml = 1 cm³. Pro koncentrace: přepočti vše na stejné jednotky (mg a ml).
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 4: Výpočet vzdálenosti stlačení</h4>
+                <p>Nyní vypočteme, jak daleko stlačit píst pro objem 4 cm³:</p>
+
+                <div class="result-box">
+                    <strong>Poloměr stříkačky:</strong>
+                    $$r = \frac{d}{2} = \frac{1{,}2 \text{ cm}}{2} = 0{,}6 \text{ cm}$$
+                </div>
+
+                <div class="result-box">
+                    <strong>Plocha průřezu:</strong>
+                    $$S = \pi r^2 = \pi \cdot (0{,}6)^2 = \pi \cdot 0{,}36 = 1{,}13 \text{ cm}^2$$
+                </div>
+
+                <div class="result-box">
+                    <strong>Vzdálenost stlačení:</strong>
+                    $$h = \frac{V}{S} = \frac{4 \text{ cm}^3}{1{,}13 \text{ cm}^2} = 3{,}54 \text{ cm} = 35{,}4 \text{ mm}$$
+                </div>
+
+                <details>
+                    <summary>📊 Pokročilý výpočet</summary>
+                    <div>
+                        <div class="interpretation-box">
+                            <strong>Fyzikální význam:</strong> Vzdálenost 35,4 mm znamená, že píst se posune o více než 3 cm - to je docela velký posun pro malou dávku léku.
+                        </div>
+                    </div>
+                </details>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 5: Kontrola a odpověď</h4>
+
+                <div class="summary-box">
+                    <strong>Odpověď:</strong> Cassandra musí píst stlačit o <strong>35,4 mm</strong> (neboli 3,54 cm).
+                </div>
+
+                <div class="info-box">
+                    <strong>Kontrola rozumnosti:</strong> 1,13 cm² × 3,54 cm = 4 cm³ ✓, což obsahuje 4 ml × 0,5 mg/ml = 2 mg atropinu ✓
+                    <br>Výsledek dává smysl - pro malou dávku léku je potřeba relativně velký posun pístu.
+                </div>
+
+                <div class="alternative-method-box">
+                    <strong>Alternativní způsob:</strong> Mohli bychom počítat přímo: h = m/(c × π × r²) = 2/(0,5 × π × 0,6²) = 35,4 mm
+                </div>
+
+                <details>
+                    <summary>🤔 Metakognitivní otázky</summary>
+                    <div>
+                        <ul>
+                            <li>Jak by se změnil výpočet, kdyby měla stříkačku s dvojnásobným průměrem?</li>
+                            <li>Proč je přesnost dávkování v medicíně tak kritická?</li>
+                            <li>Jaké jsou výhody různých jednotek koncentrace (mg/ml, g/l, %)?</li>
+                            <li>Zkus vypočítat, kolik by bylo potřeba stlačit píst pro dávku 1,5 mg!</li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Řešení</title>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>64. Brždění auta</h1>
+            <p>Kinematika - řešený příklad</p>
+        </header>
+
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Situace brždění je klíčová pro bezpečnost na silnicích. Pochopení času potřebného k zpomalení pomáhá řidičům udržovat bezpečný odstup, dopravním inženýrům navrhovat bezpečné rychlosti a vyšetřovatelům rekonstruovat nehody.
+        </div>
+
+        <section>
+            <h2>📋 Zadání</h2>
+            <div class="zadani">
+                <p>Auto jedoucí rychlostí <strong>50 km·h⁻¹</strong> prudce brzdí se zrychlením <strong>-4 m·s⁻²</strong>. Za jak dlouho zpomalí na <strong>20 km·h⁻¹</strong>?</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>💭 Krok 1: Analýza situace</h2>
+
+            <div class="equation-logic-box">
+                <strong>Logika výběru:</strong> Jde o rovnoměrně zrychlený pohyb s negativním zrychlením (zpomalováním). Použijeme základní kinematickou rovnici $v = v_0 + at$ a vyjádříme z ní čas.
+            </div>
+
+            <div class="warning-box">
+                <strong>Pozor na jednotky!</strong> Rychlosti jsou v km·h⁻¹, ale zrychlení v m·s⁻². Musíme převést rychlosti do m·s⁻¹ dělením 3,6.
+            </div>
+
+            <div class="note-box">
+                <strong>Dané hodnoty:</strong>
+                <ul>
+                    <li>Počáteční rychlost: $v_0 = 50$ km·h⁻¹ (převést na m·s⁻¹)</li>
+                    <li>Konečná rychlost: $v = 20$ km·h⁻¹ (převést na m·s⁻¹)</li>
+                    <li>Zrychlení: $a = -4$ m·s⁻² (záporné = zpomalování)</li>
+                    <li>Hledáme: čas brždění $t$</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2>⚙️ Krok 2: Výběr rovnice</h2>
+
+            <div class="equation-logic-box">
+                <strong>Proč tuto rovnici?</strong> Známe počáteční a konečnou rychlost plus zrychlení. Základní kinematická rovnice $v = v_0 + at$ přímo souvisí všechny tyto veličiny s časem.
+            </div>
+
+            <div class="formula-box">
+                <p><strong>Základní kinematická rovnice:</strong></p>
+                $$v = v_0 + at$$
+                <p><strong>Vyjádření času:</strong></p>
+                $$t = \frac{v - v_0}{a}$$
+                <p><strong>Převod jednotek rychlosti:</strong></p>
+                $$\text{km·h⁻¹} \div 3{,}6 = \text{m·s⁻¹}$$
+            </div>
+
+            <div class="analogy-box">
+                <strong>Praktická analogie:</strong> Představte si, že brzda "ubírá" každou sekundu stejné množství rychlosti - podobně jako když z bankovního účtu pravidelně ubírá stejnou částku.
+            </div>
+        </section>
+
+        <section>
+            <h2>🔢 Krok 3: Výpočet</h2>
+
+            <h3>Převod jednotek rychlosti</h3>
+
+            <div class="calculation-step">
+                <p><strong>Počáteční rychlost:</strong></p>
+                $$v_0 = 50 \text{ km·h⁻¹} = \frac{50}{3{,}6} = 13{,}89 \text{ m·s⁻¹}$$
+
+                <p><strong>Konečná rychlost:</strong></p>
+                $$v = 20 \text{ km·h⁻¹} = \frac{20}{3{,}6} = 5{,}56 \text{ m·s⁻¹}$$
+
+                <div class="result-box">
+                    <strong>Převedené hodnoty:</strong> $v_0 = 13{,}89$ m·s⁻¹, $v = 5{,}56$ m·s⁻¹
+                </div>
+            </div>
+
+            <div class="tip-box">
+                <strong>Tip:</strong> Zapamatujte si převod: km·h⁻¹ ÷ 3,6 = m·s⁻¹ (odvodíme z 1000 m / 3600 s = 1/3,6)
+            </div>
+
+            <h3>Výpočet času brždění</h3>
+
+            <div class="calculation-step">
+                <p><strong>Dosazení do rovnice:</strong></p>
+                $$t = \frac{v - v_0}{a} = \frac{5{,}56 - 13{,}89}{-4} = \frac{-8{,}33}{-4} = 2{,}08 \text{ s}$$
+
+                <div class="result-box">
+                    <strong>Výsledek:</strong> Auto zpomalí za 2,08 sekundy
+                </div>
+            </div>
+
+            <div class="warning-box">
+                <strong>Pozor na znaménka!</strong> Zrychlení je záporné (brždění), změna rychlosti je také záporná (pokles). Záporné děleno záporným je kladné!
+            </div>
+
+            <h3>Kontrola výsledku</h3>
+
+            <div class="calculation-step">
+                <p><strong>Ověření výpočtu:</strong></p>
+                <p>Za 2,08 s auto zpomalí o:</p>
+                $$\Delta v = a \times t = (-4) \times 2{,}08 = -8{,}32 \text{ m·s⁻¹}$$
+
+                <p>Konečná rychlost:</p>
+                $$v = v_0 + \Delta v = 13{,}89 + (-8{,}32) = 5{,}57 \text{ m·s⁻¹} \approx 5{,}56 \text{ m·s⁻¹}$$ ✓
+
+                <div class="result-box">
+                    <strong>Kontrola:</strong> Výpočet je správný!
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>✅ Krok 4: Kontrola a odpověď</h2>
+
+            <div class="summary-box">
+                <strong>Odpověď:</strong> Auto zpomalí z 50 km·h⁻¹ na 20 km·h⁻¹ za <strong>2,08 sekundy</strong>.
+            </div>
+
+            <div class="info-box">
+                <strong>Kontrola rozumnosti:</strong> Čas zhruba 2 sekundy pro zpomalení o 30 km·h⁻¹ při silném brždění (-4 m·s⁻²) je realistický. Odpovídá praxi při nouzovém brždění na suché vozovce.
+            </div>
+
+            <div class="alternative-method-box">
+                <strong>Alternativní způsob:</strong> Můžeme použít rovnici $s = v_0t + \frac{1}{2}at^2$ k výpočtu brzdné dráhy, což je užitečné pro dopravní analýzy.
+            </div>
+
+            <details>
+                <summary>🤔 Metakognitivní otázky</summary>
+                <div>
+                    <ul>
+                        <li>Jak by se změnil výsledek, kdyby bylo zrychlení jen -2 m·s⁻²?</li>
+                        <li>Proč je důležité, aby řidiči dodržovali bezpečný odstup?</li>
+                        <li>Jak ovlivňuje stav vozovky (mokro, led) hodnotu brzdného zrychlení?</li>
+                        <li>Kolik metrů auto ujede během těchto 2,08 s brždění?</li>
+                        <li>Jak souvisí brzný čas s reakcí řidiče při nebezpečí?</li>
+                    </ul>
+                </div>
+            </details>
+        </section>
+    </main>
+</body>
+</html>

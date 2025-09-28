@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Řešení</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>9. Petr šel 2 hodiny rychlostí 6 km·h⁻¹ a 1 hodinu 3 km·h⁻¹</h1>
+            <p>Kinematika - řešený příklad</p>
+        </header>
+
+        <!-- Motivační úvod pro studenty -->
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Výpočty průměrné rychlosti používají turisté při plánování výletů, sportovci při sledování tréninku, nebo GPS navigace při odhadování času cesty s různými rychlostmi na různých úsecích.
+        </div>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <p>
+                Petr šel <strong>dvě hodiny</strong> rychlostí <strong>6 km·h⁻¹</strong> a potom <strong>jednu hodinu</strong> stoupal do kopce rychlostí <strong>3 km·h⁻¹</strong>. Jaká byla jeho průměrná rychlost? Nakreslete graf závislosti rychlosti na čase a dráhy na čase.
+            </p>
+        </section>
+
+        <section id="vstupni-data">
+            <h3>Vstupní data</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Veličina</th>
+                        <th>Symbol</th>
+                        <th>Hodnota</th>
+                        <th>Jednotka</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Doba chůze rovinou</td>
+                        <td class="variable">t₁</td>
+                        <td class="value">2</td>
+                        <td class="unit">hodiny</td>
+                    </tr>
+                    <tr>
+                        <td>Rychlost chůze rovinou</td>
+                        <td class="variable">v₁</td>
+                        <td class="value">6</td>
+                        <td class="unit">km·h⁻¹</td>
+                    </tr>
+                    <tr>
+                        <td>Doba stoupání</td>
+                        <td class="variable">t₂</td>
+                        <td class="value">1</td>
+                        <td class="unit">hodina</td>
+                    </tr>
+                    <tr>
+                        <td>Rychlost stoupání</td>
+                        <td class="variable">v₂</td>
+                        <td class="value">3</td>
+                        <td class="unit">km·h⁻¹</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+            <p>Výpočet rozdělíme do několika logických kroků podle typu kinematické úlohy.</p>
+            
+            <div class="calculation-step">
+                <h4>Krok 1: Analýza situace</h4>
+
+                <div class="equation-logic-box">
+                    <strong>Logika výběru:</strong> Jde o složený rovnoměrný pohyb - Petr se pohyboval různými rychlostmi v různých časových úsecích. Pro výpočet průměrné rychlosti musíme spočítat celkovou dráhu a celkový čas.
+                </div>
+
+                <div class="warning-box">
+                    <strong>Pozor na jednotky!</strong> Rychlosti jsou v km·h⁻¹ a časy v hodinách - jednotky jsou konzistentní, převody nejsou potřeba.
+                </div>
+
+                <div class="note-box">
+                    <strong>Dané hodnoty:</strong>
+                    <ul>
+                        <li>Doba chůze rovinou: t₁ = 2 h</li>
+                        <li>Rychlost chůze rovinou: v₁ = 6 km·h⁻¹</li>
+                        <li>Doba stoupání: t₂ = 1 h</li>
+                        <li>Rychlost stoupání: v₂ = 3 km·h⁻¹</li>
+                        <li>Hledáme: průměrnou rychlost v_p</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="calculation-step">
+                <h4>Krok 2: Výběr rovnice</h4>
+
+                <div class="equation-logic-box">
+                    <strong>Proč tuto rovnici?</strong> Průměrná rychlost se počítá jako celková dráha děleno celkovým časem. POZOR: není to aritmetický průměr rychlostí!
+                </div>
+
+                <div class="formula-box">
+                    $$v_p = \frac{s_{celk}}{t_{celk}} = \frac{s_1 + s_2}{t_1 + t_2}$$
+                    <br>
+                    kde $s_1 = v_1 \cdot t_1$ a $s_2 = v_2 \cdot t_2$
+                </div>
+
+                <div class="analogy-box">
+                    <strong>Praktická analogie:</strong> Představte si, že jedete na výlet autem - polovinu cesty rychle po dálnici, polovinu pomalu městem. Průměrná rychlost není (rychlá + pomalá)/2, ale celková vzdálenost děleno celkovým časem!
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 3: Dosazení hodnot a výpočet</h4>
+                <p>Dosadíme známé hodnoty do vybrané rovnice a vypočítáme výsledek.</p>
+                
+                <div class="result-box">
+                    <strong>📐 Dráhy jednotlivých úseků</strong>
+                    <p>$$s_1 = v_1 \times t_1 = 6 \times 2 = 12 \text{ km}$$</p>
+                    <p>$$s_2 = v_2 \times t_2 = 3 \times 1 = 3 \text{ km}$$</p>
+                </div>
+
+                <div class="tip-box">
+                    <strong>Tip:</strong> Všimněte si, že v prvním úseku Petr ušel 4× více (12 km vs 3 km), i když šel jen 2× déle. To ovlivní výslednou průměrnou rychlost.
+                </div>
+
+                <div class="result-box">
+                    <strong>📐 Konečný výpočet</strong>
+                    <p>$$s_{celková} = s_1 + s_2 = 12 + 3 = 15 \text{ km}$$</p>
+                    <p>$$t_{celkový} = t_1 + t_2 = 2 + 1 = 3 \text{ h}$$</p>
+                    <p>$$v_p = \frac{15}{3} = 5 \text{ km·h}^{-1}$$</p>
+                </div>
+
+                <details>
+                    <summary>🔍 Pokročilé informace</summary>
+                    <div>
+                        <p><strong>Proč není průměrná rychlost (6+3)/2 = 4,5 km·h⁻¹?</strong></p>
+                        <p>Aritmetický průměr by platil pouze v případě, že by Petr šel v obou úsecích stejně dlouho. Ale protože šel rychleji po delší dobu, jeho průměrná rychlost je vyšší.</p>
+                    </div>
+                </details>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 4: Kontrola výsledku a odpověď</h4>
+                
+                <div class="summary-box">
+                    <strong>Odpověď:</strong> Petrova průměrná rychlost byla <strong>5 km·h⁻¹</strong>.
+                    <br>Za 3 hodiny ušel celkem 15 km.
+                </div>
+
+                <div class="info-box">
+                    <strong>Kontrola rozumnosti:</strong> Výsledek 5 km·h⁻¹ je logický - je mezi rychlostmi 3 a 6 km·h⁻¹, ale blíže k 6 km·h⁻¹, protože touto rychlostí šel déle (2 h vs 1 h).
+                </div>
+
+                <div class="alternative-method-box">
+                    <strong>Alternativní způsob:</strong> Můžeme použít vážený průměr rychlostí podle času:
+                    $$v_p = \frac{v_1 \cdot t_1 + v_2 \cdot t_2}{t_1 + t_2} = \frac{6 \cdot 2 + 3 \cdot 1}{2 + 1} = \frac{15}{3} = 5 \text{ km·h}^{-1}$$
+                </div>
+
+                <details>
+                    <summary>🤔 Metakognitivní otázky</summary>
+                    <div>
+                        <ul>
+                            <li>Jak by se změnila průměrná rychlost, kdyby Petr stoupal 2 hodiny místo 1 hodiny?</li>
+                            <li>Proč není průměrná rychlost prostý aritmetický průměr (6+3)/2?</li>
+                            <li>V jakých praktických situacích potřebujeme počítat průměrnou rychlost?</li>
+                            <li>Jak by vypadal graf v-t a s-t pro Petrův pohyb?</li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Převody jednotek hustoty a rychlosti - řešený příklad</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>54. Převody jednotek hustoty a rychlosti</h1>
+            <p>Kinematika - řešený příklad</p>
+        </header>
+
+        <!-- Motivační úvod pro studenty -->
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Převody jednotek jsou základem technických výpočtů! V inženýrství, medicíně i běžném životě musíš rychle převádět mezi různými systémy jednotek. Hustota g/cm³ vs kg/m³ a rychlost km/h vs m/s patří mezi nejčastější převody.
+        </div>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <p>
+                a) Odvoďte převodní vztah mezi jednotkami hustoty kg/m³ a g/cm³, tedy <strong>1 g/cm³ = ...</strong><br>
+                b) Odvoďte převodní vztah mezi km/h a m/s, tedy <strong>1 m/s = ...</strong>
+            </p>
+        </section>
+
+        <section id="vstupni-data">
+            <h3>Vstupní data</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Převod</th>
+                        <th>Výchozí jednotka</th>
+                        <th>Cílová jednotka</th>
+                        <th>Výsledek</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Hustota</td>
+                        <td class="unit">1 g/cm³</td>
+                        <td class="unit">? kg/m³</td>
+                        <td class="value">?</td>
+                    </tr>
+                    <tr>
+                        <td>Rychlost</td>
+                        <td class="unit">1 m/s</td>
+                        <td class="unit">? km/h</td>
+                        <td class="value">?</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+            <p>Odvodíme převodní vztahy mezi dvěma páry jednotek systematicky.</p>
+
+            <div class="calculation-step">
+                <h4>Krok 1: Analýza úkolů</h4>
+                <p>Budeme odvozovat převodní vztahy mezi dvěma páry jednotek systematicky.</p>
+
+                <div class="equation-logic-box">
+                    <strong>Logika výběru:</strong> Převody jednotek odvozujeme z základních převodních konstant (1 g = 0,001 kg, 1 m = 100 cm atd.).
+                </div>
+
+                <div class="warning-box">
+                    <strong>Pozor na mocniny!</strong> Při převodu objemů (m³, cm³) se převodní faktor umocňuje na třetí.
+                </div>
+
+                <div class="note-box">
+                    <strong>Úkoly:</strong>
+                    <ul>
+                        <li>a) Převod hustoty: g/cm³ → kg/m³</li>
+                        <li>b) Převod rychlosti: m/s → km/h</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 2: Část a) Převod hustoty g/cm³ → kg/m³</h4>
+                <p>Začneme základními převody hmotnosti a délky:</p>
+
+                <div class="equation-logic-box">
+                    <strong>Proč tento postup?</strong> Hustota je poměr hmotnosti k objemu. Musíme převést jak čitatel (g → kg), tak jmenovatel (cm³ → m³).
+                </div>
+
+                <div class="formula-box">
+                    <p><strong>Základní převody:</strong></p>
+                    $$1 \text{ g} = 0{,}001 \text{ kg}$$
+                    $$1 \text{ m} = 100 \text{ cm}$$
+                    $$1 \text{ m}^3 = (100 \text{ cm})^3 = 10^6 \text{ cm}^3$$
+                </div>
+
+                <div class="analogy-box">
+                    <strong>Praktická analogie:</strong> Jako když převádíš peníze - musíš znát kurz a správně přepočítat čitatel i jmenovatel.
+                </div>
+
+                <div class="result-box">
+                    <strong>Převod hustoty:</strong>
+                    $$1 \frac{\text{g}}{\text{cm}^3} = \frac{0{,}001 \text{ kg}}{10^{-6} \text{ m}^3} = \frac{0{,}001}{10^{-6}} \frac{\text{kg}}{\text{m}^3} = 1000 \frac{\text{kg}}{\text{m}^3}$$
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 3: Část b) Převod rychlosti m/s → km/h</h4>
+                <p>Nyní převod rychlosti z metrů za sekundu na kilometry za hodinu:</p>
+
+                <div class="formula-box">
+                    <p><strong>Základní převody:</strong></p>
+                    $$1 \text{ m} = 0{,}001 \text{ km}$$
+                    $$1 \text{ s} = \frac{1}{3600} \text{ h}$$
+                </div>
+
+                <div class="result-box">
+                    <strong>Převod rychlosti:</strong>
+                    $$1 \frac{\text{m}}{\text{s}} = \frac{0{,}001 \text{ km}}{\frac{1}{3600} \text{ h}} = 0{,}001 \times 3600 \frac{\text{km}}{\text{h}} = 3{,}6 \frac{\text{km}}{\text{h}}$$
+                </div>
+
+                <div class="tip-box">
+                    <strong>Tip pro zapamatování:</strong> m/s × 3,6 = km/h (a naopak km/h ÷ 3,6 = m/s)
+                </div>
+
+                <details>
+                    <summary>📊 Pokročilý výpočet</summary>
+                    <div>
+                        <div class="interpretation-box">
+                            <strong>Fyzikální význam:</strong> Rychlost 1 m/s = 3,6 km/h je pomalá chůze. Běžná rychlost auta 50 km/h = 13,9 m/s.
+                        </div>
+                    </div>
+                </details>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 4: Kontrola a odpověď</h4>
+
+                <div class="summary-box">
+                    <strong>Odpovědi:</strong>
+                    <br>a) <strong>1 g/cm³ = 1000 kg/m³</strong>
+                    <br>b) <strong>1 m/s = 3,6 km/h</strong>
+                </div>
+
+                <div class="info-box">
+                    <strong>Kontrola rozumnosti:</strong>
+                    <br>Hustota vody: ~1 g/cm³ = 1000 kg/m³ ✓
+                    <br>Rychlost chůze: ~1 m/s = 3,6 km/h ✓
+                    <br>Oba výsledky odpovídají běžné zkušenosti.
+                </div>
+
+                <div class="alternative-method-box">
+                    <strong>Alternativní způsob:</strong>
+                    <br>Pro hustotu: 1 g = 10⁻³ kg, 1 cm = 10⁻² m → (10⁻²)³ = 10⁻⁶ m³ → 10⁻³/10⁻⁶ = 10³ = 1000
+                    <br>Pro rychlost: 1000 m/km × 3600 s/h = 3600/1000 = 3,6
+                </div>
+
+                <details>
+                    <summary>🤔 Metakognitivní otázky</summary>
+                    <div>
+                        <ul>
+                            <li>Jak rychle dokážeš převést 72 km/h na m/s? (Tip: dělíme 3,6)</li>
+                            <li>Proč má led hustotu nižší než voda (~0,92 g/cm³)?</li>
+                            <li>Jaké výhody má metrický systém oproti imperiálnímu?</li>
+                            <li>Zkus odvodit převod m³/s na l/min!</li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

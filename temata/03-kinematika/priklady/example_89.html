@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Řešení</title>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>89. Gramofon - perioda a frekvence rotace</h1>
+            <p>Kinematika - řešený příklad</p>
+        </header>
+
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Gramofonové desky vyžadují přesnou rychlost otáčení pro správné přehrávání hudby! LP desky se točí rychlostí 33⅓ rpm, zatímco single desky 45 rpm. Chyba v rychlosti rotace způsobí změnu výšky tónu - pomalší otáčení způsobí hlubší zvuk, rychlejší vyšší. Proto jsou kvalitní gramofonové přehrávače velmi přesné mechanické zařízení. Podobné principy se používají v motorech, ventilátorech, center...fuge a všude, kde je potřeba kontrolovat rychlost rotace.
+        </div>
+
+        <div class="zadani">
+            <h3>Zadání</h3>
+            <p>Gramofon se za minutu otočí <strong>33 krát</strong>. Vypočítejte:<br>
+            a) Perioda a frekvence<br>
+            b) Úhlová a obvodová rychlost pro r = <strong>0,12 m</strong></p>
+        </div>
+
+        <div class="calculation-step">
+            <h3>1. Analýza rotačního pohybu</h3>
+
+            <div class="equation-logic-box">
+                <strong>💭 Logika výběru:</strong> Kruhový pohyb charakterizujeme pomocí periodických veličin (frekvence, perioda) a kinematických veličin (úhlová a obvodová rychlost). Každá má svůj fyzikální význam a jednotky. Úhlová rychlost je stejná pro celé těleso, obvodová závisí na vzdálenosti od osy.
+            </div>
+
+            <div class="warning-box">
+                <strong>⚠️ Časté chyby při rotaci!</strong>
+                <ul>
+                    <li>Zapomínání převést minuty na sekundy (60 s = 1 min)</li>
+                    <li>Záměna úhlové rychlosti (rad·s⁻¹) s obvodovou (m·s⁻¹)</li>
+                    <li>Použití stupňů místo radiánů ve vzorcích</li>
+                    <li>Nerozlišování mezi otáčkami za minutu (rpm) a frekvencí (Hz)</li>
+                </ul>
+            </div>
+
+            <div class="note-box">
+                <strong>📝 Dané hodnoty:</strong>
+                <ul>
+                    <li>Počet otáček: $n = 33$ otáček za minutu = 33 rpm</li>
+                    <li>Čas: $t = 1$ minuta = $60$ s</li>
+                    <li>Poloměr: $r = 0{,}12$ m</li>
+                    <li>Podmínky: rovnoměrný kruhový pohyb</li>
+                    <li><strong>Hledáme:</strong> $T$, $f$, $\omega$, $v$</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="calculation-step">
+            <h3>2. Základní vztahy pro rotační pohyb</h3>
+
+            <div class="equation-logic-box">
+                <strong>🎯 Proč tyto veličiny?</strong> Frekvence říká "jak často se něco děje", perioda "jak dlouho trvá jeden cyklus", úhlová rychlost "jak rychle se otáčí" a obvodová rychlost "jak rychle se pohybuje konkrétní bod na obvodu".
+            </div>
+
+            <div class="formula-box">
+                <strong>Základní definice periodických veličin:</strong>
+                $$f = \frac{n}{t} \quad \text{[Hz] - frekvence}$$
+                $$T = \frac{1}{f} \quad \text{[s] - perioda}$$
+
+                <strong>Kinematika rotace:</strong>
+                $$\omega = 2\pi f \quad \text{[rad·s⁻¹] - úhlová rychlost}$$
+                $$v = \omega \cdot r \quad \text{[m·s⁻¹] - obvodová rychlost}$$
+            </div>
+
+            <div class="analogy-box">
+                <strong>🎵 Praktická analogie:</strong> Představte si gramofonovou jehlu sledující drážku na desce. Jehla se otáčí úhlovou rychlostí ω kolem středu, ale její fyzická rychlost pohybu (obvodová) závisí na tom, jestli je blíž středu nebo kraji desky. Proto u krajů zní hudba "rychleji" než u středu při stejných otáčkách!
+            </div>
+        </div>
+
+        <div class="calculation-step">
+            <h3>3. Výpočet periodických veličin</h3>
+
+            <div class="tip-box">
+                <strong>💡 Užitečná rada:</strong> Vždy začněte výpočtem frekvence z počtu otáček za sekundu. Všechny ostatní veličiny pak můžete snadno odvodit. Pozor na převod času z minut na sekundy!
+            </div>
+
+            <p><strong>a) Frekvence:</strong></p>
+            <div class="formula-box">
+                $$f = \frac{n}{t} = \frac{33 \text{ otáček}}{60 \text{ s}} = 0{,}55 \text{ Hz}$$
+                <p>(Gramofon udělá 0,55 otáčky za sekundu)</p>
+            </div>
+
+            <p><strong>Perioda:</strong></p>
+            <div class="formula-box">
+                $$T = \frac{1}{f} = \frac{1}{0{,}55} = 1{,}82 \text{ s}$$
+                <p>(Jedna úplná otáčka trvá 1,82 sekundy)</p>
+            </div>
+
+            <details>
+                <summary><strong>🔍 Přesný výpočet s přesnějšími čísly</strong></summary>
+                <div>
+                    <p>Přesná frekvence: $f = \frac{33}{60} = 0{,}55\overline{00}$ Hz</p>
+                    <p>Přesná perioda: $T = \frac{60}{33} = 1{,}\overline{818181}$ s ≈ 1,82 s</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="calculation-step">
+            <h3>4. Výpočet rychlostí</h3>
+
+            <p><strong>b) Úhlová rychlost:</strong></p>
+            <div class="formula-box">
+                $$\omega = 2\pi f = 2 \times \pi \times 0{,}55$$
+                $$\omega = 2 \times 3{,}14159 \times 0{,}55 = 3{,}456 \text{ rad·s⁻¹}$$
+                <p>(Gramofon se otáčí rychlostí 3,46 radiánů za sekundu)</p>
+            </div>
+
+            <p><strong>Obvodová rychlost na poloměru r = 0,12 m:</strong></p>
+            <div class="formula-box">
+                $$v = \omega \cdot r = 3{,}456 \times 0{,}12 = 0{,}415 \text{ m·s⁻¹}$$
+                <p>(Bod na obvodu se pohybuje rychlostí 0,415 m/s = 1,49 km/h)</p>
+            </div>
+
+            <div class="alternative-method-box">
+                <strong>🔄 Alternativní výpočet přes obvod:</strong>
+                <p><strong>Obvod kružnice:</strong> $o = 2\pi r = 2\pi \times 0{,}12 = 0{,}754$ m</p>
+                <p><strong>Obvodová rychlost:</strong> $v = \frac{o \times n}{t} = \frac{0{,}754 \times 33}{60} = 0{,}414$ m·s⁻¹ ✓</p>
+            </div>
+        </div>
+
+        <div class="calculation-step">
+            <h3>5. Interpretace výsledků a aplikace</h3>
+
+            <div class="summary-box">
+                <strong>📊 Kompletní odpověď:</strong>
+                <ul>
+                    <li><strong>a) Frekvence:</strong> $f = 0{,}55$ Hz</li>
+                    <li><strong>a) Perioda:</strong> $T = 1{,}82$ s</li>
+                    <li><strong>b) Úhlová rychlost:</strong> $\omega = 3{,}46$ rad·s⁻¹</li>
+                    <li><strong>b) Obvodová rychlost:</strong> $v = 0{,}415$ m·s⁻¹</li>
+                </ul>
+
+                <strong>Fyzikální význam:</strong>
+                <p>Gramofon se otočí jednou za 1,82 s, všechny body rotují stejnou úhlovou rychlostí, ale body dál od středu mají větší obvodovou rychlost.</p>
+            </div>
+
+            <div class="info-box">
+                <strong>🔍 Kontrola rozumnosti:</strong>
+                <ul>
+                    <li>33 otáček/min = 0,55 Hz je typické pro LP desky ✓</li>
+                    <li>Perioda ~1,8 s znamená pomalou rotaci (viditelnou očima) ✓</li>
+                    <li>Obvodová rychlost ~1,5 km/h je pomalá chůze ✓</li>
+                    <li>Úhlová rychlost ~3,5 rad/s odpovídá ~200°/s ✓</li>
+                </ul>
+            </div>
+
+            <div class="interpretation-box">
+                <strong>🎵 Aplikace v hudebním průmyslu:</strong>
+                <ul>
+                    <li><strong>LP desky (33⅓ rpm):</strong> Delší hrací doba, nižší kvalita</li>
+                    <li><strong>Single desky (45 rpm):</strong> Kratší hrací doba, vyšší kvalita</li>
+                    <li><strong>Starší desky (78 rpm):</strong> Velmi krátká hrací doba, průlomová technologie</li>
+                    <li><strong>CD přehrávače:</strong> Proměnná rychlost (CLV) pro konstantní lineární rychlost</li>
+                    <li><strong>Hard disky:</strong> Vysoké rychlosti (5400-15000 rpm) pro rychlý přístup k datům</li>
+                </ul>
+            </div>
+
+            <details>
+                <summary>🤔 Metakognitivní otázky</summary>
+                <div>
+                    <ul>
+                        <li>Proč se obvodová rychlost liší pro různé poloměry, ale úhlová zůstává stejná?</li>
+                        <li>Jak by se změnila výška tónu, kdyby se gramofon točil 50% rychleji?</li>
+                        <li>Jaké síly drží gramofonovou jehlu v drážce při rotaci?</li>
+                        <li>Proč mají moderní hard disky mnohem vyšší rychlosti než gramofonové desky?</li>
+                        <li>Jak souvisí frekvence rotace s kvalitou reprodukce zvuku?</li>
+                    </ul>
+                </div>
+            </details>
+        </div>
+    </main>
+</body>
+</html>

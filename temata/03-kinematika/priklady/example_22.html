@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Řešení</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>22. Řešení</h1>
+            <p>Kinematika - řešený příklad</p>
+        </header>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <p>
+                Lokomotiva se rozjíždí z klidu rovnoměrně zrychleně a dosáhne rychlosti10 m·s⁻¹za10 sekund.Vypočítejte zrychlení.Nakreslete graf závislosti rychlosti na čase a zrychlení na čase.Použijte graf závislosti rychlosti na čase k určení vzdálenosti, kterou lokomotiva urazí.Zakreslete graf závislosti dráhy na čase.
+            </p>
+        </section>
+
+        <section id="vstupni-data">
+            <h3>Vstupní data</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Veličina</th>
+                        <th>Symbol</th>
+                        <th>Hodnota</th>
+                        <th>Jednotka</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Počáteční rychlost</td>
+                        <td class="variable">v₀</td>
+                        <td class="value">10</td>
+                        <td class="unit">m·s⁻¹</td>
+                    </tr>
+                    <tr>
+                        <td>Doba pohybu</td>
+                        <td class="variable">t</td>
+                        <td class="value">10</td>
+                        <td class="unit">sekund</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+            <p>Výpočet rozdělíme do několika logických kroků podle typu kinematické úlohy.</p>
+            
+            <div class="calculation-step">
+                <h4>Krok 1: Analýza situace a převody jednotek</h4>
+                <p>Analyzujeme typ pohybu a sjednotíme jednotky pro výpočet.</p>
+                
+                <div class="note-box">
+                    <strong>Analýza:</strong>
+                    <p>Identifikujeme typ pohybu a potřebné převody jednotek podle zadání.</p>
+                </div>
+            </div>
+            
+            <div class="calculation-step">
+                <h4>Krok 2: Výběr fyzikální rovnice</h4>
+                <p>Vybereme vhodnou kinematickou rovnici podle typu pohybu.</p>
+                
+                <div class="formula-box">
+                    <strong>Kinematické rovnice:</strong>
+                    <ul>
+                        <li>Rovnoměrný pohyb: $s = v \cdot t$</li>
+                        <li>Zrychlený pohyb: $s = v_0 \cdot t + \frac12 \cdot a \cdot t^2$</li>
+                        <li>Rychlost při zrychleném pohybu: $v = v_0 + a \cdot t$</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 3: Dosazení hodnot a výpočet</h4>
+                <p>Dosadíme známé hodnoty do vybrané rovnice a vypočítáme výsledek.</p>
+                
+                <div class="result-box">
+                    <strong>📐 Zrychlení lokomotivy</strong>
+                    <p>a) $$a = \frac{v - v_0}{t} = \frac{10 - 0}{10} = 1 \text{ m·s}^{-2}$$</p>
+
+                    <strong>📐 Dráha z grafu (obsah trojúhelníku)</strong>
+                    <p>c) $$s = \frac{1}{2} \cdot t \cdot v = \frac{1}{2} \cdot 10 \cdot 10 = 50 \text{ m}$$</p>
+
+                    <p>Grafy: v(t) = lineární funkce, a(t) = konstanta, s(t) = parabola</p>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 4: Kontrola a alternativní metody</h4>
+
+                <div class="info-box">
+                    <strong>Kontrola rozumnosti:</strong> Zrychlení 1 m·s⁻² je rozumné pro vlak - není příliš rychlé (nepříjemné pro cestující) ani příliš pomalé (neefektivní). Dráha 50 m za 10 s také odpovídá průměrné rychlosti 5 m·s⁻¹.
+                </div>
+
+                <div class="alternative-method-box">
+                    <strong>Alternativní způsob výpočtu dráhy:</strong>
+                    <p>Průměrná rychlost: $v_{prům} = \frac{v_0 + v}{2} = \frac{0 + 10}{2} = 5$ m·s⁻¹</p>
+                    <p>Dráha: $s = v_{prům} \cdot t = 5 \cdot 10 = 50$ m ✓</p>
+                </div>
+
+                <div class="summary-box">
+                    <strong>Odpověď:</strong>
+                    <ul>
+                        <li><strong>Zrychlení:</strong> a = 1 m·s⁻²</li>
+                        <li><strong>Dráha:</strong> s = 50 m</li>
+                        <li><strong>Grafy:</strong> v(t) lineární, a(t) konstantní, s(t) parabolický</li>
+                    </ul>
+                </div>
+
+                <details>
+                    <summary>🤔 Metakognitivní otázky</summary>
+                    <div>
+                        <ul>
+                            <li>Jak by se změnily výsledky, kdyby lokomotiva potřebovala dosáhnout stejné rychlosti za poloviční čas?</li>
+                            <li>Proč je graf s(t) parabolou a ne přímkou?</li>
+                            <li>V jakých praktických situacích bychom potřebovali znát přesné zrychlení vozidla?</li>
+                            <li>Jak byste použili znalost zrychlení k odhadu spotřeby paliva?</li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

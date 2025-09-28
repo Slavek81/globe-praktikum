@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Řešení</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>17. Řešení</h1>
+            <p>Kinematika - řešený příklad</p>
+        </header>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <p>
+                Motorový člun se pohybuje vzhledem k vodě stálou rychlostí12 m·s⁻¹. Rychlost vodního proudu v řece je2 m·s⁻¹. Určete:Pod jakým úhlem vzhledem k vodnímu proudu musí člun plout, aby se stále pohyboval kolmo ke břehům řeky?Za jak dlouho přepluje napříč řeku, jestliže jsou břehy od sebe vzdáleny800 m?
+            </p>
+        </section>
+
+        <section id="vstupni-data">
+            <h3>Vstupní data</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Veličina</th>
+                        <th>Symbol</th>
+                        <th>Hodnota</th>
+                        <th>Jednotka</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Rychlost člunu v klidné vodě</td>
+                        <td class="variable">v_č</td>
+                        <td class="value">12</td>
+                        <td class="unit">m·s⁻¹</td>
+                    </tr>
+                    <tr>
+                        <td>Rychlost proudu</td>
+                        <td class="variable">v_p</td>
+                        <td class="value">2</td>
+                        <td class="unit">m·s⁻¹</td>
+                    </tr>
+                    <tr>
+                        <td>Šířka řeky</td>
+                        <td class="variable">d</td>
+                        <td class="value">800</td>
+                        <td class="unit">m</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+            <p>Výpočet rozdělíme do několika logických kroků podle typu kinematické úlohy.</p>
+            
+            <div class="calculation-step">
+                <h4>Krok 1: Analýza situace a převody jednotek</h4>
+                <p>Analyzujeme typ pohybu a sjednotíme jednotky pro výpočet.</p>
+                
+                <div class="note-box">
+                    <strong>Analýza:</strong>
+                    <p>Identifikujeme typ pohybu a potřebné převody jednotek podle zadání.</p>
+                </div>
+            </div>
+            
+            <div class="calculation-step">
+                <h4>Krok 2: Výběr fyzikální rovnice</h4>
+                <p>Vybereme vhodnou kinematickou rovnici podle typu pohybu.</p>
+                
+                <div class="formula-box">
+                    <strong>Kinematické rovnice:</strong>
+                    <ul>
+                        <li>Rovnoměrný pohyb: $s = v \cdot t$</li>
+                        <li>Zrychlený pohyb: $s = v_0 \cdot t + \frac12 \cdot a \cdot t^2$</li>
+                        <li>Rychlost při zrychleném pohybu: $v = v_0 + a \cdot t$</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 3: Dosazení hodnot a výpočet</h4>
+                <p>Dosadíme známé hodnoty do vybrané rovnice a vypočítáme výsledek.</p>
+                
+                <div class="result-box">
+                    <strong>📐 Výpočet úhlu a rychlosti</strong>
+                    <p><strong>a) Úhel plavby:</strong></p>
+                    <p>$$\sin α = \frac{v_P}{v_M} = \frac{2}{12} = \frac{1}{6}$$</p>
+                    <p>$$α = \arcsin\left(\frac{1}{6}\right) ≈ 9{,}59°$$</p>
+                    <p>Úhel vůči proudu: $90° - 9{,}59° = 80{,}4°$</p>
+
+                    <p><strong>b) Doba přeplutí:</strong></p>
+                    <p>$$v_V = \sqrt{v_M^2 - v_P^2} = \sqrt{144 - 4} = \sqrt{140} ≈ 11{,}83 \text{ m·s}^{-1}$$</p>
+                    <p>$$t = \frac{d}{v_V} = \frac{800}{11{,}83} ≈ 67{,}6 \text{ s}$$</p>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 4: Kontrola výsledku a odpověď</h4>
+                <p>Ověříme rozumnost výsledku a formulujeme odpověď.</p>
+                
+                <div class="result-box">
+                    <strong>Odpověď:</strong>
+                    <p><strong>✅ Odpověď:</strong> a) Člun musí plout pod úhlem <strong>80,4°</strong> vzhledem k proudu, b) Doba přeplutí: <strong>67,6 sekund</strong></p>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

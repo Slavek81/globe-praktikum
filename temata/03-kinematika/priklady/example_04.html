@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Řešení</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>4. Řešení</h1>
+            <p>Kinematika - řešený příklad</p>
+        </header>
+
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Průměrná rychlost je klíčová pro logistické společnosti, dopravu zboží a plánování tras. Řidiči kamionů, taxíkáři i řidiči autobusů musí počítat reálné časy jízdy, které zahrnují různé rychlosti v městském provozu, na dálnicích a v kolonách. GPS navigace také počítá průměrné rychlosti pro odhad příjezdu!
+        </div>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <p>
+                Auto jelo <strong>1 hodinu</strong> rychlostí <strong>50 km·h⁻¹</strong> a <strong>45 minut</strong> rychlostí <strong>20 m·s⁻¹</strong>. Vypočítejte jeho průměrnou rychlost.
+            </p>
+        </section>
+
+        <section id="vstupni-data">
+            <h3>Vstupní data</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Veličina</th>
+                        <th>Symbol</th>
+                        <th>Hodnota</th>
+                        <th>Jednotka</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Rychlost v 1. úseku</td>
+                        <td class="variable">v₁</td>
+                        <td class="value">50</td>
+                        <td class="unit">km·h⁻¹</td>
+                    </tr>
+                    <tr>
+                        <td>Čas 1. úseku</td>
+                        <td class="variable">t₁</td>
+                        <td class="value">1</td>
+                        <td class="unit">h</td>
+                    </tr>
+                    <tr>
+                        <td>Rychlost v 2. úseku</td>
+                        <td class="variable">v₂</td>
+                        <td class="value">20</td>
+                        <td class="unit">m·s⁻¹</td>
+                    </tr>
+                    <tr>
+                        <td>Čas 2. úseku</td>
+                        <td class="variable">t₂</td>
+                        <td class="value">45</td>
+                        <td class="unit">min</td>
+                    </tr>
+                    <tr>
+                        <td>Hledaná průměrná rychlost</td>
+                        <td class="variable">vₚ</td>
+                        <td class="value">?</td>
+                        <td class="unit">km·h⁻¹</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+            <p>Výpočet rozdělíme do několika logických kroků podle typu kinematické úlohy.</p>
+            
+            <div class="calculation-step">
+                <h4>Krok 1: Analýza situace a převody jednotek</h4>
+
+                <div class="equation-logic-box">
+                    <strong>Logika výběru:</strong> Jde o výpočet průměrné rychlosti pro pohyb s různými rychlostmi v různých časových úsecích. Musíme použít definici průměrné rychlosti jako podíl celkové dráhy a celkového času.
+                </div>
+
+                <div class="warning-box">
+                    <strong>Pozor na jednotky!</strong> Máme rychlosti v různých jednotkách (km·h⁻¹ a m·s⁻¹) a časy také (hodiny a minuty). Musíme vše sjednotit před výpočtem!
+                </div>
+
+                <div class="note-box">
+                    <strong>Dané hodnoty:</strong>
+                    <ul>
+                        <li>1. úsek: t₁ = 1 h, v₁ = 50 km·h⁻¹</li>
+                        <li>2. úsek: t₂ = 45 min, v₂ = 20 m·s⁻¹</li>
+                        <li>Hledáme: průměrnou rychlost vₚ</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="calculation-step">
+                <h4>Krok 2: Výběr fyzikální rovnice</h4>
+
+                <div class="equation-logic-box">
+                    <strong>Proč tuto rovnici?</strong> Průměrná rychlost se NESMÍ počítat jako aritmetický průměr rychlostí! Musíme použít základní definici: průměrná rychlost = celková dráha ÷ celkový čas.
+                </div>
+
+                <div class="formula-box">
+                    <strong>Použité rovnice:</strong>
+                    <ul>
+                        <li>Průměrná rychlost: $v_p = \frac{s_{celková}}{t_{celkový}}$</li>
+                        <li>Dráha při rovnoměrném pohybu: $s = v \cdot t$</li>
+                    </ul>
+                </div>
+
+                <div class="analogy-box">
+                    <strong>Praktická analogie:</strong> Představte si, že jedete do práce různými rychlostmi - v koloně městem pomalu, pak rychle po dálnici. Celkový čas a celková vzdálenost určí vaši skutečnou průměrnou rychlost, ne průměr z tachometru!
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 3: Dosazení hodnot a výpočet</h4>
+
+                <div class="tip-box">
+                    <strong>💡 Užitečný tip:</strong> Při převodu m·s⁻¹ na km·h⁻¹ vynásobte 3,6. Při převodu minut na hodiny dělte 60.
+                </div>
+
+                <div class="result-box">
+                    <strong>📐 Převod jednotek</strong>
+                    <p>$$t_2 = 45 \text{ min} = \frac{45}{60} \text{ h} = 0{,}75 \text{ h}$$</p>
+                    <p>$$v_2 = 20 \text{ m·s}^{-1} = 20 \times 3{,}6 = 72 \text{ km·h}^{-1}$$</p>
+                </div>
+
+                <div class="result-box">
+                    <strong>📐 Výpočet drah pro každý úsek</strong>
+                    <p>$$s_1 = v_1 \times t_1 = 50 \times 1 = 50 \text{ km}$$</p>
+                    <p>$$s_2 = v_2 \times t_2 = 72 \times 0{,}75 = 54 \text{ km}$$</p>
+                </div>
+
+                <div class="result-box">
+                    <strong>📐 Finální výpočet průměrné rychlosti</strong>
+                    <p>$$s_{celková} = s_1 + s_2 = 50 + 54 = 104 \text{ km}$$</p>
+                    <p>$$t_{celkový} = t_1 + t_2 = 1 + 0{,}75 = 1{,}75 \text{ h}$$</p>
+                    <p>$$v_p = \frac{s_{celková}}{t_{celkový}} = \frac{104}{1{,}75} = 59{,}43 \text{ km·h}^{-1}$$</p>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 4: Kontrola výsledku a odpověď</h4>
+
+                <div class="summary-box">
+                    <strong>✅ Odpověď:</strong>
+                    <p><strong>Průměrná rychlost automobilu je 59,43 km·h⁻¹.</strong></p>
+                </div>
+
+                <div class="info-box">
+                    <strong>🔍 Kontrola rozumnosti:</strong> Výsledek 59,43 km/h je mezi rychlejším úsekem (72 km/h) a pomalejším (50 km/h) ✓. Průměrná rychlost je blíže k 50 km/h, protože tento úsek trval déle (1 h > 0,75 h) ✓
+                </div>
+
+                <div class="alternative-method-box">
+                    <strong>⚡ Alternativní způsob:</strong> Mohli bychom také převést vše na základní jednotky SI (metry a sekundy) a pak převést výsledek zpět. Výsledek by byl stejný: 16,51 m·s⁻¹ = 59,43 km·h⁻¹.
+                </div>
+
+                <details>
+                    <summary>🤔 Metakognitivní otázky</summary>
+                    <div>
+                        <ul>
+                            <li>Proč není průměrná rychlost prostý aritmetický průměr rychlostí?</li>
+                            <li>Jak by se změnil výsledek, kdybychom jeli každou rychlost stejnou dobu?</li>
+                            <li>Které přepočty jednotek jsou nejčastější chyby?</li>
+                            <li>V jakých situacích potřebujeme znát průměrnou rychlost v praxi?</li>
+                            <li>Jaký vliv má na průměrnou rychlost délka jednotlivých úseků?</li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

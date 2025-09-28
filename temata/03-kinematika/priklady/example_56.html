@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Složení dvou sil - řešený příklad</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>56. Složení dvou sil</h1>
+            <p>Kinematika - řešený příklad</p>
+        </header>
+
+        <!-- Motivační úvod pro studenty -->
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Vektorové skládání sil je klíčové v inženýrství! Při navrhování mostů, budov i při analýze pohybu objektů musíš umět pracovat s více silami současně. Od šroubů v konstrukci po tahy v lanech - všude se skládají vektory sil.
+        </div>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <p>
+                Mějme dvě síly, tedy dva vektory, o velikosti <strong>2 N</strong> a <strong>1 N</strong>, které působí na ořech.<br>
+                a) Jaká je <strong>max. a min. velikost</strong> jejich výslednice?<br>
+                b) Jakou velikost má výslednice, působí-li na sebe <strong>kolmo</strong>?<br>
+                c) Jaká musí být úhlová odchylka směru sil, pokud má výslednice stejnou velikost jako větší síla, tedy <strong>2 N</strong>?
+            </p>
+        </section>
+
+        <section id="vstupni-data">
+            <h3>Vstupní data</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Veličina</th>
+                        <th>Symbol</th>
+                        <th>Hodnota</th>
+                        <th>Jednotka</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>První síla</td>
+                        <td class="variable">F₁</td>
+                        <td class="value">2</td>
+                        <td class="unit">N</td>
+                    </tr>
+                    <tr>
+                        <td>Druhá síla</td>
+                        <td class="variable">F₂</td>
+                        <td class="value">1</td>
+                        <td class="unit">N</td>
+                    </tr>
+                    <tr>
+                        <td>Úhel mezi silami</td>
+                        <td class="variable">α</td>
+                        <td class="value">0° až 180°</td>
+                        <td class="unit">°</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+            <p>Řešíme tři různé případy vektorového skládání sil podle jejich vzájemné orientace.</p>
+
+            <div class="calculation-step">
+                <h4>Krok 1: Analýza situace a geometrie vektorů</h4>
+                <p>Máme dva vektory sil, které lze uspořádat v různých úhlech:</p>
+
+                <div class="equation-logic-box">
+                    <strong>Logika výběru:</strong> Velikost výslednice závisí na úhlu mezi vektory. Použijeme kosinovou větu pro obecný případ.
+                </div>
+
+                <div class="warning-box">
+                    <strong>Pozor na vektory!</strong> Vektory se nesčítají jako obyčejná čísla! Musíme zohlednit jejich směr a velikost současně.
+                </div>
+
+                <div class="note-box">
+                    <strong>Dané hodnoty:</strong>
+                    <ul>
+                        <li>Síla F₁ = 2 N</li>
+                        <li>Síla F₂ = 1 N</li>
+                        <li>Úhel mezi vektory: 0° až 180°</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 2: Obecná rovnice pro výslednici</h4>
+                <p>Pro výslednici dvou vektorů platí kosinová věta:</p>
+
+                <div class="equation-logic-box">
+                    <strong>Proč kosinová věta?</strong> Tři vektory (F₁, F₂, F) tvoří trojúhelník. Kosinová věta platí pro jakýkoli trojúhelník.
+                </div>
+
+                <div class="formula-box">
+                    $$F^2 = F_1^2 + F_2^2 + 2F_1F_2\cos(\alpha)$$
+                    <p>kde α je úhel mezi vektory F₁ a F₂</p>
+                </div>
+
+                <div class="analogy-box">
+                    <strong>Praktická analogie:</strong> Jako když táhneš saně dvěma lany - síla závisí na tom, jestli táhneš ve stejném směru nebo každý jinam.
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 3: Část a) Maximální a minimální výslednice</h4>
+                <p>Využijeme krajní polohy vektorů:</p>
+
+                <div class="result-box">
+                    <strong>Maximum (α = 0°, cos(0°) = 1):</strong>
+                    $$F_{max}^2 = 2^2 + 1^2 + 2 \cdot 2 \cdot 1 \cdot 1 = 4 + 1 + 4 = 9$$
+                    $$F_{max} = 3 \text{ N}$$
+                </div>
+
+                <div class="result-box">
+                    <strong>Minimum (α = 180°, cos(180°) = -1):</strong>
+                    $$F_{min}^2 = 2^2 + 1^2 + 2 \cdot 2 \cdot 1 \cdot (-1) = 4 + 1 - 4 = 1$$
+                    $$F_{min} = 1 \text{ N}$$
+                </div>
+
+                <div class="tip-box">
+                    <strong>Tip pro zapamatování:</strong> Maximum = síly se sčítají (stejný směr), Minimum = síly se odčítají (opačný směr).
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 4: Část b) Kolmé síly (α = 90°)</h4>
+                <p>Pro kolmé vektory cos(90°) = 0:</p>
+
+                <div class="result-box">
+                    <strong>Kolmé síly (α = 90°, cos(90°) = 0):</strong>
+                    $$F^2 = 2^2 + 1^2 + 2 \cdot 2 \cdot 1 \cdot 0 = 4 + 1 + 0 = 5$$
+                    $$F = \sqrt{5} = 2{,}24 \text{ N}$$
+                </div>
+
+                <div name="interpretation-box">
+                    <strong>Geometrický význam:</strong> Kolmé vektory tvoří pravoúhlý trojúhelník - platí Pythagorova věta.
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 5: Část c) Výslednice = 2 N</h4>
+                <p>Hledáme úhel α pro F = 2 N:</p>
+
+                <div class="result-box">
+                    <strong>Dosazení F = 2 N:</strong>
+                    $$4 = 4 + 1 + 4\cos(\alpha)$$
+                    $$4 = 5 + 4\cos(\alpha)$$
+                    $$-1 = 4\cos(\alpha)$$
+                    $$\cos(\alpha) = -\frac{1}{4} = -0{,}25$$
+                </div>
+
+                <div class="result-box">
+                    <strong>Úhel:</strong>
+                    $$\alpha = \arccos(-0{,}25) = 104{,}5°$$
+                </div>
+
+                <details>
+                    <summary>📊 Pokročilý výpočet</summary>
+                    <div>
+                        <div class="interpretation-box">
+                            <strong>Fyzikální význam:</strong> Úhel 104,5° je o něco více než pravý úhel - síly jsou rozevřené do tupého úhlu.
+                        </div>
+                    </div>
+                </details>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 6: Kontrola a odpověď</h4>
+
+                <div class="summary-box">
+                    <strong>Odpovědi:</strong>
+                    <br>a) Maximum: <strong>3 N</strong>, Minimum: <strong>1 N</strong>
+                    <br>b) Kolmé síly: <strong>2,24 N</strong>
+                    <br>c) Pro výslednici 2 N: <strong>α = 104,5°</strong>
+                </div>
+
+                <div class="info-box">
+                    <strong>Kontrola rozumnosti:</strong>
+                    <br>• Maximum 3 N > jednotlivé síly ✓
+                    <br>• Minimum 1 N = |2-1| ✓
+                    <br>• Kolmé síly: √(2²+1²) = √5 = 2,24 N ✓
+                    <br>• Úhel 104,5° je mezi 90° a 180° ✓
+                </div>
+
+                <div class="alternative-method-box">
+                    <strong>Alternativní způsob:</strong> Můžeme použít grafické skládání vektorů - nakreslit je jako šipky a změřit výslednici.
+                </div>
+
+                <details>
+                    <summary>🤔 Metakognitivní otázky</summary>
+                    <div>
+                        <ul>
+                            <li>Jak by se změnily odpovědi, kdyby síly byly 3 N a 4 N?</li>
+                            <li>Proč je výslednice kolmých sil větší než menší síla, ale menší než jejich součet?</li>
+                            <li>V jakých praktických situacích se setkáváš se skládáním sil?</li>
+                            <li>Jak souvisí skládání sil s Newtonovými zákony?</li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

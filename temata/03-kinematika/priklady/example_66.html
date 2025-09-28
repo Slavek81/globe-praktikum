@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Řešení</title>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>66. Smíšené úlohy na zrychlení</h1>
+            <p>Kinematika - řešený příklad</p>
+        </header>
+
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Zrychlení se objevuje všude kolem nás - od cyklistů na Tour de France přes tramvaje v centru města až po padající předměty. Pochopení základních rovnic pro zrychlený pohyb je klíčem k řešení téměř jakékoliv kinematické situace v každodenním životě.
+        </div>
+
+        <section>
+            <h2>📋 Zadání</h2>
+            <div class="zadani">
+                <p>Počítejte následující úlohy (bez kalkulačky):</p>
+                <ol type="a">
+                    <li><strong>Tadej Pogačar</strong> během pěti sekund zrychlil z 6 m·s⁻¹ na 14 m·s⁻¹. Jaké je jeho zrychlení?</li>
+                    <li><strong>Tramvaj</strong> jela počáteční rychlostí 4 m·s⁻¹ a po dobu půl minuty zrychlovala se zrychlením 0,5 m·s⁻². Jaká byla její výsledná rychlost?</li>
+                    <li><strong>Ze smrku spadla šiška</strong> na zem. Pád trval 1,4 sekundy. Jakou rychlostí šiška dopadla?</li>
+                    <li><strong>Vlak</strong> po dobu jedné minuty zrychloval se zrychlením 0,3 m·s⁻², až dosáhl rychlosti 30 m·s⁻¹. Jaká byla jeho počáteční rychlost?</li>
+                    <li><strong>Auto při najíždění na dálnici</strong> zrychlilo ze 72 km·h⁻¹ na 126 km·h⁻¹, přičemž jeho zrychlení bylo 2,5 m·s⁻². Za jak dlouho auto výsledné rychlosti dosáhlo?</li>
+                    <li><strong>Auto brzdící</strong> jedoucí rychlostí 54 km·h⁻¹ prudce brzdí se zrychlením -4 m·s⁻². Za jak dlouho zastaví?</li>
+                </ol>
+            </div>
+        </section>
+
+        <section>
+            <h2>💭 Krok 1: Analýza situace</h2>
+
+            <div class="equation-logic-box">
+                <strong>Logika výběru:</strong> Máme šest různých situací s rovnoměrně zrychleným pohybem. Pro každou použijeme základní kinematickou rovnici $v = v_0 + at$ a její přeuspořádání podle hledané veličiny.
+            </div>
+
+            <div class="warning-box">
+                <strong>Pozor na jednotky!</strong> Rychlosti v km·h⁻¹ musíte vždy převést na m·s⁻¹ dělením 3,6. Záporné zrychlení znamená zpomalení (brždění).
+            </div>
+
+            <div class="note-box">
+                <strong>Přehled úloh:</strong>
+                <ul>
+                    <li><strong>a)</strong> Známe $v_0, v, t$ → hledáme $a$</li>
+                    <li><strong>b)</strong> Známe $v_0, a, t$ → hledáme $v$</li>
+                    <li><strong>c)</strong> Volný pád z klidu, známe $t$ → hledáme $v$</li>
+                    <li><strong>d)</strong> Známe $a, t, v$ → hledáme $v_0$</li>
+                    <li><strong>e)</strong> Známe $v_0, v, a$ → hledáme $t$ (převod jednotek!)</li>
+                    <li><strong>f)</strong> Známe $v_0, a, v = 0$ → hledáme $t$ (převod jednotek!)</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2>⚙️ Krok 2: Výběr rovnic</h2>
+
+            <div class="equation-logic-box">
+                <strong>Proč tyto rovnice?</strong> Základní kinematická rovnice $v = v_0 + at$ spojuje všechny potřebné veličiny. Pro volný pád používáme $v = gt$ (z klidu).
+            </div>
+
+            <div class="formula-box">
+                <p><strong>Základní kinematické rovnice:</strong></p>
+                $$v = v_0 + at \quad \text{(rychlost)}$$
+                $$a = \frac{v - v_0}{t} \quad \text{(zrychlení)}$$
+                $$v = gt \quad \text{(volný pád z klidu)}$$
+                $$\text{Převod: km·h⁻¹} \div 3{,}6 = \text{m·s⁻¹}$$
+            </div>
+
+            <div class="analogy-box">
+                <strong>Praktická analogie:</strong> Kinematické rovnice jsou jako recepty v kuchařce - máte různé ingredience (známé veličiny) a pomocí správného "receptu" (rovnice) připravíte požadovaný "pokrm" (neznámou veličinu).
+            </div>
+        </section>
+
+        <section>
+            <h2>🔢 Krok 3: Výpočet všech úloh</h2>
+
+            <div class="calculation-step">
+                <h3>a) Pogačarovo zrychlení</h3>
+                $$a = \frac{v - v_0}{t} = \frac{14 - 6}{5} = \frac{8}{5} = 1{,}6 \text{ m·s⁻²}$$
+                <div class="result-box">
+                    <strong>Výsledek a:</strong> $a = 1{,}6$ m·s⁻²
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h3>b) Výsledná rychlost tramvaje</h3>
+                $$v = v_0 + at = 4 + 0{,}5 \times 30 = 4 + 15 = 19 \text{ m·s⁻¹}$$
+                <div class="result-box">
+                    <strong>Výsledek b:</strong> $v = 19$ m·s⁻¹ (≈ 68 km·h⁻¹)
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h3>c) Rychlost dopadu šišky (volný pád)</h3>
+                $$v = gt = 10 \times 1{,}4 = 14 \text{ m·s⁻¹}$$
+                <div class="result-box">
+                    <strong>Výsledek c:</strong> $v = 14$ m·s⁻¹
+                </div>
+            </div>
+
+            <div class="tip-box">
+                <strong>Tip:</strong> Pro volný pád používáme $g = 10$ m·s⁻² (zaokrouhlené gravitační zrychlení)
+            </div>
+
+            <div class="calculation-step">
+                <h3>d) Počáteční rychlost vlaku</h3>
+                $$v_0 = v - at = 30 - 0{,}3 \times 60 = 30 - 18 = 12 \text{ m·s⁻¹}$$
+                <div class="result-box">
+                    <strong>Výsledek d:</strong> $v_0 = 12$ m·s⁻¹ (≈ 43 km·h⁻¹)
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h3>e) Čas zrychlení auta na dálnici</h3>
+                <p><strong>Převod jednotek:</strong></p>
+                $$v_0 = 72 \div 3{,}6 = 20 \text{ m·s⁻¹}$$
+                $$v = 126 \div 3{,}6 = 35 \text{ m·s⁻¹}$$
+                <p><strong>Výpočet času:</strong></p>
+                $$t = \frac{v - v_0}{a} = \frac{35 - 20}{2{,}5} = \frac{15}{2{,}5} = 6 \text{ s}$$
+                <div class="result-box">
+                    <strong>Výsledek e:</strong> $t = 6$ s
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h3>f) Čas brždění auta</h3>
+                <p><strong>Převod jednotek:</strong></p>
+                $$v_0 = 54 \div 3{,}6 = 15 \text{ m·s⁻¹}$$
+                <p><strong>Výpočet času (zastavení = v = 0):</strong></p>
+                $$t = \frac{v - v_0}{a} = \frac{0 - 15}{-4} = \frac{15}{4} = 3{,}75 \text{ s}$$
+                <div class="result-box">
+                    <strong>Výsledek f:</strong> $t = 3{,}75$ s
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>✅ Krok 4: Kontrola a odpověď</h2>
+
+            <div class="summary-box">
+                <strong>Souhrnné odpovědi:</strong>
+                <ul>
+                    <li><strong>a)</strong> Pogačarovo zrychlení: 1,6 m·s⁻²</li>
+                    <li><strong>b)</strong> Rychlost tramvaje: 19 m·s⁻¹</li>
+                    <li><strong>c)</strong> Rychlost dopadu šišky: 14 m·s⁻¹</li>
+                    <li><strong>d)</strong> Počáteční rychlost vlaku: 12 m·s⁻¹</li>
+                    <li><strong>e)</strong> Čas zrychlení auta: 6 s</li>
+                    <li><strong>f)</strong> Čas brždění auta: 3,75 s</li>
+                </ul>
+            </div>
+
+            <div class="info-box">
+                <strong>Kontrola rozumnosti:</strong> Všechny výsledky jsou fyzikálně rozumné - sportovní cyklista má větší zrychlení než tramvaj, brždění trvá kratší dobu než zrychlení, rychlosti odpovídají reálným situacím.
+            </div>
+
+            <div class="alternative-method-box">
+                <strong>Alternativní způsob:</strong> Místo algebraického přeuspořádání můžeme pro každou úlohu nakreslit graf v(t) a graficky určit hledanou veličinu ze sklonu nebo průsečíků.
+            </div>
+
+            <details>
+                <summary>🤔 Metakognitivní otázky</summary>
+                <div>
+                    <ul>
+                        <li>Jak by se změnily výsledky, kdybychom uvažovali odpor vzduchu u šišky?</li>
+                        <li>Proč má Pogačar větší zrychlení než tramvaj, ačkoliv je jeho hmotnost menší?</li>
+                        <li>Jaký vliv má velikost záporného zrychlení na brzdnou dráhu?</li>
+                        <li>Spočítejte, jakou dráhu urazí auto při úloze e) během zrychlování!</li>
+                        <li>Která z úloh by se změnila, kdybychom uvažovali nerovnoměrné zrychlení?</li>
+                    </ul>
+                </div>
+            </details>
+        </section>
+    </main>
+</body>
+</html>

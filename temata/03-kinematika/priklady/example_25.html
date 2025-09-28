@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Řešení</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>25. Řešení</h1>
+            <p>Kinematika - řešený příklad</p>
+        </header>
+
+        <!-- Motivační úvod -->
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Letící letadlo, rozjíždějící se vlak, nebo kosmická sonda při korekci dráhy - všude tam máme kombinaci počáteční rychlosti a zrychlení. Piloti při vzletu, řidiči při předjíždění, nebo technologické říšení pohybových platform musí spočítat výslednou dráhu a rychlost.
+        </div>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <p>
+                Počáteční rychlost přímočarého pohybu hmotného bodu je <strong>10 m·s⁻¹</strong>. Předpokládejte, že jeho zrychlení je <strong>3 m·s⁻²</strong>.
+            </p>
+            <p><strong>Úkoly:</strong></p>
+            <ul>
+                <li>Vypočítejte rychlost tohoto hmotného bodu po <strong>5 s</strong> od začátku měření</li>
+                <li>Načrtněte graf závislosti rychlosti na čase</li>
+                <li>Určete vzdálenost, kterou během tohoto časového intervalu hmotný bod urazil</li>
+            </ul>
+        </section>
+
+        <section id="vstupni-data">
+            <h3>Vstupní data</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Veličina</th>
+                        <th>Symbol</th>
+                        <th>Hodnota</th>
+                        <th>Jednotka</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Počáteční rychlost</td>
+                        <td class="variable">v₀</td>
+                        <td class="value">10</td>
+                        <td class="unit">m·s⁻¹</td>
+                    </tr>
+                    <tr>
+                        <td>Zrychlení</td>
+                        <td class="variable">a</td>
+                        <td class="value">3</td>
+                        <td class="unit">m·s⁻²</td>
+                    </tr>
+                    <tr>
+                        <td>Čas</td>
+                        <td class="variable">t</td>
+                        <td class="value">5</td>
+                        <td class="unit">s</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+            <p>Výpočet rozdělíme do několika logických kroků podle typu kinematické úlohy.</p>
+            
+            <div class="calculation-step">
+                <h4>Krok 1: Analýza situace a klíčové rozdíly</h4>
+
+                <div class="equation-logic-box">
+                    <strong>Logika výběru:</strong> Toto JENÍ příklad zrychleného pohybu s NENUOVOU počáteční rychlostí! v₀ ≠ 0 znamená, že těleso už se pohybuje a pak ještě přidáme zrychlení. To ztěžuje výpočty!
+                </div>
+
+                <div class="warning-box">
+                    <strong>Pozor na počáteční rychlost!</strong> Nejde o rozjezd z klidu! Těleso už jede rychlostí 10 m/s a pak ještě zrychluje. Zapomenutí v₀ je častá chyba - výsledek by byl špatně o 10 m/s!
+                </div>
+
+                <div class="note-box">
+                    <strong>Dané hodnoty:</strong>
+                    <ul>
+                        <li>Počáteční rychlost: v₀ = 10 m·s⁻¹ (NEz klidu!)</li>
+                        <li>Zrychlení: a = 3 m·s⁻²</li>
+                        <li>Čas: t = 5 s</li>
+                        <li>Hledáme: konečnou rychlost v a dráhu s</li>
+                    </ul>
+                </div>
+
+                <div class="analogy-box">
+                    <strong>Praktická analogie:</strong> Jedete po dálnici 90 km/h (počáteční rychlost) a pak začnete přidavát plyn pro předjetí (zrychlení). Výsledná rychlost bude větší než jen od samotého zrychlení!
+                </div>
+            </div>
+            
+            <div class="calculation-step">
+                <h4>Krok 2: Výběr rovnic s počáteční rychlostí</h4>
+
+                <div class="equation-logic-box">
+                    <strong>Proč tyto kompletní rovnice?</strong> Musíme použít kompletní tvary kinematických rovnic s v₀! Zjednodušené verze pro "z klidu" by daly špatné výsledky.
+                </div>
+
+                <div class="formula-box">
+                    <strong>Kompletní kinematické rovnice:</strong>
+                    <ul>
+                        <li><strong>Rychlost:</strong> $v = v_0 + a \cdot t$</li>
+                        <li><strong>Dráha:</strong> $s = v_0 \cdot t + \frac{1}{2} \cdot a \cdot t^2$</li>
+                        <li><strong>Alternativní dráha:</strong> $s = \frac{v_0 + v}{2} \cdot t$</li>
+                        <li><strong>Bez času:</strong> $v^2 = v_0^2 + 2 \cdot a \cdot s$</li>
+                    </ul>
+                </div>
+
+                <div class="warning-box">
+                    <strong>Pozor na zjednodušení!</strong> Rovnice typu s = ½at² nebo v = at platí JEN pro rozjezd z klidu (v₀ = 0). Zde musíme použít kompletní tvary!
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 3: Dosazení hodnot a výpočet</h4>
+                <p>Dosadíme známé hodnoty do vybrané rovnice a vypočítáme výsledek.</p>
+                
+                <div class="result-box">
+                    <strong>📐 Výpočet konečné rychlosti</strong>
+                    <p>$$v = v_0 + a \cdot t = 10 + 3 \cdot 5 = 10 + 15 = 25 \text{ m·s}^{-1}$$</p>
+                    <p><strong>Interpretace:</strong> Původních 10 m/s + přidaných 15 m/s ze zrychlení</p>
+                </div>
+
+                <div class="tip-box">
+                    <strong>💡 Rozklad rychlosti:</strong> Z celkových 25 m/s pochází 10 m/s z původního pohybu a 15 m/s ze zrychlení během 5 sekund. Každá část je důležitá!
+                </div>
+
+                <div class="result-box">
+                    <strong>📐 Dráha - metoda 1 (průměrná rychlost)</strong>
+                    <p>$$v_{prům} = \frac{v_0 + v}{2} = \frac{10 + 25}{2} = 17{,}5 \text{ m·s}^{-1}$$</p>
+                    <p>$$s = v_{prům} \cdot t = 17{,}5 \cdot 5 = 87{,}5 \text{ m}$$</p>
+                </div>
+
+                <div class="result-box">
+                    <strong>📐 Dráha - metoda 2 (kinematická rovnice)</strong>
+                    <p>$$s = v_0 \cdot t + \frac{1}{2} \cdot a \cdot t^2 = 10 \cdot 5 + \frac{1}{2} \cdot 3 \cdot 25$$</p>
+                    <p>$$s = 50 + 37{,}5 = 87{,}5 \text{ m}$$</p>
+                    <p><strong>Rozklad:</strong> 50 m z původního pohybu + 37,5 m ze zrychlení</p>
+                </div>
+
+                <details>
+                    <summary><strong>📊 Graf v(t)</strong></summary>
+                    <div class="info-box">
+                        <p><strong>Graf rychlosti:</strong> Lineární rostoucí funkce</p>
+                        <ul>
+                            <li>Začátek: [0 s, 10 m/s] (NEprochází počátkem!)</li>
+                            <li>Konec: [5 s, 25 m/s]</li>
+                            <li>Sklon: a = 3 m·s⁻²</li>
+                            <li>Plocha pod grafem = dráha = 87,5 m</li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 4: Kontrola a srovnání s "z klidu"</h4>
+
+                <div class="info-box">
+                    <strong>Kontrola rozumnosti:</strong> Rychlost 25 m/s (90 km/h) po 5 s je rozumná. Dráha 87,5 m odpovídá průměrné rychlosti 17,5 m/s, což je správně mezi počáteční (10 m/s) a konečnou (25 m/s).
+                </div>
+
+                <div class="alternative-method-box">
+                    <strong>Srovnání s pohybem "z klidu":</strong>
+                    <p>Kdyby těleso začínalo z klidu se stejným zrychlením:</p>
+                    <ul>
+                        <li>Rychlost: v = 0 + 3×5 = 15 m/s (o 10 m/s méně!)</li>
+                        <li>Dráha: s = ½×3×25 = 37,5 m (o 50 m méně!)</li>
+                    </ul>
+                    <p>Počáteční rychlost významně ovlivňuje výsledky!</p>
+                </div>
+
+                <div class="interpretation-box">
+                    <strong>Fyzikální význam:</strong> Počáteční pohyb přispívá konstantním podílem (10 m/s × t), zatímco zrychlení přidává rostoucí podíl (½at²). Superpozice pohybů!
+                </div>
+
+                <div class="summary-box">
+                    <strong>Odpověď:</strong>
+                    <ul>
+                        <li><strong>Rychlost po 5 s:</strong> v = 25 m·s⁻¹</li>
+                        <li><strong>Uražená dráha:</strong> s = 87,5 m</li>
+                        <li><strong>Graf v(t):</strong> Lineární rostoucí od [0,10] do [5,25]</li>
+                    </ul>
+                </div>
+
+                <details>
+                    <summary>🤔 Metakognitivní otázky</summary>
+                    <div>
+                        <ul>
+                            <li>Proč je výsledek jiný než u pohybu z klidu?</li>
+                            <li>Jak by se graf v(t) lišil, kdyby počáteční rychlost byla záporná?</li>
+                            <li>V jakých praktických situacích máme kombinaci počáteční rychlosti a zrychlení?</li>
+                            <li>Jak byste využili tento typ výpočtu při řízení letadla nebo kosmické sondy?</li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Řešení</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>12. Srážka na křižovatce - policejní auto vs. automobil M</h1>
+            <p>Kinematika - řešený příklad</p>
+        </header>
+
+        <!-- Motivační úvod pro studenty -->
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Rekonstrukce nehod je důležitou částí práce policejních expertů. Z rychlostí a vzdáleností se da určit, kdo měl přednost, nebo zda někdo prekročil rychlost. Podobně pracují i systémy předcházení kol izí v moderních autech.
+        </div>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <p>
+                Policejní automobil P je ve vzdálenosti <strong>800 m</strong> od křižovatky a blíží se k ní konstantní rychlostí <strong>80 km·h⁻¹</strong>. Automobil M přijíždějící po vedlejší silnici je ve stejném okamžiku ve vzdálenosti <strong>600 m</strong> od křižovatky. Jakou rychlostí (v km·h⁻¹ i m·s⁻¹) se pohybuje automobil M, jestliže se <strong>obě auta na křižovatce srazí</strong>? Narysujte grafy závislostí v-t a s-t pro oba automobily.
+            </p>
+        </section>
+
+        <section id="vstupni-data">
+            <h3>Vstupní data</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Veličina</th>
+                        <th>Symbol</th>
+                        <th>Hodnota</th>
+                        <th>Jednotka</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Úsek 1</td>
+                        <td class="variable">s₁</td>
+                        <td class="value">800</td>
+                        <td class="unit">m</td>
+                    </tr>
+                    <tr>
+                        <td>Rychlost automobilu</td>
+                        <td class="variable">v</td>
+                        <td class="value">80</td>
+                        <td class="unit">km·h⁻¹</td>
+                    </tr>
+                    <tr>
+                        <td>Úsek 2</td>
+                        <td class="variable">s₂</td>
+                        <td class="value">600</td>
+                        <td class="unit">m</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+            <p>Výpočet rozdělíme do několika logických kroků podle typu kinematické úlohy.</p>
+            
+            <div class="calculation-step">
+                <h4>Krok 1: Analýza situace</h4>
+
+                <div class="equation-logic-box">
+                    <strong>Logika výběru:</strong> Oba automobily se setkojí na křižovatce ve stejný čas. Policejní auto ujede 800 m, automobil M ujede 600 m - a to ve stejném čase!
+                </div>
+
+                <div class="warning-box">
+                    <strong>Pozor na jednotky!</strong> Rychlost policie v km/h, vzdálenosti v metrech. Bude potřeba převod km ↔ m nebo h ↔ s.
+                </div>
+
+                <div class="note-box">
+                    <strong>Dané hodnoty:</strong>
+                    <ul>
+                        <li>Vzdálenost policie od křižovatky: s_P = 800 m</li>
+                        <li>Rychlost policie: v_P = 80 km·h⁻¹</li>
+                        <li>Vzdálenost auta M od křižovatky: s_M = 600 m</li>
+                        <li>Hledáme: rychlost auta M (v_M)</li>
+                        <li>Klíčová podmínka: t_P = t_M (setkojí se ve stejný čas)</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="calculation-step">
+                <h4>Krok 2: Výběr rovnice</h4>
+
+                <div class="equation-logic-box">
+                    <strong>Proč tento postup?</strong> Obě auta jedou rovnoměrně k témuž bodu (křižovatka) a setkojí se tam ve stejný čas. Čas = dráha/rychlost.
+                </div>
+
+                <div class="formula-box">
+                    $$t = \frac{s}{v}$$
+                    <br>Klíčová podmínka: $t_P = t_M$
+                    <br>Proto: $\frac{s_P}{v_P} = \frac{s_M}{v_M}$
+                </div>
+
+                <div class="analogy-box">
+                    <strong>Praktická analogie:</strong> Jako dva běžci star tující z různých vzdáleností k cíli. Aby dorazili současně, musí ten vzdálenější běžet rychleji! V našem případě je policejní auto "vzdálenější", takže bude rychlejší.
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 3: Dosazení hodnot a výpočet</h4>
+                <p>Dosadíme známé hodnoty do vybrané rovnice a vypočítáme výsledek.</p>
+                
+                <div class="result-box">
+                    <strong>📐 Čas jízdy policie</strong>
+                    <p>$$s_P = 800 \text{ m} = 0{,}8 \text{ km}$$</p>
+                    <p>$$v_P = 80 \text{ km·h}^{-1}$$</p>
+                    <p>$$t_P = \frac{s_P}{v_P} = \frac{0{,}8 \text{ km}}{80 \text{ km·h}^{-1}} = 0{,}01 \text{ h} = 36 \text{ s}$$</p>
+                </div>
+
+                <div class="tip-box">
+                    <strong>Tip:</strong> Policie ujede 800 m za 36 sekund. Za tutoch dobu musí auto M stihnout ujet 600 m, aby se srazili na křižovatce!
+                </div>
+
+                <div class="result-box">
+                    <strong>📐 Rychlost automobilu M</strong>
+                    <p>$$t_M = t_P = 0{,}01 \text{ h}$$</p>
+                    <p>$$s_M = 600 \text{ m} = 0{,}6 \text{ km}$$</p>
+                    <p>$$v_M = \frac{s_M}{t_M} = \frac{0{,}6 \text{ km}}{0{,}01 \text{ h}} = 60 \text{ km·h}^{-1}$$</p>
+                    <p>$$v_M = \frac{60}{3{,}6} = 16{,}67 \text{ m·s}^{-1}$$</p>
+                </div>
+
+                <details>
+                    <summary>🔍 Pokročilé informace</summary>
+                    <div>
+                        <p><strong>Alternativní řešení přímo z podmínky:</strong></p>
+                        <p>$$\frac{s_P}{v_P} = \frac{s_M}{v_M} \Rightarrow v_M = v_P \cdot \frac{s_M}{s_P} = 80 \cdot \frac{600}{800} = 80 \cdot 0{,}75 = 60 \text{ km·h}^{-1}$$</p>
+                    </div>
+                </details>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 4: Kontrola výsledku a odpověď</h4>
+                
+                <div class="summary-box">
+                    <strong>Odpověď:</strong> Automobil M se pohybuje rychlostí <strong>60 km·h⁻¹ = 16,67 m·s⁻¹</strong>.
+                    <br>Obě auta se srazí na křižovatce za 36 sekund.
+                </div>
+
+                <div class="info-box">
+                    <strong>Kontrola rozumnosti:</strong> Auto M jede 60 km/h, policie 80 km/h. To dává smysl - policie je vzdáleněji (800 vs 600 m), takže musí jet rychleji, aby dorazili současně.
+                </div>
+
+                <div class="alternative-method-box">
+                    <strong>Alternativní způsob:</strong> Poměr rychlostí = poměr vzdáleností: v_M/v_P = s_M/s_P ⇒ v_M = 80 × (600/800) = 60 km/h
+                </div>
+
+                <details>
+                    <summary>🤔 Metakognitivní otázky</summary>
+                    <div>
+                        <ul>
+                            <li>Co by se stalo, kdyby auto M jelo rychleji než 60 km/h?</li>
+                            <li>Jak by vypadaly grafy v-t a s-t pro obě auta?</li>
+                            <li>V jaké vzdálenosti by se auta minula, kdyby auto M jelo 50 km/h?</li>
+                            <li>Proč je tato úloha typická pro rekonstrukci nehod?</li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

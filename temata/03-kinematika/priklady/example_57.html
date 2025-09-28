@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tereza plave přes Labe - řešený příklad</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>57. Tereza plave přes Labe</h1>
+            <p>Kinematika - řešený příklad</p>
+        </header>
+
+        <!-- Motivační úvod pro studenty -->
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Skládání rychlostí řek a plavců je praktická situace z reálného života! Navigace lodí, letadel ve větru nebo dokonce GPS systémy musí zohledňovat pohyb objektu vůči měnícímu se prostředí. Fyzika pohybu v proudu je všude kolem nás.
+        </div>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <p>
+                Tereza plave přes Labe, protože spadl most. Proud má rychlost <strong>2 km/h</strong> a v klidné vodě Terka plave rychlostí <strong>4 km/h</strong>. Labe je široké <strong>60 m</strong>.<br>
+                a) Pokud se Terka bude snažit dostat na druhý břeh co nejdříve, jak dlouho ji to bude trvat? Jaká bude její rychlost vůči zemi?<br>
+                b) Pokud Terka bude plavat tak, aby se její tělo neustále pohybovalo kolmo k břehu, jak dlouho ji to bude trvat? Pod jakým úhlem musí mít natočené tělo, aby se pohybovala pořád kolmo k břehu?
+            </p>
+        </section>
+
+        <section id="vstupni-data">
+            <h3>Vstupní data</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Veličina</th>
+                        <th>Symbol</th>
+                        <th>Hodnota</th>
+                        <th>Jednotka</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Rychlost plavání</td>
+                        <td class="variable">v_T</td>
+                        <td class="value">4</td>
+                        <td class="unit">km/h</td>
+                    </tr>
+                    <tr>
+                        <td>Rychlost proudu</td>
+                        <td class="variable">v_p</td>
+                        <td class="value">2</td>
+                        <td class="unit">km/h</td>
+                    </tr>
+                    <tr>
+                        <td>Šířka řeky</td>
+                        <td class="variable">s</td>
+                        <td class="value">60</td>
+                        <td class="unit">m</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+            <p>Řešíme dva různé způsoby překonání řeky s proudem.</p>
+
+            <div class="calculation-step">
+                <h4>Krok 1: Analýza situace a vztažné soustavy</h4>
+                <p>Máme dva pohyby současně:</p>
+
+                <div class="equation-logic-box">
+                    <strong>Logika výběru:</strong> Rychlost vůči zemi je vektorovým součtem rychlosti plavání a rychlosti proudu. Musíme rozlišovat pohyb vůči vodě a vůči břehu.
+                </div>
+
+                <div class="warning-box">
+                    <strong>Pozor na vztažné soustavy!</strong> Rozlišuj rychlost "vůči vodě" a rychlost "vůči zemi"! Proud ovlivňuje výslednou trajektorii.
+                </div>
+
+                <div class="note-box">
+                    <strong>Dané hodnoty:</strong>
+                    <ul>
+                        <li>Rychlost Terezy vůči vodě: v_T = 4 km/h</li>
+                        <li>Rychlost proudu vůči břehu: v_p = 2 km/h</li>
+                        <li>Šířka řeky: s = 60 m = 0,06 km</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 2: Část a) Nejrychlejší překonání řeky</h4>
+                <p>Nejrychleji překoná řeku, když plave kolmo k břehu (vůči vodě). Proud ji unese, ale kolmá složka zůstane plná.</p>
+
+                <div class="equation-logic-box">
+                    <strong>Proč kolmo k břehu?</strong> Kolmá složka rychlosti je maximální, takže čas překonání šířky řeky je nejkratší.
+                </div>
+
+                <div class="formula-box">
+                    <p><strong>Čas překonání:</strong></p>
+                    $$t = \frac{s}{v_{kolmo}}$$
+                </div>
+
+                <div class="analogy-box">
+                    <strong>Praktická analogie:</strong> Jako když běžíš přímo do cíle - i když tě vítr unáší do strany, dostaneš se tam nejrychleji.
+                </div>
+
+                <div class="result-box">
+                    <strong>Převod rychlosti na m/s:</strong>
+                    $$v_{kolmo} = 4 \text{ km/h} = \frac{4000}{3600} \text{ m/s} = 1{,}11 \text{ m/s}$$
+                </div>
+
+                <div class="result-box">
+                    <strong>Čas překonání:</strong>
+                    $$t = \frac{60 \text{ m}}{1{,}11 \text{ m/s}} = 54 \text{ s}$$
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 3: Rychlost vůči zemi (část a)</h4>
+                <p>Celková rychlost je vektorovým součtem plavání a proudu:</p>
+
+                <div class="result-box">
+                    <strong>Rychlost vůči zemi (Pythagorova věta):</strong>
+                    $$v_{zeme} = \sqrt{v_T^2 + v_p^2} = \sqrt{4^2 + 2^2} = \sqrt{20} = 4{,}47 \text{ km/h}$$
+                </div>
+
+                <div class="tip-box">
+                    <strong>Tip pro zapamatování:</strong> Při kolmých vektorech používáme Pythagorovu větu.
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 4: Část b) Pohyb kolmo k břehu</h4>
+                <p>Tereza se musí natočit proti proudu, aby kompenzovala jeho vliv:</p>
+
+                <div class="result-box">
+                    <strong>Úhel kompenzace:</strong>
+                    $$\sin \alpha = \frac{v_p}{v_T} = \frac{2}{4} = \frac{1}{2}$$
+                    $$\alpha = \arcsin\left(\frac{1}{2}\right) = 30°$$
+                </div>
+
+                <div class="result-box">
+                    <strong>Efektivní kolmá rychlost:</strong>
+                    $$v_{kolmo} = v_T \cos\alpha = 4 \cos(30°) = 4 \times 0{,}866 = 3{,}464 \text{ km/h}$$
+                </div>
+
+                <div class="result-box">
+                    <strong>Čas při kolmém pohybu:</strong>
+                    $$v_{kolmo} = \frac{3{,}464 \times 1000}{3600} = 0{,}962 \text{ m/s}$$
+                    $$t = \frac{60}{0{,}962} = 62{,}4 \text{ s}$$
+                </div>
+
+                <details>
+                    <summary>📊 Pokročilý výpočet</summary>
+                    <div>
+                        <div class="interpretation-box">
+                            <strong>Fyzikální význam:</strong> Úhel 30° znamená, že Tereza musí mířit šikmo proti proudu, aby se pohybovala přímo přes řeku.
+                        </div>
+                    </div>
+                </details>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 5: Kontrola a odpověď</h4>
+
+                <div class="summary-box">
+                    <strong>Odpovědi:</strong>
+                    <br>a) Nejrychleji: <strong>54 s</strong>, rychlost vůči zemi: <strong>4,47 km/h</strong>
+                    <br>b) Kolmo k břehu: <strong>62,4 s</strong>, úhel natočení: <strong>30°</strong>
+                </div>
+
+                <div class="info-box">
+                    <strong>Kontrola rozumnosti:</strong>
+                    <br>• Kolmý pohyb trvá déle ✓ (část energie se "plýtvá" na kompenzaci)
+                    <br>• Rychlost vůči zemi > rychlost plavání ✓ (proud přispívá)
+                    <br>• Úhel 30° je rozumný ✓ (poloviční poměr rychlostí)
+                </div>
+
+                <div class="alternative-method-box">
+                    <strong>Alternativní způsob:</strong> Můžeme řešit graficky - nakreslit vektory rychlostí a změřit výslednici.
+                </div>
+
+                <details>
+                    <summary>🤔 Metakognitivní otázky</summary>
+                    <div>
+                        <ul>
+                            <li>Proč je rychlost vůči zemi větší než rychlost plavání?</li>
+                            <li>Co by se stalo, kdyby byl proud rychlejší než plavec?</li>
+                            <li>Jak navigují lodě v říčních deltách s proměnným proudem?</li>
+                            <li>Aplikuj tuto úlohu na letadlo letící ve větru!</li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

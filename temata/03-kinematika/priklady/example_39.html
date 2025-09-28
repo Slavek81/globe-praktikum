@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Řešení</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>39. Řešení</h1>
+            <p>Kinematika - řešený příklad</p>
+        </header>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <p>
+                Jakou vzdálenost urazí těleso během páté sekundy volného pádu?
+            </p>
+        </section>
+
+        <section id="vstupni-data">
+            <h3>Vstupní data</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Veličina</th>
+                        <th>Symbol</th>
+                        <th>Hodnota</th>
+                        <th>Jednotka</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Dráha v páté sekundě</td>
+                        <td class="variable">s₅</td>
+                        <td class="value">dle zadání</td>
+                        <td class="unit">m</td>
+                    </tr>
+                    <tr>
+                        <td>Tíhové zrychlení</td>
+                        <td class="variable">g</td>
+                        <td class="value">9,8</td>
+                        <td class="unit">m·s⁻²</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+            <p>Výpočet rozdělíme do několika logických kroků podle typu kinematické úlohy.</p>
+            
+            <div class="calculation-step">
+                <h4>Krok 1: Analýza situace a převody jednotek</h4>
+                <p>Analyzujeme typ pohybu a sjednotíme jednotky pro výpočet.</p>
+                
+                <div class="note-box">
+                    <strong>Analýza:</strong>
+                    <p>Identifikujeme typ pohybu a potřebné převody jednotek podle zadání.</p>
+                </div>
+            </div>
+            
+            <div class="calculation-step">
+                <h4>Krok 2: Výběr fyzikální rovnice</h4>
+                <p>Vybereme vhodnou kinematickou rovnici podle typu pohybu.</p>
+                
+                <div class="formula-box">
+                    <strong>Kinematické rovnice:</strong>
+                    <ul>
+                        <li>Rovnoměrný pohyb: $s = v \cdot t$</li>
+                        <li>Zrychlený pohyb: $s = v_0 \cdot t + \frac12 \cdot a \cdot t^2$</li>
+                        <li>Rychlost při zrychleném pohybu: $v = v_0 + a \cdot t$</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 3: Výpočet celkové dráhy za 5 sekund</h4>
+                <p>Použijeme kinematickou rovnici pro volný pád z klidu:</p>
+
+                <div class="result-box">
+                    <strong>Celková dráha za 5 s:</strong>
+                    <div class="rovnice-nadpis">📐 Celková dráha za 5 s</div>
+                    <div class="rovnice-text">$$s = \frac{1}{2}gt^2$$
+$$s_5 = \frac{1}{2} \times 10 \times 5^2 = 5 \times 25 = 125\,\text{m}$$</div>
+                    <p>Za 5 sekund těleso urazí celkem 125 m.</p>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 4: Výpočet celkové dráhy za 4 sekundy</h4>
+                <p>Podobně pro 4 sekundy:</p>
+
+                <div class="result-box">
+                    <strong>Celková dráha za 4 s:</strong>
+                    <div class="rovnice-nadpis">📐 Celková dráha za 4 s</div>
+                    <div class="rovnice-text">$$s_4 = \frac{1}{2} \times 10 \times 4^2 = 5 \times 16 = 80\,\text{m}$$</div>
+                    <p>Za 4 sekundy těleso urazí celkem 80 m.</p>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 5: Výpočet dráhy během páté sekundy</h4>
+                <p>Dráha v konkrétním časovém intervalu je rozdíl celkových drah:</p>
+
+                <div class="result-box">
+                    <strong>Dráha během 5. sekundy:</strong>
+                    <div class="rovnice-nadpis">📐 Dráha během 5. sekundy</div>
+                    <div class="rovnice-text">$$s_{(5.sek)} = s_5 - s_4 = 125 - 80 = 45\,\text{m}$$</div>
+                    <p><strong>Kontrola přes průměrnou rychlost:</strong></p>
+                    <p>$v_4 = 40$ m·s⁻¹, $v_5 = 50$ m·s⁻¹ → $v_{\text{průměr}} = 45$ m·s⁻¹</p>
+                    <p>Dráha = 45 m·s⁻¹ × 1 s = 45 m ✓</p>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 6: Kontrola výsledku a odpověď</h4>
+                <p>Vzor pro postupné sekundy:</p>
+
+                <div class="result-box">
+                    <strong>Odpověď:</strong>
+                    <p>Aritmetická posloupnost drah v jednotlivých sekundách:</p>
+                    <ul>
+                        <li><strong>1. sekunda:</strong> 5 m</li>
+                        <li><strong>2. sekunda:</strong> 15 m (+10 m)</li>
+                        <li><strong>3. sekunda:</strong> 25 m (+10 m)</li>
+                        <li><strong>4. sekunda:</strong> 35 m (+10 m)</li>
+                        <li><strong>5. sekunda:</strong> 45 m (+10 m)</li>
+                    </ul>
+                    <p><strong>✅ Odpověď:</strong> Během páté sekundy těleso urazí <strong>45 m</strong></p>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

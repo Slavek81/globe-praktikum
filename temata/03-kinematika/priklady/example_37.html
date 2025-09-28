@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Řešení</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>37. Řešení</h1>
+            <p>Kinematika - řešený příklad</p>
+        </header>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <p>
+                Automobil narazil do překážky rychlostí60 km·h⁻¹. Z jaké výšky by musel spadnout, aby získal stejnou rychlost?
+            </p>
+        </section>
+
+        <section id="vstupni-data">
+            <h3>Vstupní data</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Veličina</th>
+                        <th>Symbol</th>
+                        <th>Hodnota</th>
+                        <th>Jednotka</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Rychlost automobilu</td>
+                        <td class="variable">v</td>
+                        <td class="value">60</td>
+                        <td class="unit">km·h⁻¹</td>
+                    </tr>
+                    <tr>
+                        <td>Tíhové zrychlení</td>
+                        <td class="variable">g</td>
+                        <td class="value">9,8</td>
+                        <td class="unit">m·s⁻²</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+            <p>Výpočet rozdělíme do několika logických kroků podle typu kinematické úlohy.</p>
+            
+            <div class="calculation-step">
+                <h4>Krok 1: Analýza situace a převody jednotek</h4>
+                <p>Analyzujeme typ pohybu a sjednotíme jednotky pro výpočet.</p>
+                
+                <div class="note-box">
+                    <strong>Analýza:</strong>
+                    <p>Identifikujeme typ pohybu a potřebné převody jednotek podle zadání.</p>
+                </div>
+            </div>
+            
+            <div class="calculation-step">
+                <h4>Krok 2: Výběr fyzikální rovnice</h4>
+                <p>Vybereme vhodnou kinematickou rovnici podle typu pohybu.</p>
+                
+                <div class="formula-box">
+                    <strong>Kinematické rovnice:</strong>
+                    <ul>
+                        <li>Rovnoměrný pohyb: $s = v \cdot t$</li>
+                        <li>Zrychlený pohyb: $s = v_0 \cdot t + \frac12 \cdot a \cdot t^2$</li>
+                        <li>Rychlost při zrychleném pohybu: $v = v_0 + a \cdot t$</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 3: Převod jednotek rychlosti</h4>
+                <p>Převedeme rychlost z km·h⁻¹ na m·s⁻¹:</p>
+
+                <div class="result-box">
+                    <strong>Převod jednotek rychlosti:</strong>
+                    <div class="rovnice-nadpis">📐 Převod jednotek rychlosti</div>
+                    <div class="rovnice-text">$$v = 60\,\text{km·h}^{-1} = \frac{60}{3{,}6} = 16{,}67\,\text{m·s}^{-1}$$</div>
+                    <p><strong>Tip:</strong> Převod km·h⁻¹ → m·s⁻¹ = dělení 3,6</p>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 4: Výpočet ekvivalentní výšky pádu</h4>
+                <p>Vyjádříme výšku ze vztahu pro volný pád:</p>
+
+                <div class="result-box">
+                    <strong>Odvození výšky:</strong>
+                    <div class="rovnice-nadpis">📐 Odvození výšky</div>
+                    <div class="rovnice-text">$$v^2 = 2gh$$
+$$h = \frac{v^2}{2g}$$</div>
+                    <p>Dosadíme numerické hodnoty:</p>
+                    <div class="rovnice-nadpis">📐 Číselná substituce</div>
+                    <div class="rovnice-text">$$h = \frac{(16{,}67)^2}{2 \times 9{,}81} = \frac{277{,}89}{19{,}62} = 14{,}16\,\text{m}$$</div>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 5: Kontrola výsledku a odpověď</h4>
+                <p>Fyzikální interpretace výsledku:</p>
+
+                <div class="result-box">
+                    <strong>Odpověď:</strong>
+                    <p>Výška 14,16 m odpovídá přibližně <strong>4. patru budovy</strong>!</p>
+                    <ul>
+                        <li>1 patro ≈ 3,5 m</li>
+                        <li>4 patra = 14 m</li>
+                        <li>Náraz při 60 km·h⁻¹ = pád ze 4. patra</li>
+                    </ul>
+                    <p><strong>✅ Odpověď:</strong> Auto by spadlo z výšky <strong>14,2 m</strong> (4. patro)</p>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

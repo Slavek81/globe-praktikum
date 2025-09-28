@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Řešení</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>10. Automobil projel 1/4 dráhy rychlostí 90 km·h⁻¹ a 3/4 dráhy 75 km·h⁻¹</h1>
+            <p>Kinematika - řešený příklad</p>
+        </header>
+
+        <!-- Motivační úvod pro studenty -->
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Taková situace je typická při jízdě z města - krátký úsek rychle po obchvatu, pak dlouhý úsek pomaleji po městských silnicích. GPS navigace také počítá průměrné rychlosti pro odhad času příjezdu.
+        </div>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <p>
+                Automobil projel <strong>1/4 celkové dráhy</strong> rychlostí <strong>90 km·h⁻¹</strong> a <strong>zbývající část dráhy</strong> rychlostí <strong>75 km·h⁻¹</strong>. Určete průměrnou rychlost v m·s⁻¹ a v km·h⁻¹. Nakreslete graf rychlosti a dráhy v závislosti na čase.
+            </p>
+        </section>
+
+        <section id="vstupni-data">
+            <h3>Vstupní data</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Veličina</th>
+                        <th>Symbol</th>
+                        <th>Hodnota</th>
+                        <th>Jednotka</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Dráha první části</td>
+                        <td class="variable">s₁</td>
+                        <td class="value">¼ celkové dráhy</td>
+                        <td class="unit">-</td>
+                    </tr>
+                    <tr>
+                        <td>Rychlost první části</td>
+                        <td class="variable">v₁</td>
+                        <td class="value">90</td>
+                        <td class="unit">km·h⁻¹</td>
+                    </tr>
+                    <tr>
+                        <td>Rychlost druhé části</td>
+                        <td class="variable">v₂</td>
+                        <td class="value">75</td>
+                        <td class="unit">km·h⁻¹</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+            <p>Výpočet rozdělíme do několika logických kroků podle typu kinematické úlohy.</p>
+            
+            <div class="calculation-step">
+                <h4>Krok 1: Analýza situace</h4>
+
+                <div class="equation-logic-box">
+                    <strong>Logika výběru:</strong> Známe podíly dráhy (1/4 a 3/4) a rychlosti v každém úseku. Pro průměrnou rychlost potřebujeme celkový čas, který získáme sečtením časů v jednotlivých úsecích.
+                </div>
+
+                <div class="warning-box">
+                    <strong>Pozor na jednotky!</strong> Rychlosti v km·h⁻¹, výsledek bude též v km·h⁻¹, pak převedeme na m·s⁻¹ dělením 3,6.
+                </div>
+
+                <div class="note-box">
+                    <strong>Dané hodnoty:</strong>
+                    <ul>
+                        <li>Dráha 1. úseku: s₁ = 1/4 × s</li>
+                        <li>Rychlost 1. úseku: v₁ = 90 km·h⁻¹</li>
+                        <li>Dráha 2. úseku: s₂ = 3/4 × s</li>
+                        <li>Rychlost 2. úseku: v₂ = 75 km·h⁻¹</li>
+                        <li>Hledáme: průměrnou rychlost v_p</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="calculation-step">
+                <h4>Krok 2: Výběr rovnice</h4>
+
+                <div class="equation-logic-box">
+                    <strong>Proč tuto rovnici?</strong> Známe dráhy a rychlosti, ale neznáme časy. Nejprve vypočítáme časy ze vztahu t = s/v, pak průměrnou rychlost.
+                </div>
+
+                <div class="formula-box">
+                    $$t_1 = \frac{s_1}{v_1}, \quad t_2 = \frac{s_2}{v_2}$$
+                    $$v_p = \frac{s_{celk}}{t_{celk}} = \frac{s_1 + s_2}{t_1 + t_2}$$
+                </div>
+
+                <div class="analogy-box">
+                    <strong>Praktická analogie:</strong> Je to jako jízda z Prahy do Brna - krátký úsek rychle po dálnici, pak dlouhý úsek pomalu přes vesnice. Celkový čas není prostý součet, ale závisí na tom, jak dlouho trvají jednotlivé úseky!
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 3: Dosazení hodnot a výpočet</h4>
+                <p>Dosadíme známé hodnoty do vybrané rovnice a vypočítáme výsledek.</p>
+                
+                <div class="result-box">
+                    <strong>📐 Časy jednotlivých úseků</strong>
+                    <p>$$t_1 = \frac{s_1}{v_1} = \frac{\frac{1}{4}s}{90} = \frac{s}{360}$$</p>
+                    <p>$$t_2 = \frac{s_2}{v_2} = \frac{\frac{3}{4}s}{75} = \frac{s}{100}$$</p>
+                </div>
+
+                <div class="tip-box">
+                    <strong>Tip:</strong> Všimněte si, že druhý úsek (3/4 dráhy) trvá více než 3× déle než první! To je klíčem k pochopení, proč průměrná rychlost není prostý průměr rychlostí.
+                </div>
+
+                <div class="result-box">
+                    <strong>📐 Konečný výpočet</strong>
+                    <p>$$t_{celkový} = \frac{s}{360} + \frac{s}{100} = \frac{5s + 18s}{1800} = \frac{23s}{1800}$$</p>
+                    <p>$$v_p = \frac{s}{\frac{23s}{1800}} = \frac{1800}{23} = 78{,}26 \text{ km·h}^{-1}$$</p>
+                    <p>$$v_p = \frac{78{,}26}{3{,}6} = 21{,}74 \text{ m·s}^{-1}$$</p>
+                </div>
+
+                <details>
+                    <summary>🔍 Pokročilé informace</summary>
+                    <div>
+                        <p><strong>Proč není průměrná rychlost (90+75)/2 = 82,5 km·h⁻¹?</strong></p>
+                        <p>Protože auto jelo pomaleji (75 km/h) mnohem déle než rychle (90 km/h). Pomalý úsek "převažuje" a snižuje celkovou průměrnou rychlost.</p>
+                    </div>
+                </details>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 4: Kontrola výsledku a odpověď</h4>
+                
+                <div class="summary-box">
+                    <strong>Odpověď:</strong> Průměrná rychlost automobilu je <strong>78,26 km·h⁻¹ = 21,74 m·s⁻¹</strong>.
+                </div>
+
+                <div class="info-box">
+                    <strong>Kontrola rozumnosti:</strong> Výsledek 78,26 km·h⁻¹ je mezi 75 a 90 km·h⁻¹, ale blíže k 75 km·h⁻¹, což dává smysl - touto rychlostí jel delší část cesty (3/4 vs 1/4).
+                </div>
+
+                <div class="alternative-method-box">
+                    <strong>Alternativní způsob:</strong> Můžeme vyjměnout s a počítat s konkrétní vzdáleností (např. 120 km):
+                    <br>s₁ = 30 km, s₂ = 90 km, t₁ = 1/3 h, t₂ = 1,2 h
+                    <br>v_p = 120/(1/3 + 1,2) = 120/1,533 = 78,26 km·h⁻¹
+                </div>
+
+                <details>
+                    <summary>🤔 Metakognitivní otázky</summary>
+                    <div>
+                        <ul>
+                            <li>Jak by se změnila průměrná rychlost, kdyby auto jelo 1/2 dráhy každou rychlostí?</li>
+                            <li>Proč je průměrná rychlost blíže k nižší rychlosti 75 km/h?</li>
+                            <li>V jakých praktických situacích se setkáváme s různými rychlostmi na různých úsecích?</li>
+                            <li>Jak by vypadaly grafy v-t a s-t pro tento pohyb?</li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

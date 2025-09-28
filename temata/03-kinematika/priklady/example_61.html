@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Řešení</title>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>61. Rumcajs a Cipísek běží od zámku</h1>
+            <p>Kinematika - řešený příklad</p>
+        </header>
+
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Dohánění je základní situace ve sportu (cyklistika, běh), dopravě (předjíždění, autobusové spoje) i při plánování logistiky. Například když se snažíte dohnat zpoždění či když rychlejší závodník startuje později v handicapovém závodě.
+        </div>
+
+        <section>
+            <h2>📋 Zadání</h2>
+            <div class="zadani">
+                <p>Rumcajs vyběhl ze zámku a běží rychlostí <strong>5 m·s⁻¹</strong>. Za <strong>10 minut</strong> po něm vyběhl Cipísek, který má mladé hnáty a běží rychlostí <strong>8 m·s⁻¹</strong>. Jak daleko od zámku Rumcajse dohoní? Řešte početně i graficky!</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>💭 Krok 1: Analýza situace</h2>
+
+            <div class="equation-logic-box">
+                <strong>Logika výběru:</strong> Jde o klasický problém dohánění - rychlejší objekt startuje později a musí překonat náskok pomalejšího objektu. Klíčové je pochopit koncept relativní rychlosti přibližování.
+            </div>
+
+            <div class="warning-box">
+                <strong>Pozor na jednotky!</strong> Rychlosti jsou v m·s⁻¹, ale zpoždění je v minutách. Musíme převést: 10 min = 10 × 60 = 600 s
+            </div>
+
+            <div class="note-box">
+                <strong>Dané hodnoty:</strong>
+                <ul>
+                    <li>Rumcajsova rychlost: $v_R = 5$ m·s⁻¹</li>
+                    <li>Cipískova rychlost: $v_C = 8$ m·s⁻¹</li>
+                    <li>Cipískovo zpoždění: $t_{zpož} = 10$ min $= 600$ s</li>
+                    <li>Hledáme: vzdálenost od zámku při dohonění</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2>⚙️ Krok 2: Výběr rovnice</h2>
+
+            <div class="equation-logic-box">
+                <strong>Proč tuto rovnici?</strong> Používáme koncept relativní rychlosti - rychlost, jakou se objekty k sobě přibližují. U dohánění je to rozdíl rychlostí (ne součet jako při setkávání!).
+            </div>
+
+            <div class="formula-box">
+                <p><strong>Náskok pomalejšího objektu:</strong></p>
+                $$s_{náskok} = v_R \times t_{zpož}$$
+                <p><strong>Relativní rychlost přibližování:</strong></p>
+                $$v_{rel} = v_C - v_R$$
+                <p><strong>Čas do dohonění:</strong></p>
+                $$t_{dohonění} = \frac{s_{náskok}}{v_{rel}}$$
+            </div>
+
+            <div class="analogy-box">
+                <strong>Praktická analogie:</strong> Představte si rychlý vlak dohánějící pomalý nákladní vlak na stejné koleji - každou sekundu se vzájemná vzdálenost zmenší o rozdíl jejich rychlostí.
+            </div>
+        </section>
+
+        <section>
+            <h2>🔢 Krok 3: Výpočet</h2>
+
+            <h3>Rumcajsův náskok</h3>
+
+            <div class="calculation-step">
+                <p><strong>Náskok za 10 minut běhu:</strong></p>
+                $$s_{náskok} = v_R \times t_{zpož} = 5 \times 600 = 3000 \text{ m} = 3 \text{ km}$$
+
+                <div class="result-box">
+                    <strong>Výsledek:</strong> Rumcajs má náskok 3000 m
+                </div>
+            </div>
+
+            <h3>Relativní rychlost přibližování</h3>
+
+            <div class="calculation-step">
+                <p><strong>Rychlost zmenšování vzdálenosti:</strong></p>
+                $$v_{rel} = v_C - v_R = 8 - 5 = 3 \text{ m·s⁻¹}$$
+
+                <div class="result-box">
+                    <strong>Výsledek:</strong> Cipísek zkracuje odstup o 3 m za sekundu
+                </div>
+            </div>
+
+            <div class="tip-box">
+                <strong>Tip:</strong> Relativní rychlost znamená, že kdyby Rumcajs stál, Cipísek by k němu běžel rychlostí 3 m·s⁻¹
+            </div>
+
+            <h3>Čas do dohonění</h3>
+
+            <div class="calculation-step">
+                <p><strong>Čas potřebný k překonání náskoku:</strong></p>
+                $$t_{dohonění} = \frac{s_{náskok}}{v_{rel}} = \frac{3000}{3} = 1000 \text{ s}$$
+
+                <p><strong>Převod na minuty:</strong></p>
+                $$t_{dohonění} = \frac{1000}{60} = 16{,}67 \text{ min} = 16 \text{ min } 40 \text{ s}$$
+
+                <div class="result-box">
+                    <strong>Výsledek:</strong> Cipísek dohoní Rumcajse za 1000 s od svého startu
+                </div>
+            </div>
+
+            <div class="warning-box">
+                <strong>Pozor:</strong> Toto je čas od Cipískova startu! Rumcajs celkem běží 1000 + 600 = 1600 s
+            </div>
+
+            <h3>Vzdálenost od zámku</h3>
+
+            <div class="calculation-step">
+                <p><strong>Výpočet z Cipískova pohybu:</strong></p>
+                $$s = v_C \times t_{dohonění} = 8 \times 1000 = 8000 \text{ m} = 8 \text{ km}$$
+
+                <p><strong>Kontrola z Rumcajsova pohybu:</strong></p>
+                $$s = v_R \times (t_{dohonění} + t_{zpož}) = 5 \times (1000 + 600) = 5 \times 1600 = 8000 \text{ m}$$ ✓
+
+                <div class="result-box">
+                    <strong>Výsledek:</strong> Cipísek dohoní Rumcajse 8 km od zámku
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>✅ Krok 4: Kontrola a odpověď</h2>
+
+            <div class="summary-box">
+                <strong>Odpověď:</strong> Cipísek dohoní Rumcajse ve vzdálenosti <strong>8 km od zámku</strong> po 16 minutách a 40 sekundách svého běhu.
+            </div>
+
+            <div class="info-box">
+                <strong>Kontrola rozumnosti:</strong> Cipísek běží rychleji (8 vs 5 m·s⁻¹), má logicky šanci dohonění. Vzdálenost 8 km za ~27 minut celkového času je realistická pro rychlost 5 m·s⁻¹.
+            </div>
+
+            <div class="alternative-method-box">
+                <strong>Alternativní způsob:</strong> Můžeme řešit rovnicí: $v_R \times (t + 600) = v_C \times t$, kde $t$ je čas od Cipískova startu. Po úpravě: $5(t + 600) = 8t$, tedy $t = 1000$ s.
+            </div>
+
+            <details>
+                <summary>🤔 Metakognitivní otázky</summary>
+                <div>
+                    <ul>
+                        <li>Co by se stalo, kdyby měli oba stejnou rychlost? (Cipísek by nikdy nedohonil)</li>
+                        <li>Jak by se změnil výsledek, kdyby Cipísek běžel rychlostí 6 m·s⁻¹?</li>
+                        <li>Proč používáme "relativní rychlost" místo počítání jednotlivých pozic?</li>
+                        <li>Jak by vypadal graf s(t) pro oba běžce? Kde se protnou?</li>
+                        <li>Jaký vliv má velikost zpoždění na výslednou vzdálenost dohonění?</li>
+                    </ul>
+                </div>
+            </details>
+        </section>
+    </main>
+</body>
+</html>

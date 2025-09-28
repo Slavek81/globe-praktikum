@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Řešení</title>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>76. Ivánkův kyj svisle vzhůru</h1>
+            <p>Kinematika - řešený příklad</p>
+        </header>
+
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Svislý vrh je základní pohyb ve sportech - basketbal, volejbal, atletické disciplíny (vrh koulí), žonglování nebo prostě házení míčem nahoru. Pochopení svislého vrhu pomůže vám předvídat trajektorie a optimalizovat techniku ve sportu. Je to také základ pro složitější pohyby jako je šikmý vrh.
+        </div>
+
+        <div class="problem-statement">
+            <h2>Zadání</h2>
+            <p>Budeme se nyní zabývat svislým vrhem, tedy situací, kdy vyhodíte něco svisle nahoru, předmět dosáhne nejvyššího bodu a poté zase začne padat. Uvažujte <strong>g = 10 m·s⁻²</strong>.</p>
+
+            <p><strong>a)</strong> Pokud Ivánek vyhodí kyj svisle vzhůru rychlostí <strong>20 m·s⁻¹</strong>, za jak dlouho spadne na zem?</p>
+            <p><strong>b)</strong> Jakou rychlostí spadne na zem?</p>
+            <p><strong>c)</strong> Jak vysoko vystoupá?</p>
+            <p><strong>d)</strong> Nakreslete graf rychlosti v(t) a výšky kyje h(t) v závislosti na čase.</p>
+        </div>
+
+        <div class="solution">
+            <h2>Řešení</h2>
+
+            <div class="calculation-step">
+                <h3>1. Analýza situace a fyzikálního modelu</h3>
+
+                <div class="equation-logic-box">
+                    <strong>Logika výběru:</strong> Svislý vrh je kombinace dvou fází: stoupání (zpomalený pohyb do zastavení) a pád (zrychlený pohyb z klidu). Klíčová je symetrie - čas stoupání = čas klesání, rychlost výhozu = rychlost dopadu.
+                </div>
+
+                <div class="note-box">
+                    <strong>Dané hodnoty:</strong>
+                    <ul>
+                        <li>Počáteční rychlost: $v_0 = 20$ m·s⁻¹ (směrem nahoru)</li>
+                        <li>Gravitační zrychlení: $g = 10$ m·s⁻² (směrem dolů)</li>
+                        <li>Konečná poloha: zpět na zemi (výška 0)</li>
+                        <li>Hledáme: a) celkový čas, b) dopadovou rychlost, c) max. výšku, d) grafy</li>
+                    </ul>
+                </div>
+
+                <div class="warning-box">
+                    <strong>Pozor na souřadný systém!</strong> Volíme konzistentní směr: +y nahoru, takže g působí se zápornm zrchlením -g. Alternativně můžeme volit +y dolů.
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h3>2. Část a) - Celková doba letu</h3>
+
+                <div class="equation-logic-box">
+                    <strong>Proč symetrie?</strong> Gravitace působí stejně při stoupání i klesání. Energie se mění z kinetické na potenciální a zpět stejně rychle. Proto doba nahoru = doba dolů.
+                </div>
+
+                <div class="analogy-box">
+                    <strong>Praktická analogie:</strong> Je to jako film puštěný pozpátku - míček stoupající nahoru vypadá úplně stejně jako míček padající dolů, jen se čas otáčí. Gravitace je "časově symetrická".
+                </div>
+
+                <div class="result-box">
+                    <p><strong>Doba stoupání (do v = 0):</strong></p>
+                    $$v = v_0 - gt_k$$
+                    $$\text{Pro } v = 0: \quad t_k = \frac{v_0}{g} = \frac{20}{10} = 2 \text{ s}$$
+
+                    <p><strong>Celková doba letu (symetrie):</strong></p>
+                    $$t_{\text{celkem}} = 2t_k = 2 \times 2 = 4 \text{ s}$$
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h3>3. Část b) - Dopadová rychlost</h3>
+
+                <div class="tip-box">
+                    <strong>Užitečný tip:</strong> Díky zachování energie je dopadová rychlost vždy stejně velká jako rychlost výhozu (ale opačného směru). Není potřeba složitých výpočtů!
+                </div>
+
+                <div class="result-box">
+                    <p><strong>Z symetrie svislého vrhu:</strong></p>
+                    $$v_{\text{dopad}} = v_0 = 20 \text{ m·s⁻¹}$$
+
+                    <p><strong>Ověření výpočtem:</strong></p>
+                    $$v(t) = v_0 - gt = 20 - 10 \times 4 = 20 - 40 = -20 \text{ m·s⁻¹}$$
+                    <p>Velikost: $|v| = 20$ m·s⁻¹ ✓</p>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h3>4. Část c) - Maximální výška</h3>
+
+                <div class="equation-logic-box">
+                    <strong>Proč dvě metody?</strong> Různé přístupy posilují pochopení. Kinematický přístup používá čas, energetický přístup je rychlejší a ukáže souvislost s energií.
+                </div>
+
+                <div class="result-box">
+                    <p><strong>Metoda 1 - kinematická (průměrná rychlost):</strong></p>
+                    $$v_{\text{průměr}} = \frac{v_0 + 0}{2} = \frac{20 + 0}{2} = 10 \text{ m·s⁻¹}$$
+                    $$h = v_{\text{průměr}} \cdot t_k = 10 \times 2 = 20 \text{ m}$$
+
+                    <p><strong>Metoda 2 - energetická:</strong></p>
+                    $$h = \frac{v_0^2}{2g} = \frac{20^2}{2 \times 10} = \frac{400}{20} = 20 \text{ m}$$
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h3>5. Část d) - Grafy v(t) a h(t)</h3>
+
+                <div class="analogy-box">
+                    <strong>Praktická analogie:</strong> Graf rychlosti je jako indikátor výtahu - stoupá, zastavuje, klesá. Graf výšky je jako stopka hodin - sleduje polohu v čase, tvoří parábolu.
+                </div>
+
+                <div class="result-box">
+                    <p><strong>Graf rychlosti v(t):</strong></p>
+                    <ul>
+                        <li>Lineární pokles z +20 m·s⁻¹ na -20 m·s⁻¹ za 4 s</li>
+                        <li>Nula v čase t = 2 s (vrchol letu)</li>
+                        <li>Sklon grafu = -g = -10 m·s⁻²</li>
+                        <li>Rovnice: $v(t) = 20 - 10t$</li>
+                    </ul>
+
+                    <p><strong>Graf výšky h(t):</strong></p>
+                    <ul>
+                        <li>Parabola s vrcholem v (2 s, 20 m)</li>
+                        <li>Symetrická kolem t = 2 s</li>
+                        <li>Počáteční a konečná výška = 0</li>
+                        <li>Rovnice: $h(t) = 20t - 5t^2$</li>
+                    </ul>
+                </div>
+
+                <div class="formula-box">
+                    <strong>Matematické vyjádření pohybu:</strong>
+                    $$v(t) = 20 - 10t \quad \text{[m·s⁻¹]}$$
+                    $$h(t) = 20t - 5t^2 \quad \text{[m]}$$
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h3>6. Kontrola a odpověď</h3>
+
+                <div class="summary-box">
+                    <strong>Odpovědi:</strong>
+                    <ul>
+                        <li><strong>a)</strong> Celková doba letu: <strong>4 s</strong></li>
+                        <li><strong>b)</strong> Dopadová rychlost: <strong>20 m·s⁻¹</strong></li>
+                        <li><strong>c)</strong> Maximální výška: <strong>20 m</strong></li>
+                        <li><strong>d)</strong> Grafy: $v(t) = 20 - 10t$, $h(t) = 20t - 5t^2$</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <strong>Kontrola rozumnosti:</strong> Kyj letí 4 sekundy a dosáhne 20 metrů výšky - to odpovídá přibližně 6patrovému domu. Pro výhoz rychlostí 72 km·h⁻¹ je to realistické.
+                </div>
+
+                <div class="warning-box">
+                    <strong>Bezpečnostní poznámka:</strong> Ve skutečnosti by kyj rotoval a odpor vzduchu by mírně snížil dosah. Nikdy neházej těžké předměty svisle nahoru v zastavěné oblasti!
+                </div>
+
+                <div class="alternative-method-box">
+                    <strong>Alternativní přístup:</strong> Mohli jsme použít energetickou bilanci: $\frac{1}{2}mv_0^2 = mgh_{max}$, odkud $h_{max} = \frac{v_0^2}{2g} = 20$ m. Výsledek je stejný!
+                </div>
+            </div>
+        </div>
+
+        <details>
+            <summary>🤔 Metakognitivní otázky</summary>
+            <div>
+                <ul>
+                    <li>Proč je svislý vrh symetrický? Co způsobuje tuto symetrii a kdy by neplatila?</li>
+                    <li>Jak by se změnila doba letu, kdyby byla počáteční rychlost 2× větší? A maximální výška?</li>
+                    <li>Co by se stalo, kdyby Ivánek házel kyj z okna ve výšce 10 m? Byla by symetrie stále platná?</li>
+                    <li>Jaký tvar by měl graf zrychlení a(t) pro svislý vrh? Proč by byl konstantní?</li>
+                    <li>Kdy během letu je kinetická energie minimální a potenciální energie maximální? Kdy jsou si rovny?</li>
+                </ul>
+            </div>
+        </details>
+    </main>
+</body>
+</html>

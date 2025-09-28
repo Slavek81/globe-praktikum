@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Řešení</title>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>93. Pulsar - extrémní rotace</h1>
+            <p>Kinematika - řešený příklad</p>
+        </header>
+
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Pulsary jsou neutronové hvězdy - nejhustší objekty ve vesmíru po černých dírách. Mají hmotnost 1,4 Slunce vtěsnanou do průměru pouhých 15 km! Rychle rotující pulsary slouží jako kosmické "majáky" a nejpřesnější hodiny ve vesmíru. Jejich studium pomáhá testovat obecnou teorii relativity a hledat gravitační vlny. Rychlosti na jejich povrchu dosahují zlomků rychlosti světla a umožňují studium extrémní fyziky.
+        </div>
+
+        <div class="zadani">
+            <h2>Zadání</h2>
+            <p>Pulsar o průměru <strong>15 km</strong> rotuje s frekvencí <strong>9 Hz</strong>. Vypočtěte rychlost bodu na rovníku pulsaru.</p>
+        </div>
+
+        <div class="reseni">
+            <h2>Řešení</h2>
+
+            <div class="krok">
+                <h3>1. Analýza situace a zadané hodnoty</h3>
+
+                <div class="equation-logic-box">
+                    <strong>Logika výběru:</strong> Pulsar je extrémně hustý objekt rotující jako tuhé těleso. I při klasické mechanice dosahují rychlosti na povrchu relativistických hodnot - zlomků rychlosti světla.
+                </div>
+
+                <div class="warning-box">
+                    <strong>Pozor na jednotky!</strong> Při extrémních rychlostech blízkých rychlosti světla by měly být použity relativistické korekce, ale pro tento výpočet používáme klasickou mechaniku. Nezapomeňte převést km na metry!
+                </div>
+
+                <div class="note-box">
+                    <strong>Dané hodnoty:</strong>
+                    <ul>
+                        <li>Průměr pulsaru: d = 15 km</li>
+                        <li>Poloměr pulsaru: r = d/2 = 7,5 km = 7 500 m</li>
+                        <li>Frekvence rotace: f = 9 Hz</li>
+                        <li>Hledáme: rychlost na rovníku pulsaru v</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="krok">
+                <h3>2. Výběr fyzikální rovnice</h3>
+
+                <div class="equation-logic-box">
+                    <strong>Proč tyto rovnice?</strong> I pro extrémně rychle rotující objekty používáme stejné základní vztahy rotační kinematiky. Zajímavé je porovnání s rychlostí světla.
+                </div>
+
+                <div class="formula-box">
+                    $$\omega = 2\pi f \text{ (úhlová rychlost)}$$
+                    $$v = \omega \cdot r \text{ (obvodová rychlost)}$$
+                    $$\frac{v}{c} \text{ (poměr k rychlosti světla)}$$
+                </div>
+
+                <div class="analogy-box">
+                    <strong>Praktická analogie:</strong> Představte si extrémně malou káču, která se točí tisíckrát rychleji než nejrychlejší pračky. Rychlost na okraji je tak velká, že se blíží rychlosti světla.
+                </div>
+            </div>
+
+            <div class="krok">
+                <h3>3. Algebraické vyjádření a výpočet</h3>
+
+                <div class="tip-box">
+                    <strong>Užitečný tip:</strong> Rychlost světla c = 3×10⁸ m/s je důležitá referenční hodnota. Když se objekt blíží k 10% rychlosti světla, začínají být relativistické efekty významné.
+                </div>
+
+                <p><strong>Krok 1: Úhlová rychlost</strong></p>
+                <div class="calculation-step">
+                    $$\omega = 2\pi f = 2\pi \times 9 = 18\pi = 56{,}55 \text{ rad·s⁻¹}$$
+                </div>
+
+                <p><strong>Krok 2: Rychlost na rovníku</strong></p>
+                <div class="calculation-step">
+                    $$v = \omega \times r = 56{,}55 \times 7\,500 = 424\,125 \text{ m·s⁻¹}$$
+                    $$v = 424\,125 \text{ m·s⁻¹} = 424 \text{ km·s⁻¹}$$
+                </div>
+
+                <p><strong>Krok 3: Poměr k rychlosti světla</strong></p>
+                <div class="calculation-step">
+                    $$\frac{v}{c} = \frac{424\,125}{3 \times 10^8} = 0{,}0014 = 0{,}14\%$$
+                </div>
+            </div>
+
+            <div class="krok">
+                <h3>4. Kontrola a interpretace výsledku</h3>
+
+                <div class="summary-box">
+                    <strong>Odpověď:</strong>
+                    <ul>
+                        <li>Rychlost na rovníku pulsaru: <strong>424 km·s⁻¹</strong></li>
+                        <li>Poměr k rychlosti světla: <strong>0,14 %</strong></li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <strong>Kontrola rozumnosti:</strong> Rychlost 424 km/s je tisíckrát větší než rychlost zvuku (343 m/s) a 900krát větší než rychlost na zemském rovníku (465 m/s). Odpovídá rychlostem blízkým relativistickým efektům.
+                </div>
+
+                <div class="alternative-method-box">
+                    <strong>Alternativní způsob:</strong> Můžeme počítat přímo z obvodu a periody: v = obvod/perioda = 2πr/T = 2π × 7500 / (1/9) = 424 km/s
+                </div>
+            </div>
+        </div>
+
+        <details>
+            <summary>🤔 Metakognitivní otázky</summary>
+            <div>
+                <ul>
+                    <li>Při jakých rychlostech by bylo nutné použít relativistické korekce místo klasické mechaniky?</li>
+                    <li>Jaké síly drží materiál na povrchu pulsaru při takto extrémních rychlostech?</li>
+                    <li>Proč jsou pulsary tak přesné "kosmické hodiny" a jak je využíváme v astronomii?</li>
+                    <li>Jak by se změnila rychlost, kdyby pulsar rotoval ještě rychleji - například 100 Hz?</li>
+                    <li>Proč neutronové hvězdy mohou rotovat tak rychle, aniž by se rozpadly?</li>
+                </ul>
+            </div>
+        </details>
+    </main>
+</body>
+</html>

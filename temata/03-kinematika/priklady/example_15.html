@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Řešení</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>15. Porovnání dvou aut - které dojede dříve do cíle?</h1>
+            <p>Kinematika - řešený příklad</p>
+        </header>
+
+        <!-- Motivační úvod pro studenty -->
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Takové porovnání je typické pro plánování cest - je rychlejší jet stále stejnou rychlostí, nebo někde zrychlit a jinde zpomalit? GPS navigace řeší podobné otázky při výběru optimální trasy s různými rychlostními limity.
+        </div>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <p>
+                Automobil ujel první polovinu vzdálenosti rychlostí <strong>30 km·h⁻¹</strong> a druhou rychlostí <strong>50 km·h⁻¹</strong>. Druhý automobil, který se začal pohybovat ve stejném okamžiku, se pohyboval po stejné trajektorii stálou rychlostí <strong>40 km·h⁻¹</strong>. Který z automobilů dorazil do cíle dříve?
+            </p>
+        </section>
+
+        <section id="vstupni-data">
+            <h3>Vstupní data</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Veličina</th>
+                        <th>Symbol</th>
+                        <th>Hodnota</th>
+                        <th>Jednotka</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Rychlost první poloviny</td>
+                        <td class="variable">v₁</td>
+                        <td class="value">30</td>
+                        <td class="unit">km·h⁻¹</td>
+                    </tr>
+                    <tr>
+                        <td>Rychlost druhé poloviny</td>
+                        <td class="variable">v₂</td>
+                        <td class="value">50</td>
+                        <td class="unit">km·h⁻¹</td>
+                    </tr>
+                    <tr>
+                        <td>Konstantní rychlost auta 2</td>
+                        <td class="variable">v₃</td>
+                        <td class="value">40</td>
+                        <td class="unit">km·h⁻¹</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+            <p>Výpočet rozdělíme do několika logických kroků podle typu kinematické úlohy.</p>
+            
+            <div class="calculation-step">
+                <h4>Krok 1: Strategie řešení - porovnání průměrných rychlostí</h4>
+                <p>Abychom určili vítěze, musíme porovnat průměrné rychlosti obou automobilů:</p>
+
+                <div class="note-box">
+                    <strong>Analýza:</strong>
+                    <ul>
+                        <li><strong>Automobil 1:</strong> Kombinuje rychlosti 30 a 50 km·h⁻¹</li>
+                        <li><strong>Automobil 2:</strong> Konstantní rychlost 40 km·h⁻¹</li>
+                    </ul>
+                    <div class="warning-box" style="background: #fff3cd; border: 1px solid #ffeaa7; padding: 10px; margin: 10px 0; border-radius: 5px;">
+                        <strong>⚠️ Pozor:</strong> Průměrná rychlost ≠ (30+50)/2 = 40 km·h⁻¹!
+                    </div>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 2: Analýza automobilu 2 (jednoduší případ)</h4>
+                <p>Automobil 2 jede konstantní rychlostí:</p>
+
+                <div class="formula-box">
+                    <strong>📐 Průměrná rychlost auta 2</strong>
+                    <p>$$v_{\text{průměr},2} = 40 \text{ km·h}^{-1}$$</p>
+                    <p>Jednoduchý případ - konstantní rychlost!</p>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 3: Výpočet průměrné rychlosti automobilu 1</h4>
+                <p>Označme celkovou vzdálenost jako 's'. Časy pro jednotlivé úseky:</p>
+
+                <div class="result-box">
+                    <strong>📐 Časy jednotlivých úseků</strong>
+                    <p>$$t_1 = \frac{s/2}{30} = \frac{s}{60} \text{ h}$$</p>
+                    <p>$$t_2 = \frac{s/2}{50} = \frac{s}{100} \text{ h}$$</p>
+                    <p>$$t_{\text{celk}} = \frac{s}{60} + \frac{s}{100} = \frac{5s + 3s}{300} = \frac{8s}{300} = \frac{2s}{75}$$</p>
+
+                    <strong>📐 Průměrná rychlost auta 1</strong>
+                    <p>$$v_{\text{průměr},1} = \frac{s_{\text{celk}}}{t_{\text{celk}}} = \frac{s}{\frac{2s}{75}} = \frac{s \cdot 75}{2s} = \frac{75}{2} = 37{,}5 \text{ km·h}^{-1}$$</p>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 4: Porovnání a odpověď</h4>
+                <p>Porovnání průměrných rychlostí:</p>
+
+                <div class="result-box">
+                    <strong>💡 Porovnání:</strong>
+                    <ul>
+                        <li>Automobil 1: 37,5 km·h⁻¹</li>
+                        <li>Automobil 2: 40,0 km·h⁻¹</li>
+                    </ul>
+
+                    <p><strong>Odpověď:</strong> Do cíle dorazí dříve <strong>druhý automobil</strong> (konstantní rychlost).</p>
+
+                    <div class="warning-box" style="background: #fff3cd; border: 1px solid #ffeaa7; padding: 10px; margin: 10px 0; border-radius: 5px;">
+                        <strong>⚠️ Důvod:</strong> Auto 1 stráví více času pomalou jízdou než rychlou!
+                    </div>
+
+                    <div class="practical-note" style="background: #e8f5e8; border: 1px solid #4caf50; padding: 10px; margin: 10px 0; border-radius: 5px;">
+                        <strong>🔍 Vysvětlení:</strong> První auto stráví déle času (s/60 h) na pomalém úseku než na rychlém úseku (s/100 h), což snižuje celkovou průměrnou rychlost pod 40 km·h⁻¹.
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

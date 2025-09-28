@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Řešení</title>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>60. Setkání na cestě Praha-Brno</h1>
+            <p>Kinematika - řešený příklad</p>
+        </header>
+
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Situace ze zadání se běžně vyskytuje při koordinaci dopravy - např. když se dva řidiči domlouvají na setkání, při plánování závodů nebo dokonce při GPS sledování objektů. Dopravní dispečeři používají podobné výpočty pro optimalizaci tras autobusů a vlaků.
+        </div>
+
+        <section>
+            <h2>📋 Zadání</h2>
+            <div class="zadani">
+                <p>Alík vyjíždí z <strong>Prahy do Brna</strong> rychlostí <strong>130 km·h⁻¹</strong>, zatímco Baryk vyjíždí z <strong>Brna rychlostí 100 km·h⁻¹</strong>. Vzdálenost Praha-Brno budiž <strong>200 km</strong>.</p>
+                <p><strong>a)</strong> Za jak dlouho se setkají, pokud vyrazí současně?</p>
+                <p><strong>b)</strong> Na kolikátém kilometru se potkají, pokud Alík vyjede o půl hodiny později?</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>💭 Krok 1: Analýza situace</h2>
+
+            <div class="equation-logic-box">
+                <strong>Logika výběru:</strong> Jde o úlohu relativního pohybu dvou objektů jedoucích proti sobě. Klíčové je pochopit, že se vzdálenost mezi nimi zmenšuje rychlostí rovnou součtu jejich rychlostí.
+            </div>
+
+            <div class="warning-box">
+                <strong>Pozor na jednotky!</strong> Všechny rychlosti jsou v km·h⁻¹ a vzdálenost v km, takže čas dostaneme v hodinách. Pro převod na minuty násobíme 60.
+            </div>
+
+            <div class="note-box">
+                <strong>Dané hodnoty:</strong>
+                <ul>
+                    <li>Rychlost Alíka: $v_A = 130$ km·h⁻¹</li>
+                    <li>Rychlost Baryka: $v_B = 100$ km·h⁻¹</li>
+                    <li>Vzdálenost Praha-Brno: $s = 200$ km</li>
+                    <li>Hledáme: a) čas setkání při současném startu, b) místo setkání při zpoždění</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2>⚙️ Krok 2: Výběr rovnice</h2>
+
+            <div class="equation-logic-box">
+                <strong>Proč tuto rovnici?</strong> Když se dva objekty pohybují proti sobě, jejich relativní rychlost je součtem obou rychlostí. Čas do setkání pak vypočítáme jako podíl vzdálenosti a relativní rychlosti.
+            </div>
+
+            <div class="formula-box">
+                <p><strong>Relativní rychlost:</strong></p>
+                $$v_{rel} = v_A + v_B$$
+                <p><strong>Čas do setkání:</strong></p>
+                $$t = \frac{s}{v_{rel}}$$
+            </div>
+
+            <div class="analogy-box">
+                <strong>Praktická analogie:</strong> Představte si dva vlaky jedoucí proti sobě na stejné koleji - rychlost, jakou se k sobě přibližují, je součtem obou rychlostí, ne rozdílem!
+            </div>
+        </section>
+
+        <section>
+            <h2>🔢 Krok 3: Výpočet</h2>
+
+            <h3>Část a) Současný start</h3>
+
+            <div class="calculation-step">
+                <p><strong>Relativní rychlost:</strong></p>
+                $$v_{rel} = v_A + v_B = 130 + 100 = 230 \text{ km·h⁻¹}$$
+
+                <div class="result-box">
+                    <strong>Výsledek:</strong> Relativní rychlost je 230 km·h⁻¹
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <p><strong>Čas do setkání:</strong></p>
+                $$t = \frac{s}{v_{rel}} = \frac{200}{230} = 0{,}87 \text{ h} = 52{,}2 \text{ min}$$
+
+                <div class="result-box">
+                    <strong>Výsledek:</strong> Při současném startu se setkají za 52,2 minuty
+                </div>
+            </div>
+
+            <div class="tip-box">
+                <strong>Tip:</strong> Pro převod na minuty násobíme desetinnou část hodiny číslem 60: 0,87 × 60 = 52,2 min
+            </div>
+
+            <h3>Část b) Alík vyjíždí o půl hodiny později</h3>
+
+            <div class="calculation-step">
+                <p><strong>Barykův náskok:</strong></p>
+                $$s_{náskok} = v_B \times 0{,}5 = 100 \times 0{,}5 = 50 \text{ km}$$
+
+                <div class="result-box">
+                    <strong>Výsledek:</strong> Baryk ujede 50 km před Alíkovým startem
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <p><strong>Zbývající vzdálenost k překonání:</strong></p>
+                $$s_{zbývá} = 200 - 50 = 150 \text{ km}$$
+
+                <p><strong>Čas od Alíkova startu do setkání:</strong></p>
+                $$t_{Alík} = \frac{s_{zbývá}}{v_A + v_B} = \frac{150}{230} = 0{,}65 \text{ h} = 39 \text{ min}$$
+
+                <div class="result-box">
+                    <strong>Výsledek:</strong> Od Alíkova startu se setkají za 39 minut
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <p><strong>Vzdálenost setkání od Prahy:</strong></p>
+                $$s_{setkání} = v_A \times t_{Alík} = 130 \times 0{,}65 = 84{,}5 \text{ km}$$
+
+                <div class="result-box">
+                    <strong>Výsledek:</strong> Setkají se 84,5 km od Prahy
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>✅ Krok 4: Kontrola a odpověď</h2>
+
+            <div class="summary-box">
+                <strong>Odpověď:</strong>
+                <ul>
+                    <li><strong>a)</strong> Při současném startu se setkají za <strong>52,2 minuty</strong></li>
+                    <li><strong>b)</strong> S půlhodinovým zpožděním se setkají na <strong>84,5 km od Prahy</strong></li>
+                </ul>
+            </div>
+
+            <div class="info-box">
+                <strong>Kontrola rozumnosti:</strong> Ověření pro část b): Baryk ujede celkem $100 \times (0{,}5 + 0{,}65) = 115{,}5$ km od Brna, což odpovídá $200 - 115{,}5 = 84{,}5$ km od Prahy ✓
+            </div>
+
+            <div class="alternative-method-box">
+                <strong>Alternativní způsob:</strong> Můžeme také řešit pomocí rovnic dráhy: $s_A = v_A \times t$ a $s_B = v_B \times (t + 0{,}5)$ s podmínkou $s_A + s_B = 200$ km.
+            </div>
+
+            <details>
+                <summary>🤔 Metakognitivní otázky</summary>
+                <div>
+                    <ul>
+                        <li>Proč se při zpoždění setkají blíže k rychlejšímu objektu?</li>
+                        <li>Jak by se změnil výsledek, kdyby oba měli stejnou rychlost?</li>
+                        <li>Co kdyby jeli stejným směrem místo proti sobě?</li>
+                        <li>Jak byste aplikovali tuto úlohu na setkání vlaků nebo letadel?</li>
+                        <li>Jaký vliv má délka zpoždění na místo setkání?</li>
+                    </ul>
+                </div>
+            </details>
+        </section>
+    </main>
+</body>
+</html>

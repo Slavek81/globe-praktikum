@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Řešení</title>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>84. Nastavení granátometu</h1>
+            <p>Kinematika - řešený příklad</p>
+        </header>
+
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Toto je praktická aplikace inverzního problému balistiky! Podobné výpočty používají hasiči pro nastavení vodních proudů při hašení požárů, zahradníci pro zavlažovací systémy, architekti pro design fontán ve městech, nebo sportovci při házení koulí na požadovanou vzdálenost. V civilních aplikacích jde o přesné nastavení vodometů, trysek, nebo dokonce vrhačů míčků pro psy v parcích.
+        </div>
+
+        <div class="zadani">
+            <h3>Zadání</h3>
+            <p>V jedné z řady dalších nesmyslných válek má neznámý vojín za úkol nastavit hlaveň granátometu tak, aby granát dopadl do vzdálenosti <strong>400 m</strong>, přičemž ví, že úsťová rychlost výstřelu je <strong>100 m·s⁻¹</strong>. Pod jakým úhlem vůči <strong>svislému směru</strong> je třeba hlaveň nastavit? Řešte nejprve obecně.</p>
+        </div>
+
+        <div class="calculation-step">
+            <h3>1. Analýza inverzního problému</h3>
+
+            <div class="equation-logic-box">
+                <strong>💭 Logika výběru:</strong> Máme "obrácenou" situaci - známe požadovaný dostřel a rychlost, hledáme úhel. Jde o řešení transcendentní rovnice s goniometrickými funkcemi. Klíčové je rozpoznat, že existují dvě řešení!
+            </div>
+
+            <div class="warning-box">
+                <strong>⚠️ Kritické upozornění!</strong>
+                <ul>
+                    <li>Pozor na záměnu úhlu vůči svislici vs. vůči horizontále - liší se o 90°!</li>
+                    <li>Pro každý dostřel (kromě maximálního) existují DVA úhly - nižší a vyšší trajektorie</li>
+                    <li>Vojín musí zkontrolovat, zda je požadovaný dostřel vůbec dosažitelný</li>
+                </ul>
+            </div>
+
+            <div class="note-box">
+                <strong>📝 Dané hodnoty:</strong>
+                <ul>
+                    <li>Požadovaný dostřel: $d = 400$ m</li>
+                    <li>Úsťová rychlost: $v_0 = 100$ m·s⁻¹</li>
+                    <li>Gravitační zrychlení: $g = 9{,}81$ m·s⁻² (použijeme 10 m·s⁻²)</li>
+                    <li>Podmínky: vakuum, stejná výška startu a dopadu</li>
+                    <li><strong>Hledáme:</strong> úhel $\beta$ vůči svislici</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="calculation-step">
+            <h3>2. Kontrola dosažitelnosti cíle</h3>
+
+            <div class="equation-logic-box">
+                <strong>🎯 Proč kontrolovat?</strong> Před řešením musíme ověřit, zda je požadovaný dostřel vůbec fyzikálně možný. Maximální dostřel je při 45° a má hodnotu v₀²/g. Pokud požadujeme více, úloha nemá řešení!
+            </div>
+
+            <p><strong>Maximální možný dostřel:</strong></p>
+            <div class="formula-box">
+                $$d_{max} = \frac{v_0^2}{g} = \frac{100^2}{10} = \frac{10000}{10} = 1000 \text{ m}$$
+
+                <strong>Kontrola dosažitelnosti:</strong>
+                $$d = 400 \text{ m} < d_{max} = 1000 \text{ m} \quad \checkmark$$
+                <p>Cíl je dosažitelný, existují dvě řešení!</p>
+            </div>
+
+            <div class="analogy-box">
+                <strong>🎯 Praktická analogie:</strong> Je to jako házet míčem do koše - můžete ho hodit "přímou" nízkou trajektorií nebo "obloukovou" vysokou trajektorií. Obě cesty vedou do stejného cíle, ale liší se časem letu a maximální výškou.
+            </div>
+        </div>
+
+        <div class="calculation-step">
+            <h3>3. Řešení transcendentní rovnice</h3>
+
+            <div class="tip-box">
+                <strong>💡 Užitečná rada:</strong> Ze vzorce pro dostřel vyjádříme sin(2α) a použijeme inverzní goniometrickou funkci arcsin. Nezapomeňte, že arcsin má dva úhly v intervalu 0°-180°!
+            </div>
+
+            <p><strong>Odvození vzorce pro úhel:</strong></p>
+            <div class="formula-box">
+                <strong>Ze vzorce pro dostřel:</strong>
+                $$d = \frac{v_0^2 \sin(2\alpha)}{g}$$
+
+                <strong>Řešení pro sin(2α):</strong>
+                $$\sin(2\alpha) = \frac{dg}{v_0^2} = \frac{400 \times 10}{100^2} = \frac{4000}{10000} = 0{,}4$$
+
+                <strong>Inverzní goniometrická funkce:</strong>
+                $$2\alpha = \arcsin(0{,}4)$$
+            </div>
+
+            <details>
+                <summary><strong>🔍 Výpočet arcsin pomocí kalkulačky</strong></summary>
+                <div>
+                    <p>$\arcsin(0{,}4) = 23{,}58°$ (principal value)</p>
+                    <p>Druhé řešení: $180° - 23{,}58° = 156{,}42°$</p>
+                    <p>Takže $2\alpha_1 = 23{,}58°$ a $2\alpha_2 = 156{,}42°$</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="calculation-step">
+            <h3>4. Výpočet obou úhlů</h3>
+
+            <p><strong>Dva úhly vůči horizontále:</strong></p>
+            <div class="formula-box">
+                <strong>První řešení (nižší trajektorie):</strong>
+                $$2\alpha_1 = \arcsin(0{,}4) = 23{,}58°$$
+                $$\alpha_1 = 11{,}79° \approx 11{,}8°$$
+
+                <strong>Druhé řešení (vyšší trajektorie):</strong>
+                $$2\alpha_2 = 180° - 23{,}58° = 156{,}42°$$
+                $$\alpha_2 = 78{,}21° \approx 78{,}2°$$
+            </div>
+
+            <p><strong>Převod na úhly vůči svislici:</strong></p>
+            <div class="formula-box">
+                <strong>Pro nižší trajektorii:</strong>
+                $$\beta_1 = 90° - \alpha_1 = 90° - 11{,}8° = 78{,}2°$$
+
+                <strong>Pro vyšší trajektorii:</strong>
+                $$\beta_2 = 90° - \alpha_2 = 90° - 78{,}2° = 11{,}8°$$
+            </div>
+        </div>
+
+        <div class="calculation-step">
+            <h3>5. Výběr optimální trajektorie a bezpečnost</h3>
+
+            <div class="summary-box">
+                <strong>🎯 Kompletní odpověď:</strong>
+                <ul>
+                    <li><strong>Řešení 1 (nízká trajektorie):</strong> $\beta_1 = 78{,}2°$ vůči svislici</li>
+                    <li><strong>Řešení 2 (vysoká trajektorie):</strong> $\beta_2 = 11{,}8°$ vůči svislici</li>
+                </ul>
+
+                <strong>Vojenské doporučení:</strong>
+                <p>Vojín by měl volit nižší trajektorii (78,2° od svislice) - kratší doba letu, menší odhalení pozice, menší vliv větru.</p>
+            </div>
+
+            <div class="info-box">
+                <strong>🔍 Kontrola výsledků:</strong>
+                <p><strong>Ověření dosazením zpět:</strong></p>
+                <ul>
+                    <li>$d_1 = \frac{100^2 \sin(2 \times 11{,}8°)}{10} = \frac{10000 \sin(23{,}6°)}{10} = 1000 \times 0{,}4 = 400$ m ✓</li>
+                    <li>$d_2 = \frac{100^2 \sin(2 \times 78{,}2°)}{10} = \frac{10000 \sin(156{,}4°)}{10} = 1000 \times 0{,}4 = 400$ m ✓</li>
+                </ul>
+            </div>
+
+            <div class="alternative-method-box">
+                <strong>🔄 Porovnání obou trajektorií:</strong>
+                <table style="border-collapse: collapse; margin: 10px 0;">
+                    <tr style="border: 1px solid #ddd; padding: 8px;">
+                        <th style="border: 1px solid #ddd; padding: 8px;">Vlastnost</th>
+                        <th style="border: 1px solid #ddd; padding: 8px;">Nízká (78,2°)</th>
+                        <th style="border: 1px solid #ddd; padding: 8px;">Vysoká (11,8°)</th>
+                    </tr>
+                    <tr style="border: 1px solid #ddd;">
+                        <td style="border: 1px solid #ddd; padding: 8px;">Doba letu</td>
+                        <td style="border: 1px solid #ddd; padding: 8px;">Kratší</td>
+                        <td style="border: 1px solid #ddd; padding: 8px;">Delší</td>
+                    </tr>
+                    <tr style="border: 1px solid #ddd;">
+                        <td style="border: 1px solid #ddd; padding: 8px;">Max. výška</td>
+                        <td style="border: 1px solid #ddd; padding: 8px;">Nižší</td>
+                        <td style="border: 1px solid #ddd; padding: 8px;">Vyšší</td>
+                    </tr>
+                    <tr style="border: 1px solid #ddd;">
+                        <td style="border: 1px solid #ddd; padding: 8px;">Taktická výhoda</td>
+                        <td style="border: 1px solid #ddd; padding: 8px;">Rychlý zásah</td>
+                        <td style="border: 1px solid #ddd; padding: 8px;">Překonání překážek</td>
+                    </tr>
+                </table>
+            </div>
+
+            <details>
+                <summary>🤔 Metakognitivní otázky</summary>
+                <div>
+                    <ul>
+                        <li>Proč existují právě dva úhly pro jeden dostřel a kdy by vojín volil který?</li>
+                        <li>Co by se stalo, kdyby požadovaný dostřel byl přesně 1000 m (maximum)? Kolik by bylo řešení?</li>
+                        <li>Jak by se lišily obě řešení z hlediska doby letu a maximální výšky?</li>
+                        <li>Jaké praktické výhody má nižší vs. vyšší trajektorie v reálném boji?</li>
+                        <li>Jak by se změnily úhly při střelbě z kopce dolů nebo ze svahu nahoru?</li>
+                    </ul>
+                </div>
+            </details>
+        </div>
+    </main>
+</body>
+</html>

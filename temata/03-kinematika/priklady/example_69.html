@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Řešení</title>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>69. Obří Štěpán a kámen</h1>
+            <p>Kinematika - řešený příklad</p>
+        </header>
+
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Tento fantastický příklad kombinuje matematiku s představivostí a procvičuje všechny klíčové aspekty volného pádu. Podobné výpočty používají inženýři při navrhování výškových budov, mostů a při analýze bezpečnosti objektů padajících z velkých výšek.
+        </div>
+
+        <section>
+            <h2>📋 Zadání</h2>
+            <div class="zadani">
+                <p>Štepán si přál k Vánocům, aby byl 100× větší. Přání se mu splnilo a nyní měří na výšku <strong>170 metrů</strong>. Na oslavu z výšky svého majestátu upustil kámen. Neuvažujte odpor vzduchu, berte g = 10 m·s⁻² a odpovězte:</p>
+                <ol type="a">
+                    <li>V jaké výšce nad zemí se kámen nachází 2,5 sekundy po vypuštění?</li>
+                    <li>Za jak dlouho bude kámen ve výšce 100 m?</li>
+                    <li>Jakou rychlostí kámen poletí ve výšce 100 m?</li>
+                    <li>Jakou dráhu urazí kámen během čtvrté sekundy letu?</li>
+                    <li>Jakou rychlostí kámen dopadne na zem?</li>
+                    <li>V jaké výšce bude kámen ve chvíli, kdy letí rychlostí 50 m·s⁻¹?</li>
+                </ol>
+            </div>
+        </section>
+
+        <section>
+            <h2>💭 Krok 1: Analýza situace</h2>
+
+            <div class="equation-logic-box">
+                <strong>Logika výběru:</strong> Jde o volný pád z klidu z výšky 170 m. Používáme základní kinematické rovnice s počáteční rychlostí $v_0 = 0$ a zrychlením $g = 10$ m·s⁻².
+            </div>
+
+            <div class="warning-box">
+                <strong>Pozor na znaménka!</strong> Výška nad zemí klesá, takže odečítáme uraženou dráhu od počáteční výšky. Rozlišujme "uraženou dráhu" a "výšku nad zemí".
+            </div>
+
+            <div class="note-box">
+                <strong>Základní data:</strong>
+                <ul>
+                    <li>Počáteční výška: $h_0 = 170$ m</li>
+                    <li>Počáteční rychlost: $v_0 = 0$ (upuštění z klidu)</li>
+                    <li>Zrychlení: $g = 10$ m·s⁻² (zjednodušené)</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2>⚙️ Krok 2: Výběr rovnic</h2>
+
+            <div class="equation-logic-box">
+                <strong>Proč tyto rovnice?</strong> Pro volný pád z výšky používáme kombinaci rovnic pro dráhu, rychlost a výšku nad zemí. Klíčové je rozlišovat mezi upadnutou vzdáleností a aktuální výškou.
+            </div>
+
+            <div class="formula-box">
+                <p><strong>Klíčové rovnice volného pádu:</strong></p>
+                $$h(t) = h_0 - \frac{1}{2}gt^2 \quad \text{(výška nad zemí)}$$
+                $$v(t) = gt \quad \text{(rychlost z klidu)}$$
+                $$s(t) = \frac{1}{2}gt^2 \quad \text{(upadnutá dráha)}$$
+                $$v^2 = 2gs \quad \text{(rychlost vs. dráha)}$$
+            </div>
+
+            <div class="analogy-box">
+                <strong>Praktická analogie:</strong> Obří Štěpán je jako mrakodrap - kámen padá stejně jako z jakékoliv jiné vysoké budovy, jen výška je fantasticky velká!
+            </div>
+        </section>
+
+        <section>
+            <h2>🔢 Krok 3: Výpočet všech částí</h2>
+
+            <h3>a) Výška po 2,5 sekundách</h3>
+
+            <div class="calculation-step">
+                <p><strong>Upadnutá vzdálenost za 2,5 s:</strong></p>
+                $$s = \frac{1}{2}gt^2 = \frac{1}{2} \times 10 \times (2{,}5)^2 = 5 \times 6{,}25 = 31{,}25 \text{ m}$$
+
+                <p><strong>Výška nad zemí:</strong></p>
+                $$h = h_0 - s = 170 - 31{,}25 = 138{,}75 \text{ m}$$
+
+                <div class="result-box">
+                    <strong>Odpověď a:</strong> Kámen je ve výšce 138,75 m nad zemí
+                </div>
+            </div>
+
+            <h3>b) Čas do výšky 100 m</h3>
+
+            <div class="calculation-step">
+                <p><strong>Potřebná upadnutá vzdálenost:</strong></p>
+                $$s = h_0 - h = 170 - 100 = 70 \text{ m}$$
+
+                <p><strong>Čas z rovnice $s = \frac{1}{2}gt^2$:</strong></p>
+                $$t = \sqrt{\frac{2s}{g}} = \sqrt{\frac{2 \times 70}{10}} = \sqrt{14} = 3{,}74 \text{ s}$$
+
+                <div class="result-box">
+                    <strong>Odpověď b:</strong> Za 3,74 sekundy
+                </div>
+            </div>
+
+            <div class="warning-box">
+                <strong>Pozor:</strong> Počítáme s upadnutou vzdáleností (70 m), ne s výškou nad zemí (100 m)!
+            </div>
+
+            <h3>c) Rychlost ve výšce 100 m</h3>
+
+            <div class="calculation-step">
+                <p><strong>Rychlost po čase t = 3,74 s:</strong></p>
+                $$v = gt = 10 \times 3{,}74 = 37{,}4 \text{ m·s⁻¹}$$
+
+                <p><strong>Převod na km·h⁻¹:</strong></p>
+                $$v = 37{,}4 \times 3{,}6 = 134{,}6 \text{ km·h⁻¹}$$
+
+                <div class="result-box">
+                    <strong>Odpověď c:</strong> 37,4 m·s⁻¹ (≈ 135 km·h⁻¹)
+                </div>
+            </div>
+
+            <h3>d) Dráha během čtvrté sekundy</h3>
+
+            <div class="calculation-step">
+                <p><strong>Čtvrtá sekunda = od t = 3 s do t = 4 s:</strong></p>
+                $$s(3\text{s}) = \frac{1}{2} \times 10 \times 3^2 = 45 \text{ m}$$
+                $$s(4\text{s}) = \frac{1}{2} \times 10 \times 4^2 = 80 \text{ m}$$
+
+                <p><strong>Dráha během čtvrté sekundy:</strong></p>
+                $$\Delta s = s(4\text{s}) - s(3\text{s}) = 80 - 45 = 35 \text{ m}$$
+
+                <div class="result-box">
+                    <strong>Odpověď d:</strong> 35 m během čtvrté sekundy
+                </div>
+            </div>
+
+            <h3>e) Rychlost dopadu na zem</h3>
+
+            <div class="calculation-step">
+                <p><strong>Celkový čas pádu ze 170 m:</strong></p>
+                $$t_{celkem} = \sqrt{\frac{2h_0}{g}} = \sqrt{\frac{2 \times 170}{10}} = \sqrt{34} = 5{,}83 \text{ s}$$
+
+                <p><strong>Rychlost dopadu:</strong></p>
+                $$v_{dopad} = gt_{celkem} = 10 \times 5{,}83 = 58{,}3 \text{ m·s⁻¹}$$
+
+                <div class="result-box">
+                    <strong>Odpověď e:</strong> 58,3 m·s⁻¹ (≈ 210 km·h⁻¹)
+                </div>
+            </div>
+
+            <h3>f) Výška při rychlosti 50 m·s⁻¹</h3>
+
+            <div class="calculation-step">
+                <p><strong>Čas k dosažení rychlosti 50 m·s⁻¹:</strong></p>
+                $$t = \frac{v}{g} = \frac{50}{10} = 5 \text{ s}$$
+
+                <p><strong>Upadnutá vzdálenost za 5 s:</strong></p>
+                $$s = \frac{1}{2}gt^2 = \frac{1}{2} \times 10 \times 5^2 = 125 \text{ m}$$
+
+                <p><strong>Výška nad zemí:</strong></p>
+                $$h = 170 - 125 = 45 \text{ m}$$
+
+                <div class="result-box">
+                    <strong>Odpověď f:</strong> Ve výšce 45 m nad zemí
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>✅ Krok 4: Kontrola a odpověď</h2>
+
+            <div class="summary-box">
+                <strong>Souhrnné odpovědi:</strong>
+                <ul>
+                    <li><strong>a)</strong> Výška po 2,5 s: 138,75 m</li>
+                    <li><strong>b)</strong> Čas do výšky 100 m: 3,74 s</li>
+                    <li><strong>c)</strong> Rychlost ve 100 m: 37,4 m·s⁻¹</li>
+                    <li><strong>d)</strong> Dráha ve 4. sekundě: 35 m</li>
+                    <li><strong>e)</strong> Rychlost dopadu: 58,3 m·s⁻¹</li>
+                    <li><strong>f)</strong> Výška při v = 50 m·s⁻¹: 45 m</li>
+                </ul>
+            </div>
+
+            <div class="info-box">
+                <strong>Kontrola rozumnosti:</strong> Všechny hodnoty jsou logické - rychlost roste lineárně s časem, výška klesá kvadraticky, rychlost dopadu je vysoká ale realistická pro tak velkou výšku.
+            </div>
+
+            <div class="alternative-method-box">
+                <strong>Alternativní způsob:</strong> Pro některé části můžeme použít energetické vztahy: $mgh = \frac{1}{2}mv^2$, což dává $v = \sqrt{2g(h_0 - h)}$.
+            </div>
+
+            <details>
+                <summary>🤔 Metakognitivní otázky</summary>
+                <div>
+                    <ul>
+                        <li>Proč se dráha během čtvrté sekundy (35 m) liší od třetí sekundy (25 m)?</li>
+                        <li>Jak by se změnily výsledky na Měsíci (g = 1,6 m·s⁻²)?</li>
+                        <li>Jaký vliv by měl odpor vzduchu na reálný pád?</li>
+                        <li>Je rychlost dopadu 210 km·h⁻¹ skutečně dosažitelná v praxi?</li>
+                        <li>Proč je výška 45 m při rychlosti 50 m·s⁻¹ ještě relativně vysoká?</li>
+                    </ul>
+                </div>
+            </details>
+        </section>
+    </main>
+</body>
+</html>

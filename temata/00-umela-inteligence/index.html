@@ -3,20 +3,782 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>00 - Využití umělé inteligence | Praktické aplikace fyziky a chemie</title>
-    <meta name="description" content="Moderní AI nástroje ve fyzice a chemii, automatizace výpočtů a analýz.">
+    <title>00 - Využití umělé inteligence | Fyzika - opakování a prohloubení</title>
+    <meta name="description" content="Úvod do umělé inteligence - od základních pojmů po praktické využití. AI nástroje ve fyzice, etika a budoucnost technologií.">
     <link rel="stylesheet" href="../../css/main.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .ai-hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .quiz-container {
+            background: var(--background-light);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-lg);
+            margin: var(--spacing-lg) 0;
+        }
+
+        .quiz-question {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .quiz-options {
+            display: grid;
+            gap: var(--spacing-sm);
+        }
+
+        .quiz-option {
+            background: white;
+            border: 2px solid var(--border-color);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-sm);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .quiz-option:hover {
+            border-color: var(--primary-color);
+            background: #f8faff;
+        }
+
+        .quiz-option.correct {
+            background: #dcfce7;
+            border-color: #16a34a;
+        }
+
+        .quiz-option.incorrect {
+            background: #fef2f2;
+            border-color: #dc2626;
+        }
+
+        .result {
+            margin-top: var(--spacing-sm);
+            padding: var(--spacing-sm);
+            border-radius: var(--border-radius);
+            font-weight: var(--font-weight-medium);
+        }
+
+        .ai-demo {
+            background: white;
+            border: 2px solid var(--border-color);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-lg);
+            margin: var(--spacing-lg) 0;
+        }
+
+        .demo-input {
+            width: 100%;
+            padding: var(--spacing-sm);
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            margin-bottom: var(--spacing-sm);
+            font-size: 1rem;
+        }
+
+        .demo-button {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: var(--spacing-sm) var(--spacing-md);
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.3s ease;
+        }
+
+        .demo-button:hover {
+            background: var(--primary-dark);
+        }
+
+        .demo-output {
+            background: var(--background-light);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-md);
+            margin-top: var(--spacing-sm);
+            min-height: 60px;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .ethics-accordion {
+            margin: var(--spacing-lg) 0;
+        }
+
+        .ethics-item {
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            margin-bottom: var(--spacing-sm);
+            overflow: hidden;
+        }
+
+        .ethics-header {
+            background: var(--background-light);
+            padding: var(--spacing-md);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: var(--font-weight-medium);
+        }
+
+        .ethics-header:hover {
+            background: #f0f0f0;
+        }
+
+        .ethics-content {
+            padding: var(--spacing-md);
+            display: none;
+        }
+
+        .ethics-content.active {
+            display: block;
+        }
+
+        .ai-example-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-lg);
+            margin: var(--spacing-lg) 0;
+        }
+
+        .ai-example-card {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: var(--spacing-lg);
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .ai-example-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .ai-example-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: var(--spacing-md);
+        }
+
+        /* Nové styly pro prompt guide */
+        .prompt-guide {
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .term-mini-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-sm);
+            margin: var(--spacing-md) 0;
+        }
+
+        .term-mini-card {
+            background: var(--background-light);
+            padding: var(--spacing-sm);
+            border-radius: var(--border-radius);
+            border-left: 3px solid var(--primary-color);
+            font-size: 0.9rem;
+        }
+
+        .prompt-tips {
+            margin: var(--spacing-md) 0;
+        }
+
+        .tip-item {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-sm);
+            padding: var(--spacing-sm);
+            background: #f0f9ff;
+            border-radius: var(--border-radius);
+        }
+
+        .tip-item i {
+            color: var(--secondary-color);
+            margin-top: 2px;
+        }
+
+        .prompt-comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-md);
+            margin: var(--spacing-md) 0;
+        }
+
+        @media (max-width: 768px) {
+            .prompt-comparison {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .prompt-bad, .prompt-good {
+            padding: var(--spacing-md);
+            border-radius: var(--border-radius);
+            border: 2px solid;
+        }
+
+        .prompt-bad {
+            border-color: #dc2626;
+            background: #fef2f2;
+        }
+
+        .prompt-good {
+            border-color: #16a34a;
+            background: #f0fdf4;
+        }
+
+        .prompt-label {
+            font-weight: var(--font-weight-semibold);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .prompt-label.bad {
+            color: #dc2626;
+        }
+
+        .prompt-label.good {
+            color: #16a34a;
+        }
+
+        .prompt-text {
+            font-style: italic;
+            margin: var(--spacing-xs) 0;
+            padding: var(--spacing-xs);
+            background: white;
+            border-radius: 4px;
+            border-left: 3px solid currentColor;
+        }
+
+        .prompt-why {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-top: var(--spacing-xs);
+        }
+
+        .prompt-analysis {
+            background: var(--background-light);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-md);
+            margin-top: var(--spacing-md);
+            border-left: 4px solid var(--accent-color);
+        }
+
+        /* Nové styly pro rozšířené promptování */
+        .advanced-techniques {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--spacing-md);
+            margin: var(--spacing-md) 0;
+        }
+
+        .technique-card {
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-md);
+            transition: all 0.3s ease;
+        }
+
+        .technique-card:hover {
+            box-shadow: var(--shadow);
+            transform: translateY(-2px);
+        }
+
+        .technique-card h5 {
+            color: var(--primary-color);
+            margin-bottom: var(--spacing-sm);
+            font-size: 1.1rem;
+        }
+
+        .technique-example {
+            background: var(--background-light);
+            border-left: 3px solid var(--primary-color);
+            padding: var(--spacing-sm);
+            margin-top: var(--spacing-sm);
+            font-style: italic;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .prompt-template {
+            background: #f0f9ff;
+            border: 2px solid var(--primary-color);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-md);
+            margin: var(--spacing-md) 0;
+        }
+
+        .template-section {
+            padding: var(--spacing-xs) 0;
+            border-bottom: 1px solid #e0e7ff;
+        }
+
+        .template-section:last-child {
+            border-bottom: none;
+        }
+
+        .template-note {
+            margin-top: var(--spacing-md);
+            padding: var(--spacing-md);
+            background: #fef3c7;
+            border-radius: var(--border-radius);
+            border-left: 4px solid var(--accent-color);
+            font-style: italic;
+            color: #92400e;
+        }
+
+        .physics-examples {
+            margin: var(--spacing-md) 0;
+        }
+
+        .example-category {
+            margin-bottom: var(--spacing-md);
+            background: white;
+            border-radius: var(--border-radius);
+            padding: var(--spacing-md);
+            border-left: 4px solid var(--secondary-color);
+        }
+
+        .example-category h5 {
+            color: var(--secondary-color);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .example-prompt {
+            background: #f0fdf4;
+            padding: var(--spacing-sm);
+            border-radius: var(--border-radius);
+            font-family: monospace;
+            font-size: 0.9rem;
+            border: 1px solid #bbf7d0;
+        }
+
+        .common-mistakes {
+            margin: var(--spacing-md) 0;
+        }
+
+        .mistake-item {
+            margin-bottom: var(--spacing-md);
+            padding: var(--spacing-md);
+            background: white;
+            border-radius: var(--border-radius);
+            border: 1px solid var(--border-color);
+        }
+
+        .mistake-wrong {
+            color: #dc2626;
+            margin-bottom: var(--spacing-xs);
+            font-weight: var(--font-weight-medium);
+        }
+
+        .mistake-right {
+            color: #16a34a;
+            font-weight: var(--font-weight-medium);
+        }
+
+        .prompt-builder {
+            background: #fefce8;
+            border: 2px solid var(--accent-color);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-lg);
+            margin-top: var(--spacing-lg);
+        }
+
+        .builder-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-md);
+            margin: var(--spacing-md) 0;
+        }
+
+        .builder-field label {
+            display: block;
+            margin-bottom: var(--spacing-xs);
+            font-weight: var(--font-weight-medium);
+            color: var(--text-color);
+        }
+
+        .builder-field select {
+            width: 100%;
+            padding: var(--spacing-sm);
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            background: white;
+            font-size: 0.9rem;
+        }
+
+        .built-prompt {
+            margin-top: var(--spacing-md);
+        }
+
+        .prompt-result {
+            background: white;
+            border: 2px solid var(--accent-color);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-md);
+            font-family: monospace;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            white-space: pre-wrap;
+        }
+
+        /* Nové styly pro ukázky nastavení */
+        .setup-examples-new {
+            margin: var(--spacing-lg) 0;
+        }
+
+        .setup-example-detailed {
+            margin-bottom: var(--spacing-lg);
+            background: white;
+            border-radius: var(--border-radius);
+            padding: var(--spacing-lg);
+            box-shadow: var(--shadow);
+        }
+
+        .setup-example-detailed h4 {
+            color: var(--primary-color);
+            margin-bottom: var(--spacing-md);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+
+        .example-setup-box {
+            background: #f8f9fa;
+            border: 2px solid var(--border-color);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-md);
+            overflow-x: auto;
+        }
+
+        .example-setup-box pre {
+            margin: 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: #2d3748;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .personalization-info {
+            background: #e6f3ff;
+            border: 2px solid var(--primary-color);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-md);
+            margin: var(--spacing-md) 0;
+        }
+
+        .personalization-info h4 {
+            color: var(--primary-color);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .personalization-info ul {
+            margin: var(--spacing-sm) 0;
+            padding-left: var(--spacing-lg);
+        }
+
+        .personalization-info li {
+            margin-bottom: var(--spacing-xs);
+        }
+
+        /* Styly pro rozšířené možnosti */
+        .advanced-options {
+            margin: var(--spacing-lg) 0;
+        }
+
+        .connectors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--spacing-md);
+            margin: var(--spacing-md) 0;
+        }
+
+        .connector-category {
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-md);
+        }
+
+        .connector-category h5 {
+            color: var(--primary-color);
+            margin-bottom: var(--spacing-sm);
+            font-size: 1.1rem;
+        }
+
+        .connector-category ul {
+            margin: 0;
+            padding-left: var(--spacing-md);
+        }
+
+        .connector-category li {
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .mcp-info {
+            background: #f0f9ff;
+            border: 2px solid var(--primary-color);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-lg);
+            margin: var(--spacing-md) 0;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-sm);
+            margin: var(--spacing-md) 0;
+        }
+
+        .benefit-card {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: var(--spacing-md);
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .benefit-card i {
+            color: var(--secondary-color);
+            font-size: 1.5rem;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .benefit-card strong {
+            display: block;
+            margin-bottom: var(--spacing-xs);
+            color: var(--text-color);
+        }
+
+        .benefit-card p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .mcp-servers {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-sm);
+            margin: var(--spacing-md) 0;
+        }
+
+        .mcp-server {
+            background: white;
+            border-left: 4px solid var(--accent-color);
+            padding: var(--spacing-sm);
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+            font-size: 0.9rem;
+        }
+
+        .activation-guide {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-md);
+            margin: var(--spacing-md) 0;
+        }
+
+        .ai-platform {
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-md);
+        }
+
+        .ai-platform h5 {
+            color: var(--primary-color);
+            margin-bottom: var(--spacing-sm);
+            font-size: 1.1rem;
+        }
+
+        .ai-platform ul {
+            margin: 0;
+            padding-left: var(--spacing-md);
+        }
+
+        .ai-platform li {
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .setup-warning {
+            background: #fef3c7;
+            border: 2px solid var(--accent-color);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-md);
+            margin-top: var(--spacing-md);
+        }
+
+        .setup-warning h5 {
+            color: #92400e;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .setup-warning ul {
+            margin: var(--spacing-sm) 0 0 0;
+            padding-left: var(--spacing-lg);
+        }
+
+        .setup-warning li {
+            margin-bottom: var(--spacing-xs);
+        }
+
+        /* Styly pro strukturované promptování */
+        .structured-prompting {
+            margin: var(--spacing-md) 0;
+        }
+
+        .xml-explanation {
+            background: #f0f9ff;
+            border: 2px solid var(--primary-color);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-md);
+            margin: var(--spacing-md) 0;
+        }
+
+        .xml-tags-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-sm);
+            margin: var(--spacing-md) 0;
+        }
+
+        .xml-tag-card {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: var(--spacing-sm);
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .xml-tag-card code {
+            display: block;
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: var(--spacing-xs);
+            border-radius: 4px;
+            margin-bottom: var(--spacing-xs);
+            font-size: 0.8rem;
+            font-family: 'Courier New', monospace;
+        }
+
+        .xml-tag-card p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .markdown-explanation {
+            background: #f8f9fa;
+            border: 2px solid var(--border-color);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-md);
+            margin: var(--spacing-md) 0;
+        }
+
+        .markdown-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-sm);
+        }
+
+        .markdown-feature {
+            background: white;
+            padding: var(--spacing-sm);
+            border-radius: var(--border-radius);
+            border-left: 4px solid var(--secondary-color);
+            font-size: 0.9rem;
+        }
+
+        .structured-example {
+            margin: var(--spacing-md) 0;
+        }
+
+        .example-box {
+            background: #2d3748;
+            border-radius: var(--border-radius);
+            padding: var(--spacing-md);
+            overflow-x: auto;
+        }
+
+        .example-box pre {
+            margin: 0;
+        }
+
+        .example-box code {
+            color: #e2e8f0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .model-compatibility {
+            background: #fef3c7;
+            border: 2px solid var(--accent-color);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-md);
+            margin: var(--spacing-md) 0;
+        }
+
+        .compatibility-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-sm);
+            margin: var(--spacing-md) 0;
+        }
+
+        .model-support {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: var(--spacing-sm);
+        }
+
+        .model-support strong {
+            color: var(--primary-color);
+            display: block;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .model-support p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .prompting-tip {
+            background: #dcfce7;
+            border: 2px solid var(--secondary-color);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-md);
+            margin: var(--spacing-md) 0;
+        }
+
+        .prompting-tip h5 {
+            color: var(--secondary-color);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .prompting-tip p {
+            margin: 0;
+        }
+    </style>
 </head>
 <body>
     <!-- Header -->
     <header class="header">
         <div class="container">
             <div class="nav-brand">
-                <h1><a href="../../index.html" style="color: inherit; text-decoration: none;"><i class="fas fa-atom"></i> Praktické aplikace fyziky a chemie</a></h1>
+                <h1><a href="../../index.html" style="color: inherit; text-decoration: none;"><i class="fas fa-atom"></i> Fyzika - opakování a prohloubení</a></h1>
                 <p class="subtitle">00 - Využití umělé inteligence</p>
             </div>
             <nav class="nav">
@@ -28,59 +790,1628 @@
         </div>
     </header>
 
-    <!-- Topic Header -->
-    <section class="page-hero">
+    <!-- Lecture Header -->
+    <section class="page-hero ai-hero">
         <div class="container">
             <div class="lecture-hero-content">
                 <div class="lecture-number">00</div>
                 <div class="lecture-info">
                     <h1>Využití umělé inteligence</h1>
-                    <p class="lecture-subtitle">Moderní AI nástroje ve fyzice a chemii, automatizace výpočtů a analýz</p>
+                    <p class="lecture-subtitle">Od neuronů k neuronkám - fyzikální principy v umělé inteligenci</p>
                     <div class="lecture-meta-hero">
                         <span><i class="fas fa-clock"></i> 2 hodiny</span>
-                        <span><i class="fas fa-brain"></i> AI nástroje</span>
-                        <span><i class="fas fa-robot"></i> Automatizace</span>
+                        <span><i class="fas fa-brain"></i> AI základy</span>
+                        <span><i class="fas fa-robot"></i> Praktické nástroje</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Content Under Development -->
+    <!-- Quick Navigation -->
     <section class="section">
         <div class="container">
-            <div class="development-notice">
-                <div class="notice-icon">
-                    <i class="fas fa-hard-hat"></i>
-                </div>
-                <h2>Obsah se připravuje</h2>
-                <p>Na obsahu tohoto tématu intenzivně pracujeme. Brzy zde najdete:</p>
-                <div class="upcoming-content">
-                    <div class="content-item">
-                        <i class="fas fa-target"></i>
-                        <span>Cíle a očekávané výstupy</span>
-                    </div>
-                    <div class="content-item">
-                        <i class="fas fa-presentation"></i>
-                        <span>Interaktivní prezentace</span>
-                    </div>
-                    <div class="content-item">
-                        <i class="fas fa-book"></i>
-                        <span>Teoretické základy</span>
-                    </div>
-                    <div class="content-item">
-                        <i class="fas fa-calculator"></i>
-                        <span>Praktické příklady</span>
-                    </div>
-                    <div class="content-item">
-                        <i class="fas fa-download"></i>
-                        <span>Materiály ke stažení</span>
-                    </div>
-                </div>
-                <p class="notice-update">Poslední aktualizace: <strong>14. září 2024</strong></p>
+            <div class="quick-nav">
+                <a href="#objectives" class="quick-nav-item">
+                    <i class="fa-solid fa-bullseye"></i>
+                    <span>Cíle</span>
+                </a>
+                <a href="#ai-basics" class="quick-nav-item">
+                    <i class="fas fa-lightbulb"></i>
+                    <span>Co je AI</span>
+                </a>
+                <a href="#ai-around-us" class="quick-nav-item">
+                    <i class="fas fa-mobile-alt"></i>
+                    <span>AI kolem nás</span>
+                </a>
+                <a href="#ai-providers" class="quick-nav-item">
+                    <i class="fas fa-users"></i>
+                    <span>AI poskytovatelé</span>
+                </a>
+                <a href="#ai-setup" class="quick-nav-item">
+                    <i class="fas fa-cog"></i>
+                    <span>Nastavení AI</span>
+                </a>
+                <a href="#try-it" class="quick-nav-item">
+                    <i class="fas fa-play"></i>
+                    <span>Vyzkoušej si</span>
+                </a>
+                <a href="#deep-research" class="quick-nav-item">
+                    <i class="fas fa-search"></i>
+                    <span>Deep Research</span>
+                </a>
+                <a href="#ai-setup" class="quick-nav-item">
+                    <i class="fas fa-cog"></i>
+                    <span>Nastavení AI</span>
+                </a>
+                <a href="#notebooklm" class="quick-nav-item">
+                    <i class="fas fa-notebook"></i>
+                    <span>NotebookLM</span>
+                </a>
+                <a href="#ethics" class="quick-nav-item">
+                    <i class="fas fa-balance-scale"></i>
+                    <span>Etika</span>
+                </a>
             </div>
         </div>
     </section>
+
+    <!-- Learning Objectives -->
+    <section id="objectives" class="section section-gray">
+        <div class="container">
+            <h2 class="section-title">Cíle lekce</h2>
+            <div class="objectives-grid">
+                <div class="objective-card">
+                    <div class="objective-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Porozumět AI</h3>
+                    <p>Definovat umělou inteligenci, rozlišit typy AI a pochopit základní principy strojového učení.</p>
+                </div>
+                <div class="objective-card">
+                    <div class="objective-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3>Rozpoznat AI kolem nás</h3>
+                    <p>Identifikovat využití AI v každodenním životě - od doporučovačů po navigaci.</p>
+                </div>
+                <div class="objective-card">
+                    <div class="objective-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3>Praktické dovednosti</h3>
+                    <p>Naučit se základy promptování a vyzkoušet si generativní AI nástroje.</p>
+                </div>
+                <div class="objective-card">
+                    <div class="objective-icon">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <h3>Kritické myšlení</h3>
+                    <p>Diskutovat etické otázky AI, rizika a dopad na společnost a vzdělávání.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Co je AI -->
+    <section id="ai-basics" class="section">
+        <div class="container">
+            <h2 class="section-title">Co je umělá inteligence?</h2>
+            <div class="content-grid">
+                <div class="content-text">
+                    <p><strong>Umělá inteligence (AI)</strong> je schopnost strojů napodobovat lidské inteligentní chování, jako je učení se, řešení problémů a rozhodování.</p>
+
+                    <h3>Klíčové pojmy:</h3>
+                    <div class="term-grid">
+                        <div class="term-card">
+                            <h4><i class="fas fa-cogs"></i> Strojové učení</h4>
+                            <p>Systémy se učí z dat bez explicitního programování. Příklad: rozpoznávání spamu.</p>
+                        </div>
+                        <div class="term-card">
+                            <h4><i class="fas fa-network-wired"></i> Neuronová síť</h4>
+                            <p>Model inspirovaný strukturou mozku - propojené "neurony" zpracovávají informace.</p>
+                        </div>
+                        <div class="term-card">
+                            <h4><i class="fas fa-magic"></i> Generativní AI</h4>
+                            <p>AI, která dokáže vytvářet nový obsah - text, obrázky, kód na základě vstupních dat.</p>
+                        </div>
+                        <div class="term-card">
+                            <h4><i class="fas fa-comment"></i> Prompt</h4>
+                            <p>Vstupní příkaz nebo otázka, kterou zadáváte AI modelu pro získání požadovaného výstupu.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI kolem nás -->
+    <section id="ai-around-us" class="section section-gray">
+        <div class="container">
+            <h2 class="section-title">AI kolem nás</h2>
+            <p class="section-subtitle">Příklady AI, se kterými se setkáváte každý den</p>
+
+            <div class="ai-example-grid">
+                <div class="ai-example-card">
+                    <div class="ai-example-icon">
+                        <i class="fas fa-play"></i>
+                    </div>
+                    <h3>Doporučovací systémy</h3>
+                    <p><strong>Netflix, YouTube, Spotify</strong> - AI analyzuje vaše chování a navrhuje obsah, který se vám pravděpodobně bude líbit.</p>
+                    <small><i class="fas fa-lightbulb"></i> <strong>Jak to funguje:</strong> Algoritmy porovnávají vaše preference s miliony jiných uživatelů.</small>
+                </div>
+
+                <div class="ai-example-card">
+                    <div class="ai-example-icon">
+                        <i class="fas fa-microphone"></i>
+                    </div>
+                    <h3>Chytří asistenti</h3>
+                    <p><strong>Siri, Google Assistant, Alexa</strong> - rozpoznávají hlasové příkazy a odpovídají na otázky v přirozeném jazyce.</p>
+                    <small><i class="fas fa-lightbulb"></i> <strong>Jak to funguje:</strong> Zpracování přirozeného jazyka + databáze znalostí.</small>
+                </div>
+
+                <div class="ai-example-card">
+                    <div class="ai-example-icon">
+                        <i class="fas fa-route"></i>
+                    </div>
+                    <h3>Navigace</h3>
+                    <p><strong>Google Mapy, Waze</strong> - v reálném čase počítají nejlepší trasu na základě dopravní situace.</p>
+                    <small><i class="fas fa-lightbulb"></i> <strong>Jak to funguje:</strong> Analýza dat z GPS, kamery, senzory dopravy.</small>
+                </div>
+
+                <div class="ai-example-card">
+                    <div class="ai-example-icon">
+                        <i class="fas fa-camera"></i>
+                    </div>
+                    <h3>Rozpoznávání obrazu</h3>
+                    <p><strong>Google Lens, Face ID</strong> - identifikují objekty, text nebo tváře na fotografiích.</p>
+                    <small><i class="fas fa-lightbulb"></i> <strong>Jak to funguje:</strong> Hluboké neuronové sítě trénované na milionech obrázků.</small>
+                </div>
+
+                <div class="ai-example-card">
+                    <div class="ai-example-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3>Kreativní AI</h3>
+                    <p><strong>ChatGPT, DALL-E, Midjourney</strong> - generují text, obrázky nebo hudbu na základě textového popisu.</p>
+                    <small><i class="fas fa-lightbulb"></i> <strong>Jak to funguje:</strong> Velké jazykové modely trénované na textech a obrázcích z internetu.</small>
+                </div>
+
+                <div class="ai-example-card">
+                    <div class="ai-example-icon">
+                        <i class="fas fa-user-md"></i>
+                    </div>
+                    <h3>AI ve vědě</h3>
+                    <p><strong>Lékařská diagnostika, objevování léků</strong> - AI pomáhá analyzovat rentgenové snímky a navrhovat nové léky.</p>
+                    <small><i class="fas fa-lightbulb"></i> <strong>Jak to funguje:</strong> Strojové učení na lékařských datech a simulace molekul.</small>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Poskytovatelé -->
+    <section id="ai-providers" class="section section-gray">
+        <div class="container">
+            <h2 class="section-title">Hlavní hráči na poli AI</h2>
+            <p class="section-subtitle">Přehled nejvýznamnějších AI modelů a jejich poskytovatelů (aktualizováno září 2025)</p>
+
+
+            <div class="providers-grid">
+                <div class="provider-card">
+                    <div class="provider-header">
+                        <div class="provider-logo">🤖</div>
+                        <h3>ChatGPT <span class="provider-company">OpenAI</span></h3>
+                    </div>
+                    <div class="provider-models">
+                        <h4>Aktuální modely:</h4>
+                        <div class="model-tags">
+                            <span class="model-tag">GPT-5</span>
+                            <span class="model-tag">GPT-5 mini</span>
+                            <span class="model-tag">GPT-5 nano</span>
+                            <span class="model-tag">GPT-4o</span>
+                        </div>
+                    </div>
+                    <div class="provider-strengths">
+                        <h4>🏆 Silné stránky:</h4>
+                        <ul>
+                            <li>GPT-5 představuje významný skok v inteligenci</li>
+                            <li>Nejlepší výkon v kódování, matematice a reasoning</li>
+                            <li>Dostupný i pro bezplatné uživatele</li>
+                            <li>Vynikající pro strukturování a analýzu komplexních problémů</li>
+                        </ul>
+                    </div>
+                    <div class="provider-weaknesses">
+                        <h4>⚠️ Slabé stránky:</h4>
+                        <ul>
+                            <li>Vyšší náklady na API použití</li>
+                            <li>Omezené množství dotazů pro Plus uživatele</li>
+                            <li>Stále může halucinovat při faktických dotazech</li>
+                        </ul>
+                    </div>
+                    <div class="provider-link">
+                        <a href="https://chat.openai.com" target="_blank" class="provider-btn">Vyzkoušet ChatGPT</a>
+                    </div>
+                </div>
+
+                <div class="provider-card">
+                    <div class="provider-header">
+                        <div class="provider-logo">✨</div>
+                        <h3>Gemini <span class="provider-company">Google</span></h3>
+                    </div>
+                    <div class="provider-models">
+                        <h4>Aktuální modely:</h4>
+                        <div class="model-tags">
+                            <span class="model-tag">Gemini 2.5 Pro</span>
+                            <span class="model-tag">Gemini 2.5 Flash</span>
+                            <span class="model-tag">Gemini 1.5 Pro</span>
+                            <span class="model-tag">Gemini 1.5 Flash</span>
+                        </div>
+                    </div>
+                    <div class="provider-strengths">
+                        <h4>🏆 Silné stránky:</h4>
+                        <ul>
+                            <li>Gemini 2.5 Pro je thinking model s pokročilým reasoning</li>
+                            <li>#1 na LMArena benchmark leaderboard</li>
+                            <li>Vynikající v matematice a vědě (GPQA, AIME 2025)</li>
+                            <li>Integrace s Google službami a vyhledáváním</li>
+                        </ul>
+                    </div>
+                    <div class="provider-weaknesses">
+                        <h4>⚠️ Slabé stránky:</h4>
+                        <ul>
+                            <li>Nižší dostupnost než konkurence</li>
+                            <li>Některé pokročilé funkce stále v preview</li>
+                            <li>Může být pomalejší kvůli thinking procesu</li>
+                        </ul>
+                    </div>
+                    <div class="provider-link">
+                        <a href="https://gemini.google.com" target="_blank" class="provider-btn">Vyzkoušet Gemini</a>
+                    </div>
+                </div>
+
+                <div class="provider-card">
+                    <div class="provider-header">
+                        <div class="provider-logo">🎭</div>
+                        <h3>Claude <span class="provider-company">Anthropic</span></h3>
+                    </div>
+                    <div class="provider-models">
+                        <h4>Aktuální modely:</h4>
+                        <div class="model-tags">
+                            <span class="model-tag">Claude 4 Opus</span>
+                            <span class="model-tag">Claude 4.1 Opus</span>
+                            <span class="model-tag">Claude 4 Sonnet</span>
+                            <span class="model-tag">Claude 3.5 Sonnet</span>
+                        </div>
+                    </div>
+                    <div class="provider-strengths">
+                        <h4>🏆 Silné stránky:</h4>
+                        <ul>
+                            <li>Claude 4 Opus je "nejlepší kódovací model na světě"</li>
+                            <li>72.5% úspěšnost na SWE-bench (nejlepší výsledek)</li>
+                            <li>Může pracovat autonomně až 7 hodin</li>
+                            <li>Vynikající v agentic úlohách a reasoning</li>
+                        </ul>
+                    </div>
+                    <div class="provider-weaknesses">
+                        <h4>⚠️ Slabé stránky:</h4>
+                        <ul>
+                            <li>Vyšší cena než konkurence</li>
+                            <li>Konzervativnější bezpečnostní opatření</li>
+                            <li>Občasné odmítání neškodných požadavků</li>
+                        </ul>
+                    </div>
+                    <div class="provider-link">
+                        <a href="https://claude.ai" target="_blank" class="provider-btn">Vyzkoušet Claude</a>
+                    </div>
+                </div>
+
+                <div class="provider-card">
+                    <div class="provider-header">
+                        <div class="provider-logo">🚀</div>
+                        <h3>Grok <span class="provider-company">xAI</span></h3>
+                    </div>
+                    <div class="provider-models">
+                        <h4>Aktuální modely:</h4>
+                        <div class="model-tags">
+                            <span class="model-tag">Grok 4</span>
+                            <span class="model-tag">Grok 4 Heavy</span>
+                            <span class="model-tag">Grok 4 Fast</span>
+                            <span class="model-tag">Grok 3</span>
+                        </div>
+                    </div>
+                    <div class="provider-strengths">
+                        <h4>🏆 Silné stránky:</h4>
+                        <ul>
+                            <li>Grok 4 trénovaný na 10x větší výpočetní kapacitě</li>
+                            <li>Významné vylepšení v reasoning a matematice</li>
+                            <li>Informace v reálném čase z X platformy</li>
+                            <li>Dostupný přes API pro enterprise</li>
+                        </ul>
+                    </div>
+                    <div class="provider-weaknesses">
+                        <h4>⚠️ Slabé stránky:</h4>
+                        <ul>
+                            <li>Vyžaduje X Premium/Premium+ předplatné</li>
+                            <li>Menší ekosystém nástrojů než konkurence</li>
+                            <li>Zavíslý na X platformových datech</li>
+                        </ul>
+                    </div>
+                    <div class="provider-link">
+                        <a href="https://x.ai" target="_blank" class="provider-btn">Více o Grok</a>
+                    </div>
+                </div>
+
+                <div class="provider-card">
+                    <div class="provider-header">
+                        <div class="provider-logo">🧮</div>
+                        <h3>DeepSeek <span class="provider-company">DeepSeek AI</span></h3>
+                    </div>
+                    <div class="provider-models">
+                        <h4>Aktuální modely:</h4>
+                        <div class="model-tags">
+                            <span class="model-tag">DeepSeek V3.1-Terminus</span>
+                            <span class="model-tag">DeepSeek V3.1</span>
+                            <span class="model-tag">DeepSeek V3</span>
+                            <span class="model-tag">DeepSeek R1</span>
+                        </div>
+                    </div>
+                    <div class="provider-strengths">
+                        <h4>🏆 Silné stránky:</h4>
+                        <ul>
+                            <li>Excelentní v matematice a programování</li>
+                            <li>Přesné technické odpovědi</li>
+                            <li>Ověření složitých výpočtů</li>
+                            <li>Open-source přístup</li>
+                        </ul>
+                    </div>
+                    <div class="provider-weaknesses">
+                        <h4>⚠️ Slabé stránky:</h4>
+                        <ul>
+                            <li>Méně propracované uživatelské rozhraní</li>
+                            <li>Specializovaný, ne univerzální</li>
+                            <li>Horší v konverzačním stylu</li>
+                        </ul>
+                    </div>
+                    <div class="provider-link">
+                        <a href="https://www.deepseek.com" target="_blank" class="provider-btn">Vyzkoušet DeepSeek</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ai-recommendation">
+                <h3>🎯 Která AI používat?</h3>
+                <div class="recommendation-content">
+                    <div class="recommendation-main">
+                        <h4>Doporučení: Používejte více AI současně!</h4>
+                        <p>AI modely mají tendenci "halucinovat" - vymýšlet si fakta, vzorce nebo informace, které neexistují. Použití více AI vám pomůže:</p>
+
+                        <div class="recommendation-benefits">
+                            <div class="benefit-item">
+                                <i class="fas fa-shield-alt"></i>
+                                <span><strong>Ověřit správnost:</strong> Porovnejte odpovědi z různých zdrojů</span>
+                            </div>
+                            <div class="benefit-item">
+                                <i class="fas fa-puzzle-piece"></i>
+                                <span><strong>Získat kompletní obraz:</strong> Každá AI má jiné silné stránky</span>
+                            </div>
+                            <div class="benefit-item">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                <span><strong>Odhalit chyby:</strong> Rozpoznat nesprávné nebo vymyšlené informace</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="practical-strategy">
+                        <h4>🔄 Praktická strategie:</h4>
+                        <div class="strategy-steps">
+                            <div class="strategy-step">
+                                <span class="step-number">1</span>
+                                <div class="step-content">
+                                    <strong>ChatGPT:</strong> První vysvětlení a brainstorming
+                                </div>
+                            </div>
+                            <div class="strategy-step">
+                                <span class="step-number">2</span>
+                                <div class="step-content">
+                                    <strong>Claude:</strong> Analýza dlouhých textů a PDF
+                                </div>
+                            </div>
+                            <div class="strategy-step">
+                                <span class="step-number">3</span>
+                                <div class="step-content">
+                                    <strong>Gemini:</strong> Ověření faktů a práce s daty
+                                </div>
+                            </div>
+                            <div class="strategy-step">
+                                <span class="step-number">4</span>
+                                <div class="step-content">
+                                    <strong>DeepSeek:</strong> Kontrola matematických výpočtů
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="verification-tips">
+                        <h4>✅ Jak ověřovat informace:</h4>
+                        <ul>
+                            <li><strong>Primární zdroje:</strong> Učebnice, skripta, odborné weby univerzit</li>
+                            <li><strong>Konzultace s učitelem:</strong> Nejlepší způsob ověření správnosti</li>
+                            <li><strong>Specifické dotazy:</strong> Buďte konkrétní místo obecných otázek</li>
+                            <li><strong>Postup krok za krokem:</strong> Vyžadujte detailní řešení</li>
+                            <li><strong>Kritické myšlení:</strong> Pokud se něco zdá divné, ověřte to</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nastavení AI -->
+    <section id="ai-setup" class="section">
+        <div class="container">
+            <h2 class="section-title">Jak si nastavit AI</h2>
+            <p class="section-subtitle">Personalizace AI asistenta pro maximální efektivitu</p>
+
+            <div class="ai-setup-guide">
+                <h3>🎯 Proč si nastavit AI?</h3>
+                <p>Správně nakonfigurovaný AI asistent vás zná, rozumí vašemu stylu komunikace a poskytuje relevantnější odpovědi šité na míru vašim potřebám.</p>
+
+                <div class="personalization-info">
+                    <h4><i class="fas fa-cog"></i> Kde najít nastavení personalizace?</h4>
+                    <p>Tyto informace se zadávají v <strong>nastavení AI v sekci Personalizace</strong> (v různých AI různě pojmenováno):</p>
+                    <ul>
+                        <li><strong>ChatGPT:</strong> Nastavení → Personalizace → Vlastní instrukce</li>
+                        <li><strong>Claude:</strong> Nastavení → Předvolby → Systémové instrukce</li>
+                        <li><strong>Gemini:</strong> Nastavení → Personalizace → Profil</li>
+                        <li><strong>Ostatní AI:</strong> Hledejte sekce jako "Custom Instructions", "System Prompt", "Personalization"</li>
+                    </ul>
+                </div>
+
+                <h3>👤 Informace o sobě - Co AI říct?</h3>
+                <div class="info-categories">
+                    <div class="info-category">
+                        <h4><i class="fas fa-graduation-cap"></i> Vzdělání a úroveň</h4>
+                        <div class="info-examples">
+                            <div class="info-good">
+                                ✅ "Jsem student 3. ročníku gymnázia. Mám dobré znalosti základní matematiky a fyziky na úrovni střední školy."
+                            </div>
+                            <div class="info-bad">
+                                ❌ "Studuji na škole"
+                            </div>
+                        </div>
+                        <p><strong>Proč je to důležité:</strong> AI přizpůsobí složitost vysvětlení vaší úrovni.</p>
+                    </div>
+
+                    <div class="info-category">
+                        <h4><i class="fa-solid fa-bullseye"></i> Cíle a zaměření</h4>
+                        <div class="info-examples">
+                            <div class="info-good">
+                                ✅ "Připravuji se na maturitu z fyziky a plánuję studovat strojní inženýrství. Nejvíce mě zajímá mechanika a termodynamika."
+                            </div>
+                            <div class="info-bad">
+                                ❌ "Chci se něco naučit"
+                            </div>
+                        </div>
+                        <p><strong>Proč je to důležité:</strong> AI se zaměří na relevantní oblasti a praktické aplikace.</p>
+                    </div>
+
+                    <div class="info-category">
+                        <h4><i class="fas fa-brain"></i> Styl učení</h4>
+                        <div class="info-examples">
+                            <div class="info-good">
+                                ✅ "Nejlépe se učím z konkrétních příkladů a vizuálních schémat. Potřebuji vidět praktické aplikace, aby mi to dávalo smysl."
+                            </div>
+                            <div class="info-bad">
+                                ❌ "Nejsem moc chytrý"
+                            </div>
+                        </div>
+                        <p><strong>Proč je to důležité:</strong> AI přizpůsobí způsob vysvětlování vašemu typu učení.</p>
+                    </div>
+
+                    <div class="info-category">
+                        <h4><i class="fas fa-clock"></i> Kontext a časové omezení</h4>
+                        <div class="info-examples">
+                            <div class="info-good">
+                                ✅ "Mám maturitní zkoušku za 2 měsíce. Potřebuji soustředit na klíčové koncepty a řešení typických úloh."
+                            </div>
+                            <div class="info-bad">
+                                ❌ "Mám zkoušku"
+                            </div>
+                        </div>
+                        <p><strong>Proč je to důležité:</strong> AI prioritizuje nejdůležitější informace a optimalizuje čas.</p>
+                    </div>
+                </div>
+
+                <h3>🎭 Jak se má AI chovat a komunikovat</h3>
+                <div class="communication-setup">
+                    <div class="communication-aspect">
+                        <h4><i class="fas fa-comments"></i> Styl komunikace</h4>
+                        <div class="communication-examples">
+                            <div class="comm-example">
+                                <strong>Formální:</strong> "Komunikuj profesionálně a formálně, jako by sis připravoval prezentaci pro učitele."
+                            </div>
+                            <div class="comm-example">
+                                <strong>Kamarádský:</strong> "Mluv se mnou jako kamarád, který mi vysvětluje látku. Používej jednoduché příklady a občas vtip."
+                            </div>
+                            <div class="comm-example">
+                                <strong>Koučovací:</strong> "Chci, abys mě vedl k vlastním objevům. Ptej se mě na otázky a nech mě přemýšlet."
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="communication-aspect">
+                        <h4><i class="fas fa-layer-group"></i> Struktura odpovědí</h4>
+                        <div class="structure-preferences">
+                            <div class="structure-option">
+                                <strong>Krok-za-krokem:</strong><br>
+                                "Vždy rozděl složité problémy na menší kroky. Každý krok očísluj a vysvětli proč je důležitý."
+                            </div>
+                            <div class="structure-option">
+                                <strong>S příklady:</strong><br>
+                                "K každému konceptu uveď alespoň jeden praktický příklad z běžného života nebo technické praxe."
+                            </div>
+                            <div class="structure-option">
+                                <strong>S ověřením:</strong><br>
+                                "Na konci každého vysvětlení se zeptej, zda jsem to pochopil a jestli mám nějaké otázky."
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="communication-aspect">
+                        <h4><i class="fas fa-exclamation-triangle"></i> Omezení a NO-GO</h4>
+                        <div class="limitations">
+                            <div class="limitation-item">
+                                ❌ "NIKDY mi nedávej hotové řešení domácích úkolů. Vždy mě veď k vlastnímu řešení."
+                            </div>
+                            <div class="limitation-item">
+                                ❌ "NEPOUŽÍVEJ složité matematické vzorce bez vysvětlení jejich fyzikálního významu."
+                            </div>
+                            <div class="limitation-item">
+                                ❌ "NEZJEDNODUŠUJ příliš - chci rozumět konceptům do hloubky, ne jen povrchově."
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>🔧 Rozšířené možnosti - Konektory a MCP servery</h3>
+                <div class="advanced-options">
+                    <p>Moderní AI asistenti lze rozšířit o pokročilé funkce pomocí konektorů a MCP (Model Context Protocol) serverů.</p>
+
+                    <h4><i class="fas fa-plug"></i> Konektory k externím službám</h4>
+                    <div class="connectors-grid">
+                        <div class="connector-category">
+                            <h5>🗂️ Produktivita</h5>
+                            <ul>
+                                <li><strong>Google Workspace:</strong> Drive, Gmail, Calendar</li>
+                                <li><strong>Microsoft 365:</strong> Word, Excel, Teams</li>
+                                <li><strong>Notion:</strong> Databáze a poznámky</li>
+                                <li><strong>Slack:</strong> Firemní komunikace</li>
+                            </ul>
+                        </div>
+                        <div class="connector-category">
+                            <h5>💻 Vývoj</h5>
+                            <ul>
+                                <li><strong>GitHub/GitLab:</strong> Správa kódu</li>
+                                <li><strong>Jira:</strong> Projektový management</li>
+                                <li><strong>VS Code:</strong> Editor kódu</li>
+                                <li><strong>Docker:</strong> Kontejnerizace</li>
+                            </ul>
+                        </div>
+                        <div class="connector-category">
+                            <h5>📊 Data a analýza</h5>
+                            <ul>
+                                <li><strong>Wolfram Alpha:</strong> Výpočty</li>
+                                <li><strong>Zapier:</strong> Automatizace</li>
+                                <li><strong>CRM systémy:</strong> Salesforce, HubSpot</li>
+                                <li><strong>Databáze:</strong> PostgreSQL, MongoDB</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <h4><i class="fas fa-server"></i> MCP Servery (Model Context Protocol)</h4>
+                    <div class="mcp-info">
+                        <p><strong>MCP</strong> je open-source protokol vyvinutý Anthropic pro standardizovaný přístup k externím zdrojům dat a nástrojům.</p>
+                        
+                        <div class="mcp-benefits">
+                            <h5>✅ Výhody MCP:</h5>
+                            <div class="benefits-grid">
+                                <div class="benefit-card">
+                                    <i class="fas fa-shield-alt"></i>
+                                    <strong>Bezpečnost</strong>
+                                    <p>Standardizované bezpečnostní kontroly</p>
+                                </div>
+                                <div class="benefit-card">
+                                    <i class="fas fa-cubes"></i>
+                                    <strong>Modularita</strong>
+                                    <p>Jednoduché přidávání funkcí</p>
+                                </div>
+                                <div class="benefit-card">
+                                    <i class="fas fa-code"></i>
+                                    <strong>Open-source</strong>
+                                    <p>Veřejně dostupný protokol</p>
+                                </div>
+                                <div class="benefit-card">
+                                    <i class="fas fa-link"></i>
+                                    <strong>Standardizace</strong>
+                                    <p>Jednotné rozhraní pro všechny služby</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mcp-examples">
+                            <h5>🚀 Oblíbené MCP servery:</h5>
+                            <div class="mcp-servers">
+                                <div class="mcp-server">
+                                    <strong>filesystem:</strong> Přístup k souborům na disku
+                                </div>
+                                <div class="mcp-server">
+                                    <strong>google-drive:</strong> Práce s Google Drive dokumenty
+                                </div>
+                                <div class="mcp-server">
+                                    <strong>github:</strong> Integrace s GitHub repozitáři
+                                </div>
+                                <div class="mcp-server">
+                                    <strong>slack:</strong> Komunikace přes Slack
+                                </div>
+                                <div class="mcp-server">
+                                    <strong>postgres:</strong> Dotazy do databáze
+                                </div>
+                                <div class="mcp-server">
+                                    <strong>puppeteer:</strong> Automatizace webového prohlížeče
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h4><i class="fas fa-cogs"></i> Jak aktivovat v různých AI</h4>
+                    <div class="activation-guide">
+                        <div class="ai-platform">
+                            <h5>ChatGPT (OpenAI)</h5>
+                            <ul>
+                                <li>GPTs - vlastní asistenti s plugins</li>
+                                <li>Actions - API integrace</li>
+                                <li>File uploads - práce s dokumenty</li>
+                                <li>Web browsing - přístup k internetu</li>
+                            </ul>
+                        </div>
+                        <div class="ai-platform">
+                            <h5>Claude (Anthropic)</h5>
+                            <ul>
+                                <li>MCP servery v Claude Desktop</li>
+                                <li>Computer Use - ovládání počítače</li>
+                                <li>Artifacts - komplexní výstupy</li>
+                                <li>File analysis - analýza souborů</li>
+                            </ul>
+                        </div>
+                        <div class="ai-platform">
+                            <h5>Gemini (Google)</h5>
+                            <ul>
+                                <li>Google Workspace Extensions</li>
+                                <li>Native integrace s Google službami</li>
+                                <li>Code execution - spouštění kódu</li>
+                                <li>Multimodal capabilities</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="setup-warning">
+                        <h5>⚠️ Důležité upozornění:</h5>
+                        <p>Rozšířené funkce vyžadují:</p>
+                        <ul>
+                            <li><strong>Placené předplatné</strong> u většiny poskytovatelů</li>
+                            <li><strong>Technické znalosti</strong> pro nastavení MCP serverů</li>
+                            <li><strong>Bezpečnostní kontrolu</strong> přístupových oprávnění</li>
+                            <li><strong>Pravidelné aktualizace</strong> a údržbu</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3>📝 Ukázka nastavení</h3>
+                <div class="setup-examples-new">
+                    <div class="setup-example-detailed">
+                        <h4>🔥 Ukázka 1 - Strukturované nastavení:</h4>
+                        <div class="example-setup-box">
+                            <pre>Jsem [zabýváš se] a mám rád [ ], moje koníčky jsou []. 
+Pravidla, která musíš dodržovat:
+1. Poskytuj **jasné stručné odpovědi** bez zbytečných úvodů 
+2. Když odpovídáš na komplexní otázky, **postupuj systematicky krok za krokem** a vysvětluj svůj myšlenkový proces. 
+3. **Vynechej zdvořilostní fráze** 
+4. Dávej **důkladné odpovědi** bez nutnosti doplňujících otázek (pokud není potřeba) 
+5. Strukturuj odpovědi pro maximální pochopení 
+6. Při žádosti o radu **poskytni své nejlepší hodnocení** 
+7. Mám rád **praktické příklady** a nebo typické situace a ukázky 
+8. **Rozděl složitá témata** na jasné kroky nebo komponenty 
+9. **Nabízej myšlenkové modely** a rámce pro přístup k problémům 
+10. **Rozlišuj mezi fakty a domněnkami**. Jasně označ, co je potvrzený fakt a co je tvůj předpoklad nebo domněnka. Potvrzený fakt je fakt, který najdeš ve více než 2 zdrojích. 
+11. **Uvítám konstruktivní kritiku** věcí, o kterých diskutuji, nemusíš se mnou souhlasit, jestli máš jiný názor, vysvětli mi, proč si myslíš, že je to jinak 
+12. U kontroverzních témat **prezentuj různé perspektivy a argumenty**. 
+13. Ptej se na upřesnění pouze když je to nezbytné 
+14. **Prioritizuj informace** podle důležitosti 
+15. Odpovědi nepřikrášluj 
+16. **Pravidelně přezkoumávej své odpovědi** před jejich odesláním, abys odhalil možné chyby nebo nedostatky.</pre>
+                        </div>
+                    </div>
+
+                    <div class="setup-example-detailed">
+                        <h4>📚 Ukázka 2 - Kompaktní nastavení:</h4>
+                        <div class="example-setup-box">
+                            <pre>Informace o sobě …
+Zakládej odpovědi na faktech a logickém uvažování. Konstruktivně kritizuj diskutované věci, když máš jiný názor, vysvětli proč si myslíš, že je to jinak. 
+Poskytuj jasné stručné odpovědi bez zbytečných úkolů. Vynechej zdvořilostní fráze a soustřeď se na podstatný obsah. Dávej důkladné odpovědi bez nutnosti doplňujících otázek (pokud opravdu není potřeba). Strukturuj odpovědi pro maximální pochopení. Při žádosti o radu poskytni své nejlepší hodnocení místo navrhování externí konzultace. Ptej se na upřesnění pouze když je to absolutně nezbytné. Řekni, jak to je, a odpovědi nepřikrášluj. Do textu nevkládej značky [cite ...], pokud o to výslovně nepožádám. 
+Při odpovídání na dotazy implementuj důsledně principy kritického myšlení: 1. Rozlišuj mezi fakty a domněnkami. Jasně označ, co je potvrzený fakt a co je tvůj předpoklad nebo domněnka. Potvrzený fakt je fakt, který najdeš ve více než 2 zdrojích. 2. Pokud si nejsi v něčem jistý, přiznej to. Používej fráze jako "nejsem si jistý", "nemám dostatek informací" nebo "toto je mimo mé znalosti". 3. Vyhýbej se přehnanému sebevědomí. Když existují alternativní pohledy nebo interpretace, zmiň je. 4. Zdůrazňuj limity svých znalostí, zejména u specializovaných témat nebo aktuálních událostí. 5. Když odpovídáš na komplexní otázky, postupuj systematicky krok za krokem a vysvětluj svůj myšlenkový proces. 6. U kontroverzních témat prezentuj různé perspektivy a argumenty. 7. Vždy zvaž kvalitu a spolehlivost informací ve svých odpovědích. 8. Nepokoušej si vyplnit mezery ve znalostech smyšlenými informacemi. 9. Když je to vhodné, navrhni uživateli, jak by mohl informace ověřit z důvěryhodných zdrojů. 10. Pravidelně přezkoumávej své odpovědi před jejich odesláním, abys odhalil možné chyby nebo nedostatky. 
+Používej praktické příklady a typické situace. Rozděl složitá témata na jasné kroky nebo komponenty. Nabízej myšlenkové modely a rámce pro přístup k problémům. Prioritizuj informace podle důležitosti. Zaměř se na pochopení konceptů a principů.</pre>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Vyzkoušej si to -->
+    <section id="try-it" class="section">
+        <div class="container">
+            <h2 class="section-title">Vyzkoušej si to!</h2>
+
+            <!-- Průvodce promptováním -->
+            <div class="ai-demo">
+                <h3><i class="fas fa-comment"></i> Jak promptovat?</h3>
+
+                <div class="prompt-guide">
+                    <h4>🎯 Co je prompt?</h4>
+                    <p><strong>Prompt</strong> je instrukce, kterou dáváte AI modelu. Kvalita promptu přímo ovlivňuje kvalitu odpovědi.</p>
+
+                    <h4>📚 Klíčové pojmy:</h4>
+                    <div class="term-mini-grid">
+                        <div class="term-mini-card">
+                            <strong>Token:</strong> Základní jednotka textu (slovo nebo část slova). AI má limit tokenů na vstup i výstup.
+                        </div>
+                        <div class="term-mini-card">
+                            <strong>Kontext:</strong> Celá konverzace, kterou si AI pamatuje. Omejen na určitý počet tokenů.
+                        </div>
+                        <div class="term-mini-card">
+                            <strong>Teplota:</strong> Nastavení kreativity AI (0 = konzistentní, 1 = kreativní).
+                        </div>
+                    </div>
+
+                    <h4>✅ Tipy pro dobrý prompt:</h4>
+                    <div class="prompt-tips">
+                        <div class="tip-item">
+                            <i class="fas fa-check-circle"></i>
+                            <strong>Buďte konkrétní:</strong> "Vysvětli graviti pro 15letého studenta" místo "Vysvětli gravitaci"
+                        </div>
+                        <div class="tip-item">
+                            <i class="fas fa-check-circle"></i>
+                            <strong>Definujte roli:</strong> "Jsi učitel fyziky..." nebo "Jako expert na AI..."
+                        </div>
+                        <div class="tip-item">
+                            <i class="fas fa-check-circle"></i>
+                            <strong>Uveďte formát:</strong> "Odpověz ve 3 bodech" nebo "Napiš jako seznam"
+                        </div>
+                        <div class="tip-item">
+                            <i class="fas fa-check-circle"></i>
+                            <strong>Přidejte kontext:</strong> "Pro seminární práci o..." nebo "Pro prezentaci..."
+                        </div>
+                    </div>
+
+                    <h4>📝 Porovnání promptů:</h4>
+                    <div class="prompt-comparison">
+                        <div class="prompt-bad">
+                            <div class="prompt-label bad">❌ Špatný prompt</div>
+                            <div class="prompt-text">"Napiš o fyzice"</div>
+                            <div class="prompt-why">Příliš obecný, AI neví co přesně chcete</div>
+                        </div>
+                        <div class="prompt-good">
+                            <div class="prompt-label good">✅ Dobrý prompt</div>
+                            <div class="prompt-text">"Jsi učitel fyziky. Vysvětli Newtonovy zákony pohybu pro střední školu ve 3 bodech s praktickými příklady z běžného života."</div>
+                            <div class="prompt-why">Konkrétní role, téma, cílová skupina, formát a požadavky</div>
+                        </div>
+                    </div>
+
+                    <h4>🚀 Pokročilé techniky promptování:</h4>
+                    <div class="advanced-techniques">
+                        <div class="technique-card">
+                            <h5><i class="fas fa-chain"></i> Chain of Thought (CoT)</h5>
+                            <p>Požádejte AI o krok-za-krokem vysvětlení:</p>
+                            <div class="technique-example">
+                                "Vyřeš tuto úlohu krok za krokem: Kolik energie potřebuji k ohřátí 2 litrů vody z 20°C na 100°C?"
+                            </div>
+                        </div>
+
+                        <div class="technique-card">
+                            <h5><i class="fas fa-users"></i> Few-Shot Learning</h5>
+                            <p>Ukažte AI několik příkladů před hlavním úkolem:</p>
+                            <div class="technique-example">
+                                "Převeď jednotky podle vzoru:<br>
+                                Příklad: 5 m/s = 18 km/h<br>
+                                Příklad: 10 km/h = 2,78 m/s<br>
+                                Úkol: Převeď 72 km/h na m/s"
+                            </div>
+                        </div>
+
+                        <div class="technique-card">
+                            <h5><i class="fas fa-theater-masks"></i> Role-Playing</h5>
+                            <p>Definujte konkrétní roli s osobností:</p>
+                            <div class="technique-example">
+                                "Jsi nadšený fyzik, který miluje jednoduché vysvětlení složitých věcí. Vysvětli kvantovou mechaniku tak, aby to pochopil 12letý student."
+                            </div>
+                        </div>
+
+                        <div class="technique-card">
+                            <h5><i class="fas fa-exclamation-triangle"></i> Negative Prompting</h5>
+                            <p>Řekněte AI, co NECHCETE:</p>
+                            <div class="technique-example">
+                                "Vysvětli relativitu. NEPOUŽÍVEJ složité matematické vzorce ani odborné termíny bez vysvětlení."
+                            </div>
+                        </div>
+                    </div>
+
+                    <h4>🏗️ Strukturované promptování s XML a Markdown tagy</h4>
+                    <div class="structured-prompting">
+                        <p>Moderní AI modely (zejména <strong>ChatGPT-5, Claude 4+, Gemini 2.5</strong>) lépe rozumí strukturovaným promptům s využitím tagů.</p>
+
+                        <h5><i class="fas fa-code"></i> XML tagy pro přesnou strukturu</h5>
+                        <div class="xml-explanation">
+                            <p><strong>Proč XML tagy?</strong> AI modely interpretují XML tagy jako organizační prvky, což výrazně zlepšuje porozumění a snižuje halucinace.</p>
+                            
+                            <div class="xml-tags-grid">
+                                <div class="xml-tag-card">
+                                    <code>&lt;role&gt;...&lt;/role&gt;</code>
+                                    <p>Role AI asistenta</p>
+                                </div>
+                                <div class="xml-tag-card">
+                                    <code>&lt;task&gt;...&lt;/task&gt;</code>
+                                    <p>Hlavní úkol a cíl</p>
+                                </div>
+                                <div class="xml-tag-card">
+                                    <code>&lt;context&gt;...&lt;/context&gt;</code>
+                                    <p>Pozadí a kontext úlohy</p>
+                                </div>
+                                <div class="xml-tag-card">
+                                    <code>&lt;instructions&gt;...&lt;/instructions&gt;</code>
+                                    <p>Detailní instrukce a požadavky</p>
+                                </div>
+                                <div class="xml-tag-card">
+                                    <code>&lt;examples&gt;...&lt;/examples&gt;</code>
+                                    <p>Ukázky vstupů a výstupů</p>
+                                </div>
+                                <div class="xml-tag-card">
+                                    <code>&lt;constraints&gt;...&lt;/constraints&gt;</code>
+                                    <p>Omezení a pravidla</p>
+                                </div>
+                                <div class="xml-tag-card">
+                                    <code>&lt;format&gt;...&lt;/format&gt;</code>
+                                    <p>Požadovaný formát výstupu</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h5><i class="fab fa-markdown"></i> Markdown pro organizaci</h5>
+                        <div class="markdown-explanation">
+                            <div class="markdown-features">
+                                <div class="markdown-feature">
+                                    <strong># Nadpisy</strong> - organizace sekcí
+                                </div>
+                                <div class="markdown-feature">
+                                    <strong>**Tučné písmo**</strong> - důraz na klíčové instrukce
+                                </div>
+                                <div class="markdown-feature">
+                                    <strong>- Seznamy</strong> - výčty požadavků
+                                </div>
+                                <div class="markdown-feature">
+                                    <strong>```kód```</strong> - příklady a data
+                                </div>
+                            </div>
+                        </div>
+
+                        <h5>💡 Praktický příklad strukturovaného promptu</h5>
+                        <div class="structured-example">
+                            <div class="example-box">
+                                <pre><code>&lt;role&gt;
+Jsi zkušený učitel fyziky se specializací na mechaniku.
+&lt;/role&gt;
+
+&lt;task&gt;
+Vysvětli 2. Newtonův zákon studentovi připravujícímu se na maturitu.
+&lt;/task&gt;
+
+&lt;context&gt;
+Student se připravuje na maturitní zkoušku z fyziky za 2 měsíce.
+Potřebuje pochopít vztah mezi silou, hmotností a zrychlením.
+&lt;/context&gt;
+
+&lt;instructions&gt;
+1. Vysvětli **2. Newtonův zákon** jednoduše a srozumitelně
+2. Uveď **3 praktické příklady** z běžného života
+3. Poskytni **výpočetní úlohu** s postupem řešení
+&lt;/instructions&gt;
+
+&lt;constraints&gt;
+- Nepoužívej složité matematické odvození
+- Zaměř se na praktické aplikace
+- Udržuj vysvětlení do 300 slov
+&lt;/constraints&gt;
+
+&lt;format&gt;
+## 2. Newtonův zákon
+
+### Základní vysvětlení
+[text]
+
+### Praktické příklady
+1. [příklad]
+2. [příklad] 
+3. [příklad]
+
+### Výpočetní úloha
+**Zadání:** [text]
+**Řešení:** [krok za krokem]
+&lt;/format&gt;</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="model-compatibility">
+                            <h5>🎯 Kompatibilita s AI modely (2025)</h5>
+                            <div class="compatibility-grid">
+                                <div class="model-support">
+                                    <strong>ChatGPT-5:</strong> ★★★★★
+                                    <p>Excelentní podpora XML tagů, doporučeno pro komplexní úlohy</p>
+                                </div>
+                                <div class="model-support">
+                                    <strong>Claude 4+:</strong> ★★★★★
+                                    <p>Přirozeně pracuje s hierarchickou strukturou</p>
+                                </div>
+                                <div class="model-support">
+                                    <strong>Gemini 2.5:</strong> ★★★★☆
+                                    <p>Spolehlivé zpracování strukturovaných promptů</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="prompting-tip">
+                            <h5>💡 Tip pro začátečníky:</h5>
+                            <p>Začněte s jednoduchou strukturou a postupně přidávejte XML tagy podle potřeby. Testujte, který přístup funguje nejlépe pro vaše konkrétní úlohy.</p>
+                        </div>
+                    </div>
+
+                    <h4>📋 Template pro perfektní prompt:</h4>
+                    <div class="prompt-template">
+                        <div class="template-section">
+                            <strong>1. Role:</strong> "Jsi [expert/učitel/student/...]"
+                        </div>
+                        <div class="template-section">
+                            <strong>2. Kontext:</strong> "Pro [účel/cílovou skupinu/situaci]"
+                        </div>
+                        <div class="template-section">
+                            <strong>3. Úkol:</strong> "Vysvětli/Napiš/Vytvoř [konkrétní požadavek]"
+                        </div>
+                        <div class="template-section">
+                            <strong>4. Formát:</strong> "Ve formátu [seznam/body/tabulka/...]"
+                        </div>
+                        <div class="template-section">
+                            <strong>5. Styl:</strong> "V [formálním/neformálním/akademickém/zábavném/profesionálním/přátelském] stylu"
+                        </div>
+                        <div class="template-section">
+                            <strong>6. Příklady výstupu:</strong> "Například: [ukázka požadovaného výsledku]"
+                        </div>
+                        <div class="template-section">
+                            <strong>7. Omezení:</strong> "Bez [nežádoucí obsah], max [délka]"
+                        </div>
+                        <div class="template-note">
+                            <strong>💡 Poznámka:</strong> Ne vždy musí být všechny položky zadány. Použijte ty, které jsou relevantní pro váš konkrétní úkol.
+                        </div>
+                    </div>
+
+                    <h4>🧪 Praktické příklady pro fyziku:</h4>
+                    <div class="physics-examples">
+                        <div class="example-category">
+                            <h5>🔬 Pro laboratorní práci:</h5>
+                            <div class="example-prompt">
+                                "Jsi laborantní asistent. Vytvoř bezpečnostní checklist pro experiment s elektřinou na střední škole. Seznam by měl mít 8 bodů, každý s vysvětlením proč je důležitý."
+                            </div>
+                        </div>
+
+                        <div class="example-category">
+                            <h5>📊 Pro řešení úloh:</h5>
+                            <div class="example-prompt">
+                                "Jsi tutor fyziky. Řeš tuto úlohu metodou krok za krokem: 'Auto jedoucí rychlostí 60 km/h začne brzdit rovnoměrně zpomaleným pohybem a zastaví za 4 sekundy. Jaká byla brzdná dráha?' Ukaž všechny výpočty a jednotky."
+                            </div>
+                        </div>
+
+                        <div class="example-category">
+                            <h5>🎨 Pro kreativní vyučování:</h5>
+                            <div class="example-prompt">
+                                "Jsi kreativní učitel fyziky. Vymysli 3 jednoduché experimenty, které mohu udělat doma s běžnými předměty, abych demonstroval zákon zachování energie. Každý experiment popiš ve 3 krocích."
+                            </div>
+                        </div>
+
+                        <div class="example-category">
+                            <h5>🧮 Pro matematiku ve fyzice:</h5>
+                            <div class="example-prompt">
+                                "Jsi matematik specializující se na fyziku. Vysvětli derivace ve fyzice pro studenta, který umí základní derivování. Ukaż 3 konkrétní příklady: rychlost, zrychlení a výkon. Každý s konkrétní úlohou a řešením."
+                            </div>
+                        </div>
+                    </div>
+
+                    <h4>⚡ Časté chyby v promptování:</h4>
+                    <div class="common-mistakes">
+                        <div class="mistake-item">
+                            <div class="mistake-wrong">❌ "Vyřeš úlohu"</div>
+                            <div class="mistake-right">✅ "Vyřeš tuto úlohu krok za krokem a vysvětli každý krok"</div>
+                        </div>
+                        <div class="mistake-item">
+                            <div class="mistake-wrong">❌ "Napiš o elektřině"</div>
+                            <div class="mistake-right">✅ "Napiš 500 slov o elektrickém proudu pro 9. třídu ZŠ"</div>
+                        </div>
+                        <div class="mistake-item">
+                            <div class="mistake-wrong">❌ "Pomoz mi s domácím úkolem"</div>
+                            <div class="mistake-right">✅ "Zkontroluj můj výpočet a vysvětli případné chyby: [vložit výpočet]"</div>
+                        </div>
+                    </div>
+
+                    <div class="prompt-builder">
+                        <h4>🔧 Prompt Builder - Sestavte si vlastní prompt:</h4>
+                        <div class="builder-grid">
+                            <div class="builder-field">
+                                <label><strong>Role AI:</strong></label>
+                                <select id="role-select">
+                                    <option value="">Vyberte roli...</option>
+                                    <option value="Jsi učitel fyziky">Učitel fyziky</option>
+                                    <option value="Jsi student gymnázia">Student gymnázia</option>
+                                    <option value="Jsi vědec">Vědec</option>
+                                    <option value="Jsi popularizátor vědy">Popularizátor vědy</option>
+                                    <option value="Jsi tutor">Tutor</option>
+                                </select>
+                            </div>
+                            <div class="builder-field">
+                                <label><strong>Téma:</strong></label>
+                                <select id="topic-select">
+                                    <option value="">Vyberte téma...</option>
+                                    <option value="mechaniku">Mechanika</option>
+                                    <option value="elektřinu">Elektřina</option>
+                                    <option value="optiku">Optika</option>
+                                    <option value="termodynamiku">Termodynamika</option>
+                                    <option value="vlny">Vlny a kmitání</option>
+                                </select>
+                            </div>
+                            <div class="builder-field">
+                                <label><strong>Formát:</strong></label>
+                                <select id="format-select">
+                                    <option value="">Vyberte formát...</option>
+                                    <option value="ve 3 bodech">3 body</option>
+                                    <option value="jako seznam">Seznam</option>
+                                    <option value="krok za krokem">Krok za krokem</option>
+                                    <option value="jako příběh">Příběh</option>
+                                    <option value="v tabulce">Tabulka</option>
+                                </select>
+                            </div>
+                            <div class="builder-field">
+                                <label><strong>Cílová skupina:</strong></label>
+                                <select id="audience-select">
+                                    <option value="">Vyberte skupinu...</option>
+                                    <option value="pro základní školu">Základní škola</option>
+                                    <option value="pro střední školu">Střední škola</option>
+                                    <option value="pro začátečníky">Začátečníci</option>
+                                    <option value="pro pokročilé">Pokročilí</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button class="demo-button" onclick="buildPrompt()" style="margin-top: 1rem;">Sestavit prompt</button>
+                        <div class="built-prompt" id="built-prompt" style="display: none;">
+                            <h5>📝 Váš sestavený prompt:</h5>
+                            <div class="prompt-result" id="prompt-result"></div>
+                            <button class="demo-button" onclick="copyPrompt()" style="margin-top: 0.5rem; background: var(--secondary-color);">Kopírovat prompt</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Deep Research -->
+    <section id="deep-research" class="section">
+        <div class="container">
+            <h2 class="section-title">Jak na Deep Research s AI</h2>
+            <p class="section-subtitle">Systematický přístup k hlubokému výzkumu pomocí umělé inteligence</p>
+
+            <div class="research-methodology">
+                <h3>🔍 Co je Deep Research?</h3>
+                <p><strong>Deep Research</strong> je systematický proces hloubkového zkoumání tématu pomocí AI, který jde za rámec povrchních odpovědí a poskytuje komplexní pochopení problematiky.</p>
+
+                <h3>📋 5-krokový postup Deep Research:</h3>
+                <div class="research-steps">
+                    <div class="research-step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>🎯 Definice výzkumné otázky</h4>
+                            <p>Začněte širokou otázkou a postupně ji zpřesňujte:</p>
+                            <div class="step-example">
+                                <strong>Široká:</strong> "Jak fungují tepelná čerpadla?"<br>
+                                <strong>Specifická:</strong> "Jaká je energetická účinnost vzduch-voda tepelných čerpadel v českých klimatických podmínkách při teplotách -15°C až +35°C?"
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="research-step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>🧩 Rozklad na podotázky</h4>
+                            <p>Rozdělte komplexní téma na menší, specifické otázky:</p>
+                            <div class="step-example">
+                                <ul>
+                                    <li>Jaké jsou typy tepelných čerpadel?</li>
+                                    <li>Jak se mění COP v závislosti na teplotě?</li>
+                                    <li>Jaké jsou investiční náklady?</li>
+                                    <li>Jak se liší od jiných systémů vytápění?</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="research-step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>🤖 Strategické promptování</h4>
+                            <p>Pro každou podotázku použijte specializovaný prompt:</p>
+                            <div class="step-example">
+                                "Jsi expert na tepelná čerpadla s 15letou praxí. Vysvětli mi krok za krokem, jak se mění koeficient výkonu (COP) u vzduch-voda tepelných čerpadel při poklesu venkovní teploty. Uveď konkrétní číselné hodnoty a vysvětli fyzikální principy."
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="research-step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h4>🔄 Iterativní prohlubování</h4>
+                            <p>Na základě odpovědí pokládejte navazující otázky:</p>
+                            <div class="step-example">
+                                <strong>Follow-up:</strong> "Vysvětlil jsi, že COP klesá s teplotou. Jaké technologie se používají k minimalizaci tohoto poklesu? Porovnej inverterová a on/off čerpadla."
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="research-step">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <h4>📊 Syntéza a verifikace</h4>
+                            <p>Spojte získané informace a ověřte je:</p>
+                            <div class="step-example">
+                                "Na základě našich předchozích diskuzí sestav komplexní srovnání tepelných čerpadel. Identifikuj možné nekonzistence v informacích a navrhni, jak je ověřit."
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>🧠 Pokročilé techniky pro Deep Research:</h3>
+                <div class="advanced-research">
+                    <div class="research-technique">
+                        <h4><i class="fas fa-users"></i> Multi-perspektivní přístup</h4>
+                        <p>Prozkoumejte téma z různých úhlů pohledu:</p>
+                        <div class="technique-examples">
+                            <div class="perspective-example">
+                                <strong>Ekonomický:</strong> "Jsi finanční analytik. Jaké jsou TCO tepelných čerpadel?"
+                            </div>
+                            <div class="perspective-example">
+                                <strong>Technický:</strong> "Jsi inženýr HVAC. Jaké jsou technické výzvy instalace?"
+                            </div>
+                            <div class="perspective-example">
+                                <strong>Environmentální:</strong> "Jsi expert na udržitelnost. Jaký je ekologický dopad?"
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="research-technique">
+                        <h4><i class="fas fa-microscope"></i> Drill-down metoda</h4>
+                        <p>Postupně se ponořujte hlouběji do každého aspektu:</p>
+                        <div class="drill-down-example">
+                            <div class="drill-level">Úroveň 1: "Co je termodynamický cyklus?"</div>
+                            <div class="drill-level">Úroveň 2: "Jak funguje Carnotův cyklus v tepelných čerpadlech?"</div>
+                            <div class="drill-level">Úroveň 3: "Proč reálná čerpadla nedosahují Carnotovy účinnosti?"</div>
+                            <div class="drill-level">Úroveň 4: "Jak minimalizovat ireversibilní ztráty v kompresoru?"</div>
+                        </div>
+                    </div>
+
+                    <div class="research-technique">
+                        <h4><i class="fas fa-balance-scale"></i> Kontrastní analýza</h4>
+                        <p>Porovnejte protichůdné pohledy nebo řešení:</p>
+                        <div class="contrast-example">
+                            "Argumentuj PRO a PROTI použití tepelných čerpadel v rodinných domech. Pro každý argument uveď konkrétní data a zdroje. Následně navrhni kompromisní řešení."
+                        </div>
+                    </div>
+                </div>
+
+                <h3>📝 Template pro Deep Research prompt:</h3>
+                <div class="research-template">
+                    <div class="template-structure">
+                        <div class="template-part">
+                            <strong>1. Kontext a expertiza:</strong><br>
+                            "Jsi [konkrétní expert] s [X let praxe] v oblasti [specifické pole]."
+                        </div>
+                        <div class="template-part">
+                            <strong>2. Výzkumná otázka:</strong><br>
+                            "Zkoumám [konkrétní problém/téma] pro [účel/cílová skupina]."
+                        </div>
+                        <div class="template-part">
+                            <strong>3. Požadovaný přístup:</strong><br>
+                            "Analyzuj to [metodou/perspektivou] a zaměř se na [specifické aspekty]."
+                        </div>
+                        <div class="template-part">
+                            <strong>4. Formát výstupu:</strong><br>
+                            "Odpověz ve formátu [struktura] s [konkrétní požadavky na detaily]."
+                        </div>
+                        <div class="template-part">
+                            <strong>5. Kritické myšlení:</strong><br>
+                            "Identifikuj mezery ve svých znalostech a navrhni jak je vyplnit."
+                        </div>
+                    </div>
+                </div>
+
+                <h3>⚡ Praktický příklad Deep Research:</h3>
+                <div class="research-example">
+                    <h4>Téma: "Efektivita solárních panelů v ČR"</h4>
+                    <div class="research-conversation">
+                        <div class="research-prompt">
+                            <strong>Prompt 1:</strong> "Jsi expert na fotovoltaiku s 10letou praxí v střední Evropě. Analyzuj aktuální efektivitu solárních panelů v českých klimatických podmínkách. Zaměř se na roční výrobu kWh/kWp, sezonní variabilitu a faktory ovlivňující výkon."
+                        </div>
+                        <div class="research-prompt">
+                            <strong>Follow-up 2:</strong> "Na základě předchozí analýzy - jak se liší výkon panelů v různých regionech ČR? Porovnej Moravu, Čechy a pohraničí z hlediska slunečního svitu a nadmořské výšky."
+                        </div>
+                        <div class="research-prompt">
+                            <strong>Follow-up 3:</strong> "Vysvětli vliv orientace a sklonu na výkon. Jaký je optimální úhel pro ČR a proč? Uveď konkrétní kalkulace pro jižní, východní a západní orientaci."
+                        </div>
+                        <div class="research-prompt">
+                            <strong>Syntéza:</strong> "Srovnej všechny předchozí informace a vytvoř doporučení pro majitele rodinných domů. Kdy se investice do FV vyplatí a kdy ne?"
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Google NotebookLM -->
+    <section id="notebooklm" class="section">
+        <div class="container">
+            <h2 class="section-title">Google NotebookLM - revoluce ve výuce</h2>
+            <p class="section-subtitle">Personalizovaný AI asistent pro studium fyziky</p>
+
+            <div class="notebooklm-intro">
+                <div class="intro-content">
+                    <h3><i class="fas fa-lightbulb"></i> Co je Google NotebookLM?</h3>
+                    <p>Google NotebookLM je inovativní AI nástroj, který funguje jako váš osobní studijní asistent. Na rozdíl od běžných AI chatbotů pracuje pouze s dokumenty, které mu poskytnete - učebnice, vědecké články, poznámky. To zajišťuje přesnost a relevanci odpovědí.</p>
+
+                    <div class="key-features">
+                        <div class="feature-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <span><strong>Bezpečný a přesný:</strong> Pracuje pouze s vašimi zdroji</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-language"></i>
+                            <span><strong>Vícejazyčný:</strong> Podporuje více než 80 jazyků</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-graduation-cap"></i>
+                            <span><strong>Výukově zaměřený:</strong> Speciální funkce pro studenty a učitele</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="notebooklm-features">
+                <h3><i class="fas fa-star"></i> Klíčové funkce pro fyziku</h3>
+
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-headphones"></i>
+                        </div>
+                        <h4>Audio Overview</h4>
+                        <p>Automaticky vytváří mluvená shrnutí z vašich materiálů. Ideální pro opakování složitých fyzikálních konceptů během cesty do školy.</p>
+                        <div class="feature-example">
+                            <strong>Příklad:</strong> Nahrajete kapitolu o relativitě → získáte 5minutové audio shrnutí klíčových myšlenek Einsteinovy teorie
+                        </div>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-cards-blank"></i>
+                        </div>
+                        <h4>Flashcards & Kvízy</h4>
+                        <p>Automaticky generuje testovací otázky a kartičky z vašich materiálů. Šetří čas a pomáhá s aktivním učením.</p>
+                        <div class="feature-example">
+                            <strong>Příklad:</strong> Z textu o Newtonových zákonech vytvoří kvíz: "Který zákon popisuje princip akce a reakce?"
+                        </div>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <h4>Interaktivní dialog</h4>
+                        <p>Ptejte se na cokoliv z nahraných materiálů. AI odpoví pouze na základě vašich zdrojů.</p>
+                        <div class="feature-example">
+                            <strong>Příklad:</strong> "Vysvětli mi Huygensův princip jednoduše, jako bych byl v prváku"
+                        </div>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-clipboard-list"></i>
+                        </div>
+                        <h4>Study Guides</h4>
+                        <p>Vytváří strukturované studijní příručky a slovníčky pojmů z vašich dokumentů.</p>
+                        <div class="feature-example">
+                            <strong>Příklad:</strong> Slovníček všech fyzikálních veličin a jednotek z kapitoly o mechanice
+                        </div>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-balance-scale"></i>
+                        </div>
+                        <h4>Multi-source analýza</h4>
+                        <p>Porovnává informace z různých zdrojů a hledá souvislosti. Ideální pro porozumění vývoji fyzikálních teorií.</p>
+                        <div class="feature-example">
+                            <strong>Příklad:</strong> Porovnání Newtonovy a Einsteinovy teorie gravitace z různých učebnic
+                        </div>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                        </div>
+                        <h4>Lesson Planning</h4>
+                        <p>Pomáhá učitelům vytvářet plány hodin, pracovní listy a testové otázky.</p>
+                        <div class="feature-example">
+                            <strong>Příklad:</strong> Struktura 90minutové hodiny o volném pádu s demonstracemi a diskuzními otázkami
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="practical-examples">
+                <h3><i class="fas fa-flask"></i> Praktické použití ve fyzice</h3>
+
+                <div class="examples-accordion">
+                    <div class="example-item">
+                        <div class="example-header" onclick="toggleExample('example1')">
+                            <span>Laboratorní práce s NotebookLM</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="example-content" id="example1">
+                            <h4>Scénář: Ověření Ohmova zákona</h4>
+                            <div class="scenario-steps">
+                                <div class="step">
+                                    <span class="step-num">1</span>
+                                    <div class="step-desc">
+                                        <strong>Příprava:</strong> Nahrajte teoretický úvod k experimentu
+                                    </div>
+                                </div>
+                                <div class="step">
+                                    <span class="step-num">2</span>
+                                    <div class="step-desc">
+                                        <strong>Generování:</strong> "Vytvoř 5 kontrolních otázek pro pochopení teorie před měřením"
+                                    </div>
+                                </div>
+                                <div class="step">
+                                    <span class="step-num">3</span>
+                                    <div class="step-desc">
+                                        <strong>Výsledek:</strong> Slovníček pojmů (reostat, voltmetr, ampérmetr) + shrnutí kroků
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="example-item">
+                        <div class="example-header" onclick="toggleExample('example2')">
+                            <span>Porovnání fyzikálních teorií</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="example-content" id="example2">
+                            <h4>Scénář: Newton vs. Einstein (gravitace)</h4>
+                            <div class="theory-comparison">
+                                <div class="comparison-sources">
+                                    <h5>Zdroje:</h5>
+                                    <ul>
+                                        <li>Kapitola z učebnice o Newtonově gravitačním zákonu</li>
+                                        <li>Článek o obecné teorii relativity</li>
+                                        <li>Historický kontext obou teorií</li>
+                                    </ul>
+                                </div>
+                                <div class="comparison-questions">
+                                    <h5>Dotazy pro NotebookLM:</h5>
+                                    <div class="question-example">
+                                        "Jaké jsou hlavní rozdíly v popisu gravitace podle Newtona a Einsteina?"
+                                    </div>
+                                    <div class="question-example">
+                                        "V jakých situacích je Newtonova teorie dostatečně přesná?"
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="example-item">
+                        <div class="example-header" onclick="toggleExample('example3')">
+                            <span>Příprava na maturitu</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="example-content" id="example3">
+                            <h4>Scénář: Systematické opakování mechaniky</h4>
+                            <div class="matura-prep">
+                                <div class="prep-workflow">
+                                    <div class="workflow-step">
+                                        <i class="fas fa-upload"></i>
+                                        <span><strong>Nahrát:</strong> Všechny kapitoly o mechanice z různých zdrojů</span>
+                                    </div>
+                                    <div class="workflow-step">
+                                        <i class="fas fa-brain"></i>
+                                        <span><strong>Generovat:</strong> Komplexní kvíz pokrývající kinematiku, dynamiku, energii</span>
+                                    </div>
+                                    <div class="workflow-step">
+                                        <i class="fas fa-headphones"></i>
+                                        <span><strong>Poslouchat:</strong> Audio shrnutí klíčových vzorců a principů</span>
+                                    </div>
+                                    <div class="workflow-step">
+                                        <i class="fas fa-cards-blank"></i>
+                                        <span><strong>Trénovat:</strong> Flashcards s fyzikálními veličinami a jednotkami</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="getting-started">
+                <h3><i class="fas fa-play-circle"></i> Jak začít s NotebookLM</h3>
+                <div class="start-steps">
+                    <div class="start-step">
+                        <div class="start-number">1</div>
+                        <div class="start-content">
+                            <h4>Přístup</h4>
+                            <p>Přejděte na <strong>notebooklm.google.com</strong> a přihlaste se pomocí Google účtu</p>
+                        </div>
+                    </div>
+                    <div class="start-step">
+                        <div class="start-number">2</div>
+                        <div class="start-content">
+                            <h4>Vytvoření projektu</h4>
+                            <p>Klikněte na "Create" a pojmenujte si projekt (např. "Fyzika - Mechanika")</p>
+                        </div>
+                    </div>
+                    <div class="start-step">
+                        <div class="start-number">3</div>
+                        <div class="start-content">
+                            <h4>Nahrání zdrojů</h4>
+                            <p>Nahrajte PDF učebnic, poznámky z hodin nebo články (max 50 zdrojů)</p>
+                        </div>
+                    </div>
+                    <div class="start-step">
+                        <div class="start-number">4</div>
+                        <div class="start-content">
+                            <h4>Začněte se ptát</h4>
+                            <p>Zkuste: "Vytvoř mi shrnutí této kapitoly" nebo "Vysvětli mi tento vzorec"</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="notebooklm-benefits">
+                <h3><i class="fas fa-trophy"></i> Proč je NotebookLM skvělý pro fyziku</h3>
+                <div class="benefits-grid">
+                    <div class="benefit-item">
+                        <i class="fas fa-user-graduate"></i>
+                        <h4>Personalizované učení</h4>
+                        <p>Každý student může pracovat svým tempem a zaměřit se na oblasti, které mu dělají problém</p>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fas fa-clock"></i>
+                        <h4>Úspora času</h4>
+                        <p>Automatická tvorba kvízů, shrnutí a studijních materiálů šetří hodiny práce</p>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fas fa-bullseye"></i>
+                        <h4>Přesnost odpovědí</h4>
+                        <p>Informace pouze z vašich zdrojů eliminují riziko dezinformací z internetu</p>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fas fa-brain"></i>
+                        <h4>Aktivní učení</h4>
+                        <p>Mění pasivní čtení na aktivní dialog a důkladné pochopení látky</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="notebooklm-tips">
+                <h3><i class="fas fa-lightbulb"></i> Tipy pro efektivní použití</h3>
+                <div class="tips-container">
+                    <div class="tip-card">
+                        <i class="fas fa-file-alt"></i>
+                        <h4>Kvalitní zdroje</h4>
+                        <p>Nahrajte různé typy materiálů - učebnice, vědecké články, vaše poznámky. Různost zdrojů = bohatší odpovědi.</p>
+                    </div>
+                    <div class="tip-card">
+                        <i class="fas fa-question-circle"></i>
+                        <h4>Specifické otázky</h4>
+                        <p>Místo "Vysvětli gravitaci" se ptejte "Jak se liší gravitační síla na Zemi a na Měsíci při stejné hmotnosti?"</p>
+                    </div>
+                    <div class="tip-card">
+                        <i class="fas fa-layer-group"></i>
+                        <h4>Postupné budování</h4>
+                        <p>Začněte se základními koncepty a postupně přidávejte složitější materiály pro hlubší pochopení.</p>
+                    </div>
+                    <div class="tip-card">
+                        <i class="fas fa-share-alt"></i>
+                        <h4>Sdílení s kolegy</h4>
+                        <p>Vytvořené kvízy a shrnutí můžete snadno sdílet s ostatními studenty nebo učiteli.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Etika -->
+    <section id="ethics" class="section section-gray">
+        <div class="container">
+            <h2 class="section-title">Etika a diskuze</h2>
+            <p class="section-subtitle">Důležité otázky k zamyšlení</p>
+
+            <div class="ethics-accordion">
+                <div class="ethics-item">
+                    <div class="ethics-header" onclick="toggleEthics('ethics1')">
+                        <span>Je etické, aby AI pomáhala psát seminární práce?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="ethics-content" id="ethics1">
+                        <p><strong>Argumenty PRO:</strong> AI může pomoci s formulací myšlenek, překonáním writer's block, učením se různých stylů psaní.</p>
+                        <p><strong>Argumenty PROTI:</strong> Neférová výhoda, ztráta originality, student se neučí psát samostatně.</p>
+                        <p><strong>K diskuzi:</strong> Kde je hranice mezi pomocí a podváděním?</p>
+                    </div>
+                </div>
+
+                <div class="ethics-item">
+                    <div class="ethics-header" onclick="toggleEthics('ethics2')">
+                        <span>Kdo je zodpovědný za chyby autonomních vozidel?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="ethics-content" id="ethics2">
+                        <p><strong>Možnosti:</strong> Výrobce auta, vývojář AI, majitel vozidla, nebo někdo jiný?</p>
+                        <p><strong>Problém:</strong> AI systémy jsou často "černé skříňky" - nevíme přesně, jak rozhodují.</p>
+                        <p><strong>K diskuzi:</strong> Jak zajistit odpovědnost u AI systémů?</p>
+                    </div>
+                </div>
+
+                <div class="ethics-item">
+                    <div class="ethics-header" onclick="toggleEthics('ethics3')">
+                        <span>Mohou být AI systémy zaujatá (biased)?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="ethics-content" id="ethics3">
+                        <p><strong>Problém:</strong> AI se učí z dat vytvořených lidmi, která mohou obsahovat předsudky.</p>
+                        <p><strong>Příklad:</strong> AI systém pro hodnocení životopisů může diskriminovat ženy, pokud byl trénován na historických datech.</p>
+                        <p><strong>K diskuzi:</strong> Jak zajistit spravedlivé AI?</p>
+                    </div>
+                </div>
+
+                <div class="ethics-item">
+                    <div class="ethics-header" onclick="toggleEthics('ethics4')">
+                        <span>Nahradí AI lidské pracovníky?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="ethics-content" id="ethics4">
+                        <p><strong>Realita:</strong> AI již nahrazuje některé úlohy, ale také vytváří nová pracovní místa.</p>
+                        <p><strong>Trendy:</strong> Automatizace rutinních úkolů vs. potřeba lidské kreativity a empatie.</p>
+                        <p><strong>K diskuzi:</strong> Jak se připravit na budoucnost práce s AI?</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
 
     <!-- Navigation -->
     <section class="section">
@@ -89,7 +2420,7 @@
                 <a href="../../index.html#topics" class="nav-btn secondary">
                     <i class="fas fa-arrow-left"></i> Všechna témata
                 </a>
-                <a href="../01-uvod-bilance/index.html" class="nav-btn primary">
+                <a href="../01-matematicke-praktikum/index.html" class="nav-btn primary">
                     Další téma <i class="fas fa-arrow-right"></i>
                 </a>
             </div>
@@ -97,5 +2428,188 @@
     </section>
 
     <script src="../../js/main.js"></script>
+    <script>
+        // Kvíz funkce
+        function checkAnswer(questionId, selectedAnswer, isCorrect) {
+            const resultElement = document.getElementById(questionId + '-result');
+            const options = document.querySelectorAll(`#${questionId.replace('q', '')} .quiz-option`);
+
+            // Reset všech možností
+            options.forEach(option => {
+                option.classList.remove('correct', 'incorrect');
+            });
+
+            // Označit vybranou odpověď
+            event.target.classList.add(isCorrect ? 'correct' : 'incorrect');
+
+            if (isCorrect) {
+                resultElement.innerHTML = '<span style="color: #16a34a;"><i class="fas fa-check"></i> Správně!</span>';
+                resultElement.style.background = '#dcfce7';
+            } else {
+                resultElement.innerHTML = '<span style="color: #dc2626;"><i class="fas fa-times"></i> Zkus to znovu.</span>';
+                resultElement.style.background = '#fef2f2';
+            }
+        }
+
+        // Etika accordion
+        function toggleEthics(id) {
+            const content = document.getElementById(id);
+            const header = content.previousElementSibling;
+            const icon = header.querySelector('i');
+
+            content.classList.toggle('active');
+            icon.classList.toggle('fa-chevron-down');
+            icon.classList.toggle('fa-chevron-up');
+        }
+
+        // Demo generování básně s analýzou promptu
+        function generatePoem() {
+            const input = document.getElementById('prompt-input').value;
+            const output = document.getElementById('poem-output');
+            const analysisDiv = document.getElementById('prompt-analysis');
+            const analysisContent = document.getElementById('analysis-content');
+
+            if (!input.trim()) {
+                output.innerHTML = '<em style="color: #dc2626;">Nejdřív zadejte prompt!</em>';
+                analysisDiv.style.display = 'none';
+                return;
+            }
+
+            // Analýza promptu
+            const analysis = analyzePrompt(input);
+
+            // Simulace AI odpovědi (v reálné aplikaci by se volalo API)
+            const poems = [
+                "Gravitace táhne dolů,<br>Icaro letěl moc vysoko.<br>Newton pod stromekem seděl,<br>Jablko mu na hlavu kleslo!",
+                "F = ma, to je zákon,<br>Newton nám ho napsal v knihách.<br>Síla, hmota, zrychlení,<br>Fyzika je úžasná!",
+                "Einstein řekl E=mc²,<br>Hmota je energie v kořeni.<br>Čas se kroutí, prostor taky,<br>Relativita - to jsou fajn zákony!"
+            ];
+
+            const randomPoem = poems[Math.floor(Math.random() * poems.length)];
+
+            output.innerHTML = `
+                <strong>Vygenerovaná báseň:</strong><br><br>
+                <em>${randomPoem}</em>
+                <br><br>
+                <small><i class="fas fa-lightbulb"></i> V reálné aplikaci by tuto báseň vygenerovala AI na základě vašeho promptu.</small>
+            `;
+
+            // Zobrazení analýzy
+            analysisContent.innerHTML = `
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                    <div>
+                        <strong>📏 Délka:</strong><br>
+                        ${analysis.wordCount} slov, ${analysis.tokenEstimate} tokenů (odhad)
+                    </div>
+                    <div>
+                        <strong>🎯 Konkrétnost:</strong><br>
+                        <span style="color: ${analysis.specificity.color};">${analysis.specificity.level}</span>
+                    </div>
+                    <div>
+                        <strong>👤 Role definována:</strong><br>
+                        <span style="color: ${analysis.hasRole ? '#16a34a' : '#dc2626'};">${analysis.hasRole ? 'Ano' : 'Ne'}</span>
+                    </div>
+                    <div>
+                        <strong>📋 Formát zadán:</strong><br>
+                        <span style="color: ${analysis.hasFormat ? '#16a34a' : '#dc2626'};">${analysis.hasFormat ? 'Ano' : 'Ne'}</span>
+                    </div>
+                </div>
+                <div style="margin-top: 1rem;">
+                    <strong>💡 Doporučení:</strong> ${analysis.suggestions.join(', ')}
+                </div>
+            `;
+
+            analysisDiv.style.display = 'block';
+        }
+
+        // Funkce pro analýzu promptu
+        function analyzePrompt(prompt) {
+            const words = prompt.trim().split(/\s+/);
+            const wordCount = words.length;
+            const tokenEstimate = Math.ceil(wordCount * 1.3); // Hrubý odhad
+
+            // Kontrola konkrétnosti
+            const specificWords = ['konkrétní', 'detailní', 'přesný', 'specifický', 'pro', 'věk', 'úroveň', 'školu'];
+            const hasSpecificWords = specificWords.some(word => prompt.toLowerCase().includes(word));
+
+            let specificity = { level: 'Nízká', color: '#dc2626' };
+            if (wordCount > 15 && hasSpecificWords) {
+                specificity = { level: 'Vysoká', color: '#16a34a' };
+            } else if (wordCount > 10 || hasSpecificWords) {
+                specificity = { level: 'Střední', color: '#f59e0b' };
+            }
+
+            // Kontrola role
+            const roleWords = ['jsi', 'jste', 'jako', 'expert', 'učitel', 'student', 'básník', 'spisovatel'];
+            const hasRole = roleWords.some(word => prompt.toLowerCase().includes(word));
+
+            // Kontrola formátu
+            const formatWords = ['verš', 'řádek', 'bod', 'seznam', 'krátký', 'dlouhý', 'stránka', 'odstavec', 'rým'];
+            const hasFormat = formatWords.some(word => prompt.toLowerCase().includes(word));
+
+            // Doporučení
+            const suggestions = [];
+            if (!hasRole) suggestions.push('Definujte roli AI (např. "Jsi básník...")');
+            if (!hasFormat) suggestions.push('Specifikujte formát výstupu');
+            if (wordCount < 10) suggestions.push('Buďte konkrétnější v zadání');
+            if (suggestions.length === 0) suggestions.push('Výborný prompt! 👏');
+
+            return {
+                wordCount,
+                tokenEstimate,
+                specificity,
+                hasRole,
+                hasFormat,
+                suggestions
+            };
+        }
+
+        // Prompt Builder funkce
+        function buildPrompt() {
+            const role = document.getElementById('role-select').value;
+            const topic = document.getElementById('topic-select').value;
+            const format = document.getElementById('format-select').value;
+            const audience = document.getElementById('audience-select').value;
+
+            if (!role || !topic || !format || !audience) {
+                alert('Prosím vyberte všechny možnosti.');
+                return;
+            }
+
+            const prompt = `${role}. Vysvětli ${topic} ${audience} ${format}. Použij jednoduché příklady a zajímavé analogie.`;
+
+            document.getElementById('prompt-result').textContent = prompt;
+            document.getElementById('built-prompt').style.display = 'block';
+        }
+
+        function copyPrompt() {
+            const promptText = document.getElementById('prompt-result').textContent;
+            navigator.clipboard.writeText(promptText).then(function() {
+                const button = event.target;
+                const originalText = button.textContent;
+                button.textContent = 'Zkopírováno! ✓';
+                button.style.background = '#16a34a';
+
+                setTimeout(() => {
+                    button.textContent = originalText;
+                    button.style.background = 'var(--secondary-color)';
+                }, 2000);
+            }).catch(function(err) {
+                console.error('Chyba při kopírování: ', err);
+                alert('Kopírování se nezdařilo. Zkuste text vybrat a zkopírovat ručně.');
+            });
+        }
+    </script>
+
+    <!-- Navigation -->
+    <section class="section">
+        <div class="container">
+            <div class="lecture-navigation">
+                <a href="../01-matematicke-praktikum/index.html" class="nav-btn primary">
+                    Další téma <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
 </body>
 </html>

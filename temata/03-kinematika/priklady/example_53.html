@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doba jízdy ponorky - řešený příklad</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>53. Doba jízdy ponorky</h1>
+            <p>Kinematika - řešený příklad</p>
+        </header>
+
+        <!-- Motivační úvod pro studenty -->
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> V lodní dopravě, letecké navigaci i při plánování cest je klíčové přesně vypočítat dobu jízdy. GPS a navigační systémy to dělají automaticky, ale porozumět základům času je důležité pro orientaci v reálném světě i v technických profesích.
+        </div>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <p>
+                Ponorka vyjela v čase <strong>8:41:37</strong> a do cíle dorazila v <strong>11:14:26</strong>. Vyjádřete dobu jízdy v hodinách jako <strong>desetinné číslo</strong>.
+            </p>
+        </section>
+
+        <section id="vstupni-data">
+            <h3>Vstupní data</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Veličina</th>
+                        <th>Symbol</th>
+                        <th>Hodnota</th>
+                        <th>Jednotka</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Čas startu</td>
+                        <td class="variable">t₁</td>
+                        <td class="value">8:41:37</td>
+                        <td class="unit">h:min:s</td>
+                    </tr>
+                    <tr>
+                        <td>Čas cíle</td>
+                        <td class="variable">t₂</td>
+                        <td class="value">11:14:26</td>
+                        <td class="unit">h:min:s</td>
+                    </tr>
+                    <tr>
+                        <td>Hledaná doba jízdy</td>
+                        <td class="variable">Δt</td>
+                        <td class="value">?</td>
+                        <td class="unit">h (desetinně)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+            <p>Výpočet časového rozdílu a převod na desetinné vyjádření v hodinách.</p>
+
+            <div class="calculation-step">
+                <h4>Krok 1: Analýza situace a převody jednotek</h4>
+                <p>Musíme spočítat časový rozdíl mezi dvěma časy a převést na desetinné vyjádření.</p>
+
+                <div class="equation-logic-box">
+                    <strong>Logika výběru:</strong> Rozdíl časů počítáme odečtením, ale musíme dávat pozor na "půjčování" při záporných hodnotách minut a sekund.
+                </div>
+
+                <div class="warning-box">
+                    <strong>Pozor na jednotky!</strong> Pozor na výpočet s časem: pracuj systematicky hodiny-minuty-sekundy, nebo převeď vše na sekundy.
+                </div>
+
+                <div class="note-box">
+                    <strong>Dané hodnoty:</strong>
+                    <ul>
+                        <li>Čas startu: t₁ = 8:41:37 (8 h, 41 min, 37 s)</li>
+                        <li>Čas cíle: t₂ = 11:14:26 (11 h, 14 min, 26 s)</li>
+                        <li>Hledáme: dobu jízdy v hodinách (desetinně)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 2: Výběr rovnice</h4>
+                <p>Použijeme prostý rozdíl časů:</p>
+
+                <div class="equation-logic-box">
+                    <strong>Proč tuto rovnici?</strong> Doba trvání se jednoduše vypočítá jako rozdíl koncového a počátečního času.
+                </div>
+
+                <div class="formula-box">
+                    $$\Delta t = t_2 - t_1$$
+                    <p>kde Δt je doba trvání, t₂ koncový čas, t₁ počáteční čas</p>
+                </div>
+
+                <div class="analogy-box">
+                    <strong>Praktická analogie:</strong> Jako když měříš, jak dlouho trval film - odečteš čas začátku od času konce.
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 3: Výpočet rozdílu po částech</h4>
+                <p>Spočteme rozdíl po částech (hodiny, minuty, sekundy):</p>
+
+                <div class="result-box">
+                    <strong>Prvotní odečtení:</strong>
+                    $$11:14:26 - 8:41:37$$
+                    <p>Hodiny: 11 - 8 = 3 h</p>
+                    <p>Minuty: 14 - 41 = -27 min (půjčíme 1 h)</p>
+                    <p>Sekundy: 26 - 37 = -11 s (půjčíme 1 min)</p>
+                </div>
+
+                <div class="tip-box">
+                    <strong>Tip pro půjčování:</strong> Když je výsledek záporný, půjčíme z vyšší jednotky: 1 h = 60 min, 1 min = 60 s.
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 4: Výpočet s půjčováním</h4>
+                <p>Provedeme výpočet s půjčováním:</p>
+
+                <div class="result-box">
+                    <strong>Sekundy:</strong>
+                    $$26 - 37 + 60 = 49 \text{ s}$$
+                </div>
+
+                <div class="result-box">
+                    <strong>Minuty:</strong>
+                    $$14 - 41 - 1 + 60 = 32 \text{ min}$$
+                </div>
+
+                <div class="result-box">
+                    <strong>Hodiny:</strong>
+                    $$11 - 8 - 1 = 2 \text{ h}$$
+                </div>
+
+                <div class="result-box">
+                    <strong>Výsledný čas:</strong>
+                    $$\Delta t = 2 \text{ h } 32 \text{ min } 49 \text{ s}$$
+                </div>
+
+                <details>
+                    <summary>📊 Pokročilý výpočet</summary>
+                    <div>
+                        <div class="interpretation-box">
+                            <strong>Fyzikální význam:</strong> Doba 2 h 32 min 49 s je typická pro středně dlouhou plavbu ponorky na kratší vzdálenosti.
+                        </div>
+                    </div>
+                </details>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 5: Převod na desetinné hodiny</h4>
+                <p>Převedeme minuty a sekundy na zlomky hodiny:</p>
+
+                <div class="result-box">
+                    <strong>Převod na desetinné hodiny:</strong>
+                    $$t = 2 + \frac{32}{60} + \frac{49}{3600}$$
+                    $$= 2 + 0{,}533 + 0{,}014 = 2{,}547 \text{ h}$$
+                </div>
+
+                <div class="tip-box">
+                    <strong>Tip pro převody:</strong> 1 h = 60 min, takže 32 min = 32/60 h. A 1 h = 3600 s, takže 49 s = 49/3600 h.
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 6: Kontrola a odpověď</h4>
+
+                <div class="summary-box">
+                    <strong>Odpověď:</strong> Doba jízdy ponorky byla <strong>2,547 hodiny</strong>.
+                </div>
+
+                <div class="info-box">
+                    <strong>Kontrola rozumnosti:</strong> 2,547 h = 2 h + 0,547 × 60 min = 2 h 32,8 min ≈ 2 h 32 min 49 s ✓
+                    <br>Výsledek odpovídá původnímu výpočtu.
+                </div>
+
+                <div class="alternative-method-box">
+                    <strong>Alternativní způsob:</strong> Převést oba časy na sekundy, odečíst a převést zpět: (11×3600 + 14×60 + 26) - (8×3600 + 41×60 + 37) = 9169 s = 2,547 h
+                </div>
+
+                <details>
+                    <summary>🤔 Metakognitivní otázky</summary>
+                    <div>
+                        <ul>
+                            <li>Jak by sis vypočítal/a dobu mezi 23:45:30 a 1:15:20? (Tip: přes půlnoc!)</li>
+                            <li>Proč se v dopravě často používají desetinné hodiny místo formátu h:mm:ss?</li>
+                            <li>Jak rychle dokážeš spočítat 1,75 hodiny v minutách?</li>
+                            <li>Jaké výhody má použití UTC času v mezinárodní dopravě?</li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

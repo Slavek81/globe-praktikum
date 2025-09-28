@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automobil jede rychlostí60 km·h⁻¹</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>1. Automobil jede rychlostí 60 km·h⁻¹</h1>
+            <p>Kinematika - řešený příklad</p>
+        </header>
+
+        <!-- Motivační úvod pro studenty -->
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Výpočty rychlosti a dráhy používají každodenně řidiči, navigační systémy, dopravní inženýři nebo záchranné služby. Tento příklad vám ukáže základy kinematiky na běžné jízdě autem.
+        </div>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <p>
+                Automobil jede rychlostí <strong>60 km·h⁻¹</strong>. Jakou dráhu urazí za <strong>20 minut</strong>? Zakreslete graf závislosti dráhy na čase, rychlosti na čase a zrychlení na čase. Jaký význam má plocha pod grafem znázorňující časový průběh rychlosti?
+            </p>
+        </section>
+
+        <section id="vstupni-data">
+            <h3>Vstupní data</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Veličina</th>
+                        <th>Symbol</th>
+                        <th>Hodnota</th>
+                        <th>Jednotka</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Rychlost automobilu</td>
+                        <td class="variable">v</td>
+                        <td class="value">60</td>
+                        <td class="unit">km·h⁻¹</td>
+                    </tr>
+                    <tr>
+                        <td>Doba jízdy</td>
+                        <td class="variable">t</td>
+                        <td class="value">20</td>
+                        <td class="unit">min</td>
+                    </tr>
+                    <tr>
+                        <td>Hledaná dráha</td>
+                        <td class="variable">s</td>
+                        <td class="value">?</td>
+                        <td class="unit">km</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+            <p>Výpočet rozdělíme do několika logických kroků podle typu kinematické úlohy.</p>
+
+            <div class="calculation-step">
+                <h4>Krok 1: Analýza situace a převody jednotek</h4>
+                <p>Automobil jede konstantní rychlostí, což znamená rovnoměrný přímočarý pohyb bez zrychlení.</p>
+
+                <div class="equation-logic-box">
+                    <strong>Logika výběru:</strong> Protože rychlost se nemění (60 km/h po celou dobu jízdy), jde o rovnoměrný pohyb. Nezrychluje ani nezpomaluje.
+                </div>
+
+                <div class="warning-box">
+                    <strong>Pozor na jednotky!</strong> Nemůžeme násobit km/h s minutami. Vždy převeď čas na hodiny nebo rychlost na m/s.
+                </div>
+
+                <div class="note-box">
+                    <strong>Dané hodnoty:</strong>
+                    <ul>
+                        <li>Rychlost: v = 60 km/h</li>
+                        <li>Čas: t = 20 minut = 20/60 h = 1/3 h</li>
+                        <li>Hledáme: dráhu s</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="calculation-step">
+                <h4>Krok 2: Výběr fyzikální rovnice</h4>
+                <p>Pro rovnoměrný přímočarý pohyb používáme základní kinematickou rovnici:</p>
+
+                <div class="equation-logic-box">
+                    <strong>Proč tuto rovnici?</strong> Máme konstantní rychlost (v) a známe čas (t). Potřebujeme dráhu (s). Rovnice s = v·t přesně spojuje tyto tři veličiny.
+                </div>
+
+                <div class="formula-box">
+                    <strong>📐 Rovnoměrný pohyb</strong>
+                    <p>$$s = v \cdot t$$</p>
+                    <p>kde: s = dráha [km], v = rychlost [km·h⁻¹], t = čas [h]</p>
+                </div>
+
+                <div class="analogy-box">
+                    <strong>Praktická analogie:</strong> Je to jako když počítáte, kolik kilometrů ujede vlak za hodinu při rychlosti 120 km/h - prostě rychlost × čas = vzdálenost.
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 3: Dosazení hodnot a výpočet</h4>
+                <p>Dosadíme známé hodnoty do rovnice a vypočítáme dráhu:</p>
+
+                <div class="result-box">
+                    <strong>📐 Dosazení hodnot</strong>
+                    <p>$$s = 60 \text{ km/h} \cdot \frac{1}{3} \text{ h}$$</p>
+                </div>
+
+                <div class="result-box">
+                    <strong>📐 Výpočet dráhy</strong>
+                    <p>$$s = 60 \cdot \frac{1}{3} = 20 \text{ km}$$</p>
+                </div>
+
+                <div class="tip-box">
+                    <strong>Tip pro výpočet:</strong> Plocha pod grafem v-t = rychlost × čas = dráha. U rovnoměrného pohybu je to obdélník!
+                </div>
+
+                <details>
+                    <summary>📊 Analýza grafů (rozbalovací sekce)</summary>
+                    <div>
+                        <strong>Grafy pro tento pohyb:</strong>
+                        <ul>
+                            <li><strong>Graf v-t:</strong> vodorovná přímka na 60 km/h</li>
+                            <li><strong>Graf s-t:</strong> rostoucí přímka z počátku</li>
+                            <li><strong>Graf a-t:</strong> vodorovná přímka na nule</li>
+                        </ul>
+
+                        <div class="interpretation-box">
+                            <strong>Fyzikální význam:</strong> Plocha pod grafem v-t představuje celkovou uraženou dráhu. Pro obdélník: plocha = výška × šířka = 60 km/h × 1/3 h = 20 km
+                        </div>
+                    </div>
+                </details>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 4: Kontrola výsledku a odpověď</h4>
+                <p>Ověříme rozumnost výsledku a formulujeme konečnou odpověď.</p>
+
+                <div class="summary-box">
+                    <strong>Odpověď:</strong>
+                    <ul>
+                        <li>1) Automobil urazí dráhu <strong>20 km</strong></li>
+                        <li>2) Grafy: v-t konstantní, s-t lineární, a-t nula</li>
+                        <li>3) Plocha pod grafem v-t představuje celkovou uraženou dráhu</li>
+                    </ul>
+                    <p><strong>Ověření:</strong> 60 km/h za 20 min = 60 × (1/3) = 20 km ✓</p>
+                </div>
+
+                <div class="info-box">
+                    <strong>Kontrola rozumnosti:</strong> 20 km za 20 minut při rychlosti 60 km/h je reálné - odpovídá běžné jízdě městem nebo na okresce.
+                </div>
+
+                <div class="alternative-method-box">
+                    <strong>Alternativní způsob:</strong> Mohli jsme převést vše na m/s: 60 km/h = 16,67 m/s, 20 min = 1200 s, pak s = 16,67 × 1200 = 20 000 m = 20 km
+                </div>
+
+                <details>
+                    <summary>🤔 Metakognitivní otázky (rozšířené přemýšlení)</summary>
+                    <div>
+                        <ul>
+                            <li>Co by se stalo s grafy, kdyby auto jelo dvojnásobnou rychlostí?</li>
+                            <li>Jak by vypadaly grafy, kdyby se auto zastavilo po 10 minutách?</li>
+                            <li>Proč je důležité sjednocovat jednotky před výpočtem?</li>
+                            <li>V jakých situacích v reálném životě není rychlost automobilu konstantní?</li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

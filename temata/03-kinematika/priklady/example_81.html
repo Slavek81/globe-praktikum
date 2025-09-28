@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Řešení</title>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>81. Martin humanitární letec</h1>
+            <p>Kinematika - řešený příklad</p>
+        </header>
+
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Humanitární pomoc ze vzduchu zachraňuje životy při přírodních katastrofách! Piloti Červeného kříže, OSN nebo armády musí přesně vypočítat, kde vypustit zásoby, aby dopadly na správné místo. Tato fyzika se používá i při hašení požárů z letadel, při výsadcích nebo při shazování potravin do nedostupných oblastí. Chyba v výpočtu může znamenat ztrátu drahocenných zásob.
+        </div>
+
+        <div class="zadani">
+            <h3>Zadání</h3>
+            <p>Martin se stal humanitárním letcem, který z letadla shazuje balíky plné čokolády. Letí ve výšce <strong>200 m</strong> nad zemí rychlostí <strong>60 m·s⁻¹</strong>. Míří na matraci umístěnou na zemi. V jaké vzdálenosti před matrací musí balík vypustit?</p>
+        </div>
+
+        <div class="calculation-step">
+            <h3>1. Analýza situace a bezpečnostní aspekty</h3>
+
+            <div class="equation-logic-box">
+                <strong>💭 Logika výběru:</strong> Jedná se o klasický vodorovný vrh - balík má stejnou horizontální rychlost jako letadlo a současně padá volným pádem. Balík se nepohybuje vzhledem k letadlu vodorovně, ale gravitace způsobuje vertikální pád.
+            </div>
+
+            <div class="warning-box">
+                <strong>⚠️ Bezpečnostní upozornění!</strong> Při reálném shazování musí pilot zohlednit vítr, odpor vzduchu, rotaci Země a hmotnost nákladu. Chyba může způsobit nebezpečí pro lidi na zemi. Humanitární mise vyžadují přesné calculace!
+            </div>
+
+            <div class="note-box">
+                <strong>📝 Dané hodnoty:</strong>
+                <ul>
+                    <li>Výška letu: $h = 200$ m</li>
+                    <li>Rychlost letadla: $v_0 = 60$ m·s⁻¹ (horizontální)</li>
+                    <li>Počáteční vertikální rychlost: $v_{0y} = 0$ (vodorovný vrh)</li>
+                    <li>Gravitační zrychlení: $g = 10$ m·s⁻²</li>
+                    <li><strong>Hledáme:</strong> vzdálenost před cílem $d$</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="calculation-step">
+            <h3>2. Výběr kinematických rovnic</h3>
+
+            <div class="equation-logic-box">
+                <strong>🎯 Proč tyto rovnice?</strong> Vodorovný vrh kombinuje rovnoměrný horizontální pohyb (konstantní rychlost) s volným vertikálním pádem (konstantní zrychlení). Tyto pohyby jsou nezávislé - můžeme je řešit odděleně.
+            </div>
+
+            <div class="formula-box">
+                <strong>Z obecného odvození vodorovného vrhu:</strong>
+                $$d = v_0 \sqrt{\frac{2h}{g}}$$
+
+                <strong>Nebo rozložením na komponenty:</strong>
+                $$d = v_0 \cdot t \quad \text{a} \quad h = \frac{1}{2}gt^2$$
+            </div>
+
+            <div class="analogy-box">
+                <strong>🛩️ Praktická analogie:</strong> Je to jako házet míč z jedoucího vlaku. Míč má stále rychlost vlaku dopředu, ale současně padá dolů kvůli gravitaci. Z pohledu člověka na nástupišti míč letí po křivce, ale z pohledu pasažéra ve vlaku míč padá přímo dolů.
+            </div>
+        </div>
+
+        <div class="calculation-step">
+            <h3>3. Výpočet doby pádu</h3>
+
+            <div class="tip-box">
+                <strong>💡 Užitečná rada:</strong> Nejdřív spočítejte dobu pádu z vertikálního pohybu, pak použijte tuto dobu pro horizontální vzdálenost. Doba pádu nezávisí na horizontální rychlosti!
+            </div>
+
+            <p><strong>Doba pádu z výšky 200 m:</strong></p>
+            <div class="formula-box">
+                $$h = \frac{1}{2}gt^2$$
+                $$200 = \frac{1}{2} \times 10 \times t^2$$
+                $$200 = 5t^2$$
+                $$t^2 = 40$$
+                $$t = \sqrt{40} = 2\sqrt{10} \approx 6{,}32 \text{ s}$$
+            </div>
+
+            <details>
+                <summary><strong>🔍 Přesný výpočet odmocniny</strong></summary>
+                <div>
+                    <p>$\sqrt{40} = \sqrt{4 \times 10} = 2\sqrt{10}$</p>
+                    <p>$\sqrt{10} \approx 3{,}162$, takže $t = 2 \times 3{,}162 = 6{,}324$ s</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="calculation-step">
+            <h3>4. Výpočet horizontální vzdálenosti</h3>
+
+            <p><strong>Vzdálenost při konstantní horizontální rychlosti:</strong></p>
+            <div class="formula-box">
+                $$d = v_0 \times t = 60 \times 6{,}32 = 379{,}2 \text{ m}$$
+            </div>
+
+            <div class="summary-box">
+                <strong>📍 Odpověď:</strong> Balík musí být vypuštěn ve vzdálenosti <strong>380 m</strong> před matrací.
+
+                <strong>Přesný výpočet:</strong>
+                $$d = 60 \sqrt{\frac{2 \times 200}{10}} = 60 \sqrt{40} = 60 \times 2\sqrt{10} = 120\sqrt{10} \approx 379{,}4 \text{ m}$$
+            </div>
+
+            <div class="info-box">
+                <strong>🔍 Kontrola rozumnosti:</strong>
+                <ul>
+                    <li>Vzdálenost 380 m je téměř dvojnásobek výšky (200 m) - to je logické pro rychlost 60 m·s⁻¹</li>
+                    <li>Za 6,3 sekundy letu ujede letadlo 60 × 6,3 = 378 m - souhlasí! ✓</li>
+                    <li>Poměr vzdálenost/výška = 380/200 = 1,9 - rozumné pro tuto rychlost</li>
+                </ul>
+            </div>
+
+            <div class="alternative-method-box">
+                <strong>🔄 Alternativní ověření:</strong>
+                <p>Můžeme použít přímý vzorec pro vodorovný vrh: $d = v_0\sqrt{\frac{2h}{g}} = 60\sqrt{\frac{400}{10}} = 60\sqrt{40} = 60 \times 6{,}325 = 379{,}5$ m ✓</p>
+                <p>Nebo energeticky: čas pádu odpovídá převodu potenciální energie na kinetickou: $t = \sqrt{\frac{2h}{g}}$</p>
+            </div>
+
+            <details>
+                <summary>🤔 Metakognitivní otázky</summary>
+                <div>
+                    <ul>
+                        <li>Proč je vzdálenost skoro dvojnásobek výšky letu? Co to říká o poměru horizontální rychlosti a doby pádu?</li>
+                        <li>Jak by se změnila vzdálenost při dvojnásobné rychlosti (120 m·s⁻¹)? Byla by 2× nebo 4× větší?</li>
+                        <li>Jaký vliv na přesnost mají reálné faktory jako vítr, odpor vzduchu a rotace Země?</li>
+                        <li>Jaké další bezpečnostní faktory musí pilot zohlednit při humanitárních misích?</li>
+                        <li>Proč je důležité shazovat balíky s padákem? Jak by se změnila kinematika s padákem?</li>
+                    </ul>
+                </div>
+            </details>
+        </div>
+    </main>
+</body>
+</html>

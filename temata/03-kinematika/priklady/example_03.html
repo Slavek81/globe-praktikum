@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Řešení</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>3. Grafy závislostí</h1>
+            <p>Kinematika - řešený příklad</p>
+        </header>
+
+        <!-- Motivační úvod pro studenty -->
+        <div class="intro-context">
+            <strong>📊 Praktická aplikace:</strong> Analýza grafů je základní dovednost v inženýrních oborech, lékařství (EKG), ekonomii i sportu. Umění převádět mezi grafy rychlosti a dráhy používají inženýři pro návrh výtahů, letadel i aut. Je to jako překládání mezi jazyky - z grafů můžeme číst příběh pohybu!
+        </div>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <p>
+                Nakreslete graf závislosti dráhy na čase a rychlosti na čase pro zadané grafy v-t, s-t. Graf v-t ukazuje rychlost <strong>6 m/s po dobu 2 s</strong>, pak <strong>klid po 1 s</strong>, pak rychlost <strong>4 m/s po dobu 2 s</strong>.
+            </p>
+        </section>
+
+        <section id="vstupni-data">
+            <h3>Vstupní data</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Veličina</th>
+                        <th>Symbol</th>
+                        <th>Hodnota</th>
+                        <th>Jednotka</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Rychlost v úseku 1</td>
+                        <td class="variable">v₁</td>
+                        <td class="value">6</td>
+                        <td class="unit">m·s⁻¹</td>
+                    </tr>
+                    <tr>
+                        <td>Čas úseku 1</td>
+                        <td class="variable">t₁</td>
+                        <td class="value">2</td>
+                        <td class="unit">s</td>
+                    </tr>
+                    <tr>
+                        <td>Rychlost v úseku 2</td>
+                        <td class="variable">v₂</td>
+                        <td class="value">0</td>
+                        <td class="unit">m·s⁻¹</td>
+                    </tr>
+                    <tr>
+                        <td>Čas úseku 2</td>
+                        <td class="variable">t₂</td>
+                        <td class="value">1</td>
+                        <td class="unit">s</td>
+                    </tr>
+                    <tr>
+                        <td>Rychlost v úseku 3</td>
+                        <td class="variable">v₃</td>
+                        <td class="value">4</td>
+                        <td class="unit">m·s⁻¹</td>
+                    </tr>
+                    <tr>
+                        <td>Čas úseku 3</td>
+                        <td class="variable">t₃</td>
+                        <td class="value">2</td>
+                        <td class="unit">s</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+            <p>Výpočet rozdělíme do několika logických kroků podle typu kinematické úlohy.</p>
+            
+            <div class="calculation-step">
+                <h4>Krok 1: Analýza situace a klíčové vztahy</h4>
+                <p>Máme dva různé typy grafů - graf rychlosti v-t a graf dráhy s-t. Naším úkolem je pochopit jejich vzájemnou souvislost.</p>
+
+                <div class="equation-logic-box">
+                    <strong>Logika převodů:</strong> Grafy jsou jako dvě strany té samé mince. Z v-t grafu počítáme plochu (= dráha), ze s-t grafu počítáme sklon (= rychlost).
+                </div>
+
+                <div class="warning-box">
+                    <strong>Pozor!</strong> Sklon grafu s-t je rychlost, ne zrychlení. Zrychlení by byl sklon grafu v-t.
+                </div>
+
+                <div class="note-box">
+                    <strong>Klíčové vztahy:</strong>
+                    <ul>
+                        <li>Z v-t na s-t: Plocha pod grafem rychlosti = uražená dráha</li>
+                        <li>Z s-t na v-t: Sklon grafu dráhy = rychlost</li>
+                        <li>Rychlost v = Δs/Δt (změna dráhy za čas)</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="calculation-step">
+                <h4>Krok 2: Základní vztahy pro grafy</h4>
+                <p>Pro převod mezi grafy používáme základní kinematické vztahy:</p>
+
+                <div class="formula-box">
+                    <strong>📐 Základní vztahy pro grafy</strong>
+                    <p>$$v = \frac{\Delta s}{\Delta t} \text{ (sklon grafu s-t)}$$</p>
+                    <p>$$s = \int v \, dt \text{ (plocha pod grafem v-t)}$$</p>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 3: Výpočet grafů z v-t na s-t</h4>
+                <p>Rozdělíme analýzu na tři časové úseky podle zadaného grafu v-t:</p>
+
+                <div class="result-box">
+                    <strong>📐 Z grafu v-t na s-t</strong>
+                    <p><strong>Úsek 1 (0-2s):</strong> $v_1 = 6$ m/s $\rightarrow s_1 = 6 \times 2 = 12$ m</p>
+                    <p><strong>Úsek 2 (2-3s):</strong> $v_2 = 0$ m/s $\rightarrow s_2 = 0$ m (stoj)</p>
+                    <p><strong>Úsek 3 (3-5s):</strong> $v_3 = 4$ m/s $\rightarrow s_3 = 4 \times 2 = 8$ m</p>
+
+                    <strong>Celková dráha:</strong>
+                    <p>$s_{celk} = 12 + 0 + 8 = 20$ m</p>
+
+                    <strong>Graf s-t:</strong>
+                    <ul>
+                        <li>0-2s: Lineární růst z 0 na 12 m (sklon 6)</li>
+                        <li>2-3s: Konstantní hodnota 12 m (vodorovná čára)</li>
+                        <li>3-5s: Lineární růst z 12 na 20 m (sklon 4)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 4: Interpretace a praktický význam</h4>
+                <p>Interpretujeme výsledné grafy a jejich praktický význam.</p>
+
+                <div class="result-box">
+                    <strong>💡 Interpretace grafů:</strong>
+                    <p><strong>Graf v-t:</strong> Ukazuje změny rychlosti - pohyb, zastavení, opětovný pohyb</p>
+                    <p><strong>Graf s-t:</strong> Ukazuje celkovou uraženou vzdálenost - 12m + zastavení + dalších 8m</p>
+
+                    <p><strong>Praktické aplikace:</strong></p>
+                    <ul>
+                        <li>GPS navigace - sledování pohybu vozidla</li>
+                        <li>Fitness trackery - analýza běhu s pauzami</li>
+                        <li>Dopravjí inženýrství - analýza provozu na križovatkách</li>
+                        <li>Sportovní analýza - změny tempa běhání</li>
+                    </ul>
+
+                    <p><strong>Odpověď:</strong> Graf s-t obsahuje tři lineární úseky s různými sklony odpovídajícími rychlostem z grafu v-t.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

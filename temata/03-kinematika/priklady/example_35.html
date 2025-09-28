@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Řešení</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>35. Řešení</h1>
+            <p>Kinematika - řešený příklad</p>
+        </header>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <p>
+                Dvě tělesa se pohybují současně ze stejného bodu. První má počáteční rychlost6 m·s⁻¹a zrychlení0,2 m·s⁻², druhé má počáteční rychlost2 m·s⁻¹a zrychlení3 m·s⁻². Určete:kdy budou mít tělesa stejnou rychlost a jak bude velká;za jak dlouho a v jaké vzdálenosti se potkají;nakreslete grafy závislosti rychlosti a dráhy na čase.
+            </p>
+        </section>
+
+        <section id="vstupni-data">
+            <h3>Vstupní data</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Veličina</th>
+                        <th>Symbol</th>
+                        <th>Hodnota</th>
+                        <th>Jednotka</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Počáteční rychlost tělesa 1</td>
+                        <td class="variable">v₀₁</td>
+                        <td class="value">6</td>
+                        <td class="unit">m·s⁻¹</td>
+                    </tr>
+                    <tr>
+                        <td>Zrychlení tělesa 1</td>
+                        <td class="variable">a₁</td>
+                        <td class="value">0,2</td>
+                        <td class="unit">m·s⁻²</td>
+                    </tr>
+                    <tr>
+                        <td>Počáteční rychlost tělesa 2</td>
+                        <td class="variable">v₀₂</td>
+                        <td class="value">2</td>
+                        <td class="unit">m·s⁻¹</td>
+                    </tr>
+                    <tr>
+                        <td>Zrychlení tělesa 2</td>
+                        <td class="variable">a₂</td>
+                        <td class="value">3</td>
+                        <td class="unit">m·s⁻²</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+            <p>Výpočet rozdělíme do několika logických kroků podle typu kinematické úlohy.</p>
+            
+            <div class="calculation-step">
+                <h4>Krok 1: Analýza situace a převody jednotek</h4>
+                <p>Analyzujeme typ pohybu a sjednotíme jednotky pro výpočet.</p>
+                
+                <div class="note-box">
+                    <strong>Analýza:</strong>
+                    <p>Identifikujeme typ pohybu a potřebné převody jednotek podle zadání.</p>
+                </div>
+            </div>
+            
+            <div class="calculation-step">
+                <h4>Krok 2: Výběr fyzikální rovnice</h4>
+                <p>Vybereme vhodnou kinematickou rovnici podle typu pohybu.</p>
+                
+                <div class="formula-box">
+                    <strong>Kinematické rovnice:</strong>
+                    <ul>
+                        <li>Rovnoměrný pohyb: $s = v \cdot t$</li>
+                        <li>Zrychlený pohyb: $s = v_0 \cdot t + \frac12 \cdot a \cdot t^2$</li>
+                        <li>Rychlost při zrychleném pohybu: $v = v_0 + a \cdot t$</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 3: Sestavení kinematických rovnic</h4>
+                <p>Sestavíme rovnice pro rychlost a dráhu obou těles:</p>
+
+                <div class="result-box">
+                    <strong>Kinematické rovnice:</strong>
+                    <div class="rovnice-nadpis">📐 Kinematické rovnice</div>
+                    <div class="rovnice-text">$$\text{Těleso 1:}\quad v_1(t) = 6 + 0{,}2t,\quad s_1(t) = 6t + 0{,}1t^2$$
+$$\text{Těleso 2:}\quad v_2(t) = 2 + 3t,\quad s_2(t) = 2t + 1{,}5t^2$$</div>
+                    <p>Těleso 1: rychlý start, malé zrychlení | Těleso 2: pomalý start, velké zrychlení</p>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 4: Výpočet okamžiku stejné rychlosti</h4>
+                <p>Rychlosti se vyrovnají, když $v_1(t)$ = $v_2(t)$:</p>
+
+                <div class="result-box">
+                    <strong>Podmínka stejné rychlosti:</strong>
+                    <div class="rovnice-nadpis">📐 Podmínka stejné rychlosti</div>
+                    <div class="rovnice-text">$$6 + 0{,}2t = 2 + 3t$$
+$$4 = 2{,}8t$$
+$$t = \frac{4}{2{,}8} \approx 1{,}43\,\text{s}$$</div>
+                    <p>Společná rychlost: v = 6 + 0,2(1,43) ≈ <strong>6,29 m·s⁻¹</strong></p>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 5: Výpočet času a místa druhého setkání</h4>
+                <p>Tělesa se znovu setkají, když $s_1(t)$ = $s_2(t)$:</p>
+
+                <div class="result-box">
+                    <strong>Podmínka druhého setkání:</strong>
+                    <div class="rovnice-nadpis">📐 Podmínka druhého setkání</div>
+                    <div class="rovnice-text">$$6t + 0{,}1t^2 = 2t + 1{,}5t^2$$
+$$4t = 1{,}4t^2$$
+$$t(4 - 1{,}4t) = 0$$</div>
+                    <p>Řešení: $t_1 = 0$ (první setkání - start), $t_2 = 4/1,4 \approx$ <strong>2,86 s</strong></p>
+                    <p>Vzdálenost setkání: s = 6(2,86) + 0,1(2,86)² = 17,16 + 0,82 = <strong>18 m</strong></p>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 6: Kontrola výsledku a odpověď</h4>
+                <p>Analýza grafů a fyzikální interpretace:</p>
+
+                <div class="result-box">
+                    <strong>Odpověď:</strong>
+                    <ul>
+                        <li><strong>a) Stejná rychlost:</strong> t = 1,43 s, v = 6,29 m·s⁻¹</li>
+                        <li><strong>b) Setkání:</strong> t = 2,86 s, vzdálenost = 18 m</li>
+                        <li><strong>c) Graf v-t:</strong> Dvě rostoucí přímky se protínají v [1,43 s; 6,29 m·s⁻¹]</li>
+                        <li><strong>Graf s-t:</strong> Dvě paraboly se protínají v [0,0] a [2,86 s; 18 m]</li>
+                    </ul>
+                    <p><strong>Fyzikální interpretace:</strong> Zrychlení 3 m·s⁻² nakonec předčí počáteční výhodu 6 m·s⁻¹!</p>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

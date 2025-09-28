@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Řešení</title>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>94. Pneumatika automobilu - úhlová rychlost z rychlosti vozidla</h1>
+            <p>Kinematika - řešený příklad</p>
+        </header>
+
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Výpočty úhlové rychlosti pneumatik jsou základem pro správnou funkci ABS brzd, kontroly trakce (ASR), a ESP systémů. Systémy monitorují rychlost otáčení každého kola zvlášť - rozdíl úhlových rychlostí signalizuje prokluz nebo zablokovaní. Také pomocí GPS a úhlové rychlosti kol se ověřuje přesnost rychloměrů. Správný tlak v pneumatikách ovlivňuje efektivní poloměr kola a tím přesnost rychloměru.
+        </div>
+
+        <div class="zadani">
+            <h2>Zadání</h2>
+            <p>Vozidlo má pneumatiky o průměru <strong>0,55 m</strong>. Zjistěte úhlovou rychlost bodu na vnějším obvodu pneumatiky, jestliže se auto pohybuje rychlostí <strong>30 m/s</strong>.</p>
+        </div>
+
+        <div class="reseni">
+            <h2>Řešení</h2>
+
+            <div class="krok">
+                <h3>1. Analýza situace a zadané hodnoty</h3>
+
+                <div class="equation-logic-box">
+                    <strong>Logika výběru:</strong> Jedná se o kinematiku odvalujícího se kola bez prokluzu. Rychlost vozidla odpovídá obvodové rychlosti pneumatiky v místě kontaktu se zemí.
+                </div>
+
+                <div class="warning-box">
+                    <strong>Pozor na jednotky!</strong> Bez prokluzu platí rychlost vozidla = obvodová rychlost pneumatiky. Pozor na správný převod průměru na poloměr! Rychlost 30 m/s = 108 km/h.
+                </div>
+
+                <div class="note-box">
+                    <strong>Dané hodnoty:</strong>
+                    <ul>
+                        <li>Průměr pneumatiky: d = 0,55 m</li>
+                        <li>Poloměr pneumatiky: r = d/2 = 0,275 m</li>
+                        <li>Rychlost vozidla: v = 30 m·s⁻¹ = 108 km·h⁻¹</li>
+                        <li>Hledáme: úhlová rychlost ω</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="krok">
+                <h3>2. Výběr fyzikální rovnice</h3>
+
+                <div class="equation-logic-box">
+                    <strong>Proč tyto rovnice?</strong> Pro vztah mezi lineární a úhlovou rychlostí odvalůjícího se kola používáme základní kinematický vztah. Bez prokluzu se kolo "převaluje" po zemi.
+                </div>
+
+                <div class="formula-box">
+                    $$v = \omega \cdot r \text{ (bez prokluzu)}$$
+                    $$\omega = \frac{v}{r} \text{ (úhlová rychlost)}$$
+                    $$f = \frac{\omega}{2\pi} \text{ (frekvence)}$$
+                </div>
+
+                <div class="analogy-box">
+                    <strong>Praktická analogie:</strong> Kolo se chová jako "měřítko" - kolikrát se otočí, tolikrát svým obvodem "změří" ujetou vzdálenost. Čím menší kolo, tím více otáček na stejnou vzdálenost.
+                </div>
+            </div>
+
+            <div class="krok">
+                <h3>3. Algebraické vyjádření a výpočet</h3>
+
+                <div class="tip-box">
+                    <strong>Užitečný tip:</strong> Mechanici používají tento vztah pro výpočet správného převodového poměru a kalibraci rychloměrů podle velikosti pneumatik. Větší pneumatiky = méně otáček při stejné rychlosti.
+                </div>
+
+                <p><strong>Krok 1: Úhlová rychlost</strong></p>
+                <div class="calculation-step">
+                    $$\omega = \frac{v}{r} = \frac{30 \text{ m·s⁻¹}}{0{,}275 \text{ m}} = 109{,}1 \text{ rad·s⁻¹}$$
+                </div>
+
+                <p><strong>Krok 2: Frekvence (otáčky za sekundu)</strong></p>
+                <div class="calculation-step">
+                    $$f = \frac{\omega}{2\pi} = \frac{109{,}1}{2\pi} = 17{,}4 \text{ Hz}$$
+                </div>
+
+                <p><strong>Krok 3: Otáčky za minutu (RPM)</strong></p>
+                <div class="calculation-step">
+                    $$\text{RPM} = f \times 60 = 17{,}4 \times 60 = 1\,044 \text{ otáček·min⁻¹}$$
+                </div>
+            </div>
+
+            <div class="krok">
+                <h3>4. Kontrola a interpretace výsledku</h3>
+
+                <div class="summary-box">
+                    <strong>Odpověď:</strong>
+                    <ul>
+                        <li>Úhlová rychlost pneumatiky: <strong>109 rad·s⁻¹</strong></li>
+                        <li>Frekvence: <strong>17,4 Hz</strong></li>
+                        <li>Otáčky za minutu: <strong>1 044 RPM</strong></li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <strong>Kontrola rozumnosti:</strong> Přes 1000 RPM při 108 km/h odpovídá typickým parametrům osobních aut. Hodnoty jsou realistické pro střední rychlost na silnici.
+                </div>
+
+                <div class="alternative-method-box">
+                    <strong>Alternativní způsob:</strong> Můžeme počítat z ujeté vzdálenosti a obvodu: za 1 s ujede auto 30 m, obvod kola = 2π × 0,275 = 1,73 m → počet otáček = 30/1,73 = 17,4 Hz
+                </div>
+            </div>
+        </div>
+
+        <details>
+            <summary>🤔 Metakognitivní otázky</summary>
+            <div>
+                <ul>
+                    <li>Jak by se změnila úhlová rychlost, kdyby mělo auto menší pneumatiky (r = 0,3 m)?</li>
+                    <li>Proč musí být všechny čtyři pneumatiky stejné velikosti a jak ovlivňuje tlak efektivní poloměr?</li>
+                    <li>Jak fungují ABS brzdy a ESP systémy na základě porovnávání úhlových rychlostí kol?</li>
+                    <li>Proč se rychloměry aut kalibrují podle konkrétních rozměrů pneumatik?</li>
+                    <li>Co se stane s měřením rychlosti při prokluzu nebo blokování kol?</li>
+                </ul>
+            </div>
+        </details>
+    </main>
+</body>
+</html>

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Řešení</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>11. Analýza grafů s-t a určení setkání dvou aut</h1>
+            <p>Kinematika - řešený příklad</p>
+        </header>
+
+        <!-- Motivační úvod pro studenty -->
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Analýza grafů pohybu je základem pro dopravce, letecké dispetčery nebo GPS systémy. Umění číst grafy rychlosti a dráhy pomáhá předvídat kolize, plat formy a optimalizovat trasy.
+        </div>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <p>
+                Na obr. I. a II. jsou nakresleny grafy závislosti dráhy na čase automobilu 1 a 2. Pro oba případy určete:
+                <br><strong>1)</strong> jak velkou rychlostí se pohybuje auto 1 a auto 2
+                <br><strong>2)</strong> jaký fyzikální význam mají body A, B, C a D?
+                <br><strong>3)</strong> jak daleko a kdy se auta setkojí?
+            </p>
+        </section>
+
+        <section id="vstupni-data">
+            <h3>Vstupní data</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Veličina</th>
+                        <th>Symbol</th>
+                        <th>Hodnota</th>
+                        <th>Jednotka</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Graf závislosti dráhy na čase</td>
+                        <td class="variable">s(t)</td>
+                        <td class="value">dle grafů I. a II.</td>
+                        <td class="unit">-</td>
+                    </tr>
+                    <tr>
+                        <td>Body grafu</td>
+                        <td class="variable">A, B, C, D</td>
+                        <td class="value">dle grafů</td>
+                        <td class="unit">-</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+            <p>Výpočet rozdělíme do několika logických kroků podle typu kinematické úlohy.</p>
+            
+            <div class="calculation-step">
+                <h4>Krok 1: Analýza grafů</h4>
+
+                <div class="equation-logic-box">
+                    <strong>Logika výběru:</strong> V grafech s-t (dráha vs. čas) je rychlost rovna sklonu přímky. Průsečík dvou přímek ukazuje, kdy a kde se objekty setkojí.
+                </div>
+
+                <div class="warning-box">
+                    <strong>Pozor na čtení grafů!</strong> Rychlost = sklon tangenty k křivce. V případě přímky je to jednoduche: Δs/Δt.
+                </div>
+
+                <div class="note-box">
+                    <strong>Z grafů čteme:</strong>
+                    <ul>
+                        <li>Graf I: Oba auta začínají z různých pozic</li>
+                        <li>Graf II: Auto 1 začíná později (bod C)</li>
+                        <li>Setkání = průsečík čar (body B a D)</li>
+                        <li>Hledáme: rychlosti obou aut a parametry setkání</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="calculation-step">
+                <h4>Krok 2: Základní vztahy pro grafy s-t</h4>
+
+                <div class="equation-logic-box">
+                    <strong>Proč tento vztah?</strong> V grafu s-t je rychlost sklon přímky. Pro prímku projídoucí body [t₁,s₁] a [t₂,s₂] je rychlost Δs/Δt.
+                </div>
+
+                <div class="formula-box">
+                    $$v = \frac{\Delta s}{\Delta t} = \frac{s_2 - s_1}{t_2 - t_1}$$
+                    <br>Pro setkání: $s_1(t) = s_2(t)$ v čase $t_{setkání}$
+                </div>
+
+                <div class="analogy-box">
+                    <strong>Praktická analogie:</strong> Jako sledování dvou běžců na atletické dráze. Rychlejší běžec (strmejší sklon) nakonec dohoní pomalejšího - průsečík čar je moment dohánění!
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 3: Dosazení hodnot a výpočet</h4>
+                <p>Dosadíme známé hodnoty do vybrané rovnice a vypočítáme výsledek.</p>
+                
+                <div class="result-box">
+                    <strong>📐 Rychlosti aut (Graf I)</strong>
+                    <p>$$\text{Auto 1: } v_1 = \frac{\Delta s}{\Delta t} = \frac{50\,\text{m} - 20\,\text{m}}{6\,\text{s} - 0\,\text{s}} = \frac{30\,\text{m}}{6\,\text{s}} = 5\,\text{m·s}^{-1}$$</p>
+                    <p>$$\text{Auto 2: } v_2 = \frac{\Delta s}{\Delta t} = \frac{50\,\text{m} - 0\,\text{m}}{6\,\text{s} - 0\,\text{s}} = \frac{50\,\text{m}}{6\,\text{s}} = 8{,}33\,\text{m·s}^{-1}$$</p>
+                </div>
+
+                <div class="tip-box">
+                    <strong>Tip pro Graf I:</strong> Auto 1 začíná v pozici 20 m, ale je rychlejší. Auto 2 začíná z 0 m, ale jede pomaleji. Setkojí se v bodě B!
+                </div>
+
+                <div class="result-box">
+                    <strong>📐 Rychlosti aut (Graf II)</strong>
+                    <p>$$\text{Auto 1: } v_1 = \frac{50\,\text{km} - 0\,\text{km}}{1{,}5\,\text{h} - 0{,}5\,\text{h}} = \frac{50\,\text{km}}{1\,\text{h}} = 50\,\text{km·h}^{-1}$$</p>
+                    <p>$$\text{Auto 2: } v_2 = \frac{50\,\text{km} - 0\,\text{km}}{1{,}5\,\text{h} - 0\,\text{h}} = \frac{50\,\text{km}}{1{,}5\,\text{h}} = 33{,}33\,\text{km·h}^{-1}$$</p>
+                </div>
+
+                <details>
+                    <summary>🔍 Pokročilé informace o bodech</summary>
+                    <div>
+                        <p><strong>Význam klíčových bodů:</strong></p>
+                        <ul>
+                            <li><strong>Bod A:</strong> Počáteční pozice auta 1 (Graf I: t=0, s=20m)</li>
+                            <li><strong>Bod B:</strong> Setkání aut v Grafu I (t=6s, s=50m)</li>
+                            <li><strong>Bod C:</strong> Počátek pohybu auta 1 v Grafu II (t=0,5h, s=0)</li>
+                            <li><strong>Bod D:</strong> Setkání aut v Grafu II (t=1,5h, s=50km)</li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 4: Kontrola výsledku a odpověď</h4>
+                
+                <div class="summary-box">
+                    <strong>Odpověď:</strong>
+                    <ul>
+                        <li><strong>Graf I:</strong> Auto 1: 5 m·s⁻¹, Auto 2: 8,33 m·s⁻¹. Setkání: t = 6 s, s = 50 m</li>
+                        <li><strong>Graf II:</strong> Auto 1: 50 km·h⁻¹, Auto 2: 33,33 km·h⁻¹. Setkání: t = 1,5 h, s = 50 km</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <strong>Kontrola rozumnosti:</strong> V obou grafech rychlejší auto nakonec dohoní pomalejší. To dává smysl - v Grafu I auto 2 má výho.push počáteční pozice, v Grafu II auto 1 začíná později.
+                </div>
+
+                <div class="alternative-method-box">
+                    <strong>Alternativní způsob:</strong> Můžeme sestavit rovnice pohybu:
+                    <br>Graf I: s₁(t) = 20 + 5t, s₂(t) = 8,33t
+                    <br>Setkání: 20 + 5t = 8,33t ⇒ t = 6 s
+                </div>
+
+                <details>
+                    <summary>🤔 Metakognitivní otázky</summary>
+                    <div>
+                        <ul>
+                            <li>Jak by se změnil graf, kdyby auto 1 mělo rychlost 10 m/s?</li>
+                            <li>Proč se auta setkojí právě v těchto bodech?</li>
+                            <li>Jak by vypadal graf v-t pro tuto situaci?</li>
+                            <li>Co by se stalo, kdyby auto 1 začalo ještě později?</li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

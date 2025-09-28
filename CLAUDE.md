@@ -2,6 +2,23 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## KRITICKÝ POŽADAVEK NA POSLUŠNOST PŘÍKAZŮ
+
+### NEPORUŠITELNÁ PRAVIDLA POSLOUCHÁNÍ
+**Když uživatel řekne:**
+- **"internet"** nebo **"ověř"** = WebSearch MUSÍ být PRVNÍ nástroj, ne třetí
+- **"aktualizuj"** = WebSearch PŘED jakoukoli editací
+- **"smaž"** = Edit okamžitě, ne vysvětlování
+- **Jakýkoli přímý příkaz** = akce PRVNÍ, diskuze DRUHÁ
+
+**KONTROLNÍ MECHANISMUS:**
+- Pokud nepoužiju WebSearch při slově "internet" = ZASTAV a jdi na internet
+- Pokud začnu vysvětlovat místo dělání = ZASTAV a dělej
+- Tvůj příkaz = akce, ne diskuze
+
+**TVRDÉ PRAVIDLO:**
+"Proč jsi neudělal X?" = udělej X TEĎHETI, pak odpověz
+
 ## KRITICKÝ POŽADAVEK NA PŘESNOST - ABSOLUTNĚ STEJNÝ STYL
 
 ### POVINNÉ NÁSTROJE PRO KAŽDÝ ÚKOL

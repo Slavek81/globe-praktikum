@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Řešení</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>2. Motocykl jede rychlostí 72 km·h⁻¹</h1>
+            <p>Kinematika - řešený příklad</p>
+        </header>
+
+        <!-- Motivační úvod pro studenty -->
+        <div class="intro-context">
+            <strong>🏍️ Praktická aplikace:</strong> Motocykly při konstantní rychlosti na dálnici, kurýrní služby při doručování zásilek nebo závodní motocykly na rovných úsecích tratě. Převody jednotek km/h na m/s jsou klíčové pro práci hasičů, záchranářů a dopravních techniků!
+        </div>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <p>
+                Předpokládejme, že se motocykl pohybuje rovnoměrně rychlostí <strong>72 km·h⁻¹</strong>. Vypočítejte dráhu, kterou urazí za <strong>10 sekund</strong>. Nakreslete graf závislosti dráhy na čase a rychlosti na čase.
+            </p>
+        </section>
+
+        <section id="vstupni-data">
+            <h3>Vstupní data</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Veličina</th>
+                        <th>Symbol</th>
+                        <th>Hodnota</th>
+                        <th>Jednotka</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Rychlost motocyklu</td>
+                        <td class="variable">v</td>
+                        <td class="value">72</td>
+                        <td class="unit">km·h⁻¹</td>
+                    </tr>
+                    <tr>
+                        <td>Doba jízdy</td>
+                        <td class="variable">t</td>
+                        <td class="value">10</td>
+                        <td class="unit">s</td>
+                    </tr>
+                    <tr>
+                        <td>Hledaná dráha</td>
+                        <td class="variable">s</td>
+                        <td class="value">?</td>
+                        <td class="unit">m</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+            <p>Výpočet rozdělíme do několika logických kroků podle typu kinematické úlohy.</p>
+            
+            <div class="calculation-step">
+                <h4>Krok 1: Analýza situace a převody jednotek</h4>
+                <p>Motocykl jede konstantní rychlostí - rovnoměrný přímočarý pohyb. Musíme sjednotit jednotky!</p>
+
+                <div class="equation-logic-box">
+                    <strong>Logika výběru:</strong> Rychlost se nemění (72 km/h po celou dobu), takže jde o rovnoměrný pohyb. Nezrychluje ani nezpomaluje.
+                </div>
+
+                <div class="warning-box">
+                    <strong>Pozor!</strong> Rychlost v km/h a čas v sekundách - musíme převést jednotky. Převod: km/h ÷ 3,6 = m/s.
+                </div>
+
+                <div class="note-box">
+                    <strong>Dané hodnoty:</strong>
+                    <ul>
+                        <li>Rychlost: v = 72 km/h (převedeme na m/s)</li>
+                        <li>Čas: t = 10 s</li>
+                        <li>Hledáme: dráhu s</li>
+                    </ul>
+                    <p><strong>Převod rychlosti:</strong> $v = 72 \text{ km/h} \div 3{,}6 = 20 \text{ m/s}$</p>
+                </div>
+            </div>
+            
+            <div class="calculation-step">
+                <h4>Krok 2: Výběr fyzikální rovnice</h4>
+                <p>Nejprve převedeme rychlost na m/s, pak použijeme základní rovnici:</p>
+
+                <div class="equation-logic-box">
+                    <strong>Proč tuto rovnici?</strong> Máme konstantní rychlost (v) a známe čas (t). Potřebujeme dráhu (s). Pro rovnoměrný pohyb platí s = v·t.
+                </div>
+
+                <div class="formula-box">
+                    <strong>📐 Rovnoměrný pohyb</strong>
+                    <p>$$s = v \cdot t$$</p>
+                    <p>kde: s = dráha [m], v = rychlost [m·s⁻¹], t = čas [s]</p>
+                </div>
+
+                <div class="analogy-box">
+                    <strong>Praktická analogie:</strong> Je to jako když počítáte, jak daleko dojede kuryř na motocyklu za 10 sekund při rychlosti 72 km/h - prostě rychlost × čas.
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 3: Dosazení hodnot a výpočet</h4>
+                <p>Dosadíme převedenou rychlost a čas:</p>
+
+                <div class="result-box">
+                    <strong>📐 Dosazení hodnot</strong>
+                    <p>$$s = 20 \text{ m/s} \cdot 10 \text{ s}$$</p>
+                </div>
+
+                <div class="result-box">
+                    <strong>📐 Výpočet dráhy</strong>
+                    <p>$$s = 20 \cdot 10 = 200 \text{ m}$$</p>
+                </div>
+
+                <div class="tip-box">
+                    <strong>Tip:</strong> Sklon grafu s-t = rychlost motocyklu = 200m / 10s = 20 m/s ✓
+                </div>
+
+                <details>
+                    <summary>📊 Analýza grafů (rozbalovací sekce)</summary>
+                    <div>
+                        <strong>Grafy pro tento pohyb:</strong>
+                        <ul>
+                            <li><strong>Graf v-t:</strong> vodorovná čára na 20 m/s</li>
+                            <li><strong>Graf s-t:</strong> přímka z [0,0] do [10s, 200m]</li>
+                        </ul>
+
+                        <div class="interpretation-box">
+                            <strong>Fyzikální význam:</strong> Sklon grafu s-t představuje rychlost. Čím strmejší přímka, tím vyšší rychlost.
+                        </div>
+                    </div>
+                </details>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 4: Kontrola výsledku a odpověď</h4>
+                <p>Ověříme rozumnost výsledku a formulujeme konečnou odpověď.</p>
+
+                <div class="summary-box">
+                    <strong>Odpověď:</strong>
+                    <ul>
+                        <li>a) Motocykl urazí dráhu <strong>200 m</strong></li>
+                        <li>b) Graf v-t: vodorovná čára, graf s-t: rostoucí přímka</li>
+                    </ul>
+                    <p><strong>Kontrola:</strong> 72 km/h = 20 m/s × 10 s = 200 m ✓</p>
+                </div>
+
+                <div class="info-box">
+                    <strong>Kontrola rozumnosti:</strong> 200 m za 10 sekund při rychlosti 72 km/h je správné - odpovídá rychlé jízdě na silnici nebo dálnici.
+                </div>
+
+                <div class="alternative-method-box">
+                    <strong>Alternativní způsob:</strong> Mohli jsme převést čas: 10 s = 10/3600 h = 0,00278 h, pak s = 72 × 0,00278 = 0,2 km = 200 m
+                </div>
+
+                <details>
+                    <summary>🤔 Metakognitivní otázky (rozšířené přemýšlení)</summary>
+                    <div>
+                        <ul>
+                            <li>Proč je důležité převádět jednotky před výpočtem?</li>
+                            <li>Jak by se změnil graf, kdyby motocykl jel poloviní rychlostí?</li>
+                            <li>Co by se stalo s dráhou, kdyby se čas zdvojnásobil?</li>
+                            <li>V jakých praktických situacích je důležité rychle spočítat dráhu za krátký čas?</li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

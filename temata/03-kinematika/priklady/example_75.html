@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Řešení</title>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>75. Důkaz o brzdné dráze</h1>
+            <p>Kinematika - řešený příklad</p>
+        </header>
+
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Pochopení brzdné dráhy je zásadní pro bezpečnost v dopravě. Každý řidič potřebuje znát, jak se vypočítává brzdná dráha, aby dokázal odhadnout bezpečnou následovnou vzdálenost. Tento vztah využívají dopravní experti při rekonstrukci nehod a při navrhování bezpečnostních předpisů.
+        </div>
+
+        <div class="problem-statement">
+            <h2>Zadání</h2>
+            <p>Brzdná dráha při rovnoměrně zpomaleném pohybu až do zastavení lze vyjádřit vztahem <strong>s = ½at²</strong>, tedy stejně jako dráha pro rovnoměrně zrychlený pohyb. <strong>Dokažte toto tvrzení.</strong></p>
+        </div>
+
+        <div class="solution">
+            <h2>Řešení</h2>
+
+            <div class="calculation-step">
+                <h3>1. Analýza problému a fyzikální interpretace</h3>
+
+                <div class="equation-logic-box">
+                    <strong>Logika důkazu:</strong> Chceme dokázat, že brzdná dráha má stejný matematický tvar jako dráha při zrychlení z klidu. Jde o důkaz symetrie mezi zrychlením a zpomalením - dva procesy, které jsou fyzikálně opačné, ale matematicky ekvivalentní.
+                </div>
+
+                <div class="note-box">
+                    <strong>Porovnávané situace:</strong>
+                    <ul>
+                        <li><strong>Zrychlený pohyb z klidu:</strong> $v_0 = 0$, $s = \frac{1}{2}at^2$</li>
+                        <li><strong>Zpomalený pohyb do zastavení:</strong> $v_{\text{konečná}} = 0$, $s = ?$</li>
+                        <li>Dokážeme, že oba dávají stejný vzorec</li>
+                    </ul>
+                </div>
+
+                <div class="warning-box">
+                    <strong>Pozor na znaménka zrychlení!</strong> Při brzdění je zrychlení opačného směru než rychlost. Záleží na konvenci souřadnic - my používáme velikost zrychlení |a|.
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h3>2. Grafický důkaz pomocí v-t diagramu</h3>
+
+                <div class="equation-logic-box">
+                    <strong>Proč grafický důkaz?</strong> Grafy v-t jsou vizuální důkaz - plocha pod grafem odpovídá uražené dráze. Když ukážeme, že oba trojúhelníky mají stejnou plochu, dokážeme identické vzorce.
+                </div>
+
+                <div class="analogy-box">
+                    <strong>Praktická analogie:</strong> Je to jako dvě stejně velké píšťaly - jedna se rozšiřuje (zrychlování), druhá se zužuje (zpomalování), ale obě mají stejný objem. Fyzika je plná takových symetrií!
+                </div>
+
+                <div class="result-box">
+                    <p><strong>Zrychlený pohyb z klidu (0 → v):</strong></p>
+                    <ul>
+                        <li>Graf: trojúhelník s vrcholy (0,0), (t,v), (t,0)</li>
+                        <li>Plocha = $\frac{1}{2} \cdot t \cdot v = \frac{1}{2}at \cdot t = \frac{1}{2}at^2$</li>
+                    </ul>
+
+                    <p><strong>Zpomalený pohyb do zastavení (v → 0):</strong></p>
+                    <ul>
+                        <li>Graf: trojúhelník s vrcholy (0,v), (t,0), (0,0)</li>
+                        <li>Plocha = $\frac{1}{2} \cdot t \cdot v$ (stejná velikost!)</li>
+                    </ul>
+
+                    <p><strong>Závěr:</strong> Oba trojúhelníky mají stejnou plochu, proto i stejnou dráhu!</p>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h3>3. Algebraický důkaz - metoda 1</h3>
+
+                <div class="tip-box">
+                    <strong>Užitečný tip:</strong> Při algebraických důkazech začni s obecnou rovnicí a postupně do ní dosazuj podmínky pro konkrétní situaci (v tomto případě zastavení).
+                </div>
+
+                <div class="formula-box">
+                    <p>Vyjdeme z obecné kinematické rovnice pro zpomalený pohyb:</p>
+                    $$s = v_0 t - \frac{1}{2}at^2$$
+
+                    <p>Pro pohyb do úplného zastavení: $v_{\text{konečná}} = 0$</p>
+                    <p>Z rovnice $v = v_0 - at$ pro $v = 0$ dostáváme: $v_0 = at$</p>
+                </div>
+
+                <div class="result-box">
+                    <p>Dosazení a úprava:</p>
+                    $$s = v_0 t - \frac{1}{2}at^2 = at \cdot t - \frac{1}{2}at^2$$
+                    $$s = at^2 - \frac{1}{2}at^2 = \frac{1}{2}at^2$$
+
+                    <p><strong>QED</strong> - Dokázáno! ✓</p>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h3>4. Algebraický důkaz - metoda 2</h3>
+
+                <div class="equation-logic-box">
+                    <strong>Proč druhá metoda?</strong> Různé přístupy k stejnému důkazu posilují pochopení a ukazují, že fyzikální zákonitosti jsou provázané. Tato metoda používá energetický přístup.
+                </div>
+
+                <div class="formula-box">
+                    <p>Použijeme rovnici nezávislou na čase: $v^2 = v_0^2 - 2as$</p>
+                    <p>Pro úplné zastavení: $v = 0$</p>
+
+                    <p>Vztah pro brzdnou dráhu:</p>
+                    $$0 = v_0^2 - 2as$$
+                    $$s = \frac{v_0^2}{2a}$$
+                </div>
+
+                <div class="result-box">
+                    <p>Protože $v_0 = at$, dostáváme:</p>
+                    $$s = \frac{(at)^2}{2a} = \frac{a^2t^2}{2a} = \frac{1}{2}at^2$$
+
+                    <p><strong>QED</strong> - Opět stejný výsledek! ✓</p>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h3>5. Fyzikální interpretace a význam</h3>
+
+                <div class="summary-box">
+                    <strong>Důkaz dokončen:</strong> Prokázali jsme, že brzdná dráha má skutečně tvar $s = \frac{1}{2}at^2$, což je stejný vztah jako pro zrychlený pohyb z klidu.
+                </div>
+
+                <div class="info-box">
+                    <strong>Symetrie pohybů:</strong> Zrychlený a zpomalený pohyb jsou symetrické procesy. Tato symetrie se projevuje nejen v kinematice, ale i v termodynamice, elektromagnetismu a jiných oblastech fyziky.
+                </div>
+
+                <div class="warning-box">
+                    <strong>Praktický význam pro brzdění vozidel:</strong>
+                    <ul>
+                        <li>Brzdná dráha roste s druhou mocninou počáteční rychlosti</li>
+                        <li>Při dvojnásobné rychlosti je brzdná dráha 4× delší</li>
+                        <li>Silnější brzdy (větší zpomalení) zkracují brzdnou dráhu</li>
+                    </ul>
+                </div>
+
+                <div class="alternative-method-box">
+                    <strong>Alternativní přístup:</strong> Mohli jsme použít zákon zachování energie: kinetická energie $\frac{1}{2}mv_0^2$ se mění na práci brzdné síly $F \cdot s = ma \cdot s$, odkud $s = \frac{v_0^2}{2a}$.
+                </div>
+            </div>
+        </div>
+
+        <details>
+            <summary>🤔 Metakognitivní otázky</summary>
+            <div>
+                <ul>
+                    <li>Proč má brzdná dráha stejný matematický tvar jako dráha při zrychlování? Co to říká o symetrii v přírodě?</li>
+                    <li>Jak by se změnila brzdná dráha, kdyby bylo zpomalení 2× větší? A při 4× větším?</li>
+                    <li>Co znamená symetrie mezi zrychlením a zpomalením v praxi? Kde ji vidíš kolem sebe?</li>
+                    <li>Jak by se dala využít tato symetrie v jiných fyzikálních jevech (např. nabíjení a vybíjení kondenzátoru)?</li>
+                    <li>Proč je důležité rozumět vztahu mezi rychlostí a brzdnou dráhou při řízení? Jak to ovlivňuje bezpečnost?</li>
+                </ul>
+            </div>
+        </details>
+    </main>
+</body>
+</html>

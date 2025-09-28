@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Řešení</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>45. Řešení</h1>
+            <p>Kinematika - řešený příklad</p>
+        </header>
+
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Znalost úhlové rychlosti kol je klíčová pro automotive inženýry při navrhování převodovek, brzdů a elektronických asistenčních systémů (ESP, ABS). Měření rychlosti otáčení kol umožňuje detekovat smykání, optimalizovat spotřebu paliva a zajišťovat bezpečnost jízdy. V motorsportu se tyto hodnoty monitorují v reálném čase.
+        </div>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <p>
+                Vozidlo má pneumatiky o průměru <strong>0,55 m</strong>. Zjistěte <strong>úhlovou rychlost bodu na vnějším obvodu pneumatiky</strong>, jestliže se auto pohybuje rychlostí <strong>30 m/s</strong>.
+            </p>
+        </section>
+
+        <section id="vstupni-data">
+            <h3>Vstupní data</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Veličina</th>
+                        <th>Symbol</th>
+                        <th>Hodnota</th>
+                        <th>Jednotka</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Poloměr kola</td>
+                        <td class="variable">r</td>
+                        <td class="value">0,55</td>
+                        <td class="unit">m</td>
+                    </tr>
+                    <tr>
+                        <td>Rychlost automobilu</td>
+                        <td class="variable">v</td>
+                        <td class="value">30</td>
+                        <td class="unit">m/s</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+            <p>Výpočet rozdělíme do několika logických kroků podle typu kinematické úlohy.</p>
+            
+            <div class="calculation-step">
+                <h4>Krok 1: Analýza situace a převody jednotek</h4>
+                <p>Analyzujeme typ pohybu a sjednotíme jednotky pro výpočet.</p>
+                
+                <div class="note-box">
+                    <strong>Analýza:</strong>
+                    <p>Identifikujeme typ pohybu a potřebné převody jednotek podle zadání.</p>
+                </div>
+            </div>
+            
+            <div class="calculation-step">
+                <h4>Krok 2: Výběr fyzikální rovnice</h4>
+                <p>Vybereme vhodnou kinematickou rovnici podle typu pohybu.</p>
+                
+                <div class="formula-box">
+                    <strong>Kinematické rovnice:</strong>
+                    <ul>
+                        <li>Rovnoměrný pohyb: $s = v \cdot t$</li>
+                        <li>Zrychlený pohyb: $s = v_0 \cdot t + \frac12 \cdot a \cdot t^2$</li>
+                        <li>Rychlost při zrychleném pohybu: $v = v_0 + a \cdot t$</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 3: Algebraické vyjádření</h4>
+                <p>Vyjádříme úhlovou rychlost:</p>
+
+                <div class="result-box">
+                    <strong>Vzorec pro úhlovou rychlost:</strong>
+                    <div class="rovnice-nadpis">📐 Vzorec pro úhlovou rychlost</div>
+                    <div class="rovnice-text">$$\omega = \frac{v}{r}$$</div>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 4: Dosazení hodnot a výpočet</h4>
+                <p>Číselný výpočet:</p>
+
+                <div class="result-box">
+                    <strong>Číselný výpočet:</strong>
+                    <div class="rovnice-nadpis">📐 Číselný výpočet</div>
+                    <div class="rovnice-text">$$\omega = \frac{30}{0{,}275} \approx 109 \text{ rad/s}$$</div>
+                    <p><strong>Převod na jiné jednotky:</strong></p>
+                    <div class="rovnice-text">$$f = \frac{\omega}{2\pi} = \frac{109}{2\pi} \approx 17{,}3 \text{ Hz}$$
+$$\text{RPM} = f \times 60 = 17{,}3 \times 60 \approx 1040 \text{ ot/min}$$</div>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 5: Kontrola a odpověď</h4>
+                <p>Kontrolní výpočet přes obvod kola:</p>
+
+                <div class="result-box">
+                    <strong>Odpověď:</strong>
+                    <div class="rovnice-text">$$o = 2\pi r = 2\pi \times 0{,}275 \approx 1{,}73 \text{ m}$$
+$$f = \frac{v}{o} = \frac{30}{1{,}73} \approx 17{,}3 \text{ Hz} \checkmark$$</div>
+                    <p><strong>✅ Odpověď:</strong> Úhlová rychlost pneumatiky je <strong>109 rad/s</strong> (1040 otáček za minutu).</p>
+                    <p><strong>⚠️ Tato hodnota platí pouze při jízdě bez prokluzu kol!</strong></p>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

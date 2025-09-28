@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Řešení</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>5. Řešení</h1>
+            <p>Kinematika - řešený příklad</p>
+        </header>
+
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Práce se zlomky času se často vyskytuje v reálném životě - například při plánování vícedňových cest, rozpočítávání pracovního času, nebo při analýze výkonu sportovců. Automobilové navigace také počítá s různými rychlostmi na různých úsecích trasy a dokážou odhadnout celkový čas i bez znalosti celkové vzdálenosti!
+        </div>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <p>
+                Automobil jel <strong>¾ celkové doby jízdy</strong> rychlostí <strong>54 km·h⁻¹</strong> a <strong>zbývající dobu jízdy</strong> rychlostí <strong>72 km·h⁻¹</strong>. Vypočítejte jeho průměrnou rychlost.
+            </p>
+        </section>
+
+        <section id="vstupni-data">
+            <h3>Vstupní data</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Veličina</th>
+                        <th>Symbol</th>
+                        <th>Hodnota</th>
+                        <th>Jednotka</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Doba jízdy rychlostí v₁</td>
+                        <td class="variable">t₁</td>
+                        <td class="value">¾ celkového času</td>
+                        <td class="unit">-</td>
+                    </tr>
+                    <tr>
+                        <td>Rychlost první části</td>
+                        <td class="variable">v₁</td>
+                        <td class="value">54</td>
+                        <td class="unit">km·h⁻¹</td>
+                    </tr>
+                    <tr>
+                        <td>Doba jízdy rychlostí v₂</td>
+                        <td class="variable">t₂</td>
+                        <td class="value">¼ celkového času</td>
+                        <td class="unit">-</td>
+                    </tr>
+                    <tr>
+                        <td>Rychlost druhé části</td>
+                        <td class="variable">v₂</td>
+                        <td class="value">72</td>
+                        <td class="unit">km·h⁻¹</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+            <p>Výpočet rozdělíme do několika logických kroků podle typu kinematické úlohy.</p>
+            
+            <div class="calculation-step">
+                <h4>Krok 1: Analýza situace a převody jednotek</h4>
+
+                <div class="equation-logic-box">
+                    <strong>Logika výběru:</strong> Toto je zlomková úloha na průměrnou rychlost, kde neznáme celkový čas, ale známe poměry časů. Použijeme algebraický přístup se zavedením neznámé "t" pro celkový čas.
+                </div>
+
+                <div class="warning-box">
+                    <strong>Pozor na zlomky!</strong> ¾ + ¼ = 1, což znamená, že poměry časů sedí. Jednotky rychlosti jsou již sjednocené (km·h⁻¹).
+                </div>
+
+                <div class="note-box">
+                    <strong>Dané hodnoty:</strong>
+                    <ul>
+                        <li>1. úsek: ¾ celkového času, v₁ = 54 km·h⁻¹</li>
+                        <li>2. úsek: ¼ celkového času, v₂ = 72 km·h⁻¹</li>
+                        <li>Hledáme: průměrnou rychlost vₚ</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="calculation-step">
+                <h4>Krok 2: Výběr fyzikální rovnice</h4>
+
+                <div class="equation-logic-box">
+                    <strong>Proč tuto rovnici?</strong> Označíme neznámý celkový čas jako "t" a vyjadřujeme jednotlivé časy jako zlomky tohoto "t". Elegance řešení spočívá v tom, že se "t" na konci vykrátí!
+                </div>
+
+                <div class="formula-box">
+                    <strong>Použité rovnice:</strong>
+                    <ul>
+                        <li>Průměrná rychlost: $v_p = \frac{s_{celková}}{t_{celkový}}$</li>
+                        <li>Dráha: $s = v \cdot t$</li>
+                        <li>Označení: celkový čas = t</li>
+                    </ul>
+                </div>
+
+                <div class="analogy-box">
+                    <strong>Praktická analogie:</strong> Je to jako při váženém průměru ve škole - známka z testu (72) má menší váhu (¼) než známky z běžné práce (54) s větší váhou (¾). Výsledek bude blíž k častějšímu jevu!
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 3: Dosazení hodnot a výpočet</h4>
+
+                <div class="tip-box">
+                    <strong>💡 Užitečný tip:</strong> Při práci se zlomky času si označte celkový čas jako "t" - často se elegant vykrátí!
+                </div>
+
+                <div class="result-box">
+                    <strong>📐 Rozdělení času podle zadání</strong>
+                    <p>$$\text{1. úsek: } t_1 = \frac{3}{4}t, \quad v_1 = 54 \text{ km/h}$$</p>
+                    <p>$$\text{2. úsek: } t_2 = \frac{1}{4}t, \quad v_2 = 72 \text{ km/h}$$</p>
+                </div>
+
+                <div class="result-box">
+                    <strong>📐 Výpočet jednotlivých drah</strong>
+                    <p>$$s_1 = v_1 \times t_1 = 54 \times \frac{3}{4}t = 40{,}5t$$</p>
+                    <p>$$s_2 = v_2 \times t_2 = 72 \times \frac{1}{4}t = 18t$$</p>
+                </div>
+
+                <div class="result-box">
+                    <strong>📐 Finální výpočet průměrné rychlosti</strong>
+                    <p>$$s_{\text{celková}} = s_1 + s_2 = 40{,}5t + 18t = 58{,}5t$$</p>
+                    <p>$$t_{\text{celkový}} = t$$</p>
+                    <p>$$v_p = \frac{s_{\text{celková}}}{t_{\text{celkový}}} = \frac{58{,}5t}{t} = 58{,}5 \text{ km/h}$$</p>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 4: Kontrola výsledku a odpověď</h4>
+
+                <div class="summary-box">
+                    <strong>✅ Odpověď:</strong>
+                    <p><strong>Průměrná rychlost automobilu je 58,5 km·h⁻¹.</strong></p>
+                </div>
+
+                <div class="info-box">
+                    <strong>🔍 Kontrola rozumnosti:</strong> Výsledek je časově vážený průměr: (¾ × 54) + (¼ × 72) = 40,5 + 18 = 58,5 km/h ✓. Všimněte si, jak se neznámá "t" vykrátila! To je elegantní vlastnost zlomkových úloh - výsledek nezávisí na konkrétní hodnotě času.
+                </div>
+
+                <div class="alternative-method-box">
+                    <strong>⚡ Alternativní způsob:</strong> Mohli bychom si zvolit konkrétní celkový čas (např. 4 h), pak by t₁ = 3 h, t₂ = 1 h, s₁ = 162 km, s₂ = 72 km, vₚ = 234/4 = 58,5 km/h. Výsledek stejný!
+                </div>
+
+                <details>
+                    <summary>🤔 Metakognitivní otázky</summary>
+                    <div>
+                        <ul>
+                            <li>Proč se nám na konci vykrátí neznámá "t"?</li>
+                            <li>Jak by vypadal výpočet, kdybychom znali konkrétní čas (např. 4 hodiny)?</li>
+                            <li>Jaký je rozdíl mezi "dělením času" a "dělením dráhy" u průměrné rychlosti?</li>
+                            <li>Kdy v praxi neznáme celkový čas, ale známe poměr času?</li>
+                            <li>Jak ověříte správnost pomocí váženého průměru?</li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

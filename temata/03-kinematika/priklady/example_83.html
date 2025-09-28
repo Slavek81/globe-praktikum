@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Řešení</title>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>83. Optimální úhel pro maximální dostřel</h1>
+            <p>Kinematika - řešený příklad</p>
+        </header>
+
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Optimální úhel 45° je klíčový ve mnoha oblastech - od vojenské balistiky a dělostřelectva až po atletiku (hod kladivem, koulí) a rekreační sporty (golf, lukostřelba). Hasiči používají tento princip pro nastavení vodních proudů, architekti pro design fontán, a dokonce i pes intuitivně hází míček pod úhlem blízkým 45°. Pochopení optimalizace trajektorie je základem moderní robotiky a kosmonautiky.
+        </div>
+
+        <div class="zadani">
+            <h3>Zadání</h3>
+            <p>Pod jakým úhlem je potřeba vystřelit, aby střela dopadla co nejdál? Tedy pro danou <strong>počáteční rychlost</strong> se snažíme najít <strong>úhel výstřelu vůči zemi</strong>, aby byl dostřel maximální.</p>
+        </div>
+
+        <div class="calculation-step">
+            <h3>1. Analýza optimalizačního problému</h3>
+
+            <div class="equation-logic-box">
+                <strong>💭 Logika výběru:</strong> Hledáme optimum funkce dostřelu d(α), kde α je úhel vůči horizontále. Jde o klasický problém matematické optimalizace - najít maximum funkce jedné proměnné pomocí derivace.
+            </div>
+
+            <div class="warning-box">
+                <strong>⚠️ Časté mylné představy!</strong> Mnoho lidí si myslí, že čím vyšší úhel, tím větší dostřel. Opak je pravda - existuje optimální kompromis mezi horizontální složkou (určuje "sílu dopředu") a vertikální složkou (určuje "dobu letu").
+            </div>
+
+            <div class="note-box">
+                <strong>📝 Dané parametry:</strong>
+                <ul>
+                    <li>Počáteční rychlost: $v_0$ (konstantní, daná)</li>
+                    <li>Gravitační zrychlení: $g$ (konstantní)</li>
+                    <li>Úhel výstřelu: $\alpha$ (proměnná, kterou optimalizujeme)</li>
+                    <li>Podmínky: vakuum, start i dopad ve stejné výšce</li>
+                    <li><strong>Hledáme:</strong> úhel $\alpha_{opt}$ pro maximální dostřel</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="calculation-step">
+            <h3>2. Odvození vzorce pro dostřel</h3>
+
+            <div class="equation-logic-box">
+                <strong>🎯 Proč tato cesta?</strong> Nejdříve odvodíme obecný vzorec pro dostřel jako funkci úhlu, pak najdeme jeho maximum pomocí diferenciálního počtu. Je to elegantní kombinace fyziky a matematiky.
+            </div>
+
+            <div class="formula-box">
+                <strong>Parametrické rovnice šikmého vrhu:</strong>
+                $$x(t) = v_0 \cos \alpha \cdot t$$
+                $$y(t) = v_0 \sin \alpha \cdot t - \frac{1}{2}gt^2$$
+
+                <strong>Podmínka dopadu (y = 0):</strong>
+                $$0 = v_0 \sin \alpha \cdot t - \frac{1}{2}gt^2$$
+                $$t(v_0 \sin \alpha - \frac{1}{2}gt) = 0$$
+                $$t = 0 \text{ nebo } t = \frac{2v_0 \sin \alpha}{g}$$
+            </div>
+
+            <div class="analogy-box">
+                <strong>🎪 Praktická analogie:</strong> Představte si cirkusového akrobata vystřelovaného z děla. Pokud letí příliš vysoko (90°), neletí daleko. Pokud letí příliš nízko (0°), taky neletí daleko. Existuje "zlatý střed", kde kombinace výšky a rychlosti dopředu dává nejlepší výsledek.
+            </div>
+        </div>
+
+        <div class="calculation-step">
+            <h3>3. Obecný vzorec pro dostřel</h3>
+
+            <div class="tip-box">
+                <strong>💡 Užitečná rada:</strong> Při odvozování využijeme goniometrickou identitu 2sinα·cosα = sin(2α). Tato identita dramaticky zjednoduší optimalizaci, protože převede složitou funkci dvou goniometrických funkcí na jednoduchou funkci jedné.
+            </div>
+
+            <p><strong>Dosazení času letu do vzorce pro dostřel:</strong></p>
+            <div class="formula-box">
+                $$d = v_0 \cos \alpha \cdot \frac{2v_0 \sin \alpha}{g} = \frac{2v_0^2 \cos \alpha \sin \alpha}{g}$$
+
+                <strong>Použitím goniometrické identity:</strong>
+                $$2 \cos \alpha \sin \alpha = \sin(2\alpha)$$
+
+                <strong>Finální vzorec pro dostřel:</strong>
+                $$d(\alpha) = \frac{v_0^2 \sin(2\alpha)}{g}$$
+            </div>
+
+            <details>
+                <summary><strong>🔍 Odvození goniometrické identity</strong></summary>
+                <div>
+                    <p>Identita $\sin(2\alpha) = 2\sin\alpha\cos\alpha$ plyne ze vzorce pro sinus dvojnásobného úhlu:</p>
+                    $$\sin(A + B) = \sin A \cos B + \cos A \sin B$$
+                    <p>Pro $A = B = \alpha$: $\sin(2\alpha) = \sin(\alpha + \alpha) = 2\sin\alpha\cos\alpha$</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="calculation-step">
+            <h3>4. Optimalizace - hledání maxima</h3>
+
+            <p><strong>Nalezení maxima funkce d(α):</strong></p>
+            <div class="formula-box">
+                <strong>Maximum funkce sinus:</strong>
+                $$d(\alpha) = \frac{v_0^2}{g} \sin(2\alpha)$$
+
+                <p>Funkce sinus dosahuje svého maxima (hodnoty 1) pro argument:</p>
+                $$2\alpha = 90° = \frac{\pi}{2}$$
+                $$\alpha = 45° = \frac{\pi}{4}$$
+
+                <strong>Maximální dostřel:</strong>
+                $$d_{max} = \frac{v_0^2 \sin(90°)}{g} = \frac{v_0^2}{g}$$
+            </div>
+
+            <div class="alternative-method-box">
+                <strong>🔄 Alternativní odvození derivováním:</strong>
+                <p>$\frac{dd}{d\alpha} = \frac{v_0^2}{g} \cdot 2\cos(2\alpha) = 0$</p>
+                <p>$\cos(2\alpha) = 0 \Rightarrow 2\alpha = 90° \Rightarrow \alpha = 45°$</p>
+                <p>Druhá derivace: $\frac{d^2d}{d\alpha^2} = -\frac{2v_0^2}{g}\sin(2\alpha) < 0$ pro $\alpha = 45°$ → je to maximum ✓</p>
+            </div>
+        </div>
+
+        <div class="calculation-step">
+            <h3>5. Fyzikální interpretace a důsledky</h3>
+
+            <div class="summary-box">
+                <strong>🎯 Kompletní odpověď:</strong>
+                <ul>
+                    <li><strong>Optimální úhel:</strong> $\alpha_{opt} = 45°$</li>
+                    <li><strong>Maximální dostřel:</strong> $d_{max} = \frac{v_0^2}{g}$</li>
+                    <li><strong>Fyzikální interpretace:</strong> 45° dokonale vyvažuje horizontální a vertikální složky</li>
+                </ul>
+
+                <strong>Srovnání složek při α = 45°:</strong>
+                <p>$v_{0x} = v_0\cos(45°) = \frac{v_0}{\sqrt{2}}$ a $v_{0y} = v_0\sin(45°) = \frac{v_0}{\sqrt{2}}$</p>
+                <p>Horizontální a vertikální složky jsou stejné!</p>
+            </div>
+
+            <div class="info-box">
+                <strong>🔍 Kontrola rozumnosti:</strong>
+                <ul>
+                    <li>Pro $\alpha = 0°$: $d = 0$ (střela letí vodorovně, okamžitě dopadne) ✓</li>
+                    <li>Pro $\alpha = 90°$: $d = 0$ (střela letí svisle, dopadne na místě) ✓</li>
+                    <li>Pro $\alpha = 30°$: $d = \frac{v_0^2\sin(60°)}{g} = \frac{v_0^2 \cdot 0{,}866}{g} < \frac{v_0^2}{g}$ ✓</li>
+                    <li>Maximální dostřel při 45° je větší než při jakémkoli jiném úhlu ✓</li>
+                </ul>
+            </div>
+
+            <div class="interpretation-box">
+                <strong>🎲 Fyzikální význam 45°:</strong>
+                <p><strong>Proč právě 45°?</strong> Je to kompromis mezi dvěma extrémy:</p>
+                <ul>
+                    <li><strong>Malý úhel (< 45°):</strong> Velká horizontální rychlost, ale malá doba letu</li>
+                    <li><strong>Velký úhel (> 45°):</strong> Dlouhá doba letu, ale malá horizontální rychlost</li>
+                    <li><strong>45°:</strong> Optimální kombinace obou faktorů</li>
+                </ul>
+            </div>
+
+            <details>
+                <summary>🤔 Metakognitivní otázky</summary>
+                <div>
+                    <ul>
+                        <li>Jak by se změnil optimální úhel při střelbě z kopce dolů? Byl by stále 45°?</li>
+                        <li>Proč golfisté často střílejí pod úhlem vyšším než 45° přes překážky? Contradicts to náš výsledek?</li>
+                        <li>Jak by odpor vzduchu ovlivnil optimální úhel? Posunul by ho nahoru nebo dolů?</li>
+                        <li>Můžeme tento princip aplikovat na výstřely z různých výšek nebo jen ze "země na zem"?</li>
+                        <li>Proč má vzorec pro maximální dostřel tvar v₀²/g? Co to říká o vlivu rychlosti vs. gravitace?</li>
+                    </ul>
+                </div>
+            </details>
+        </div>
+    </main>
+</body>
+</html>

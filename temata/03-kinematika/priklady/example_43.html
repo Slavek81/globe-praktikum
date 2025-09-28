@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Řešení</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>43. Řešení</h1>
+            <p>Kinematika - řešený příklad</p>
+        </header>
+
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Astronomie, GPS satelity a geologie - rotace Země ovlivňuje naše každodenní životy! Astronomové počítají polohy hvězd, inženýři GPS systémů korigují relativistické efekty, geologové studují kontinentalní drift. Od navigace po předpověď počasí - Zemská rotace je základem moderní technologie!
+        </div>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <p>
+                Jaká je rychlost bodů na zemském rovníku? Uvažujte poloměr Země <strong>6 378 km</strong>, úhlová rychlost otáčení Země je <strong>7,29·10⁻⁵ rad/s</strong>. Určete také <strong>frekvenci</strong>.
+            </p>
+        </section>
+
+        <section id="vstupni-data">
+            <h3>Vstupní data</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Veličina</th>
+                        <th>Symbol</th>
+                        <th>Hodnota</th>
+                        <th>Jednotka</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Poloměr Země</td>
+                        <td class="variable">R</td>
+                        <td class="value">6 378</td>
+                        <td class="unit">km</td>
+                    </tr>
+                    <tr>
+                        <td>Úhlová rychlost Země</td>
+                        <td class="variable">ω</td>
+                        <td class="value">7,29·10⁻⁵</td>
+                        <td class="unit">rad/s</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+            <p>Výpočet rozdělíme do několika logických kroků podle typu kinematické úlohy.</p>
+            
+            <div class="calculation-step">
+                <h4>Krok 1: Analýza situace a převody jednotek</h4>
+                <p>Analyzujeme typ pohybu a sjednotíme jednotky pro výpočet.</p>
+                
+                <div class="note-box">
+                    <strong>Analýza:</strong>
+                    <p>Identifikujeme typ pohybu a potřebné převody jednotek podle zadání.</p>
+                </div>
+            </div>
+            
+            <div class="calculation-step">
+                <h4>Krok 2: Výběr fyzikální rovnice</h4>
+                <p>Vybereme vhodnou kinematickou rovnici podle typu pohybu.</p>
+                
+                <div class="formula-box">
+                    <strong>Kinematické rovnice:</strong>
+                    <ul>
+                        <li>Rovnoměrný pohyb: $s = v \cdot t$</li>
+                        <li>Zrychlený pohyb: $s = v_0 \cdot t + \frac12 \cdot a \cdot t^2$</li>
+                        <li>Rychlost při zrychleném pohybu: $v = v_0 + a \cdot t$</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 3: Rychlost bodu na rovníku</h4>
+                <p>Pro obvodovou rychlost platí: v = ωR</p>
+
+                <div class="result-box">
+                    <strong>Výpočet rychlosti:</strong>
+                    <p>v = (7,29 × 10⁻⁵) × (6,378 × 10⁶)</p>
+                    <p>v = 7,29 × 6,378 × 10¹</p>
+                    <p>v = 46,5 × 10¹ = 465 m/s</p>
+                    <p>Převod na km/h: v = 465 × 3,6 = <strong>1674 km/h</strong></p>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 4: Frekvence rotace Země</h4>
+                <p>f = ω/(2π) = (7,29 × 10⁻⁵)/(2π)</p>
+
+                <div class="result-box">
+                    <strong>Frekvence:</strong>
+                    <p>f = 7,29 × 10⁻⁵ / 6,283</p>
+                    <p>f ≈ 1,16 × 10⁻⁵ Hz</p>
+                    <p>Co to znamená? f = 1,16 × 10⁻⁵ Hz = 0,0000116 Hz = 1 otáčka za 86 400 sekund = <strong>1 otáčka za 24 hodin</strong> ✅</p>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 5: Shrnutí a úžasná fakta</h4>
+                <p>Ohromující skutečnosti:</p>
+
+                <div class="result-box">
+                    <strong>Odpověď:</strong>
+                    <ul>
+                        <li><strong>Rychlost na rovníku:</strong> 465 m/s = 1674 km/h</li>
+                        <li><strong>Frekvence:</strong> 1,16 × 10⁻⁵ Hz (jednou za 24 hodin)</li>
+                    </ul>
+                    <p><strong>🤯 Vy se právě teď pohybujete rychlostí 1674 km/h!</strong> (Pokud žijete na rovníku)</p>
+                    <p><strong>Rychlostní porovnání:</strong></p>
+                    <ul>
+                        <li>Země (rovník): 1674 km/h</li>
+                        <li>Rychlovlak: ~300 km/h</li>
+                        <li>Dopravní letadlo: ~900 km/h</li>
+                        <li><strong>Země je skoro 2× rychlejší než letadlo!</strong></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

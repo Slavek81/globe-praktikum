@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Řešení</title>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>80. Odvození vztahu pro vodorovný vrh</h1>
+            <p>Kinematika - řešený příklad</p>
+        </header>
+
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Odvozování obecných vztahů je základem inženýrského myšlení! Tento vzorec používají piloti při shazování zásilky, konstruktéři fontán při návrhu vodních prvků, dělostřelci při výpočtu trajektorií, nebo dokonce herní vývojáři při programování realistické fyziky. Schopnost odvodit obecný vztah znamená pochopit fyzikální princip, ne jen počítat konkrétní čísla.
+        </div>
+
+        <div class="zadani">
+            <h3>Zadání</h3>
+            <p>Odvoďte vztah pro <strong>horizontální délku d</strong> vodorovného vrhu při počáteční rychlosti <strong>v₀</strong>, výšce místa vrhu <strong>h</strong> a gravitačním zrychlení <strong>g</strong>.</p>
+        </div>
+
+        <div class="calculation-step">
+            <h3>1. Analýza situace a výběr přístupu</h3>
+
+            <div class="equation-logic-box">
+                <strong>💭 Logika výběru:</strong> Vodorovný vrh je kombinací dvou nezávislých pohybů - horizontálně rovnoměrného (bez zrychlení) a vertikálně volného pádu (konstantní zrychlení g). Klíčem je najít dobu letu z vertikálního pohybu a poté spočítat horizontální dráhu.
+            </div>
+
+            <div class="warning-box">
+                <strong>⚠️ Pozor na jednotky!</strong> Při odvozování pracujeme s obecnými symboly, ale při kontrole musíme ověřit rozměrovou správnost: v₀ [m·s⁻¹], h [m], g [m·s⁻²], výsledek d [m].
+            </div>
+
+            <div class="note-box">
+                <strong>📝 Dané parametry:</strong>
+                <ul>
+                    <li>Počáteční horizontální rychlost: $v_0$ (konstantní během letu)</li>
+                    <li>Počáteční vertikální rychlost: $0$ (vodorovný vrh)</li>
+                    <li>Výška vrhu: $h$ (obecná hodnota)</li>
+                    <li>Gravitační zrychlení: $g$ (směrem dolů)</li>
+                    <li><strong>Hledáme:</strong> horizontální dolet $d$</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="calculation-step">
+            <h3>2. Výběr kinematických rovnic</h3>
+
+            <div class="equation-logic-box">
+                <strong>🎯 Proč tyto rovnice?</strong> Horizontální a vertikální pohyb jsou nezávislé. Horizontálně se těleso pohybuje konstantní rychlostí (žádná síla), vertikálně působí pouze gravitace (volný pád z nulové počáteční rychlosti).
+            </div>
+
+            <div class="formula-box">
+                <strong>Horizontální pohyb (rovnoměrný):</strong>
+                $$d = v_0 \cdot t$$
+
+                <strong>Vertikální pohyb (volný pád):</strong>
+                $$h = \frac{1}{2}gt^2$$
+            </div>
+
+            <div class="analogy-box">
+                <strong>🎈 Praktická analogie:</strong> Představte si letadlo shazující balíček. Letadlo letí vodorovně stálou rychlostí (horizontální pohyb), zatímco balíček současně padá dolů kvůli gravitaci (vertikální pohyb). Tyto dva pohyby probíhají nezávisle!
+            </div>
+        </div>
+
+        <div class="calculation-step">
+            <h3>3. Algebraické odvození</h3>
+
+            <div class="tip-box">
+                <strong>💡 Užitečná rada:</strong> Při odvozování nejdřív vyjádřete neznámou veličinu z jedné rovnice, pak ji dosaďte do druhé. Zde vyjádříme čas z vertikálního pohybu a dosadíme do horizontálního.
+            </div>
+
+            <p><strong>Krok 1: Vyjádření času z vertikálního pohybu</strong></p>
+            <div class="formula-box">
+                $$h = \frac{1}{2}gt^2$$
+                $$t^2 = \frac{2h}{g}$$
+                $$t = \sqrt{\frac{2h}{g}}$$
+            </div>
+
+            <p><strong>Krok 2: Dosazení času do horizontálního pohybu</strong></p>
+            <div class="formula-box">
+                $$d = v_0 \cdot t = v_0 \sqrt{\frac{2h}{g}}$$
+            </div>
+
+            <details>
+                <summary><strong>🔍 Pokročilé informace o odvození</strong></summary>
+                <div>
+                    <p>Tento postup využívá principu superpozice pohybů. Galileo Galilei jako první pochopil, že složený pohyb lze rozložit na nezávislé komponenty. Matematicky to znamená, že:</p>
+                    <ul>
+                        <li>$x(t) = v_0 t$ (horizontální složka)</li>
+                        <li>$y(t) = h - \frac{1}{2}gt^2$ (vertikální složka)</li>
+                    </ul>
+                    <p>Eliminací parametru času získáme trajektorii.</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="calculation-step">
+            <h3>4. Fyzikální interpretace výsledku</h3>
+
+            <div class="summary-box">
+                <strong>📐 Finální vztah:</strong>
+                $$\boxed{d = v_0 \sqrt{\frac{2h}{g}}}$$
+
+                <strong>Interpretace závislostí:</strong>
+                <ul>
+                    <li>$d \propto v_0$ - dolet je přímo úměrný počáteční rychlosti</li>
+                    <li>$d \propto \sqrt{h}$ - dolet roste s odmocninou výšky</li>
+                    <li>$d \propto \frac{1}{\sqrt{g}}$ - větší gravitace = kratší dolet</li>
+                </ul>
+            </div>
+
+            <div class="info-box">
+                <strong>🔍 Kontrola rozumnosti:</strong>
+                <p><strong>Rozměrová analýza:</strong> $[d] = [v_0] \sqrt{\frac{[h]}{[g]}} = \frac{m}{s} \sqrt{\frac{m}{m/s^2}} = \frac{m}{s} \sqrt{s^2} = \frac{m}{s} \cdot s = m$ ✓</p>
+                <p><strong>Extrémní případy:</strong> Pokud $h = 0$, pak $d = 0$ ✓. Pokud $v_0 = 0$, pak $d = 0$ ✓. Vzorec dává smysl!</p>
+            </div>
+
+            <div class="alternative-method-box">
+                <strong>🔄 Alternativní odvození:</strong>
+                <p>Můžeme použít také energetický přístup. Potenciální energie $mgh$ se převede na kinetickou energii vertikálního pohybu: $\frac{1}{2}mv_y^2 = mgh$, odkud $v_y = \sqrt{2gh}$. Čas pádu je $t = \frac{v_y}{g} = \sqrt{\frac{2h}{g}}$, což vede ke stejnému výsledku.</p>
+            </div>
+
+            <details>
+                <summary>🤔 Metakognitivní otázky</summary>
+                <div>
+                    <ul>
+                        <li>Proč dolet není přímo úměrný výšce, ale její odmocnině? Co to říká o vztahu mezi časem a gravitací?</li>
+                        <li>Jak by se změnil vzorec při vrhu pod úhlem? Jaké dodatečné parametry bychom museli uvažovat?</li>
+                        <li>Co by se stalo s doletem na Měsíci (g = 1,6 m·s⁻²)? Byl by větší nebo menší?</li>
+                        <li>Jaké praktické aplikace má tento obecný vztah v moderní technice a inženýrství?</li>
+                        <li>Jak by odpor vzduchu změnil náš odvozený vztah? V jakých situacích je naše zjednodušení oprávněné?</li>
+                    </ul>
+                </div>
+            </details>
+        </div>
+    </main>
+</body>
+</html>

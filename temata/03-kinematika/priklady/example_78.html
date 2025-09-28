@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Řešení</title>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>78. Chybný graf hopíku</h1>
+            <p>Kinematika - řešený příklad</p>
+        </header>
+
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Kritické myšlení a analýza grafů je klíčová dovednost ve vědě i technologii! Umět odhalit chyby ve vizualizacích dat je důležité pro inženýry, vědce i novináře. Nesprávné grafy mohou vést k chybným závěrům ve výzkumu, průmyslu nebo veřejné politice.
+        </div>
+
+        <div class="problem-statement">
+            <h2>Zadání</h2>
+            <p>V jinak dobré internetové cvičebnici Umímeto je uveden obrázek, který má znázorňovat závislost výšky hopíku na čase, když se odráží od podlahy. <strong>Co je v obrázku špatně? Jak by obrázek měl vypadat správně? Na základě čeho si snadno můžeme všimnout, že je špatně?</strong></p>
+
+            <div class="note-box">
+                <strong>Popisný graf pro analýzu:</strong>
+                <p>Představ si graf výšky h(t) s těmito charakteristikami:</p>
+                <ul>
+                    <li>První skok: maximum 300 cm, doba trvání ~1 s</li>
+                    <li>Druhý skok: maximum 250 cm, doba trvání ~1 s (stejně jako první!)</li>
+                    <li>Třetí skok: maximum 200 cm, doba trvání ~1 s (opět stejně!)</li>
+                    <li>Všechny paraboly mají stejnou "strmost" při dopadu</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="solution">
+            <h2>Řešení</h2>
+
+            <div class="calculation-step">
+                <h3>1. Analýza situace a fyzikální principy</h3>
+
+                <div class="equation-logic-box">
+                    <strong>Logika analýzy:</strong> Analyzujeme pohyb skákajícího hopíku s postupným útlumem. Každý skok je kombinace svislého vrhu nahoru a volného pádu dolů. Klíčové je rozpoznat, že čas závisí na odmocnině výšky, ne lineárně!
+                </div>
+
+                <div class="note-box">
+                    <strong>Co graf tvrdí:</strong>
+                    <ul>
+                        <li>První skok: $h_1 = 300$ cm (správně)</li>
+                        <li>Druhý skok: $h_2 = 250$ cm (správně)</li>
+                        <li>Čas podle grafu: každý skok trvá stejně dlouho (CHYBA!)</li>
+                        <li>Strmost křivek: stejná pro všechny skoky (CHYBA!)</li>
+                    </ul>
+                </div>
+
+                <div class="warning-box">
+                    <strong>HLAVNÍ CHYBA:</strong> Poloviční výška NEZNAMENÁ poloviční čas! Čas je úměrný odmocnině výšky, ne výšce samotné.
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h3>2. Výběr fyzikálních rovnic</h3>
+
+                <div class="equation-logic-box">
+                    <strong>Proč tyto rovnice?</strong> Pro volný pád nebo svislý vrh platí kinematické rovnice s druhou mocninou času. To znamená, že čas je úměrný odmocnině vzdálenosti (výšky).
+                </div>
+
+                <div class="analogy-box">
+                    <strong>Praktická analogie:</strong> Je to jako při brzdné dráze auta - dvojnásobná rychlost neznamená dvojnásobnou brzdnou dráhu, ale čtyřnásobnou! Podobně u hopíku - poloviční výška neznamená poloviční čas.
+                </div>
+
+                <div class="formula-box">
+                    <p><strong>Pro volný pád z výšky h:</strong></p>
+                    $$t_{\text{pád}} = \sqrt{\frac{2h}{g}}$$
+
+                    <p><strong>Pro celkovou dobu skoku (nahoru i dolů):</strong></p>
+                    $$t_{\text{celkem}} = 2\sqrt{\frac{2h}{g}}$$
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h3>3. Správný výpočet časů</h3>
+
+                <div class="tip-box">
+                    <strong>Užitečný tip:</strong> Převeď si vždy jednotky na základní (cm → m) a používej g = 10 m·s⁻² pro rychlé odhady.
+                </div>
+
+                <div class="result-box">
+                    <p><strong>První skok (h = 300 cm = 3 m):</strong></p>
+                    $$t_1 = 2\sqrt{\frac{2 \times 3}{10}} = 2\sqrt{0{,}6} = 2 \times 0{,}775 = 1{,}55 \text{ s}$$
+
+                    <p><strong>Druhý skok (h = 250 cm = 2,5 m):</strong></p>
+                    $$t_2 = 2\sqrt{\frac{2 \times 2{,}5}{10}} = 2\sqrt{0{,}5} = 2 \times 0{,}707 = 1{,}41 \text{ s}$$
+
+                    <p><strong>Poměr časů:</strong></p>
+                    $$\frac{t_2}{t_1} = \sqrt{\frac{h_2}{h_1}} = \sqrt{\frac{2{,}5}{3}} = \sqrt{0{,}833} = 0{,}91$$
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h3>4. Identifikace chyb v grafu</h3>
+
+                <div class="warning-box">
+                    <strong>Hlavní chyby v původním grafu:</strong>
+                    <ul>
+                        <li><strong>Nesprávné časy:</strong> Graf ukazuje konstantní dobu skoků (~1 s), ale správně by se časy měly zkracovat s odmocninou výšky</li>
+                        <li><strong>Nesprávná strmost:</strong> Prudkost křivky při dopadu zůstává stejná, ale měla by klesat s nižší dopadovou rychlostí</li>
+                        <li><strong>Fyzikální nekonzistence:</strong> Dopadová rychlost $v = \sqrt{2gh}$ klesá s výškou</li>
+                    </ul>
+                </div>
+
+                <div class="analogy-box">
+                    <strong>Pozor na intuici:</strong> Naše intuice často očekává lineární závislosti, ale fyzika je plná mocninných vztahů. Přímá úměrnost platí pro $s = vt$, ale pro volný pád je $h = \frac{1}{2}gt^2$ - odmocninová závislost!
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h3>5. Jak by měl graf vypadat správně</h3>
+
+                <div class="summary-box">
+                    <strong>Správný graf by měl mít:</strong>
+                    <ul>
+                        <li><strong>Kratší časy:</strong> Každý další skok by měl trvat kratší dobu (podle odmocniny)</li>
+                        <li><strong>Klesající strmost:</strong> Prudkost křivek při dopadu se zmenšuje</li>
+                        <li><strong>Symetrické paraboly:</strong> Každý skok tvoří symetrickou parabolu vzhledem k maximu</li>
+                        <li><strong>Postupně se zkracující periody:</strong> $t_2 < t_1$, $t_3 < t_2$, atd.</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <strong>Jak si chyby všimnout:</strong>
+                    <ul>
+                        <li>Kontrola fyzikálních rozměrů: $[t] = \sqrt{\frac{[m]}{[m \cdot s^{-2}]}} = s$ ✓</li>
+                        <li>Srovnání s known vztahy (volný pád)</li>
+                        <li>Intuitivní kontrola: nižší skok = kratší doba letu</li>
+                    </ul>
+                </div>
+
+                <div class="alternative-method-box">
+                    <strong>Experimentální ověření:</strong> Nahraj si video skákajícího míčku a změř skutečné časy! Uvidíš, že se časy skutečně zkracují podle odmocniny výšky.
+                </div>
+            </div>
+        </div>
+
+        <details>
+            <summary>🤔 Metakognitivní otázky</summary>
+            <div>
+                <ul>
+                    <li>Proč je důležité kontrolovat fyzikální rozměry v grafech? Jaké další chyby to může odhalit?</li>
+                    <li>Jak by vypadal graf, kdyby hopík ztrácel přesně 50% energie při každém odrazu? A při 30%?</li>
+                    <li>Jaké další fyzikální grafy mohou obsahovat podobné chyby? (Nápověda: brzdná dráha vs. rychlost)</li>
+                    <li>Jak bys ověřil správnost grafu experimentálně pomocí mobilu a videoanalýzy?</li>
+                    <li>Proč má naše intuice tendenci očekávat lineární závislosti tam, kde jsou mocninné?</li>
+                </ul>
+            </div>
+        </details>
+    </main>
+</body>
+</html>

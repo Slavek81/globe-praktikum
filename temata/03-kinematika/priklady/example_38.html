@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Řešení</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>38. Řešení</h1>
+            <p>Kinematika - řešený příklad</p>
+        </header>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <p>
+                Určete čas, za který se rychlost padajícího tělesa zvýší z10 m·s⁻¹na30 m·s⁻¹.
+            </p>
+        </section>
+
+        <section id="vstupni-data">
+            <h3>Vstupní data</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Veličina</th>
+                        <th>Symbol</th>
+                        <th>Hodnota</th>
+                        <th>Jednotka</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Počáteční rychlost</td>
+                        <td class="variable">v₀</td>
+                        <td class="value">10</td>
+                        <td class="unit">m·s⁻¹</td>
+                    </tr>
+                    <tr>
+                        <td>Konečná rychlost</td>
+                        <td class="variable">v</td>
+                        <td class="value">30</td>
+                        <td class="unit">m·s⁻¹</td>
+                    </tr>
+                    <tr>
+                        <td>Tíhové zrychlení</td>
+                        <td class="variable">g</td>
+                        <td class="value">9,8</td>
+                        <td class="unit">m·s⁻²</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+            <p>Výpočet rozdělíme do několika logických kroků podle typu kinematické úlohy.</p>
+            
+            <div class="calculation-step">
+                <h4>Krok 1: Analýza situace a převody jednotek</h4>
+                <p>Analyzujeme typ pohybu a sjednotíme jednotky pro výpočet.</p>
+                
+                <div class="note-box">
+                    <strong>Analýza:</strong>
+                    <p>Identifikujeme typ pohybu a potřebné převody jednotek podle zadání.</p>
+                </div>
+            </div>
+            
+            <div class="calculation-step">
+                <h4>Krok 2: Výběr fyzikální rovnice</h4>
+                <p>Vybereme vhodnou kinematickou rovnici podle typu pohybu.</p>
+                
+                <div class="formula-box">
+                    <strong>Kinematické rovnice:</strong>
+                    <ul>
+                        <li>Rovnoměrný pohyb: $s = v \cdot t$</li>
+                        <li>Zrychlený pohyb: $s = v_0 \cdot t + \frac12 \cdot a \cdot t^2$</li>
+                        <li>Rychlost při zrychleném pohybu: $v = v_0 + a \cdot t$</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 3: Výpočet času změny rychlosti</h4>
+                <p>Vyjádříme čas ze základní kinematické rovnice:</p>
+
+                <div class="result-box">
+                    <strong>Odvození času:</strong>
+                    <div class="rovnice-nadpis">📐 Odvození času</div>
+                    <div class="rovnice-text">$$v = v_0 + gt$$
+$$gt = v - v_0$$
+$$t = \frac{v - v_0}{g} = \frac{30 - 10}{10} = \frac{20}{10} = 2\,\text{s}$$</div>
+                    <p>Čas potřebný pro změnu rychlosti je <strong>2 sekundy</strong>.</p>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 4: Kontrola výsledku</h4>
+                <p>Ověříme správnost výpočtu:</p>
+
+                <div class="result-box">
+                    <strong>Kontrola:</strong>
+                    <div class="rovnice-nadpis">📐 Kontrola</div>
+                    <div class="rovnice-text">$$\Delta v = gt = 10 \times 2 = 20\,\text{m·s}^{-1}$$
+$$v_{konečná} = v_0 + \Delta v = 10 + 20 = 30\,\text{m·s}^{-1} \checkmark$$</div>
+                    <p><strong>Timeline pohybu:</strong></p>
+                    <ul>
+                        <li>t = 0 s: v = 10 m·s⁻¹ (36 km·h⁻¹)</li>
+                        <li>t = 1 s: v = 20 m·s⁻¹ (72 km·h⁻¹)</li>
+                        <li>t = 2 s: v = 30 m·s⁻¹ (108 km·h⁻¹)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 5: Kontrola výsledku a odpověď</h4>
+                <p>Fyzikální význam a praktické aplikace:</p>
+
+                <div class="result-box">
+                    <strong>Odpověď:</strong>
+                    <p><strong>Klíčové pozorování:</strong> Čas závisí pouze na změně rychlosti, ne na výšce!</p>
+                    <p><strong>✅ Odpověď:</strong> Rychlost se změní za <strong>2 sekundy</strong></p>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

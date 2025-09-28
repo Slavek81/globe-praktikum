@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Řešení</title>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>96. Převod ze stupňů na radiány</h1>
+            <p>Kinematika - řešený příklad</p>
+        </header>
+
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Radiány jsou "přirozená" jednotka úhlu ve fyzice a vyšší matematice, protože zjednodušují mnoho vzorců. V diferenciálním počtu má derivace sin(x) jednoduchou formu pouze v radiánech. GPS navigace, robotika, počítačová grafika a radarové systémy používají výhradně radiány pro úhlové výpočty. V programování jsou všechny trigonometrické funkce standardně v radiánech. Proto je důležité ovládat rychlé převody mezi stupni a radiány.
+        </div>
+
+        <div class="zadani">
+            <h2>Zadání</h2>
+            <p>Najděte odpovídající úhly v radiánech: <strong>45°, 30°, 60°, 90°, 180°, 270°, 50°, 75°</strong></p>
+        </div>
+
+        <div class="reseni">
+            <h2>Řešení</h2>
+
+            <div class="krok">
+                <h3>1. Analýza situace a zadané hodnoty</h3>
+
+                <div class="equation-logic-box">
+                    <strong>Logika výběru:</strong> Radiány jsou založeny na poloměru kružnice - jeden radián je úhel, kde oblouk má délku rovnou poloměru. Proto 2π radiánů = celá kružnice = 360°.
+                </div>
+
+                <div class="warning-box">
+                    <strong>Pozor na jednotky!</strong> Radián je "přírozená" jednotka úhlu. Jeden radián ≈ 57,3° - je to poměrně velký úhel! Zapamatujte si: π rad = 180°.
+                </div>
+
+                <div class="note-box">
+                    <strong>Dané hodnoty:</strong>
+                    <ul>
+                        <li>Zadané úhly: 45°, 30°, 60°, 90°, 180°, 270°, 50°, 75°</li>
+                        <li>Cílová jednotka: radiány (rad)</li>
+                        <li>Klíčová znalost: 180° = π rad</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="krok">
+                <h3>2. Výběr převodní rovnice</h3>
+
+                <div class="equation-logic-box">
+                    <strong>Proč tento vztah?</strong> Základní převodní vztah vychází z definice radiánu a faktu, že celá kružnice má 2π radiánů neboli 360°.
+                </div>
+
+                <div class="formula-box">
+                    $$\text{radiány} = \text{stupně} \times \frac{\pi}{180°}$$
+                    <p>Alternativně: 180° = π rad</p>
+                </div>
+
+                <div class="analogy-box">
+                    <strong>Praktická analogie:</strong> Převod stupňů na radiány je jako převod z "lidských" jednotek (stupně) na "matematické" jednotky (radiány) - podobně jako převod z mph na m/s.
+                </div>
+            </div>
+
+            <div class="krok">
+                <h3>3. Algebraické vyjádření a výpočet</h3>
+
+                <div class="tip-box">
+                    <strong>Užitečný tip:</strong> Zapamatujte si základní převody: 30° = π/6, 45° = π/4, 60° = π/3, 90° = π/2, 180° = π. Tyto úhly se objevují velmi často!
+                </div>
+
+                <p><strong>Základní úhly (ve zlomcích π)</strong></p>
+                <div class="calculation-step">
+                    $$45° = 45 \times \frac{\pi}{180} = \frac{\pi}{4} \text{ rad}$$
+                    $$30° = 30 \times \frac{\pi}{180} = \frac{\pi}{6} \text{ rad}$$
+                    $$60° = 60 \times \frac{\pi}{180} = \frac{\pi}{3} \text{ rad}$$
+                    $$90° = 90 \times \frac{\pi}{180} = \frac{\pi}{2} \text{ rad}$$
+                </div>
+
+                <p><strong>Velké a složitější úhly</strong></p>
+                <div class="calculation-step">
+                    $$180° = \pi \text{ rad}$$
+                    $$270° = 270 \times \frac{\pi}{180} = \frac{3\pi}{2} \text{ rad}$$
+                    $$50° = 50 \times \frac{\pi}{180} = \frac{5\pi}{18} \text{ rad}$$
+                    $$75° = 75 \times \frac{\pi}{180} = \frac{5\pi}{12} \text{ rad}$$
+                </div>
+            </div>
+
+            <div class="krok">
+                <h3>4. Kontrola a konečné odpovědi</h3>
+
+                <div class="summary-box">
+                    <strong>Převodní tabulka stupně → radiány:</strong>
+                    <ul>
+                        <li>45° → π/4 rad ≈ 0,785 rad</li>
+                        <li>30° → π/6 rad ≈ 0,524 rad</li>
+                        <li>60° → π/3 rad ≈ 1,047 rad</li>
+                        <li>90° → π/2 rad ≈ 1,571 rad</li>
+                        <li>180° → π rad ≈ 3,142 rad</li>
+                        <li>270° → 3π/2 rad ≈ 4,712 rad</li>
+                        <li>50° → 5π/18 rad ≈ 0,873 rad</li>
+                        <li>75° → 5π/12 rad ≈ 1,309 rad</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <strong>Kontrola rozumnosti:</strong> Všechny výsledky jsou menší než 2π ≈ 6,28 rad (celá kružnice), což je správné. Největší úhel 270° odpovídá 3/4 kružnice.
+                </div>
+
+                <div class="alternative-method-box">
+                    <strong>Alternativní způsob:</strong> Můžeme si pamatovat: 1° = π/180 rad ≈ 0,0175 rad, pak pouze násobíme počet stupňů tímto faktorem.
+                </div>
+            </div>
+        </div>
+
+        <details>
+            <summary>🤔 Metakognitivní otázky</summary>
+            <div>
+                <ul>
+                    <li>Proč se radiány používají ve fyzice místo stupňů?</li>
+                    <li>Jak byste rychle odhadli, že 1 radián ≈ 60°?</li>
+                    <li>V jakých oblastech jsou radiány nezbytné a proč?</li>
+                    <li>Proč mají "pěkné úhly" jednoduché zlomky π?</li>
+                    <li>Jak souvisí radiány s definicí trigonometrických funkcí?</li>
+                </ul>
+            </div>
+        </details>
+    </main>
+</body>
+</html>

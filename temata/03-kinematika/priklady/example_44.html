@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Řešení</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>44. Řešení</h1>
+            <p>Kinematika - řešený příklad</p>
+        </header>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <p>
+                Pulsar o průměru15 kmrotuje s frekvencí9 Hz. Vypočtěte rychlost bodu na rovníku pulsaru.
+            </p>
+        </section>
+
+        <section id="vstupni-data">
+            <h3>Vstupní data</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Veličina</th>
+                        <th>Symbol</th>
+                        <th>Hodnota</th>
+                        <th>Jednotka</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Poloměr dráhy</td>
+                        <td class="variable">r</td>
+                        <td class="value">15</td>
+                        <td class="unit">km</td>
+                    </tr>
+                    <tr>
+                        <td>Frekvence</td>
+                        <td class="variable">f</td>
+                        <td class="value">9</td>
+                        <td class="unit">Hz</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+            <p>Výpočet rozdělíme do několika logických kroků podle typu kinematické úlohy.</p>
+            
+            <div class="calculation-step">
+                <h4>Krok 1: Analýza situace a převody jednotek</h4>
+                <p>Analyzujeme typ pohybu a sjednotíme jednotky pro výpočet.</p>
+                
+                <div class="note-box">
+                    <strong>Analýza:</strong>
+                    <p>Identifikujeme typ pohybu a potřebné převody jednotek podle zadání.</p>
+                </div>
+            </div>
+            
+            <div class="calculation-step">
+                <h4>Krok 2: Výběr fyzikální rovnice</h4>
+                <p>Vybereme vhodnou kinematickou rovnici podle typu pohybu.</p>
+                
+                <div class="formula-box">
+                    <strong>Kinematické rovnice:</strong>
+                    <ul>
+                        <li>Rovnoměrný pohyb: $s = v \cdot t$</li>
+                        <li>Zrychlený pohyb: $s = v_0 \cdot t + \frac12 \cdot a \cdot t^2$</li>
+                        <li>Rychlost při zrychleném pohybu: $v = v_0 + a \cdot t$</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 3: Algebraické vyjádření</h4>
+                <p>Kombinací vztahů získáme výsledný vzorec:</p>
+
+                <div class="result-box">
+                    <strong>Výsledný vzorec:</strong>
+                    <div class="rovnice-nadpis">📐 Výsledný vzorec</div>
+                    <div class="rovnice-text">$$v = 2\pi f \cdot r$$</div>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 4: Dosazení hodnot a výpočet</h4>
+                <p>Číselný výpočet:</p>
+
+                <div class="result-box">
+                    <strong>Číselný výpočet:</strong>
+                    <div class="rovnice-nadpis">📐 Číselný výpočet</div>
+                    <div class="rovnice-text">$$\omega = 2\pi \times 9 = 18\pi \approx 56{,}55 \text{ rad/s}$$
+$$v = 56{,}55 \times 7500 = 424\,125 \text{ m/s} \approx 424 \text{ km/s}$$</div>
+                    <p><strong>Srovnání s rychlostí světla:</strong></p>
+                    <div class="rovnice-text">$$\frac{v}{c} = \frac{424\,125}{300\,000\,000} \approx 0{,}14\% \text{ rychlosti světla}$$</div>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 5: Kontrola výsledku a odpověď</h4>
+                <p>Výsledek je neuvěřitelně vysoký, ale reálný pro neutronové hvězdy:</p>
+
+                <div class="result-box">
+                    <strong>Odpověď:</strong>
+                    <p>Rychlost 424 km/s je více než tisíckrát rychlejší než rychlost zvuku!</p>
+                    <p><strong>✅ Odpověď:</strong> Rychlost bodu na rovníku pulsaru je <strong>424 km/s</strong> (0,14% rychlosti světla).</p>
+                    <p><strong>⚠️ Pozor:</strong> Tato rychlost je tak vysoká, že se již projevují relativistické efekty!</p>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

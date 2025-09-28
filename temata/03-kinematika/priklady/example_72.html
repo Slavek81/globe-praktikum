@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Řešení</title>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>72. Vlak s medvídky a strom</h1>
+            <p>Kinematika - řešený příklad</p>
+        </header>
+
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Železniční bezpečnost je věda! Strojvedoucí musí znát brzdné vlastnosti svého vlaku, aby mohli včas reagovat na překážky. Tento dramatický příklad ti ukáže, proč jsou dlouhé brzdné dráhy vlaků jedním z největších technických výzev železnice. Navíc se seznámíš s kvadratickými rovnicemi v praxi!
+        </div>
+
+        <div class="problem-statement">
+            <h2>Zadání</h2>
+            <p>Těžký nákladní vlak s padesáti vagony gumových medvídků jel rychlostí <strong>90 km·h⁻¹</strong>, když strojvedoucí <strong>300 metrů</strong> před sebou spatřil strom padlý přes trať. Okamžitě aktivoval brzdný systém, který je schopen brzdit se zrychlením <strong>0,8 m·s⁻²</strong>. Jakou rychlostí do stromu vlak narazil? Přežijí to medvídci?</p>
+        </div>
+
+        <div class="solution">
+            <h2>Řešení</h2>
+
+            <div class="calculation-step">
+                <h3>1. Analýza situace a zadané hodnoty</h3>
+
+                <div class="equation-logic-box">
+                    <strong>Logika výběru:</strong> Jde o rovnoměrně zpomalený pohyb na omezenou vzdálenost. Vlak má počáteční rychlost, začne brzdit na určité dráze a my chceme vědět, jakou rychlostí dojede na konec této dráhy. Neznáme čas, ale známe rychlost, dráhu a zrychlení.
+                </div>
+
+                <div class="note-box">
+                    <strong>Dané hodnoty:</strong>
+                    <ul>
+                        <li>Počáteční rychlost: $v_0 = 90$ km·h⁻¹ = $25$ m·s⁻¹</li>
+                        <li>Brzdná vzdálenost: $s = 300$ m</li>
+                        <li>Brzdné zpomalení: $a = -0{,}8$ m·s⁻² (záporné = zpomalování)</li>
+                        <li>Hledáme: rychlost při nárazu $v$</li>
+                    </ul>
+                </div>
+
+                <div class="warning-box">
+                    <strong>Pozor na znaménka!</strong> Brždění znamená záporné zrychlení. V rovnicích správně rozlišuj mezi zrychlováním (+) a brzdněním (-). Vlak se zpomaluje, takže a = -0,8 m·s⁻².
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h3>2. Výběr fyzikální rovnice</h3>
+
+                <div class="equation-logic-box">
+                    <strong>Proč tuto rovnici?</strong> Máme počáteční rychlost, dráhu, zrychlení a chceme konečnou rychlost. Čas neznáme a ani nás nezajímá. Proto použijeme kinematickou rovnici $v^2 = v_0^2 + 2as$, která čas neobsahuje.
+                </div>
+
+                <div class="analogy-box">
+                    <strong>Praktická analogie:</strong> Je to jako při sjezdu na lyžích - znáš rychlost na vrcholu, délku sjezdovky a jak moc tě brzda zpomaluje. Nepotřebuješ vědět, jak dlouho sjezd trvá, abys spočítal rychlost na konci.
+                </div>
+
+                <div class="formula-box">
+                    $$v^2 = v_0^2 + 2as$$
+
+                    <p>Alternativně pro kontrolu:</p>
+                    $$s = v_0 t + \frac{1}{2}at^2$$
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h3>3. Algebraické vyjádření</h3>
+
+                <div class="tip-box">
+                    <strong>Užitečný tip:</strong> Při řešení kvadratických rovnic si napřed připrav všechny známé hodnoty a pak postupuj systematicky. Nezapomeň na správná znaménka!
+                </div>
+
+                <div class="formula-box">
+                    $$v^2 = v_0^2 + 2as$$
+                    $$v^2 = v_0^2 + 2 \times (-0{,}8) \times 300$$
+                    $$v^2 = v_0^2 - 480$$
+                    $$v = \sqrt{v_0^2 - 480}$$
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h3>4. Dosazení a výpočet</h3>
+
+                <div class="result-box">
+                    <p>Převod jednotek:</p>
+                    $$v_0 = 90 \text{ km·h⁻¹} = \frac{90}{3{,}6} = 25 \text{ m·s⁻¹}$$
+
+                    <p>Výpočet rychlosti nárazu:</p>
+                    $$v^2 = 25^2 - 480 = 625 - 480 = 145$$
+                    $$v = \sqrt{145} = 12{,}04 \text{ m·s⁻¹}$$
+                    $$v = 12{,}04 \times 3{,}6 = 43{,}3 \text{ km·h⁻¹}$$
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h3>5. Kontrola a odpověď</h3>
+
+                <div class="summary-box">
+                    <strong>Odpověď:</strong> Vlak narazí do stromu rychlostí <strong>43,3 km·h⁻¹</strong> (12,04 m·s⁻¹).
+                </div>
+
+                <div class="info-box">
+                    <strong>Kontrola rozumnosti:</strong> Vlak se zpomalil z 90 km·h⁻¹ na 43 km·h⁻¹ za 300 metrů - což je rozumné pro těžký vlak s pomalým brzděním 0,8 m·s⁻². Pro srovnání: auto by na této vzdálenosti zastavilo úplně.
+                </div>
+
+                <div class="warning-box">
+                    <strong>Odpověď na otázku o medvídcích:</strong> Gumové medvídky náraz rychlostí 43 km·h⁻¹ pravděpodobně přežijí (jsou pružné!), ale reálný nákladní vlak by při takové rychlosti způsobil značné škody na trati i nákladu.
+                </div>
+
+                <div class="alternative-method-box">
+                    <strong>Alternativní kontrola:</strong> Čas brždění: $t = \frac{v_0 - v}{|a|} = \frac{25 - 12{,}04}{0{,}8} = 16{,}2$ s. Kontrola dráhy: $s = \frac{(v_0 + v) \times t}{2} = \frac{37{,}04 \times 16{,}2}{2} = 300$ m ✓
+                </div>
+            </div>
+        </div>
+
+        <details>
+            <summary>🤔 Metakognitivní otázky</summary>
+            <div>
+                <ul>
+                    <li>Co by se stalo, kdyby strom ležel jen 200 metrů před vlakem? Jakou rychlostí by do něj narazil?</li>
+                    <li>Jak daleko před překážkou by musel vlak začít brzdit, aby se úplně zastavil?</li>
+                    <li>Proč mají vlaky tak dlouhé brzdné dráhy ve srovnání s auty? Co ovlivňuje brzdné zrychlení?</li>
+                    <li>Jaký vliv má hmotnost nákladu (medvídci vs. uhlí) na brzdné vlastnosti vlaku?</li>
+                    <li>Jak by se změnila situace, kdyby vlak brzdil dvakrát silněji (a = -1,6 m·s⁻²)?</li>
+                </ul>
+            </div>
+        </details>
+    </main>
+</body>
+</html>

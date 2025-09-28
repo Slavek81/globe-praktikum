@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Řešení</title>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>98. Komplexní rotační systém - větrná elektrárna</h1>
+            <p>Kinematika - řešený příklad</p>
+        </header>
+
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Větrné elektrárny jsou špičkou moderní technologie - kombinují aerodynamiku, mechanické inženýrství a elektrotechniku. Rotorové listy se otáčejí pomalu (15-50 RPM) kvůli efektivitě, ale převodovka zvyšuje otáčky na 1500-1800 RPM pro generátor. Každý list má délku až 80 metrů a na špičce dosahuje rychlostí přes 300 km/h! Správné porozumění rotační kinematice je klíčové pro návrh, bezpečnost a optimalizaci výkonu těchto obnovitelných zdrojů energie.
+        </div>
+
+        <div class="zadani">
+            <h2>Zadání</h2>
+            <p>Větrná turbína má rotorové listy o poloměru <strong>45 m</strong>. Rotor se otáčí frekvencí <strong>25 RPM</strong>. Určete:</p>
+            <ul>
+                <li>a) Úhlovou rychlost rotoru v rad·s⁻¹</li>
+                <li>b) Rychlost špičky listu v m·s⁻¹ a km·h⁻¹</li>
+                <li>c) Úhel pootočení za 10 sekund (ve stupních i radiánech)</li>
+                <li>d) Porovnání s rychlostí větru při efektivním záběru</li>
+            </ul>
+        </div>
+
+        <div class="reseni">
+            <h2>Řešení</h2>
+
+            <div class="krok">
+                <h3>1. Analýza situace a zadané hodnoty</h3>
+
+                <div class="equation-logic-box">
+                    <strong>Logika výběru:</strong> Komplexní rotační úloha kombinující všechny aspekty kinematiky - úhlovou rychlost, lineární rychlost, úhlové posunutí a převody jednotek. Ideální pro aplikaci všech naučených konceptů.
+                </div>
+
+                <div class="warning-box">
+                    <strong>Pozor na jednotky!</strong> RPM musíme převést na Hz (otáčky za sekundu), pak na rad·s⁻¹. Pozor na správné převody mezi různými úhlovými jednotkami a rychlostními jednotkami.
+                </div>
+
+                <div class="note-box">
+                    <strong>Dané hodnoty:</strong>
+                    <ul>
+                        <li>Poloměr rotorových listů: r = 45 m</li>
+                        <li>Frekvence v RPM: n = 25 otáček/min</li>
+                        <li>Frekvence v Hz: f = 25/60 = 0,417 Hz</li>
+                        <li>Čas pro část c): t = 10 s</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="krok">
+                <h3>2. Výběr fyzikálních rovnic</h3>
+
+                <div class="equation-logic-box">
+                    <strong>Proč tyto rovnice?</strong> Používáme kompletní sadu rotačních kinematických vztahů - od základních definic po složitější převody a kombinace.
+                </div>
+
+                <div class="formula-box">
+                    $$\omega = 2\pi f \text{ (úhlová rychlost)}$$
+                    $$v = \omega \cdot r \text{ (obvodová rychlost)}$$
+                    $$\phi = \omega \cdot t \text{ (úhlové posunutí)}$$
+                    $$\phi_{°} = \phi_{rad} \times \frac{180°}{\pi} \text{ (převod rad→°)}$$
+                </div>
+
+                <div class="analogy-box">
+                    <strong>Praktická analogie:</strong> Větrná turbína je jako obří ventilátor "pozpátku" - místo aby foukal vzduch, vzduch jej roztočí. Každý bod na listu má jinou rychlost - střed je pomalý, špička rychlá.
+                </div>
+            </div>
+
+            <div class="krok">
+                <h3>3. Systematické řešení všech částí</h3>
+
+                <div class="tip-box">
+                    <strong>Užitečný tip:</strong> Větrné turbíny jsou navrženy tak, aby špička listu byla rychlejší než vítr (tip-speed ratio 6-8), ale ne příliš rychlá kvůli hluku a bezpečnosti.
+                </div>
+
+                <p><strong>Část a) Úhlová rychlost</strong></p>
+                <div class="calculation-step">
+                    $$f = \frac{25 \text{ otáček}}{60 \text{ s}} = 0{,}417 \text{ Hz}$$
+                    $$\omega = 2\pi f = 2\pi \times 0{,}417 = 2{,}62 \text{ rad·s⁻¹}$$
+                </div>
+
+                <p><strong>Část b) Rychlost špičky listu</strong></p>
+                <div class="calculation-step">
+                    $$v = \omega \times r = 2{,}62 \times 45 = 118 \text{ m·s⁻¹}$$
+                    $$v = 118 \text{ m·s⁻¹} \times 3{,}6 = 425 \text{ km·h⁻¹}$$
+                </div>
+
+                <p><strong>Část c) Úhel pootočení za 10 s</strong></p>
+                <div class="calculation-step">
+                    $$\phi = \omega \times t = 2{,}62 \times 10 = 26{,}2 \text{ rad}$$
+                    $$\phi = 26{,}2 \times \frac{180°}{\pi} = 26{,}2 \times 57{,}3 = 1\,501°$$
+                    $$\text{Počet celých otáček} = \frac{1\,501°}{360°} = 4{,}17 \text{ otáček}$$
+                </div>
+
+                <p><strong>Část d) Porovnání s rychlostí větru</strong></p>
+                <div class="calculation-step">
+                    $$\text{Typická rychlost větru} = 12 \text{ m·s⁻¹} = 43 \text{ km·h⁻¹}$$
+                    $$\text{Poměr} = \frac{118}{12} = 9{,}8 \times \text{ rychlejší než vítr}$$
+                </div>
+            </div>
+
+            <div class="krok">
+                <h3>4. Kontrola a interpretace výsledků</h3>
+
+                <div class="summary-box">
+                    <strong>Kompletní odpověď:</strong>
+                    <ul>
+                        <li>a) Úhlová rychlost: <strong>2,62 rad·s⁻¹</strong></li>
+                        <li>b) Rychlost špičky: <strong>118 m·s⁻¹ (425 km·h⁻¹)</strong></li>
+                        <li>c) Úhel za 10 s: <strong>26,2 rad (1 501°, tj. 4,17 otáček)</strong></li>
+                        <li>d) Rychlost špičky je <strong>9,8× rychlejší než vítr</strong></li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <strong>Kontrola rozumnosti:</strong> Rychlost 425 km/h na špičce listu je typická pro velké větrné turbíny. Poměr 9,8 k rychlosti větru je v optimálním rozsahu 6-10 pro efektivní záběr energie.
+                </div>
+
+                <div class="alternative-method-box">
+                    <strong>Alternativní metoda:</strong> Můžeme kontrolovat: obvod = 2π × 45 = 283 m, za 10 s ujede špička: 118 × 10 = 1180 m = 4,17 obvodu ✓
+                </div>
+            </div>
+        </div>
+
+        <details>
+            <summary>🤔 Metakognitivní otázky</summary>
+            <div>
+                <ul>
+                    <li>Proč se větrné turbíny otáčejí pomalu (25 RPM) oproti automobilovým motorům (2000+ RPM)?</li>
+                    <li>Jak by se změnily výsledky, kdyby byla turbína dvakrát větší (r = 90 m)?</li>
+                    <li>Proč je důležité, aby špička listu nebyla rychlejší než určitá mezní hodnota?</li>
+                    <li>Jak souvisí úhlová rychlost s výkonem elektrárny a směrem větru?</li>
+                    <li>Jaké síly působí na špičku listu při těchto rychlostech a jak je konstrukce vydrží?</li>
+                </ul>
+            </div>
+        </details>
+    </main>
+</body>
+</html>

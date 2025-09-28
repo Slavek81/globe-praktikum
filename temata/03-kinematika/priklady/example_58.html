@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anakin na hoře Milešovka - řešený příklad</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>58. Anakin na hoře Milešovka</h1>
+            <p>Kinematika - řešený příklad</p>
+        </header>
+
+        <!-- Motivační úvod pro studenty -->
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Kdy potřebujeme znát průměrnou rychlost? Při plánování výletů, sportovních tréninků nebo dopravě. Pozor - průměrná rychlost NENÍ prostý aritmetický průměr rychlostí!
+        </div>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <p>
+                Anakin každé ráno leze na Milešovku, aby se podíval zblízka na oblaka. Cestou nahoru jde rychlostí <strong>3 km/h</strong>, nahoře se hned otočí a cestou dolů běží rychlostí <strong>6 km/h</strong>. Jaká je jeho průměrná rychlost na celé trase?
+            </p>
+        </section>
+
+        <section id="vstupni-data">
+            <h3>Vstupní data</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Veličina</th>
+                        <th>Symbol</th>
+                        <th>Hodnota</th>
+                        <th>Jednotka</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Rychlost nahoru</td>
+                        <td class="variable">v₁</td>
+                        <td class="value">3</td>
+                        <td class="unit">km/h</td>
+                    </tr>
+                    <tr>
+                        <td>Rychlost dolů</td>
+                        <td class="variable">v₂</td>
+                        <td class="value">6</td>
+                        <td class="unit">km/h</td>
+                    </tr>
+                    <tr>
+                        <td>Vzdálenost nahoru</td>
+                        <td class="variable">s</td>
+                        <td class="value">s</td>
+                        <td class="unit">km</td>
+                    </tr>
+                    <tr>
+                        <td>Hledaná průměrná rychlost</td>
+                        <td class="variable">v_p</td>
+                        <td class="value">?</td>
+                        <td class="unit">km/h</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+            <p>Výpočet průměrné rychlosti pro složený pohyb s různými rychlostmi na jednotlivých úsecích.</p>
+
+            <div class="calculation-step">
+                <h4>Krok 1: Analýza situace a zadaných hodnot</h4>
+                <p>Anakin vykonává složený pohyb - nejprve pomalý pohyb nahoru, pak rychlejší pohyb dolů. Musíme najít průměrnou rychlost celé cesty.</p>
+
+                <div class="equation-logic-box">
+                    <strong>Logika výběru:</strong> Průměrná rychlost se definuje jako celková dráha děleno celkovým časem, ne jako průměr rychlostí!
+                </div>
+
+                <div class="warning-box">
+                    <strong>Pozor na častou chybu!</strong> Neuvažuj průměrnou rychlost jako (3 + 6)/2 = 4,5 km/h! To je častá chyba. Průměrná rychlost se počítá jako celková dráha děleno celkovým časem.
+                </div>
+
+                <div class="note-box">
+                    <strong>Dané hodnoty:</strong>
+                    <ul>
+                        <li>Rychlost nahoru: v₁ = 3 km/h</li>
+                        <li>Rychlost dolů: v₂ = 6 km/h</li>
+                        <li>Vzdálenost jedním směrem: s (neznámá, ale můžeme si zvolit)</li>
+                        <li>Hledáme: průměrnou rychlost v_p = ?</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 2: Volba fyzikálního principu</h4>
+                <p>Pro průměrnou rychlost platí základní definice:</p>
+
+                <div class="equation-logic-box">
+                    <strong>Proč tuto definici?</strong> Průměrná rychlost je celková dráha za celkový čas - to je fyzikálně správná definice průměru pro rychlost.
+                </div>
+
+                <div class="formula-box">
+                    $$v_p = \frac{s_{celková}}{t_{celkový}}$$
+                    <p>Protože vzdálenost jedním směrem neznáme, zvolíme si ji strategicky jako s = 1 km (výsledek bude nezávislý na této volbě).</p>
+                </div>
+
+                <div class="analogy-box">
+                    <strong>Praktická analogie:</strong> Jako průměrná spotřeba auta - celkový počet litrů děleno celkovými kilometry, ne průměr spotřeb z různých úseků.
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 3: Výpočet celkové dráhy</h4>
+                <p>Celková dráha je dvojnásobek vzdálenosti jedním směrem:</p>
+
+                <div class="result-box">
+                    <strong>Celková dráha:</strong>
+                    $$s_{celková} = s + s = 2s$$
+                    <p>Pro s = 1 km: s_celková = 2 km</p>
+                </div>
+
+                <div class="tip-box">
+                    <strong>Tip pro obecnost:</strong> Volíme konkrétní hodnotu s = 1 km pro jednoduchost výpočtu, ale výsledek bude platit pro libovolnou vzdálenost.
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 4: Výpočet celkového času</h4>
+                <p>Celkový čas je součet času nahoru a času dolů:</p>
+
+                <div class="result-box">
+                    <strong>Čas nahoru:</strong>
+                    $$t_1 = \frac{s}{v_1} = \frac{1}{3} \text{ h}$$
+                </div>
+
+                <div class="result-box">
+                    <strong>Čas dolů:</strong>
+                    $$t_2 = \frac{s}{v_2} = \frac{1}{6} \text{ h}$$
+                </div>
+
+                <div class="result-box">
+                    <strong>Celkový čas:</strong>
+                    $$t_{celkový} = t_1 + t_2 = \frac{1}{3} + \frac{1}{6} = \frac{2 + 1}{6} = \frac{3}{6} = \frac{1}{2} \text{ h}$$
+                </div>
+
+                <details>
+                    <summary>📊 Pokročilý výpočet</summary>
+                    <div>
+                        <div class="interpretation-box">
+                            <strong>Fyzikální význam:</strong> Čas nahoru (20 min) je dvojnásobný času dolů (10 min), protože rychlost dolů je dvojnásobná.
+                        </div>
+                    </div>
+                </details>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 5: Výpočet průměrné rychlosti</h4>
+                <p>Dosadíme do definice průměrné rychlosti:</p>
+
+                <div class="result-box">
+                    <strong>Průměrná rychlost:</strong>
+                    $$v_p = \frac{s_{celková}}{t_{celkový}} = \frac{2 \text{ km}}{\frac{1}{2} \text{ h}} = 2 \times 2 = 4 \text{ km/h}$$
+                </div>
+
+                <div class="tip-box">
+                    <strong>Tip pro obecný vzorec:</strong> Pro pohyb tam a zpět s rychlostmi v₁ a v₂: v_p = 2v₁v₂/(v₁ + v₂)
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 6: Kontrola a odpověď</h4>
+
+                <div class="summary-box">
+                    <strong>Odpověď:</strong> Anakinova průměrná rychlost na celé trase je <strong>4 km/h</strong>.
+                </div>
+
+                <div class="info-box">
+                    <strong>Kontrola rozumnosti:</strong>
+                    <br>• Průměrná rychlost (4 km/h) je mezi rychlostí nahoru (3 km/h) a dolů (6 km/h) ✓
+                    <br>• Je blíže k pomalejší rychlosti, protože nahoru trvá déle ✓
+                    <br>• Není to aritmetický průměr (4,5 km/h) ✓
+                </div>
+
+                <div class="alternative-method-box">
+                    <strong>Alternativní způsob:</strong> Obecný vzorec pro harmonický průměr: v_p = 2v₁v₂/(v₁ + v₂) = 2×3×6/(3+6) = 36/9 = 4 km/h
+                </div>
+
+                <details>
+                    <summary>🤔 Metakognitivní otázky</summary>
+                    <div>
+                        <ul>
+                            <li>Proč není průměrná rychlost prostý průměr rychlostí?</li>
+                            <li>Jak by se změnil výsledek, kdyby Anakin šel stejně rychle oběma směry?</li>
+                            <li>Co by se stalo, kdyby rychlost dolů byla nekonečně velká?</li>
+                            <li>Aplikuj tento princip na průměrnou spotřebu paliva!</li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

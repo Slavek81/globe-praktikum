@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Řešení</title>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>88. Vzdálenost během páté sekundy volného pádu</h1>
+            <p>Kinematika - řešený příklad</p>
+        </header>
+
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Parašutisté potřebují přesně vědět, jakou rychlostí padají, aby včas vyhodili padák! Jeden parašutista čekající příliš dlouho může během jediné sekundy urazit vzdálenost odpovídající výšce 15-patrové budovy. Horolezci používají podobné výpočty pro bezpečné umístění jisticích bodů, záchranáři při počítání času pádu, a dokonce i konstruktéři výtahů musí znát rychlosti volného pádu pro nouzové brzdy.
+        </div>
+
+        <div class="zadani">
+            <h3>Zadání</h3>
+            <p>Jakou vzdálenost urazí těleso během <strong>páté sekundy</strong> volného pádu?</p>
+        </div>
+
+        <div class="calculation-step">
+            <h3>1. Analýza časového intervalu</h3>
+
+            <div class="equation-logic-box">
+                <strong>💭 Logika výběru:</strong> "Pátá sekunda" znamená časový interval mezi 4. a 5. sekundou od začátku pádu. Musíme spočítat rozdíl celkových drah za 5 sekund a za 4 sekundy. Jde o aplikaci kinematické rovnice pro dva různé časy.
+            </div>
+
+            <div class="warning-box">
+                <strong>⚠️ Kritické rozlišení!</strong>
+                <ul>
+                    <li><strong>"Za 5 sekund"</strong> = celková dráha od začátku do konce 5. sekundy</li>
+                    <li><strong>"Během páté sekundy"</strong> = jen úsek mezi začátkem a koncem 5. sekundy</li>
+                    <li><strong>Časový interval:</strong> od t = 4 s do t = 5 s</li>
+                    <li>Studenti často tyto pojmy zaměňují!</li>
+                </ul>
+            </div>
+
+            <div class="note-box">
+                <strong>📝 Dané hodnoty:</strong>
+                <ul>
+                    <li>Časový interval: pátá sekunda (t = 4 s až t = 5 s)</li>
+                    <li>Gravitační zrychlení: $g = 10$ m·s⁻²</li>
+                    <li>Počáteční rychlost: $v_0 = 0$ m·s⁻¹ (volný pád z klidu)</li>
+                    <li>Počáteční poloha: $s_0 = 0$ (referenční bod)</li>
+                    <li><strong>Hledáme:</strong> vzdálenost $\Delta s$ během páté sekundy</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="calculation-step">
+            <h3>2. Kinematické rovnice pro volný pád</h3>
+
+            <div class="equation-logic-box">
+                <strong>🎯 Proč tato rovnice?</strong> Volný pád z klidu je speciální případ rovnoměrně zrychleného pohybu s v₀ = 0 a a = g. Používáme rovnici s = ½gt², která popisuje závislost dráhy na čase.
+            </div>
+
+            <div class="formula-box">
+                <strong>Základní kinematická rovnice pro volný pád:</strong>
+                $$s = \frac{1}{2}gt^2$$
+
+                <strong>Rychlost při volném pádu:</strong>
+                $$v = gt$$
+
+                <strong>Obecná rovnice (pro kontrolu):</strong>
+                $$s = v_0 t + \frac{1}{2}gt^2 = 0 \cdot t + \frac{1}{2}gt^2 = \frac{1}{2}gt^2$$
+            </div>
+
+            <div class="analogy-box">
+                <strong>🪂 Praktická analogie:</strong> Představte si parašutistu, který zapomněl vyhodit padák. První sekundu uletí "jen" 5 metrů, ale čtvrtou sekundu už 35 metrů a pátou sekundu dokonce 45 metrů! Rychlost neustále narůstá, takže každá další sekunda znamená dramaticky větší uražené vzdálenosti.
+            </div>
+        </div>
+
+        <div class="calculation-step">
+            <h3>3. Výpočet celkových drah</h3>
+
+            <div class="tip-box">
+                <strong>💡 Užitečná rada:</strong> Vzdálenost během určitého časového intervalu = celková dráha na konci intervalu MINUS celková dráha na začátku intervalu. Toto je základní princip pro výpočet úseků trajektorie.
+            </div>
+
+            <p><strong>Celková dráha za 5 sekund:</strong></p>
+            <div class="formula-box">
+                $$s_5 = \frac{1}{2}gt^2 = \frac{1}{2} \times 10 \times 5^2$$
+                $$s_5 = 5 \times 25 = 125 \text{ m}$$
+            </div>
+
+            <p><strong>Celková dráha za 4 sekundy:</strong></p>
+            <div class="formula-box">
+                $$s_4 = \frac{1}{2}gt^2 = \frac{1}{2} \times 10 \times 4^2$$
+                $$s_4 = 5 \times 16 = 80 \text{ m}$$
+            </div>
+
+            <details>
+                <summary><strong>🔍 Vizualizace postupného zrychlování</strong></summary>
+                <div>
+                    <p><strong>Postupné vzdálenosti během jednotlivých sekund:</strong></p>
+                    <ul>
+                        <li>1. sekunda: 5 m (rychlost roste z 0 na 10 m/s)</li>
+                        <li>2. sekunda: 15 m (rychlost roste z 10 na 20 m/s)</li>
+                        <li>3. sekunda: 25 m (rychlost roste z 20 na 30 m/s)</li>
+                        <li>4. sekunda: 35 m (rychlost roste z 30 na 40 m/s)</li>
+                        <li>5. sekunda: 45 m (rychlost roste z 40 na 50 m/s)</li>
+                    </ul>
+                </div>
+            </details>
+        </div>
+
+        <div class="calculation-step">
+            <h3>4. Výpočet vzdálenosti během páté sekundy</h3>
+
+            <p><strong>Rozdílová metoda:</strong></p>
+            <div class="formula-box">
+                $$\Delta s = s_5 - s_4 = 125 - 80 = 45 \text{ m}$$
+            </div>
+
+            <div class="alternative-method-box">
+                <strong>🔄 Alternativní řešení pomocí průměrné rychlosti:</strong>
+                <p><strong>Rychlost na začátku 5. sekundy:</strong> $v_4 = gt = 10 \times 4 = 40$ m·s⁻¹</p>
+                <p><strong>Rychlost na konci 5. sekundy:</strong> $v_5 = gt = 10 \times 5 = 50$ m·s⁻¹</p>
+                <p><strong>Průměrná rychlost během 5. sekundy:</strong> $v_{avg} = \frac{40 + 50}{2} = 45$ m·s⁻¹</p>
+                <p><strong>Vzdálenost:</strong> $\Delta s = v_{avg} \times \Delta t = 45 \times 1 = 45$ m ✓</p>
+            </div>
+
+            <div class="alternative-method-box">
+                <strong>🔄 Obecný vzorec pro n-tou sekundu:</strong>
+                <p>Vzdálenost během n-té sekundy volného pádu:</p>
+                $$\Delta s_n = \frac{g}{2}(n^2 - (n-1)^2) = \frac{g}{2}(2n-1) = g\left(n - \frac{1}{2}\right)$$
+                <p>Pro 5. sekundu: $\Delta s_5 = 10 \times (5 - 0{,}5) = 10 \times 4{,}5 = 45$ m ✓</p>
+            </div>
+        </div>
+
+        <div class="calculation-step">
+            <h3>5. Bezpečnostní kontext a interpretace</h3>
+
+            <div class="summary-box">
+                <strong>📏 Odpověď:</strong> Během páté sekundy volného pádu urazí těleso vzdálenost <strong>45 metrů</strong>.
+
+                <strong>Srovnání s reálnými objekty:</strong>
+                <ul>
+                    <li>45 m = výška 15-patrové budovy</li>
+                    <li>45 m = délka poloviny fotbalového hřiště</li>
+                    <li>45 m = rychlost změny z 40 na 50 m·s⁻¹ (144 na 180 km·h⁻¹)</li>
+                </ul>
+            </div>
+
+            <div class="info-box">
+                <strong>🔍 Kontrola a rozumnost:</strong>
+                <ul>
+                    <li>Vzdálenost postupně narůstá: 1.s→5m, 2.s→15m, 3.s→25m, 4.s→35m, 5.s→45m ✓</li>
+                    <li>Rozdíly tvoří aritmetickou posloupnost s diferencí 10 m ✓</li>
+                    <li>45 m za sekundu odpovídá průměrné rychlosti 162 km·h⁻¹ - realistické pro pád ✓</li>
+                    <li>Bez odporu vzduchu by rychlost dále narůstala neomezeně ✓</li>
+                </ul>
+            </div>
+
+            <div class="interpretation-box">
+                <strong>⚠️ Bezpečnostní implikace:</strong>
+                <ul>
+                    <li><strong>Parašutismus:</strong> Každá sekunda prodlení znamená exponenciálně větší nebezpečí</li>
+                    <li><strong>Horolezectví:</strong> Jištění musí vydržet nárazy při pádu z výšky</li>
+                    <li><strong>Stavebnictví:</strong> Pracovní ohrady musí ochránit před padajícími předměty</li>
+                    <li><strong>Záchranné služby:</strong> Výpočet času pro poskytnutí první pomoci</li>
+                </ul>
+            </div>
+
+            <details>
+                <summary>🤔 Metakognitivní otázky</summary>
+                <div>
+                    <ul>
+                        <li>Proč se vzdálenost během každé další sekundy zvětšuje o 10 metrů? Jak to souvisí s gravitačním zrychlením?</li>
+                        <li>Jak by se změnila odpověď na Měsíci, kde je gravitační zrychlení pouze 1,6 m·s⁻²?</li>
+                        <li>V reálném světě kdy začne hrát roli odpor vzduchu a jak ovlivní náš výpočet?</li>
+                        <li>Jaká je terminální rychlost parašutisty a proč se dosáhne?</li>
+                        <li>Jak dlouho by padal objekt, aby během jedné sekundy urazil 100 metrů?</li>
+                    </ul>
+                </div>
+            </details>
+        </div>
+    </main>
+</body>
+</html>

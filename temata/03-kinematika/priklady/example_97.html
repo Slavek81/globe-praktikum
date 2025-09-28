@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Řešení</title>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>97. Převod z radiánů na stupně</h1>
+            <p>Kinematika - řešený příklad</p>
+        </header>
+
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Zatímco odborníci používají radiány, běžná veřejnost rozumí stupňům. Meteorologové převádějí směr větru z radiánů na stupně pro srozumitelnost. Architekti navrhují střechy ve stupních, ale konstrukční výpočty dělají v radiánech. Piloti dostávají kurzy ve stupních, ale autopilot počítá v radiánech. Fotografové nastavují úhel záběru ve stupních, ale objektiv funguje na základě radiánů. Převod mezi jednotkami je klíčový pro praktické využití teoretických poznatků.
+        </div>
+
+        <div class="zadani">
+            <h2>Zadání</h2>
+            <p>Najděte odpovídající úhly ve stupních: <strong>1 rad, π rad, π/2 rad, π/3 rad, π/4 rad, π/6 rad, π/8 rad</strong></p>
+        </div>
+
+        <div class="reseni">
+            <h2>Řešení</h2>
+
+            <div class="krok">
+                <h3>1. Analýza situace a zadané hodnoty</h3>
+
+                <div class="equation-logic-box">
+                    <strong>Logika výběru:</strong> Převádíme z "matematických" jednotek (radiány) na "běžné" jednotky (stupně). Radiány jsou přirozené pro matematiku, stupně pro praktické použití.
+                </div>
+
+                <div class="warning-box">
+                    <strong>Pozor na jednotky!</strong> Jeden radián ≈ 57,3° - je to poměrně velký úhel! Často se při převodech dělají chyby v orientaci. Klíčová relace: π rad = 180°.
+                </div>
+
+                <div class="note-box">
+                    <strong>Dané hodnoty:</strong>
+                    <ul>
+                        <li>Zadané úhly: 1 rad, π rad, π/2 rad, π/3 rad, π/4 rad, π/6 rad, π/8 rad</li>
+                        <li>Cílová jednotka: stupně (°)</li>
+                        <li>Klíčová znalost: π rad = 180°</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="krok">
+                <h3>2. Výběr převodní rovnice</h3>
+
+                <div class="equation-logic-box">
+                    <strong>Proč tento vztah?</strong> Obrácený převod z radiánů na stupně - násobíme faktorem 180°/π místo π/180°.
+                </div>
+
+                <div class="formula-box">
+                    $$\text{stupně} = \text{radiány} \times \frac{180°}{\pi}$$
+                    <p>Klíčová relace: π rad = 180°</p>
+                </div>
+
+                <div class="analogy-box">
+                    <strong>Praktická analogie:</strong> Je to jako překládat z cizího jazyka (radiány) do mateřštiny (stupně) - potřebujeme "slovník" neboli převodní faktor.
+                </div>
+            </div>
+
+            <div class="krok">
+                <h3>3. Algebraické vyjádření a výpočet</h3>
+
+                <div class="tip-box">
+                    <strong>Užitečný tip:</strong> Nejdříve převeďte jednoduché zlomky π (π/2, π/3, π/4, π/6), pak teprve číselně aproximujte 1 radián.
+                </div>
+
+                <p><strong>Systematický převod všech hodnot</strong></p>
+                <div class="calculation-step">
+                    $$1 \text{ rad} = 1 \times \frac{180°}{\pi} \approx 57{,}3°$$
+                    $$\pi \text{ rad} = \pi \times \frac{180°}{\pi} = 180°$$
+                    $$\frac{\pi}{2} \text{ rad} = \frac{\pi}{2} \times \frac{180°}{\pi} = 90°$$
+                    $$\frac{\pi}{3} \text{ rad} = \frac{\pi}{3} \times \frac{180°}{\pi} = 60°$$
+                </div>
+
+                <p><strong>Menší zlomky π radiánů</strong></p>
+                <div class="calculation-step">
+                    $$\frac{\pi}{4} \text{ rad} = \frac{\pi}{4} \times \frac{180°}{\pi} = 45°$$
+                    $$\frac{\pi}{6} \text{ rad} = \frac{\pi}{6} \times \frac{180°}{\pi} = 30°$$
+                    $$\frac{\pi}{8} \text{ rad} = \frac{\pi}{8} \times \frac{180°}{\pi} = 22{,}5°$$
+                </div>
+            </div>
+
+            <div class="krok">
+                <h3>4. Kontrola a interpretace výsledků</h3>
+
+                <div class="summary-box">
+                    <strong>Převodní tabulka radiány → stupně:</strong>
+                    <ul>
+                        <li>1 rad ≈ 57,3° (referenční hodnota)</li>
+                        <li>π rad = 180° (polovina kruhu)</li>
+                        <li>π/2 rad = 90° (pravý úhel)</li>
+                        <li>π/3 rad = 60° (úhel v rovnostranném trojúhelníku)</li>
+                        <li>π/4 rad = 45° (polovina pravého úhlu)</li>
+                        <li>π/6 rad = 30° (úhel v pravoúhlém trojúhelníku 30-60-90°)</li>
+                        <li>π/8 rad = 22,5° (osmina kruhu)</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <strong>Kontrola rozumnosti:</strong> Všechny výsledky jsou menší než 180° (π rad), což je správné. 1 radián ≈ 57° je užitečná referenční hodnota pro odhady.
+                </div>
+
+                <div class="alternative-method-box">
+                    <strong>Alternativní způsob:</strong> Můžeme si pamatovat: 1 rad ≈ 57,3°, pak pro malé úhly pouze násobíme počet radiánů tímto faktorem.
+                </div>
+            </div>
+        </div>
+
+        <details>
+            <summary>🤔 Metakognitivní otázky</summary>
+            <div>
+                <ul>
+                    <li>Proč je jeden radián aproximně 57,3° a nie okrúhle číslo?</li>
+                    <li>Ako súvisí radián s obvodom kruhu a jeho polomerom?</li>
+                    <li>V kterých technických oborech se používají výhradně radiány a proč?</li>
+                    <li>Ako by sa zmenili trigonometrické funkcie, keby sme používali iba stupne?</li>
+                    <li>Proč mají kalkulačky dva režimy (DEG/RAD) pro trigonometrické funkce?</li>
+                </ul>
+            </div>
+        </details>
+    </main>
+</body>
+</html>

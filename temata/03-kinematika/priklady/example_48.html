@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>48. Dělo - balistika | Kinematika</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>48. Dělo - balistika</h1>
+            <p>Kinematika - řešený příklad</p>
+        </header>
+
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Vojenští balistici musí přesně vypočítat trajektorii střely pro úspešný zásah cíle. Záleží na úhlu děla, počáteční rychlosti a vzdálenosti cíle. Balistické výpočty jsou základem pro moderní výzbrojní systémy a také pro sportovní střelbu.
+        </div>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <p>
+                Dělo vypálí střelu rychlostí <strong>400 m/s</strong> pod <strong>úhlem 30°</strong> k vodorovné rovině. Cíl se nachází ve <strong>vzdálenosti 12 km</strong> na <strong>stejné úrovni</strong> jako dělo. Zasáhne střela cíl? Jaká bude <strong>maximální výška</strong> trajektorie střely a jaký bude <strong>celkový dosah</strong>?
+            </p>
+        </section>
+
+        <section id="vstupni-data">
+            <h3>Vstupní data</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Veličina</th>
+                        <th>Symbol</th>
+                        <th>Hodnota</th>
+                        <th>Jednotka</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Počáteční rychlost střely</td>
+                        <td class="variable">v₀</td>
+                        <td class="value">400</td>
+                        <td class="unit">m/s</td>
+                    </tr>
+                    <tr>
+                        <td>Úhl vypálení</td>
+                        <td class="variable">α</td>
+                        <td class="value">30</td>
+                        <td class="unit">°</td>
+                    </tr>
+                    <tr>
+                        <td>Vzdálenost cíle</td>
+                        <td class="variable">xᶜ</td>
+                        <td class="value">12 000</td>
+                        <td class="unit">m</td>
+                    </tr>
+                    <tr>
+                        <td>Gravitační zrychlení</td>
+                        <td class="variable">g</td>
+                        <td class="value">9,81</td>
+                        <td class="unit">m/s²</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+            <p>Balistická trajektorie je šikmý vrh s velkou počáteční rychlostí, kde analyzujeme celkový dosah a maximální výšku.</p>
+
+            <div class="calculation-step">
+                <h4>Krok 1: Analýza situace a rozložení rychlosti</h4>
+                <p>Rozložíme počáteční rychlost na horizontální a vertikální komponenty.</p>
+
+                <div class="equation-logic-box">
+                    <strong>Logika výběru:</strong>
+                    <p>Balistická trajektorie = šikmý vrh s vysokou rychlostí:<br>
+                    🔸 <strong>Horizontálně:</strong> rovnoměrný pohyb (bez odporu vzduchu)<br>
+                    🔸 <strong>Vertikálně:</strong> zrychlený pohyb (gravitace g = 9,81 m/s²)</p>
+                </div>
+
+                <div class="warning-box">
+                    <strong>Pozor na rychlost!</strong>
+                    <p>Rychlost 400 m/s je velmi vysoká (1440 km/h)! V reálu by byl významný odpor vzduchu, ale my ho zanedbáváme pro jednoduchý výpočet.</p>
+                </div>
+
+                <div class="note-box">
+                    <strong>Dané hodnoty:</strong>
+                    <ul>
+                        <li>Počáteční rychlost: v₀ = 400 m/s pod úhlem 30°</li>
+                        <li>Cíl: 12 km = 12 000 m na stejné úrovni</li>
+                        <li>Hledáme: celkový dosah, maximální výška, zda zasáhne cíl</li>
+                    </ul>
+                </div>
+
+                <div class="formula-box">
+                    <strong>Rozložení počáteční rychlosti:</strong>
+                    $$v_{0x} = v_0 \cdot \cos(30°) = 400 \cdot \cos(30°) = 400 \cdot 0{,}866 = 346{,}4 \text{ m/s}$$
+                    $$v_{0y} = v_0 \cdot \sin(30°) = 400 \cdot \sin(30°) = 400 \cdot 0{,}5 = 200 \text{ m/s}$$
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 2: Výpočet celkového dosahu</h4>
+                <p>Vypočítáme, jak daleko střela doletí, pokud dopadne na stejné úrovni.</p>
+
+                <div class="equation-logic-box">
+                    <strong>Proč tuto rovnici?</strong>
+                    <p>Pro šikmý vrh na rovinném terénu existuje přímý vzorec pro dosah, který závisí na úhlu a počáteční rychlosti.</p>
+                </div>
+
+                <div class="formula-box">
+                    <strong>Vzorec pro dosah šikmého vrhu:</strong>
+                    $$R = \frac{v_0^2 \cdot \sin(2\alpha)}{g}$$
+                    <p>Kde sin(2×30°) = sin(60°) = √3/2 ≈ 0,866</p>
+                </div>
+
+                <div class="analogy-box">
+                    <strong>Praktická analogie:</strong>
+                    <p>Představte si hod kameníčkem - čím rychleji a pod lepším úhlem hodíte, tím dál doletí. Dělo funguje na stejném principu, jen s mnohem vyšší rychlostí!</p>
+                </div>
+
+                <div class="result-box">
+                    <strong>Výpočet dosahu:</strong>
+                    $$R = \frac{400^2 \cdot \sin(60°)}{9{,}81} = \frac{160\,000 \cdot 0{,}866}{9{,}81} = \frac{138\,560}{9{,}81} = 14\,127 \text{ m}$$
+                    $$R = 14{,}13 \text{ km}$$
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 3: Výpočet maximální výšky</h4>
+                <p>Vypočítáme nejvyšší bod trajektorie střely.</p>
+
+                <div class="tip-box">
+                    <strong>Užitečný tip:</strong>
+                    <p>Maximální výška se dosáhne v polovině času letu, kdy se vertikální rychlost stává nulovou.</p>
+                </div>
+
+                <div class="formula-box">
+                    <strong>Vzorec pro maximální výšku:</strong>
+                    $$h_{max} = \frac{v_{0y}^2}{2g} = \frac{(v_0 \cdot \sin(\alpha))^2}{2g}$$
+                </div>
+
+                <div class="result-box">
+                    <strong>Výpočet maximální výšky:</strong>
+                    $$h_{max} = \frac{200^2}{2 \times 9{,}81} = \frac{40\,000}{19{,}62} = 2\,039 \text{ m}$$
+                    $$h_{max} = 2{,}04 \text{ km}$$
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 4: Vyhodnocení zásahu cíle a odpověď</h4>
+                <p>Porovnáme vypočítaný dosah se vzdáleností cíle a zodpovíme všechny otázky.</p>
+
+                <div class="summary-box">
+                    <strong>Odpověď:</strong>
+                    <ul>
+                        <li><strong>Celkový dosah:</strong> R = 14,13 km</li>
+                        <li><strong>Maximální výška:</strong> hₘₐₓ = 2,04 km</li>
+                        <li><strong>Vzdálenost cíle:</strong> 12 km</li>
+                        <li><strong>Výsledek:</strong> ✅ ANO, střela cíl zasáhne!</li>
+                        <li>Střela dosáhne 14,13 km, což je více než potřebných 12 km.</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <strong>Kontrola rozumnosti:</strong>
+                    <p>✅ Dosah 14 km je realistický pro dělo s rychlostí 400 m/s<br>
+                    ✅ Výška 2 km odpovídá balistickým trajektoriím<br>
+                    ✅ Úhl 30° je optimální pro kombinaci dosahu a přesnosti<br>
+                    ⚠️ V reálu by odpor vzduchu významně snížil dosah</p>
+                </div>
+
+                <div class="alternative-method-box">
+                    <strong>Alternativní způsob:</strong>
+                    <p>Mohli bychom vypočítat čas letu t = 2v₀ᵧ/g = 40,8 s a pak dosah R = v₀ₓ·t = 14,13 km. Výsledek by byl stejný.</p>
+                </div>
+
+                <details>
+                    <summary>🤔 Metakognitivní otázky</summary>
+                    <div>
+                        <ul>
+                            <li>Při jakém úhlu by byl dosah největší (teoreticky 45°)?</li>
+                            <li>Jak by ovlivnil výsledek odpor vzduchu při tak vysoké rychlosti?</li>
+                            <li>Co by se stalo, kdyby cíl byl na kopci 500 m vysokém?</li>
+                            <li>Proč jsou balistické výpočty důležité pro vojenští aplikace?</li>
+                            <li>Jaké další faktory musí balistici zohlednit (vítr, rotace Země, atd.)?</li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

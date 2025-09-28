@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>47. Basketbal - střelba | Kinematika</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>47. Basketbal - střelba</h1>
+            <p>Kinematika - řešený příklad</p>
+        </header>
+
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Basketbalovm hráči a trenéři potřebují rozumět fyzice střelby, aby zlepšili přesnost. Úhl vystupřelení míče ovlivňuje nejen dosah, ale i trajektorii. Sportovní analýza pomáhá hráčům najti optimální techniku pro různé vzdálenosti od koše.
+        </div>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <p>
+                Basketbalista střílí míč z <strong>výšky 2 m</strong> rychlostí <strong>12 m/s</strong> pod <strong>úhlem 45°</strong> k vodorovné rovině. Koš je ve <strong>výšce 3,05 m</strong> a vzdálen <strong>7 m</strong> od hráče. Projde míč košem? V jaké <strong>výšce</strong> bude míč ve vzdálenosti 7 m?
+            </p>
+        </section>
+
+        <section id="vstupni-data">
+            <h3>Vstupní data</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Veličina</th>
+                        <th>Symbol</th>
+                        <th>Hodnota</th>
+                        <th>Jednotka</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Počáteční rychlost</td>
+                        <td class="variable">v₀</td>
+                        <td class="value">12</td>
+                        <td class="unit">m/s</td>
+                    </tr>
+                    <tr>
+                        <td>Úhl vystupřelení</td>
+                        <td class="variable">α</td>
+                        <td class="value">45</td>
+                        <td class="unit">°</td>
+                    </tr>
+                    <tr>
+                        <td>Výška hráče</td>
+                        <td class="variable">h₁</td>
+                        <td class="value">2</td>
+                        <td class="unit">m</td>
+                    </tr>
+                    <tr>
+                        <td>Výška koše</td>
+                        <td class="variable">h₂</td>
+                        <td class="value">3,05</td>
+                        <td class="unit">m</td>
+                    </tr>
+                    <tr>
+                        <td>Vzdálenost koše</td>
+                        <td class="variable">x</td>
+                        <td class="value">7</td>
+                        <td class="unit">m</td>
+                    </tr>
+                    <tr>
+                        <td>Gravitační zrychlení</td>
+                        <td class="variable">g</td>
+                        <td class="value">9,81</td>
+                        <td class="unit">m/s²</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+            <p>Šikmý vrh je složený pohyb se specifickým úhlem, který určuje trajektorii projektilu.</p>
+
+            <div class="calculation-step">
+                <h4>Krok 1: Analýza situace a rozložení rychlosti</h4>
+                <p>Rozložíme počáteční rychlost na horizontální a vertikální komponenty.</p>
+
+                <div class="equation-logic-box">
+                    <strong>Logika výběru:</strong>
+                    <p>Šikmý vrh = kombinace dvou pohybů:<br>
+                    🔸 <strong>Horizontálně:</strong> rovnoměrný pohyb (aₓ = 0)<br>
+                    🔸 <strong>Vertikálně:</strong> zrychlený pohyb (aᵧ = -g = -9,81 m/s²)</p>
+                </div>
+
+                <div class="warning-box">
+                    <strong>Pozor na úhly!</strong>
+                    <p>Úhl 45° je v radiánech π/4 ≈ 0,785 rad. Pro goniometrické funkce: cos(45°) = sin(45°) = √2/2 ≈ 0,707.</p>
+                </div>
+
+                <div class="note-box">
+                    <strong>Dané hodnoty:</strong>
+                    <ul>
+                        <li>Počáteční rychlost: v₀ = 12 m/s pod úhlem 45°</li>
+                        <li>Výška hráče: h₁ = 2 m</li>
+                        <li>Výška koše: h₂ = 3,05 m</li>
+                        <li>Hledáme: výšku míče ve vzdálenosti 7 m</li>
+                    </ul>
+                </div>
+
+                <div class="formula-box">
+                    <strong>Rozložení počáteční rychlosti:</strong>
+                    $$v_{0x} = v_0 \cdot \cos(\alpha) = 12 \cdot \cos(45°) = 12 \cdot 0{,}707 = 8{,}48 \text{ m/s}$$
+                    $$v_{0y} = v_0 \cdot \sin(\alpha) = 12 \cdot \sin(45°) = 12 \cdot 0{,}707 = 8{,}48 \text{ m/s}$$
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 2: Výpočet času pro dosah koše</h4>
+                <p>Nejdříve musíme najít čas, za který míč urazí 7 m horizontálně.</p>
+
+                <div class="equation-logic-box">
+                    <strong>Proč tuto rovnici?</strong>
+                    <p>V horizontálním směru je pohyb rovnoměrný, proto používáme jednoduchou rovnici x = vₓ·t.</p>
+                </div>
+
+                <div class="formula-box">
+                    <strong>Rovnice pro horizontální pohyb:</strong>
+                    $$x = v_{0x} \cdot t \Rightarrow t = \frac{x}{v_{0x}}$$
+                </div>
+
+                <div class="analogy-box">
+                    <strong>Praktická analogie:</strong>
+                    <p>Představte si, že autím jedem konštantní rychlostí - čas do cíle závisí pouze na vzdálenosti a rychlosti. Stejně u basketbalového míče v horizontálním směru!</p>
+                </div>
+
+                <div class="result-box">
+                    <strong>Výpočet času:</strong>
+                    $$t = \frac{x}{v_{0x}} = \frac{7}{8{,}48} = 0{,}826 \text{ s}$$
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 3: Výpočet výšky míče po čase t</h4>
+                <p>Nyní vypočítáme, v jaké výšce se bude míč nacházet po 0,826 s.</p>
+
+                <div class="tip-box">
+                    <strong>Užitečný tip:</strong>
+                    <p>Ve vertikálním směru působí gravitace jako záporné zrychlení. Míč nejdříve stoupá, pak klesá.</p>
+                </div>
+
+                <div class="formula-box">
+                    <strong>Rovnice pro vertikální pohyb:</strong>
+                    $$y = h_1 + v_{0y} \cdot t - \frac{1}{2} \cdot g \cdot t^2$$
+                    <p>Kde h₁ = 2 m je počáteční výška hráče</p>
+                </div>
+
+                <div class="result-box">
+                    <strong>Výpočet výšky:</strong>
+                    $$y = 2 + 8{,}48 \times 0{,}826 - \frac{1}{2} \times 9{,}81 \times (0{,}826)^2$$
+                    $$y = 2 + 7{,}00 - \frac{1}{2} \times 9{,}81 \times 0{,}682$$
+                    $$y = 2 + 7{,}00 - 3{,}35 = 5{,}65 \text{ m}$$
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 4: Porovnání s výškou koše a odpověď</h4>
+                <p>Porovnáme vypočítanou výšku s výškou koše a zodpovíme otázku.</p>
+
+                <div class="summary-box">
+                    <strong>Odpověď:</strong>
+                    <ul>
+                        <li><strong>Výška míče po 7 m:</strong> y = 5,65 m</li>
+                        <li><strong>Výška koše:</strong> h₂ = 3,05 m</li>
+                        <li><strong>Výsledek:</strong> Míč projde NAD košem - je příliš vysoko!</li>
+                        <li>Míč bude ve vzdálenosti 7 m ve výšce 5,65 m, což je o 2,6 m výš než koš.</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <strong>Kontrola rozumnosti:</strong>
+                    <p>✅ Výška 5,65 m je realistická pro míč vystupřelený pod 45° rychlostí 12 m/s<br>
+                    ✅ Čas 0,83 s odpovídá rychlé basketbalové střelbě<br>
+                    ⚠️ Míč je příliš vysoko - hráč by potřeboval menší úhl nebo rychlost</p>
+                </div>
+
+                <div class="alternative-method-box">
+                    <strong>Alternativní způsob:</strong>
+                    <p>Mohli bychom použít rovnici trajektorie šikmého vrhu:<br>
+                    y = x·tg(α) - gx²/(2v₀²cos²(α)) + h₁, kde přímo dosadíme x = 7 m.</p>
+                </div>
+
+                <details>
+                    <summary>🤔 Metakognitivní otázky</summary>
+                    <div>
+                        <ul>
+                            <li>Při jakém úhlu by míč proletel přesně košem ve výšce 3,05 m?</li>
+                            <li>Jak by se změnil výsledek, kdyby hráč střílel rychlostí 10 m/s?</li>
+                            <li>Proč je úhl 45° teoreticky optimální pro největší dosah?</li>
+                            <li>Jak ovlivňuje výška hráče trajektorii míče?</li>
+                            <li>Co by se stalo, kdyby nebylo gravitační pole?</li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

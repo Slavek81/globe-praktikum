@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tlak v pneumatice - řešený příklad</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>52. Tlak v pneumatice</h1>
+            <p>Kinematika - řešený příklad</p>
+        </header>
+
+        <!-- Motivační úvod pro studenty -->
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Při cestě do USA nebo při nákupu amerických pneumatik narazíš na jednotku PSI. Bez správného převodu riskuješ podhuštěné nebo přehuštěné pneumatiky - což ovlivňuje bezpečnost, spotřebu paliva i opotřebení. Umět převádět jednotky = být připraven na reálný svět!
+        </div>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <p>
+                Na pneumatice je uvedeno "inflate to <strong>50 psi</strong>". PSI znamená "pounds per square inch". Vyjádřete v jednotkách běžného metrického systému, tedy jako <strong>kg/m²</strong>. Jakou veličinu vlastně tato jednotka určuje?
+            </p>
+        </section>
+
+        <section id="vstupni-data">
+            <h3>Vstupní data</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Veličina</th>
+                        <th>Symbol</th>
+                        <th>Hodnota</th>
+                        <th>Jednotka</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Tlak v PSI</td>
+                        <td class="variable">p</td>
+                        <td class="value">50</td>
+                        <td class="unit">psi</td>
+                    </tr>
+                    <tr>
+                        <td>Převod libry</td>
+                        <td class="variable">-</td>
+                        <td class="value">0,4536</td>
+                        <td class="unit">kg/pound</td>
+                    </tr>
+                    <tr>
+                        <td>Převod palce</td>
+                        <td class="variable">-</td>
+                        <td class="value">0,0254</td>
+                        <td class="unit">m/inch</td>
+                    </tr>
+                    <tr>
+                        <td>Hledaný tlak</td>
+                        <td class="variable">p</td>
+                        <td class="value">?</td>
+                        <td class="unit">kg/m²</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+            <p>Výpočet převodu mezi americkými a metrickými jednotkami tlaku.</p>
+
+            <div class="calculation-step">
+                <h4>Krok 1: Analýza situace a převody jednotek</h4>
+                <p>PSI = "pounds per square inch" znamená libry na čtvereční palec. Potřebujeme převést na kg/m².</p>
+
+                <div class="equation-logic-box">
+                    <strong>Logika výběru:</strong> Tlak je síla na jednotku plochy. PSI používá libry (síla) na čtvereční palec (plocha). Musíme převést obě složky na metrické jednotky.
+                </div>
+
+                <div class="warning-box">
+                    <strong>Pozor na jednotky!</strong> Pozor na převod plochy: 1 inch² → m². Musíme umocnit převodní faktor na druhou!
+                </div>
+
+                <div class="note-box">
+                    <strong>Dané hodnoty:</strong>
+                    <ul>
+                        <li>Tlak: p = 50 psi</li>
+                        <li>Převodní konstanty: 1 pound = 0,4536 kg</li>
+                        <li>Převodní konstanty: 1 inch = 0,0254 m</li>
+                        <li>Hledáme: tlak v kg/m²</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 2: Výběr rovnic a převodů</h4>
+                <p>Pro převod tlaku potřebujeme převést sílu i plochu:</p>
+
+                <div class="equation-logic-box">
+                    <strong>Proč tyto převody?</strong> Tlak = síla/plocha. Musíme převést pounds → kg a square inches → m².
+                </div>
+
+                <div class="formula-box">
+                    <p><strong>Základní převody:</strong></p>
+                    $$1 \text{ pound} = 0{,}4536 \text{ kg}$$
+                    $$1 \text{ inch} = 0{,}0254 \text{ m}$$
+                    $$1 \text{ inch}^2 = (0{,}0254)^2 \text{ m}^2$$
+                </div>
+
+                <div class="analogy-box">
+                    <strong>Praktická analogie:</strong> Jako když převádíš velikost bot z USA do EU - každá země má svoje jednotky, ale fyzika zůstává stejná.
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 3: Výpočet převodu plochy</h4>
+                <p>Nejprve vypočteme, kolik m² je 1 inch²:</p>
+
+                <div class="result-box">
+                    <strong>Převod čtverečního palce:</strong>
+                    $$1 \text{ inch}^2 = (0{,}0254 \text{ m})^2 = 0{,}000645 \text{ m}^2$$
+                </div>
+
+                <div class="tip-box">
+                    <strong>Tip pro mocniny:</strong> Při převodu ploch se převodní faktor umocňuje na druhou: (0,0254)² = 0,000645.
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 4: Kompletní převod tlaku</h4>
+                <p>Nyní převedeme kompletní jednotku PSI na kg/m²:</p>
+
+                <div class="result-box">
+                    <strong>Převod 1 PSI:</strong>
+                    $$1 \text{ psi} = \frac{0{,}4536 \text{ kg}}{0{,}000645 \text{ m}^2} = 703 \text{ kg/m}^2$$
+                </div>
+
+                <div class="result-box">
+                    <strong>Převod 50 PSI:</strong>
+                    $$50 \text{ psi} = 50 \times 703 = 35{,}150 \text{ kg/m}^2$$
+                </div>
+
+                <details>
+                    <summary>📊 Pokročilý výpočet</summary>
+                    <div>
+                        <div class="interpretation-box">
+                            <strong>Fyzikální význam:</strong> Tlak 50 PSI znamená, že na každý m² pneumatiky působí síla odpovídající hmotnosti 35 tun! To ukazuje obrovské síly v pneumatikách.
+                        </div>
+                    </div>
+                </details>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 5: Kontrola a odpověď</h4>
+
+                <div class="summary-box">
+                    <strong>Odpověď:</strong> Tlak 50 PSI odpovídá <strong>35 150 kg/m²</strong>.
+                    <br><strong>Tato jednotka určuje tlak</strong> - sílu působící na jednotku plochy.
+                </div>
+
+                <div class="info-box">
+                    <strong>Kontrola rozumnosti:</strong> Typické tlaky v pneumatikách jsou 2-3 bary = 20 000-30 000 kg/m². Náš výsledek 35 150 kg/m² je rozumný pro vyšší tlak ✓
+                </div>
+
+                <div class="alternative-method-box">
+                    <strong>Alternativní způsob:</strong> Můžeme použít přímý převod: 1 PSI = 6895 Pa = 703 kg/m² (standardní převodní tabulky).
+                </div>
+
+                <details>
+                    <summary>🤔 Metakognitivní otázky</summary>
+                    <div>
+                        <ul>
+                            <li>Proč používají Američané PSI místo více logických jednotek?</li>
+                            <li>Jaký je vztah mezi PSI a bary? (1 bar = 14,5 PSI)</li>
+                            <li>Jak se liší tlak v pneumatikách aut vs. náklaďáků?</li>
+                            <li>Proč je důležité měřit tlak za studena, ne po jízdě?</li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Řešení</title>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>85. Trajektorie šikmého vrhu - parabola</h1>
+            <p>Kinematika - řešený příklad</p>
+        </header>
+
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Parabolická trajektorie je všude v přírodě! Od fontán ve městech přes vodní trysky až po dráhy komět a asteroidů. Pochopení, že projektily létají po parabole, je základem balistiky, sportu i inženýrství. Architekti fontán využívají parabolické rovnice pro design, vojenští odborníci pro výpočet trajektorií, basketbalisté pro optimální úhel střelby, a dokonce herní vývojáři pro realistickou fyziku ve hrách.
+        </div>
+
+        <div class="zadani">
+            <h3>Zadání</h3>
+            <p>Dokažte, že trajektorií šikmého vrhu je <strong>parabola</strong> (při zanedbání odporu vzduchu). Tedy chceme ukázat, že body trajektorie y(x) tvoří parabolu. Určete <strong>rovnici této paraboly</strong>.</p>
+        </div>
+
+        <div class="calculation-step">
+            <h3>1. Analýza matematického důkazu</h3>
+
+            <div class="equation-logic-box">
+                <strong>💭 Logika výběru:</strong> Budeme eliminovat parametr času z parametrických rovnic pohybu. Získáme tak přímý vztah y(x), který ukáže parabolický charakter trajektorie. Jde o klasickou metodu analytické geometrie.
+            </div>
+
+            <div class="warning-box">
+                <strong>⚠️ Pozor na matematické detaily!</strong> Parabola má obecný tvar y = ax² + bx + c, nikoli jen y = ax²! Také si dávejte pozor na znaménka - projektily "padají", takže koeficient u x² musí být záporný.
+            </div>
+
+            <div class="note-box">
+                <strong>📝 Základní parametry:</strong>
+                <ul>
+                    <li>Počáteční rychlost: $v_0$ (pod úhlem $\alpha$ k horizontále)</li>
+                    <li>Složky rychlosti: $v_{0x} = v_0 \cos \alpha$, $v_{0y} = v_0 \sin \alpha$</li>
+                    <li>Gravitační zrychlení: $g$ (směrem dolů)</li>
+                    <li>Podmínky: vakuum, start z počátku souřadnic</li>
+                    <li><strong>Cíl:</strong> dokázat, že $y = f(x)$ je parabola</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="calculation-step">
+            <h3>2. Parametrické rovnice šikmého vrhu</h3>
+
+            <div class="equation-logic-box">
+                <strong>🎯 Proč parametrické rovnice?</strong> Šikmý vrh je složený pohyb - horizontálně rovnoměrný, vertikálně zrychlený. Parametrické rovnice umožňují popsat oba nezávislé pohyby současně s časem jako parametrem.
+            </div>
+
+            <div class="formula-box">
+                <strong>Horizontální pohyb (rovnoměrný):</strong>
+                $$x(t) = v_0 \cos \alpha \cdot t$$
+
+                <strong>Vertikální pohyb (rovnoměrně zrychlený):</strong>
+                $$y(t) = v_0 \sin \alpha \cdot t - \frac{1}{2}gt^2$$
+
+                <strong>Poznámka:</strong> Znaménko minus u gravitace, protože působí proti směru osy y (nahoru).
+            </div>
+
+            <div class="analogy-box">
+                <strong>🎪 Praktická analogie:</strong> Představte si, že sledujete akrobata vystřeleného z děla. Vodorovně se pohybuje stejně rovnoměrně jako vlak, svisle padá stejně jako kámen pustený z ruky. Kombinace těchto dvou pohybů vytváří elegantní křivku - parabolu.
+            </div>
+        </div>
+
+        <div class="calculation-step">
+            <h3>3. Eliminace parametru času</h3>
+
+            <div class="tip-box">
+                <strong>💡 Užitečná rada:</strong> Klíčem je vyjádřit čas t z horizontální rovnice a dosadit do vertikální rovnice. Tím získáme přímý vztah mezi y a x bez závislosti na čase.
+            </div>
+
+            <p><strong>Krok 1: Vyjádření času z horizontální rovnice</strong></p>
+            <div class="formula-box">
+                $$x = v_0 \cos \alpha \cdot t$$
+                $$t = \frac{x}{v_0 \cos \alpha}$$
+            </div>
+
+            <p><strong>Krok 2: Dosazení času do vertikální rovnice</strong></p>
+            <div class="formula-box">
+                $$y = v_0 \sin \alpha \cdot \frac{x}{v_0 \cos \alpha} - \frac{1}{2}g\left(\frac{x}{v_0 \cos \alpha}\right)^2$$
+
+                <strong>Zjednodušení:</strong>
+                $$y = x \tan \alpha - \frac{g x^2}{2v_0^2 \cos^2 \alpha}$$
+            </div>
+
+            <details>
+                <summary><strong>🔍 Detailní algebraické kroky</strong></summary>
+                <div>
+                    <p>Dosazení a úprava:</p>
+                    $$y = v_0 \sin \alpha \cdot \frac{x}{v_0 \cos \alpha} - \frac{1}{2}g \cdot \frac{x^2}{v_0^2 \cos^2 \alpha}$$
+                    $$y = \frac{v_0 \sin \alpha \cdot x}{v_0 \cos \alpha} - \frac{g x^2}{2v_0^2 \cos^2 \alpha}$$
+                    $$y = x \frac{\sin \alpha}{\cos \alpha} - \frac{g x^2}{2v_0^2 \cos^2 \alpha}$$
+                    $$y = x \tan \alpha - \frac{g x^2}{2v_0^2 \cos^2 \alpha}$$
+                </div>
+            </details>
+        </div>
+
+        <div class="calculation-step">
+            <h3>4. Identifikace tvaru paraboly</h3>
+
+            <p><strong>Porovnání s obecným tvarem paraboly:</strong></p>
+            <div class="formula-box">
+                <strong>Obecný tvar paraboly:</strong>
+                $$y = ax^2 + bx + c$$
+
+                <strong>Naše trajektorie:</strong>
+                $$y = x \tan \alpha - \frac{g x^2}{2v_0^2 \cos^2 \alpha}$$
+
+                <strong>Identifikace koeficientů:</strong>
+                $$a = -\frac{g}{2v_0^2 \cos^2 \alpha} < 0$$
+                $$b = \tan \alpha$$
+                $$c = 0$$ (prochází počátkem)
+            </div>
+
+            <div class="summary-box">
+                <strong>🎯 Důkaz dokončen!</strong>
+                <p>Trajektorie šikmého vrhu má tvar $y = ax^2 + bx + c$, což je definice paraboly.</p>
+
+                <strong>Charakteristiky paraboly:</strong>
+                <ul>
+                    <li><strong>a < 0:</strong> parabola otevřená dolů (logické pro projektily)</li>
+                    <li><strong>b = tan α:</strong> směrnice tečny v počátku = počáteční směr pohybu</li>
+                    <li><strong>c = 0:</strong> parabola prochází počátkem (start z bodu [0,0])</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="calculation-step">
+            <h3>5. Fyzikální interpretace a vlastnosti</h3>
+
+            <div class="info-box">
+                <strong>🔍 Kontrola fyzikálního smyslu:</strong>
+                <ul>
+                    <li><strong>Pro x = 0:</strong> y = 0 ✓ (počáteční poloha)</li>
+                    <li><strong>Derivace v počátku:</strong> $\frac{dy}{dx}|_{x=0} = \tan \alpha$ ✓ (počáteční směr)</li>
+                    <li><strong>Druhá derivace:</strong> $\frac{d^2y}{dx^2} = -\frac{g}{v_0^2 \cos^2 \alpha} < 0$ ✓ (zakřivení dolů)</li>
+                    <li><strong>Symetrie:</strong> parabola je symetrická kolem svého vrcholu ✓</li>
+                </ul>
+            </div>
+
+            <div class="alternative-method-box">
+                <strong>🔄 Alternativní důkaz pomocí vektorů:</strong>
+                <p>Polohový vektor: $\vec{r}(t) = (v_0 \cos \alpha \cdot t, v_0 \sin \alpha \cdot t - \frac{1}{2}gt^2)$</p>
+                <p>Zrychlení: $\vec{a} = (0, -g)$ = konstantní ⟹ trajektorie je parabola</p>
+                <p>Obecná věta: "Konstantní zrychlení ⟹ parabolická trajektorie"</p>
+            </div>
+
+            <div class="interpretation-box">
+                <strong>🌍 Univerzálnost paraboly v přírodě:</strong>
+                <ul>
+                    <li><strong>Galileo Galilei:</strong> První dokázal paraboličnost trajektorií (1632)</li>
+                    <li><strong>Astronomie:</strong> Dráhy komet kolem Slunce jsou paraboly/elipsy</li>
+                    <li><strong>Architekturu:</strong> Parabolické oblouky v mostech a stavbách</li>
+                    <li><strong>Technika:</strong> Parabolické antény, reflektory, zrcadla</li>
+                    <li><strong>Sport:</strong> Optimální tvar pro half-pipe, skokanské můstky</li>
+                </ul>
+            </div>
+
+            <details>
+                <summary>🤔 Metakognitivní otázky</summary>
+                <div>
+                    <ul>
+                        <li>Proč se parabola "otevírá dolů" a ne nahoru? Co by se změnilo při opačné gravitaci?</li>
+                        <li>Jak by vypadala trajektorie bez gravitace? Byla by stále parabolická?</li>
+                        <li>Proč má parabola v počátku směrnici tan(α)? Jak to souvisí s počátečním směrem rychlosti?</li>
+                        <li>Jaké další přírodní jevy sledují parabolickou dráhu? Proč je parabola tak univerzální?</li>
+                        <li>Jak by se změnila rovnice paraboly při odporu vzduchu? Byla by stále parabolou?</li>
+                    </ul>
+                </div>
+            </details>
+        </div>
+    </main>
+</body>
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Řešení</title>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>71. Brzdná dráha auta</h1>
+            <p>Kinematika - řešený příklad</p>
+        </header>
+
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Brzdná dráha zachraňuje životy každý den! Řidiči často podceňují, jak dramaticky roste se rychlostí. Pochopení tohoto jevu ti pomůže být bezpečnějším řidičem a možná jednou zachráníš život - svůj nebo někoho jiného. Policie a pojišťovny používají tyto výpočty při vyšetřování nehod!
+        </div>
+
+        <div class="problem-statement">
+            <h2>Zadání</h2>
+            <p>Auto může obecně zpomalovat se zrychlením maximálně <strong>a = -6 m·s⁻²</strong>.</p>
+            <p><strong>a)</strong> Jak dlouhá je brzdná dráha, pokud auto jede v obci rychlostí <strong>v₀ = 50 km·h⁻¹</strong>? Řešte nejprve obecně (jen pomocí písmen) a poté pro konkrétní zadané hodnoty.</p>
+            <p><strong>b)</strong> Co kdyby auto jelo nepovolenou rychlostí <strong>60 km·h⁻¹</strong>? Jak se prodlouží brzdná dráha?</p>
+        </div>
+
+        <div class="solution">
+            <h2>Řešení</h2>
+
+            <div class="calculation-step">
+                <h3>1. Analýza situace a zadané hodnoty</h3>
+
+                <div class="equation-logic-box">
+                    <strong>Logika výběru:</strong> Jde o rovnoměrně zpomalený pohyb (speciální případ zrychleného pohybu se záporným zrychlením). Auto se zastavuje, takže konečná rychlost je nula. Neznáme čas, ale známe rychlosti a zrychlení.
+                </div>
+
+                <div class="note-box">
+                    <strong>Dané hodnoty:</strong>
+                    <ul>
+                        <li><strong>a)</strong> Počáteční rychlost: $v_0 = 50$ km·h⁻¹</li>
+                        <li>Konečná rychlost: $v = 0$ m·s⁻¹ (auto se zastaví)</li>
+                        <li>Zpomalení: $a = -6$ m·s⁻²</li>
+                        <li><strong>b)</strong> Porovnání s rychlostí $v_0 = 60$ km·h⁻¹</li>
+                        <li>Hledáme: brzdnou dráhu $s$</li>
+                    </ul>
+                </div>
+
+                <div class="warning-box">
+                    <strong>Pozor na znaménka!</strong> Zpomalení je záporné zrychlení. V rovnicích musíme rozlišovat mezi modulem (|a| = 6 m·s⁻²) a skutečnou hodnotou (a = -6 m·s⁻²). Pro brzdnou dráhu používáme modul!
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h3>2. Výběr fyzikální rovnice</h3>
+
+                <div class="equation-logic-box">
+                    <strong>Proč tuto rovnici?</strong> Pro brzdnou dráhu používáme kinematickou rovnici $v^2 = v_0^2 + 2as$, protože neznáme čas brždění, ale známe rychlosti a zrychlení. Tato rovnice je ideální pro situace, kdy nás čas nezajímá.
+                </div>
+
+                <div class="analogy-box">
+                    <strong>Praktická analogie:</strong> Je to jako při házení míčkem nahoru - nepotřebuješ vědět, jak dlouho míček letí, abys spočítal, do jaké výšky dolétne. Podobně nepotřebuješ čas brždění, abys spočítal brzdnou dráhu.
+                </div>
+
+                <div class="formula-box">
+                    $$v^2 = v_0^2 + 2as$$
+
+                    <p>Po úpravě pro zastavení (v = 0):</p>
+                    $$0 = v_0^2 + 2as$$
+                    $$s = \frac{v_0^2}{2|a|}$$
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h3>3. Obecné odvození brzdné dráhy</h3>
+
+                <div class="tip-box">
+                    <strong>Užitečný tip:</strong> Obecné odvození pomocí průměrné rychlosti je názornější - ukáže, jak se brzdná dráha skládá z času brždění a průměrné rychlosti během tohoto času.
+                </div>
+
+                <div class="formula-box">
+                    <strong>Doba zastavení:</strong> $t = \frac{v_0}{|a|}$
+
+                    <strong>Průměrná rychlost:</strong> $v_{\text{průměr}} = \frac{v_0 + 0}{2} = \frac{v_0}{2}$
+
+                    <strong>Brzdná dráha:</strong> $s = v_{\text{průměr}} \times t = \frac{v_0}{2} \times \frac{v_0}{|a|} = \frac{v_0^2}{2|a|}$
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h3>4. Dosazení a výpočet</h3>
+
+                <div class="result-box">
+                    <h4>a) Konkrétní výpočet pro 50 km·h⁻¹:</h4>
+                    $$v_0 = 50 \text{ km·h⁻¹} = \frac{50}{3{,}6} = 13{,}89 \text{ m·s⁻¹}$$
+                    $$s = \frac{v_0^2}{2|a|} = \frac{(13{,}89)^2}{2 \times 6} = \frac{193}{12} = 16{,}1 \text{ m}$$
+                </div>
+
+                <div class="result-box">
+                    <h4>b) Porovnání s rychlostí 60 km·h⁻¹:</h4>
+                    $$v_0' = 60 \text{ km·h⁻¹} = \frac{60}{3{,}6} = 16{,}67 \text{ m·s⁻¹}$$
+                    $$s' = \frac{(16{,}67)^2}{12} = \frac{278}{12} = 23{,}2 \text{ m}$$
+
+                    <strong>Poměr:</strong> $\frac{s'}{s} = \frac{60^2}{50^2} = \frac{3600}{2500} = 1{,}44$
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h3>5. Kontrola a odpověď</h3>
+
+                <div class="summary-box">
+                    <strong>Odpovědi:</strong>
+                    <ul>
+                        <li><strong>a)</strong> Brzdná dráha při 50 km·h⁻¹ je <strong>16,1 m</strong></li>
+                        <li><strong>b)</strong> Při 60 km·h⁻¹ je brzdná dráha <strong>23,2 m</strong> (o 44% delší!)</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <strong>Kontrola rozumnosti:</strong> Brzdná dráha 16 metrů při 50 km·h⁻¹ odpovídá přibližně délce jednoho autobusu. To je realistické - většina řidičů si uvědomuje, že potřebují aspoň jeden autobus na zastavení v obci.
+                </div>
+
+                <div class="warning-box">
+                    <strong>Důležité pozorování:</strong> Zvýšení rychlosti o pouhých 20% (z 50 na 60 km·h⁻¹) způsobí prodloužení brzdné dráhy o 44%! To proto, že brzdná dráha roste s druhou mocninou rychlosti. Těch 7 metrů rozdílu může být rozdíl mezi záchranou života a tragédií.
+                </div>
+
+                <div class="alternative-method-box">
+                    <strong>Alternativní způsob:</strong> Mohli jsme postupovat přes čas: $t = \frac{v_0}{|a|} = \frac{13{,}89}{6} = 2{,}31$ s, pak $s = \frac{v_0 \cdot t}{2} = \frac{13{,}89 \times 2{,}31}{2} = 16{,}1$ m. Výsledek je stejný!
+                </div>
+            </div>
+        </div>
+
+        <details>
+            <summary>🤔 Metakognitivní otázky</summary>
+            <div>
+                <ul>
+                    <li>O kolik procent se prodlouží brzdná dráha při zvýšení rychlosti ze 130 na 150 km·h⁻¹ na dálnici?</li>
+                    <li>Proč je brzdná dráha v suchu kratší než na mokré silnici? Jak by se změnilo zrychlení?</li>
+                    <li>Jak by se změnila brzdná dráha, kdyby auto mělo lepší brzdy (a = -8 m·s⁻²)? Zkus odhadnout!</li>
+                    <li>Proč jsou rychlostní limity v obcích nižší než na dálnicích? Jakou roli hraje brzdná dráha?</li>
+                    <li>Jak se změní brzdná dráha ve srovnání s 50 km·h⁻¹, když pojedeš 100 km·h⁻¹? Je to dvojnásobek?</li>
+                </ul>
+            </div>
+        </details>
+    </main>
+</body>
+</html>

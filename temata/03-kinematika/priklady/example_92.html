@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Řešení</title>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>92. Rychlost bodů na zemském rovníku</h1>
+            <p>Kinematika - řešený příklad</p>
+        </header>
+
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Rychlost rotace Země na rovníku je klíčová pro kosmonautiku - rakety se startují směrem na východ, aby využily "rozběh" planety k úspoře paliva. Kosmické středisko na rovníku (jako Kourou ve Francouzské Guyaně) může ušetřit až 465 m/s rychlosti při startu! Proto jsou kosmodromy umístěné co nejblíže k rovníku. Tato rychlost také ovlivňuje navigaci letadel, výpočty balistických trajektorií a fungování GPS systémů.
+        </div>
+
+        <div class="zadani">
+            <h2>Zadání</h2>
+            <p>Jaká je rychlost bodů na zemském rovníku? Uvažujte poloměr Země <strong>6 378 km</strong>, úhlová rychlost otáčení Země je <strong>7,29×10⁻⁵ rad/s</strong>. Určete také frekvenci.</p>
+        </div>
+
+        <div class="reseni">
+            <h2>Řešení</h2>
+
+            <div class="krok">
+                <h3>1. Analýza situace a zadané hodnoty</h3>
+
+                <div class="equation-logic-box">
+                    <strong>Logika výběru:</strong> Země rotuje kolem své osy jako tuhé těleso - každý bod na zemském povrchu má stejnou úhlovou rychlost, ale různou lineární rychlost podle vzdálenosti od osy rotace. Na rovníku je tato vzdálenost největší.
+                </div>
+
+                <div class="warning-box">
+                    <strong>Pozor na jednotky!</strong> Poloměr Země musíme převést z kilometrů na metry. Úhlová rychlost je už v SI jednotkách (rad·s⁻¹). Výsledná rychlost bude v m·s⁻¹.
+                </div>
+
+                <div class="note-box">
+                    <strong>Dané hodnoty:</strong>
+                    <ul>
+                        <li>Poloměr Země: R = 6 378 km = 6,378 × 10⁶ m</li>
+                        <li>Úhlová rychlost rotace: ω = 7,29 × 10⁻⁵ rad·s⁻¹</li>
+                        <li>Hledáme: rychlost na rovníku v, frekvence f</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="krok">
+                <h3>2. Výběr fyzikální rovnice</h3>
+
+                <div class="equation-logic-box">
+                    <strong>Proč tyto rovnice?</strong> Pro výpočet rychlosti bodu na rotujícím tělese používáme základní vztah rotační kinematiky. Frekvenci získáme z úhlové rychlosti vztahem ω = 2πf.
+                </div>
+
+                <div class="formula-box">
+                    $$v = \omega \cdot R \text{ (obvodová rychlost)}$$
+                    $$f = \frac{\omega}{2\pi} \text{ (frekvence)}$$
+                    $$T = \frac{1}{f} = \frac{2\pi}{\omega} \text{ (perioda)}$$
+                </div>
+
+                <div class="analogy-box">
+                    <strong>Praktická analogie:</strong> Představte si obří kolotoč - čím dále od středu stojíte, tím rychleji se pohybujete vpřed, i když se kolotoč otáčí stejně rychle. Rovník je "okraj" zemského kolotoče.
+                </div>
+            </div>
+
+            <div class="krok">
+                <h3>3. Algebraické vyjádření a výpočet</h3>
+
+                <div class="tip-box">
+                    <strong>Užitečný tip:</strong> Země dělá jednu otáčku za 24 hodin = 86 400 sekund. Můžeme si ověřit výsledek výpočtem frekvence a porovnáním s touto známou hodnotou.
+                </div>
+
+                <p><strong>Krok 1: Rychlost na rovníku</strong></p>
+                <div class="calculation-step">
+                    $$v = \omega \times R = 7{,}29 \times 10^{-5} \times 6{,}378 \times 10^6$$
+                    $$v = 7{,}29 \times 6{,}378 \times 10^1 = 465{,}2 \text{ m·s⁻¹}$$
+                    $$v = 465{,}2 \text{ m·s⁻¹} \times 3{,}6 = 1\,675 \text{ km·h⁻¹}$$
+                </div>
+
+                <p><strong>Krok 2: Frekvence rotace</strong></p>
+                <div class="calculation-step">
+                    $$f = \frac{\omega}{2\pi} = \frac{7{,}29 \times 10^{-5}}{2\pi} = \frac{7{,}29 \times 10^{-5}}{6{,}283} = 1{,}16 \times 10^{-5} \text{ Hz}$$
+                </div>
+
+                <p><strong>Krok 3: Kontrola pomocí periody</strong></p>
+                <div class="calculation-step">
+                    $$T = \frac{1}{f} = \frac{1}{1{,}16 \times 10^{-5}} = 86\,207 \text{ s} \approx 24 \text{ h}$$ ✓
+                </div>
+            </div>
+
+            <div class="krok">
+                <h3>4. Kontrola a interpretace výsledku</h3>
+
+                <div class="summary-box">
+                    <strong>Odpověď:</strong>
+                    <ul>
+                        <li>Rychlost na rovníku: <strong>465 m·s⁻¹ (1 675 km·h⁻¹)</strong></li>
+                        <li>Frekvence: <strong>1,16 × 10⁻⁵ Hz</strong></li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <strong>Kontrola rozumnosti:</strong> Rychlost 1 675 km/h odpovídá rychlosti proudového letadla - správný řád velikosti pro rotaci planety. Perioda 24 hodin souhlasí s rotací Země.
+                </div>
+
+                <div class="alternative-method-box">
+                    <strong>Alternativní způsob:</strong> Můžeme počítat z obvodu a doby rotace: v = obvod/čas = 2πR/T = 2π × 6,378×10⁶/(24×3600) = 465 m·s⁻¹
+                </div>
+            </div>
+        </div>
+
+        <details>
+            <summary>🤔 Metakognitivní otázky</summary>
+            <div>
+                <ul>
+                    <li>Jak se mění rychlost rotace se zeměpisnou šířkou a jaká je na 45° severní šířky?</li>
+                    <li>Proč mají kosmické základny výhodu, když jsou umístěné blíže k rovníku?</li>
+                    <li>Jak ovlivňuje rotace Země směr větru a mořských proudů (Coriolisův jev)?</li>
+                    <li>Jaký vliv má tato rychlost na přesnost GPS navigace?</li>
+                    <li>Proč se satelity startují směrem na východ a ne na západ?</li>
+                </ul>
+            </div>
+        </details>
+    </main>
+</body>
+</html>

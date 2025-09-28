@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Řešení</title>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>82. Lionel Messi kopne fotbalový míč</h1>
+            <p>Kinematika - řešený příklad</p>
+        </header>
+
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Schopnost překopnout fotbalové hřiště je skutečnou výzvou i pro nejlepší hráče světa! Šikmý vrh míče kombinuje horizontální rychlost s vertikálním pohybem proti gravitaci. Podobné principy používají golfisté pro výběr úhlu odpalu, ragbisté pro dlouhé kopy, basketbalisté při střelbě na koš nebo dělostřelci při výpočtu trajektorií. Trenéři využívají tyto fyzikální poznatky k optimalizaci techniky hráčů.
+        </div>
+
+        <div class="zadani">
+            <h3>Zadání</h3>
+            <p>Lionel Messi se chlubí, že překopne celé fotbalové hřiště. Vykopává od brány rychlostí v₀ = <strong>126 km·h⁻¹</strong> pod úhlem α = <strong>30°</strong> vůči zemi, přičemž na stadionu předem radši odsáli veškerý vzduch. Překopne hřiště? Řešte nejprve obecně a pak pro konkrétní hodnoty.<br>
+            a) V jaké vzdálenosti míč dopadne?<br>
+            b) Jak vysoko míč vystoupá?<br>
+            c) Jaká bude dopadová rychlost míče?</p>
+        </div>
+
+        <div class="calculation-step">
+            <h3>1. Analýza šikmého vrhu a převod jednotek</h3>
+
+            <div class="equation-logic-box">
+                <strong>💭 Logika výběru:</strong> Šikmý vrh je složený pohyb, který rozložíme na dva nezávislé komponenty - horizontální (rovnoměrný) a vertikální (rovnoměrně zrychlený). Horizontální složka určuje dostřel, vertikální složka maximální výšku.
+            </div>
+
+            <div class="warning-box">
+                <strong>⚠️ Pozor na jednotky!</strong> Typická chyba: zapomínání na převod km·h⁻¹ na m·s⁻¹ (dělíme 3,6) nebo špatné rozložení rychlosti na složky (sin a cos se často zaměňují). Také pozor na úhel - měříme od horizontály, ne od vertikály!
+            </div>
+
+            <div class="note-box">
+                <strong>📝 Dané hodnoty:</strong>
+                <ul>
+                    <li>Počáteční rychlost: $v_0 = 126$ km·h⁻¹ $= 126/3{,}6 = 35$ m·s⁻¹</li>
+                    <li>Úhel vůči zemi: $\alpha = 30°$</li>
+                    <li>Gravitační zrychlení: $g = 9{,}81$ m·s⁻² (použijeme 10 m·s⁻²)</li>
+                    <li>Podmínky: vakuum (bez odporu vzduchu)</li>
+                    <li><strong>Hledáme:</strong> dostřel $d$, max. výšku $h_{max}$, dopadovou rychlost $v_{dopad}$</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="calculation-step">
+            <h3>2. Rozklad rychlosti na komponenty</h3>
+
+            <div class="equation-logic-box">
+                <strong>🎯 Proč rozklad?</strong> Šikmý vrh je kombinací rovnoměrného horizontálního pohybu a volného vertikálního pádu. Tyto pohyby jsou nezávislé, takže je můžeme řešit odděleně a poté kombinovat výsledky.
+            </div>
+
+            <div class="formula-box">
+                <strong>Rozklad počáteční rychlosti:</strong>
+                $$v_{0x} = v_0 \cos \alpha = 35 \cos 30° = 35 \times 0{,}866 = 30{,}3 \text{ m·s⁻¹}$$
+                $$v_{0y} = v_0 \sin \alpha = 35 \sin 30° = 35 \times 0{,}5 = 17{,}5 \text{ m·s⁻¹}$$
+            </div>
+
+            <div class="analogy-box">
+                <strong>⚽ Praktická analogie:</strong> Představte si fotbalový míč jako kombinaci dvou nezávislých pohybů - jako kdyby se míč pohyboval po dopravníku rychlostí 30,3 m·s⁻¹ vodorovně a současně někdo házel jiný míč svisle nahoru rychlostí 17,5 m·s⁻¹. Výsledný pohyb je kombinací obou.
+            </div>
+        </div>
+
+        <div class="calculation-step">
+            <h3>3. Výpočet času letu a dostřelu</h3>
+
+            <div class="tip-box">
+                <strong>💡 Užitečná rada:</strong> Doba letu závisí pouze na vertikální složce pohybu. Míč dopadne, když se vrátí na stejnou výšku, odkud byl vypuštěn (y = 0). Využijeme symetrii šikmého vrhu.
+            </div>
+
+            <p><strong>a) Doba letu a dostřel:</strong></p>
+            <div class="formula-box">
+                <strong>Doba letu (vertikální pohyb):</strong>
+                $$y = v_{0y}t - \frac{1}{2}gt^2 = 0$$
+                $$t(v_{0y} - \frac{1}{2}gt) = 0$$
+                $$t = 0 \text{ nebo } t = \frac{2v_{0y}}{g} = \frac{2 \times 17{,}5}{10} = 3{,}5 \text{ s}$$
+
+                <strong>Dostřel (horizontální pohyb):</strong>
+                $$d = v_{0x} \times t = 30{,}3 \times 3{,}5 = 106 \text{ m}$$
+            </div>
+
+            <details>
+                <summary><strong>🔍 Obecný vzorec pro dostřel</strong></summary>
+                <div>
+                    <p>Pro šikmý vrh platí obecný vzorec: $d = \frac{v_0^2 \sin 2\alpha}{g}$</p>
+                    <p>Ověření: $d = \frac{35^2 \sin(2 \times 30°)}{10} = \frac{1225 \sin 60°}{10} = \frac{1225 \times 0{,}866}{10} = 106$ m ✓</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="calculation-step">
+            <h3>4. Maximální výška a dopadová rychlost</h3>
+
+            <p><strong>b) Maximální výška:</strong></p>
+            <div class="formula-box">
+                <strong>Energetický přístup:</strong>
+                $$h_{max} = \frac{v_{0y}^2}{2g} = \frac{17{,}5^2}{2 \times 10} = \frac{306{,}25}{20} = 15{,}3 \text{ m}$$
+
+                <strong>Alternativně - kinematicky:</strong>
+                $$v_y = v_{0y} - gt = 0 \Rightarrow t_{max} = \frac{v_{0y}}{g} = 1{,}75 \text{ s}$$
+                $$h_{max} = v_{0y}t_{max} - \frac{1}{2}gt_{max}^2 = 17{,}5 \times 1{,}75 - 5 \times 1{,}75^2 = 15{,}3 \text{ m}$$
+            </div>
+
+            <p><strong>c) Dopadová rychlost:</strong></p>
+            <div class="formula-box">
+                <strong>Zákon zachování energie:</strong>
+                $$|v_{dopad}| = |v_0| = 35 \text{ m·s⁻¹}$$
+
+                <strong>Složky dopadové rychlosti:</strong>
+                $$v_{x,dopad} = v_{0x} = 30{,}3 \text{ m·s⁻¹}$$ (konstantní)
+                $$v_{y,dopad} = -v_{0y} = -17{,}5 \text{ m·s⁻¹}$$ (opačný směr)
+            </div>
+        </div>
+
+        <div class="calculation-step">
+            <h3>5. Vyhodnocení a odpověď na otázku</h3>
+
+            <div class="summary-box">
+                <strong>📊 Kompletní odpověď:</strong>
+                <ul>
+                    <li><strong>a) Dostřel:</strong> $d = 106$ m</li>
+                    <li><strong>b) Maximální výška:</strong> $h_{max} = 15{,}3$ m</li>
+                    <li><strong>c) Dopadová rychlost:</strong> $v_{dopad} = 35$ m·s⁻¹</li>
+                </ul>
+
+                <strong>🥅 Překopne Messi hřiště?</strong>
+                <p>Standardní fotbalové hřiště má délku 100-110 m. Messi s dostřelem 106 m by hřiště těsně překopal!</p>
+            </div>
+
+            <div class="info-box">
+                <strong>🔍 Kontrola rozumnosti:</strong>
+                <ul>
+                    <li>Dostřel 106 m odpovídá délce fotbalového hřiště (~100-110 m) ✓</li>
+                    <li>Maximální výška 15,3 m je realistická pro silný kop (výška trojpodlažního domu) ✓</li>
+                    <li>Dopadová rychlost = počáteční rychlost (zákon zachování energie) ✓</li>
+                    <li>Doba letu 3,5 s - rozumný čas pro dlouhý let míče ✓</li>
+                </ul>
+            </div>
+
+            <div class="alternative-method-box">
+                <strong>🔄 Alternativní řešení pomocí obecných vzorců:</strong>
+                <p><strong>Dostřel:</strong> $d = \frac{v_0^2 \sin 2\alpha}{g} = \frac{35^2 \sin 60°}{10} = \frac{1225 \times 0{,}866}{10} = 106$ m</p>
+                <p><strong>Max. výška:</strong> $h = \frac{v_0^2 \sin^2 \alpha}{2g} = \frac{35^2 \times 0{,}5^2}{20} = \frac{306{,}25}{20} = 15{,}3$ m</p>
+                <p><strong>Čas letu:</strong> $t = \frac{2v_0 \sin \alpha}{g} = \frac{2 \times 35 \times 0{,}5}{10} = 3{,}5$ s</p>
+            </div>
+
+            <details>
+                <summary>🤔 Metakognitivní otázky</summary>
+                <div>
+                    <ul>
+                        <li>Jaký by byl dostřel, kdyby Messi kopal pod optimálním úhlem 45°? Byl by větší nebo menší než 106 m?</li>
+                        <li>Jak by se změnily výsledky, kdybychom uvažovali odpor vzduchu? Která veličina by se změnila nejvíc?</li>
+                        <li>Proč je dopadová rychlost stejná jako počáteční rychlost? Jaký fyzikální zákon to objasňuje?</li>
+                        <li>Jak souvisí tento příklad s balistikou, golfem nebo atletickými disciplínami?</li>
+                        <li>Proč jsme v zadání "odsáli vzduch"? Jaký vliv má odpor vzduchu na reálný fotbalový míč?</li>
+                    </ul>
+                </div>
+            </details>
+        </div>
+    </main>
+</body>
+</html>

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Řešení</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>24. Řešení</h1>
+            <p>Kinematika - řešený příklad</p>
+        </header>
+
+        <!-- Motivační úvod -->
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Výpočet rychlosti bez známého času je klíčový v balistice (rychlost střely na cíli), při konstrukci bezpečnostních zón (rychlost vozidla před nárazem), nebo v kosmonautice (rychlost sondy při doskokovém manévru). Když neznáme čas, pomohá nám energetický přístup!
+        </div>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <p>
+                Těleso se pohybuje z klidu se zrychlením <strong>8 m·s⁻²</strong>. Vypočítejte jeho rychlost ve vzdálenosti <strong>100 m</strong> od počátku pohybu.
+            </p>
+        </section>
+
+        <section id="vstupni-data">
+            <h3>Vstupní data</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Veličina</th>
+                        <th>Symbol</th>
+                        <th>Hodnota</th>
+                        <th>Jednotka</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Zrychlení</td>
+                        <td class="variable">a</td>
+                        <td class="value">8</td>
+                        <td class="unit">m·s⁻²</td>
+                    </tr>
+                    <tr>
+                        <td>Dráha</td>
+                        <td class="variable">s</td>
+                        <td class="value">100</td>
+                        <td class="unit">m</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+            <p>Výpočet rozdělíme do několika logických kroků podle typu kinematické úlohy.</p>
+            
+            <div class="calculation-step">
+                <h4>Krok 1: Analýza situace a identifikace problému</h4>
+
+                <div class="equation-logic-box">
+                    <strong>Logika výběru:</strong> "Z klidu" → v₀ = 0, známe zrychlení a a dráhu s, hledáme rychlost v. Čas NEznáme! Proto použijeme kinematickou rovnici BEZ času: v² = v₀² + 2as.
+                </div>
+
+                <div class="warning-box">
+                    <strong>Pozor na výběr rovnice!</strong> Když neznáme čas, nemůžeme použít rovnice s t. Musíme najít rovnici, která obsahuje jen známé veličiny: v₀, a, s a hledanou v.
+                </div>
+
+                <div class="note-box">
+                    <strong>Dané hodnoty:</strong>
+                    <ul>
+                        <li>Počáteční rychlost: v₀ = 0 m·s⁻¹ (z klidu)</li>
+                        <li>Zrychlení: a = 8 m·s⁻²</li>
+                        <li>Dráha: s = 100 m</li>
+                        <li>Hledáme: konečnou rychlost v</li>
+                        <li>Neznáme: čas t (škrtlý parametr)</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="calculation-step">
+                <h4>Krok 2: Výběr správné kinematické rovnice</h4>
+
+                <div class="equation-logic-box">
+                    <strong>Proč právě tuto rovnici?</strong> Potřebujeme rovnici, která neobsahuje čas t. Ze 4 základních kinematických rovnic je jediná, která to splněuje: v² = v₀² + 2as. Je to energetický přístup k pohybu!
+                </div>
+
+                <div class="formula-box">
+                    <strong>Dostupné kinematické rovnice:</strong>
+                    <ul>
+                        <li>$v = v_0 + a \cdot t$ ❌ (obsahuje neznámý čas t)</li>
+                        <li>$s = v_0 \cdot t + \frac{1}{2} \cdot a \cdot t^2$ ❌ (obsahuje neznámý čas t)</li>
+                        <li>$s = \frac{v_0 + v}{2} \cdot t$ ❌ (obsahuje neznámý čas t)</li>
+                        <li><strong>$v^2 = v_0^2 + 2 \cdot a \cdot s$</strong> ✅ (bez času!)</li>
+                    </ul>
+                </div>
+
+                <div class="analogy-box">
+                    <strong>Praktická analogie:</strong> Je to jako pád z výšky - čím větší výška (dráha), tím větší konečná rychlost. A je jedno, jestli padáte 2 sekundy nebo 10 sekund - záleží jen na tom, JAK DALEKO jste padali!
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 3: Dosazení hodnot a výpočet</h4>
+                <p>Dosadíme známé hodnoty do vybrané rovnice a vypočítáme výsledek.</p>
+                
+                <div class="result-box">
+                    <strong>📐 Aplikace kinematické rovnice bez času</strong>
+                    <p><strong>Základní tvar:</strong> $$v^2 = v_0^2 + 2as$$</p>
+                    <p><strong>Pro pohyb z klidu</strong> (v₀ = 0): $$v^2 = 2as$$</p>
+                </div>
+
+                <div class="tip-box">
+                    <strong>💡 Fyzikální význam:</strong> Rovnice v² = 2as představuje vztah mezi kinetickou energií (½mv²) a praci silou (F·s = ma·s). Výsledná rychlost závisí jen na "množství" energie, ne na čase!
+                </div>
+
+                <div class="result-box">
+                    <strong>📐 Výpočet konečné rychlosti</strong>
+                    <p>$$v^2 = 2 \cdot a \cdot s = 2 \cdot 8 \cdot 100 = 1600 \text{ m}^2\text{·s}^{-2}$$</p>
+                    <p>$$v = \sqrt{1600} = 40 \text{ m·s}^{-1}$$</p>
+                </div>
+
+                <div class="result-box">
+                    <strong>📐 Převod na km/h (pro srovnání)</strong>
+                    <p>$$v = 40 \text{ m·s}^{-1} \times 3{,}6 = 144 \text{ km·h}^{-1}$$</p>
+                    <p>Pro srovnání: to je rychlost na dálnici!</p>
+                </div>
+
+                <details>
+                    <summary><strong>📈 Grafická interpretace</strong></summary>
+                    <div class="info-box">
+                        <p>Pokud bychom nakreslili graf v²(s), získali bychom přímku se sklonem 2a = 16.</p>
+                        <p>Rychlost roste jako √s - nejrychleji na začátku, pak pomaleji.</p>
+                    </div>
+                </details>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 4: Kontrola a alternativní přístupy</h4>
+
+                <div class="info-box">
+                    <strong>Kontrola rozumnosti:</strong> Rychlost 40 m/s (144 km/h) po 100 metrech při zrychlení 8 m·s⁻² je rozumná. Pro srovnání: volný pád má zrychlení 9,81 m·s⁻², takže naše zrychlení je jen trochu menší.
+                </div>
+
+                <div class="alternative-method-box">
+                    <strong>Alternativní kontrola přes čas:</strong>
+                    <p>Pokud bychom chtěli najít čas: $v = v_0 + at \Rightarrow t = \frac{v}{a} = \frac{40}{8} = 5$ s</p>
+                    <p>Kontrola dráhy: $s = \frac{1}{2}at^2 = \frac{1}{2} \cdot 8 \cdot 25 = 100$ m ✓</p>
+                </div>
+
+                <div class="interpretation-box">
+                    <strong>Energetická interpretace:</strong> Těleso získalo kinetickou energii ½mv². Tato energie se rovná práci vykonané silou: W = F·s = ma·s. Proto v² ∝ a·s!
+                </div>
+
+                <div class="summary-box">
+                    <strong>Odpověď:</strong>
+                    <ul>
+                        <li><strong>Konečná rychlost:</strong> v = 40 m·s⁻¹</li>
+                        <li><strong>V km/h:</strong> v = 144 km·h⁻¹</li>
+                        <li><strong>Použitá rovnice:</strong> v² = v₀² + 2as</li>
+                    </ul>
+                </div>
+
+                <details>
+                    <summary>🤔 Metakognitivní otázky</summary>
+                    <div>
+                        <ul>
+                            <li>Proč můžeme vypočítat rychlost bez známého času?</li>
+                            <li>V jakých praktických situacích neznáme čas, ale známe dráhu?</li>
+                            <li>Jak by se změnil výsledek, kdyby se těleso pohybovalo po nakloněné rovině?</li>
+                            <li>Jak souvisí tato úloha se zákonem zachování energie?</li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

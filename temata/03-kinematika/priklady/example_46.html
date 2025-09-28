@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>46. Fontána - vodní paprsek | Kinematika</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>46. Fontána - vodní paprsek</h1>
+            <p>Kinematika - řešený příklad</p>
+        </header>
+
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Projektování fontán v parcích a zahradách vyžaduje přesný výpočet trajektorie vodního paprsku. Inženýři musí určit, jak daleko dosáhne vodní paprsek při dané výšce a rychlosti trysky, aby fontána vypadala esteticky a nevystříkala návštěvníky.
+        </div>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <p>
+                Z fontány tryská voda <strong>vodorovně</strong> rychlostí <strong>8 m/s</strong> z výšky <strong>2,5 m</strong> nad zemí. Na jakou <strong>vzdálenost</strong> od fontány dopadne vodní paprsek na zem? Jak dlouho bude paprsek <strong>ve vzduchu</strong>?
+            </p>
+        </section>
+
+        <section id="vstupni-data">
+            <h3>Vstupní data</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Veličina</th>
+                        <th>Symbol</th>
+                        <th>Hodnota</th>
+                        <th>Jednotka</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Počáteční rychlost (vodorovná)</td>
+                        <td class="variable">v₀</td>
+                        <td class="value">8</td>
+                        <td class="unit">m/s</td>
+                    </tr>
+                    <tr>
+                        <td>Výška trysky nad zemí</td>
+                        <td class="variable">h</td>
+                        <td class="value">2,5</td>
+                        <td class="unit">m</td>
+                    </tr>
+                    <tr>
+                        <td>Gravitační zrychlení</td>
+                        <td class="variable">g</td>
+                        <td class="value">9,81</td>
+                        <td class="unit">m/s²</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+            <p>Vodorovný vrh je složený pohyb - v horizontálním směru rovnoměrný, ve vertikálním směru volný pád.</p>
+
+            <div class="calculation-step">
+                <h4>Krok 1: Analýza situace</h4>
+                <p>Identifikujeme typ pohybu a rozložíme jej na komponenty.</p>
+
+                <div class="equation-logic-box">
+                    <strong>Logika výběru:</strong>
+                    <p>Vodorovný vrh = kombinace dvou nezávislých pohybů:<br>
+                    🔸 <strong>Horizontálně:</strong> rovnoměrný pohyb (v₀ = 8 m/s, a = 0)<br>
+                    🔸 <strong>Vertikálně:</strong> volný pád (v₀ = 0, a = g = 9,81 m/s²)</p>
+                </div>
+
+                <div class="warning-box">
+                    <strong>Pozor na jednotky!</strong>
+                    <p>Všechny hodnoty jsou již v základních jednotkách SI. Počáteční rychlost je pouze horizontální - vertikální složka je nulová!</p>
+                </div>
+
+                <div class="note-box">
+                    <strong>Dané hodnoty:</strong>
+                    <ul>
+                        <li>Horizontální rychlost: v₀ₓ = 8 m/s</li>
+                        <li>Vertikální rychlost: v₀ᵧ = 0 m/s (vodorovný vrh)</li>
+                        <li>Výška: h = 2,5 m</li>
+                        <li>Hledáme: čas letu t a dosah x</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 2: Výpočet času letu</h4>
+                <p>Nejdříve musíme najít čas, po který je paprsek ve vzduchu.</p>
+
+                <div class="equation-logic-box">
+                    <strong>Proč tuto rovnici?</strong>
+                    <p>Čas letu závisí pouze na vertikálním pohybu. Používáme rovnici pro volný pád z výšky h s nulovou počáteční vertikální rychlostí.</p>
+                </div>
+
+                <div class="formula-box">
+                    <strong>Rovnice pro vertikální pohyb:</strong>
+                    $$h = v_{0y} \cdot t + \frac{1}{2} \cdot g \cdot t^2$$
+                    <p>Kde v₀ᵧ = 0 (vodorovný vrh), takže:</p>
+                    $$h = \frac{1}{2} \cdot g \cdot t^2 \Rightarrow t = \sqrt{\frac{2h}{g}}$$
+                </div>
+
+                <div class="analogy-box">
+                    <strong>Praktická analogie:</strong>
+                    <p>Představte si, že pustíte míček z okna - čas pádu závisí pouze na výšce, ne na tom, jak rychle míček hodíte horizontálně. Stejně tak u fontány!</p>
+                </div>
+
+                <div class="result-box">
+                    <strong>Výpočet času letu:</strong>
+                    $$t = \sqrt{\frac{2h}{g}} = \sqrt{\frac{2 \times 2{,}5}{9{,}81}} = \sqrt{\frac{5}{9{,}81}} = \sqrt{0{,}510} = 0{,}714 \text{ s}$$
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 3: Výpočet horizontálního dosahu</h4>
+                <p>Nyní můžeme vypočítat, jak daleko dosáhne vodní paprsek.</p>
+
+                <div class="tip-box">
+                    <strong>Užitečný tip:</strong>
+                    <p>V horizontálním směru se paprsek pohybuje rovnoměrně - žádné zrychlení! Gravitace působí pouze vertikálně.</p>
+                </div>
+
+                <div class="formula-box">
+                    <strong>Rovnice pro horizontální pohyb:</strong>
+                    $$x = v_{0x} \cdot t$$
+                    <p>Kde v₀ₓ = 8 m/s a t = 0,714 s</p>
+                </div>
+
+                <div class="result-box">
+                    <strong>Výpočet dosahu:</strong>
+                    $$x = v_{0x} \cdot t = 8 \times 0{,}714 = 5{,}71 \text{ m}$$
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 4: Kontrola a odpověď</h4>
+                <p>Ověříme rozumnost výsledků a formulujeme kompletní odpověď.</p>
+
+                <div class="summary-box">
+                    <strong>Odpověď:</strong>
+                    <ul>
+                        <li><strong>Čas letu:</strong> t = 0,71 s</li>
+                        <li><strong>Horizontální dosah:</strong> x = 5,7 m</li>
+                        <li>Vodní paprsek dopadne 5,7 metru od fontány po 0,71 sekundě letu.</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <strong>Kontrola rozumnosti:</strong>
+                    <p>✅ Čas 0,7 s je realistický pro pád z 2,5 m výšky<br>
+                    ✅ Dosah 5,7 m je rozumný pro fontánu s rychlostí 8 m/s<br>
+                    ✅ Výsledek odpovídá běžným fontánám v parcích</p>
+                </div>
+
+                <div class="alternative-method-box">
+                    <strong>Alternativní způsob:</strong>
+                    <p>Mohli bychom použít parametrické rovnice trajektorie:<br>
+                    x(t) = v₀ₓ·t a y(t) = h - ½gt², pak eliminovat t a získat y = f(x).</p>
+                </div>
+
+                <details>
+                    <summary>🤔 Metakognitivní otázky</summary>
+                    <div>
+                        <ul>
+                            <li>Jak by se změnil dosah, kdybychom zvýšili rychlost trysky na dvojnásobek?</li>
+                            <li>Proč nezávisí čas letu na horizontální rychlosti?</li>
+                            <li>Jak by ovlivnil výsledek odpor vzduchu v reálné situaci?</li>
+                            <li>Při jaké rychlosti by dosah fontány byl 10 metrů?</li>
+                            <li>Proč je trajektorie vodního paprsku parabola?</li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

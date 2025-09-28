@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Řešení</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>30. Elektron v elektrickém poli</h1>
+            <p>Kinematika - řešený příklad</p>
+        </header>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <p>
+                V elektrickém poli katodové trubice je elektron rovnoměrně urychlen z5 km·s⁻¹na20 000 km·s⁻¹na vzdálenosti10 mm. Jaké je jeho zrychlení?
+            </p>
+        </section>
+
+        <section id="vstupni-data">
+            <h3>Vstupní data</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Veličina</th>
+                        <th>Symbol</th>
+                        <th>Hodnota</th>
+                        <th>Jednotka</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Počáteční rychlost</td>
+                        <td class="variable">v₀</td>
+                        <td class="value">5</td>
+                        <td class="unit">km·s⁻¹</td>
+                    </tr>
+                    <tr>
+                        <td>Konečná rychlost</td>
+                        <td class="variable">v</td>
+                        <td class="value">20 000</td>
+                        <td class="unit">km·s⁻¹</td>
+                    </tr>
+                    <tr>
+                        <td>Dráha zrychlení</td>
+                        <td class="variable">s</td>
+                        <td class="value">10</td>
+                        <td class="unit">mm</td>
+                    </tr>
+                    <tr>
+                        <td>Hledané zrychlení</td>
+                        <td class="variable">a</td>
+                        <td class="value">?</td>
+                        <td class="unit">m·s⁻²</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+            <p>Výpočet rozdělíme do několika logických kroků podle typu kinematické úlohy.</p>
+            
+            <div class="calculation-step">
+                <h4>Krok 1: Analýza situace a převody jednotek</h4>
+                <p>Elektron je rovnoměrně zrychlován v elektrickém poli. Musíme převést všechny jednotky na základní SI.</p>
+
+                <div class="note-box">
+                    <strong>Převody jednotek:</strong>
+                    <p>$v_0 = 5$ km/s $= 5 \times 1000 = 5\,000$ m/s</p>
+                    <p>$v = 20\,000$ km/s $= 20\,000 \times 1000 = 20\,000\,000$ m/s</p>
+                    <p>$s = 10$ mm $= 0{,}01$ m</p>
+                </div>
+            </div>
+            
+            <div class="calculation-step">
+                <h4>Krok 2: Výběr fyzikální rovnice</h4>
+                <p>Pro rovnoměrně zrychlený pohyb bez známého času použijeme rovnici bez času:</p>
+
+                <div class="formula-box">
+                    <strong>📐 Kinematická rovnice bez času</strong>
+                    <p>$$v^2 = v_0^2 + 2as$$</p>
+                    <p>kde: v = konečná rychlost, v₀ = počáteční rychlost, a = zrychlení, s = dráha</p>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 3: Dosazení hodnot a výpočet</h4>
+                <p>Vyjádříme zrychlení z rovnice a dosadíme hodnoty:</p>
+
+                <div class="result-box">
+                    <strong>📐 Výpočet zrychlení částice</strong>
+                    <p>$$a = \frac{v^2 - v_0^2}{2s} = \frac{(20\,000\,000)^2 - (5\,000)^2}{2 \cdot 0{,}01}$$</p>
+
+                    <p>$$a = \frac{4 \times 10^{14} - 2{,}5 \times 10^7}{0{,}02}$$</p>
+
+                    <p>$$a = \frac{4 \times 10^{14}}{0{,}02} = 2 \times 10^{16} \text{ m·s}^{-2}$$</p>
+
+                    <p><strong>V exponálním zápisu:</strong> $a = 2{,}0 \times 10^{16}$ m·s⁻²</p>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 4: Kontrola výsledku a odpověď</h4>
+                <p>Ověříme rozumnost výsledku a formulujeme konečnou odpověď.</p>
+
+                <div class="result-box">
+                    <strong>💡 Kontrola a význam:</strong>
+                    <p><strong>Kontrola řádu:</strong> Zrychlení $2 \times 10^{16}$ m/s² je obrovské, ale reálné pro elektronové urychlení v elektrických polích.</p>
+
+                    <p><strong>Odpověď:</strong> Zrychlení elektronu je $2{,}0 \times 10^{16}$ m·s⁻².</p>
+
+                    <div class="warning-box" style="background: #fff3cd; border: 1px solid #ffeaa7; padding: 10px; margin: 10px 0; border-radius: 5px;">
+                        <strong>⚠️ Poznámka:</strong> Toto obrovské zrychlení (přibližně $2 \times 10^{15}$ krát větší než pád na Zemi) je typické pro elektroniku a urychlování částic.
+                    </div>
+
+                    <div class="practical-note" style="background: #e8f5e8; border: 1px solid #4caf50; padding: 10px; margin: 10px 0; border-radius: 5px;">
+                        <strong>🔍 Praktické využití:</strong> Katodové trubice byly základem CRT televizorů a monitorů. Podobné principy se dnes využívají v elektronových mikroskopech a urychlováčích částic.
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

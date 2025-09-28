@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Řešení</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>23. Řešení</h1>
+            <p>Kinematika - řešený příklad</p>
+        </header>
+
+        <!-- Motivační úvod -->
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Automobilové testy zrychlení (0-100 km/h) jsou klíčové pro bezpečnost a výkon. Řidiči potřebují vědět, jak rychle mohou zrychlit při předjíždění na silnici. Konstruktéři automobilů optimalizují motory pro ideální poměr výkonu a spotřeby během rozjezdu.
+        </div>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <p>
+                Automobil se rozjíždí z klidu a za <strong>20 sekund</strong> dosáhne rychlosti <strong>90 km·h⁻¹</strong>. Za předpokladu, že se pohybuje rovnoměrně zrychleně, vypočítejte:
+            </p>
+            <ul>
+                <li>Zrychlení automobilu</li>
+                <li>Dráhu, kterou urazí během této doby</li>
+                <li>Nakreslete graf závislosti rychlosti na čase</li>
+            </ul>
+        </section>
+
+        <section id="vstupni-data">
+            <h3>Vstupní data</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Veličina</th>
+                        <th>Symbol</th>
+                        <th>Hodnota</th>
+                        <th>Jednotka</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Doba zrychlování</td>
+                        <td class="variable">t</td>
+                        <td class="value">20</td>
+                        <td class="unit">sekund</td>
+                    </tr>
+                    <tr>
+                        <td>Konečná rychlost</td>
+                        <td class="variable">v</td>
+                        <td class="value">90</td>
+                        <td class="unit">km·h⁻¹</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+            <p>Výpočet rozdělíme do několika logických kroků podle typu kinematické úlohy.</p>
+            
+            <div class="calculation-step">
+                <h4>Krok 1: Analýza situace a převody jednotek</h4>
+
+                <div class="equation-logic-box">
+                    <strong>Logika výběru:</strong> "Z klidu" → v₀ = 0, "rovnoměrně zrychleně" → a = konstanta. Máme smíšené jednotky (km/h a s), musíme převést na jednotné SI jednotky pro správný výpočet.
+                </div>
+
+                <div class="warning-box">
+                    <strong>Pozor na jednotky!</strong> Rychlost je v km/h, čas v sekundách → musíme převést na m/s, jinak dostaneme špatný výsledek! Pravidlo: vždy používejte SI jednotky (m, s, m/s).
+                </div>
+
+                <div class="note-box">
+                    <strong>Dané hodnoty:</strong>
+                    <ul>
+                        <li>Počáteční rychlost: v₀ = 0 m·s⁻¹ (z klidu)</li>
+                        <li>Konečná rychlost: v = 90 km·h⁻¹ = ? m·s⁻¹</li>
+                        <li>Čas: t = 20 s</li>
+                        <li>Hledáme: zrychlení a, dráhu s</li>
+                    </ul>
+                </div>
+
+                <div class="result-box">
+                    <strong>📐 Převod jednotek rychlosti</strong>
+                    <p>$$v = 90 \text{ km·h}^{-1} \div 3{,}6 = 25 \text{ m·s}^{-1}$$</p>
+                    <p><strong>Kontrola:</strong> 90 km za 1 hodinu = 90 000 m za 3600 s = 25 m/s ✓</p>
+                </div>
+            </div>
+            
+            <div class="calculation-step">
+                <h4>Krok 2: Výběr kinematických rovnic</h4>
+
+                <div class="equation-logic-box">
+                    <strong>Proč tyto rovnice?</strong> Pro zrychlení: známe v₀, v, t → použijeme v = v₀ + a·t. Pro dráhu: známe v₀, a, t → použijeme s = v₀·t + ½·a·t² nebo s = ½·(v₀ + v)·t.
+                </div>
+
+                <div class="formula-box">
+                    <strong>Kinematické rovnice pro tento problém:</strong>
+                    <ul>
+                        <li><strong>Zrychlení:</strong> $a = \frac{v - v_0}{t}$</li>
+                        <li><strong>Dráha (metoda 1):</strong> $s = v_0 \cdot t + \frac{1}{2} \cdot a \cdot t^2$</li>
+                        <li><strong>Dráha (metoda 2):</strong> $s = \frac{v_0 + v}{2} \cdot t$</li>
+                    </ul>
+                </div>
+
+                <div class="analogy-box">
+                    <strong>Praktická analogie:</strong> Představte si test automobilu na zkušební dráze. Řidič stiskne plyn na maximum (konstantní síla = konstantní zrychlení) a měří, za jak dlouho dosáhne 90 km/h. Takový test dělají všichni výrobci aut!
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 3: Dosazení hodnot a výpočet</h4>
+                <p>Dosadíme známé hodnoty do vybrané rovnice a vypočítáme výsledek.</p>
+                
+                <div class="result-box">
+                    <strong>📐 Výpočet zrychlení</strong>
+                    <p>$$a = \frac{v - v_0}{t} = \frac{25 - 0}{20} = \frac{25}{20} = 1{,}25 \text{ m·s}^{-2}$$</p>
+                </div>
+
+                <div class="tip-box">
+                    <strong>💡 Interpretace zrychlení:</strong> 1,25 m·s⁻² znamená, že rychlost se každou sekundu zvýší o 1,25 m/s. To je mírné zrychlení - auto by dosáhlo 100 km/h za 22,2 sekundy.
+                </div>
+
+                <div class="result-box">
+                    <strong>📐 Dráha - metoda 1 (z kinematické rovnice)</strong>
+                    <p>$$s = v_0 \cdot t + \frac{1}{2} \cdot a \cdot t^2 = 0 \cdot 20 + \frac{1}{2} \cdot 1{,}25 \cdot 20^2$$</p>
+                    <p>$$s = \frac{1}{2} \cdot 1{,}25 \cdot 400 = 250 \text{ m}$$</p>
+                </div>
+
+                <div class="result-box">
+                    <strong>📐 Dráha - metoda 2 (průměrná rychlost)</strong>
+                    <p>$$s = \frac{v_0 + v}{2} \cdot t = \frac{0 + 25}{2} \cdot 20 = 12{,}5 \cdot 20 = 250 \text{ m}$$</p>
+                    <p><strong>Kontrola:</strong> Obě metody dávají stejný výsledek ✓</p>
+                </div>
+
+                <details>
+                    <summary><strong>📊 Graf v(t)</strong></summary>
+                    <div class="info-box">
+                        <p><strong>Graf rychlosti v čase:</strong> Lineární rostoucí funkce</p>
+                        <ul>
+                            <li>Začátek: [0 s, 0 m/s]</li>
+                            <li>Konec: [20 s, 25 m/s]</li>
+                            <li>Sklon přímky = zrychlení = 1,25 m·s⁻²</li>
+                            <li>Plocha pod grafem = dráha = 250 m</li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 4: Kontrola a interpretace výsledků</h4>
+
+                <div class="info-box">
+                    <strong>Kontrola rozumnosti:</strong> Zrychlení 1,25 m·s⁻² je typické pro běžný osobní automobil. Dráha 250 m odpovídá průměrné rychlosti 12,5 m/s (45 km/h) za 20 s, což dává smysl pro rozjezd z 0 na 90 km/h.
+                </div>
+
+                <div class="alternative-method-box">
+                    <strong>Alternativní kontrola pomocí energie:</strong>
+                    <p>Při konstantním zrychlení je průměrná rychlost $v_{prům} = \frac{v_0 + v}{2} = 12{,}5$ m/s</p>
+                    <p>Ověření: $s = v_{prům} \cdot t = 12{,}5 \cdot 20 = 250$ m ✓</p>
+                </div>
+
+                <div class="interpretation-box">
+                    <strong>Praktický význam:</strong> Automobil během rozjezdu na 90 km/h urazí čtvrt kilometru. To je důležité vědět při předjíždění - potřebujete dostatečnou volnou vzdálenost!
+                </div>
+
+                <div class="summary-box">
+                    <strong>Odpověď:</strong>
+                    <ul>
+                        <li><strong>Zrychlení:</strong> a = 1,25 m·s⁻²</li>
+                        <li><strong>Dráha:</strong> s = 250 m</li>
+                        <li><strong>Graf v(t):</strong> Lineární funkce od [0,0] do [20s, 25m/s]</li>
+                    </ul>
+                </div>
+
+                <details>
+                    <summary>🤔 Metakognitivní otázky</summary>
+                    <div>
+                        <ul>
+                            <li>Proč je důležité převádět jednotky před výpočtem?</li>
+                            <li>Jak by se změnilo zrychlení, kdyby auto dosáhlo stejné rychlosti za 10 sekund?</li>
+                            <li>V jakých situacích by řidič potřeboval znát přesnou dráhu rozjezdu?</li>
+                            <li>Jak byste porovnali výkon různých automobilů na základě zrychlení?</li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

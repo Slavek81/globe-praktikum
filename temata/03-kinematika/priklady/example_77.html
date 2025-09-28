@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Řešení</title>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>77. Horáček vs Pažout - sluchátko</h1>
+            <p>Kinematika - řešený příklad</p>
+        </header>
+
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Tento vztah mezi rychlostí a výškou je zásadní pro sportovní výkony - skok vysoký, skok daleký, basketbal, nebo třeba parkour. Malé zvýšení rychlosti odrazů má dramatický vliv na dosažené výšky. Trenéři využívají tento kvadratický vztah k optimalizaci tréninků a technik.
+        </div>
+
+        <div class="problem-statement">
+            <h2>Zadání</h2>
+            <p>Horáček a Pažout se hádají, kdo vyhodí výše ukradené utržené sluchátko. Pokud víme, že Horáček vyhodí sluchátko o <strong>50%</strong> větší rychlostí, kolikrát výše sluchátko vystoupá?</p>
+        </div>
+
+        <div class="solution">
+            <h2>Řešení</h2>
+
+            <div class="calculation-step">
+                <h3>1. Analýza problému a zadaných hodnot</h3>
+
+                <div class="equation-logic-box">
+                    <strong>Logika výběru:</strong> Porovnáváme dva svislé vrhy se různými počátečními rychlostmi. Klíčové je rozpoznat, že výška závisí na druhé mocnině rychlosti, takže malé změny rychlosti vedou k velkým změnám výšky.
+                </div>
+
+                <div class="note-box">
+                    <strong>Zadané hodnoty:</strong>
+                    <ul>
+                        <li>Pažoutova rychlost: $v_P$ (referenční hodnota)</li>
+                        <li>Horáčkova rychlost: $v_H = 1{,}5 \times v_P$ (o 50% větší)</li>
+                        <li>Hledáme: poměr výšek $\frac{h_H}{h_P}$ = ?</li>
+                    </ul>
+                </div>
+
+                <div class="warning-box">
+                    <strong>Pozor na procentuální nárůst!</strong> 50% větší rychlost znamená 1,5× původní rychlost, ne 0,5× původní rychlost! Čili 100% + 50% = 150% = 1,5× původní hodnoty.
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h3>2. Fyzikální princip - energetický přístup</h3>
+
+                <div class="equation-logic-box">
+                    <strong>Proč energetický přístup?</strong> Výška výstupu při svislém vrhu závisí na tom, kolik kinetické energie se přemění na potenciální energii. Zákon zachování energie nám dává přímý vztah mezi rychlostí a výškou.
+                </div>
+
+                <div class="analogy-box">
+                    <strong>Praktická analogie:</strong> Je to jako natahování pružiny - čím víc energie do ní vložíš (rychlejší hod), tím víc se může "roztáhnout" (vyšší výška). Energie roste s druhou mocninou rychlosti!
+                </div>
+
+                <div class="formula-box">
+                    <strong>Zákon zachování energie:</strong>
+                    $$E_k = E_p$$
+                    $$\frac{1}{2}mv_0^2 = mgh$$
+                    $$h = \frac{v_0^2}{2g}$$
+
+                    <p><strong>Klíčové pozorování:</strong> Výška je úměrná druhé mocnině počáteční rychlosti!</p>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h3>3. Výpočet výšky pro oba házející</h3>
+
+                <div class="tip-box">
+                    <strong>Užitečný tip:</strong> Používej obecné značení (písmena místo čísel) dokud není nutné dosazovat konkrétní hodnoty. Lépe tak uvidíš fyzikální závislosti.
+                </div>
+
+                <div class="result-box">
+                    <p><strong>Pažoutova výška:</strong></p>
+                    $$h_P = \frac{v_P^2}{2g}$$
+
+                    <p><strong>Horáčkova výška:</strong></p>
+                    $$h_H = \frac{v_H^2}{2g} = \frac{(1{,}5 v_P)^2}{2g} = \frac{1{,}5^2 \cdot v_P^2}{2g} = \frac{2{,}25 \cdot v_P^2}{2g}$$
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h3>4. Výpočet poměru výšek</h3>
+
+                <div class="result-box">
+                    <p>Najdeme, kolikrát výše letí Horáčkovo sluchátko:</p>
+                    $$\frac{h_H}{h_P} = \frac{\frac{2{,}25 \cdot v_P^2}{2g}}{\frac{v_P^2}{2g}} = \frac{2{,}25 \cdot v_P^2}{v_P^2} = 2{,}25$$
+
+                    <p><strong>Odpověď:</strong> Horáčkovo sluchátko vystoupá <strong>2,25× výše</strong> než Pažoutovo!</p>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h3>5. Fyzikální interpretace a obecný vztah</h3>
+
+                <div class="summary-box">
+                    <strong>Obecný princip:</strong> Při zvýšení rychlosti faktorem $k$ se výška zvýší faktorem $k^2$.
+                    $$\text{Rychlost } \times k \quad \Rightarrow \quad \text{Výška } \times k^2$$
+                </div>
+
+                <div class="info-box">
+                    <strong>Praktické důsledky:</strong>
+                    <ul>
+                        <li>50% rychleji = 125% výše (2,25× původní výšky)</li>
+                        <li>2× rychleji = 4× výše</li>
+                        <li>10% rychleji = 21% výše</li>
+                        <li>Malý nárůst rychlosti → dramaticky větší výška</li>
+                    </ul>
+                </div>
+
+                <div class="warning-box">
+                    <strong>Sportovní aplikace:</strong> Proto je pro skokany nebo basketbalisty tak důležité pracovat na síle nohou - malé zlepšení rychlosti odrazů se promítne do velkého zlepšení výšky skoku!
+                </div>
+
+                <div class="alternative-method-box">
+                    <strong>Kontrola rozměrů:</strong> $[h] = \frac{[m \cdot s^{-1}]^2}{[m \cdot s^{-2}]} = \frac{m^2 \cdot s^{-2}}{m \cdot s^{-2}} = m$ ✓
+                </div>
+            </div>
+        </div>
+
+        <details>
+            <summary>🤔 Metakognitivní otázky</summary>
+            <div>
+                <ul>
+                    <li>Proč je závislost výšky na rychlosti kvadratická, ne lineární? Co to říká o povaze energie?</li>
+                    <li>Kolikrát výše by letělo sluchátko při dvojnásobné rychlosti? A při trojnásobné?</li>
+                    <li>Jak by se změnil výsledek, kdyby házeli z různých výšek (např. z balkonu)? Platilo by stále 2,25×?</li>
+                    <li>Kde se tento kvadratický vztah ještě objevuje ve fyzice? (Nápověda: brzdná dráha auta)</li>
+                    <li>Jaký má tento poznatek význam pro sportovní výkony? Proč je důležité trénovat sílu nohou?</li>
+                </ul>
+            </div>
+        </details>
+    </main>
+</body>
+</html>

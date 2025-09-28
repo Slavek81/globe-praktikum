@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Řešení</title>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>65. Graf rychlosti vlaku</h1>
+            <p>Kinematika - řešený příklad</p>
+        </header>
+
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Analýza grafů rychlosti je klíčová při řízení vlaků, aut i letadel. Strojvůdci používají podobné grafy pro optimální řízení rychlosti, inženýři je analyzují při navrhování vozidel a vyšetřovatelé při rekonstrukci nehod.
+        </div>
+
+        <section>
+            <h2>📋 Zadání</h2>
+            <div class="zadani">
+                <p>Určete zrychlení vlaku v jednotlivých úsecích na základě grafu v(t). <em>[kredit: Fyzikální olympiáda]</em></p>
+                <p><strong>Graf ukazuje rychlost vlaku v čase s těmito charakteristickými body:</strong></p>
+                <ul>
+                    <li>0 s: 0 m·s⁻¹ → 10 s: 7 m·s⁻¹</li>
+                    <li>10 s: 7 m·s⁻¹ → 25 s: 13 m·s⁻¹</li>
+                    <li>25 s: 13 m·s⁻¹ → 50 s: 17 m·s⁻¹</li>
+                    <li>50 s: 17 m·s⁻¹ → 60 s: 17 m·s⁻¹</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2>💭 Krok 1: Analýza situace</h2>
+
+            <div class="equation-logic-box">
+                <strong>Logika výběru:</strong> Graf v(t) je složen z lineárních úseků. Sklon každého úseku představuje zrychlení v daném intervalu. Musíme pro každý úsek vypočítat $a = \frac{\Delta v}{\Delta t}$.
+            </div>
+
+            <div class="warning-box">
+                <strong>Pozor na čtení grafu!</strong> Zrychlení = sklon přímky v grafu v(t). Strmější stoupání = větší zrychlení, vodorovná přímka = nulové zrychlení.
+            </div>
+
+            <div class="note-box">
+                <strong>Identifikované úseky:</strong>
+                <ul>
+                    <li><strong>Úsek 1:</strong> t = 0-10 s, v = 0-7 m·s⁻¹</li>
+                    <li><strong>Úsek 2:</strong> t = 10-25 s, v = 7-13 m·s⁻¹</li>
+                    <li><strong>Úsek 3:</strong> t = 25-50 s, v = 13-17 m·s⁻¹</li>
+                    <li><strong>Úsek 4:</strong> t = 50-60 s, v = 17-17 m·s⁻¹ (konstantní)</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2>⚙️ Krok 2: Výběr rovnice</h2>
+
+            <div class="equation-logic-box">
+                <strong>Proč tuto rovnici?</strong> Zrychlení je definováno jako rychlost změny rychlosti. V grafu v(t) je zrychlení rovno sklonu přímky - čím strmější úsek, tím větší zrychlení.
+            </div>
+
+            <div class="formula-box">
+                <p><strong>Zrychlení ze sklonu grafu:</strong></p>
+                $$a = \frac{\Delta v}{\Delta t} = \frac{v_2 - v_1}{t_2 - t_1}$$
+                <p><strong>Kde:</strong></p>
+                <ul>
+                    <li>$\Delta v$ = změna rychlosti v daném úseku</li>
+                    <li>$\Delta t$ = doba trvání úseku</li>
+                </ul>
+            </div>
+
+            <div class="analogy-box">
+                <strong>Praktická analogie:</strong> Představte si graf jako profil kopce - čím strmější svah, tím více "zrychlujete" při stoupání. Vodorovný úsek odpovídá rovince.
+            </div>
+        </section>
+
+        <section>
+            <h2>🔢 Krok 3: Výpočet</h2>
+
+            <h3>Úsek 1: Rozjezd vlaku (0-10 s)</h3>
+
+            <div class="calculation-step">
+                <p><strong>Změna rychlosti a času:</strong></p>
+                $$\Delta v_1 = 7 - 0 = 7 \text{ m·s⁻¹}$$
+                $$\Delta t_1 = 10 - 0 = 10 \text{ s}$$
+
+                <p><strong>Zrychlení úseku 1:</strong></p>
+                $$a_1 = \frac{\Delta v_1}{\Delta t_1} = \frac{7}{10} = 0{,}7 \text{ m·s⁻²}$$
+
+                <div class="result-box">
+                    <strong>Výsledek:</strong> $a_1 = 0{,}7$ m·s⁻² (nejrychlejší zrychlování)
+                </div>
+            </div>
+
+            <h3>Úsek 2: Střední zrychlování (10-25 s)</h3>
+
+            <div class="calculation-step">
+                <p><strong>Změna rychlosti a času:</strong></p>
+                $$\Delta v_2 = 13 - 7 = 6 \text{ m·s⁻¹}$$
+                $$\Delta t_2 = 25 - 10 = 15 \text{ s}$$
+
+                <p><strong>Zrychlení úseku 2:</strong></p>
+                $$a_2 = \frac{\Delta v_2}{\Delta t_2} = \frac{6}{15} = 0{,}4 \text{ m·s⁻²}$$
+
+                <div class="result-box">
+                    <strong>Výsledek:</strong> $a_2 = 0{,}4$ m·s⁻² (střední zrychlování)
+                </div>
+            </div>
+
+            <div class="warning-box">
+                <strong>Častá chyba:</strong> Zapomenout odečíst počáteční hodnoty! $\Delta t = t_2 - t_1$, ne jen $t_2$.
+            </div>
+
+            <h3>Úsek 3: Pomalé dozrychlování (25-50 s)</h3>
+
+            <div class="calculation-step">
+                <p><strong>Změna rychlosti a času:</strong></p>
+                $$\Delta v_3 = 17 - 13 = 4 \text{ m·s⁻¹}$$
+                $$\Delta t_3 = 50 - 25 = 25 \text{ s}$$
+
+                <p><strong>Zrychlení úseku 3:</strong></p>
+                $$a_3 = \frac{\Delta v_3}{\Delta t_3} = \frac{4}{25} = 0{,}16 \text{ m·s⁻²}$$
+
+                <div class="result-box">
+                    <strong>Výsledek:</strong> $a_3 = 0{,}16$ m·s⁻² (nejpomalejší zrychlování)
+                </div>
+            </div>
+
+            <h3>Úsek 4: Konstantní rychlost (50-60 s)</h3>
+
+            <div class="calculation-step">
+                <p><strong>Změna rychlosti a času:</strong></p>
+                $$\Delta v_4 = 17 - 17 = 0 \text{ m·s⁻¹}$$
+                $$\Delta t_4 = 60 - 50 = 10 \text{ s}$$
+
+                <p><strong>Zrychlení úseku 4:</strong></p>
+                $$a_4 = \frac{\Delta v_4}{\Delta t_4} = \frac{0}{10} = 0 \text{ m·s⁻²}$$
+
+                <div class="result-box">
+                    <strong>Výsledek:</strong> $a_4 = 0$ m·s⁻² (rovnoměrný pohyb)
+                </div>
+            </div>
+
+            <div class="tip-box">
+                <strong>Tip:</strong> Nulové zrychlení = vodorovná přímka v grafu = rovnoměrný pohyb konstantní rychlostí
+            </div>
+        </section>
+
+        <section>
+            <h2>✅ Krok 4: Kontrola a odpověď</h2>
+
+            <div class="summary-box">
+                <strong>Odpověď - Zrychlení vlaku v jednotlivých úsecích:</strong>
+                <ul>
+                    <li><strong>Úsek 1 (0-10 s):</strong> $a_1 = 0{,}7$ m·s⁻²</li>
+                    <li><strong>Úsek 2 (10-25 s):</strong> $a_2 = 0{,}4$ m·s⁻²</li>
+                    <li><strong>Úsek 3 (25-50 s):</strong> $a_3 = 0{,}16$ m·s⁻²</li>
+                    <li><strong>Úsek 4 (50-60 s):</strong> $a_4 = 0$ m·s⁻²</li>
+                </ul>
+            </div>
+
+            <div class="info-box">
+                <strong>Kontrola rozumnosti:</strong> Vlak postupně snižuje zrychlení až k nule - typické chování při rozjezdu a dosahování cestovní rychlosti. Největší zrychlení na začátku odpovídá praxi.
+            </div>
+
+            <div class="alternative-method-box">
+                <strong>Alternativní způsob:</strong> Můžeme graf nakreslit a změřit sklony jednotlivých úseků pomocí tečen. Digitálně lze využít derivaci po částech lineární funkce.
+            </div>
+
+            <details>
+                <summary>🤔 Metakognitivní otázky</summary>
+                <div>
+                    <ul>
+                        <li>Proč vlak nejvíce zrychluje na začátku a postupně zpomaluje zrychlování?</li>
+                        <li>Jak by vypadal graf, kdyby vlak na konci začal brzdit?</li>
+                        <li>Co říká největší sklon v grafu o výkonu vlaku?</li>
+                        <li>Jak by vypadal odpovídající graf dráhy s(t) pro tento pohyb?</li>
+                        <li>Jaký je fyzikální důvod postupného snižování zrychlení?</li>
+                    </ul>
+                </div>
+            </details>
+        </section>
+    </main>
+</body>
+</html>

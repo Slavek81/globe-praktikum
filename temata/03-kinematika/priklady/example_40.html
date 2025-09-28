@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Řešení</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>40. Řešení</h1>
+            <p>Kinematika - řešený příklad</p>
+        </header>
+
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Vinylové desky, DJ mixéry, průmyslové centrifugy a karuvely v zábavních parcích - rotační pohyb je základem moderní techniky a zábavy! DJ mixéři upravují rychlost gramofonů pro mixování, laboratorníci centrifugují vzorky krve, inženýři navrhují ventilátory a turbíny. Od hudební produkce po větrné elektrárny - rotace pohání svět!
+        </div>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <p>
+                Gramofon se za minutu otočí <strong>33 krát</strong>. Vypočítejte:
+                <br>a) <strong>Perioda a frekvence</strong>
+                <br>b) <strong>Úhlová a obvodová rychlost</strong> (pro r = <strong>0,12 m</strong>)
+            </p>
+        </section>
+
+        <section id="vstupni-data">
+            <h3>Vstupní data</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Veličina</th>
+                        <th>Symbol</th>
+                        <th>Hodnota</th>
+                        <th>Jednotka</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Počet otáček za minutu</td>
+                        <td class="variable">n</td>
+                        <td class="value">33</td>
+                        <td class="unit">otáček/min</td>
+                    </tr>
+                    <tr>
+                        <td>Poloměr desky</td>
+                        <td class="variable">r</td>
+                        <td class="value">0,12</td>
+                        <td class="unit">m</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+            <p>Výpočet rozdělíme do několika logických kroků podle typu kinematické úlohy.</p>
+            
+            <div class="calculation-step">
+                <h4>Krok 1: Analýza situace a převody jednotek</h4>
+                <p>Analyzujeme typ pohybu a identifikujeme klíčové veličiny rotačního pohybu.</p>
+
+                <div class="equation-logic-box">
+                    <strong>Logika výběru:</strong>
+                    <p>Jde o <strong>rovnoměrný rotační pohyb</strong> - gramofon se otáčí konstantní rychlostí. Musíme rozlišovat mezi úhlovou rychlostí (rad/s) a obvodovou rychlostí (m/s).</p>
+                </div>
+
+                <div class="warning-box">
+                    <strong>Pozor na jednotky!</strong>
+                    <p>33 otáček za <strong>MINUTU</strong> → musíme převést na sekundy! RPM (revolutions per minute) ≠ Hz (hertz = otáčky za sekundu)</p>
+                </div>
+
+                <div class="note-box">
+                    <strong>Dané hodnoty:</strong>
+                    <ul>
+                        <li>Počet otáček: n = 33 za minutu (33 RPM)</li>
+                        <li>Poloměr desky: r = 0,12 m</li>
+                        <li>Hledáme: frekvenci f, periodu T, úhlovou rychlost ω, obvodovou rychlost v</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="calculation-step">
+                <h4>Krok 2: Výběr fyzikálních rovnic pro rotační pohyb</h4>
+                <p>Pro rotační pohyb používáme speciální sadu rovnic odlišných od lineárního pohybu.</p>
+
+                <div class="equation-logic-box">
+                    <strong>Proč tyto rovnice?</strong>
+                    <p>Rotační pohyb vyžaduje úhlové veličiny. Frekvence udává počet otáček za sekundu, perioda čas jedné otáčky, úhlová rychlost radiány za sekundu.</p>
+                </div>
+
+                <div class="formula-box">
+                    <strong>Základní rovnice rotačního pohybu:</strong>
+                    <ul>
+                        <li>Frekvence: $f = \frac{n}{t}$ (Hz)</li>
+                        <li>Perioda: $T = \frac{1}{f}$ (s)</li>
+                        <li>Úhlová rychlost: $\omega = 2\pi f = \frac{2\pi}{T}$ (rad/s)</li>
+                        <li>Obvodová rychlost: $v = \omega r$ (m/s)</li>
+                    </ul>
+                </div>
+
+                <div class="analogy-box">
+                    <strong>Praktická analogie:</strong>
+                    <p>Jako když sledujete sekundovou ručičku hodin - udělá 1 otáčku za 60 s (T = 60 s), takže f = 1/60 Hz. Gramofon je rychlejší: 33 otáček za 60 s!</p>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 3: Výpočet frekvence</h4>
+                <p>Frekvence = počet otáček za sekundu:</p>
+
+                <div class="result-box">
+                    <strong>Frekvence:</strong>
+                    <div class="rovnice-nadpis">📐 Frekvence</div>
+                    <div class="rovnice-text">$$f = \frac{n}{t} = \frac{33\,\text{otáček}}{60\,\text{s}} = 0{,}55\,\text{Hz}$$</div>
+                    <p>Gramofon udělá 0,55 otáčky za sekundu.</p>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 4: Výpočet periody</h4>
+                <p>Perioda = doba jedné otáčky (převrácená hodnota frekvence):</p>
+
+                <div class="result-box">
+                    <strong>Perioda:</strong>
+                    <div class="rovnice-nadpis">📐 Perioda</div>
+                    <div class="rovnice-text">$$T = \frac{1}{f} = \frac{1}{0{,}55} = 1{,}82\,\text{s}$$</div>
+                    <p><strong>Kontrola:</strong> 60 s ÷ 1,82 s = 33 otáček ✓</p>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 5: Výpočet úhlové rychlosti</h4>
+                <p>Úhlová rychlost = úhel otočený za sekundu:</p>
+
+                <div class="result-box">
+                    <strong>Úhlová rychlost:</strong>
+                    <div class="rovnice-nadpis">📐 Úhlová rychlost</div>
+                    <div class="rovnice-text">$$\omega = 2\pi f = 2\pi \times 0{,}55 = 3{,}46\,\text{rad·s}^{-1}$$</div>
+                    <p>Alternativní výpočet: ω = 2π/T = 2π/1,82 = 3,46 rad·s⁻¹ ✓</p>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 6: Výpočet obvodové rychlosti</h4>
+                <p>Obvodová rychlost vyjadřuje, jak rychle se pohybuje bod na okraji desky:</p>
+
+                <div class="result-box">
+                    <strong>Obvodová rychlost:</strong>
+                    <div class="rovnice-nadpis">📐 Obvodová rychlost</div>
+                    <div class="rovnice-text">$$v = \omega r = 3{,}46 \times 0{,}12 = 0{,}415\,\text{m·s}^{-1}$$</div>
+                    <p><strong>Převod:</strong> v = 0,415 × 3,6 = 1,49 km·h⁻¹ (rychlost pomalé chůze)</p>
+                </div>
+
+                <div class="tip-box">
+                    <strong>Užitečný tip:</strong>
+                    <p>1 otáčka = 2π radiánů = 360°. Proto ω = 2πf. Radiány jsou "přirozenější" jednotkou pro rotaci!</p>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h4>Krok 7: Kontrola výsledku a odpověď</h4>
+                <p>Ověříme rozumnost výsledku a formulujeme kompletní odpověď.</p>
+
+                <div class="summary-box">
+                    <strong>Odpověď:</strong>
+                    <ul>
+                        <li><strong>a) Frekvence:</strong> 0,55 Hz, <strong>Perioda:</strong> 1,82 s</li>
+                        <li><strong>b) Úhlová rychlost:</strong> 3,46 rad·s⁻¹, <strong>Obvodová rychlost:</strong> 0,415 m·s⁻¹</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <strong>Kontrola rozumnosti:</strong>
+                    <p>33⅓ RPM je hudební standard pro LP vinylové desky! Obvodová rychlost 1,5 km/h odpovídá pomalé chůzi - logické pro gramofon.</p>
+                </div>
+
+                <div class="alternative-method-box">
+                    <strong>Alternativní způsob:</strong>
+                    <p>Můžeme počítat přímo: ω = 2πn/60 = 2π×33/60 = 3,46 rad/s, pak v = ωr = 0,415 m/s</p>
+                </div>
+
+                <details>
+                    <summary>🤔 Metakognitivní otázky</summary>
+                    <div>
+                        <ul>
+                            <li>Proč je důležité rozlišovat mezi úhlovou a obvodovou rychlostí?</li>
+                            <li>Jak by se změnily hodnoty pro bod blíže ke středu desky?</li>
+                            <li>Proč má CD proměnnou rychlost otáčení, ale gramofon konstantní?</li>
+                            <li>Jak souvisí perioda a frekvence v reálných aplikacích?</li>
+                            <li>Proč byla zvolena rychlost 33⅓ RPM pro hudební desky?</li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

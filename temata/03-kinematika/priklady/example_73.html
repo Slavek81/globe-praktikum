@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Řešení</title>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>73. Graf rychlosti pana Joudy</h1>
+            <p>Kinematika - řešený příklad</p>
+        </header>
+
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Grafy rychlosti jsou všude kolem nás! Od analýzy sportovních výkonů přes diagnostiku automobilů až po výzkum chůze. Pochopení grafů v-t ti otevře cestu k porozumění pohybu nejen ve fyzice, ale i v medicíně, sportu a inženýrství. Navíc je to klíčová dovednost pro maturitu!
+        </div>
+
+        <div class="problem-statement">
+            <h2>Zadání</h2>
+            <p>Výborný fotbalový útočník pan Jouda se při průniku do vápna pohyboval podle grafu rychlosti v(t) na obrázku. Určete co nejjednodušeji <strong>celkovou uraženou dráhu</strong> a <strong>zrychlení na jednotlivých úsecích</strong>.</p>
+
+            <div class="note-box">
+                <strong>Graf rychlosti v(t) pana Joudy:</strong>
+                <p>Představ si graf s těmito hodnotami:</p>
+                <ul>
+                    <li>0-2 s: rychlost roste z 0 na 6 m·s⁻¹ (lineárně)</li>
+                    <li>2-4 s: konstant rychlost 6 m·s⁻¹</li>
+                    <li>4-5 s: rychlost roste z 6 na 10 m·s⁻¹ (lineárně)</li>
+                    <li>5-7 s: rychlost klesá z 10 na 0 m·s⁻¹ (lineárně)</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="solution">
+            <h2>Řešení</h2>
+
+            <div class="calculation-step">
+                <h3>1. Analýza grafu a jeho interpretace</h3>
+
+                <div class="equation-logic-box">
+                    <strong>Logika čtení grafů:</strong> Graf v(t) je mapa pohybu - ukazuje rychlost v každém okamžiku. Ze sklonu čteme zrychlení, z plochy pod grafem čteme uraženou dráhu. Je to jako GPS záznam běhu!
+                </div>
+
+                <div class="note-box">
+                    <strong>Z grafu vyčteme:</strong>
+                    <ul>
+                        <li>Čtyři různé fáze pohybu (úseky s různým zrychlením)</li>
+                        <li>Maximální rychlost: 10 m·s⁻¹ (v čase 5 s)</li>
+                        <li>Časové intervaly jednotlivých fází</li>
+                        <li>Celkový čas průniku: 7 sekund</li>
+                    </ul>
+                </div>
+
+                <div class="warning-box">
+                    <strong>Pozor na časté chyby!</strong> Plocha pod grafem v(t) představuje dráhu, ne rychlost! Sklon grafu v(t) představuje zrychlení, ne rychlost.
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h3>2. Fyzikální princip - dráha z grafu v(t)</h3>
+
+                <div class="equation-logic-box">
+                    <strong>Proč plocha = dráha?</strong> Dráha je integrál rychlosti podle času. Matematicky: $s = \int v(t) \, dt$. Graficky to znamená, že musíme sečíst všechny plochy pod křivkou.
+                </div>
+
+                <div class="analogy-box">
+                    <strong>Praktická analogie:</strong> Je to jako počítání vody ze sprchy - čím déle (čas) a čím silněji (rychlost) teče voda, tím více jí bude celkem. Plocha obdélníku = šířka × výška = čas × rychlost = dráha.
+                </div>
+
+                <div class="formula-box">
+                    $$s = \int v(t) \, dt = \text{plocha pod křivkou v grafu } v(t)$$
+
+                    <p>Prakticky: sečti plochy všech geometrických útvarů pod křivkou</p>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h3>3. Výpočet celkové dráhy</h3>
+
+                <div class="tip-box">
+                    <strong>Užitečný tip:</strong> Rozděl graf na jednoduché geometrické útvary (trojúhelníky, obdélníky, lichoběžníky) a spočítej jejich plochy podle základních vzorců.
+                </div>
+
+                <div class="result-box">
+                    <p><strong>Úsek 1 (0-2 s):</strong> Trojúhelník</p>
+                    $$S_1 = \frac{1}{2} \times \text{základ} \times \text{výška} = \frac{1}{2} \times 2 \times 6 = 6 \text{ m}$$
+
+                    <p><strong>Úsek 2 (2-4 s):</strong> Obdélník</p>
+                    $$S_2 = \text{šířka} \times \text{výška} = 2 \times 6 = 12 \text{ m}$$
+
+                    <p><strong>Úsek 3 (4-5 s):</strong> Lichoběžník</p>
+                    $$S_3 = \frac{1}{2} \times \text{součet základen} \times \text{výška} = \frac{1}{2} \times (6 + 10) \times 1 = 8 \text{ m}$$
+
+                    <p><strong>Úsek 4 (5-7 s):</strong> Trojúhelník</p>
+                    $$S_4 = \frac{1}{2} \times 2 \times 10 = 10 \text{ m}$$
+                </div>
+
+                <div class="formula-box">
+                    $$s_{\text{celková}} = S_1 + S_2 + S_3 + S_4 = 6 + 12 + 8 + 10 = 36 \text{ m}$$
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h3>4. Výpočet zrychlení na jednotlivých úsecích</h3>
+
+                <div class="equation-logic-box">
+                    <strong>Proč sklon = zrychlení?</strong> Zrychlení je derivace rychlosti podle času: $a = \frac{dv}{dt}$. Graficky to znamená sklon tečny ke křivce. Pro přímky je to jednoduše $\frac{\Delta v}{\Delta t}$.
+                </div>
+
+                <div class="result-box">
+                    <p><strong>Úsek 1 (0-2 s): Rozběh</strong></p>
+                    $$a_1 = \frac{\Delta v}{\Delta t} = \frac{6-0}{2-0} = 3 \text{ m·s⁻²}$$
+
+                    <p><strong>Úsek 2 (2-4 s): Konstantní rychlost</strong></p>
+                    $$a_2 = \frac{\Delta v}{\Delta t} = \frac{6-6}{4-2} = 0 \text{ m·s⁻²}$$
+
+                    <p><strong>Úsek 3 (4-5 s): Finální spurt</strong></p>
+                    $$a_3 = \frac{\Delta v}{\Delta t} = \frac{10-6}{5-4} = 4 \text{ m·s⁻²}$$
+
+                    <p><strong>Úsek 4 (5-7 s): Zastavení</strong></p>
+                    $$a_4 = \frac{\Delta v}{\Delta t} = \frac{0-10}{7-5} = -5 \text{ m·s⁻²}$$
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h3>5. Kontrola a odpověď</h3>
+
+                <div class="summary-box">
+                    <strong>Celková uražená dráha:</strong> $s = 36$ m
+
+                    <strong>Zrychlení na úsecích:</strong>
+                    <ul>
+                        <li>1. úsek (0-2 s): $a_1 = 3$ m·s⁻² - rozběh</li>
+                        <li>2. úsek (2-4 s): $a_2 = 0$ m·s⁻² - konstantní rychlost</li>
+                        <li>3. úsek (4-5 s): $a_3 = 4$ m·s⁻² - finální spurt</li>
+                        <li>4. úsek (5-7 s): $a_4 = -5$ m·s⁻² - zastavení</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <strong>Kontrola rozumnosti:</strong> Pan Jouda urazil 36 metrů za 7 sekund - průměrná rychlost asi 5 m·s⁻¹ (18 km·h⁻¹). To odpovídá rychlému běhu fotbalisty, realistické!
+                </div>
+
+                <div class="analogy-box">
+                    <strong>Sportovní interpretace:</strong> Pan Jouda nejprve zrychluje (rozběh), pak běží konstantní rychlostí (ustálený běh), následně prudce zrychluje (možná obcházení obránce nebo finální spurt ke gólu) a nakonec se zastavuje (možná po vstřelení gólu nebo vyražení míče brankářem!).
+                </div>
+
+                <div class="alternative-method-box">
+                    <strong>Alternativní kontrola:</strong> Průměrná rychlost = celková dráha / celkový čas = 36/7 = 5,14 m·s⁻¹. To se shoduje s vizuálním odhadem z grafu!
+                </div>
+            </div>
+        </div>
+
+        <details>
+            <summary>🤔 Metakognitivní otázky</summary>
+            <div>
+                <ul>
+                    <li>Jak by vypadal graf a(t) (zrychlení v čase) pro tento pohyb? Nakresli si ho!</li>
+                    <li>V kterém úseku byl pan Jouda nejrychlejší a proč? Kdy urazil nejvíce metrů?</li>
+                    <li>Co by se změnilo na grafech, kdyby pan Jouda běžel zpátky stejnou rychlostí?</li>
+                    <li>Jak se liší analýza pohybu fotbalisty od analýzy pohybu auta při městské jízdě?</li>
+                    <li>Kdyby pan Jouda v úseku 2 zpomaloval místo konstantní rychlosti, jak by se změnila celková dráha?</li>
+                </ul>
+            </div>
+        </details>
+    </main>
+</body>
+</html>

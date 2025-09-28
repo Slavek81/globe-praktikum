@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Řešení</title>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>70. Erikův pekáč - dvě metody</h1>
+            <p>Kinematika - řešený příklad</p>
+        </header>
+
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Znáš ten pocit, když auto zrychluje na dálnici? Fyzika ti vysvětlí, proč potřebuješ tak dlouhý rozjezd! Tento příklad ti ukáže, že existuje více cest ke stejnému výsledku - klíčová dovednost nejen ve fyzice, ale i v životě. Navíc se naučíš odhadovat vzdálenosti při předjíždění!
+        </div>
+
+        <div class="problem-statement">
+            <h2>Zadání</h2>
+            <p>Erik hned na konci obce sešlápl plyn svého pekáče až k podlaze a se zrychlením <strong>1,5 m·s⁻²</strong> zrychlil z <strong>50 km·h⁻¹</strong> na <strong>90 km·h⁻¹</strong>. Jakou vzdálenost mezitím ujel? Počítejte dvěma různými způsoby – jednak na základě průměrné rychlosti a jednak ze vztahu mezi dráhou a zrychlením.</p>
+        </div>
+
+        <div class="solution">
+            <h2>Řešení</h2>
+
+            <div class="calculation-step">
+                <h3>1. Analýza situace a zadané hodnoty</h3>
+
+                <div class="equation-logic-box">
+                    <strong>Logika výběru:</strong> Jde o rovnoměrně zrychlený pohyb, protože Erik zrychluje konstantním zrychlením. Pro tento typ pohybu existují tři základní kinematické rovnice a můžeme si vybrat tu nejvhodnější podle daných hodnot.
+                </div>
+
+                <div class="note-box">
+                    <strong>Dané hodnoty:</strong>
+                    <ul>
+                        <li>Počáteční rychlost: $v_0 = 50$ km·h⁻¹</li>
+                        <li>Konečná rychlost: $v = 90$ km·h⁻¹</li>
+                        <li>Zrychlení: $a = 1{,}5$ m·s⁻²</li>
+                        <li>Hledáme: ujetou dráhu $s$</li>
+                    </ul>
+                </div>
+
+                <div class="warning-box">
+                    <strong>Pozor na jednotky!</strong> Rychlosti jsou v km·h⁻¹, ale zrychlení v m·s⁻². Musíme převést km·h⁻¹ na m·s⁻¹ dělením 3,6!
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h3>2. Převod jednotek</h3>
+
+                <div class="tip-box">
+                    <strong>Užitečný tip:</strong> Převod km·h⁻¹ na m·s⁻¹: dělíme 3,6 (nebo násobíme 1000 a dělíme 3600). Opačně násobíme 3,6.
+                </div>
+
+                <div class="formula-box">
+                    $$v_0 = 50 \text{ km·h⁻¹} = \frac{50}{3{,}6} = 13{,}89 \text{ m·s⁻¹}$$
+                    $$v = 90 \text{ km·h⁻¹} = \frac{90}{3{,}6} = 25{,}00 \text{ m·s⁻¹}$$
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h3>3. Metoda 1: Průměrná rychlost</h3>
+
+                <div class="equation-logic-box">
+                    <strong>Proč tuto rovnici?</strong> Při rovnoměrně zrychleném pohybu je průměrná rychlost přesně aritmetickým průměrem počáteční a konečné rychlosti. To platí pouze pro konstantní zrychlení!
+                </div>
+
+                <div class="analogy-box">
+                    <strong>Praktická analogie:</strong> Je to jako průměrování teplot - máš-li ráno 10°C a odpoledne 20°C, průměr je 15°C. Stejně tak při zrychlování z 50 na 90 km·h je průměrná rychlost 70 km·h.
+                </div>
+
+                <div class="formula-box">
+                    $$v_{\text{průměr}} = \frac{v_0 + v}{2} = \frac{13{,}89 + 25{,}00}{2} = 19{,}45 \text{ m·s⁻¹}$$
+                </div>
+
+                <p>Nyní potřebujeme čas zrychlování:</p>
+                <div class="formula-box">
+                    $$t = \frac{v - v_0}{a} = \frac{25{,}00 - 13{,}89}{1{,}5} = \frac{11{,}11}{1{,}5} = 7{,}41 \text{ s}$$
+                </div>
+
+                <div class="result-box">
+                    $$s = v_{\text{průměr}} \times t = 19{,}45 \times 7{,}41 = 144{,}1 \text{ m}$$
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h3>4. Metoda 2: Kinematická rovnice</h3>
+
+                <div class="equation-logic-box">
+                    <strong>Proč tuto rovnici?</strong> Používáme základní kinematickou rovnici $s = v_0 t + \frac{1}{2}at^2$, protože známe počáteční rychlost, zrychlení a čas. Tato rovnice přímo vyjadřuje, jak se skládá dráha z části rovnoměrného pohybu ($v_0 t$) a části způsobené zrychlením ($\frac{1}{2}at^2$).
+                </div>
+
+                <div class="analogy-box">
+                    <strong>Praktická analogie:</strong> Je to jako rozdělit běh na dvě části - část, kterou bys uběhl konstantní rychlostí, plus "bonus" od zrychlování. Jako když jdeš normálně a pak přidáš do kroku.
+                </div>
+
+                <div class="formula-box">
+                    $$s = v_0 t + \frac{1}{2}at^2$$
+                    $$s = 13{,}89 \times 7{,}41 + \frac{1}{2} \times 1{,}5 \times (7{,}41)^2$$
+                    $$s = 102{,}9 + 0{,}75 \times 54{,}9 = 102{,}9 + 41{,}2 = 144{,}1 \text{ m}$$
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h3>5. Kontrola a odpověď</h3>
+
+                <div class="summary-box">
+                    <strong>Odpověď:</strong> Erik ujel během zrychlování <strong>144 m</strong> (obě metody daly stejný výsledek).
+                </div>
+
+                <div class="info-box">
+                    <strong>Kontrola rozumnosti:</strong> Erik ujel asi 144 metrů během 7,4 sekundy zrychlování. To odpovídá délce asi 1,5 fotbalového hřiště - rozumné pro zrychlení ze 50 na 90 km·h. Průměrná rychlost byla 70 km·h, což za 7,4 s dává přibližně 144 m.
+                </div>
+
+                <div class="alternative-method-box">
+                    <strong>Alternativní způsob:</strong> Mohli jsme také použít rovnici $v^2 = v_0^2 + 2as$, ze které vyjádříme $s = \frac{v^2 - v_0^2}{2a} = \frac{625 - 193}{3} = 144$ m. Výsledek je opět stejný!
+                </div>
+            </div>
+        </div>
+
+        <details>
+            <summary>🤔 Metakognitivní otázky</summary>
+            <div>
+                <ul>
+                    <li>Kterou metodu považuješ za jednodušší a proč? Kdy by byla výhodnější první a kdy druhá metoda?</li>
+                    <li>Jak by se změnila ujetá dráha, kdyby Erik zrychloval dvojnásobně (3,0 m·s⁻²)? Zkus odhadnout před výpočtem!</li>
+                    <li>Proč je důležité umět spočítat rozjezdovou dráhu při předjíždění? Jaké bezpečnostní aspekty to má?</li>
+                    <li>Zkus odhadnout, jaká by byla průměrná rychlost v km·h⁻¹ a porovnej s výpočtem!</li>
+                    <li>Co by se stalo, kdyby Erik nezrychloval z klidu, ale ze 100 km·h na 140 km·h se stejným zrychlením?</li>
+                </ul>
+            </div>
+        </details>
+    </main>
+</body>
+</html>
