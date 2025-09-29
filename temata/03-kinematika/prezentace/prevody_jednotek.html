@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Převod jednotek - Kompletní průvodce pro studenty</title>
+    <!-- Import pro renderování LaTeX matematických vzorců -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>Převod jednotek</h1>
+            <p>Klíč k porozumění světu fyziky a techniky - kompletní průvodce pro studenty střední školy</p>
+        </header>
+
+        <section class="intro-box">
+            <h2>Proč jsou převody jednotek tak důležité?</h2>
+            <p>Převod jednotek není jen abstraktní matematickou operací - setkáváme se s ním denně! Představte si tyto situace:</p>
+            <ul>
+                <li><strong>🏠 Při nákupu koberce:</strong> Potřebujete pokrýt pokoj o rozměrech 4,5 × 3,2 metru. V obchodě prodávají koberec za cenu 850 Kč/m². Kolik zaplatíte?</li>
+                <li><strong>🚗 Při cestování autem:</strong> Německá dálnice má omezení 130 km/h. Váš americký spolujezdec se ptá, kolik je to v mílích za hodinu?</li>
+                <li><strong>💊 V medicíně:</strong> Lékař předepsal dávkování 0,5 mg léku na kilogram tělesné hmotnosti. Kolik tablet po 125 mg musí užít pacient vážící 75 kg?</li>
+            </ul>
+            <div class="result-box" style="margin-top: 20px; background-color: #ffebee; border-color: #f44336;">
+                <p><strong>💥 Mars Climate Orbiter - 1999</strong></p>
+                <p>Chybný převod jednotek způsobil v roce 1999 ztrátu sondy za <span style="color: #c62828;">125 milionů dolarů</span>. Jedna část týmu používala imperiální jednotky, druhá metrické!</p>
+            </div>
+            <p><strong>Základní pravidlo:</strong></p>
+            <div class="formula-box">
+                <strong>NOVÁ HODNOTA = PŮVODNÍ HODNOTA × PŘEVODNÍ KOEFICIENT</strong>
+            </div>
+        </section>
+
+        <!-- SOUSTAVY JEDNOTEK -->
+        <section id="systems" class="unit-section">
+            <h2>1. Soustavy jednotek ve světě</h2>
+            <p><strong>Různé země, různé jednotky:</strong> Ve světě existují tři hlavní soustavy jednotek. Mezinárodní soustava SI se používá téměř všude, ale některé země stále používají starší imperiální systémy.</p>
+
+            <div class="schema-container">
+                <svg width="600" height="120" viewBox="0 0 600 120">
+                    <!-- SI jednotky -->
+                    <rect x="20" y="20" width="180" height="80" fill="#e8f5e8" stroke="#28a745" stroke-width="2"/>
+                    <text x="110" y="35" font-family="Verdana" font-size="14" fill="#28a745" text-anchor="middle" font-weight="bold">SI - Metrická</text>
+                    <text x="110" y="50" font-family="Verdana" font-size="12" text-anchor="middle">Česká republika</text>
+                    <text x="110" y="65" font-family="Verdana" font-size="12" text-anchor="middle">Evropa, Asie</text>
+                    <text x="110" y="80" font-family="Verdana" font-size="12" text-anchor="middle">věda, technika</text>
+
+                    <!-- Imperiální US -->
+                    <rect x="220" y="20" width="180" height="80" fill="#fff3cd" stroke="#ffc107" stroke-width="2"/>
+                    <text x="310" y="35" font-family="Verdana" font-size="14" fill="#856404" text-anchor="middle" font-weight="bold">Imperiální US</text>
+                    <text x="310" y="50" font-family="Verdana" font-size="12" text-anchor="middle">Spojené státy</text>
+                    <text x="310" y="65" font-family="Verdana" font-size="12" text-anchor="middle">běžný život</text>
+                    <text x="310" y="80" font-family="Verdana" font-size="12" text-anchor="middle">palce, libry</text>
+
+                    <!-- Imperiální UK -->
+                    <rect x="420" y="20" width="160" height="80" fill="#f8d7da" stroke="#dc3545" stroke-width="2"/>
+                    <text x="500" y="35" font-family="Verdana" font-size="14" fill="#721c24" text-anchor="middle" font-weight="bold">Imperiální UK</text>
+                    <text x="500" y="50" font-family="Verdana" font-size="12" text-anchor="middle">Velká Británie</text>
+                    <text x="500" y="65" font-family="Verdana" font-size="12" text-anchor="middle">částečně</text>
+                    <text x="500" y="80" font-family="Verdana" font-size="12" text-anchor="middle">stopy, míle</text>
+                </svg>
+            </div>
+
+            <h4>Porovnání soustav jednotek</h4>
+            <table>
+                <tr><th>Veličina</th><th>SI (Metrická)</th><th>Imperiální US</th><th>Imperiální UK</th><th>Poznámka</th></tr>
+                <tr>
+                    <td><strong>Délka</strong></td>
+                    <td>metr (m)<br>centimetr (cm)<br>milimetr (mm)</td>
+                    <td>palec (inch, in)<br>stopa (foot, ft)<br>yard (yd)<br>míle (mile, mi)</td>
+                    <td>stejné jako US<br>+ furlong<br>+ chain</td>
+                    <td>1 in = 2,54 cm<br>1 ft = 30,48 cm<br>1 mile = 1,609 km</td>
+                </tr>
+                <tr>
+                    <td><strong>Hmotnost</strong></td>
+                    <td>kilogram (kg)<br>gram (g)</td>
+                    <td>libra (pound, lb)<br>unce (ounce, oz)</td>
+                    <td>libra (pound, lb)<br>stone (st)<br>long ton</td>
+                    <td>1 lb = 0,453 kg<br>1 oz = 28,35 g<br>1 stone = 6,35 kg</td>
+                </tr>
+                <tr>
+                    <td><strong>Objem</strong></td>
+                    <td>litr (l)<br>metr krychlový (m³)</td>
+                    <td>galon (gal) = 3,785 l<br>kvart (qt)<br>pinta (pt)</td>
+                    <td>galon (gal) = 4,546 l<br>kvart (qt)<br>pinta (pt)</td>
+                    <td><strong>Pozor!</strong><br>US a UK galon<br>jsou rozdílné!</td>
+                </tr>
+                <tr>
+                    <td><strong>Teplota</strong></td>
+                    <td>Celsius (°C)<br>Kelvin (K)</td>
+                    <td>Fahrenheit (°F)</td>
+                    <td>Celsius (°C)<br>+ Fahrenheit (°F)</td>
+                    <td>°C = (°F - 32) × 5/9<br>K = °C + 273,15</td>
+                </tr>
+                <tr>
+                    <td><strong>Rychlost</strong></td>
+                    <td>km/h<br>m/s</td>
+                    <td>míle za hodinu (mph)</td>
+                    <td>míle za hodinu (mph)</td>
+                    <td>1 mph = 1,609 km/h</td>
+                </tr>
+                <tr>
+                    <td><strong>Tlak</strong></td>
+                    <td>Pascal (Pa)<br>bar</td>
+                    <td>psi (pounds per<br>square inch)</td>
+                    <td>psi + bar</td>
+                    <td>1 psi = 6895 Pa<br>1 bar = 100 000 Pa</td>
+                </tr>
+            </table>
+
+            <div class="result-box" style="background-color: #e8f4fd; border-color: #2196f3;">
+                <h3>🌍 Kde se používá která soustava?</h3>
+                <ul style="text-align: left; margin: 0;">
+                    <li><strong>SI (Metrická):</strong> Česká republika, Evropa, Asie, Afrika, Austrálie, věda a technika</li>
+                    <li><strong>Imperiální US:</strong> Spojené státy americké (běžný život)</li>
+                    <li><strong>Imperiální UK:</strong> Velká Británie (částečně) - kombinace s metrickými</li>
+                    <li><strong>Výjimky:</strong> I v USA se v medicíně a vědě používá metrická soustava!</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- ZÁKLADNÍ PRINCIPY -->
+        <section id="principles" class="unit-section">
+            <h2>2. Základní principy převodu jednotek</h2>
+            <p><strong>Koncept:</strong> Veškeré převody jednotek stojí na jednom jednoduchém principu: <strong>násobení jedničkou</strong>. Trik je v tom, jak si tuto "jedničku" chytře zapsat.</p>
+            
+            <div class="equations">
+                <h3>Převodní koeficient</h3>
+                <p><strong>Definice:</strong> Převodní koeficient je zlomek, jehož hodnota čitatele se rovná hodnotě jmenovatele, i když jsou vyjádřeny v různých jednotkách. Proto je hodnota celého zlomku rovna 1.</p>
+                <p>Například víme, že <strong>1 metr = 100 centimetrů</strong>. Z tohoto vztahu můžeme vytvořit dva převodní koeficienty:</p>
+                $$ \frac{1 \text{ m}}{100 \text{ cm}} = 1 \quad \text{a} \quad \frac{100 \text{ cm}}{1 \text{ m}} = 1 $$
+            </div>
+
+            <div class="example">
+                <h3>Metoda "Křížového škrtání jednotek"</h3>
+                <p><strong>Příklad:</strong> Převeďte 2,5 metru na centimetry.</p>
+                <p><strong>Postup:</strong></p>
+                <p>1. <strong>Zapíšeme výchozí hodnotu:</strong> \(2,5 \text{ m}\)</p>
+                <p>2. <strong>Chceme se zbavit metrů (m)</strong>, které jsou v čitateli. Musíme tedy použít převodní koeficient, který má metry ve jmenovateli:</p>
+                $$ 2,5 \text{ m} \times \frac{100 \text{ cm}}{1 \text{ m}} = 2,5 \times 100 \text{ cm} = 250 \text{ cm} $$
+                <p>3. <strong>Jednotky se vyškrtnou:</strong> Metry v čitateli a jmenovateli se vyruší, zůstanou pouze centimetry.</p>
+            </div>
+        </section>
+
+        <!-- DÉLKOVÉ JEDNOTKY -->
+        <section id="length" class="unit-section">
+            <h2>3. Délkové jednotky</h2>
+            <p><strong>Metrická soustava:</strong> Založena na metru jako základní jednotce. Všechny ostatní jednotky jsou násobky nebo dílky metru.</p>
+            
+            <div class="schema-container">
+                <svg width="600" height="100" viewBox="0 0 600 100">
+                    <defs><marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#005A9C" /></marker></defs>
+                    
+                    <!-- Škála jednotek -->
+                    <text x="50" y="20" font-family="Verdana" font-size="12" fill="#005A9C" text-anchor="middle">mm</text>
+                    <rect x="30" y="25" width="40" height="30" fill="#eaf6ff" stroke="#005A9C" stroke-width="1"/>
+                    
+                    <text x="150" y="20" font-family="Verdana" font-size="12" fill="#005A9C" text-anchor="middle">cm</text>
+                    <rect x="130" y="25" width="40" height="30" fill="#eaf6ff" stroke="#005A9C" stroke-width="1"/>
+                    
+                    <text x="250" y="20" font-family="Verdana" font-size="12" fill="#005A9C" text-anchor="middle">dm</text>
+                    <rect x="230" y="25" width="40" height="30" fill="#eaf6ff" stroke="#005A9C" stroke-width="1"/>
+                    
+                    <text x="350" y="20" font-family="Verdana" font-size="14" fill="#c62828" text-anchor="middle" font-weight="bold">m</text>
+                    <rect x="330" y="25" width="40" height="30" fill="#ffebee" stroke="#c62828" stroke-width="2"/>
+                    
+                    <text x="450" y="20" font-family="Verdana" font-size="12" fill="#005A9C" text-anchor="middle">km</text>
+                    <rect x="430" y="25" width="40" height="30" fill="#eaf6ff" stroke="#005A9C" stroke-width="1"/>
+                    
+                    <!-- Šipky převodů -->
+                    <line x1="70" y1="40" x2="120" y2="40" stroke="#00AEEF" stroke-width="2" marker-end="url(#arrow)" />
+                    <text x="95" y="35" font-family="Verdana" font-size="10" text-anchor="middle">÷10</text>
+                    
+                    <line x1="170" y1="40" x2="220" y2="40" stroke="#00AEEF" stroke-width="2" marker-end="url(#arrow)" />
+                    <text x="195" y="35" font-family="Verdana" font-size="10" text-anchor="middle">÷10</text>
+                    
+                    <line x1="270" y1="40" x2="320" y2="40" stroke="#00AEEF" stroke-width="2" marker-end="url(#arrow)" />
+                    <text x="295" y="35" font-family="Verdana" font-size="10" text-anchor="middle">÷10</text>
+                    
+                    <line x1="370" y1="40" x2="420" y2="40" stroke="#00AEEF" stroke-width="2" marker-end="url(#arrow)" />
+                    <text x="395" y="35" font-family="Verdana" font-size="10" text-anchor="middle">÷1000</text>
+                    
+                    <text x="300" y="80" font-family="Verdana" font-size="11" text-anchor="middle" fill="#666">← menší jednotky (násobení) | větší jednotky (dělení) →</text>
+                </svg>
+            </div>
+
+            <h4>Převodní tabulka délkových jednotek</h4>
+            <table>
+                <tr><th>Z ↓ Na →</th><th>mm</th><th>cm</th><th>dm</th><th>m</th><th>km</th></tr>
+                <tr><td><strong>mm</strong></td><td>1</td><td>0,1</td><td>0,01</td><td>0,001</td><td>0,000001</td></tr>
+                <tr><td><strong>cm</strong></td><td>10</td><td>1</td><td>0,1</td><td>0,01</td><td>0,00001</td></tr>
+                <tr><td><strong>dm</strong></td><td>100</td><td>10</td><td>1</td><td>0,1</td><td>0,0001</td></tr>
+                <tr><td><strong>m</strong></td><td>1000</td><td>100</td><td>10</td><td>1</td><td>0,001</td></tr>
+                <tr><td><strong>km</strong></td><td>1 000 000</td><td>100 000</td><td>10 000</td><td>1000</td><td>1</td></tr>
+            </table>
+
+            <div class="example">
+                <h3>Praktické příklady</h3>
+                <p><strong>Příklad 1:</strong> Místnost má rozměry 4,5 m × 3,2 m. Jaké jsou rozměry v centimetrech?</p>
+                <p><strong>Řešení:</strong></p>
+                $$ 4,5 \text{ m} = 4,5 \times 100 = 450 \text{ cm} $$
+                $$ 3,2 \text{ m} = 3,2 \times 100 = 320 \text{ cm} $$
+                
+                <div class="result-box">
+                    <p>Rozměry místnosti: <span>450 cm × 320 cm</span></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- PLOŠNÉ JEDNOTKY -->
+        <section id="area" class="unit-section">
+            <h2>4. Plošné jednotky</h2>
+            <p><strong>Princip:</strong> Plocha se počítá jako délka × šířka, proto se převodní koeficient umocňuje na druhou!</p>
+
+            <div class="schema-container">
+                <svg width="600" height="100" viewBox="0 0 600 100">
+                    <defs><marker id="arrow-area" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#00AEEF" /></marker></defs>
+
+                    <!-- Škála jednotek -->
+                    <text x="50" y="20" font-family="Verdana" font-size="12" fill="#005A9C" text-anchor="middle">mm²</text>
+                    <rect x="30" y="25" width="40" height="30" fill="#eaf6ff" stroke="#005A9C" stroke-width="1"/>
+
+                    <text x="150" y="20" font-family="Verdana" font-size="12" fill="#005A9C" text-anchor="middle">cm²</text>
+                    <rect x="130" y="25" width="40" height="30" fill="#eaf6ff" stroke="#005A9C" stroke-width="1"/>
+
+                    <text x="250" y="20" font-family="Verdana" font-size="12" fill="#005A9C" text-anchor="middle">dm²</text>
+                    <rect x="230" y="25" width="40" height="30" fill="#eaf6ff" stroke="#005A9C" stroke-width="1"/>
+
+                    <text x="350" y="20" font-family="Verdana" font-size="14" fill="#c62828" text-anchor="middle" font-weight="bold">m²</text>
+                    <rect x="330" y="25" width="40" height="30" fill="#ffebee" stroke="#c62828" stroke-width="2"/>
+
+                    <text x="450" y="20" font-family="Verdana" font-size="12" fill="#005A9C" text-anchor="middle">km²</text>
+                    <rect x="430" y="25" width="40" height="30" fill="#eaf6ff" stroke="#005A9C" stroke-width="1"/>
+
+                    <!-- Šipky převodů -->
+                    <line x1="70" y1="40" x2="120" y2="40" stroke="#00AEEF" stroke-width="2" marker-end="url(#arrow-area)" />
+                    <text x="95" y="35" font-family="Verdana" font-size="10" text-anchor="middle">÷100</text>
+
+                    <line x1="170" y1="40" x2="220" y2="40" stroke="#00AEEF" stroke-width="2" marker-end="url(#arrow-area)" />
+                    <text x="195" y="35" font-family="Verdana" font-size="10" text-anchor="middle">÷100</text>
+
+                    <line x1="270" y1="40" x2="320" y2="40" stroke="#00AEEF" stroke-width="2" marker-end="url(#arrow-area)" />
+                    <text x="295" y="35" font-family="Verdana" font-size="10" text-anchor="middle">÷100</text>
+
+                    <line x1="370" y1="40" x2="420" y2="40" stroke="#00AEEF" stroke-width="2" marker-end="url(#arrow-area)" />
+                    <text x="395" y="35" font-family="Verdana" font-size="10" text-anchor="middle">÷1 000 000</text>
+
+                    <text x="300" y="80" font-family="Verdana" font-size="11" text-anchor="middle" fill="#666">← menší jednotky (násobení) | větší jednotky (dělení) →</text>
+                </svg>
+            </div>
+
+            <div class="equations">
+                <h3>Základní vztahy</h3>
+                <p><strong>Základní jednotka:</strong> metr čtvereční (m²)</p>
+                $$ 1 \text{ m}^2 = 100 \text{ cm} \times 100 \text{ cm} = 10\,000 \text{ cm}^2 $$
+                $$ 1 \text{ km}^2 = 1000 \text{ m} \times 1000 \text{ m} = 1\,000\,000 \text{ m}^2 $$
+            </div>
+
+            <h4>Převodní tabulka plošných jednotek</h4>
+            <table>
+                <tr><th>Z ↓ Na →</th><th>mm²</th><th>cm²</th><th>dm²</th><th>m²</th><th>km²</th></tr>
+                <tr><td><strong>mm²</strong></td><td>1</td><td>0,01</td><td>0,0001</td><td>0,000001</td><td>10⁻¹²</td></tr>
+                <tr><td><strong>cm²</strong></td><td>100</td><td>1</td><td>0,01</td><td>0,0001</td><td>10⁻¹⁰</td></tr>
+                <tr><td><strong>dm²</strong></td><td>10 000</td><td>100</td><td>1</td><td>0,01</td><td>10⁻⁸</td></tr>
+                <tr><td><strong>m²</strong></td><td>1 000 000</td><td>10 000</td><td>100</td><td>1</td><td>10⁻⁶</td></tr>
+                <tr><td><strong>km²</strong></td><td>10¹²</td><td>10¹⁰</td><td>10⁸</td><td>1 000 000</td><td>1</td></tr>
+            </table>
+
+            <div class="example">
+                <h3>Praktický příklad - Nákup koberce</h3>
+                <p><strong>Zadání:</strong> Potřebujeme pokrýt pokoj o rozměrech 4,5 × 3,2 metru. Koberec stojí 850 Kč/m². Kolik zaplatíme?</p>
+                <p><strong>Výpočet:</strong></p>
+                <p>1. <strong>Plocha pokoje:</strong> \( S = 4,5 \times 3,2 = 14,4 \text{ m}^2 \)</p>
+                <p>2. <strong>Cena:</strong> \( \text{Cena} = 14,4 \times 850 = 12\,240 \text{ Kč} \)</p>
+                
+                <div class="result-box">
+                    <p>Celková cena koberce: <span>12 240 Kč</span></p>
+                </div>
+            </div>
+        </section>        <!-- OBJEMOVÉ JEDNOTKY -->
+        <section id="volume" class="unit-section">
+            <h2>5. Objemové jednotky</h2>
+            <p><strong>Princip:</strong> Objem se počítá jako délka × šířka × výška, proto se převodní koeficient umocňuje na třetí!</p>
+
+            <div class="schema-container">
+                <svg width="500" height="100" viewBox="0 0 500 100">
+                    <defs><marker id="arrow-volume" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#00AEEF" /></marker></defs>
+
+                    <!-- Škála jednotek -->
+                    <text x="60" y="20" font-family="Verdana" font-size="12" fill="#005A9C" text-anchor="middle">mm³</text>
+                    <rect x="40" y="25" width="40" height="30" fill="#eaf6ff" stroke="#005A9C" stroke-width="1"/>
+
+                    <text x="160" y="20" font-family="Verdana" font-size="12" fill="#005A9C" text-anchor="middle">cm³ (ml)</text>
+                    <rect x="130" y="25" width="60" height="30" fill="#eaf6ff" stroke="#005A9C" stroke-width="1"/>
+
+                    <text x="270" y="20" font-family="Verdana" font-size="12" fill="#005A9C" text-anchor="middle">dm³ (l)</text>
+                    <rect x="240" y="25" width="60" height="30" fill="#eaf6ff" stroke="#005A9C" stroke-width="1"/>
+
+                    <text x="380" y="20" font-family="Verdana" font-size="14" fill="#c62828" text-anchor="middle" font-weight="bold">m³</text>
+                    <rect x="360" y="25" width="40" height="30" fill="#ffebee" stroke="#c62828" stroke-width="2"/>
+
+                    <!-- Šipky převodů -->
+                    <line x1="80" y1="40" x2="120" y2="40" stroke="#00AEEF" stroke-width="2" marker-end="url(#arrow-volume)" />
+                    <text x="100" y="35" font-family="Verdana" font-size="10" text-anchor="middle">÷1000</text>
+
+                    <line x1="190" y1="40" x2="230" y2="40" stroke="#00AEEF" stroke-width="2" marker-end="url(#arrow-volume)" />
+                    <text x="210" y="35" font-family="Verdana" font-size="10" text-anchor="middle">÷1000</text>
+
+                    <line x1="300" y1="40" x2="350" y2="40" stroke="#00AEEF" stroke-width="2" marker-end="url(#arrow-volume)" />
+                    <text x="325" y="35" font-family="Verdana" font-size="10" text-anchor="middle">÷1000</text>
+
+                    <text x="250" y="80" font-family="Verdana" font-size="11" text-anchor="middle" fill="#666">← menší jednotky (násobení) | větší jednotky (dělení) →</text>
+                </svg>
+            </div>
+
+            <div class="equations">
+                <h3>Základní vztahy</h3>
+                <p><strong>Základní jednotka:</strong> metr krychlový (m³)</p>
+                $$ 1 \text{ m}^3 = 100 \text{ cm} \times 100 \text{ cm} \times 100 \text{ cm} = 1\,000\,000 \text{ cm}^3 $$
+                <p><strong>Speciální jednotka:</strong> litr (l)</p>
+                $$ 0,001 \text{ m}^3 = 1 \text{ dm}^3 = 1 \text{ litr} = 10 \text{ dl} = 100 \text{ cl} = 1000 \text{ cm}^3 = 1000 \text{ ml} = 1\,000\,000 \text{ mm}^3 $$
+            </div>
+
+            <h4>Převodní tabulka objemových jednotek</h4>
+            <table>
+                <tr><th>Z ↓ Na →</th><th>mm³</th><th>cm³</th><th>dm³ (l)</th><th>m³</th></tr>
+                <tr><td><strong>mm³</strong></td><td>1</td><td>0,001</td><td>0,000001</td><td>10⁻⁹</td></tr>
+                <tr><td><strong>cm³ (ml)</strong></td><td>1000</td><td>1</td><td>0,001</td><td>0,000001</td></tr>
+                <tr><td><strong>dm³ (l)</strong></td><td>1 000 000</td><td>1000</td><td>1</td><td>0,001</td></tr>
+                <tr><td><strong>m³</strong></td><td>10⁹</td><td>1 000 000</td><td>1000</td><td>1</td></tr>
+            </table>
+
+            <div class="example">
+                <h3>Praktický příklad - Spotřeba paliva</h3>
+                <p><strong>Zadání:</strong> Auto spotřebuje 8 litrů benzínu na 100 km. Kolik je to v m³ na 1 km?</p>
+                <p><strong>Výpočet:</strong></p>
+                <p>1. <strong>Převod litrů na m³:</strong> \( 8 \text{ l} = 8 \times 0,001 = 0,008 \text{ m}^3 \)</p>
+                <p>2. <strong>Spotřeba na 1 km:</strong> \( \frac{0,008 \text{ m}^3}{100 \text{ km}} = 0,00008 \text{ m}^3/\text{km} \)</p>
+                
+                <div class="result-box">
+                    <p>Spotřeba: <span>0,00008 m³/km</span> nebo <span>0,08 l/km</span></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- HMOTNOSTNÍ JEDNOTKY -->
+        <section id="mass" class="unit-section">
+            <h2>6. Hmotnostní jednotky</h2>
+            <p><strong>Metrická soustava:</strong> Založena na kilogramu jako základní jednotce SI. Pozor - základní jednotka není gram, ale kilogram!</p>
+            
+            <div class="schema-container">
+                <svg width="500" height="80" viewBox="0 0 500 80">
+                    <defs><marker id="arrow-mass" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#00AEEF" /></marker></defs>
+
+                    <text x="50" y="20" font-family="Verdana" font-size="12" fill="#005A9C" text-anchor="middle">mg</text>
+                    <rect x="30" y="25" width="40" height="25" fill="#eaf6ff" stroke="#005A9C" stroke-width="1"/>
+
+                    <text x="150" y="20" font-family="Verdana" font-size="12" fill="#005A9C" text-anchor="middle">g</text>
+                    <rect x="130" y="25" width="40" height="25" fill="#eaf6ff" stroke="#005A9C" stroke-width="1"/>
+
+                    <text x="250" y="20" font-family="Verdana" font-size="14" fill="#c62828" text-anchor="middle" font-weight="bold">kg</text>
+                    <rect x="230" y="25" width="40" height="25" fill="#ffebee" stroke="#c62828" stroke-width="2"/>
+
+                    <text x="350" y="20" font-family="Verdana" font-size="12" fill="#005A9C" text-anchor="middle">t</text>
+                    <rect x="330" y="25" width="40" height="25" fill="#eaf6ff" stroke="#005A9C" stroke-width="1"/>
+
+                    <!-- Šipky převodů -->
+                    <line x1="70" y1="37.5" x2="120" y2="37.5" stroke="#00AEEF" stroke-width="2" marker-end="url(#arrow-mass)" />
+                    <text x="95" y="32" font-family="Verdana" font-size="10" text-anchor="middle">÷1000</text>
+
+                    <line x1="170" y1="37.5" x2="220" y2="37.5" stroke="#00AEEF" stroke-width="2" marker-end="url(#arrow-mass)" />
+                    <text x="195" y="32" font-family="Verdana" font-size="10" text-anchor="middle">÷1000</text>
+
+                    <line x1="270" y1="37.5" x2="320" y2="37.5" stroke="#00AEEF" stroke-width="2" marker-end="url(#arrow-mass)" />
+                    <text x="295" y="32" font-family="Verdana" font-size="10" text-anchor="middle">÷1000</text>
+
+                    <text x="250" y="70" font-family="Verdana" font-size="11" text-anchor="middle" fill="#666">← menší jednotky (násobení) | větší jednotky (dělení) →</text>
+                </svg>
+            </div>
+
+            <h4>Převodní tabulka hmotnostních jednotek</h4>
+            <table>
+                <tr><th>Jednotka</th><th>Zkratka</th><th>Vztah k kilogramu</th><th>Použití</th></tr>
+                <tr><td>miligram</td><td>mg</td><td>0,000001 kg</td><td>léky, chemie</td></tr>
+                <tr><td>gram</td><td>g</td><td>0,001 kg</td><td>potraviny, malé předměty</td></tr>
+                <tr><td><strong>kilogram</strong></td><td><strong>kg</strong></td><td><strong>základní jednotka</strong></td><td><strong>běžné použití</strong></td></tr>
+                <tr><td>tuna</td><td>t</td><td>1000 kg</td><td>auta, náklad</td></tr>
+            </table>
+
+            <div class="example">
+                <h3>Praktický příklad - Dávkování léku</h3>
+                <p><strong>Zadání:</strong> Lékař předepsal dávkování 0,5 mg léku na kilogram tělesné hmotnosti. Kolik tablet po 125 mg musí užít pacient vážící 75 kg?</p>
+                <p><strong>Výpočet:</strong></p>
+                <p>1. <strong>Celková dávka:</strong> \( 0,5 \times 75 = 37,5 \text{ mg} \)</p>
+                <p>2. <strong>Počet tablet:</strong> \( \frac{37,5}{125} = 0,3 \text{ tablety} \)</p>
+                
+                <div class="result-box">
+                    <p>Pacient musí užít: <span>0,3 tablety</span> (prakticky třetinu tablety)</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ČASOVÉ JEDNOTKY -->
+        <section id="time" class="unit-section">
+            <h2>7. Časové jednotky</h2>
+            <p><strong>Pozor!</strong> Časové jednotky se nepřevádějí násobky 10, ale používají se historické převody: 60 sekund = 1 minuta, 60 minut = 1 hodina, 24 hodin = 1 den.</p>
+
+            <div class="schema-container">
+                <svg width="500" height="100" viewBox="0 0 500 100">
+                    <defs><marker id="arrow-time" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#00AEEF" /></marker></defs>
+
+                    <!-- Škála jednotek -->
+                    <text x="60" y="20" font-family="Verdana" font-size="14" fill="#c62828" text-anchor="middle" font-weight="bold">s</text>
+                    <rect x="40" y="25" width="40" height="30" fill="#ffebee" stroke="#c62828" stroke-width="2"/>
+
+                    <text x="160" y="20" font-family="Verdana" font-size="12" fill="#005A9C" text-anchor="middle">min</text>
+                    <rect x="140" y="25" width="40" height="30" fill="#eaf6ff" stroke="#005A9C" stroke-width="1"/>
+
+                    <text x="260" y="20" font-family="Verdana" font-size="12" fill="#005A9C" text-anchor="middle">h</text>
+                    <rect x="240" y="25" width="40" height="30" fill="#eaf6ff" stroke="#005A9C" stroke-width="1"/>
+
+                    <text x="360" y="20" font-family="Verdana" font-size="12" fill="#005A9C" text-anchor="middle">d</text>
+                    <rect x="340" y="25" width="40" height="30" fill="#eaf6ff" stroke="#005A9C" stroke-width="1"/>
+
+                    <!-- Šipky převodů -->
+                    <line x1="80" y1="40" x2="130" y2="40" stroke="#00AEEF" stroke-width="2" marker-end="url(#arrow-time)" />
+                    <text x="105" y="35" font-family="Verdana" font-size="10" text-anchor="middle">÷60</text>
+
+                    <line x1="180" y1="40" x2="230" y2="40" stroke="#00AEEF" stroke-width="2" marker-end="url(#arrow-time)" />
+                    <text x="205" y="35" font-family="Verdana" font-size="10" text-anchor="middle">÷60</text>
+
+                    <line x1="280" y1="40" x2="330" y2="40" stroke="#00AEEF" stroke-width="2" marker-end="url(#arrow-time)" />
+                    <text x="305" y="35" font-family="Verdana" font-size="10" text-anchor="middle">÷24</text>
+
+                    <text x="250" y="80" font-family="Verdana" font-size="11" text-anchor="middle" fill="#666">← menší jednotky (násobení) | větší jednotky (dělení) →</text>
+                </svg>
+            </div>
+
+            <h4>Převodní tabulka časových jednotek</h4>
+            <table>
+                <tr><th>Jednotka</th><th>Zkratka</th><th>Převod</th></tr>
+                <tr><td><strong>sekunda</strong></td><td><strong>s</strong></td><td><strong>základní jednotka SI</strong></td></tr>
+                <tr><td>minuta</td><td>min</td><td>1 min = 60 s</td></tr>
+                <tr><td>hodina</td><td>h</td><td>1 h = 60 min = 3600 s</td></tr>
+                <tr><td>den</td><td>d</td><td>1 d = 24 h = 86 400 s</td></tr>
+                <tr><td>rok</td><td>r</td><td>1 r ≈ 365,25 d ≈ 31 557 600 s</td></tr>
+            </table>
+
+            <div class="example">
+                <h3>Praktický příklad - Rychlost světla</h3>
+                <p><strong>Zadání:</strong> Světlo urazí vzdálenost k Měsíci (384 400 km) za 1,28 sekundy. Kolik je to v minutách?</p>
+                <p><strong>Výpočet:</strong></p>
+                $$ 1,28 \text{ s} \times \frac{1 \text{ min}}{60 \text{ s}} = \frac{1,28}{60} = 0,0213 \text{ min} $$
+                
+                <div class="result-box">
+                    <p>Čas: <span>0,021 minut</span> nebo <span>1,28 sekundy</span></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLOŽENÉ JEDNOTKY -->
+        <section id="compound" class="unit-section">
+            <h2>8. Složené jednotky</h2>
+
+            <div class="intro-box">
+                <h3>Co jsou složené jednotky a proč je používáme?</h3>
+                <p>Představte si složené jednotky jako recept. Místo kombinace mouky a cukru kombinujeme základní jednotky jako metry, sekundy nebo kilogramy, abychom popsali složitější veličiny. <strong>Rychlost</strong> například není jen vzdálenost (metry), ale vzdálenost <strong>za určitý čas</strong> (metry za sekundu).</p>
+                <p>Složené jednotky nám tedy umožňují měřit a porovnávat komplexní vlastnosti světa kolem nás – od rychlosti auta na dálnici přes hustotu materiálu až po tlak v pneumatikách.</p>
+            </div>
+
+            <div class="strategy-box">
+                <h3>📋 Systematický postup převodu</h3>
+                <p>Princip je jednoduchý: <strong>každou část jednotky převedeme zvlášť</strong>. Nejlepší je si složenou jednotku představit jako zlomek. Pojďme na to krok za krokem:</p>
+                <ol>
+                    <li><strong>Zapište jednotku jako zlomek:</strong> Například km/h zapíšeme jako $\frac{\text{km}}{\text{h}}$</li>
+                    <li><strong>Převeďte jednotku v čitateli (nahoře):</strong> Převeďte kilometry na metry, gramy na kilogramy atd.</li>
+                    <li><strong>Převeďte jednotku ve jmenovateli (dole):</strong> Převeďte hodiny na sekundy, centimetry krychlové na metry krychlové atd.</li>
+                    <li><strong>Vypočítejte výsledek:</strong> Vydělte převedenou hodnotu v čitateli převedenou hodnotou ve jmenovateli.</li>
+                </ol>
+            </div>
+
+            <div class="example">
+                <h3>Příklad 1: Rychlost (z km/h na m/s)</h3>
+                <p><strong>Zadání:</strong> Auto na dálnici jede rychlostí 130 km/h. Jaká je jeho rychlost v metrech za sekundu (m/s), což je základní jednotka SI?</p>
+                <p><strong>Postup:</strong></p>
+                <p>1. <strong>Zápis zlomkem:</strong> $$ 130 \frac{\text{km}}{\text{h}} = \frac{130 \text{ km}}{1 \text{ h}} $$</p>
+                <p>2. <strong>Převod čitatele (km → m):</strong> Víme, že 1 km = 1000 m.</p>
+                $$ 130 \text{ km} = 130 \times 1000 \text{ m} = 130\,000 \text{ m} $$
+                <p>3. <strong>Převod jmenovatele (h → s):</strong> Víme, že 1 hodina = 60 minut a 1 minuta = 60 sekund.</p>
+                $$ 1 \text{ h} = 60 \times 60 \text{ s} = 3600 \text{ s} $$
+                <p>4. <strong>Výpočet:</strong> Nyní dosadíme převedené hodnoty zpět do zlomku.</p>
+                $$ \frac{130\,000 \text{ m}}{3600 \text{ s}} \approx 36.11 \frac{\text{m}}{\text{s}} $$
+
+                <div class="result-box">
+                    <p>Rychlost: <span>36,1 m/s</span></p>
+                    <p><em><strong>Praktický tip:</strong> Pro rychlý převod z km/h na m/s stačí hodnotu vydělit číslem 3,6. A naopak, z m/s na km/h násobíme číslem 3,6.</em></p>
+                </div>
+            </div>
+
+            <div class="example">
+                <h3>Příklad 2: Hustota (z g/cm³ na kg/m³)</h3>
+                <p><strong>Zadání:</strong> Hustota hliníku je přibližně 2,7 g/cm³. Jaká je jeho hustota v základních jednotkách SI, tedy v kg/m³?</p>
+                <p><strong>Postup:</strong></p>
+                <p>1. <strong>Zápis zlomkem:</strong> $$ 2,7 \frac{\text{g}}{\text{cm}^3} = \frac{2,7 \text{ g}}{1 \text{ cm}^3} $$</p>
+                <p>2. <strong>Převod čitatele (g → kg):</strong> Víme, že 1 kg = 1000 g.</p>
+                $$ 2,7 \text{ g} = 2,7 ÷ 1000 \text{ kg} = 0,0027 \text{ kg} $$
+                <p>3. <strong>Převod jmenovatele (cm³ → m³):</strong> Tohle je záludnější! Víme, že 1 m = 100 cm. Pro krychlové jednotky musíme převodní vztah umocnit na třetí:</p>
+                $$ 1 \text{ m}^3 = (100 \text{ cm})^3 = 100 \times 100 \times 100 \text{ cm}^3 = 1\,000\,000 \text{ cm}^3 $$
+                <p>Z toho plyne:</p>
+                $$ 1 \text{ cm}^3 = \frac{1}{1\,000\,000} \text{ m}^3 = 0,000001 \text{ m}^3 $$
+                <p>4. <strong>Výpočet:</strong> Dosadíme převedené hodnoty.</p>
+                $$ \frac{0,0027 \text{ kg}}{0,000001 \text{ m}^3} = 2700 \frac{\text{kg}}{\text{m}^3} $$
+
+                <div class="result-box">
+                    <p>Hustota hliníku: <span>2700 kg/m³</span></p>
+                </div>
+            </div>
+
+            <div style="background-color: #ffebee; padding: 1rem; border-radius: 0.5rem; border: 2px solid #f44336; margin: 1rem 0;">
+                <h4 style="color: #c62828; margin-bottom: 0.5rem;">⚠️ Časté chyby, na které si dát pozor</h4>
+                <ul style="margin-bottom: 0;">
+                    <li><strong>Zapomenutá mocnina:</strong> Při převodu plošných (m²) nebo objemových (m³) jednotek je nutné převodní koeficient umocnit. Například 1 m² = (100 cm)² = 10 000 cm², nikoli 100 cm².</li>
+                    <li><strong>Obrácený převod:</strong> Snadno se stane, že místo násobení dělíte (nebo naopak). Zápis ve formě zlomku vám pomůže se v tom lépe zorientovat.</li>
+                    <li><strong>Převod jen jedné části:</strong> Nezapomeňte převést jak čitatel, tak jmenovatel. Častou chybou je převést jen kilometry na metry a zapomenout na hodiny a sekundy.</li>
+                </ul>
+            </div>
+
+            <h4>Přehled běžných složených jednotek</h4>
+            <table>
+                <tr><th>Veličina</th><th>Značka</th><th>Běžné jednotky</th><th>Základní jednotka SI</th><th>Praktické použití</th></tr>
+                <tr><td><strong>Rychlost</strong></td><td>v</td><td>km/h, m/s</td><td>m/s</td><td>Rychlost vozidel, rychlost větru</td></tr>
+                <tr><td><strong>Hustota</strong></td><td>ρ</td><td>g/cm³, kg/L</td><td>kg/m³</td><td>Určování materiálů, vlastnosti kapalin</td></tr>
+                <tr><td><strong>Tlak</strong></td><td>p</td><td>bar, kPa, atm</td><td>Pa (Pascal)</td><td>Tlak v pneumatikách, atmosférický tlak</td></tr>
+                <tr><td><strong>Energie</strong></td><td>E</td><td>kWh</td><td>J (Joule)</td><td>Spotřeba elektřiny v domácnosti</td></tr>
+                <tr><td><strong>Zrychlení</strong></td><td>a</td><td>m/s², km/h²</td><td>m/s²</td><td>Zrychlení auta, tíhové zrychlení</td></tr>
+            </table>
+        </section>
+
+        <!-- IMPERIÁLNÍ JEDNOTKY -->
+        <section id="imperial" class="unit-section">
+            <h2>9. Imperiální vs. metrická soustava</h2>
+            <p><strong>Pozor!</strong> V USA, UK a některých dalších zemích se stále používají imperiální jednotky. Důležité je znát základní převody.</p>
+            
+            <h4>Základní převody imperiální ↔ metrická</h4>
+            <table>
+                <tr><th>Veličina</th><th>Imperiální</th><th>Metrická</th><th>Převod</th></tr>
+                <tr><td><strong>Délka</strong></td><td>palec (inch, in)</td><td>centimetr</td><td>1 in = 2,54 cm</td></tr>
+                <tr><td></td><td>stopa (foot, ft)</td><td>metr</td><td>1 ft = 0,3048 m</td></tr>
+                <tr><td></td><td>míle (mile)</td><td>kilometr</td><td>1 mile = 1,609 km</td></tr>
+                <tr><td><strong>Hmotnost</strong></td><td>libra (pound, lb)</td><td>kilogram</td><td>1 lb = 0,453 kg</td></tr>
+                <tr><td><strong>Objem</strong></td><td>galon (gallon, gal)</td><td>litr</td><td>1 gal = 3,785 l</td></tr>
+                <tr><td><strong>Teplota</strong></td><td>Fahrenheit (°F)</td><td>Celsius (°C)</td><td>°C = (°F - 32) × 5/9</td></tr>
+            </table>
+
+            <div class="example">
+                <h3>Praktický příklad - Amerikanské auto</h3>
+                <p><strong>Zadání:</strong> Americké auto má spotřebu 25 mil na galon (25 mpg). Kolik je to v l/100km (evropský standard)?</p>
+                <p><strong>Výpočet:</strong></p>
+                <p>1. <strong>Převod na km/l:</strong></p>
+                $$ 25 \frac{\text{mile}}{\text{gal}} = 25 \times \frac{1,609 \text{ km}}{1 \text{ mile}} \times \frac{1 \text{ gal}}{3,785 \text{ l}} = 25 \times \frac{1,609}{3,785} = 10,62 \text{ km/l} $$
+                <p>2. <strong>Převod na l/100km:</strong></p>
+                $$ \frac{100 \text{ km}}{10,62 \text{ km/l}} = 9,42 \text{ l/100km} $$
+                
+                <div class="result-box">
+                    <p>Spotřeba: <span>9,4 l/100km</span></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ČASTÉ CHYBY -->
+        <section id="mistakes" class="unit-section">
+            <h2>10. Časté chyby a jejich prevence</h2>
+            <p><strong>Předcházení chybám:</strong> Znalost nejčastějších chyb vám pomůže je vyhnout se jim.</p>
+            
+            <div class="strategy-box">
+                <h3>🚫 TOP 5 nejčastějších chyb</h3>
+                <ol>
+                    <li><strong>Zapomenutí umocnit u plošných a objemových jednotek</strong>
+                        <br><em>❌ Špatně:</em> 1 m² = 100 cm² 
+                        <br><em>✅ Správně:</em> 1 m² = 10 000 cm²</li>
+                    
+                    <li><strong>Špatný směr převodního koeficientu</strong>
+                        <br><em>❌ Špatně:</em> 5 m × (1 m / 100 cm) = 0,05 cm
+                        <br><em>✅ Správně:</em> 5 m × (100 cm / 1 m) = 500 cm</li>
+                    
+                    <li><strong>Záměna základních jednotek</strong>
+                        <br><em>❌ Špatně:</em> Gram je základní jednotka hmotnosti
+                        <br><em>✅ Správně:</em> Kilogram je základní jednotka SI</li>
+                    
+                    <li><strong>Špatné převody složených jednotek</strong>
+                        <br><em>❌ Špatně:</em> km/h × 1000 = m/s
+                        <br><em>✅ Správně:</em> km/h ÷ 3,6 = m/s</li>
+                    
+                    <li><strong>Zapomenutí kontroly rozumnosti výsledku</strong>
+                        <br><em>Vždy si položte otázku:</em> "Dává výsledek smysl?"</li>
+                </ol>
+            </div>
+
+            <div class="result-box" style="background-color: #e8f5e8; border-color: #28a745;">
+                <h3>✅ Zlatá pravidla úspěšných převodů</h3>
+                <ul style="text-align: left; margin: 0;">
+                    <li><strong>Vždy si napište jednotky</strong> - pomůže vám kontrolovat správnost</li>
+                    <li><strong>Používejte křížové škrtání</strong> - eliminuje chyby</li>
+                    <li><strong>Kontrolujte rozumnost výsledku</strong> - nelze mít zápornou délku</li>
+                    <li><strong>U složených jednotek převádějte postupně</strong> - každou část zvlášť</li>
+                    <li><strong>Zapamatujte si rychlé převody</strong> - km/h ÷ 3,6 = m/s</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- UNIVERZÁLNÍ METODA -->
+        <section id="universal" class="unit-section">
+            <h2>11. Universální metoda pro jakýkoli převod</h2>
+            <p><strong>Postup pro složité převody:</strong> Systematický přístup, který funguje vždy.</p>
+            
+            <div class="strategy-box">
+                <h3>📋 Krok za krokem</h3>
+                <ol>
+                    <li><strong>Identifikujte výchozí a cílové jednotky</strong></li>
+                    <li><strong>Najděte převodní vztah</strong> (v tabulkách nebo literatuře)</li>
+                    <li><strong>Napište převodní koeficient jako zlomek</strong></li>
+                    <li><strong>Vynásobte a vyškrtejte jednotky</strong></li>
+                    <li><strong>Spočítejte a zkontrolujte výsledek</strong></li>
+                </ol>
+            </div>
+
+            <div class="example">
+                <h3>Praktický příklad - Spotřeba benzínu na dovolené</h3>
+                <p><strong>Zadání:</strong> Na dovolené v Americe jste si půjčili auto, které spotřebuje 25 mil na galon (25 mpg). Chcete jet 300 kilometrů. Kolik litrů benzínu spotřebujete?</p>
+                <p><strong>Postup:</strong></p>
+                <p>1. <strong>Identifikace převodů:</strong></p>
+                <ul>
+                    <li>Vzdálenost: 300 km → míle</li>
+                    <li>Spotřeba: 25 mpg → litry/100km (evropský standard)</li>
+                </ul>
+
+                <p>2. <strong>Převod vzdálenosti (km → míle):</strong></p>
+                <p>Víme, že 1 míle = 1,609 km, tedy 1 km = 1/1,609 míle ≈ 0,621 míle</p>
+                $$ 300 \text{ km} = 300 \times 0,621 = 186,3 \text{ mil} $$
+
+                <p>3. <strong>Výpočet spotřeby benzínu v galonech:</strong></p>
+                <p>Auto ujede 25 mil na 1 galon, takže pro 186,3 mil potřebuje:</p>
+                $$ \frac{186,3 \text{ mil}}{25 \text{ mil/gal}} = 7,45 \text{ galonů} $$
+
+                <p>4. <strong>Převod galonů na litry:</strong></p>
+                <p>Víme, že 1 US galon = 3,785 litru</p>
+                $$ 7,45 \text{ gal} \times 3,785 \frac{\text{l}}{\text{gal}} = 28,2 \text{ litrů} $$
+
+                <div class="result-box">
+                    <p>Spotřeba benzínu na 300 km: <span>28,2 litrů</span></p>
+                    <p><em>To odpovídá spotřebě 9,4 l/100km v evropském měření</em></p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        // MathJax konfigurace
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                packages: {'[+]': ['physics']}
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+</body>
+</html>
