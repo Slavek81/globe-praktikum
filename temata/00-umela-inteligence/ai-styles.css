@@ -898,3 +898,28 @@
     padding: var(--spacing-xs) 0;
     line-height: 1.8;
 }
+
+/* Perplexity workflow sections - additional spacing */
+.perplexity-description {
+    margin-top: var(--spacing-xl);
+}
+
+.perplexity-features {
+    margin-top: var(--spacing-xl);
+}
+
+.perplexity-for-physics {
+    margin-top: var(--spacing-xl);
+}
+
+.workflow-section {
+    margin-top: var(--spacing-xl);
+}
+
+.practical-example {
+    margin-top: var(--spacing-xl);
+}
+
+.workflow-summary {
+    margin-top: var(--spacing-xl);
+}
