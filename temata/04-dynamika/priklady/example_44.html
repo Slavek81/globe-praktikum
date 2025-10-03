@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Střelba ze vzduchovky</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>44. Střelba ze vzduchovky</h1>
+            <p>Dynamika - řešený příklad</p>
+        </header>
+
+        <!-- Motivační úvod pro studenty -->
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Praktická aplikace fyziky v reálném světě.
+        </div>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <div class="zadani-text">
+                    Kosmonaut uvízl v prázdném prostoru a potřebuje se dostat zpět ke kosmické lodi, která se od něj nezadržitelně vzdaluje rychlostí <span class="hodnoty">0,6 m/s</span>. V zoufalství odhodil kladivo o hmotnosti <span class="hodnoty">5 kg</span> rychlostí <span class="hodnoty">10,5 m/s</span>. Zachrání se? Původní hmotnost kosmonauta <strong>s veškerým vybavením</strong>(!) byla <span class="hodnoty">90 kg</span>.
+                </div>
+        </section>
+
+        
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+            
+
+            
+            <div class="calculation-step">
+                <p>
+                            Kosmonaut a jeho kladivo tvoří na začátku jeden systém, který je v klidu (vůči sobě navzájem). Když kosmonaut odhodí kladivo, působí na něj silou a kladivo působí stejně velkou, ale opačně orientovanou silou zpět na kosmonauta (zákon akce a reakce). Vzhledem k tomu, že na systém kosmonaut+kladivo nepůsobí žádné vnější síly, musí se zachovat jeho celková hybnost.
+                        </p>
+<p>
+                            Protože byla počáteční hybnost nulová, musí být i konečná hybnost (součet hybnosti kosmonauta a kladiva) nulová. To znamená, že hybnost kosmonauta bude stejně velká, ale opačně orientovaná než hybnost kladiva.
+                        </p>
+<p>
+<strong>Hodnoty ze zadání:</strong>
+</p>
+<ul>
+<li>Hmotnost kladiva: $m_k = 5 \, \text{kg}$</li>
+<li>Rychlost odhozeného kladiva: $v_k = 10,5 \, \text{m/s}$</li>
+<li>Původní hmotnost kosmonauta s vybavením: $90 \, \text{kg}$</li>
+<li>Hmotnost kosmonauta po odhození: $m_a = 90 \, \text{kg} - 5 \, \text{kg} = 85 \, \text{kg}$</li>
+<li>Rychlost vzdalující se lodi: $v_{loď} = 0,6 \, \text{m/s}$</li>
+</ul>
+<p>
+                            Potřebujeme vypočítat rychlost kosmonauta $v_a$ a porovnat ji s rychlostí lodi.
+                        </p>
+            </div>
+            
+            <div class="calculation-step">
+                <p>
+                            Klíčovým principem je <strong>zákon zachování hybnosti</strong> pro izolovanou soustavu.
+                        </p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">Zákon zachování hybnosti
+<div class="rovnice-text">$p_{před} = p_{po}$</div>
+</div>
+<p>
+                            Před odhozením byl systém v klidu, takže $p_{před} = 0$. Po odhození je celková hybnost součtem hybnosti kosmonauta a kladiva.
+                        </p>
+                        $$ 0 = m_a \cdot v_a + m_k \cdot v_k $$
+                    </div>
+            </div>
+            
+            <div class="calculation-step">
+                <p>
+                            Naším cílem je vypočítat rychlost kosmonauta $v_a$. Z rovnice $0 = m_a \cdot v_a + m_k \cdot v_k$ si tuto neznámou vyjádříme.
+                        </p>
+                        $$ m_a \cdot v_a = - m_k \cdot v_k $$
+                        <p>
+                            Vydělením hmotností kosmonauta $m_a$ získáme finální vzorec:
+                        </p>
+                        $$ v_a = - \frac{m_k \cdot v_k}{m_a} $$
+                        <p>
+                            Záporné znaménko ve výsledku znamená, že směr pohybu kosmonauta bude přesně opačný než směr, kterým odhodil kladivo.
+                        </p>
+            </div>
+            
+            <div class="calculation-step">
+                <p>
+                            Dosadíme hodnoty do odvozeného vzorce. Je důležité použít hmotnost kosmonauta <strong>po</strong> odhození kladiva.
+                        </p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">Výpočet rychlosti kosmonauta
+<div class="rovnice-text">
+                                $v_a = - \frac{5 \, \text{kg} \cdot 10,5 \, \text{m/s}}{85 \, \text{kg}} = - \frac{52,5}{85} \, \text{m/s}$
+                            </div>
+</div>
+<p>
+                            Výsledek výpočtu je:
+                        </p>
+                        $$ v_a \approx -0,618 \, \text{m/s} $$
+                    </div>
+            </div>
+            
+            <div class="calculation-step">
+                <p>
+                            Kosmonaut se po odhození kladiva pohybuje rychlostí o velikosti přibližně $0,618 \, \text{m/s}$ opačným směrem, než letí kladivo. Předpokládáme, že kladivo odhodil směrem od lodi, aby se sám pohyboval směrem k lodi.
+                        </p>
+<p>
+                            Nyní porovnáme rychlost kosmonauta s rychlostí, kterou se od něj loď vzdaluje:
+                        </p>
+                        $$ 0,618 \, \text{m/s} &gt; 0,6 \, \text{m/s} $$
+                        <p>
+                            Rychlost kosmonauta směrem k lodi je o něco větší než rychlost, kterou se loď vzdaluje. To znamená, že kosmonaut bude pomalu zmenšovat vzdálenost mezi sebou a lodí a nakonec ji dostihne.
+                        </p>
+<p>
+<strong>Odpověď: Ano, kosmonaut se zachrání. Jeho rychlost bude o trochu vyšší než rychlost vzdalující se lodi.</strong>
+</p>
+            </div>
+            
+        </section>
+
+        <section id="shrnuti">
+            <h2>Shrnutí a kontrola</h2>
+
+            <div class="summary-box">
+                <strong>Hlavní poznatky:</strong>
+                <ul><li>Identifikovali jsme klíčové veličiny</li><li>Aplikovali jsme správné fyzikální zákony</li><li>Ověřili jsme jednotky a řády velikosti</li></ul>
+            </div>
+
+            
+            <div class="info-box">
+                <strong>Kontrola rozumnosti:</strong> Vždy zkontrolujte, zda výsledek dává fyzikální smysl vzhledem k zadání.
+            </div>
+            
+
+            <details>
+                <summary>🤔 Metakognitivní otázky</summary>
+                <div>
+                    <ul>
+                        
+                        <li>Tento princip se nazývá "reaktivní pohon". Kde jinde se v technice využívá?</li>
+                        
+                        <li>Jakou minimální rychlostí by musel kosmonaut kladivo odhodit, aby se přesně vyrovnal rychlosti lodi?</li>
+                        
+                        <li>Proč je důležité ve jmenovateli použít hmotnost kosmonauta bez kladiva (85 kg) a ne původní (90 kg)?</li>
+                        
+                        <li>Co by bylo pro záchranu efektivnější: odhodit jedno těžké kladivo, nebo postupně odhazovat více menších, lehčích nástrojů?</li>
+                        
+                    </ul>
+                </div>
+            </details>
+        </section>
+
+    </main>
+</body>
+</html>

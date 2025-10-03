@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zvedání kýble se zrychlením</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>5. Zvedání kýble se zrychlením</h1>
+            <p>Dynamika - řešený příklad</p>
+        </header>
+
+        <!-- Motivační úvod pro studenty -->
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Praktická aplikace fyziky v reálném světě.
+        </div>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <div class="zadani-text">
+                    Jak velkou silou je potřeba působit, abychom kýbl s vodou o hmotnosti <span class="hodnoty">5 kg</span> táhli nahoru se zrychlením <span class="hodnoty">2 m/s</span>2?
+                </div>
+        </section>
+
+        
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+            
+
+            
+            <div class="calculation-step">
+                <p>Nejprve si musíme uvědomit, jaké síly na kýbl působí. Nakreslení jednoduchého obrázku může pomoci. Působí zde dvě hlavní síly v svislém směru:</p>
+<ul>
+<li><strong>Tažná síla ($F$)</strong>: To je síla, kterou my působíme na kýbl směrem nahoru. Je to naše hledaná neznámá.</li>
+<li><strong>Tíhová síla ($F_g$)</strong>: Síla, kterou Země přitahuje kýbl směrem dolů. Její velikost vypočítáme jako $F_g = mg$.</li>
+</ul>
+<p>Protože kýbl zrychluje směrem nahoru, musí být síla táhnoucí nahoru ($F$) <strong>větší</strong> než síla tíhová ($F_g$), která působí dolů. Kdyby byly síly v rovnováze ($F = F_g$), kýbl by se pohyboval konstantní rychlostí nebo by stál na místě.</p>
+            </div>
+            
+            <div class="calculation-step">
+                <p>Rozdíl mezi silou nahoru a silou dolů je <strong>výsledná síla ($F_v$)</strong>, která způsobuje zrychlení. Protože síly působí proti sobě, jejich velikosti odčítáme:</p>
+<p>$F_v = F - F_g$</p>
+<p>Podle druhého Newtonova zákona platí, že výsledná síla je rovna součinu hmotnosti a zrychlení. Známe hmotnost (m = 5 kg) i zrychlení (a = 2 m/s²), takže výslednou sílu můžeme přímo vypočítat.</p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">📐 Výpočet výsledné síly
+<div class="rovnice-text">$F_v = ma = 5~\text{kg} \cdot 2~\text{m/s}^2 = 10~\text{N}$</div>
+</div>
+<p>Výsledná síla o velikosti 10 N je ten "přebytek" síly, který udává kýblu zrychlení 2 m/s² směrem nahoru.</p>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p>Nyní už známe velikost výsledné síly ($F_v$) a můžeme si vypočítat i velikost tíhové síly ($F_g$). Pro tíhové zrychlení použijeme zaokrouhlenou hodnotu $g \approx 10~\text{m/s}^2$.</p>
+<p>$F_g = mg = 5~\text{kg} \cdot 10~\text{m/s}^2 = 50~\text{N}$</p>
+<p>Vrátíme se k rovnici pro výslednou sílu $F_v = F - F_g$ a vyjádříme si neznámou tažnou sílu $F$:</p>
+<p>$F = F_v + F_g$</p>
+<p>Celková síla, kterou musíme působit, se tedy skládá ze síly potřebné k překonání gravitace (50 N) a síly potřebné k udělení zrychlení (10 N).</p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">📐 Celková tažná síla
+<div class="rovnice-text">$F = F_v + mg = 10~\text{N} + 50~\text{N} = 60~\text{N}$</div>
+</div>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p>Abychom táhli kýbl s vodou o hmotnosti 5 kg nahoru se zrychlením 2 m/s², musíme působit silou o velikosti <strong>60 N</strong>.</p>
+            </div>
+            
+        </section>
+
+        <section id="shrnuti">
+            <h2>Shrnutí a kontrola</h2>
+
+            <div class="summary-box">
+                <strong>Hlavní poznatky:</strong>
+                <ul><li>Identifikovali jsme klíčové veličiny</li><li>Aplikovali jsme správné fyzikální zákony</li><li>Ověřili jsme jednotky a řády velikosti</li></ul>
+            </div>
+
+            
+            <div class="info-box">
+                <strong>Kontrola rozumnosti:</strong> Vždy zkontrolujte, zda výsledek dává fyzikální smysl vzhledem k zadání.
+            </div>
+            
+
+            <details>
+                <summary>🤔 Metakognitivní otázky</summary>
+                <div>
+                    <ul>
+                        
+                        <li>Jak by se změnila potřebná síla, kdybychom chtěli kýbl táhnout nahoru konstantní rychlostí (tj. s nulovým zrychlením)?</li>
+                        
+                        <li>Jaká by byla výsledná síla a jaké zrychlení, kdybychom na kýbl působili směrem nahoru silou pouze 40 N? Jakým směrem by zrychlení působilo?</li>
+                        
+                        <li>Představ si, že stejným zrychlením táhneš kýbl na Měsíci, kde je gravitační zrychlení přibližně 1,6 m/s². Byla by potřebná síla větší, nebo menší? Proč?</li>
+                        
+                        <li>Proč při sčítání sil $F$ a $F_g$ musíme brát v úvahu jejich směr a nepočítáme je jednoduše jako skalární hodnoty?</li>
+                        
+                    </ul>
+                </div>
+            </details>
+        </section>
+
+    </main>
+</body>
+</html>

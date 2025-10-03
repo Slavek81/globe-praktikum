@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tření tělesa na rovině</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>18. Tření tělesa na rovině</h1>
+            <p>Dynamika - řešený příklad</p>
+        </header>
+
+        <!-- Motivační úvod pro studenty -->
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Praktická aplikace fyziky v reálném světě.
+        </div>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <div class="zadani-text">
+                    Helmut si znovu vzal kartonovou krabici, ale tentokrát ji zapřáhnul za provázek a začal tahat po koberci, kde je koeficient smykového tření roven 0,4. Helmut ví, že když na provázek zavěšuje větší a větší závaží, tak ten se při zatížení <span class="hodnoty">10 kg</span> přetrhne. Jakou maximální hmotnost může mít krabice, aby ji ještě mohl na provázku rovnoměrně táhnout? [inspirace realisticky]  
+                </div>
+        </section>
+
+        
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+            
+
+            
+            <div class="calculation-step">
+                <p>Helmut táhne krabici po koberci <strong>rovnoměrným pohybem</strong>. To je klíčová informace! Znamená to, že zrychlení je nulové ($a=0$) a podle prvního Newtonova zákona musí být výslednice sil působících na krabici nulová.</p>
+<p>Ve vodorovném směru na krabici působí dvě síly: tažná síla provázku $F_{tah}$ a proti ní smyková třecí síla $F_t$. Aby byl pohyb rovnoměrný, musí se tyto dvě síly navzájem vyrušit, tedy musí mít stejnou velikost:</p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">📐 Podmínka rovnoměrného pohybu
+<div class="rovnice-text">$F_{tah} = F_t$</div>
+</div>
+<p>Zadání nám říká, že provázek se přetrhne při zatížení 10 kg. To nám umožňuje určit maximální možnou tažnou sílu $F_{tah,max}$.</p>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p>Údaj "zatížení 10 kg" znamená, že provázek vydrží sílu odpovídající tíze tělesa o hmotnosti $m_{zátěž} = 10~\text{kg}$. Tuto sílu vypočítáme pomocí vzorce pro tíhovou sílu:</p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">📐 Maximální tažná síla
+<div class="rovnice-text">$F_{tah,max} = m_{zátěž} \cdot g$</div>
+</div>
+<p>Při použití $g \approx 10~\text{m/s}^2$:</p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">📐 Výpočet</div>
+<div class="rovnice-text">$F_{tah,max} = 10~\text{kg} \cdot 10~\text{m/s}^2 = 100~\text{N}$</div>
+</div>
+<p>Maximální síla, kterou může provázek působit, je <strong>100 Newtonů</strong>.</p>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p>Jak jsme si řekli, pro rovnoměrný pohyb platí $F_{tah} = F_t$. Třecí síla závisí na hmotnosti krabice $m_{krabice}$ a koeficientu tření $f$ podle vztahu:</p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">📐 Třecí síla
+<div class="rovnice-text">$F_t = f \cdot F_n = f \cdot (m_{krabice} \cdot g)$</div>
+</div>
+<p>Hledáme maximální hmotnost krabice $m_{max}$, kterou lze ještě táhnout. To odpovídá situaci, kdy je tažná síla právě na hranici přetržení, tedy $F_{tah} = F_{tah,max}$. Dosadíme do rovnice:</p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">📐 Rovnováha na hranici přetržení</div>
+<div class="rovnice-text">$F_{tah,max} = f \cdot m_{max} \cdot g$</div>
+</div>
+<p>Z této rovnice vyjádříme neznámou $m_{max}$:</p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">📐 Vztah pro maximální hmotnost</div>
+<div class="rovnice-text">$m_{max} = \frac{F_{tah,max}}{f \cdot g}$</div>
+</div>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p>Nyní dosadíme všechny známé hodnoty do odvozeného vzorce:</p>
+<ul>
+<li>$F_{tah,max} = 100~\text{N}$</li>
+<li>$f = 0{,}4$</li>
+<li>$g \approx 10~\text{m/s}^2$</li>
+</ul>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">📐 Výpočet
+<div class="rovnice-text">$m_{max} = \frac{100~\text{N}}{0{,}4 \cdot 10~\text{m/s}^2} = \frac{100}{4}~\text{kg} = 25~\text{kg}$</div>
+</div>
+<p><strong>Výsledek:</strong> Maximální hmotnost krabice, kterou může Helmut ještě rovnoměrně táhnout, je <strong>25 kg</strong>.</p>
+<p>Pokud by byla krabice těžší, třecí síla by byla větší než 100 N a provázek by se při pokusu o její utažení přetrhl.</p>
+</div>
+            </div>
+            
+        </section>
+
+        <section id="shrnuti">
+            <h2>Shrnutí a kontrola</h2>
+
+            <div class="summary-box">
+                <strong>Hlavní poznatky:</strong>
+                <ul><li>Identifikovali jsme klíčové veličiny</li><li>Aplikovali jsme správné fyzikální zákony</li><li>Ověřili jsme jednotky a řády velikosti</li></ul>
+            </div>
+
+            
+            <div class="info-box">
+                <strong>Kontrola rozumnosti:</strong> Vždy zkontrolujte, zda výsledek dává fyzikální smysl vzhledem k zadání.
+            </div>
+            
+
+            <details>
+                <summary>🤔 Metakognitivní otázky</summary>
+                <div>
+                    <ul>
+                        
+                        <li>Co by se stalo, kdyby Helmut chtěl krabici o hmotnosti 25 kg nejen táhnout, ale i zrychlovat? Udržel by provázek?</li>
+                        
+                        <li>Jakou maximální hmotnost by mohla mít krabice, kdyby ji Helmut táhl po lině z předchozí úlohy, kde byl koeficient tření 0,125?</li>
+                        
+                        <li>Provázek se přetrhne při "zatížení 10 kg". Proč je fyzikálně nesprávné říkat, že "síla je 10 kilogramů"?</li>
+                        
+                        <li>Jak by se změnila potřebná tažná síla, kdyby Helmut táhl provázek šikmo vzhůru pod úhlem 30° vůči podlaze? Byla by větší, nebo menší?</li>
+                        
+                    </ul>
+                </div>
+            </details>
+        </section>
+
+    </main>
+</body>
+</html>

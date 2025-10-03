@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Obecný výpočet rychlosti</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>27. Obecný výpočet rychlosti</h1>
+            <p>Dynamika - řešený příklad</p>
+        </header>
+
+        <!-- Motivační úvod pro studenty -->
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Někdy v zadání chybí konkrétní hodnota síly, ale přesto můžeme odvodit obecný vztah. To nám pomáhá pochopit fyzikální principy nezávisle na konkrétních číslech.
+        </div>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <div class="zadani">
+<h3>📋 Zadání</h3>
+<p>Na těleso o hmotnosti <span class="hodnoty">2 kg</span>, které je původně v klidu, působí <span class="hodnoty">stálá síla</span>. Vypočítejte rychlost tělesa <span class="hodnoty">5 s</span> po začátku působení síly.</p>
+</div>
+        </section>
+
+        
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+            
+
+            
+            <div class="calculation-step">
+                <p>V zadání je uvedeno, že působí "stálá síla", ale <strong>není řečeno, jak je tato síla velká</strong>. Bez této informace nemůžeme vypočítat konkrétní číselnou hodnotu rychlosti.</p>
+<p>Můžeme však výsledek vyjádřit <strong>obecně</strong>, v závislosti na velikosti neznámé síly $F$.</p>
+<div class="chyba-box">
+<strong>Pozor!</strong> Toto zadání je neúplné - chybí hodnota působící síly. V praxi byste měli na tuto chybu upozornit.
+                        
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p>Ze druhého Newtonova zákona víme, že zrychlení tělesa bude:</p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">🎯 Zrychlení
+<div class="rovnice-text">
+                                $a = \frac{F}{m} = \frac{F}{2}$ m·s⁻²
+                            </div>
+</div>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p>Pro rychlost rovnoměrně zrychleného pohybu platí:</p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">📈 Kinematická rovnice
+<div class="rovnice-text">$v = v_0 + a \cdot t$</div>
+</div>
+<p>Protože těleso bylo původně v klidu: $v_0 = 0$</p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">🧮 Dosazení</div>
+<div class="rovnice-text">
+                                $v = 0 + \left(\frac{F}{2}\right) \times 5$<br/><br/>
+                                $v = 2{,}5 \cdot F$ m·s⁻¹
+                            </div>
+</div>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p>Rychlost tělesa po 5 sekundách bude <strong>2,5násobkem velikosti působící síly</strong>:</p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">💡 Konkrétní příklady
+<div class="rovnice-text">
+                                Kdyby $F = 10$ N → $v = 2{,}5 \times 10 = 25$ m·s⁻¹<br/>
+                                Kdyby $F = 4$ N → $v = 2{,}5 \times 4 = 10$ m·s⁻¹<br/>
+                                Kdyby $F = 20$ N → $v = 2{,}5 \times 20 = 50$ m·s⁻¹
+                            </div>
+</div>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p><strong>V zadání chybí hodnota působící síly.</strong> Pokud bychom ji znali, rychlost tělesa po 5 sekundách by byla <strong>2,5násobkem velikosti této síly</strong>.</p>
+<p><strong>Obecně: $v = 2{,}5 \cdot F$ m·s⁻¹</strong></p>
+            </div>
+            
+        </section>
+
+        <section id="shrnuti">
+            <h2>Shrnutí a kontrola</h2>
+
+            <div class="summary-box">
+                <strong>Hlavní poznatky:</strong>
+                <ul><li>Identifikovali jsme klíčové veličiny</li><li>Aplikovali jsme správné fyzikální zákony</li><li>Ověřili jsme jednotky a řády velikosti</li></ul>
+            </div>
+
+            
+            <div class="info-box">
+                <strong>Kontrola rozumnosti:</strong> Vždy zkontrolujte, zda výsledek dává fyzikální smysl vzhledem k zadání.
+            </div>
+            
+
+            <details>
+                <summary>🤔 Metakognitivní otázky</summary>
+                <div>
+                    <ul>
+                        
+                        <li>Proč je užitečné řešit úlohy obecně i bez konkrétních hodnot?</li>
+                        
+                        <li>Jak se rychlost mění s časem při konstantní síle?</li>
+                        
+                        <li>Co by se stalo, kdyby síla působila 10 sekund místo 5?</li>
+                        
+                    </ul>
+                </div>
+            </details>
+        </section>
+
+    </main>
+</body>
+</html>

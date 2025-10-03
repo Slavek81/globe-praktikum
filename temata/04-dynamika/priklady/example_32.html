@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dvě tělesa na provázku</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>32. Dvě tělesa na provázku</h1>
+            <p>Dynamika - řešený příklad</p>
+        </header>
+
+        <!-- Motivační úvod pro studenty -->
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Praktická aplikace fyziky v reálném světě.
+        </div>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <div class="zadani-text">
+                    Markovi došel benzín. Jal se proto roztlačovat auto silou <span class="hodnoty">300 N</span>. Auto má docela dobře promazané a pneumatiky nafouknuté, takže třecí a odporová síla mají dohromady velikost <span class="hodnoty">100 N</span>. Auto má hmotnost 1,4 tuny. Jak dlouho bude trvat, než auto roztlačí na rychlost <span class="hodnoty">12 km/h</span> (na rovině), tedy rychlost klusu? [inspirace realisticky]
+                </div>
+        </section>
+
+        
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+            
+
+            
+            <div class="calculation-step">
+                <p>
+                            Nejprve si rozebereme, co se v úloze děje. Marek tlačí auto, které je na rovině a zpočátku v klidu ($v_0 = 0$). Na auto působí Markova síla dopředu a odporové síly dozadu. Protože síla dopředu je větší než síla dozadu, auto bude zrychlovat. Naším úkolem je zjistit, za jak dlouho dosáhne dané rychlosti.
+                        </p>
+<p>
+<strong>Hodnoty ze zadání (převedené na jednotky SI):</strong>
+</p>
+<ul>
+<li>Síla Marka: $F_{tah} = 300 \, \text{N}$</li>
+<li>Odporová síla: $F_{odpor} = 100 \, \text{N}$</li>
+<li>Hmotnost auta: $m = 1,4 \, \text{t} = 1400 \, \text{kg}$</li>
+<li>Cílová rychlost: $v = 12 \, \text{km/h} = \frac{12}{3,6} \, \text{m/s} = \frac{10}{3} \, \text{m/s} \approx 3,33 \, \text{m/s}$</li>
+</ul>
+<p>
+                            Hledáme čas $t$.
+                        </p>
+            </div>
+            
+            <div class="calculation-step">
+                <p>
+                            Pro vyřešení úlohy budeme potřebovat dva základní fyzikální principy:
+                        </p>
+<ol>
+<li><strong>Druhý Newtonův zákon</strong>, který spojuje výslednou sílu, hmotnost a zrychlení. To nám umožní vypočítat, jak rychle bude auto zrychlovat.</li>
+<li><strong>Vztah pro rovnoměrně zrychlený pohyb</strong>, který dává do souvislosti zrychlení, rychlost a čas.</li>
+</ol>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">Druhý Newtonův zákon
+<div class="rovnice-text">$F_{vysl} = m \cdot a$</div>
+</div>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">Rychlost rovnoměrně zrychleného pohybu</div>
+<div class="rovnice-text">$v = a \cdot t$</div>
+</div>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p>
+                            Naším cílem je najít čas $t$. Z rovnice pro rychlost si můžeme čas vyjádřit jako $t = \frac{v}{a}$. Zrychlení $a$ ale neznáme. To získáme z Newtonova zákona.
+                        </p>
+<p>
+                            Výsledná síla $F_{vysl}$ je rozdíl mezi Markovou silou a odporem: $F_{vysl} = F_{tah} - F_{odpor}$. Dosazením do Newtonova zákona získáme: $F_{tah} - F_{odpor} = m \cdot a$. Odtud si vyjádříme zrychlení:
+                        </p>
+                        $$ a = \frac{F_{tah} - F_{odpor}}{m} $$
+                        <p>
+                            Nyní tento výraz pro zrychlení $a$ dosadíme do vzorce pro čas $t$:
+                        </p>
+                        $$ t = \frac{v}{a} = \frac{v}{\frac{F_{tah} - F_{odpor}}{m}} = \frac{v \cdot m}{F_{tah} - F_{odpor}} $$
+                        <p>
+                            Získali jsme finální vzorec pro výpočet času.
+                        </p>
+            </div>
+            
+            <div class="calculation-step">
+                <p>
+                            Nyní dosadíme číselné hodnoty do odvozeného vzorce. Pro přesnější výsledek použijeme pro rychlost zlomek $\frac{10}{3} \, \text{m/s}$.
+                        </p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">Výpočet času
+<div class="rovnice-text">
+                                $t = \frac{\frac{10}{3} \, \text{m/s} \cdot 1400 \, \text{kg}}{300 \, \text{N} - 100 \, \text{N}} = \frac{\frac{14000}{3}}{200} = \frac{14000}{3 \cdot 200} = \frac{140}{6} = \frac{70}{3} \, \text{s}$
+                            </div>
+</div>
+<p>
+                            Výsledek převedeme na desetinné číslo:
+                        </p>
+                        $$ t \approx 23,33 \, \text{s} $$
+                    </div>
+            </div>
+            
+            <div class="calculation-step">
+                <p>
+                            Zkontrolujme jednotky: $\frac{(\text{m/s}) \cdot \text{kg}}{\text{N}} = \frac{(\text{m/s}) \cdot \text{kg}}{\text{kg} \cdot \text{m/s}^2} = \frac{1}{1/\text{s}} = \text{s}$. Jednotky vycházejí správně. Výsledek 23 sekund se zdá být reálný pro roztlačení auta na rychlost chůze. Není to ani příliš krátký, ani příliš dlouhý čas.
+                        </p>
+<p>
+<strong>Odpověď: Markovi bude trvat přibližně 23,3 sekundy, než auto roztlačí na rychlost 12 km/h.</strong>
+</p>
+            </div>
+            
+        </section>
+
+        <section id="shrnuti">
+            <h2>Shrnutí a kontrola</h2>
+
+            <div class="summary-box">
+                <strong>Hlavní poznatky:</strong>
+                <ul><li>Identifikovali jsme klíčové veličiny</li><li>Aplikovali jsme správné fyzikální zákony</li><li>Ověřili jsme jednotky a řády velikosti</li></ul>
+            </div>
+
+            
+            <div class="info-box">
+                <strong>Kontrola rozumnosti:</strong> Vždy zkontrolujte, zda výsledek dává fyzikální smysl vzhledem k zadání.
+            </div>
+            
+
+            <details>
+                <summary>🤔 Metakognitivní otázky</summary>
+                <div>
+                    <ul>
+                        
+                        <li>Proč je v reálném světě nejtěžší auto uvést do pohybu z klidu, i když to úloha neřeší? (Nápověda: rozdíl mezi statickým a smykovým třením)</li>
+                        
+                        <li>Jak by se změnil výsledek, kdyby Marek tlačil auto do mírného kopce se sklonem 2 %? Která další síla by do výpočtu vstoupila?</li>
+                        
+                        <li>Předpokládali jsme, že odporová síla 100 N je po celou dobu stejná. Je tento předpoklad realistický? Jak se odpor vzduchu mění s rychlostí?</li>
+                        
+                        <li>Jakou dráhu by Marek s autem za těchto 23,3 sekundy urazil?</li>
+                        
+                    </ul>
+                </div>
+            </details>
+        </section>
+
+    </main>
+</body>
+</html>

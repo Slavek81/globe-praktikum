@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pohyb míčku ve vlaku a výtahu</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>54. Pohyb míčku ve vlaku a výtahu</h1>
+            <p>Dynamika - řešený příklad</p>
+        </header>
+
+        <!-- Motivační úvod pro studenty -->
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Chování míčku v pohybujících se dopravních prostředcích krásně demonstruje princip setrvačnosti a rozdíl mezi inerciálními a neinerciálními soustavami.
+        </div>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <div class="zadani">
+<h3>📋 Zadání</h3>
+<p>Diskutujte o pohybu míčku v těchto případech:</p>
+<ul>
+<li>a) ve vlaku při pohybu rovnoměrném přímočarém, zrychleném a zpomaleném</li>
+<li>b) ve výtahu při pohybu nahoru/dolů s konstantní rychlostí, zrychleně a zpomaleně</li>
+</ul>
+</div>
+        </section>
+
+        
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+            
+
+            
+            <div class="calculation-step">
+                <p>Chování míčku závisí na tom, zda se jeho okolí (vlak, výtah) pohybuje <strong>rovnoměrně</strong> nebo <strong>se zrychlením</strong>.</p>
+<ul>
+<li><strong>Rovnoměrný pohyb:</strong> inerciální soustava → míček se chová normálně</li>
+<li><strong>Zrychlený pohyb:</strong> neinerciální soustava → objevují se setrvačné síly</li>
+</ul>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">🎯 Klíčové pozorování
+<div class="rovnice-text">Míček "si pamatuje" svou původní rychlost díky setrvačnosti.</div>
+</div>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p><strong>1. Vlak jede rovnoměrně:</strong></p>
+<ul>
+<li>Vlak = <strong>inerciální soustava</strong></li>
+<li>Míček spadne <strong>přímo dolů</strong> k nohám</li>
+<li>Míček má stejnou vodorovnou rychlost jako vlak</li>
+</ul>
+<p><strong>2. Vlak zrychluje (rozjíždí se):</strong></p>
+<ul>
+<li>Podlaha vlaku zrychluje dopředu</li>
+<li>Míček si zachovává původní (menší) rychlost</li>
+<li>Míček spadne <strong>šikmo dozadu</strong></li>
+<li>Z pohledu ve vlaku: setrvačná síla tlačí míček dozadu</li>
+</ul>
+<p><strong>3. Vlak zpomaluje (brzdí):</strong></p>
+<ul>
+<li>Vlak zpomaluje, míček si zachovává vyšší rychlost</li>
+<li>Míček spadne <strong>šikmo dopředu</strong></li>
+<li>Z pohledu ve vlaku: setrvačná síla tlačí míček dopředu</li>
+</ul>
+            </div>
+            
+            <div class="calculation-step">
+                <p><strong>1. Výtah jede konstantní rychlostí (nahoru i dolů):</strong></p>
+<ul>
+<li>Výtah = <strong>inerciální soustava</strong></li>
+<li>Míček padá s normálním tíhovým zrychlením $g$</li>
+<li>Cítíte se stejně těžce jako obvykle</li>
+</ul>
+<p><strong>2. Výtah zrychluje nahoru (nebo brzdí při jízdě dolů):</strong></p>
+<ul>
+<li>Zrychlení směřuje <strong>nahoru</strong></li>
+<li>Cítíte se <strong>těžší</strong></li>
+<li>Míček padá k podlaze <strong>rychleji</strong> než normálně</li>
+<li>Setrvačná síla působí směrem dolů</li>
+</ul>
+<p><strong>3. Výtah zrychluje dolů (nebo brzdí při jízdě nahoru):</strong></p>
+<ul>
+<li>Zrychlení směřuje <strong>dolů</strong></li>
+<li>Cítíte se <strong>lehčí</strong></li>
+<li>Míček padá k podlaze <strong>pomaleji</strong> než normálně</li>
+<li>Setrvačná síla působí směrem nahoru</li>
+</ul>
+<p><strong>Extrémní případ - volný pád výtahu:</strong></p>
+<ul>
+<li>Výtah zrychluje dolů s $a = g$</li>
+<li>Stav <strong>beztíže</strong> - cítíte se jako ve vesmíru</li>
+<li>Míček se vedle vás jen <strong>vznáší</strong></li>
+</ul>
+            </div>
+            
+            <div class="calculation-step">
+                <div class="rovnice-blok">
+<div class="rovnice-nadpis">🧭 První Newtonův zákon
+<div class="rovnice-text">
+                                Těleso setrvává v klidu nebo v rovnoměrném přímočarém pohybu, dokud na něj nepůsobí vnější síla.
+                            </div>
+</div>
+<p>Míček se "snaží" zachovat svou původní rychlost (setrvačnost), zatímco prostředí kolem něj mění rychlost. Výsledkem je <strong>relativní pohyb</strong> míčku vůči prostředí.</p>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <ul>
+<li><strong>Bezpečnostní pásy v autě:</strong> při brzdění se tělo snaží pokračovat dopředu</li>
+<li><strong>Rozlévání nápojů:</strong> při zrychlení se tekutina vykloní</li>
+<li><strong>Astronaut trénink:</strong> simulace beztíže ve volně padajícím letadle</li>
+<li><strong>Detekce zrychlení:</strong> akcelerometry využívají principu setrvačnosti</li>
+</ul>
+            </div>
+            
+        </section>
+
+        <section id="shrnuti">
+            <h2>Shrnutí a kontrola</h2>
+
+            <div class="summary-box">
+                <strong>Hlavní poznatky:</strong>
+                <ul><li>Identifikovali jsme klíčové veličiny</li><li>Aplikovali jsme správné fyzikální zákony</li><li>Ověřili jsme jednotky a řády velikosti</li></ul>
+            </div>
+
+            
+            <div class="info-box">
+                <strong>Kontrola rozumnosti:</strong> Vždy zkontrolujte, zda výsledek dává fyzikální smysl vzhledem k zadání.
+            </div>
+            
+
+            <details>
+                <summary>🤔 Metakognitivní otázky</summary>
+                <div>
+                    <ul>
+                        
+                        <li>Proč nepoznáte rovnoměrný pohyb vlaku se zatmavěnými okny?</li>
+                        
+                        <li>Jak byste experimentálně rozlišili zrychlení nahoru od zvýšené gravitace?</li>
+                        
+                        <li>Proč astronauti trénují v bazénu a ne jen v letadle?</li>
+                        
+                    </ul>
+                </div>
+            </details>
+        </section>
+
+    </main>
+</body>
+</html>

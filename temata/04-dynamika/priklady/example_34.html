@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Síla působící na chlapce</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>34. Síla působící na chlapce</h1>
+            <p>Dynamika - řešený příklad</p>
+        </header>
+
+        <!-- Motivační úvod pro studenty -->
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Praktická aplikace fyziky v reálném světě.
+        </div>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <div class="zadani-text">
+                    Určete velikost zrychlení soustav spojených vláknem znázorněných na obrázku. Tření neuvažujeme, kladky jsou oproti závažím velice lehké.
+                </div>
+        </section>
+
+        
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+            
+
+            
+            <div class="calculation-step">
+                <p>
+                            Máme dvě samostatné soustavy se závažími (tzv. Atwoodovy stroje), které jsou navzájem propojeny nepružným vláknem. Klíčový poznatek je, že <strong>díky tomuto spojení se obě soustavy musí pohybovat jako jeden celek</strong>. To znamená, že všechny jejich části mají stejnou rychlost a především stejné zrychlení $a$.
+                        </p>
+<p>
+                            Naším úkolem je určit toto společné zrychlení. Můžeme se na celou soustavu dívat jako na jediný systém, který je poháněn některými silami a brzděn jinými.
+                        </p>
+<ul>
+<li><strong>Pohybové (hnací) síly:</strong> Tíhové síly těžších závaží, která táhnou systém dolů. To jsou závaží o hmotnostech 2 kg a 3 kg. Jejich tíhové síly jsou $F_{g1} = 20 \, \text{N}$ a $F_{g2} = 30 \, \text{N}$.</li>
+<li><strong>Brzdné síly:</strong> Tíhové síly lehčích závaží, která jsou vytahována nahoru. V obou případech se jedná o závaží 1 kg, jejichž tíhové síly jsou $F_{g3} = 10 \, \text{N}$ a $F_{g4} = 10 \, \text{N}$.</li>
+<li><strong>Celková hmotnost:</strong> Aby se systém rozhýbal, musí hnací síla urychlit hmotnost <strong>všech</strong> zúčastněných závaží. Celková hmotnost je součet hmotností obou soustav: $m_{celk} = m_{levá} + m_{pravá} = 3 \, \text{kg} + 6 \, \text{kg} = 9 \, \text{kg}$.</li>
+</ul>
+            </div>
+            
+            <div class="calculation-step">
+                <p>
+                            Protože se na celou soustavu díváme jako na jeden pohybující se objekt, můžeme použít druhý Newtonův zákon v jeho základní podobě. Ten říká, že výsledná vnější síla působící na systém je rovna součinu celkové hmotnosti systému a jeho zrychlení.
+                        </p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">Druhý Newtonův zákon pro soustavu
+<div class="rovnice-text">$F_{vysl} = m_{celk} \cdot a$</div>
+</div>
+<p>
+                            Výslednou sílu $F_{vysl}$ určíme jako rozdíl mezi součtem všech hnacích sil a součtem všech brzdných sil.
+                        </p>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p>
+                            Naším cílem je najít zrychlení $a$. Z druhého Newtonova zákona si jej jednoduše vyjádříme:
+                        </p>
+                        $$ a = \frac{F_{vysl}}{m_{celk}} $$
+                        <p>
+                            Nyní si rozepíšeme, z čeho se skládá výsledná síla a celková hmotnost, jak jsme si analyzovali v prvním kroku:
+                        </p>
+<ul>
+<li>$F_{vysl} = (\text{součet hnacích sil}) - (\text{součet brzdných sil})$</li>
+<li>$m_{celk} = m_{levá} + m_{pravá}$</li>
+</ul>
+<p>
+                            Spojením získáme kompletní vzorec pro výpočet:
+                        </p>
+                        $$ a = \frac{(F_{g1} + F_{g2}) - (F_{g3} + F_{g4})}{m_{levá} + m_{pravá}} $$
+            </div>
+            
+            <div class="calculation-step">
+                <p>
+                            Nyní dosadíme konkrétní hodnoty ze zadání do našeho odvozeného vzorce.
+                        </p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">Výpočet zrychlení
+<div class="rovnice-text">
+                                $a = \frac{(20 \, \text{N} + 30 \, \text{N}) - (10 \, \text{N} + 10 \, \text{N})}{3 \, \text{kg} + 6 \, \text{kg}} = \frac{50 \, \text{N} - 20 \, \text{N}}{9 \, \text{kg}} = \frac{30 \, \text{N}}{9 \, \text{kg}}$
+                            </div>
+</div>
+<p>
+                            Výsledek zjednodušíme a převedeme na desetinné číslo:
+                        </p>
+                        $$ a = \frac{10}{3} \, \text{m/s}^2 \approx 3,33 \, \text{m/s}^2 $$
+                    </div>
+            </div>
+            
+            <div class="calculation-step">
+                <p>
+                            Zkontrolujme jednotky: $\frac{\text{N}}{\text{kg}} = \frac{\text{kg} \cdot \text{m/s}^2}{\text{kg}} = \text{m/s}^2$. Jednotky jsou správně. Výsledné zrychlení je menší než tíhové zrychlení $g$ (cca $10 \, \text{m/s}^2$), což dává smysl, protože systém není ve volném pádu, ale je brzděn lehčími závažími.
+                        </p>
+<p>
+<strong>Odpověď: Velikost zrychlení celé spojené soustavy (a tedy i každé její části) je přibližně 3,33 m/s².</strong>
+</p>
+            </div>
+            
+        </section>
+
+        <section id="shrnuti">
+            <h2>Shrnutí a kontrola</h2>
+
+            <div class="summary-box">
+                <strong>Hlavní poznatky:</strong>
+                <ul><li>Identifikovali jsme klíčové veličiny</li><li>Aplikovali jsme správné fyzikální zákony</li><li>Ověřili jsme jednotky a řády velikosti</li></ul>
+            </div>
+
+            
+            <div class="info-box">
+                <strong>Kontrola rozumnosti:</strong> Vždy zkontrolujte, zda výsledek dává fyzikální smysl vzhledem k zadání.
+            </div>
+            
+
+            <details>
+                <summary>🤔 Metakognitivní otázky</summary>
+                <div>
+                    <ul>
+                        
+                        <li>Proč jsme při výpočtu nemuseli vůbec uvažovat síly napětí ve vláknech? Jakou roli v systému hrají?</li>
+                        
+                        <li>Jak by se zrychlení změnilo, kdybychom přestřihli vlákno spojující obě soustavy? Vypočítejte zrychlení pro každou soustavu zvlášť.</li>
+                        
+                        <li>Proč do jmenovatele (celková hmotnost) musíme zahrnout i hmotnost závaží, která jsou zvedána nahoru a systém "brzdí"?</li>
+                        
+                        <li>Představte si, že pravá soustava by byla nahrazena závažím o hmotnosti 9 kg zavěšeným přes kladku. Jaké by bylo zrychlení levé soustavy (3 kg) v takovém případě?</li>
+                        
+                    </ul>
+                </div>
+            </details>
+        </section>
+
+    </main>
+</body>
+</html>

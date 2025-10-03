@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Náklad s gumičuky</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>12. Náklad s gumičuky</h1>
+            <p>Dynamika - řešený příklad</p>
+        </header>
+
+        <!-- Motivační úvod pro studenty -->
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Při přepravě nákladu na střeších aut, v nákladních vozech a letadlech - všude musí být náklad bezpečně upevněn. Kombinace gumiček a tření určuje, jaké zrychlení může vozidlo dosáhnout, aniž by se náklad uvolnil!
+        </div>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <p class="zadani-text">Náklad <span class="hodnoty">50 kg</span> je připoután gumičuky o pevnosti <span class="hodnoty">600 N</span>.</p>
+        </section>
+
+        
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+            
+
+            
+            <div class="calculation-step">
+                <div class="rovnice-blok">
+<div class="rovnice-nadpis">🧮 Výpočet
+<div class="rovnice-text">F = m \cdot a
+a = F / m = 600 / 50 = 12 m/s²</div>
+</div>
+<p><strong>Odpověď a):</strong> Největší zrychlení bez tření je <strong>12 m/s²</strong>.</p>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p>Tření pomáhá zrychlení (působí ve stejném směru):</p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">🧮 Výpočet s třením
+<div class="rovnice-text">F_celková = F_gumičky + F_tření
+F_celková = 600 + m \cdot g \cdot f
+F_celková = 600 + 50 × 10 × 0,3 = 600 + 150 = 750 N
+
+a = F_celková / m = 750 / 50 = 15 m/s²</div>
+</div>
+<p><strong>Odpověď b):</strong> Největší zrychlení s třením je <strong>15 m/s²</strong>.</p>
+</div>
+            </div>
+            
+        </section>
+
+        <section id="shrnuti">
+            <h2>Shrnutí a kontrola</h2>
+
+            <div class="summary-box">
+                <strong>Hlavní poznatky:</strong>
+                <ul><li>Identifikovali jsme klíčové veličiny</li><li>Aplikovali jsme správné fyzikální zákony</li><li>Ověřili jsme jednotky a řády velikosti</li></ul>
+            </div>
+
+            
+            <div class="info-box">
+                <strong>Kontrola rozumnosti:</strong> Vždy zkontrolujte, zda výsledek dává fyzikální smysl vzhledem k zadání.
+            </div>
+            
+
+            <details>
+                <summary>🤔 Metakognitivní otázky</summary>
+                <div>
+                    <ul>
+                        
+                        <li>Jaký je fyzikální význam výsledku?</li>
+                        
+                        <li>Jak bych tento problém vyřešil jiným způsobem?</li>
+                        
+                        <li>Kde mohu tento přístup aplikovat v praxi?</li>
+                        
+                    </ul>
+                </div>
+            </details>
+        </section>
+
+    </main>
+</body>
+</html>

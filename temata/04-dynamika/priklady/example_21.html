@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ložisko na nakloněné rovině</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>21. Ložisko na nakloněné rovině</h1>
+            <p>Dynamika - řešený příklad</p>
+        </header>
+
+        <!-- Motivační úvod pro studenty -->
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Praktická aplikace fyziky v reálném světě.
+        </div>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <div class="zadani-text">
+                    Mějme rampu ve tvaru pravoúhlého trojúhelníka ležícího na delší odvěsně o délce 5 m. Výška rampy je 2 m. Na rampě je vozík, který se pohybuje bez tření.<br/>a) Nakreslete přehledný obrázek a vyznačte všechny síly, které působí NA VOZÍK, včetně jejich poměrných velikostí.<br/>b) Určete zrychlení vozíku.<br/>c) Za jak dlouho vozík sjede celou délku rampy?
+                </div>
+        </section>
+
+        
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+            
+
+            
+            <div class="calculation-step">
+                <p>Než začneme s fyzikou, musíme si ujasnit geometrii situace. Rampa tvoří pravoúhlý trojúhelník s odvěsnami o délkách $b = 5~\text{m}$ (vodorovná) a $v = 2~\text{m}$ (svislá).</p>
+<p><strong>a) Délka rampy (přepona):</strong> Vozík sjíždí po přeponě trojúhelníku. Její délku, kterou označíme jako dráhu $s$, vypočítáme pomocí Pythagorovy věty:</p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">📐 Pythagorova věta
+<div class="rovnice-text">$s = \sqrt{b^2 + v^2} = \sqrt{(5~\text{m})^2 + (2~\text{m})^2} = \sqrt{29}~\text{m} \approx 5{,}39~\text{m}$</div>
+</div>
+<p><strong>b) Úhel sklonu rampy $\alpha$:</strong> Pro rozklad sil budeme potřebovat goniometrické funkce úhlu $\alpha$, který svírá rampa s vodorovnou rovinou. Není nutné počítat úhel ve stupních, stačí nám znát hodnotu jeho sinu, což je poměr protilehlé odvěsny (výšky) ku přeponě:</p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">📐 Sinus úhlu sklonu</div>
+<div class="rovnice-text">$\sin(\alpha) = \frac{\text{protilehlá}}{\text{přepona}} = \frac{v}{s} = \frac{2}{\sqrt{29}}$</div>
+</div>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p>Nyní analyzujme síly působící na vozík. Jelikož je pohyb bez tření, působí na něj pouze dvě síly. Toto je zároveň odpověď na otázku <strong>a)</strong>:</p>
+<ul>
+<li><strong>Tíhová síla $F_g$:</strong> Působí vždy svisle dolů. Její velikost je $F_g = m \cdot g$.</li>
+<li><strong>Normálová síla $F_n$:</strong> Je to reakce podložky (rampy) na tíhu vozíku. Působí vždy kolmo na povrch rampy směrem ven.</li>
+</ul>
+<p>Abychom mohli určit pohybovou rovnici, je praktické rozložit tíhovou sílu $F_g$ na dvě na sebe kolmé složky:</p>
+<ul>
+<li><strong>Pohybová složka $F_p$:</strong> Je rovnoběžná s rampou a "táhne" vozík dolů. Její velikost je $F_p = F_g \cdot \sin(\alpha)$.</li>
+<li><strong>Normálová složka $F_k$:</strong> Je kolmá na rampu a tlačí vozík do podložky. Její velikost je $F_k = F_g \cdot \cos(\alpha)$.</li>
+</ul>
+<p>Vozík se nepohybuje ve směru kolmém na rampu, proto je normálová složka tíhové síly $F_k$ v rovnováze s normálovou silou od podložky $F_n$. Platí tedy $F_n = F_k$. Jediná nevyrovnaná síla, která způsobuje pohyb, je pohybová složka $F_p$.</p>
+            </div>
+            
+            <div class="calculation-step">
+                <p>Podle druhého Newtonova zákona ($F=ma$) je výsledná síla působící na těleso rovna součinu jeho hmotnosti a zrychlení. V našem případě je výslednou silou ve směru pohybu právě pohybová složka $F_p$.</p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">📐 Druhý Newtonův zákon
+<div class="rovnice-text">$F_p = m \cdot a$</div>
+</div>
+<p>Dosadíme za $F_p$ vztah z kroku 2:</p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">📐 Dosazení</div>
+<div class="rovnice-text">$m \cdot g \cdot \sin(\alpha) = m \cdot a$</div>
+</div>
+<p>Vidíme, že hmotnost vozíku $m$ se vykrátí. Zrychlení na nakloněné rovině bez tření tedy nezávisí na hmotnosti tělesa! Získáme jednoduchý vztah pro zrychlení:</p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">📐 Zrychlení na nakloněné rovině</div>
+<div class="rovnice-text">$a = g \cdot \sin(\alpha)$</div>
+</div>
+<p>Nyní dosadíme hodnoty (použijeme $g \approx 10~\text{m/s}^2$):</p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">📐 Výpočet zrychlení</div>
+<div class="rovnice-text">$a = 10~\text{m/s}^2 \cdot \frac{2}{\sqrt{29}} \approx 10 \cdot \frac{2}{5{,}39}~\text{m/s}^2 \approx 3{,}71~\text{m/s}^2$</div>
+</div>
+<p><strong>Odpověď b):</strong> Zrychlení vozíku je přibližně <strong>3,7 m/s²</strong>.</p>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p>Vozík se pohybuje rovnoměrně zrychleně s počáteční rychlostí $v_0 = 0$. Pro dráhu takového pohybu platí vztah:</p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">📐 Dráha rovnoměrně zrychleného pohybu
+<div class="rovnice-text">$s = \frac{1}{2} a t^2$</div>
+</div>
+<p>Z tohoto vzorce potřebujeme vyjádřit čas $t$:</p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">📐 Čas z dráhy a zrychlení</div>
+<div class="rovnice-text">$t = \sqrt{\frac{2s}{a}}$</div>
+</div>
+<p>Dosadíme hodnoty, které jsme již vypočítali: $s = \sqrt{29}~\text{m}$ a $a = g \cdot \frac{2}{\sqrt{29}}~\text{m/s}^2$.</p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">📐 Dosazení hodnot</div>
+<div class="rovnice-text">$t = \sqrt{\frac{2 \cdot \sqrt{29}}{g \cdot \frac{2}{\sqrt{29}}}} = \sqrt{\frac{\sqrt{29} \cdot \sqrt{29}}{g}} = \sqrt{\frac{29}{g}}$</div>
+</div>
+<p>Tento elegantní mezivýsledek nám usnadní finální výpočet:</p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">📐 Výpočet času</div>
+<div class="rovnice-text">$t = \sqrt{\frac{29}{10}}~\text{s} = \sqrt{2{,}9}~\text{s} \approx 1{,}7~\text{s}$</div>
+</div>
+<p><strong>Odpověď c):</strong> Čas sjezdu je přibližně <strong>1,7 sekundy</strong>.</p>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p>Na základě našich výpočtů můžeme odpovědět na všechny otázky v zadání:</p>
+<ul>
+<li><strong>a) Síly na vozík:</strong> Na vozík působí tíhová síla (svisle dolů) a normálová síla (kolmo na rampu). Pro analýzu pohybu se tíhová síla rozkládá na složku rovnoběžnou s rampou (způsobuje zrychlení) a složku kolmou (je v rovnováze s normálovou silou).</li>
+<li><strong>b) Zrychlení vozíku:</strong> Zrychlení vozíku je přibližně $a \approx 3{,}7~\text{m/s}^2$.</li>
+<li><strong>c) Doba sjezdu:</strong> Vozík sjede celou délku rampy za přibližně $t \approx 1{,}7~\text{s}$.</li>
+</ul>
+            </div>
+            
+        </section>
+
+        <section id="shrnuti">
+            <h2>Shrnutí a kontrola</h2>
+
+            <div class="summary-box">
+                <strong>Hlavní poznatky:</strong>
+                <ul><li>Identifikovali jsme klíčové veličiny</li><li>Aplikovali jsme správné fyzikální zákony</li><li>Ověřili jsme jednotky a řády velikosti</li></ul>
+            </div>
+
+            
+            <div class="info-box">
+                <strong>Kontrola rozumnosti:</strong> Vždy zkontrolujte, zda výsledek dává fyzikální smysl vzhledem k zadání.
+            </div>
+            
+
+            <details>
+                <summary>🤔 Metakognitivní otázky</summary>
+                <div>
+                    <ul>
+                        
+                        <li>Proč zrychlení vozíku nezávisí na jeho hmotnosti? Znamená to, že stejně rychle by sjížděl prázdný vozík i vozík plný cihel?</li>
+                        
+                        <li>Jak by se změnilo zrychlení a čas sjezdu, kdyby rampa byla strmější (např. vysoká 5 m a dlouhá 5 m)?</li>
+                        
+                        <li>Jakým způsobem by se řešení úlohy zkomplikovalo, kdybychom uvažovali smykové tření s koeficientem $f$? Která síla by se přidala do schématu a jak by ovlivnila zrychlení?</li>
+                        
+                        <li>Dokázali byste vypočítat rychlost vozíku na konci rampy? Které dva fyzikální principy (kinematika vs. zákon zachování energie) byste mohli použít?</li>
+                        
+                    </ul>
+                </div>
+            </details>
+        </section>
+
+    </main>
+</body>
+</html>

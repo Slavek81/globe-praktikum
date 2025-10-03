@@ -1,0 +1,295 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[czech]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\usepackage{fancyhdr}
+
+\geometry{margin=2cm}
+
+\tcbuselibrary{skins,breakable}
+
+% Definice boxů
+\newtcolorbox{definitionbox}{
+    colback=green!5!white,
+    colframe=green!50!black,
+    fonttitle=\bfseries,
+    breakable,
+    enhanced
+}
+
+\newtcolorbox{equationbox}{
+    colback=blue!5!white,
+    colframe=blue!50!black,
+    fonttitle=\bfseries,
+    breakable,
+    enhanced
+}
+
+\newtcolorbox{notebox}{
+    colback=gray!5!white,
+    colframe=gray!50!black,
+    fonttitle=\bfseries,
+    breakable,
+    enhanced
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Gymnázium Globe}
+\lhead{Dynamika - Rovnice a definice}
+\cfoot{\thepage}
+
+\begin{document}
+
+\begin{center}
+    {\Huge \textbf{DYNAMIKA}}\\[0.5cm]
+    {\Large Kompletní přehled rovnic a definic}\\[1cm]
+\end{center}
+
+\section{NEWTONOVY ZÁKONY POHYBU}
+
+\subsection{1. Newtonův zákon (Zákon setrvačnosti)}
+
+\begin{definitionbox}
+Těleso setrvává v klidu nebo v rovnoměrném přímočarém pohybu, pokud není nuceno vnějšími silami tento stav změnit.
+\end{definitionbox}
+
+\subsection{2. Newtonův zákon (Zákon síly)}
+
+\begin{definitionbox}
+Zrychlení tělesa je přímo úměrné výsledné síle působící na těleso a nepřímo úměrné jeho hmotnosti.
+\end{definitionbox}
+
+\begin{equationbox}
+\begin{equation*}
+    F = m \cdot a
+\end{equation*}
+\end{equationbox}
+
+\begin{notebox}
+kde: $F$ [N] - síla, $m$ [kg] - hmotnost, $a$ [m$\cdot$s$^{-2}$] - zrychlení
+\end{notebox}
+
+\subsection{3. Newtonův zákon (Zákon akce a reakce)}
+
+\begin{definitionbox}
+Každé akci odpovídá stejně velká, ale opačně orientovaná reakce. Síly akce a reakce působí na různá tělesa.
+\end{definitionbox}
+
+\begin{equationbox}
+\begin{equation*}
+    F_{12} = -F_{21}
+\end{equation*}
+\end{equationbox}
+
+\section{ZÁKLADNÍ SÍLY V DYNAMICE}
+
+\subsection{Tíhová síla (Gravitační síla)}
+
+\begin{equationbox}
+\begin{equation*}
+    F_g = m \cdot g
+\end{equation*}
+\end{equationbox}
+
+\begin{notebox}
+kde: $g = 9{,}81$ m$\cdot$s$^{-2}$ - tíhové zrychlení na Zemi
+\end{notebox}
+
+\subsection{Normálová síla}
+
+\begin{definitionbox}
+Kolmá síla od podložky, která brání průniku tělesa do podložky. Na vodorovné rovině: $F_n = F_g$
+\end{definitionbox}
+
+\subsection{Třecí síla}
+
+\begin{equationbox}
+\begin{equation*}
+    F_t = f \cdot F_n
+\end{equation*}
+\end{equationbox}
+
+\begin{notebox}
+kde: $f$ - součinitel tření (bez jednotky), $F_n$ [N] - normálová síla
+\end{notebox}
+
+\begin{itemize}
+    \item \textbf{Statické tření} - brání rozjetí tělesa
+    \item \textbf{Kinetické tření} - působí při pohybu tělesa
+\end{itemize}
+
+\newpage
+
+\section{NAKLONĚNÁ ROVINA}
+
+\begin{definitionbox}
+Na nakloněné rovině rozkládáme tíhovou sílu na dvě složky:
+\end{definitionbox}
+
+\subsection{Kolmá složka (na rovinu)}
+
+\begin{equationbox}
+\begin{equation*}
+    F_{g\perp} = F_g \cdot \cos(\alpha) = m \cdot g \cdot \cos(\alpha)
+\end{equation*}
+\end{equationbox}
+
+\subsection{Rovnoběžná složka (podél roviny)}
+
+\begin{equationbox}
+\begin{equation*}
+    F_{g\parallel} = F_g \cdot \sin(\alpha) = m \cdot g \cdot \sin(\alpha)
+\end{equation*}
+\end{equationbox}
+
+\begin{notebox}
+kde: $\alpha$ [°] nebo [rad] - úhel sklonu roviny
+\end{notebox}
+
+\section{HYBNOST A IMPULZ SÍLY}
+
+\subsection{Hybnost}
+
+\begin{definitionbox}
+Hybnost je vektorová veličina udávající míru pohybu tělesa.
+\end{definitionbox}
+
+\begin{equationbox}
+\begin{equation*}
+    p = m \cdot v
+\end{equation*}
+\end{equationbox}
+
+\begin{notebox}
+kde: $p$ [kg$\cdot$m$\cdot$s$^{-1}$] - hybnost, $m$ [kg] - hmotnost, $v$ [m$\cdot$s$^{-1}$] - rychlost
+\end{notebox}
+
+\subsection{Zákon zachování hybnosti}
+
+\begin{definitionbox}
+V izolované soustavě (bez vnějších sil) se celková hybnost zachovává.
+\end{definitionbox}
+
+\begin{equationbox}
+\begin{equation*}
+    p_1 + p_2 = p_1' + p_2'
+\end{equation*}
+\end{equationbox}
+
+\begin{equationbox}
+\begin{equation*}
+    m_1 \cdot v_1 + m_2 \cdot v_2 = m_1 \cdot v_1' + m_2 \cdot v_2'
+\end{equation*}
+\end{equationbox}
+
+\subsection{Impulz síly}
+
+\begin{definitionbox}
+Impulz síly je změna hybnosti tělesa.
+\end{definitionbox}
+
+\begin{equationbox}
+\begin{equation*}
+    I = F \cdot \Delta t = \Delta p = m \cdot \Delta v
+\end{equation*}
+\end{equationbox}
+
+\begin{notebox}
+kde: $I$ [N$\cdot$s] - impulz síly, $\Delta t$ [s] - doba působení síly
+\end{notebox}
+
+\newpage
+
+\section{SRÁŽKY TĚLES}
+
+\subsection{Nepružná srážka}
+
+\begin{definitionbox}
+Tělesa se po srážce spojí a pohybují se společnou rychlostí.
+\end{definitionbox}
+
+\begin{equationbox}
+\begin{equation*}
+    m_1 \cdot v_1 + m_2 \cdot v_2 = (m_1 + m_2) \cdot v'
+\end{equation*}
+\end{equationbox}
+
+\subsection{Pružná srážka}
+
+\begin{definitionbox}
+Zachovává se hybnost i kinetická energie. Tělesa se po srážce odrazí.
+\end{definitionbox}
+
+\begin{equationbox}
+\begin{equation*}
+    m_1 \cdot v_1 + m_2 \cdot v_2 = m_1 \cdot v_1' + m_2 \cdot v_2'
+\end{equation*}
+\end{equationbox}
+
+\begin{equationbox}
+\begin{equation*}
+    \frac{1}{2}m_1 \cdot v_1^2 + \frac{1}{2}m_2 \cdot v_2^2 = \frac{1}{2}m_1 \cdot v_1'^2 + \frac{1}{2}m_2 \cdot v_2'^2
+\end{equation*}
+\end{equationbox}
+
+\section{POHYB PO KRUŽNICI}
+
+\subsection{Dostředivá síla}
+
+\begin{definitionbox}
+Síla směřující ke středu kružnice, která udržuje těleso na kruhové dráze.
+\end{definitionbox}
+
+\begin{equationbox}
+\begin{equation*}
+    F_d = m \cdot a_d = m \cdot \frac{v^2}{r} = m \cdot \omega^2 \cdot r
+\end{equation*}
+\end{equationbox}
+
+\begin{notebox}
+kde: $r$ [m] - poloměr kružnice, $v$ [m$\cdot$s$^{-1}$] - rychlost, $\omega$ [rad$\cdot$s$^{-1}$] - úhlová rychlost
+\end{notebox}
+
+\subsection{Úhlová rychlost}
+
+\begin{equationbox}
+\begin{equation*}
+    \omega = \frac{2\pi}{T} = 2\pi f
+\end{equation*}
+\end{equationbox}
+
+\begin{notebox}
+kde: $T$ [s] - perioda, $f$ [Hz] - frekvence
+\end{notebox}
+
+\section{UŽITEČNÉ VZTAHY}
+
+\subsection{Převody jednotek}
+
+\begin{notebox}
+\begin{itemize}
+    \item 1 N = 1 kg$\cdot$m$\cdot$s$^{-2}$
+    \item 1 km$\cdot$h$^{-1}$ = 1/3,6 m$\cdot$s$^{-1}$
+    \item 1 m$\cdot$s$^{-1}$ = 3,6 km$\cdot$h$^{-1}$
+\end{itemize}
+\end{notebox}
+
+\subsection{Gravitační konstanta}
+
+\begin{notebox}
+$g = 9{,}81$ m$\cdot$s$^{-2}$ $\approx$ 10 m$\cdot$s$^{-2}$ (zaokrouhleno)
+\end{notebox}
+
+\vfill
+
+\begin{center}
+\rule{0.8\textwidth}{0.5pt}\\[0.3cm]
+{\small Gymnázium Globe | Praktické aplikace fyziky a chemie}
+\end{center}
+
+\end{document}

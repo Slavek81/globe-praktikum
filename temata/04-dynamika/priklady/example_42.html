@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nepružná srážka vozíků</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>42. Nepružná srážka vozíků</h1>
+            <p>Dynamika - řešený příklad</p>
+        </header>
+
+        <!-- Motivační úvod pro studenty -->
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Praktická aplikace fyziky v reálném světě.
+        </div>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <div class="zadani-text">
+                    Dodávka o hmotnosti 3,5 tuny jede rychlostí <span class="hodnoty">60 km/h</span>. Jakou rychlost by muselo mít osobní auto o hmotnosti 1,5 tuny, aby mělo stejnou hybnost jako dodávka?
+                </div>
+        </section>
+
+        
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+            
+
+            
+            <div class="calculation-step">
+                <p>
+                            Úkolem je porovnat hybnost dvou různých vozidel a najít takovou rychlost lehčího vozidla, aby se jeho hybnost vyrovnala hybnosti těžšího vozidla. Hybnost je fyzikální veličina, která popisuje "pohybový stav" tělesa a závisí jak na jeho hmotnosti, tak na jeho rychlosti.
+                        </p>
+<p>
+<strong>Hodnoty ze zadání:</strong>
+</p>
+<ul>
+<li>Dodávka (objekt 1): $m_1 = 3,5 \, \text{tuny} = 3500 \, \text{kg}$, $v_1 = 60 \, \text{km/h}$</li>
+<li>Osobní auto (objekt 2): $m_2 = 1,5 \, \text{tuny} = 1500 \, \text{kg}$</li>
+</ul>
+<p>
+                            Hledáme rychlost osobního auta $v_2$ za podmínky, že jejich hybnosti jsou si rovny: $p_1 = p_2$.
+                            <em>Poznámka: Protože porovnáváme stejné jednotky na obou stranách rovnice, nemusíme v tomto konkrétním případě převádět km/h na m/s. Výsledek nám vyjde rovnou v km/h.</em>
+</p>
+            </div>
+            
+            <div class="calculation-step">
+                <p>
+                            Základním vztahem pro výpočet je definice hybnosti. Podmínka ze zadání nám pak dává rovnost hybností obou vozidel.
+                        </p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">Definice hybnosti
+<div class="rovnice-text">$p = m \cdot v$</div>
+</div>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">Podmínka rovnosti hybností</div>
+<div class="rovnice-text">$p_1 = p_2 \implies m_1 \cdot v_1 = m_2 \cdot v_2$</div>
+</div>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p>
+                            Naším cílem je vypočítat rychlost osobního auta $v_2$. Z rovnice $m_1 \cdot v_1 = m_2 \cdot v_2$ si tuto neznámou vyjádříme tak, že celou rovnici vydělíme hmotností $m_2$.
+                        </p>
+<p>
+                            Získáme tak finální vzorec pro výpočet:
+                        </p>
+                        $$ v_2 = \frac{m_1 \cdot v_1}{m_2} $$
+            </div>
+            
+            <div class="calculation-step">
+                <p>
+                            Nyní dosadíme zadané číselné hodnoty do odvozeného vzorce.
+                        </p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">Výpočet rychlosti auta
+<div class="rovnice-text">
+                                $v_2 = \frac{3500 \, \text{kg} \cdot 60 \, \text{km/h}}{1500 \, \text{kg}} = \frac{210000}{1500} \, \text{km/h}$
+                            </div>
+</div>
+<p>
+                            Výsledek výpočtu je:
+                        </p>
+                        $$ v_2 = 140 \, \text{km/h} $$
+                    </div>
+            </div>
+            
+            <div class="calculation-step">
+                <p>
+                            Zkontrolujme logiku: Osobní auto je lehčí než dodávka. Aby mělo stejnou hybnost, musí se pohybovat výrazně rychleji. Výsledek 140 km/h je více než dvojnásobek rychlosti dodávky, což odpovídá tomu, že hmotnost auta je méně než poloviční. Výsledek dává smysl.
+                        </p>
+<p>
+<strong>Odpověď: Osobní auto by muselo jet rychlostí 140 km/h, aby mělo stejnou hybnost jako dodávka.</strong>
+</p>
+            </div>
+            
+        </section>
+
+        <section id="shrnuti">
+            <h2>Shrnutí a kontrola</h2>
+
+            <div class="summary-box">
+                <strong>Hlavní poznatky:</strong>
+                <ul><li>Identifikovali jsme klíčové veličiny</li><li>Aplikovali jsme správné fyzikální zákony</li><li>Ověřili jsme jednotky a řády velikosti</li></ul>
+            </div>
+
+            
+            <div class="info-box">
+                <strong>Kontrola rozumnosti:</strong> Vždy zkontrolujte, zda výsledek dává fyzikální smysl vzhledem k zadání.
+            </div>
+            
+
+            <details>
+                <summary>🤔 Metakognitivní otázky</summary>
+                <div>
+                    <ul>
+                        
+                        <li>Které z vozidel by bylo těžší zastavit? (Nápověda: Jaká je definice impulsu síly?)</li>
+                        
+                        <li>Mají obě vozidla také stejnou kinetickou energii? Pokud ne, které má větší? Vypočítejte.</li>
+                        
+                        <li>Jak by se změnila potřebná rychlost auta, kdyby dodávka zrychlila na 90 km/h?</li>
+                        
+                        <li>Proč bylo v tomto případě možné počítat s rychlostí v km/h a nebylo nutné ji převádět na m/s?</li>
+                        
+                    </ul>
+                </div>
+            </details>
+        </section>
+
+    </main>
+</body>
+</html>

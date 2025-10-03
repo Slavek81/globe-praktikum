@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nepružná srážka koulí</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>43. Nepružná srážka koulí</h1>
+            <p>Dynamika - řešený příklad</p>
+        </header>
+
+        <!-- Motivační úvod pro studenty -->
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Praktická aplikace fyziky v reálném světě.
+        </div>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <div class="zadani-text">
+                    Těleso o hmotnosti <span class="hodnoty">5 kg</span> se pohybuje rychlostí <span class="hodnoty">2 m/s</span> a jiné těleso o hmotnosti <span class="hodnoty">3 kg</span> se pohybuje rychlostí <span class="hodnoty">4 m/s</span>. Určete celkovou velikost hybnosti systému v následujících případech:<br/>a) pohybují se stejným směrem v téže přímce<br/>b) pohybují se proti sobě v téže přímce<br/>c) jejich rychlosti jsou vzájemně kolmé
+                </div>
+        </section>
+
+        
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+            
+
+            
+            <div class="calculation-step">
+                <p>
+                            Tento příklad ukazuje klíčovou vlastnost hybnosti: je to <strong>vektorová veličina</strong>. To znamená, že kromě velikosti má i směr. Celková hybnost soustavy je dána <strong>vektorovým součtem</strong> hybností jednotlivých těles. Podle toho, jaké směry mají rychlosti těles, se bude lišit i způsob výpočtu celkové hybnosti.
+                        </p>
+<p>
+                            Nejprve si vypočítáme velikosti hybností obou těles:
+                        </p>
+<ul>
+<li>Těleso 1: $p_1 = m_1 \cdot v_1 = 5 \, \text{kg} \cdot 2 \, \text{m/s} = 10 \, \text{kg} \cdot \text{m/s}$</li>
+<li>Těleso 2: $p_2 = m_2 \cdot v_2 = 3 \, \text{kg} \cdot 4 \, \text{m/s} = 12 \, \text{kg} \cdot \text{m/s}$</li>
+</ul>
+<p>
+                            Nyní budeme tyto dvě hybnosti sčítat podle pravidel pro vektory pro tři různé případy.
+                        </p>
+            </div>
+            
+            <div class="calculation-step">
+                <p>
+                            Základní vztah je vektorový součet hybností. Pro každý případ se tento obecný vztah zjednoduší na specifickou rovnici pro výpočet velikosti výsledné hybnosti $p$.
+                        </p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">Obecný vztah (vektorový součet)
+<div class="rovnice-text">$\vec{p} = \vec{p}_1 + \vec{p}_2$</div>
+</div>
+<p>
+<strong>a) Stejný směr:</strong> Vektory leží na jedné přímce a míří stejným směrem. Jejich velikosti se jednoduše sčítají.
+                            $$ p = p_1 + p_2 $$
+                            <strong>b) Opačný směr:</strong> Vektory leží na jedné přímce, ale míří proti sobě. Velikost výsledku je absolutní hodnota jejich rozdílu.
+                            $$ p = |p_1 - p_2| $$
+                            <strong>c) Kolmé směry:</strong> Vektory jsou na sebe kolmé. Tvoří odvěsny pravoúhlého trojúhelníku a výsledná hybnost je jeho přepona. Velikost vypočítáme pomocí Pythagorovy věty.
+                            $$ p = \sqrt{p_1^2 + p_2^2} $$
+                        </p>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p>
+                            V předchozím kroku jsme si již připravili všechny potřebné vzorce pro jednotlivé případy. Nyní do nich stačí dosadit.
+                        </p>
+            </div>
+            
+            <div class="calculation-step">
+                <p>
+                            Dosadíme vypočtené hodnoty $p_1 = 10 \, \text{kg} \cdot \text{m/s}$ a $p_2 = 12 \, \text{kg} \cdot \text{m/s}$.
+                        </p>
+<p>
+<strong>a) Stejný směr:</strong>
+                            $$ p = 10 + 12 = 22 \, \text{kg} \cdot \text{m/s} $$
+                        </p>
+<p>
+<strong>b) Opačný směr:</strong>
+                            $$ p = |10 - 12| = |-2| = 2 \, \text{kg} \cdot \text{m/s} $$
+                        </p>
+<p>
+<strong>c) Kolmé směry:</strong>
+                            $$ p = \sqrt{10^2 + 12^2} = \sqrt{100 + 144} = \sqrt{244} \approx 15,62 \, \text{kg} \cdot \text{m/s} $$
+                        </p>
+            </div>
+            
+            <div class="calculation-step">
+                <p>
+                            Výsledky dávají smysl. Největší celková hybnost je, když se oba pohybují stejným směrem (jejich účinky se sčítají). Nejnižší je, když se pohybují proti sobě (jejich účinky se odčítají). Případ kolmého pohybu je mezi těmito dvěma extrémy.
+                        </p>
+<p>
+<strong>Odpověď: Velikost celkové hybnosti systému je:
+                            <br/>a) 22 kg·m/s, pokud se pohybují stejným směrem.
+                            <br/>b) 2 kg·m/s, pokud se pohybují proti sobě.
+                            <br/>c) přibližně 15,62 kg·m/s, pokud se pohybují kolmo na sebe.</strong>
+</p>
+            </div>
+            
+        </section>
+
+        <section id="shrnuti">
+            <h2>Shrnutí a kontrola</h2>
+
+            <div class="summary-box">
+                <strong>Hlavní poznatky:</strong>
+                <ul><li>Identifikovali jsme klíčové veličiny</li><li>Aplikovali jsme správné fyzikální zákony</li><li>Ověřili jsme jednotky a řády velikosti</li></ul>
+            </div>
+
+            
+            <div class="info-box">
+                <strong>Kontrola rozumnosti:</strong> Vždy zkontrolujte, zda výsledek dává fyzikální smysl vzhledem k zadání.
+            </div>
+            
+
+            <details>
+                <summary>🤔 Metakognitivní otázky</summary>
+                <div>
+                    <ul>
+                        
+                        <li>Jaký by byl směr výsledné hybnosti v případě b) a c)?</li>
+                        
+                        <li>Je celková kinetická energie soustavy v případech a), b), c) stejná, nebo se liší? Proč? (Kinetická energie je skalár!)</li>
+                        
+                        <li>Co by se stalo s celkovou hybností soustavy, kdyby se obě tělesa po srážce spojila?</li>
+                        
+                        <li>Jak byste vypočítali velikost celkové hybnosti, kdyby vektory rychlostí svíraly úhel 60°? (Nápověda: kosinová věta)</li>
+                        
+                    </ul>
+                </div>
+            </details>
+        </section>
+
+    </main>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Přetržené lano kamiónu</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>30. Přetržené lano kamiónu</h1>
+            <p>Dynamika - řešený příklad</p>
+        </header>
+
+        <!-- Motivační úvod pro studenty -->
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Praktická aplikace fyziky v reálném světě.
+        </div>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <div class="zadani-text">
+                    Je pravda, že pokud budete mít dvě stejně velké koule, avšak různé hmotnosti (budou třeba z různých materiálů), tak budou padat stejně rychle? Argumentujte. Jak by to bylo na Měsící? Bylo by to jinak?
+                </div>
+        </section>
+
+        
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+            
+
+            
+            <div class="calculation-step">
+                <p>Představme si situaci bez jakéhokoliv odporu vzduchu, například na Měsíci nebo ve vakuové komoře. Na každou kouli působí pouze jedna síla – její tíhová síla $F_g = m \cdot g$. Podle druhého Newtonova zákona platí, že síla uděluje tělesu zrychlení podle vztahu $F = m \cdot a$.</p>
+<p>Spojením těchto dvou zákonů pro padající těleso dostaneme:</p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">📐 Spojení zákonů
+<div class="rovnice-text">$m \cdot a = m \cdot g$</div>
+</div>
+<p>Jak vidíme, hmotnost $m$ se na obou stranách rovnice vykrátí. Zůstane nám pouze:</p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">📐 Zrychlení pádu</div>
+<div class="rovnice-text">$a = g$</div>
+</div>
+<p>Tento zásadní výsledek znamená, že <strong>ve vakuu všechna tělesa padají se stejným zrychlením $g$ bez ohledu na jejich hmotnost</strong>. Těžká olověná koule i lehké pírko by na Měsíci dopadly na povrch ve stejný okamžik (pokud je pustíme ze stejné výšky). Toto je jádro Galileovy myšlenky, která vyvrátila Aristotelovo tvrzení, že těžší tělesa padají rychleji.</p>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p>Na Zemi však musíme počítat s <strong>odporem vzduchu</strong> ($F_{odpor}$). Tato síla působí vždy proti směru pohybu a její velikost závisí na rychlosti, tvaru a velikosti tělesa. Na padající koule tedy působí dvě síly: tíhová síla $F_g$ dolů a odporová síla $F_{odpor}$ nahoru. Výsledná síla je jejich rozdíl:</p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">📐 Výsledná síla
+<div class="rovnice-text">$F_{vysl} = F_g - F_{odpor} = mg - F_{odpor}$</div>
+</div>
+<p>Zadání říká, že koule jsou "stejně velké", takže při stejné rychlosti na ně působí i stejně velká odporová síla. Rozdíl je ale v jejich tíhové síle:</p>
+<ul>
+<li><strong>Těžší koule:</strong> Má větší $mg$, takže výsledná síla $F_{vysl}$ bude větší. Větší výsledná síla znamená větší zrychlení.</li>
+<li><strong>Lehčí koule:</strong> Má menší $mg$, takže výsledná síla $F_{vysl}$ bude menší. Menší výsledná síla znamená menší zrychlení.</li>
+</ul>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p><strong>Na Zemi v atmosféře:</strong> Těžší koule bude padat o něco rychleji. Ačkoliv odpor vzduchu brzdí obě koule stejně, u těžší koule tvoří menší podíl z celkové síly, která ji táhne dolů. Její zrychlení bude tedy po celou dobu pádu o něco vyšší než u lehčí koule.</p>
+<p><strong>Na Měsíci (bez atmosféry):</strong> Obě koule budou padat naprosto stejně rychle a dopadnou ve stejný okamžik. Chybí zde totiž odpor prostředí, který by způsoboval rozdíl.</p>
+            </div>
+            
+        </section>
+
+        <section id="shrnuti">
+            <h2>Shrnutí a kontrola</h2>
+
+            <div class="summary-box">
+                <strong>Hlavní poznatky:</strong>
+                <ul><li>Identifikovali jsme klíčové veličiny</li><li>Aplikovali jsme správné fyzikální zákony</li><li>Ověřili jsme jednotky a řády velikosti</li></ul>
+            </div>
+
+            
+            <div class="info-box">
+                <strong>Kontrola rozumnosti:</strong> Vždy zkontrolujte, zda výsledek dává fyzikální smysl vzhledem k zadání.
+            </div>
+            
+
+            <details>
+                <summary>🤔 Metakognitivní otázky</summary>
+                <div>
+                    <ul>
+                        
+                        <li>Co je to "terminální rychlost" a jak souvisí s touto úlohou? Dosáhnou obě koule stejné terminální rychlosti?</li>
+                        
+                        <li>Proč parašutista roztáhne padák, aby zpomalil pád, i když se jeho hmotnost nezmění?</li>
+                        
+                        <li>Jak byste v jednoduchém domácím experimentu ukázali, že odpor vzduchu hraje roli? (Nápověda: papír).</li>
+                        
+                        <li>Proč astronaut David Scott na Měsíci skutečně upustil kladivo a pírko, aby tento princip demonstroval?</li>
+                        
+                    </ul>
+                </div>
+            </details>
+        </section>
+
+    </main>
+</body>
+</html>

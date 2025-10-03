@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tření pneumatiky na silnici</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>14. Tření pneumatiky na silnici</h1>
+            <p>Dynamika - řešený příklad</p>
+        </header>
+
+        <!-- Motivační úvod pro studenty -->
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Praktická aplikace fyziky v reálném světě.
+        </div>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <div class="zadani-text">
+                    Velký praktický význam má třecí síla mezi pneumatikou a silnicí – musí být co největší, aby nedocházelo ke smyku nebo podkluzování kol. Díky tření se auto I může prudce rozjíždět – kdyby nebylo tření, tak by při prudkém rozjezdu kola začala hrabat. Když bude auto mít větší hmotnost, bude jistě větší i normálová tlaková síla, ale zase bude potřeba, aby zase budou potřeba větší síly ke změně rychlosti auta, takže si nepomůžeme. Je nějaký způsob, jak zvýšit normálovou tlakovou sílu od auta na silnici, aniž by se změnila hmotnost auta?
+                </div>
+        </section>
+
+        
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+            
+
+            
+            <div class="calculation-step">
+                <p>Třecí síla mezi pneumatikou a silnicí závisí na součiniteli tření <strong>f</strong> a normálové síle <strong>F<sub>n</sub></strong>:</p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">📐 Třecí síla
+<div class="rovnice-text">$F_t = f \cdot F_n$</div>
+</div>
+<p>Pokud chceme zvětšit třecí sílu (a tím zlepšit přilnavost pneumatiky), musíme zvětšit normálovou sílu <strong>F<sub>n</sub></strong>, protože součinitel tření <strong>f</strong> je materiálová konstanta.</p>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p>Moderní závodní vozy používají aerodynamické prvky, které při rychlé jízdě vytvářejí přítlačnou sílu směrem dolů k vozovce.</p>
+<p><strong>Princip:</strong></p>
+<ul>
+<li>Zadní spoiler nebo křídlo je tvarováno jako obrácené křídlo letadla</li>
+<li>Proudící vzduch vytváří sílu směřující dolů (downforce)</li>
+<li>Tato aerodynamická síla se přičítá k tíhové síle vozidla</li>
+</ul>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">📐 Celková normálová síla
+<div class="rovnice-text">$F_n = F_g + F_{aero}$</div>
+</div>
+<p>Kde <strong>F<sub>aero</sub></strong> je aerodynamická přítlačná síla vytvořená spoilerem.</p>
+<div class="chyba-box">
+                            Pozor: Aerodynamická přítlačná síla funguje pouze při vyšších rychlostech! Při nízké rychlosti je efekt zanedbatelný.
+                        </div>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p>Závodní okruhy a rychlostní dálnice ve složitých zatáčkách používají skloněnou vozovku.</p>
+<p><strong>Princip:</strong></p>
+<ul>
+<li>Silnice je ve směru zatáčky nakloněna pod úhlem α</li>
+<li>Tíhová síla má pak složku kolmou k vozovce i složku rovnoběžnou s vozovkou</li>
+<li>Složka kolmá k vozovce zvětšuje normálovou sílu</li>
+</ul>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">📐 Normálová síla na skloněné rovině
+<div class="rovnice-text">$F_n = F_g \cdot \cos(\alpha) + F_{odstředivá} \cdot \sin(\alpha)$</div>
+</div>
+<p>Při správně navržené zatáčce se normálová síla zvětšuje, což umožňuje projíždět zatáčku vyšší rychlostí bez smyku.</p>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <ul>
+<li><strong>Formule 1:</strong> Používá obrovské zadní křídlo, které při 300 km/h vytváří přítlačnou sílu až 2× větší než hmotnost vozu</li>
+<li><strong>NASCAR:</strong> Závodní okruhy mají sklon zatáček až 36°, což umožňuje rychlosti přes 300 km/h</li>
+<li><strong>Silniční doprava:</strong> Dálniční mimoúrovňové křižovatky mají mírný sklon (3-8°) pro bezpečnější průjezd</li>
+</ul>
+            </div>
+            
+        </section>
+
+        <section id="shrnuti">
+            <h2>Shrnutí a kontrola</h2>
+
+            <div class="summary-box">
+                <strong>Hlavní poznatky:</strong>
+                <ul><li>Identifikovali jsme klíčové veličiny</li><li>Aplikovali jsme správné fyzikální zákony</li><li>Ověřili jsme jednotky a řády velikosti</li></ul>
+            </div>
+
+            
+            <div class="info-box">
+                <strong>Kontrola rozumnosti:</strong> Vždy zkontrolujte, zda výsledek dává fyzikální smysl vzhledem k zadání.
+            </div>
+            
+
+            <details>
+                <summary>🤔 Metakognitivní otázky</summary>
+                <div>
+                    <ul>
+                        
+                        <li>Proč aerodynamická přítlačná síla nefunguje při pomalé jízdě?</li>
+                        
+                        <li>Jak by se změnila normálová síla, kdyby zatáčka byla skloněná opačným směrem?</li>
+                        
+                        <li>Jaké nevýhody má příliš velká aerodynamická přítlačná síla? (nápověda: vztah k spotřebě paliva)</li>
+                        
+                        <li>Proč závodní vozy mají různě velká křídla na přední a zadní nápravě?</li>
+                        
+                    </ul>
+                </div>
+            </details>
+        </section>
+
+    </main>
+</body>
+</html>

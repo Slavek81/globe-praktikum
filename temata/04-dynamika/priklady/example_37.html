@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Střela zasáhne prkno</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>37. Střela zasáhne prkno</h1>
+            <p>Dynamika - řešený příklad</p>
+        </header>
+
+        <!-- Motivační úvod pro studenty -->
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Praktická aplikace fyziky v reálném světě.
+        </div>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <div class="zadani-text">
+                    Jakou průměrnou silou působí baseballová pálka na míček, pokud profesionálové nadhazují rychlostí <span class="hodnoty">140 km/h</span>, odpálený míček má rychlost <span class="hodnoty">150 km/h</span>, a kontakt pálky a míčku trvá asi <span class="hodnoty">2 ms</span>? Potřebné hodnoty si dohledejte.
+                </div>
+        </section>
+
+        
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+            
+
+            
+            <div class="calculation-step">
+                <p>
+                            Jedná se o klasický příklad srážky, kde na těleso (míček) působí po velmi krátkou dobu velmi velká síla. Naším úkolem je určit průměrnou velikost této síly. K tomu využijeme koncept impulsu síly a změny hybnosti.
+                        </p>
+<p>
+                            Nejprve si musíme dohledat a převést všechny hodnoty na základní jednotky SI:
+                        </p>
+<ul>
+<li>Hmotnost baseballového míčku: $m = 145 \, \text{g} = 0,145 \, \text{kg}$</li>
+<li>Doba kontaktu: $t = 2 \, \text{ms} = 0,002 \, \text{s}$</li>
+<li>Rychlost nadhozu: $v_1 = 140 \, \text{km/h} = \frac{140}{3,6} \, \text{m/s} \approx 38,89 \, \text{m/s}$</li>
+<li>Rychlost odpalu: $v_2 = 150 \, \text{km/h} = \frac{150}{3,6} \, \text{m/s} \approx 41,67 \, \text{m/s}$</li>
+</ul>
+<p>
+<strong>Klíčová úvaha – změna rychlosti:</strong> Rychlost je vektorová veličina, záleží tedy na jejím směru. Musíme si zvolit jeden směr jako kladný. Zvolme směr odletu míčku od pálky jako kladný.
+                        </p>
+<ul>
+<li>Rychlost odletu je tedy $v_2 = +41,67 \, \text{m/s}$.</li>
+<li>Rychlost příletu $v_1$ má opačný směr, proto jí musíme přiřadit záporné znaménko: $v_1 = -38,89 \, \text{m/s}$.</li>
+</ul>
+<p>
+                            Změna rychlosti $\Delta v$ je definována jako "konečná rychlost mínus počáteční rychlost":
+                        </p>
+                        $$ \Delta v = v_2 - v_1 = (+41,67) - (-38,89) = 41,67 + 38,89 = 80,56 \, \text{m/s} $$
+                        <p>
+                            Celková změna rychlosti je tedy součtem velikostí obou rychlostí, protože míček musel nejprve úplně zastavit a poté zrychlit v opačném směru.
+                        </p>
+            </div>
+            
+            <div class="calculation-step">
+                <p>
+                            Stejně jako v předchozím příkladu, i zde je nejvhodnějším nástrojem <strong>věta o impulsu a změně hybnosti</strong>. Ta říká, že impuls síly, který na míček působí, je roven celkové změně hybnosti míčku.
+                        </p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">Věta o impulsu a změně hybnosti
+<div class="rovnice-text">$F \cdot t = m \cdot \Delta v$</div>
+</div>
+<p>
+                            V tomto vztahu je $F$ průměrná síla, protože skutečná síla během kontaktu není konstantní (roste z nuly na maximum a pak opět klesá).
+                        </p>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p>
+                            Naším cílem je vypočítat průměrnou sílu $F$. Z výše uvedené rovnice ji získáme jednoduchou úpravou – vydělením obou stran rovnice časem $t$.
+                        </p>
+<p>
+                            Finální vzorec pro výpočet síly je:
+                        </p>
+                        $$ F = \frac{m \cdot \Delta v}{t} $$
+            </div>
+            
+            <div class="calculation-step">
+                <p>
+                            Nyní dosadíme všechny hodnoty, které jsme si připravili v prvním kroku, do odvozeného vzorce.
+                        </p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">Výpočet průměrné síly
+<div class="rovnice-text">
+                                $F = \frac{0,145 \, \text{kg} \cdot 80,56 \, \text{m/s}}{0,002 \, \text{s}} = \frac{11,6812}{0,002} \, \text{N}$
+                            </div>
+</div>
+<p>
+                            Výsledná síla je:
+                        </p>
+                        $$ F \approx 5840,6 \, \text{N} \approx 5,84 \, \text{kN} $$
+                    </div>
+            </div>
+            
+            <div class="calculation-step">
+                <p>
+                            Zkontrolujme jednotky: $\frac{\text{kg} \cdot (\text{m/s})}{\text{s}} = \frac{\text{kg} \cdot \text{m}}{\text{s}^2} = \text{N}$. Jednotka síly je správná. Velikost síly téměř 6 kN odpovídá tíze tělesa o hmotnosti 584 kg. To je obrovská síla, ale vzhledem k extrémně krátké době kontaktu a velké změně rychlosti je to reálná hodnota.
+                        </p>
+<p>
+<strong>Odpověď: Baseballová pálka působí na míček průměrnou silou přibližně 5840 N (tedy 5,84 kN).</strong>
+</p>
+            </div>
+            
+        </section>
+
+        <section id="shrnuti">
+            <h2>Shrnutí a kontrola</h2>
+
+            <div class="summary-box">
+                <strong>Hlavní poznatky:</strong>
+                <ul><li>Identifikovali jsme klíčové veličiny</li><li>Aplikovali jsme správné fyzikální zákony</li><li>Ověřili jsme jednotky a řády velikosti</li></ul>
+            </div>
+
+            
+            <div class="info-box">
+                <strong>Kontrola rozumnosti:</strong> Vždy zkontrolujte, zda výsledek dává fyzikální smysl vzhledem k zadání.
+            </div>
+            
+
+            <details>
+                <summary>🤔 Metakognitivní otázky</summary>
+                <div>
+                    <ul>
+                        
+                        <li>Proč v zadání mluvíme o "průměrné" síle? Jak by vypadal skutečný průběh síly během těch 2 milisekund?</li>
+                        
+                        <li>Jak by se změnila potřebná síla, kdyby byl míček vyroben z dokonale nepružného materiálu a po odpalu by pouze spadl na zem s nulovou rychlostí?</li>
+                        
+                        <li>Proč hráči při odpalu "protáhnou" úder (tzv. "follow-through")? Mohlo by to souviset s prodloužením doby kontaktu $t$?</li>
+                        
+                        <li>Při srážce působí míček na pálku stejně velkou, ale opačně orientovanou silou (akce a reakce). Proč pálka neodletí hráči z ruky?</li>
+                        
+                    </ul>
+                </div>
+            </details>
+        </section>
+
+    </main>
+</body>
+</html>

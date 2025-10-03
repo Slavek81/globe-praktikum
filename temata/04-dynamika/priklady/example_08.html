@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Síla pro rovnoměrný pohyb</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>8. Síla pro rovnoměrný pohyb</h1>
+            <p>Dynamika - řešený příklad</p>
+        </header>
+
+        <!-- Motivační úvod pro studenty -->
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Když tlačíme těžkou bednu po podlaze, potřebujeme vyvinout určitou sílu, aby se pohybovala stálou rychlostí. Tato síla závisí na hmotnosti bedny a na vlastnostech povrchu.
+        </div>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <p class="zadani-text"><strong>Těleso o hmotnosti <span class="hodnoty">80 kg</span> se pohybuje rovnoměrně po vodorovné rovině. Součinitel smykového tření je <span class="hodnoty">f = 0,7</span>. Určete sílu potřebnou k rovnoměrnému pohybu tělesa.</strong></p>
+        </section>
+
+        
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+            
+
+            
+            <div class="calculation-step">
+                <p>Zadání neuvádí sklon, takže předpokládáme pohyb po <strong>vodorovné rovině</strong>. Pohyb je <strong>rovnoměrný</strong>, takže tažná síla $F_{tah}$ musí být stejně velká jako třecí síla $F_t$.</p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">⚖️ Rovnováha sil
+<div class="rovnice-text">$F_{tah} = F_t$</div>
+</div>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p>Na vodorovné rovině je normálová síla $F_n$ rovna tíhové síle $F_g$:</p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">📏 Normálová síla
+<div class="rovnice-text">
+                                $F_n = F_g = m \cdot g$<br/>
+                                $F_n = 80 \times 9{,}81 = 784{,}8$ N
+                            </div>
+</div>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p>Třecí síla se vypočítá podle vzorce:</p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">🧮 Třecí síla
+<div class="rovnice-text">
+                                $F_t = f \cdot F_n$<br/>
+                                $F_t = 0{,}7 \times 784{,}8 = 549{,}36$ N
+                            </div>
+</div>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p>Protože $F_{tah} = F_t$:</p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">✅ Výsledek
+<div class="rovnice-text">$F_{tah} = 549{,}4$ N</div>
+</div>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p><strong>Síla potřebná k rovnoměrnému pohybu tělesa je přibližně 549,4 N.</strong></p>
+            </div>
+            
+        </section>
+
+        <section id="shrnuti">
+            <h2>Shrnutí a kontrola</h2>
+
+            <div class="summary-box">
+                <strong>Hlavní poznatky:</strong>
+                <ul><li>Identifikovali jsme klíčové veličiny</li><li>Aplikovali jsme správné fyzikální zákony</li><li>Ověřili jsme jednotky a řády velikosti</li></ul>
+            </div>
+
+            
+            <div class="info-box">
+                <strong>Kontrola rozumnosti:</strong> Vždy zkontrolujte, zda výsledek dává fyzikální smysl vzhledem k zadání.
+            </div>
+            
+
+            <details>
+                <summary>🤔 Metakognitivní otázky</summary>
+                <div>
+                    <ul>
+                        
+                        <li>Jak by se změnila potřebná síla, kdyby byl povrch kluzkější (menší f)?</li>
+                        
+                        <li>Proč je třecí síla úměrná normálové síle?</li>
+                        
+                        <li>Jaký vliv má hmotnost tělesa na potřebnou sílu?</li>
+                        
+                    </ul>
+                </div>
+            </details>
+        </section>
+
+    </main>
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zrychlení raketových motorů</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>25. Zrychlení raketových motorů</h1>
+            <p>Dynamika - řešený příklad</p>
+        </header>
+
+        <!-- Motivační úvod pro studenty -->
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Rakety dosahují obrovských zrychlení díky mohutným motorům. Druhý Newtonův zákon nám umožňuje vypočítat zrychlení z známé síly a hmotnosti.
+        </div>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <p class="zadani-text"><strong>Raketové motory o hmotnosti <span class="hodnoty">2·10⁶ kg</span> jsou urychlovány silou <span class="hodnoty">3,3·10⁷ N</span>. Vypočítejte zrychlení raket.</strong></p>
+        </section>
+
+        
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+            
+
+            
+            <div class="calculation-step">
+                <p>Tento příklad je přímou aplikací <strong>druhého Newtonova zákona</strong>: síla se rovná součinu hmotnosti a zrychlení.</p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">⚖️ Druhý Newtonův zákon
+<div class="rovnice-text">$F = m \cdot a$</div>
+</div>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p>Ze zadání máme:</p>
+<ul>
+<li>Síla: $F = 3{,}3 \times 10^7$ N</li>
+<li>Hmotnost: $m = 2 \times 10^6$ kg</li>
+<li>Zrychlení: $a = ?$</li>
+</ul>
+<p>Ze základního vzorce si vyjádříme zrychlení:</p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">🎯 Vyjádření zrychlení
+<div class="rovnice-text">$a = \frac{F}{m}$</div>
+</div>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p>Dosadíme hodnoty do vzorce:</p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">🧮 Číselný výpočet
+<div class="rovnice-text">
+                                $a = \frac{3{,}3 \times 10^7}{2 \times 10^6}$ m·s⁻²<br/><br/>
+                                $a = 1{,}65 \times 10^{7-6}$ m·s⁻²<br/><br/>
+                                $a = 16{,}5$ m·s⁻²
+                            </div>
+</div>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p>Zrychlení 16,5 m·s⁻² je značné! Pro porovnání:</p>
+<ul>
+<li>Tíhové zrychlení na Zemi: $g = 9{,}81$ m·s⁻²</li>
+<li>Poměr: $\frac{16{,}5}{9{,}81} \approx 1{,}7$</li>
+</ul>
+<p>Raketa zrychluje zhruba <strong>1,7krát rychleji</strong> než volně padající těleso!</p>
+            </div>
+            
+            <div class="calculation-step">
+                <p><strong>Zrychlení rakety je 16,5 m·s⁻²</strong> (asi 1,7násobek tíhového zrychlení na Zemi)</p>
+            </div>
+            
+        </section>
+
+        <section id="shrnuti">
+            <h2>Shrnutí a kontrola</h2>
+
+            <div class="summary-box">
+                <strong>Hlavní poznatky:</strong>
+                <ul><li>Identifikovali jsme klíčové veličiny</li><li>Aplikovali jsme správné fyzikální zákony</li><li>Ověřili jsme jednotky a řády velikosti</li></ul>
+            </div>
+
+            
+            <div class="info-box">
+                <strong>Kontrola rozumnosti:</strong> Vždy zkontrolujte, zda výsledek dává fyzikální smysl vzhledem k zadání.
+            </div>
+            
+
+            <details>
+                <summary>🤔 Metakognitivní otázky</summary>
+                <div>
+                    <ul>
+                        
+                        <li>Proč potřebují rakety takové velké síly motorů?</li>
+                        
+                        <li>Jak se změní zrychlení, když raketa spotřebuje palivo?</li>
+                        
+                        <li>Jaké síly působí na astronauty při takovém zrychlení?</li>
+                        
+                    </ul>
+                </div>
+            </details>
+        </section>
+
+    </main>
+</body>
+</html>

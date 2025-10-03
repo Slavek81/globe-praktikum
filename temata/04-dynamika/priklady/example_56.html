@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pohyb tělesa ve výtahu</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>56. Pohyb tělesa ve výtahu</h1>
+            <p>Dynamika - řešený příklad</p>
+        </header>
+
+        <!-- Motivační úvod pro studenty -->
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Praktická aplikace fyziky v reálném světě.
+        </div>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <div class="zadani-text">
+                    Na obrázku jsou znázorněny změny velikosti rychlosti při rozjíždění a zastavování výtahu, který jede směrem vzhůru. Určete velikost výsledné síly, která napíná lano, je-li hmotnost kabiny s cestujícími <span class="hodnoty">1200 kg</span>. Řešte po jednotlivých úsecích. Pro každý úsek také nakreslete obrázek se znázorněním působících sil.
+                </div>
+        </section>
+
+        
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+            
+
+            
+            <div class="calculation-step">
+                <p>
+                            Úloha popisuje pohyb výtahu vzhůru, který se skládá ze tří fází: rozjezd (rovnoměrně zrychlený pohyb), jízda konstantní rychlostí (rovnoměrný přímočarý pohyb) a zastavování (rovnoměrně zpomalený pohyb). V každé fázi musíme určit zrychlení a následně pomocí 2. Newtonova zákona vypočítat sílu napínající lano.
+                        </p>
+<p>
+                            Na výtah působí dvě síly: <strong>tahová síla lana $\vec{F}_t$</strong> (směrem vzhůru) a <strong>tíhová síla $\vec{F}_g$</strong> (směrem dolů). Výslednice těchto sil uděluje výtahu zrychlení. Zvolíme směr vzhůru jako kladný (+).
+                        </p>
+<p>
+<strong>Data:</strong> $m = 1200 \, \text{kg}$, $g \approx 10 \, \text{m/s}^2$.
+                        </p>
+<p>
+<strong>Úseky pohybu z grafu:</strong>
+</p>
+<ul>
+<li><strong>Úsek 1 (0-4 s):</strong> Rozjezd, rychlost roste z 0 na 2 m/s.</li>
+<li><strong>Úsek 2 (4-10 s):</strong> Rovnoměrný pohyb rychlostí 2 m/s.</li>
+<li><strong>Úsek 3 (10-12 s):</strong> Zastavování, rychlost klesá z 2 m/s na 0.</li>
+</ul>
+            </div>
+            
+            <div class="calculation-step">
+                <p>
+                            Pro výpočet zrychlení z grafu: $a = \frac{\Delta v}{\Delta t}$. Pro výpočet síly tahu lana použijeme 2. Newtonův zákon pro svislý směr:
+                        </p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">2. Newtonův zákon
+<div class="rovnice-text">
+                                $F_{vysl} = F_t - F_g = m \cdot a \implies F_t = F_g + m \cdot a = m(g+a)$
+                            </div>
+</div>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p>
+                            Nejprve si vypočítáme konstantní tíhovou sílu výtahu:
+                        </p>
+<div class="rovnice-blok">
+<div class="rovnice-text">$F_g = m \cdot g = 1200 \, \text{kg} \cdot 10 \, \text{m/s}^2 = 12000 \, \text{N}$
+</div>
+<p>
+                            Pro každý úsek nyní vypočítáme zrychlení $a$ a dosadíme ho do rovnice $F_t = m(g+a)$.
+                        </p>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p>
+<strong>Úsek 1: Rozjezd (0-4 s)</strong>
+</p>
+<div class="rovnice-blok">
+<div class="rovnice-text">$a_1 = \frac{\Delta v}{\Delta t} = \frac{2 - 0}{4 - 0} = 0,5 \, \text{m/s}^2$
+</div>
+<p>
+                            Výtah zrychluje směrem nahoru, zrychlení je kladné.
+                        </p>
+<div class="rovnice-blok">
+<div class="rovnice-text">$F_{t1} = m(g + a_1) = 1200 \cdot (10 + 0,5) = 1200 \cdot 10,5 = 12600 \, \text{N}$</div>
+</div>
+<p>
+<strong>Úsek 2: Rovnoměrný pohyb (4-10 s)</strong>
+</p>
+<div class="rovnice-blok">
+<div class="rovnice-text">$a_2 = \frac{\Delta v}{\Delta t} = \frac{2 - 2}{10 - 4} = 0 \, \text{m/s}^2$</div>
+</div>
+<p>
+                            Při konstantní rychlosti je zrychlení nulové.
+                        </p>
+<div class="rovnice-blok">
+<div class="rovnice-text">$F_{t2} = m(g + a_2) = 1200 \cdot (10 + 0) = 12000 \, \text{N}$</div>
+</div>
+<p>
+<strong>Úsek 3: Zastavování (10-12 s)</strong>
+</p>
+<div class="rovnice-blok">
+<div class="rovnice-text">$a_3 = \frac{\Delta v}{\Delta t} = \frac{0 - 2}{12 - 10} = \frac{-2}{2} = -1 \, \text{m/s}^2$</div>
+</div>
+<p>
+                            Výtah zpomaluje, zrychlení je záporné (směřuje proti směru pohybu, tedy dolů).
+                        </p>
+<div class="rovnice-blok">
+<div class="rovnice-text">$F_{t3} = m(g + a_3) = 1200 \cdot (10 + (-1)) = 1200 \cdot 9 = 10800 \, \text{N}$</div>
+</div>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p>
+                            Výsledky dávají fyzikální smysl:
+                        </p>
+<ul>
+<li>Při rozjezdu vzhůru ($a &gt; 0$) musí lano táhnout větší silou, než je tíha výtahu ($F_t &gt; F_g$).</li>
+<li>Při rovnoměrném pohybu ($a = 0$) je síla lana rovna tíze výtahu ($F_t = F_g$).</li>
+<li>Při brzdění při jízdě vzhůru ($a &lt; 0$) stačí menší síla než tíha výtahu ($F_t &lt; F_g$), protože "brzdění" pomáhá tíhová síla.</li>
+</ul>
+<p>
+<strong>Odpověď:
+                            <br/>a) Během rozjezdu (0-4 s) je síla napínající lano 12 600 N.
+                            <br/>b) Během rovnoměrné jízdy (4-10 s) je síla napínající lano 12 000 N.
+                            <br/>c) Během zastavování (10-12 s) je síla napínající lano 10 800 N.</strong>
+</p>
+            </div>
+            
+        </section>
+
+        <section id="shrnuti">
+            <h2>Shrnutí a kontrola</h2>
+
+            <div class="summary-box">
+                <strong>Hlavní poznatky:</strong>
+                <ul><li>Identifikovali jsme klíčové veličiny</li><li>Aplikovali jsme správné fyzikální zákony</li><li>Ověřili jsme jednotky a řády velikosti</li></ul>
+            </div>
+
+            
+            <div class="info-box">
+                <strong>Kontrola rozumnosti:</strong> Vždy zkontrolujte, zda výsledek dává fyzikální smysl vzhledem k zadání.
+            </div>
+            
+
+            <details>
+                <summary>🤔 Metakognitivní otázky</summary>
+                <div>
+                    <ul>
+                        
+                        <li>Jak by se změnily síly v jednotlivých úsecích, kdyby výtah jel stejným způsobem, ale směrem dolů?</li>
+                        
+                        <li>Proč při rozjezdu výtahu vzhůru cítíme, že jsme "těžší", a při brzdění "lehčí"? Jak tento pocit souvisí se silou, kterou na nás působí podlaha výtahu?</li>
+                        
+                        <li>Jaká by byla síla napínající lano, kdyby se lano přetrhlo? Jaké by bylo zrychlení výtahu?</li>
+                        
+                        <li>Jak by se musel výtah pohybovat, aby síla napínající lano byla nulová, i když by lano nebylo přetržené?</li>
+                        
+                    </ul>
+                </div>
+            </details>
+        </section>
+
+    </main>
+</body>
+</html>

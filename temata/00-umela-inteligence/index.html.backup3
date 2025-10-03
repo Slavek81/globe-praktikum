@@ -10,7 +10,768 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="ai-styles.css">
+    <style>
+        .ai-hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .quiz-container {
+            background: var(--background-light);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-lg);
+            margin: var(--spacing-lg) 0;
+        }
+
+        .quiz-question {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .quiz-options {
+            display: grid;
+            gap: var(--spacing-sm);
+        }
+
+        .quiz-option {
+            background: white;
+            border: 2px solid var(--border-color);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-sm);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .quiz-option:hover {
+            border-color: var(--primary-color);
+            background: #f8faff;
+        }
+
+        .quiz-option.correct {
+            background: #dcfce7;
+            border-color: #16a34a;
+        }
+
+        .quiz-option.incorrect {
+            background: #fef2f2;
+            border-color: #dc2626;
+        }
+
+        .result {
+            margin-top: var(--spacing-sm);
+            padding: var(--spacing-sm);
+            border-radius: var(--border-radius);
+            font-weight: var(--font-weight-medium);
+        }
+
+        .ai-demo {
+            background: white;
+            border: 2px solid var(--border-color);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-lg);
+            margin: var(--spacing-lg) 0;
+        }
+
+        .demo-input {
+            width: 100%;
+            padding: var(--spacing-sm);
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            margin-bottom: var(--spacing-sm);
+            font-size: 1rem;
+        }
+
+        .demo-button {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: var(--spacing-sm) var(--spacing-md);
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.3s ease;
+        }
+
+        .demo-button:hover {
+            background: var(--primary-dark);
+        }
+
+        .demo-output {
+            background: var(--background-light);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-md);
+            margin-top: var(--spacing-sm);
+            min-height: 60px;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .ethics-accordion {
+            margin: var(--spacing-lg) 0;
+        }
+
+        .ethics-item {
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            margin-bottom: var(--spacing-sm);
+            overflow: hidden;
+        }
+
+        .ethics-header {
+            background: var(--background-light);
+            padding: var(--spacing-md);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: var(--font-weight-medium);
+        }
+
+        .ethics-header:hover {
+            background: #f0f0f0;
+        }
+
+        .ethics-content {
+            padding: var(--spacing-md);
+            display: none;
+        }
+
+        .ethics-content.active {
+            display: block;
+        }
+
+        .ai-example-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-lg);
+            margin: var(--spacing-lg) 0;
+        }
+
+        .ai-example-card {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: var(--spacing-lg);
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .ai-example-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .ai-example-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: var(--spacing-md);
+        }
+
+        /* Nové styly pro prompt guide */
+        .prompt-guide {
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .term-mini-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-sm);
+            margin: var(--spacing-md) 0;
+        }
+
+        .term-mini-card {
+            background: var(--background-light);
+            padding: var(--spacing-sm);
+            border-radius: var(--border-radius);
+            border-left: 3px solid var(--primary-color);
+            font-size: 0.9rem;
+        }
+
+        .prompt-tips {
+            margin: var(--spacing-md) 0;
+        }
+
+        .tip-item {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-sm);
+            padding: var(--spacing-sm);
+            background: #f0f9ff;
+            border-radius: var(--border-radius);
+        }
+
+        .tip-item i {
+            color: var(--secondary-color);
+            margin-top: 2px;
+        }
+
+        .prompt-comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-md);
+            margin: var(--spacing-md) 0;
+        }
+
+        @media (max-width: 768px) {
+            .prompt-comparison {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .prompt-bad, .prompt-good {
+            padding: var(--spacing-md);
+            border-radius: var(--border-radius);
+            border: 2px solid;
+        }
+
+        .prompt-bad {
+            border-color: #dc2626;
+            background: #fef2f2;
+        }
+
+        .prompt-good {
+            border-color: #16a34a;
+            background: #f0fdf4;
+        }
+
+        .prompt-label {
+            font-weight: var(--font-weight-semibold);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .prompt-label.bad {
+            color: #dc2626;
+        }
+
+        .prompt-label.good {
+            color: #16a34a;
+        }
+
+        .prompt-text {
+            font-style: italic;
+            margin: var(--spacing-xs) 0;
+            padding: var(--spacing-xs);
+            background: white;
+            border-radius: 4px;
+            border-left: 3px solid currentColor;
+        }
+
+        .prompt-why {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-top: var(--spacing-xs);
+        }
+
+        .prompt-analysis {
+            background: var(--background-light);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-md);
+            margin-top: var(--spacing-md);
+            border-left: 4px solid var(--accent-color);
+        }
+
+        /* Nové styly pro rozšířené promptování */
+        .advanced-techniques {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--spacing-md);
+            margin: var(--spacing-md) 0;
+        }
+
+        .technique-card {
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-md);
+            transition: all 0.3s ease;
+        }
+
+        .technique-card:hover {
+            box-shadow: var(--shadow);
+            transform: translateY(-2px);
+        }
+
+        .technique-card h5 {
+            color: var(--primary-color);
+            margin-bottom: var(--spacing-sm);
+            font-size: 1.1rem;
+        }
+
+        .technique-example {
+            background: var(--background-light);
+            border-left: 3px solid var(--primary-color);
+            padding: var(--spacing-sm);
+            margin-top: var(--spacing-sm);
+            font-style: italic;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .prompt-template {
+            background: #f0f9ff;
+            border: 2px solid var(--primary-color);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-md);
+            margin: var(--spacing-md) 0;
+        }
+
+        .template-section {
+            padding: var(--spacing-xs) 0;
+            border-bottom: 1px solid #e0e7ff;
+        }
+
+        .template-section:last-child {
+            border-bottom: none;
+        }
+
+        .template-note {
+            margin-top: var(--spacing-md);
+            padding: var(--spacing-md);
+            background: #fef3c7;
+            border-radius: var(--border-radius);
+            border-left: 4px solid var(--accent-color);
+            font-style: italic;
+            color: #92400e;
+        }
+
+        .physics-examples {
+            margin: var(--spacing-md) 0;
+        }
+
+        .example-category {
+            margin-bottom: var(--spacing-md);
+            background: white;
+            border-radius: var(--border-radius);
+            padding: var(--spacing-md);
+            border-left: 4px solid var(--secondary-color);
+        }
+
+        .example-category h5 {
+            color: var(--secondary-color);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .example-prompt {
+            background: #f0fdf4;
+            padding: var(--spacing-sm);
+            border-radius: var(--border-radius);
+            font-family: monospace;
+            font-size: 0.9rem;
+            border: 1px solid #bbf7d0;
+        }
+
+        .common-mistakes {
+            margin: var(--spacing-md) 0;
+        }
+
+        .mistake-item {
+            margin-bottom: var(--spacing-md);
+            padding: var(--spacing-md);
+            background: white;
+            border-radius: var(--border-radius);
+            border: 1px solid var(--border-color);
+        }
+
+        .mistake-wrong {
+            color: #dc2626;
+            margin-bottom: var(--spacing-xs);
+            font-weight: var(--font-weight-medium);
+        }
+
+        .mistake-right {
+            color: #16a34a;
+            font-weight: var(--font-weight-medium);
+        }
+
+        .prompt-builder {
+            background: #fefce8;
+            border: 2px solid var(--accent-color);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-lg);
+            margin-top: var(--spacing-lg);
+        }
+
+        .builder-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-md);
+            margin: var(--spacing-md) 0;
+        }
+
+        .builder-field label {
+            display: block;
+            margin-bottom: var(--spacing-xs);
+            font-weight: var(--font-weight-medium);
+            color: var(--text-color);
+        }
+
+        .builder-field select {
+            width: 100%;
+            padding: var(--spacing-sm);
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            background: white;
+            font-size: 0.9rem;
+        }
+
+        .built-prompt {
+            margin-top: var(--spacing-md);
+        }
+
+        .prompt-result {
+            background: white;
+            border: 2px solid var(--accent-color);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-md);
+            font-family: monospace;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            white-space: pre-wrap;
+        }
+
+        /* Nové styly pro ukázky nastavení */
+        .setup-examples-new {
+            margin: var(--spacing-lg) 0;
+        }
+
+        .setup-example-detailed {
+            margin-bottom: var(--spacing-lg);
+            background: white;
+            border-radius: var(--border-radius);
+            padding: var(--spacing-lg);
+            box-shadow: var(--shadow);
+        }
+
+        .setup-example-detailed h4 {
+            color: var(--primary-color);
+            margin-bottom: var(--spacing-md);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+
+        .example-setup-box {
+            background: #f8f9fa;
+            border: 2px solid var(--border-color);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-md);
+            overflow-x: auto;
+        }
+
+        .example-setup-box pre {
+            margin: 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: #2d3748;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .personalization-info {
+            background: #e6f3ff;
+            border: 2px solid var(--primary-color);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-md);
+            margin: var(--spacing-md) 0;
+        }
+
+        .personalization-info h4 {
+            color: var(--primary-color);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .personalization-info ul {
+            margin: var(--spacing-sm) 0;
+            padding-left: var(--spacing-lg);
+        }
+
+        .personalization-info li {
+            margin-bottom: var(--spacing-xs);
+        }
+
+        /* Styly pro rozšířené možnosti */
+        .advanced-options {
+            margin: var(--spacing-lg) 0;
+        }
+
+        .connectors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--spacing-md);
+            margin: var(--spacing-md) 0;
+        }
+
+        .connector-category {
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-md);
+        }
+
+        .connector-category h5 {
+            color: var(--primary-color);
+            margin-bottom: var(--spacing-sm);
+            font-size: 1.1rem;
+        }
+
+        .connector-category ul {
+            margin: 0;
+            padding-left: var(--spacing-md);
+        }
+
+        .connector-category li {
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .mcp-info {
+            background: #f0f9ff;
+            border: 2px solid var(--primary-color);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-lg);
+            margin: var(--spacing-md) 0;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-sm);
+            margin: var(--spacing-md) 0;
+        }
+
+        .benefit-card {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: var(--spacing-md);
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .benefit-card i {
+            color: var(--secondary-color);
+            font-size: 1.5rem;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .benefit-card strong {
+            display: block;
+            margin-bottom: var(--spacing-xs);
+            color: var(--text-color);
+        }
+
+        .benefit-card p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .mcp-servers {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-sm);
+            margin: var(--spacing-md) 0;
+        }
+
+        .mcp-server {
+            background: white;
+            border-left: 4px solid var(--accent-color);
+            padding: var(--spacing-sm);
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+            font-size: 0.9rem;
+        }
+
+        .activation-guide {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-md);
+            margin: var(--spacing-md) 0;
+        }
+
+        .ai-platform {
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-md);
+        }
+
+        .ai-platform h5 {
+            color: var(--primary-color);
+            margin-bottom: var(--spacing-sm);
+            font-size: 1.1rem;
+        }
+
+        .ai-platform ul {
+            margin: 0;
+            padding-left: var(--spacing-md);
+        }
+
+        .ai-platform li {
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .setup-warning {
+            background: #fef3c7;
+            border: 2px solid var(--accent-color);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-md);
+            margin-top: var(--spacing-md);
+        }
+
+        .setup-warning h5 {
+            color: #92400e;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .setup-warning ul {
+            margin: var(--spacing-sm) 0 0 0;
+            padding-left: var(--spacing-lg);
+        }
+
+        .setup-warning li {
+            margin-bottom: var(--spacing-xs);
+        }
+
+        /* Styly pro strukturované promptování */
+        .structured-prompting {
+            margin: var(--spacing-md) 0;
+        }
+
+        .xml-explanation {
+            background: #f0f9ff;
+            border: 2px solid var(--primary-color);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-md);
+            margin: var(--spacing-md) 0;
+        }
+
+        .xml-tags-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-sm);
+            margin: var(--spacing-md) 0;
+        }
+
+        .xml-tag-card {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: var(--spacing-sm);
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .xml-tag-card code {
+            display: block;
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: var(--spacing-xs);
+            border-radius: 4px;
+            margin-bottom: var(--spacing-xs);
+            font-size: 0.8rem;
+            font-family: 'Courier New', monospace;
+        }
+
+        .xml-tag-card p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .markdown-explanation {
+            background: #f8f9fa;
+            border: 2px solid var(--border-color);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-md);
+            margin: var(--spacing-md) 0;
+        }
+
+        .markdown-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-sm);
+        }
+
+        .markdown-feature {
+            background: white;
+            padding: var(--spacing-sm);
+            border-radius: var(--border-radius);
+            border-left: 4px solid var(--secondary-color);
+            font-size: 0.9rem;
+        }
+
+        .structured-example {
+            margin: var(--spacing-md) 0;
+        }
+
+        .example-box {
+            background: #2d3748;
+            border-radius: var(--border-radius);
+            padding: var(--spacing-md);
+            overflow-x: auto;
+        }
+
+        .example-box pre {
+            margin: 0;
+        }
+
+        .example-box code {
+            color: #e2e8f0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .model-compatibility {
+            background: #fef3c7;
+            border: 2px solid var(--accent-color);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-md);
+            margin: var(--spacing-md) 0;
+        }
+
+        .compatibility-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-sm);
+            margin: var(--spacing-md) 0;
+        }
+
+        .model-support {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: var(--spacing-sm);
+        }
+
+        .model-support strong {
+            color: var(--primary-color);
+            display: block;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .model-support p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .prompting-tip {
+            background: #dcfce7;
+            border: 2px solid var(--secondary-color);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-md);
+            margin: var(--spacing-md) 0;
+        }
+
+        .prompting-tip h5 {
+            color: var(--secondary-color);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .prompting-tip p {
+            margin: 0;
+        }
+    </style>
 </head>
 <body>
     <!-- Header -->
@@ -1483,53 +2244,82 @@ Potřebuje pochopít vztah mezi silou, hmotností a zrychlením.
                             <h4>Výzkum v Perplexity AI</h4>
                         </div>
                         <div class="step-body">
-                            <p><strong>Zadej svůj dotaz:</strong></p>
-                            <div class="source-example">
-                                „Jaké jsou typy tepelných čerpadel a jejich účinnost?"
-                            </div>
-                            <p><strong>Perplexity ti vrátí:</strong> Detailní odpověď s údaji o COP, SCOP a rozdíly mezi typy (vzduch-voda, země-voda, voda-voda). V odpovědi uvidíš citace na zdroje <code>[1]</code> <code>[2]</code> <code>[3]</code>.</p>
+                            <p><strong>Zadáš dotaz:</strong> „Jaké jsou typy tepelných čerpadel a jejich účinnost?"</p>
+                            <p><strong>Perplexity ti vrátí:</strong> Odpověď s číselnými údaji o COP, SCOP a rozdíly mezi typy (vzduch-voda, země-voda, voda-voda). Pod odpovědí uvidíš citace <code>[1]</code> <code>[2]</code> <code>[3]</code>.</p>
                         </div>
                     </div>
 
-                    <div class="step-box step-box-highlight">
+                    <div class="step-box">
                         <div class="step-header">
                             <span class="step-badge">KROK 2</span>
-                            <h4>Získání URL seznamu zdrojů</h4>
+                            <h4>Zobrazení zdrojů jako URL</h4>
                         </div>
                         <div class="step-body">
-                            <p><strong>Pošli Perplexity tento prompt:</strong></p>
-                            <div class="source-example" style="background: #e3f2fd; border-left-color: #2196f3;">
-                                💡 „Vytvoř mi seznam všech zdrojů ve formě url odkazů"
+                            <p><strong>V Perplexity klikni na:</strong> "View sources" nebo přímo na čísla citací <code>[1]</code> <code>[2]</code> <code>[3]</code></p>
+                            <p><strong>Zobrazí se ti:</strong> Seznam všech zdrojů s URL adresami:</p>
+                            <div class="source-example">
+                                <code>[1]</code> https://www.example.com/heat-pump-efficiency.pdf<br>
+                                <code>[2]</code> https://science.org/thermal-systems-2024<br>
+                                <code>[3]</code> https://energy.gov/heat-pump-guide
                             </div>
-                            <p><strong>Perplexity ti vygeneruje:</strong> Přehledný seznam všech URL adres zdrojů, které použil ve své odpovědi.</p>
-                            <p><strong>Zkopíruj celý seznam</strong> do schránky (Ctrl+C nebo Cmd+C)</p>
+                        </div>
+                    </div>
+
+                    <div class="step-box">
+                        <div class="step-header">
+                            <span class="step-badge">KROK 3</span>
+                            <h4>Kopírování URL adres</h4>
+                        </div>
+                        <div class="step-body">
+                            <p><strong>Vyber si relevantní zdroje</strong> (např. vědecké články, odborné weby)</p>
+                            <p><strong>Zkopíruj URL adresy</strong> do schránky (Ctrl+C nebo Cmd+C)</p>
+                            <p><strong>Tip:</strong> Můžeš si je dočasně vložit do poznámkového bloku</p>
+                        </div>
+                    </div>
+
+                    <div class="step-box">
+                        <div class="step-header">
+                            <span class="step-badge">KROK 4</span>
+                            <h4>Stažení PDF souborů (volitelné)</h4>
+                        </div>
+                        <div class="step-body">
+                            <p><strong>Pokud jsou zdroje v PDF:</strong> Klikni na URL a stáhni si PDF soubor na disk</p>
+                            <p><strong>Kde ukládat:</strong> Vytvoř si složku "Tepelná čerpadla - zdroje"</p>
                         </div>
                     </div>
 
                     <div class="step-box step-box-highlight">
                         <div class="step-header">
-                            <span class="step-badge">KROK 3</span>
+                            <span class="step-badge">KROK 5</span>
                             <h4>Přesun do Google NotebookLM</h4>
                         </div>
                         <div class="step-body">
-                            <p><strong>1.</strong> Otevři <a href="https://notebooklm.google.com" target="_blank">notebooklm.google.com</a></p>
-                            <p><strong>2.</strong> Vytvoř nový zápisník: "Tepelná čerpadla"</p>
-                            <p><strong>3.</strong> Přidej zdroje jedním z těchto způsobů:</p>
+                            <p><strong>1. Otevři NotebookLM:</strong> notebooklm.google.com</p>
+                            <p><strong>2. Vytvoř nový zápisník:</strong> "Tepelná čerpadla - referát"</p>
+                            <p><strong>3. Přidej zdroje - máš 3 možnosti:</strong></p>
 
                             <div class="source-options">
-                                <div class="source-option" style="border-left-color: #2196f3; background: #e3f2fd;">
-                                    <strong>🔗 Vložení URL adres (DOPORUČENO)</strong>
+                                <div class="source-option">
+                                    <strong>🔗 A) Vložení URL adres</strong>
                                     <ul>
-                                        <li>Klikni "+ Add source" → "Website"</li>
-                                        <li>Vlož URL adresy ze seznamu z Perplexity</li>
-                                        <li>NotebookLM načte obsah stránek automaticky</li>
+                                        <li>Klikni na "+ Add source" → "Website"</li>
+                                        <li>Vlož zkopírovanou URL adresu</li>
+                                        <li>Opakuj pro všechny zdroje z Perplexity</li>
                                     </ul>
                                 </div>
 
                                 <div class="source-option">
-                                    <strong>📝 Kopírování textu</strong>
+                                    <strong>📄 B) Nahrání PDF souborů</strong>
                                     <ul>
-                                        <li>Klikni "+ Add source" → "Note"</li>
+                                        <li>Klikni na "+ Add source" → "Upload"</li>
+                                        <li>Vyber stažené PDF soubory z Perplexity</li>
+                                    </ul>
+                                </div>
+
+                                <div class="source-option">
+                                    <strong>📝 C) Kopírování textu</strong>
+                                    <ul>
+                                        <li>Klikni na "+ Add source" → "Note"</li>
                                         <li>Vlož zkopírovaný text z Perplexity odpovědi</li>
                                     </ul>
                                 </div>
@@ -1539,15 +2329,15 @@ Potřebuje pochopít vztah mezi silou, hmotností a zrychlením.
 
                     <div class="step-box">
                         <div class="step-header">
-                            <span class="step-badge">KROK 4</span>
+                            <span class="step-badge">KROK 6</span>
                             <h4>Analýza a učení v NotebookLM</h4>
                         </div>
                         <div class="step-body">
-                            <p><strong>Teď ptej NotebookLM na konkrétní otázky:</strong></p>
+                            <p><strong>Teď se ptej NotebookLM:</strong></p>
                             <div class="notebooklm-queries">
                                 <div class="nb-query">
                                     <i class="fas fa-comment-dots"></i>
-                                    „Vytvoř tabulku porovnávající COP různých typů tepelných čerpadel"
+                                    „Vytvoř mi tabulku porovnávající COP různých typů tepelných čerpadel"
                                 </div>
                                 <div class="nb-query">
                                     <i class="fas fa-comment-dots"></i>
@@ -1555,7 +2345,7 @@ Potřebuje pochopít vztah mezi silou, hmotností a zrychlením.
                                 </div>
                                 <div class="nb-query">
                                     <i class="fas fa-comment-dots"></i>
-                                    „Vygeneruj audio přehled pro mou přípravu na referát"
+                                    „Vygeneruj audio přehled o tepelných čerpadlech pro mou přípravu na referát"
                                 </div>
                             </div>
                         </div>
@@ -1945,6 +2735,177 @@ Potřebuje pochopít vztah mezi silou, hmotností a zrychlením.
     </section>
 
     <script src="../../js/main.js"></script>
-    <script src="ai-lecture.js"></script>
+    <script>
+        // Kvíz funkce
+        function checkAnswer(questionId, selectedAnswer, isCorrect) {
+            const resultElement = document.getElementById(questionId + '-result');
+            const options = document.querySelectorAll(`#${questionId.replace('q', '')} .quiz-option`);
+
+            // Reset všech možností
+            options.forEach(option => {
+                option.classList.remove('correct', 'incorrect');
+            });
+
+            // Označit vybranou odpověď
+            event.target.classList.add(isCorrect ? 'correct' : 'incorrect');
+
+            if (isCorrect) {
+                resultElement.innerHTML = '<span style="color: #16a34a;"><i class="fas fa-check"></i> Správně!</span>';
+                resultElement.style.background = '#dcfce7';
+            } else {
+                resultElement.innerHTML = '<span style="color: #dc2626;"><i class="fas fa-times"></i> Zkus to znovu.</span>';
+                resultElement.style.background = '#fef2f2';
+            }
+        }
+
+        // Etika accordion
+        function toggleEthics(id) {
+            const content = document.getElementById(id);
+            const header = content.previousElementSibling;
+            const icon = header.querySelector('i');
+
+            content.classList.toggle('active');
+            icon.classList.toggle('fa-chevron-down');
+            icon.classList.toggle('fa-chevron-up');
+        }
+
+        // Demo generování básně s analýzou promptu
+        function generatePoem() {
+            const input = document.getElementById('prompt-input').value;
+            const output = document.getElementById('poem-output');
+            const analysisDiv = document.getElementById('prompt-analysis');
+            const analysisContent = document.getElementById('analysis-content');
+
+            if (!input.trim()) {
+                output.innerHTML = '<em style="color: #dc2626;">Nejdřív zadejte prompt!</em>';
+                analysisDiv.style.display = 'none';
+                return;
+            }
+
+            // Analýza promptu
+            const analysis = analyzePrompt(input);
+
+            // Simulace AI odpovědi (v reálné aplikaci by se volalo API)
+            const poems = [
+                "Gravitace táhne dolů,<br>Icaro letěl moc vysoko.<br>Newton pod stromekem seděl,<br>Jablko mu na hlavu kleslo!",
+                "F = ma, to je zákon,<br>Newton nám ho napsal v knihách.<br>Síla, hmota, zrychlení,<br>Fyzika je úžasná!",
+                "Einstein řekl E=mc²,<br>Hmota je energie v kořeni.<br>Čas se kroutí, prostor taky,<br>Relativita - to jsou fajn zákony!"
+            ];
+
+            const randomPoem = poems[Math.floor(Math.random() * poems.length)];
+
+            output.innerHTML = `
+                <strong>Vygenerovaná báseň:</strong><br><br>
+                <em>${randomPoem}</em>
+                <br><br>
+                <small><i class="fas fa-lightbulb"></i> V reálné aplikaci by tuto báseň vygenerovala AI na základě vašeho promptu.</small>
+            `;
+
+            // Zobrazení analýzy
+            analysisContent.innerHTML = `
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                    <div>
+                        <strong>📏 Délka:</strong><br>
+                        ${analysis.wordCount} slov, ${analysis.tokenEstimate} tokenů (odhad)
+                    </div>
+                    <div>
+                        <strong>🎯 Konkrétnost:</strong><br>
+                        <span style="color: ${analysis.specificity.color};">${analysis.specificity.level}</span>
+                    </div>
+                    <div>
+                        <strong>👤 Role definována:</strong><br>
+                        <span style="color: ${analysis.hasRole ? '#16a34a' : '#dc2626'};">${analysis.hasRole ? 'Ano' : 'Ne'}</span>
+                    </div>
+                    <div>
+                        <strong>📋 Formát zadán:</strong><br>
+                        <span style="color: ${analysis.hasFormat ? '#16a34a' : '#dc2626'};">${analysis.hasFormat ? 'Ano' : 'Ne'}</span>
+                    </div>
+                </div>
+                <div style="margin-top: 1rem;">
+                    <strong>💡 Doporučení:</strong> ${analysis.suggestions.join(', ')}
+                </div>
+            `;
+
+            analysisDiv.style.display = 'block';
+        }
+
+        // Funkce pro analýzu promptu
+        function analyzePrompt(prompt) {
+            const words = prompt.trim().split(/\s+/);
+            const wordCount = words.length;
+            const tokenEstimate = Math.ceil(wordCount * 1.3); // Hrubý odhad
+
+            // Kontrola konkrétnosti
+            const specificWords = ['konkrétní', 'detailní', 'přesný', 'specifický', 'pro', 'věk', 'úroveň', 'školu'];
+            const hasSpecificWords = specificWords.some(word => prompt.toLowerCase().includes(word));
+
+            let specificity = { level: 'Nízká', color: '#dc2626' };
+            if (wordCount > 15 && hasSpecificWords) {
+                specificity = { level: 'Vysoká', color: '#16a34a' };
+            } else if (wordCount > 10 || hasSpecificWords) {
+                specificity = { level: 'Střední', color: '#f59e0b' };
+            }
+
+            // Kontrola role
+            const roleWords = ['jsi', 'jste', 'jako', 'expert', 'učitel', 'student', 'básník', 'spisovatel'];
+            const hasRole = roleWords.some(word => prompt.toLowerCase().includes(word));
+
+            // Kontrola formátu
+            const formatWords = ['verš', 'řádek', 'bod', 'seznam', 'krátký', 'dlouhý', 'stránka', 'odstavec', 'rým'];
+            const hasFormat = formatWords.some(word => prompt.toLowerCase().includes(word));
+
+            // Doporučení
+            const suggestions = [];
+            if (!hasRole) suggestions.push('Definujte roli AI (např. "Jsi básník...")');
+            if (!hasFormat) suggestions.push('Specifikujte formát výstupu');
+            if (wordCount < 10) suggestions.push('Buďte konkrétnější v zadání');
+            if (suggestions.length === 0) suggestions.push('Výborný prompt! 👏');
+
+            return {
+                wordCount,
+                tokenEstimate,
+                specificity,
+                hasRole,
+                hasFormat,
+                suggestions
+            };
+        }
+
+        // Prompt Builder funkce
+        function buildPrompt() {
+            const role = document.getElementById('role-select').value;
+            const topic = document.getElementById('topic-select').value;
+            const format = document.getElementById('format-select').value;
+            const audience = document.getElementById('audience-select').value;
+
+            if (!role || !topic || !format || !audience) {
+                alert('Prosím vyberte všechny možnosti.');
+                return;
+            }
+
+            const prompt = `${role}. Vysvětli ${topic} ${audience} ${format}. Použij jednoduché příklady a zajímavé analogie.`;
+
+            document.getElementById('prompt-result').textContent = prompt;
+            document.getElementById('built-prompt').style.display = 'block';
+        }
+
+        function copyPrompt() {
+            const promptText = document.getElementById('prompt-result').textContent;
+            navigator.clipboard.writeText(promptText).then(function() {
+                const button = event.target;
+                const originalText = button.textContent;
+                button.textContent = 'Zkopírováno! ✓';
+                button.style.background = '#16a34a';
+
+                setTimeout(() => {
+                    button.textContent = originalText;
+                    button.style.background = 'var(--secondary-color)';
+                }, 2000);
+            }).catch(function(err) {
+                console.error('Chyba při kopírování: ', err);
+                alert('Kopírování se nezdařilo. Zkuste text vybrat a zkopírovat ručně.');
+            });
+        }
+    </script>
 </body>
 </html>

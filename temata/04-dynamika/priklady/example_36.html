@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kulka zasáhne poleno</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>36. Kulka zasáhne poleno</h1>
+            <p>Dynamika - řešený příklad</p>
+        </header>
+
+        <!-- Motivační úvod pro studenty -->
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Praktická aplikace fyziky v reálném světě.
+        </div>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <div class="zadani-text">
+                    O kolik se změní rychlost bruslaře o hmotnosti <span class="hodnoty">50 kg</span>, když do něj někdo tlačí silou o velikosti <span class="hodnoty">40 N</span> po dobu půl sekundy? Bruslař bez tření klouže po ledě. K výpočtu použijte vztah pro impuls síly.
+                </div>
+        </section>
+
+        
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+            
+
+            
+            <div class="calculation-step">
+                <p>
+                            V tomto příkladu máme bruslaře, na kterého po velmi krátkou dobu působí vnější síla. Naším úkolem je zjistit, jak tato síla změní jeho rychlost. Pro takové krátkodobé děje (nárazy, údery, krátké postrčení) je ideální použít koncept <strong>impulsu síly</strong>.
+                        </p>
+<p>
+<strong>Fyzikální význam impulsu síly:</strong> Impuls síly ($I = F \cdot t$) nám říká, jaký je celkový "účinek" síly působící v čase. Není to jen o velikosti síly, ale i o tom, jak dlouho působí. Silný, ale extrémně krátký úder může mít stejný účinek (stejnou změnu pohybu) jako slabší síla působící po delší dobu. Impuls síly je tedy mírou celkového "postrčení" nebo "nárazu", který těleso obdrží.
+                        </p>
+<p>
+<strong>Hodnoty ze zadání:</strong>
+</p>
+<ul>
+<li>Hmotnost bruslaře: $m = 50 \, \text{kg}$</li>
+<li>Síla postrčení: $F = 40 \, \text{N}$</li>
+<li>Doba působení síly: $t = 0,5 \, \text{s}$</li>
+</ul>
+<p>
+                            Hledáme změnu rychlosti $\Delta v$. Tření zanedbáváme.
+                        </p>
+            </div>
+            
+            <div class="calculation-step">
+                <p>
+                            Základním nástrojem pro řešení této úlohy je <strong>věta o impulsu a změně hybnosti</strong>. Ta říká, že impuls síly, který na těleso působí, je roven změně hybnosti tohoto tělesa.
+                        </p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">Impuls síly
+<div class="rovnice-text">$I = F \cdot t$</div>
+</div>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">Změna hybnosti</div>
+<div class="rovnice-text">$\Delta p = m \cdot \Delta v$</div>
+</div>
+<p>
+                            Spojením těchto dvou vztahů dostáváme klíčovou rovnici:
+                        </p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">Věta o impulsu a změně hybnosti</div>
+<div class="rovnice-text">$F \cdot t = m \cdot \Delta v$</div>
+</div>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p>
+                            Naším cílem je zjistit změnu rychlosti $\Delta v$. Z rovnice $F \cdot t = m \cdot \Delta v$ si tuto neznámou jednoduše vyjádříme tak, že celou rovnici vydělíme hmotností $m$.
+                        </p>
+<p>
+                            Získáme tak finální vzorec pro výpočet:
+                        </p>
+                        $$ \Delta v = \frac{F \cdot t}{m} $$
+                        <p>
+                            Tento vzorec nám říká, že změna rychlosti bude tím větší, čím větší je síla a doba jejího působení, a naopak tím menší, čím je těleso hmotnější.
+                        </p>
+            </div>
+            
+            <div class="calculation-step">
+                <p>
+                            Nyní dosadíme zadané číselné hodnoty do odvozeného vzorce.
+                        </p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">Výpočet změny rychlosti
+<div class="rovnice-text">
+                                $\Delta v = \frac{40 \, \text{N} \cdot 0,5 \, \text{s}}{50 \, \text{kg}} = \frac{20 \, \text{N} \cdot \text{s}}{50 \, \text{kg}}$
+                            </div>
+</div>
+<p>
+                            Výsledek výpočtu je:
+                        </p>
+                        $$ \Delta v = 0,4 \, \text{m/s} $$
+                    </div>
+            </div>
+            
+            <div class="calculation-step">
+                <p>
+                            Zkontrolujme jednotky: $\frac{\text{N} \cdot \text{s}}{\text{kg}} = \frac{(\text{kg} \cdot \text{m/s}^2) \cdot \text{s}}{\text{kg}} = \text{m/s}$. Jednotka rychlosti vychází správně. Změna rychlosti o 0,4 m/s (což je 1,44 km/h) je pro danou situaci realistická hodnota.
+                        </p>
+<p>
+<strong>Odpověď: Rychlost bruslaře se vlivem postrčení změní o 0,4 m/s.</strong>
+</p>
+            </div>
+            
+        </section>
+
+        <section id="shrnuti">
+            <h2>Shrnutí a kontrola</h2>
+
+            <div class="summary-box">
+                <strong>Hlavní poznatky:</strong>
+                <ul><li>Identifikovali jsme klíčové veličiny</li><li>Aplikovali jsme správné fyzikální zákony</li><li>Ověřili jsme jednotky a řády velikosti</li></ul>
+            </div>
+
+            
+            <div class="info-box">
+                <strong>Kontrola rozumnosti:</strong> Vždy zkontrolujte, zda výsledek dává fyzikální smysl vzhledem k zadání.
+            </div>
+            
+
+            <details>
+                <summary>🤔 Metakognitivní otázky</summary>
+                <div>
+                    <ul>
+                        
+                        <li>Proč je pro situace jako nárazy, údery nebo krátké postrčení výhodnější použít koncept impulsu síly a hybnosti než přímo vztah $F = m \cdot a$?</li>
+                        
+                        <li>Jak by se změnil výsledek, kdyby stejný impuls síly (tj. stejný součin $F \cdot t$) působil na dvakrát těžšího bruslaře (100 kg)?</li>
+                        
+                        <li>Jak by se změnil výsledek, kdyby síla byla poloviční (20 N), ale působila dvakrát déle (1 s)? Zdůvodněte.</li>
+                        
+                        <li>Zadání se ptá "o kolik se změní rychlost". Záleží pro výsledek na tom, zda bruslař na začátku stál, nebo už jel nějakou konstantní rychlostí?</li>
+                        
+                    </ul>
+                </div>
+            </details>
+        </section>
+
+    </main>
+</body>
+</html>

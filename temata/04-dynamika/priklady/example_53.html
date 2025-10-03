@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Těleso na provázku kružnice</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>53. Těleso na provázku kružnice</h1>
+            <p>Dynamika - řešený příklad</p>
+        </header>
+
+        <!-- Motivační úvod pro studenty -->
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Praktická aplikace fyziky v reálném světě.
+        </div>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <div class="zadani-text">
+                    Míša se točí na řetízkovém kolotoči jako na obrázku. Zakreslete všechny síly, které působí na sedačku. 
+                </div>
+        </section>
+
+        
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+            
+
+            
+            <div class="calculation-step">
+                <p>
+                            Úloha je kvalitativní a vyžaduje analýzu sil působících na sedačku řetízkového kolotoče. Sedačka vykonává <strong>rovnoměrný pohyb po kružnici</strong> v horizontální rovině. Aby mohla zatáčet (pohybovat se po kružnici), musí na ni působit výsledná síla směřující do středu kružnice. Tato síla se nazývá <strong>dostředivá síla</strong>. Dostředivá síla není nová, samostatná síla, ale je to <em>výslednice</em> reálně působících sil.
+                        </p>
+            </div>
+            
+            <div class="calculation-step">
+                <p>
+                            Identifikujeme všechny reálné síly, které na sedačku působí, a provedeme jejich vektorový součet podle 2. Newtonova zákona.
+                        </p>
+<p>
+<strong>Reálně působící síly jsou pouze dvě:</strong>
+</p>
+<ol>
+<li><strong>Tíhová síla $\vec{F}_g$</strong>: Působí svisle dolů. Je způsobena gravitací Země.</li>
+<li><strong>Tahová síla řetězu $\vec{F}_t$</strong>: Působí podél řetězu, tedy šikmo vzhůru a do středu.</li>
+</ol>
+            </div>
+            
+            <div class="calculation-step">
+                <p>
+                            Nakreslíme si tzv. silový diagram (free-body diagram), kde sedačku znázorníme jako bod a síly jako vektory vycházející z tohoto bodu.
+                        </p>
+<p>
+                            Na obrázku by bylo vidět, že vektorový součet tíhové síly $\vec{F}_g$ a tahové síly řetězu $\vec{F}_t$ dává výslednici $\vec{F}_d$, která směřuje vodorovně do středu otáčení.
+                        </p>
+            </div>
+            
+            <div class="calculation-step">
+                <p>
+                            Pro lepší pochopení můžeme tahovou sílu řetězu $\vec{F}_t$ rozložit na dvě složky:
+                        </p>
+<ul>
+<li><strong>Svislá složka $\vec{F}_{t,y}$</strong>: Směřuje vzhůru a je v rovnováze s tíhovou silou $\vec{F}_g$. Proto se sedačka nepohybuje nahoru ani dolů. Platí: $|\vec{F}_{t,y}| = |\vec{F}_g|$.</li>
+<li><strong>Vodorovná složka $\vec{F}_{t,x}$</strong>: Směřuje do středu kružnice. Tato složka nemá co vyrovnávat a je to právě ona, která tvoří výslednou dostředivou sílu $\vec{F}_d$. Platí: $\vec{F}_{t,x} = \vec{F}_d$.</li>
+</ul>
+            </div>
+            
+            <div class="calculation-step">
+                <p>
+                            Na sedačku působí dvě reálné síly: tíhová síla a tahová síla řetězu. Jejich vektorovým součtem je dostředivá síla, která udržuje sedačku v kruhovém pohybu.
+                        </p>
+<p>
+<strong>Odpověď:</strong> Na sedačku působí <strong>tíhová síla</strong> (svisle dolů) a <strong>tahová síla řetězu</strong> (šikmo vzhůru podél řetězu).
+                        </p>
+            </div>
+            
+        </section>
+
+        <section id="shrnuti">
+            <h2>Shrnutí a kontrola</h2>
+
+            <div class="summary-box">
+                <strong>Hlavní poznatky:</strong>
+                <ul><li>Identifikovali jsme klíčové veličiny</li><li>Aplikovali jsme správné fyzikální zákony</li><li>Ověřili jsme jednotky a řády velikosti</li></ul>
+            </div>
+
+            
+            <div class="info-box">
+                <strong>Kontrola rozumnosti:</strong> Vždy zkontrolujte, zda výsledek dává fyzikální smysl vzhledem k zadání.
+            </div>
+            
+
+            <details>
+                <summary>🤔 Metakognitivní otázky</summary>
+                <div>
+                    <ul>
+                        
+                        <li>Proč se při zvyšování rychlosti kolotoče sedačky zvedají výš a dál od osy otáčení?</li>
+                        
+                        <li>Co by se stalo, kdyby na sedačku nepůsobila tíhová síla (např. ve stavu beztíže)?</li>
+                        
+                        <li>Je dostředivá síla reálná síla, kterou bychom mohli "chytit"? Proč se jí říká výslednice?</li>
+                        
+                        <li>Jak souvisí úhel vychýlení řetězu s rychlostí otáčení?</li>
+                        
+                    </ul>
+                </div>
+            </details>
+        </section>
+
+    </main>
+</body>
+</html>

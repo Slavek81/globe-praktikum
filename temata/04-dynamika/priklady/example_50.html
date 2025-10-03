@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dvě tělesa na ledě</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>50. Dvě tělesa na ledě</h1>
+            <p>Dynamika - řešený příklad</p>
+        </header>
+
+        <!-- Motivační úvod pro studenty -->
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Praktická aplikace fyziky v reálném světě.
+        </div>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <div class="zadani-text">
+                    Hybnosti vektorově: Představte si, že po hokejovém kluzišti bez tření klouže kousek modelíny o hmotnosti <span class="hodnoty">200 g</span> směrem od branky k brance rychlostí <span class="hodnoty">5 m/s</span>. Vektor jeho rychlosti pak vyjádříme jako <strong>v<sub>1</sub></strong> = (<span class="hodnoty">5 m/s</span>; <span class="hodnoty">0 m/s</span>). Druhý kousek modelíny o hmotnosti <span class="hodnoty">300 g</span> klouže naopak kolmo k prvnímu, tedy na šířku kluziště rychlostí <span class="hodnoty">2 m/s</span>. Oba kousky do sebe vrazí a slepí se a dál se pohybují společně.<br/>a) Nakreslete si obrázek a napište ve složkách vektor rychlosti druhého kousku modelíny<br/>b) Napište vektory hybností obou kousků před srážkou a schematicky je zakreslete.<br/>c) Napište součet vektorů těchto hybností před srážkou a zakreslete.<br/>d) Napište vektor hybnosti slepence po srážce<br/>e*) Určete úhel, který svírá rychlost slepence s původní rychlostí <strong>v<sub>1</sub></strong>
+</div>
+        </section>
+
+        
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+            
+
+            
+            <div class="calculation-step">
+                <p>
+                            Jedná se o <strong>dokonale nepružnou srážku ve dvou rozměrech</strong>. Dva kousky modelíny se spojí a pohybují se dál společně. Klíčovým principem je <strong>zákon zachování hybnosti</strong>, který platí ve vektorovém tvaru: součet vektorů hybností před srážkou se rovná vektoru hybnosti po srážce.
+                        </p>
+<p>
+                            Zavedeme souřadnicový systém: osa x směřuje podélně kluziště (směr prvního kousku), osa y napříč kluzištěm (směr druhého kousku).
+                        </p>
+<p>
+<strong>Data (v SI jednotkách):</strong>
+</p>
+<ul>
+<li>Modelína 1: $m_1 = 0,2 \, \text{kg}$, $\vec{v}_1 = (5; 0) \, \text{m/s}$</li>
+<li>Modelína 2: $m_2 = 0,3 \, \text{kg}$</li>
+<li>Celková hmotnost: $M = m_1 + m_2 = 0,5 \, \text{kg}$</li>
+</ul>
+            </div>
+            
+            <div class="calculation-step">
+                <p>
+                            Budeme pracovat s vektorovými rovnicemi pro hybnost a rychlost.
+                        </p>
+<div class="rovnice-blok">
+<div class="rovnice-text">
+                                Definice hybnosti: $\vec{p} = m \cdot \vec{v}$<br/>
+                                Zákon zachování hybnosti: $\vec{p}_1 + \vec{p}_2 = \vec{p}_{spol}$<br/>
+                                Výpočet úhlu z vektoru: $\tan(\alpha) = \frac{p_y}{p_x}$
+                            
+</div>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p>
+                            Postupujeme podle jednotlivých podúloh:
+                        </p>
+<p>
+<strong>a) Vektor rychlosti $\vec{v}_2$:</strong> Pohybuje se kolmo k prvnímu, tedy pouze ve směru osy y.
+                        </p>
+<div class="rovnice-blok">
+<div class="rovnice-text">$\vec{v}_2 = (0; v_2)$
+</div>
+<p>
+<strong>b) Vektory hybností $\vec{p}_1, \vec{p}_2$:</strong>
+</p>
+<div class="rovnice-blok">
+<div class="rovnice-text">$\vec{p}_1 = m_1 \cdot \vec{v}_1 \quad \text{a} \quad \vec{p}_2 = m_2 \cdot \vec{v}_2$</div>
+</div>
+<p>
+<strong>c) Celková hybnost před srážkou $\vec{p}_{celk}$:</strong>
+</p>
+<div class="rovnice-blok">
+<div class="rovnice-text">$\vec{p}_{celk} = \vec{p}_1 + \vec{p}_2 = (p_{1x} + p_{2x}; p_{1y} + p_{2y})$</div>
+</div>
+<p>
+<strong>d) Hybnost slepence po srážce $\vec{p}_{spol}$:</strong>
+</p>
+<div class="rovnice-blok">
+<div class="rovnice-text">$\vec{p}_{spol} = \vec{p}_{celk}$</div>
+</div>
+<p>
+<strong>e) Úhel rychlosti $\alpha$:</strong> Vektor rychlosti $\vec{v}_{spol}$ má stejný směr jako vektor hybnosti $\vec{p}_{spol}$.
+                        </p>
+<div class="rovnice-blok">
+<div class="rovnice-text">$\tan(\alpha) = \frac{v_{spol,y}}{v_{spol,x}} = \frac{p_{spol,y}}{p_{spol,x}}$</div>
+</div>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p>
+<strong>a) Vektor rychlosti $\vec{v}_2$:</strong>
+</p>
+<div class="rovnice-blok">
+<div class="rovnice-text">$\vec{v}_2 = (0; 2) \, \text{m/s}$
+</div>
+<p>
+<strong>b) Vektory hybností $\vec{p}_1, \vec{p}_2$:</strong>
+</p>
+<div class="rovnice-blok">
+<div class="rovnice-text">$\vec{p}_1 = 0,2 \cdot (5; 0) = (1; 0) \, \text{kg} \cdot \text{m/s}$</div>
+</div>
+<div class="rovnice-blok">
+<div class="rovnice-text">$\vec{p}_2 = 0,3 \cdot (0; 2) = (0; 0,6) \, \text{kg} \cdot \text{m/s}$</div>
+</div>
+<p>
+<strong>c) Celková hybnost před srážkou:</strong>
+</p>
+<div class="rovnice-blok">
+<div class="rovnice-text">$\vec{p}_{celk} = (1; 0) + (0; 0,6) = (1; 0,6) \, \text{kg} \cdot \text{m/s}$</div>
+</div>
+<p>
+<strong>d) Hybnost slepence po srážce:</strong>
+</p>
+<div class="rovnice-blok">
+<div class="rovnice-text">$\vec{p}_{spol} = (1; 0,6) \, \text{kg} \cdot \text{m/s}$</div>
+</div>
+<p>
+<strong>e) Úhel rychlosti $\alpha$:</strong>
+</p>
+<div class="rovnice-blok">
+<div class="rovnice-text">$\tan(\alpha) = \frac{0,6}{1} = 0,6 \implies \alpha = \arctan(0,6) \approx 31^\circ$</div>
+</div>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p>
+                            Výsledky na sebe logicky navazují. Celková hybnost je vektorovým součtem původních hybností a po srážce se zachovává. Výsledný směr pohybu je "mezi" původními směry, což odpovídá intuici.
+                        </p>
+<p>
+<strong>Odpověď:
+                            <br/>a) $\vec{v}_2 = (0; 2) \, \text{m/s}$
+                            <br/>b) $\vec{p}_1 = (1; 0) \, \text{kg} \cdot \text{m/s}$, $\vec{p}_2 = (0; 0,6) \, \text{kg} \cdot \text{m/s}$
+                            <br/>c) $\vec{p}_{celk} = (1; 0,6) \, \text{kg} \cdot \text{m/s}$
+                            <br/>d) $\vec{p}_{spol} = (1; 0,6) \, \text{kg} \cdot \text{m/s}$
+                            <br/>e) Rychlost slepence svírá s původní rychlostí $\vec{v}_1$ úhel přibližně 31°.</strong>
+</p>
+            </div>
+            
+        </section>
+
+        <section id="shrnuti">
+            <h2>Shrnutí a kontrola</h2>
+
+            <div class="summary-box">
+                <strong>Hlavní poznatky:</strong>
+                <ul><li>Identifikovali jsme klíčové veličiny</li><li>Aplikovali jsme správné fyzikální zákony</li><li>Ověřili jsme jednotky a řády velikosti</li></ul>
+            </div>
+
+            
+            <div class="info-box">
+                <strong>Kontrola rozumnosti:</strong> Vždy zkontrolujte, zda výsledek dává fyzikální smysl vzhledem k zadání.
+            </div>
+            
+
+            <details>
+                <summary>🤔 Metakognitivní otázky</summary>
+                <div>
+                    <ul>
+                        
+                        <li>Vypočítejte velikost rychlosti slepence po srážce.</li>
+                        
+                        <li>Byla při této srážce zachována kinetická energie? Ověřte výpočtem.</li>
+                        
+                        <li>Jak by se změnil výsledný úhel, kdyby druhý kousek modelíny měl stejnou hmotnost jako první?</li>
+                        
+                        <li>Proč je metoda rozkladu na složky pro řešení 2D srážek tak efektivní?</li>
+                        
+                    </ul>
+                </div>
+            </details>
+        </section>
+
+    </main>
+</body>
+</html>

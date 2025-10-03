@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rychlobruslařka 60 kg</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>33. Rychlobruslařka 60 kg</h1>
+            <p>Dynamika - řešený příklad</p>
+        </header>
+
+        <!-- Motivační úvod pro studenty -->
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Praktická aplikace fyziky v reálném světě.
+        </div>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <div class="zadani-text">
+                    Hornice Adriana roztlačovala důlní vozík na vodorovných kolejích. Nejdříve působila silou <span class="hodnoty">50 N</span>, čímž byla schopna udržovat vozík v rovnoměrném pohybu neměnnou rychlostí <span class="hodnoty">5 km/h</span>. Pak ale přitlačila a působila silou <span class="hodnoty">200 N</span>. Během půl minuty vozík roztlačila na závratnou rychlost běhu <span class="hodnoty">15 km/h</span>. Jaká byla hmotnost vozíku? [inspirace realisticky]
+                </div>
+        </section>
+
+        
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+            
+
+            
+            <div class="calculation-step">
+                <p>
+                            Tato úloha se skládá ze dvou odlišných fází pohybu. Je klíčové je správně pochopit.
+                        </p>
+<ol>
+<li><strong>Fáze rovnoměrného pohybu:</strong> Adriana tlačí silou $F_{tah1} = 50 \, \text{N}$ a vozík se pohybuje konstantní rychlostí. To znamená, že zrychlení je nulové. Podle Newtonových zákonů musí být i výsledná síla nulová. Z toho plyne, že síla, kterou Adriana tlačí, je přesně stejně velká jako součet všech odporových sil (tření). Tímto zjištěním získáme velikost třecí síly: $F_{tření} = 50 \, \text{N}$.</li>
+<li><strong>Fáze zrychleného pohybu:</strong> Adriana zvýší sílu na $F_{tah2} = 200 \, \text{N}$. Odporová síla zůstává (předpokládáme) stejná, $F_{tření} = 50 \, \text{N}$. Rozdíl těchto sil způsobí zrychlení vozíku.</li>
+</ol>
+<p>
+<strong>Hodnoty pro fázi zrychlování (převedené na jednotky SI):</strong>
+</p>
+<ul>
+<li>Počáteční rychlost: $v_0 = 5 \, \text{km/h} = \frac{5}{3,6} \, \text{m/s}$</li>
+<li>Konečná rychlost: $v = 15 \, \text{km/h} = \frac{15}{3,6} \, \text{m/s}$</li>
+<li>Čas zrychlování: $t = 0,5 \, \text{min} = 30 \, \text{s}$</li>
+<li>Výsledná síla: $F_{vysl} = F_{tah2} - F_{tření} = 200 \, \text{N} - 50 \, \text{N} = 150 \, \text{N}$</li>
+</ul>
+<p>
+                            Hledáme hmotnost vozíku $m$.
+                        </p>
+            </div>
+            
+            <div class="calculation-step">
+                <p>
+                            K výpočtu hmotnosti budeme potřebovat zkombinovat dva fyzikální vztahy:
+                        </p>
+<ol>
+<li><strong>Definici zrychlení</strong>, která nám umožní z údajů o změně rychlosti a času vypočítat zrychlení vozíku.</li>
+<li><strong>Druhý Newtonův zákon</strong>, který propojuje výslednou sílu, zrychlení a hledanou hmotnost.</li>
+</ol>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">Definice zrychlení
+<div class="rovnice-text">$a = \frac{\Delta v}{t} = \frac{v - v_0}{t}$</div>
+</div>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">Druhý Newtonův zákon</div>
+<div class="rovnice-text">$F_{vysl} = m \cdot a$</div>
+</div>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p>
+                            Naším cílem je vypočítat hmotnost $m$. Z druhého Newtonova zákona si ji můžeme vyjádřit:
+                        </p>
+                        $$ m = \frac{F_{vysl}}{a} $$
+                        <p>
+                            Výslednou sílu $F_{vysl}$ jsme již určili ($150 \, \text{N}$), ale zrychlení $a$ musíme nejprve vypočítat ze změny rychlosti. Dosadíme tedy vztah pro zrychlení do rovnice pro hmotnost:
+                        </p>
+                        $$ m = \frac{F_{vysl}}{\frac{v - v_0}{t}} $$
+                        <p>
+                            Úpravou složeného zlomku získáme finální vzorec, který obsahuje všechny známé veličiny:
+                        </p>
+                        $$ m = \frac{F_{vysl} \cdot t}{v - v_0} $$
+            </div>
+            
+            <div class="calculation-step">
+                <p>
+                            Nyní dosadíme číselné hodnoty do odvozeného vzorce. Změna rychlosti je $v - v_0 = 10 \, \text{km/h}$, což je $\frac{10}{3,6} \, \text{m/s}$.
+                        </p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">Výpočet hmotnosti
+<div class="rovnice-text">
+                                $m = \frac{(200 \, \text{N} - 50 \, \text{N}) \cdot 30 \, \text{s}}{15 \, \text{km/h} - 5 \, \text{km/h}} = \frac{150 \cdot 30}{\frac{10}{3,6}} = \frac{4500}{\frac{10}{3,6}} = \frac{4500 \cdot 3,6}{10}$
+                            </div>
+</div>
+<p>
+                            Pokračujeme ve výpočtu:
+                        </p>
+                        $$ m = 450 \cdot 3,6 = 1620 \, \text{kg} $$
+                    </div>
+            </div>
+            
+            <div class="calculation-step">
+                <p>
+                            Zkontrolujme jednotky: $\frac{\text{N} \cdot \text{s}}{\text{m/s}} = \frac{\text{N} \cdot \text{s}^2}{\text{m}} = \frac{(\text{kg} \cdot \text{m/s}^2) \cdot \text{s}^2}{\text{m}} = \text{kg}$. Jednotky jsou v pořádku. Hmotnost 1620 kg (přes 1,6 tuny) je pro důlní vozík reálná hodnota.
+                        </p>
+<p>
+<strong>Odpověď: Hmotnost důlního vozíku byla 1620 kg.</strong>
+</p>
+            </div>
+            
+        </section>
+
+        <section id="shrnuti">
+            <h2>Shrnutí a kontrola</h2>
+
+            <div class="summary-box">
+                <strong>Hlavní poznatky:</strong>
+                <ul><li>Identifikovali jsme klíčové veličiny</li><li>Aplikovali jsme správné fyzikální zákony</li><li>Ověřili jsme jednotky a řády velikosti</li></ul>
+            </div>
+
+            
+            <div class="info-box">
+                <strong>Kontrola rozumnosti:</strong> Vždy zkontrolujte, zda výsledek dává fyzikální smysl vzhledem k zadání.
+            </div>
+            
+
+            <details>
+                <summary>🤔 Metakognitivní otázky</summary>
+                <div>
+                    <ul>
+                        
+                        <li>Proč byla první část zadání (o udržování konstantní rychlosti silou 50 N) pro vyřešení úlohy naprosto klíčová?</li>
+                        
+                        <li>V zadání není uvedena hmotnost hornice Adriany. Proč tuto informaci k výpočtu nepotřebujeme?</li>
+                        
+                        <li>Předpokládali jsme, že třecí síla 50 N je konstantní. Je to realistické, když se rychlost vozíku ztrojnásobila? Jak se obvykle mění odpor vzduchu s rychlostí?</li>
+                        
+                        <li>Co by se stalo, kdyby Adriana po dosažení rychlosti 15 km/h opět začala tlačit jen silou 50 N? Jak by se vozík pohyboval dál?</li>
+                        
+                    </ul>
+                </div>
+            </details>
+        </section>
+
+    </main>
+</body>
+</html>

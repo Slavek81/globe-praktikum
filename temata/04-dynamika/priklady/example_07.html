@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hrníček na siloměru s pivem</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>7. Hrníček na siloměru s pivem</h1>
+            <p>Dynamika - řešený příklad</p>
+        </header>
+
+        <!-- Motivační úvod pro studenty -->
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Praktická aplikace fyziky v reálném světě.
+        </div>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <div class="zadani-text">
+                    Když Pepíček pověsil hrníček na siloměr, tak ten ukázal <span class="hodnoty">4 N</span>. Když hrnek rovnoměrně táhnul po stole, tak siloměr ukázal <span class="hodnoty">1,6 N</span>. Potom do hrnku nalil trochu piva a zjistil, že je možné ho rovnoměrně táhnout silou <span class="hodnoty">2,8 N</span>. Kolik piva do hrnku nalil?
+                </div>
+        </section>
+
+        
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+            
+
+            
+            <div class="calculation-step">
+                <p>Nejdříve využijeme data z měření s prázdným hrnkem. Klíčová informace je, že Pepíček táhl hrnek <strong>rovnoměrně</strong>. To znamená, že pohyb probíhal s konstantní rychlostí a nulovým zrychlením. Podle prvního Newtonova zákona musí být výslednice sil nulová. V našem případě to znamená, že síla, kterou Pepíček táhl (měřená siloměrem), musela být stejně velká jako třecí síla, která pohybu bránila.</p>
+<ul>
+<li><strong>Tíhová síla hrnku ($F_{g1}$)</strong>: Změřena zavěšením, je to 4 N. Na vodorovné podložce je tíhová síla rovna normálové síle ($F_{n1}$), kterou stůl působí na hrnek.</li>
+<li><strong>Tažná síla = Třecí síla ($F_{t1}$)</strong>: Změřena při rovnoměrném tažení, je to 1,6 N.</li>
+</ul>
+<p>Nyní můžeme vypočítat součinitel smykového tření ($f$), což je vlastnost dvojice povrchů (hrnek a stůl), která se nezmění, ani když do hrnku něco nalijeme.</p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">📐 Výpočet součinitele tření
+<div class="rovnice-text">$f = \frac{F_{t1}}{F_{g1}} = \frac{1{,}6~\text{N}}{4~\text{N}} = 0{,}4$</div>
+</div>
+<p>Součinitel tření mezi hrnkem a stolem je 0,4. Tato hodnota je bezrozměrná.</p>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p>Nyní se podíváme na situaci po nalití piva. Princip je stejný: hrnek je opět tažen rovnoměrně, takže tažná síla je rovna nové, větší třecí síle.</p>
+<ul>
+<li><strong>Nová tažná síla = Nová třecí síla ($F_{t2}$)</strong>: Je to 2,8 N.</li>
+<li><strong>Součinitel tření ($f$)</strong>: Zůstává stejný, tedy 0,4.</li>
+</ul>
+<p>Protože se zvýšila třecí síla, musela se zvýšit i celková tíhová (a tedy i normálová) síla. Pomocí známého součinitele tření a nové třecí síly můžeme vypočítat celkovou tíhu hrnku s pivem ($F_{g2}$).</p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">📐 Výpočet celkové tíhové síly
+<div class="rovnice-text">$F_{g2} = \frac{F_{t2}}{f} = \frac{2{,}8~\text{N}}{0{,}4} = 7~\text{N}$</div>
+</div>
+<p>Celková tíha hrnku i s pivem je 7 N.</p>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p>Úkol je zjistit, kolik piva bylo přilito. To už je jednoduché. Známe celkovou tíhu (7 N) a známe původní tíhu prázdného hrnku (4 N). Rozdíl těchto hodnot nám dá tíhu samotného piva.</p>
+<p>Tíha piva ($\Delta F_g$) = Celková tíha ($F_{g2}$) - Tíha hrnku ($F_{g1}$)</p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">📐 Výpočet tíhy piva
+<div class="rovnice-text">$\Delta F_g = 7~\text{N} - 4~\text{N} = 3~\text{N}$</div>
+</div>
+<p>Pro lepší představu můžeme tíhu převést na hmotnost pomocí vztahu $F_g = m \cdot g$. Při použití $g \approx 10~\text{m/s}^2$ dostaneme:</p>
+<p>$m = \frac{\Delta F_g}{g} = \frac{3~\text{N}}{10~\text{m/s}^2} = 0{,}3~\text{kg}$</p>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p>Pepíček do hrnku nalil pivo o tíze 3 N, což odpovídá hmotnosti přibližně <strong>300 gramů</strong> (neboli objemu cca 300 ml).</p>
+            </div>
+            
+        </section>
+
+        <section id="shrnuti">
+            <h2>Shrnutí a kontrola</h2>
+
+            <div class="summary-box">
+                <strong>Hlavní poznatky:</strong>
+                <ul><li>Identifikovali jsme klíčové veličiny</li><li>Aplikovali jsme správné fyzikální zákony</li><li>Ověřili jsme jednotky a řády velikosti</li></ul>
+            </div>
+
+            
+            <div class="info-box">
+                <strong>Kontrola rozumnosti:</strong> Vždy zkontrolujte, zda výsledek dává fyzikální smysl vzhledem k zadání.
+            </div>
+            
+
+            <details>
+                <summary>🤔 Metakognitivní otázky</summary>
+                <div>
+                    <ul>
+                        
+                        <li>Proč je v zadání klíčové slovo "rovnoměrně"? Co by se změnilo v našem výpočtu, kdyby Pepíček táhl hrnek se zrychlením?</li>
+                        
+                        <li>Součinitel tření jsme vypočítali jako 0,4. Co by se stalo, kdyby stůl polil vodou a součinitel tření by klesl na 0,2? Jakou silou by pak musel táhnout hrnek s pivem?</li>
+                        
+                        <li>Všimni si, že první měření (zavěšení na siloměr) měří tíhovou sílu, zatímco druhé (tažení po stole) měří třecí sílu. Proč je na vodorovné ploše velikost tíhové síly rovna velikosti normálové síly, která je klíčová pro výpočet tření?</li>
+                        
+                        <li>Jak by se změnil výpočet, kdyby Pepíček táhl hrnek po nakloněné rovině? Které síly by se změnily a jak?</li>
+                        
+                    </ul>
+                </div>
+            </details>
+        </section>
+
+    </main>
+</body>
+</html>

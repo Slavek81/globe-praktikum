@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zrychlení z změny hybnosti</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>26. Zrychlení z změny hybnosti</h1>
+            <p>Dynamika - řešený příklad</p>
+        </header>
+
+        <!-- Motivační úvod pro studenty -->
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Druhý Newtonův zákon lze také formulovat pomocí změny hybnosti: síla je rovna časové derivaci hybnosti. Tento přístup je užitečný, když známe hybnosti v různých časech.
+        </div>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <div class="zadani">
+<h3>📋 Zadání</h3>
+<p>Těleso o hmotnosti <span class="hodnoty">300 g</span>, pohybující se se stálým zrychlením, má počáteční hybnost <span class="hodnoty">220 kg·m·s⁻¹</span> a po <span class="hodnoty">15 sekundách</span> hybnost <span class="hodnoty">400 kg·m·s⁻¹</span>. Jaké je zrychlení tělesa?</p>
+</div>
+        </section>
+
+        
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+            
+
+            
+            <div class="calculation-step">
+                <p>Druhý Newtonův zákon můžeme formulovat také jako <strong>impulz síly</strong>:</p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">⚡ Impulz síly
+<div class="rovnice-text">
+                                $\Delta p = F \cdot t$<br/><br/>
+                                A protože $F = m \cdot a$:<br/>
+                                $\Delta p = m \cdot a \cdot t$
+                            </div>
+</div>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p>Ze zadání máme (pozor na převod jednotek!):</p>
+<ul>
+<li>Hmotnost: $m = 300$ g = $0{,}3$ kg</li>
+<li>Počáteční hybnost: $p_1 = 220$ kg·m·s⁻¹</li>
+<li>Konečná hybnost: $p_2 = 400$ kg·m·s⁻¹</li>
+<li>Čas: $t = 15$ s</li>
+</ul>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">📈 Změna hybnosti
+<div class="rovnice-text">
+                                $\Delta p = p_2 - p_1 = 400 - 220 = 180$ kg·m·s⁻¹
+                            </div>
+</div>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p>Z rovnice $\Delta p = m \cdot a \cdot t$ si vyjádříme zrychlení:</p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">🎯 Vzorec pro zrychlení
+<div class="rovnice-text">$a = \frac{\Delta p}{m \cdot t}$</div>
+</div>
+<p>Dosadíme hodnoty:</p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">🧮 Výpočet</div>
+<div class="rovnice-text">
+                                $a = \frac{180}{0{,}3 \times 15} = \frac{180}{4{,}5} = 40$ m·s⁻²
+                            </div>
+</div>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p>Můžeme si ověřit výpočet přes rychlosti:</p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">✅ Kontrola
+<div class="rovnice-text">
+                                Počáteční rychlost: $v_1 = \frac{p_1}{m} = \frac{220}{0{,}3} = 733{,}3$ m·s⁻¹<br/>
+                                Konečná rychlost: $v_2 = \frac{p_2}{m} = \frac{400}{0{,}3} = 1333{,}3$ m·s⁻¹<br/>
+                                Zrychlení: $a = \frac{v_2 - v_1}{t} = \frac{1333{,}3 - 733{,}3}{15} = \frac{600}{15} = 40$ m·s⁻² ✓
+                            </div>
+</div>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p><strong>Zrychlení tělesa je 40 m·s⁻²</strong></p>
+<p>Poznámka: To je více než 4násobek tíhového zrychlení - jedná se o velmi velké zrychlení!</p>
+            </div>
+            
+        </section>
+
+        <section id="shrnuti">
+            <h2>Shrnutí a kontrola</h2>
+
+            <div class="summary-box">
+                <strong>Hlavní poznatky:</strong>
+                <ul><li>Identifikovali jsme klíčové veličiny</li><li>Aplikovali jsme správné fyzikální zákony</li><li>Ověřili jsme jednotky a řády velikosti</li></ul>
+            </div>
+
+            
+            <div class="info-box">
+                <strong>Kontrola rozumnosti:</strong> Vždy zkontrolujte, zda výsledek dává fyzikální smysl vzhledem k zadání.
+            </div>
+            
+
+            <details>
+                <summary>🤔 Metakognitivní otázky</summary>
+                <div>
+                    <ul>
+                        
+                        <li>Proč je užitečné počítat zrychlení ze změny hybnosti?</li>
+                        
+                        <li>Jak velká síla způsobila tuto změnu hybnosti?</li>
+                        
+                        <li>Co by se stalo, kdyby působila stejná síla delší dobu?</li>
+                        
+                    </ul>
+                </div>
+            </details>
+        </section>
+
+    </main>
+</body>
+</html>

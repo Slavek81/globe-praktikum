@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Srážka železničních vagónů</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>40. Srážka železničních vagónů</h1>
+            <p>Dynamika - řešený příklad</p>
+        </header>
+
+        <!-- Motivační úvod pro studenty -->
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Srážky vagónů jsou typickým příkladem nepružných srážek, při kterých se tělesa po srážce spojí. I zde platí zákon zachování hybnosti, ale kinetická energie se nezachová.
+        </div>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <div class="zadani">
+<h3>📋 Zadání</h3>
+<p>Železniční vagón o hmotnosti <span class="hodnoty">2·10⁴ kg</span> jedoucí rychlostí <span class="hodnoty">0,5 m·s⁻¹</span> se srazí s druhým vagónem o <span class="hodnoty">poloviční hmotnosti</span> pohybující se stejným směrem rychlostí <span class="hodnoty">0,4 m·s⁻¹</span>. Vagóny se při srážce spojí.</p>
+<ul>
+<li>a) Určete společnou rychlost jejich pohybu</li>
+<li>b) Stejná tělesa se pohybují proti sobě. Určete společnou rychlost</li>
+<li>c) Jaká je rychlost po srážce, jestliže se tělesa budou pohybovat navzájem kolmo?</li>
+</ul>
+</div>
+        </section>
+
+        
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+            
+
+            
+            <div class="calculation-step">
+                <p>Jedná se o <strong>nepružnou srážku</strong> - tělesa se po srážce spojí a pohybují společně.</p>
+<ul>
+<li>Vagón 1: $m_1 = 2 \times 10^4$ kg, $v_1 = 0{,}5$ m·s⁻¹</li>
+<li>Vagón 2: $m_2 = \frac{1}{2}m_1 = 1 \times 10^4$ kg, $v_2 = 0{,}4$ m·s⁻¹</li>
+<li>Celková hmotnost po spojení: $M = m_1 + m_2 = 3 \times 10^4$ kg</li>
+</ul>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">⚖️ Zákon zachování hybnosti
+<div class="rovnice-text">$m_1 \cdot v_1 + m_2 \cdot v_2 = (m_1 + m_2) \cdot V$</div>
+</div>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p>Celková hybnost před srážkou se rovná hybnosti spojených vagónů:</p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">🧮 Společná rychlost
+<div class="rovnice-text">
+                                $V = \frac{m_1 \cdot v_1 + m_2 \cdot v_2}{m_1 + m_2}$<br/><br/>
+                                $V = \frac{(2 \times 10^4 \times 0{,}5) + (1 \times 10^4 \times 0{,}4)}{3 \times 10^4}$<br/><br/>
+                                $V = \frac{1 \times 10^4 + 0{,}4 \times 10^4}{3 \times 10^4} = \frac{1{,}4 \times 10^4}{3 \times 10^4}$<br/><br/>
+                                $V = 0{,}467$ m·s⁻¹
+                            </div>
+</div>
+<p><strong>Odpověď a):</strong> Společná rychlost vagónů bude <strong>0,47 m·s⁻¹</strong> ve stejném směru.</p>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p>Rychlost druhého vagónu považujeme za zápornou: $v_2 = -0{,}4$ m·s⁻¹</p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">🧮 Společná rychlost
+<div class="rovnice-text">
+                                $V = \frac{(2 \times 10^4 \times 0{,}5) + (1 \times 10^4 \times (-0{,}4))}{3 \times 10^4}$<br/><br/>
+                                $V = \frac{1 \times 10^4 - 0{,}4 \times 10^4}{3 \times 10^4} = \frac{0{,}6 \times 10^4}{3 \times 10^4}$<br/><br/>
+                                $V = 0{,}2$ m·s⁻¹
+                            </div>
+</div>
+<p>Kladný výsledek znamená pohyb ve směru původního pohybu prvního (těžšího) vagónu.</p>
+<p><strong>Odpověď b):</strong> Společná rychlost vagónů bude <strong>0,2 m·s⁻¹</strong> ve směru původního pohybu prvního vagónu.</p>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p>Hybnost je vektor. Pro kolmé směry použijeme Pythagorovu větu:</p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">📐 Složky hybnosti
+<div class="rovnice-text">
+                                Hybnost v ose x: $p_x = m_1 \cdot v_1 = 2 \times 10^4 \times 0{,}5 = 1 \times 10^4$ kg·m·s⁻¹<br/>
+                                Hybnost v ose y: $p_y = m_2 \cdot v_2 = 1 \times 10^4 \times 0{,}4 = 0{,}4 \times 10^4$ kg·m·s⁻¹
+                            </div>
+</div>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">🧮 Celková hybnost</div>
+<div class="rovnice-text">
+                                $p_{celková} = \sqrt{p_x^2 + p_y^2}$<br/><br/>
+                                $p_{celková} = \sqrt{(1 \times 10^4)^2 + (0{,}4 \times 10^4)^2}$<br/><br/>
+                                $p_{celková} = \sqrt{1 \times 10^8 + 0{,}16 \times 10^8} = \sqrt{1{,}16 \times 10^8}$<br/><br/>
+                                $p_{celková} = 1{,}077 \times 10^4$ kg·m·s⁻¹
+                            </div>
+</div>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">✅ Rychlost spojených vagónů</div>
+<div class="rovnice-text">
+                                $V = \frac{p_{celková}}{M} = \frac{1{,}077 \times 10^4}{3 \times 10^4} = 0{,}359$ m·s⁻¹
+                            </div>
+</div>
+<p><strong>Odpověď c):</strong> Společná rychlost vagónů bude <strong>0,36 m·s⁻¹</strong> směrem úhlopříčně.</p>
+</div>
+            </div>
+            
+        </section>
+
+        <section id="shrnuti">
+            <h2>Shrnutí a kontrola</h2>
+
+            <div class="summary-box">
+                <strong>Hlavní poznatky:</strong>
+                <ul><li>Identifikovali jsme klíčové veličiny</li><li>Aplikovali jsme správné fyzikální zákony</li><li>Ověřili jsme jednotky a řády velikosti</li></ul>
+            </div>
+
+            
+            <div class="info-box">
+                <strong>Kontrola rozumnosti:</strong> Vždy zkontrolujte, zda výsledek dává fyzikální smysl vzhledem k zadání.
+            </div>
+            
+
+            <details>
+                <summary>🤔 Metakognitivní otázky</summary>
+                <div>
+                    <ul>
+                        
+                        <li>Proč je společná rychlost vždy menší než původní rychlosti vagónů?</li>
+                        
+                        <li>Jak by se lišil výsledek při pružné srážce?</li>
+                        
+                        <li>Kam se "ztratila" kinetická energie při nepružné srážce?</li>
+                        
+                    </ul>
+                </div>
+            </details>
+        </section>
+
+    </main>
+</body>
+</html>

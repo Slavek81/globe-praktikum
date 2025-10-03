@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jednotka Newton v SI</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>4. Jednotka Newton v SI</h1>
+            <p>Dynamika - řešený příklad</p>
+        </header>
+
+        <!-- Motivační úvod pro studenty -->
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Praktická aplikace fyziky v reálném světě.
+        </div>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <div class="zadani-text">
+                    Vyjádři jednotku síly Newton v základních jednotkách SI.<br/>Nápověda: Zopakuj si, které jsou základní jednotky SI. Pak najdi nějaký vhodný vztah, kde na levé straně je síla a do pravé strany za veličiny dosaď jejich jednotky.
+                </div>
+        </section>
+
+        
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+            
+
+            
+            <div class="calculation-step">
+                <p>Nejprve si připomeneme, co je naším cílem a jaké nástroje máme k dispozici. Chceme vyjádřit jednotku síly, Newton (N), pomocí základních jednotek soustavy SI. Základní jednotky, které budeme pro tento úkol potřebovat, jsou:</p>
+<ul>
+<li><strong>délka:</strong> metr (m)</li>
+<li><strong>hmotnost:</strong> kilogram (kg)</li>
+<li><strong>čas:</strong> sekunda (s)</li>
+</ul>
+<p>Naším cílem je zapsat Newton pouze s použitím těchto tří jednotek.</p>
+            </div>
+            
+            <div class="calculation-step">
+                <p>Jak napovídá nápověda, potřebujeme fyzikální vzorec, kde se vyskytuje síla ($F$). Nejznámějším a nejvhodnějším je druhý Newtonův zákon, který popisuje vztah mezi silou, hmotností a zrychlením.</p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">📐 Druhý Newtonův zákon
+<div class="rovnice-text">$F = ma$</div>
+</div>
+<p>Kde <strong>F</strong> je síla, <strong>m</strong> je hmotnost a <strong>a</strong> je zrychlení.</p>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p>Nyní se podíváme na jednotky jednotlivých veličin v rovnici $F = ma$:</p>
+<ul>
+<li>Jednotkou <strong>hmotnosti ($m$)</strong> je základní jednotka <strong>kilogram (kg)</strong>.</li>
+<li>Jednotkou <strong>zrychlení ($a$)</strong> je <strong>metr za sekundu na druhou (m/s²)</strong>. Zrychlení nám říká, jak rychle se mění rychlost (jejíž jednotka je m/s) v čase (s), proto platí (m/s) / s = m/s².</li>
+</ul>
+            </div>
+            
+            <div class="calculation-step">
+                <p>Teď už jen dosadíme zjištěné jednotky do původního vztahu. Místo veličin píšeme jejich jednotky. Víme, že jednotkou síly ($F$) je Newton (N).</p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">📐 Vyjádření Newtonu v základních jednotkách SI
+<div class="rovnice-text">$1~\text{N} = 1~\text{kg} \cdot 1~\text{m/s}^2$</div>
+</div>
+<p>Tím jsme úspěšně vyjádřili jednotku síly Newton pomocí základních jednotek SI: kilogram, metr a sekunda. Toto je správné a kompletní řešení.</p>
+</div>
+            </div>
+            
+        </section>
+
+        <section id="shrnuti">
+            <h2>Shrnutí a kontrola</h2>
+
+            <div class="summary-box">
+                <strong>Hlavní poznatky:</strong>
+                <ul><li>Identifikovali jsme klíčové veličiny</li><li>Aplikovali jsme správné fyzikální zákony</li><li>Ověřili jsme jednotky a řády velikosti</li></ul>
+            </div>
+
+            
+            <div class="info-box">
+                <strong>Kontrola rozumnosti:</strong> Vždy zkontrolujte, zda výsledek dává fyzikální smysl vzhledem k zadání.
+            </div>
+            
+
+            <details>
+                <summary>🤔 Metakognitivní otázky</summary>
+                <div>
+                    <ul>
+                        
+                        <li>Dokážeš stejným postupem vyjádřit v základních jednotkách SI například jednotku práce (Joule) nebo tlaku (Pascal)? (Nápověda: $W = F \cdot s$, $p = F/S$)</li>
+                        
+                        <li>Proč je důležité rozumět, jak jsou odvozené jednotky složeny ze základních, místo toho, aby sis je jen pamatoval(a)? K čemu je to dobré při kontrole výpočtů?</li>
+                        
+                        <li>Která z veličin v druhém Newtonově zákoně (síla, hmotnost, zrychlení) je vektorová a co to v praxi znamená pro směr jejich působení?</li>
+                        
+                    </ul>
+                </div>
+            </details>
+        </section>
+
+    </main>
+</body>
+</html>

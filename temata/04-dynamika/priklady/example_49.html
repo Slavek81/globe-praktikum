@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Srážka auto a kamión</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>49. Srážka auto a kamión</h1>
+            <p>Dynamika - řešený příklad</p>
+        </header>
+
+        <!-- Motivační úvod pro studenty -->
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Praktická aplikace fyziky v reálném světě.
+        </div>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <div class="zadani-text">
+                    Jedou proti sobě dva vagony. První vagon jede směrem zleva doprava rychlostí <span class="hodnoty">1,6 m/s</span>. Druhý vagon jede proti němu zprava doleva rychlostí <span class="hodnoty">1,2 m/s</span>. Hmotnost druhého vagonu je o 50% větší než hmotnost prvního vagonu. Při srážce se vagony spojí a pohybují se dál společně. Jaká je výsledná rychlost a směr po spojení?
+                </div>
+        </section>
+
+        
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+            
+
+            
+            <div class="calculation-step">
+                <p>
+                            Jedná se o <strong>dokonale nepružnou srážku</strong> dvou těles pohybujících se proti sobě. Klíčovým nástrojem pro řešení je <strong>zákon zachování hybnosti</strong>. Protože je hybnost vektorová veličina, musíme si zvolit kladný směr. Zvolme směr zleva doprava jako kladný (+).
+                        </p>
+<p>
+<strong>Data a vztahy:</strong>
+</p>
+<ul>
+<li>Vagon 1: hmotnost $m_1$, rychlost $v_1 = +1,6 \, \text{m/s}$</li>
+<li>Vagon 2: hmotnost $m_2$, rychlost $v_2 = -1,2 \, \text{m/s}$ (jede doleva)</li>
+<li>Vztah hmotností: $m_2 = m_1 + 0,5 \cdot m_1 = 1,5 \cdot m_1$</li>
+</ul>
+<p>
+                            Hledáme společnou rychlost $v_{spol}$ po srážce. Absolutní hodnotu hmotnosti $m_1$ neznáme, ale uvidíme, že ji nebudeme potřebovat.
+                        </p>
+            </div>
+            
+            <div class="calculation-step">
+                <p>
+                            Použijeme zákon zachování hybnosti: celková hybnost před srážkou se rovná celkové hybnosti po srážce.
+                        </p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">Zákon zachování hybnosti
+<div class="rovnice-text">$m_1 \cdot v_1 + m_2 \cdot v_2 = (m_1 + m_2) \cdot v_{spol}$</div>
+</div>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p>
+                            Do rovnice dosadíme vztah mezi hmotnostmi $m_2 = 1,5 \cdot m_1$:
+                        </p>
+<div class="rovnice-blok">
+<div class="rovnice-text">$m_1 \cdot v_1 + (1,5 \cdot m_1) \cdot v_2 = (m_1 + 1,5 \cdot m_1) \cdot v_{spol}$
+</div>
+<p>
+                            Na obou stranách rovnice můžeme vytknout $m_1$:
+                        </p>
+<div class="rovnice-blok">
+<div class="rovnice-text">$m_1 \cdot (v_1 + 1,5 \cdot v_2) = m_1 \cdot (1 + 1,5) \cdot v_{spol}$</div>
+</div>
+<p>
+                            Protože $m_1$ je na obou stranách, můžeme jím rovnici vydělit (zkrátit). Tím se ho zbavíme a můžeme vyjádřit $v_{spol}$:
+                        </p>
+<div class="rovnice-blok">
+<div class="rovnice-text">$v_{spol} = \frac{v_1 + 1,5 \cdot v_2}{2,5}$</div>
+</div>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p>
+                            Nyní dosadíme číselné hodnoty rychlostí do odvozeného vzorce. Nezapomeneme na záporné znaménko u $v_2$.
+                        </p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">Výpočet společné rychlosti
+<div class="rovnice-text">
+                                $v_{spol} = \frac{1,6 + 1,5 \cdot (-1,2)}{2,5} = \frac{1,6 - 1,8}{2,5} = \frac{-0,2}{2,5} = -0,08 \, \text{m/s}$
+                            </div>
+</div>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p>
+                            Výsledná rychlost vyšla záporná, což znamená, že se spojené vagony pohybují směrem <strong>doleva</strong>. To dává smysl, protože hybnost druhého vagonu ($p_2 = m_2 v_2 = 1,5 m_1 \cdot (-1,2) = -1,8 m_1$) byla v absolutní hodnotě větší než hybnost prvního vagonu ($p_1 = m_1 v_1 = 1,6 m_1$). Směr pohybu tedy určil vagon s větší počáteční hybností.
+                        </p>
+<p>
+<strong>Odpověď:</strong> Výsledná rychlost spojených vagonů je <strong>0,08 m/s směrem zprava doleva</strong>.
+                        </p>
+            </div>
+            
+        </section>
+
+        <section id="shrnuti">
+            <h2>Shrnutí a kontrola</h2>
+
+            <div class="summary-box">
+                <strong>Hlavní poznatky:</strong>
+                <ul><li>Identifikovali jsme klíčové veličiny</li><li>Aplikovali jsme správné fyzikální zákony</li><li>Ověřili jsme jednotky a řády velikosti</li></ul>
+            </div>
+
+            
+            <div class="info-box">
+                <strong>Kontrola rozumnosti:</strong> Vždy zkontrolujte, zda výsledek dává fyzikální smysl vzhledem k zadání.
+            </div>
+            
+
+            <details>
+                <summary>🤔 Metakognitivní otázky</summary>
+                <div>
+                    <ul>
+                        
+                        <li>Proč pro výsledek nebylo nutné znát konkrétní hmotnost prvního vagonu?</li>
+                        
+                        <li>Jak by se změnil výsledek, kdyby byl druhý vagon jen o 20 % těžší?</li>
+                        
+                        <li>Jakou rychlostí by se musel pohybovat druhý vagon, aby se po srážce oba zastavily na místě?</li>
+                        
+                        <li>Jaká část původní kinetické energie se při této srážce přeměnila na teplo a deformaci?</li>
+                        
+                    </ul>
+                </div>
+            </details>
+        </section>
+
+    </main>
+</body>
+</html>

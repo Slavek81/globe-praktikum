@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zpětný ráz pistole</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>39. Zpětný ráz pistole</h1>
+            <p>Dynamika - řešený příklad</p>
+        </header>
+
+        <!-- Motivační úvod pro studenty -->
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Při výstřelu z pistole se střela pohne dopředu a pistole se odrazí dozadu. Toto je krásný příklad zákona zachování hybnosti - celková hybnost soustavy zůstává nulová.
+        </div>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <div class="zadani">
+<h3>📋 Zadání</h3>
+<p>Střela o hmotnosti <span class="hodnoty">2 g</span> letí z pistole o hmotnosti <span class="hodnoty">2 kg</span> rychlostí <span class="hodnoty">300 m·s⁻¹</span>. Vypočítejte zpětnou rychlost pistole a určete její směr.</p>
+</div>
+        </section>
+
+        
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+            
+
+            
+            <div class="calculation-step">
+                <p>Platí <strong>zákon zachování hybnosti</strong>. Před výstřelem je celá soustava (pistole + střela) v klidu → celková hybnost je <strong>nulová</strong>. Po výstřelu musí celková hybnost zůstat nulová.</p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">⚖️ Zákon zachování hybnosti
+<div class="rovnice-text">
+                                $p_s + p_p = 0$<br/>
+                                $m_s \cdot v_s + m_p \cdot v_p = 0$
+                            </div>
+</div>
+<p>Příprava hodnot (pozor na jednotky!):</p>
+<ul>
+<li>Hmotnost střely: $m_s = 2$ g = $0{,}002$ kg</li>
+<li>Rychlost střely: $v_s = 300$ m·s⁻¹</li>
+<li>Hmotnost pistole: $m_p = 2$ kg</li>
+<li>Zpětná rychlost pistole: $v_p = ?$</li>
+</ul>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p>Z rovnice zákona zachování hybnosti si vyjádříme neznámou rychlost pistole:</p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">🎯 Vyjádření vp
+<div class="rovnice-text">
+                                $m_p \cdot v_p = -m_s \cdot v_s$<br/><br/>
+                                $v_p = -\frac{m_s \cdot v_s}{m_p}$
+                            </div>
+</div>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p>Dosadíme známé hodnoty:</p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">🧮 Číselný výpočet
+<div class="rovnice-text">
+                                $v_p = -\frac{0{,}002 \times 300}{2}$<br/><br/>
+                                $v_p = -\frac{0{,}6}{2} = -0{,}3$ m·s⁻¹
+                            </div>
+</div>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p>Záporné znaménko nám říká, že směr pohybu pistole je <strong>opačný</strong> ke směru pohybu střely.</p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">✅ Kontrola
+<div class="rovnice-text">
+                                Hybnost střely: $p_s = 0{,}002 \times 300 = 0{,}6$ kg·m·s⁻¹<br/>
+                                Hybnost pistole: $p_p = 2 \times (-0{,}3) = -0{,}6$ kg·m·s⁻¹<br/>
+                                Celková hybnost: $0{,}6 + (-0{,}6) = 0$ ✓
+                            </div>
+</div>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p><strong>Zpětná rychlost pistole je 0,3 m·s⁻¹ a její směr je přesně opačný ke směru letu střely.</strong></p>
+<p>Poznámka: Toto je důvod, proč střelci musí pistoli pevně držet a očekávat zpětný ráz.</p>
+            </div>
+            
+        </section>
+
+        <section id="shrnuti">
+            <h2>Shrnutí a kontrola</h2>
+
+            <div class="summary-box">
+                <strong>Hlavní poznatky:</strong>
+                <ul><li>Identifikovali jsme klíčové veličiny</li><li>Aplikovali jsme správné fyzikální zákony</li><li>Ověřili jsme jednotky a řády velikosti</li></ul>
+            </div>
+
+            
+            <div class="info-box">
+                <strong>Kontrola rozumnosti:</strong> Vždy zkontrolujte, zda výsledek dává fyzikální smysl vzhledem k zadání.
+            </div>
+            
+
+            <details>
+                <summary>🤔 Metakognitivní otázky</summary>
+                <div>
+                    <ul>
+                        
+                        <li>Proč je rychlost zpětného rázu mnohem menší než rychlost střely?</li>
+                        
+                        <li>Co by se stalo, kdyby byla hmotnost pistole menší?</li>
+                        
+                        <li>Platí zákon zachování hybnosti i při výbuchu granátu?</li>
+                        
+                    </ul>
+                </div>
+            </details>
+        </section>
+
+    </main>
+</body>
+</html>

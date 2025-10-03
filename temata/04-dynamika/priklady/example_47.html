@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pružná srážka různých hmot</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>47. Pružná srážka různých hmot</h1>
+            <p>Dynamika - řešený příklad</p>
+        </header>
+
+        <!-- Motivační úvod pro studenty -->
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Praktická aplikace fyziky v reálném světě.
+        </div>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <div class="zadani-text">
+                    Na ledě jsou dvě kostky a pohybují se bez tření. Jakou hmotnost má druhá kostka?
+                </div>
+        </section>
+
+        
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+            
+
+            
+            <div class="calculation-step">
+                <p>
+<strong>Problém s úplností zadání:</strong> Toto zadání je <strong>neúplné</strong> - chybí informace o hmotnosti první kostky, rychlostech obou kostek před srážkou a rychlostech po srážce.
+                        </p>
+<p>
+                            Pro ilustraci ukážeme <strong>obecné řešení</strong> pro pružnou srážku dvou těles na ledě (bez tření).
+                        </p>
+            </div>
+            
+            <div class="calculation-step">
+                <p>
+                            Pro pružnou srážku platí současně dva zákony:
+                        </p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">1) Zákon zachování hybnosti:
+<div class="rovnice-text">$m_1 v_1 + m_2 v_2 = m_1 v_1' + m_2 v_2'$</div>
+</div>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">2) Zákon zachování kinetické energie:</div>
+<div class="rovnice-text">$\frac{1}{2} m_1 v_1^2 + \frac{1}{2} m_2 v_2^2 = \frac{1}{2} m_1 v_1'^2 + \frac{1}{2} m_2 v_2'^2$</div>
+</div>
+<p>
+                            kde indexy 1,2 značí první a druhou kostku, apostrofy (') označují rychlosti po srážce.
+                        </p>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p>
+                            Z těchto dvou rovnic lze vyjádřit rychlosti po srážce:
+                        </p>
+<div class="rovnice-blok">
+<div class="rovnice-text">$v_1' = \frac{(m_1 - m_2) v_1 + 2 m_2 v_2}{m_1 + m_2}$
+</div>
+<div class="rovnice-blok">
+<div class="rovnice-text">$v_2' = \frac{(m_2 - m_1) v_2 + 2 m_1 v_1}{m_1 + m_2}$</div>
+</div>
+<p>
+                            Pokud známe rychlosti a jednu hmotnost, můžeme z těchto vztahů vyjádřit druhou hmotnost.
+                        </p>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p>
+<strong>Stejné hmotnosti ($m_1 = m_2$):</strong> Kostky si vymění rychlosti.
+                        </p>
+<p>
+<strong>Druhá kostka v klidu ($v_2 = 0$):</strong>
+</p>
+<div class="rovnice-blok">
+<div class="rovnice-text">$v_1' = \frac{m_1 - m_2}{m_1 + m_2} v_1, \quad v_2' = \frac{2 m_1}{m_1 + m_2} v_1$
+</div>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p>
+<strong>Úplné řešení nelze poskytnout</strong> bez konkrétních číselných hodnot. Pro určení hmotnosti druhé kostky potřebujeme:
+                        </p>
+<ul>
+<li>Hmotnost první kostky $m_1$</li>
+<li>Rychlosti obou kostek před srážkou ($v_1$, $v_2$)</li>
+<li>Rychlosti obou kostek po srážce ($v_1'$, $v_2'$)</li>
+</ul>
+<p>
+                            Teprve s těmito údaji můžeme použít zákony zachování k určení $m_2$.
+                        </p>
+            </div>
+            
+        </section>
+
+        <section id="shrnuti">
+            <h2>Shrnutí a kontrola</h2>
+
+            <div class="summary-box">
+                <strong>Hlavní poznatky:</strong>
+                <ul><li>Identifikovali jsme klíčové veličiny</li><li>Aplikovali jsme správné fyzikální zákony</li><li>Ověřili jsme jednotky a řády velikosti</li></ul>
+            </div>
+
+            
+            <div class="info-box">
+                <strong>Kontrola rozumnosti:</strong> Vždy zkontrolujte, zda výsledek dává fyzikální smysl vzhledem k zadání.
+            </div>
+            
+
+            <details>
+                <summary>🤔 Metakognitivní otázky</summary>
+                <div>
+                    <ul>
+                        
+                        <li>Proč potřebujeme pro pružnou srážku dva zákony zachování (hybnosti i energie)?</li>
+                        
+                        <li>Jak se liší pružná srážka od nepružné z hlediska zachování energie?</li>
+                        
+                        <li>Která čísla by musela být v zadání, aby šlo příklad vyřešit?</li>
+                        
+                        <li>Co se stane při srážce lehké kostky s velmi těžkou (limitní případ $m_2 \gg m_1$)?</li>
+                        
+                    </ul>
+                </div>
+            </details>
+        </section>
+
+    </main>
+</body>
+</html>

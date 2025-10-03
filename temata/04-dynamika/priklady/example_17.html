@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brzdná dráha a rychlost</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>17. Brzdná dráha a rychlost</h1>
+            <p>Dynamika - řešený příklad</p>
+        </header>
+
+        <!-- Motivační úvod pro studenty -->
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Praktická aplikace fyziky v reálném světě.
+        </div>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <div class="zadani-text">
+                    Helmut roztlačil dvacetikilovou kartonovou krabici na rychlost <span class="hodnoty">2 m/s</span> a nechal ji klouzat po lině. Krabice za <span class="hodnoty">1,6 s</span> zastavila. Jaký je koeficient tření mezi krabicí a linem?
+                </div>
+        </section>
+
+        
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+            
+
+            
+            <div class="calculation-step">
+                <p>Helmut udělil krabici počáteční rychlost $v_0 = 2~\text{m/s}$ a poté ji nechal volně klouzat. Na krabici po roztlačení působí ve vodorovném směru už jen <strong>třecí síla $F_t$</strong>, která ji brzdí. Tento pohyb je tedy rovnoměrně zpomalený. Známe počáteční rychlost, čas zastavení $t = 1{,}6~\text{s}$ a konečnou rychlost $v = 0~\text{m/s}$. Naším cílem je najít koeficient smykového tření $f$.</p>
+<p>Všimněte si, že hmotnost krabice (20 kg) je v zadání uvedena, ale uvidíme, zda ji budeme potřebovat.</p>
+            </div>
+            
+            <div class="calculation-step">
+                <p>Zpomalení (záporné zrychlení) $a$ můžeme vypočítat přímo z definice zrychlení, což je změna rychlosti za čas:</p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">📐 Definice zrychlení
+<div class="rovnice-text">$a = \frac{\Delta v}{\Delta t} = \frac{v - v_0}{t}$</div>
+</div>
+<p>Dosadíme známé hodnoty:</p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">📐 Výpočet zpomalení</div>
+<div class="rovnice-text">$a = \frac{0~\text{m/s} - 2~\text{m/s}}{1{,}6~\text{s}} = -1{,}25~\text{m/s}^2$</div>
+</div>
+<p>Záporné znaménko potvrzuje, že se jedná o zpomalení – rychlost se snižuje. Velikost zpomalení je <strong>1,25 m/s²</strong>.</p>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p>Podle druhého Newtonova zákona je síla, která způsobuje zpomalení, rovna $F = m \cdot a$. V našem případě je touto silou třecí síla $F_t$. Její velikost je dána vztahem $F_t = f \cdot F_n$, kde $F_n$ je normálová síla. Na vodorovné podložce je normálová síla stejně velká jako tíhová síla $F_g = m \cdot g$.</p>
+<p>Dáme tyto vztahy dohromady. Velikost brzdné síly se musí rovnat velikosti třecí síly:</p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">📐 Rovnováha sil
+<div class="rovnice-text">$m \cdot |a| = f \cdot m \cdot g$</div>
+</div>
+<p>Hmotnost $m$ se na obou stranách rovnice vykrátí. Z toho plyne, že zpomalení způsobené třením nezávisí na hmotnosti tělesa. Získáme vztah:</p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">📐 Vztah pro koeficient tření</div>
+<div class="rovnice-text">$|a| = f \cdot g \quad \Rightarrow \quad f = \frac{|a|}{g}$</div>
+</div>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p>Nyní dosadíme velikost vypočteného zpomalení a hodnotu tíhového zrychlení $g \approx 10~\text{m/s}^2$:</p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">📐 Výpočet
+<div class="rovnice-text">$f = \frac{1{,}25~\text{m/s}^2}{10~\text{m/s}^2} = 0{,}125$</div>
+</div>
+<p><strong>Výsledek:</strong> Koeficient tření mezi krabicí a linem je <strong>0,125</strong>.</p>
+<p>Koeficient tření je bezrozměrná veličina. Hodnota 0,125 odpovídá poměrně hladkému povrchu, což pro lino dává smysl.</p>
+</div>
+            </div>
+            
+        </section>
+
+        <section id="shrnuti">
+            <h2>Shrnutí a kontrola</h2>
+
+            <div class="summary-box">
+                <strong>Hlavní poznatky:</strong>
+                <ul><li>Identifikovali jsme klíčové veličiny</li><li>Aplikovali jsme správné fyzikální zákony</li><li>Ověřili jsme jednotky a řády velikosti</li></ul>
+            </div>
+
+            
+            <div class="info-box">
+                <strong>Kontrola rozumnosti:</strong> Vždy zkontrolujte, zda výsledek dává fyzikální smysl vzhledem k zadání.
+            </div>
+            
+
+            <details>
+                <summary>🤔 Metakognitivní otázky</summary>
+                <div>
+                    <ul>
+                        
+                        <li>V zadání byla uvedena hmotnost krabice 20 kg, ale ve výpočtu jsme ji nepoužili. Proč? Změnil by se výsledek, kdyby krabice vážila 40 kg?</li>
+                        
+                        <li>Jakou dráhu krabice urazila, než se zastavila?</li>
+                        
+                        <li>Představte si, že by Helmut chtěl, aby krabice zastavila na poloviční vzdálenosti. Jakou počáteční rychlost by jí musel udělit?</li>
+                        
+                        <li>Jak by se změnil výpočet, kdyby se celá situace odehrávala na Měsíci, kde je tíhové zrychlení přibližně 6krát menší?</li>
+                        
+                    </ul>
+                </div>
+            </details>
+        </section>
+
+    </main>
+</body>
+</html>

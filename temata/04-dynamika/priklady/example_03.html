@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tažná síla automobilu</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>3. Tažná síla automobilu</h1>
+            <p>Dynamika - řešený příklad</p>
+        </header>
+
+        <!-- Motivační úvod pro studenty -->
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Když jedeme autem po dálnici stálou rychlostí, všimněte si, že nemusíte stále přidávat plyn. Auto udržuje konstantní rychlost, přestože na něj působí odpor vzduchu a tření. Jaký je vztah mezi tažnou silou motoru a silami odporu?
+        </div>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <div class="zadani">
+<h3>📋 Zadání</h3>
+<p>Auto se pohybuje rychlostí <span class="hodnoty">20 m·s⁻¹</span>. Působí na něj třecí síla <span class="hodnoty">1 kN</span>. Vypočítejte tažnou sílu motoru.</p>
+</div>
+        </section>
+
+        
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+            
+
+            
+            <div class="calculation-step">
+                <p>V zadání je klíčová informace, že se auto pohybuje <strong>rychlostí</strong> 20 m·s⁻¹. Není zde zmínka o zrychlování ani zpomalování. To znamená, že jeho pohyb je <strong>rovnoměrný přímočarý</strong>.</p>
+<p>Co nám říká první Newtonův zákon? Těleso setrvává v klidu nebo v rovnoměrném přímočarém pohybu, pokud na něj nepůsobí žádná síla, nebo pokud je <strong>výslednice všech sil nulová</strong>.</p>
+            </div>
+            
+            <div class="calculation-step">
+                <p>Ve směru jízdy na auto působí dvě hlavní síly:</p>
+<ul>
+<li><strong>Tažná síla motoru</strong> ($F_{tah}$) - pohání auto dopředu</li>
+<li><strong>Třecí síla</strong> ($F_{třecí}$) - působí proti směru pohybu (odpor vzduchu, tření pneumatik)</li>
+</ul>
+<p>Aby byla výsledná síla nulová, musí být tyto dvě síly v rovnováze:</p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">📐 Rovnice rovnováhy
+<div class="rovnice-text">$F_{tah} = F_{třecí}$</div>
+</div>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p>Ze zadání víme:</p>
+<ul>
+<li>Rychlost: $v = 20$ m·s⁻¹ (pro rovnováhu sil nepotřebujeme)</li>
+<li>Třecí síla: $F_{třecí} = 1$ kN</li>
+</ul>
+<p>Převod na základní jednotky:</p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">🔄 Převod jednotek
+<div class="rovnice-text">$F_{třecí} = 1$ kN $= 1000$ N</div>
+</div>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p>Dosadíme do rovnice rovnováhy:</p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">🧮 Výpočet tažné síly
+<div class="rovnice-text">
+                                $F_{tah} = F_{třecí} = 1000$ N
+                            </div>
+</div>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p><strong>Tažná síla motoru musí být 1000 N (1 kN)</strong></p>
+<p><strong>Kontrola:</strong> Výslednice sil je nulová → auto se pohybuje stálou rychlostí ✓</p>
+            </div>
+            
+        </section>
+
+        <section id="shrnuti">
+            <h2>Shrnutí a kontrola</h2>
+
+            <div class="summary-box">
+                <strong>Hlavní poznatky:</strong>
+                <ul><li>Identifikovali jsme klíčové veličiny</li><li>Aplikovali jsme správné fyzikální zákony</li><li>Ověřili jsme jednotky a řády velikosti</li></ul>
+            </div>
+
+            
+            <div class="info-box">
+                <strong>Kontrola rozumnosti:</strong> Vždy zkontrolujte, zda výsledek dává fyzikální smysl vzhledem k zadání.
+            </div>
+            
+
+            <details>
+                <summary>🤔 Metakognitivní otázky</summary>
+                <div>
+                    <ul>
+                        
+                        <li>Proč je důležité, že auto jede stálou rychlostí?</li>
+                        
+                        <li>Co by se stalo, kdyby byla tažná síla větší než třecí síla?</li>
+                        
+                        <li>Jak se změní situace při zrychlování auta?</li>
+                        
+                    </ul>
+                </div>
+            </details>
+        </section>
+
+    </main>
+</body>
+</html>

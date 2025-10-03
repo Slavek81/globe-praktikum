@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tření láhve ve vlaku</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>15. Tření láhve ve vlaku</h1>
+            <p>Dynamika - řešený příklad</p>
+        </header>
+
+        <!-- Motivační úvod pro studenty -->
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Praktická aplikace fyziky v reálném světě.
+        </div>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <div class="zadani-text">
+                    Koeficient tření mezi pivní lahví a stolkem ve vlaku je <span class="hodnoty">0,2</span>. K jakým maximálním zrychlením může docházet ve vlaku, aniž by se lahev začala klouzat?
+                </div>
+        </section>
+
+        
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+            
+
+            
+            <div class="calculation-step">
+                <p>Představme si, že sedíme ve vlaku a lahev stojí klidně na stolku. Dokud vlak jede stálou rychlostí nebo stojí, je vše v pořádku. Problém nastává, když vlak začne zrychlovat nebo brzdit. Lahev má, jako každý předmět, svou <strong>setrvačnost</strong> – snaží se zůstat ve svém původním stavu pohybu. Když vlak zrychlí, lahev má tendenci "zůstat pozadu". Síla, která ji nutí zrychlovat spolu s vlakem, je <strong>třecí síla</strong> mezi dnem lahve a povrchem stolku. Pokud tato síla není dostatečně velká, lahev začne po stolku klouzat.</p>
+            </div>
+            
+            <div class="calculation-step">
+                <p>Na lahev působí v našem modelu celkem tři hlavní síly:</p>
+<ul>
+<li><strong>Tíhová síla $F_g$:</strong> Působí svisle dolů. Její velikost je $F_g = m \cdot g$, kde $m$ je hmotnost lahve a $g$ je tíhové zrychlení.</li>
+<li><strong>Normálová síla $F_n$:</strong> Tlaková síla od stolku, která působí kolmo na povrch (tedy svisle vzhůru). Ve svislém směru je v klidu, takže platí $F_n = F_g$.</li>
+<li><strong>Třecí síla $F_t$:</strong> Působí vodorovně, rovnoběžně s povrchem stolku, a brání relativnímu pohybu. Právě tato síla uděluje lahvi zrychlení ve vodorovném směru. Její maximální velikost je dána vztahem $F_{t,max} = f \cdot F_n$, kde $f$ je koeficient tření.</li>
+</ul>
+            </div>
+            
+            <div class="calculation-step">
+                <p>Aby lahev neklouzala, musí se pohybovat se stejným zrychlením $a$ jako vlak. Podle druhého Newtonova zákona ($F=ma$) musí na lahev ve vodorovném směru působit síla o velikosti $F = m \cdot a$. Tuto sílu zajišťuje statické tření $F_t$.</p>
+<p>Lahev se začne klouzat v okamžiku, kdy potřebná síla pro zrychlení přesáhne maximální možnou třecí sílu. Hraniční situace tedy nastává, když se tyto síly rovnají:</p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">📐 Rovnováha sil
+<div class="rovnice-text">$m \cdot a_{max} = F_{t,max}$</div>
+</div>
+<p>Dosadíme vztahy pro síly: $F_{t,max} = f \cdot F_n$ a $F_n = m \cdot g$.</p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">📐 Dosazení</div>
+<div class="rovnice-text">$m \cdot a_{max} = f \cdot (m \cdot g)$</div>
+</div>
+<p>Jak vidíme, hmotnost lahve $m$ se na obou stranách rovnice vykrátí. Získáme tak finální vztah pro maximální zrychlení:</p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">📐 Maximální zrychlení</div>
+<div class="rovnice-text">$a_{max} = f \cdot g$</div>
+</div>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p>Nyní už jen dosadíme zadané hodnoty do odvozeného vzorce:</p>
+<ul>
+<li>Koeficient tření: $f = 0{,}2$</li>
+<li>Tíhové zrychlení: $g \approx 10~\text{m/s}^2$</li>
+</ul>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">📐 Výpočet
+<div class="rovnice-text">$a_{max} = 0{,}2 \cdot 10~\text{m/s}^2 = 2~\text{m/s}^2$</div>
+</div>
+<p><strong>Výsledek:</strong> Maximální zrychlení, při kterém se lahev ještě nezačne klouzat, je <strong>2 m/s²</strong>.</p>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p>Co výsledek $2~\text{m/s}^2$ znamená v praxi? Je to poměrně citelné, ale ne extrémní zrychlení. Odpovídá zrychlení z 0 na 100 km/h za přibližně 14 sekund. Pokud se tedy vlak rozjíždí nebo brzdí plynule, lahev zůstane na svém místě. Při prudkém zabrzdění nebo škubnutí by však zrychlení mohlo tuto hodnotu překročit a lahev by se po stolku posunula (vzhledem k vlaku proti směru zrychlení). Tento princip platí pro jakékoliv zrychlení v rovině stolku – ať už jde o rozjezd, brzdění, nebo průjezd zatáčkou.</p>
+            </div>
+            
+        </section>
+
+        <section id="shrnuti">
+            <h2>Shrnutí a kontrola</h2>
+
+            <div class="summary-box">
+                <strong>Hlavní poznatky:</strong>
+                <ul><li>Identifikovali jsme klíčové veličiny</li><li>Aplikovali jsme správné fyzikální zákony</li><li>Ověřili jsme jednotky a řády velikosti</li></ul>
+            </div>
+
+            
+            <div class="info-box">
+                <strong>Kontrola rozumnosti:</strong> Vždy zkontrolujte, zda výsledek dává fyzikální smysl vzhledem k zadání.
+            </div>
+            
+
+            <details>
+                <summary>🤔 Metakognitivní otázky</summary>
+                <div>
+                    <ul>
+                        
+                        <li>Proč v konečném vzorci nevystupuje hmotnost lahve? Znamená to, že výsledek by byl stejný pro prázdnou i plnou lahev?</li>
+                        
+                        <li>Jak by se řešení změnilo, kdyby vlak jel do mírného kopce a stolek byl tedy lehce nakloněný?</li>
+                        
+                        <li>Co kdyby vlak nebrzdil ani nezrychloval, ale projížděl zatáčkou konstantní rychlostí? Jaká síla by v takovém případě způsobovala zrychlení lahve?</li>
+                        
+                        <li>Jak byste mohli v praxi zařídit, aby lahev na stolku vydržela i větší zrychlení?</li>
+                        
+                    </ul>
+                </div>
+            </details>
+        </section>
+
+    </main>
+</body>
+</html>

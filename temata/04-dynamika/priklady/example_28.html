@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soustava závaží</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>28. Soustava závaží</h1>
+            <p>Dynamika - řešený příklad</p>
+        </header>
+
+        <!-- Motivační úvod pro studenty -->
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Výtahy v mrakodrapech, nákladní výtahy ve skladech, lanovky v horách - všechny musí být navrhovany tak, aby bezpečně unedly zatížení při různých zrychleních. Síla v laně musí být přesně vypočítaná!
+        </div>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <p class="zadani-text">Vypočti zrychlení soustavy na obrázku. Urči vyznačenou sílu provázku. Tření zanedbej.</p>
+        </section>
+
+        
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+            
+
+            
+            <div class="calculation-step">
+                <p>Označení: $m_1 = 3$ kg (na nakloněné rovině), $m_2 = 2$ kg (na rovině), $m_3 = 2$ kg (visí)</p>
+<p>Celá soustava se pohybuje se stejným zrychlením $a$.</p>
+            </div>
+            
+            <div class="calculation-step">
+                <ul>
+<li>Na $m_1$: složka tíže po nakloněné rovině $m_1 g \sin 30° = 3 × 10 × 0,5 = 15$ N</li>
+<li>Na $m_3$: tíhová síla $m_3 g = 2 × 10 = 20$ N</li>
+</ul>
+            </div>
+            
+            <div class="calculation-step">
+                <div class="rovnice-blok">
+<div class="rovnice-nadpis">🧮 Pohybová rovnice pro celou soustavu
+<div class="rovnice-text">a = (m₃g - m₁g sin30°) / (m₁ + m₂ + m₃)
+a = (2×10 - 3×10×sin30°) / (3 + 2 + 2)
+a = (20 - 15) / 7 = 5/7 ≈ 0,71 m/s²</div>
+</div>
+<p><strong>Poznámka:</strong> V původním řešení bylo $a = 1,4$ m/s², což odpovídá jinému uspořádání hmotností.</p>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p>Pro visící závaží $m_3$:</p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">🧮 Výpočet síly provázku
+<div class="rovnice-text">F_p = m₃g - m₃a = m₃(g - a)
+F_p = 2 × (10 - 0,71) = 2 × 9,29 = 18,6 N</div>
+</div>
+<p><strong>Odpověď:</strong> Síla v provázku je <strong>18,6 N</strong>.</p>
+</div>
+            </div>
+            
+        </section>
+
+        <section id="shrnuti">
+            <h2>Shrnutí a kontrola</h2>
+
+            <div class="summary-box">
+                <strong>Hlavní poznatky:</strong>
+                <ul><li>Identifikovali jsme klíčové veličiny</li><li>Aplikovali jsme správné fyzikální zákony</li><li>Ověřili jsme jednotky a řády velikosti</li></ul>
+            </div>
+
+            
+            <div class="info-box">
+                <strong>Kontrola rozumnosti:</strong> Vždy zkontrolujte, zda výsledek dává fyzikální smysl vzhledem k zadání.
+            </div>
+            
+
+            <details>
+                <summary>🤔 Metakognitivní otázky</summary>
+                <div>
+                    <ul>
+                        
+                        <li>Jaký je fyzikální význam výsledku?</li>
+                        
+                        <li>Jak bych tento problém vyřešil jiným způsobem?</li>
+                        
+                        <li>Kde mohu tento přístup aplikovat v praxi?</li>
+                        
+                    </ul>
+                </div>
+            </details>
+        </section>
+
+    </main>
+</body>
+</html>

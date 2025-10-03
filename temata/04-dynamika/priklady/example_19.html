@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pohyb po nakloněné rovině</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>19. Pohyb po nakloněné rovině</h1>
+            <p>Dynamika - řešený příklad</p>
+        </header>
+
+        <!-- Motivační úvod pro studenty -->
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Nakloněná rovina je jedním ze základních jednoduchých strojů. Když tlačíme předmět nahoru po nakloněné rovině, síla potřebná k pohybu závisí na úhlu sklonu, hmotnosti a tření.
+        </div>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <div class="zadani-text">
+<strong>Ocelové těleso o hmotnosti <span class="hodnoty">10 kg</span> je rozpohybováno stálou rychlostí. Součinitel smykového tření je <span class="hodnoty">0,35</span>. Vypočítejte sílu, kterou potřebujeme vynaložit k pohybu tělesa, jestliže:</strong>
+<ul>
+<li>a) α = 0° (vodorovná rovina)</li>
+<li>b) α = 30° nahoru</li>
+<li>c) α = 30° dolů</li>
+</ul>
+</div>
+        </section>
+
+        
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+            
+
+            
+            <div class="calculation-step">
+                <p>Pohyb je <strong>rovnoměrný</strong> (stálá rychlost), takže celková síla ve směru pohybu musí být nulová. Tažná síla $F$ musí vyrovnávat jak třecí sílu, tak případnou složku tíhové síly při pohybu na svahu.</p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">📊 Dané hodnoty
+<div class="rovnice-text">
+                                $m = 10$ kg<br/>
+                                $f = 0{,}35$<br/>
+                                $g = 9{,}81$ m·s⁻²
+                            </div>
+</div>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p>Na vodorovné rovině musí tažná síla vyrovnávat pouze třecí sílu:</p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">⚖️ Rovnováha sil
+<div class="rovnice-text">$F = F_t = f \cdot F_n = f \cdot m \cdot g$</div>
+</div>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">📐 Výpočet</div>
+<div class="rovnice-text">
+                                $F = 0{,}35 \times 10 \times 9{,}81$<br/>
+                                $F = 34{,}34$ N
+                            </div>
+</div>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p>Při pohybu nahoru musíme vyrovnat jak třecí sílu, tak složku tíhové síly směřující dolů po svahu:</p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">⚖️ Rovnováha sil
+<div class="rovnice-text">
+                                $F = F_{g\parallel} + F_t$<br/>
+                                $F = m \cdot g \cdot \sin(\alpha) + f \cdot m \cdot g \cdot \cos(\alpha)$<br/>
+                                $F = m \cdot g \cdot (\sin(\alpha) + f \cdot \cos(\alpha))$
+                            </div>
+</div>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">📐 Výpočet</div>
+<div class="rovnice-text">
+                                $F = 10 \times 9{,}81 \times (\sin(30°) + 0{,}35 \times \cos(30°))$<br/>
+                                $F = 98{,}1 \times (0{,}5 + 0{,}35 \times 0{,}866)$<br/>
+                                $F = 98{,}1 \times (0{,}5 + 0{,}303)$<br/>
+                                $F = 98{,}1 \times 0{,}803$<br/>
+                                $F = 78{,}77$ N
+                            </div>
+</div>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p>Při pohybu dolů složka tíhové síly "pomáhá" pohybu, ale třecí síla stále brzdí:</p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">⚖️ Rovnováha sil
+<div class="rovnice-text">
+                                $F + F_{g\parallel} = F_t$<br/>
+                                $F = F_t - F_{g\parallel}$<br/>
+                                $F = f \cdot m \cdot g \cdot \cos(\alpha) - m \cdot g \cdot \sin(\alpha)$<br/>
+                                $F = m \cdot g \cdot (f \cdot \cos(\alpha) - \sin(\alpha))$
+                            </div>
+</div>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">📐 Výpočet</div>
+<div class="rovnice-text">
+                                $F = 10 \times 9{,}81 \times (0{,}35 \times \cos(30°) - \sin(30°))$<br/>
+                                $F = 98{,}1 \times (0{,}35 \times 0{,}866 - 0{,}5)$<br/>
+                                $F = 98{,}1 \times (0{,}303 - 0{,}5)$<br/>
+                                $F = 98{,}1 \times (-0{,}197)$<br/>
+                                $F = -19{,}33$ N
+                            </div>
+</div>
+<p><strong>Interpretace záporného výsledku:</strong> Záporné znaménko znamená, že síla působí opačným směrem - dolů po svahu. Těleso by se samo rozjelo dolů, takže musíme brzdit silou 19,33 N směrem nahoru.</p>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p><strong>a) F = 34,34 N</strong> (na vodorovné rovině)</p>
+<p><strong>b) F = 78,77 N</strong> (nahoru po svahu 30°)</p>
+<p><strong>c) F = 19,33 N</strong> (brzdit při pohybu dolů po svahu 30°)</p>
+            </div>
+            
+        </section>
+
+        <section id="shrnuti">
+            <h2>Shrnutí a kontrola</h2>
+
+            <div class="summary-box">
+                <strong>Hlavní poznatky:</strong>
+                <ul><li>Identifikovali jsme klíčové veličiny</li><li>Aplikovali jsme správné fyzikální zákony</li><li>Ověřili jsme jednotky a řády velikosti</li></ul>
+            </div>
+
+            
+            <div class="info-box">
+                <strong>Kontrola rozumnosti:</strong> Vždy zkontrolujte, zda výsledek dává fyzikální smysl vzhledem k zadání.
+            </div>
+            
+
+            <details>
+                <summary>🤔 Metakognitivní otázky</summary>
+                <div>
+                    <ul>
+                        
+                        <li>Jak by se změnila potřebná síla, kdyby byl povrch kluzkější (menší f)?</li>
+                        
+                        <li>Proč je třecí síla úměrná normálové síle?</li>
+                        
+                        <li>Jaký vliv má hmotnost tělesa na potřebnou sílu?</li>
+                        
+                    </ul>
+                </div>
+            </details>
+        </section>
+
+    </main>
+</body>
+</html>

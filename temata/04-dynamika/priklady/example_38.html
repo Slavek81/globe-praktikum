@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Míč dopadající na zem</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>38. Míč dopadající na zem</h1>
+            <p>Dynamika - řešený příklad</p>
+        </header>
+
+        <!-- Motivační úvod pro studenty -->
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Praktická aplikace fyziky v reálném světě.
+        </div>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <div class="zadani-text">
+                    Lionel Messi střílí penaltu rychlostí <span class="hodnoty">126 km/h</span>. Iker Casillas robinsonádou v letu chytá míč do náruče. Je v tu chvíli 1 m nad zemí a půl metru před brankovou čarou. Je šance, že bude s míčem v náručí odnesen až za brankovou čáru?
+                </div>
+        </section>
+
+        
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+            
+
+            
+            <div class="calculation-step">
+                <p>
+                            Tento problém se skládá ze dvou po sobě jdoucích fyzikálních dějů:
+                        </p>
+<ol>
+<li>
+<strong>Nepružná srážka:</strong> V okamžiku, kdy brankář chytí míč, dojde ke srážce. Protože brankář a míč poté tvoří jeden celek (brankář drží míč v náručí), jedná se o tzv. <strong>dokonale nepružnou srážku</strong>. Pro takové srážky platí <strong>zákon zachování hybnosti</strong>. Ten nám umožní vypočítat, jakou společnou rychlostí se brankář s míčem začnou pohybovat těsně po chycení.
+                            </li>
+<li>
+<strong>Vodorovný vrh:</strong> Ihned po srážce se soustava brankář+míč pohybuje nějakou počáteční vodorovnou rychlostí a zároveň padá k zemi z výšky 1 m. Jedná se o vodorovný vrh. Musíme vypočítat, jak dlouho bude padat na zem a jakou vzdálenost za tu dobu urazí vodorovně.
+                            </li>
+</ol>
+<p>
+<strong>Hodnoty ze zadání (převedené na jednotky SI):</strong>
+</p>
+<ul>
+<li>Hmotnost míče: $m_1 = 0,43 \, \text{kg}$</li>
+<li>Hmotnost brankáře: $m_2 = 80 \, \text{kg}$</li>
+<li>Rychlost míče: $v_1 = 126 \, \text{km/h} = \frac{126}{3,6} \, \text{m/s} = 35 \, \text{m/s}$</li>
+<li>Počáteční rychlost brankáře: $v_2 = 0 \, \text{m/s}$ (předpokládáme, že v okamžiku chycení nemá žádnou vodorovnou rychlost)</li>
+<li>Výška pádu: $h = 1 \, \text{m}$</li>
+<li>Vzdálenost od čáry: $s_{cíl} = 0,5 \, \text{m}$</li>
+</ul>
+<p>
+                            Porovnáme vypočtenou dráhu letu $s_{let}$ se vzdáleností $s_{cíl}$.
+                        </p>
+            </div>
+            
+            <div class="calculation-step">
+                <p>
+                            Pro vyřešení budeme potřebovat tři klíčové rovnice:
+                        </p>
+<ol>
+<li><strong>Zákon zachování hybnosti</strong> pro nepružnou srážku.</li>
+<li>Vztah pro <strong>volný pád</strong> k určení doby pádu.</li>
+<li>Vztah pro <strong>rovnoměrný přímočarý pohyb</strong> k určení vodorovné dráhy.</li>
+</ol>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">Zákon zachování hybnosti
+<div class="rovnice-text">$m_1 \cdot v_1 + m_2 \cdot v_2 = (m_1 + m_2) \cdot v_{spol}$</div>
+</div>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">Dráha volného pádu</div>
+<div class="rovnice-text">$h = \frac{1}{2} \cdot g \cdot t^2$</div>
+</div>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">Dráha rovnoměrného pohybu</div>
+<div class="rovnice-text">$s_{let} = v_{spol} \cdot t$</div>
+</div>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p>
+                            Postupujeme krok za krokem:
+                        </p>
+<ol>
+<li>Nejprve ze zákona zachování hybnosti vyjádříme společnou rychlost $v_{spol}$. Protože $v_2=0$, vzorec se zjednoduší:
+                            $$ v_{spol} = \frac{m_1 \cdot v_1}{m_1 + m_2} $$</li>
+<li>Poté z rovnice pro volný pád vyjádříme čas pádu $t$:
+                            $$ t = \sqrt{\frac{2h}{g}} $$</li>
+<li>Nakonec tyto dva výsledky dosadíme do rovnice pro dráhu $s_{let}$:
+                            $$ s_{let} = \left( \frac{m_1 \cdot v_1}{m_1 + m_2} \right) \cdot \sqrt{\frac{2h}{g}} $$</li>
+</ol>
+            </div>
+            
+            <div class="calculation-step">
+                <p>
+                            Nejprve vypočítáme společnou rychlost po srážce:
+                        </p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">1. Výpočet společné rychlosti
+<div class="rovnice-text">
+                                $v_{spol} = \frac{0,43 \, \text{kg} \cdot 35 \, \text{m/s}}{0,43 \, \text{kg} + 80 \, \text{kg}} = \frac{15,05}{80,43} \approx 0,187 \, \text{m/s}$
+                            </div>
+</div>
+<p>
+                            Dále vypočítáme dobu pádu z výšky 1 m (použijeme $g \approx 10 \, \text{m/s}^2$):
+                        </p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">2. Výpočet doby pádu</div>
+<div class="rovnice-text">
+                                $t = \sqrt{\frac{2 \cdot 1 \, \text{m}}{10 \, \text{m/s}^2}} = \sqrt{0,2} \approx 0,45 \, \text{s}$
+                            </div>
+</div>
+<p>
+                            Nakonec vypočítáme dráhu, kterou za tuto dobu brankář urazí:
+                        </p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">3. Výpočet vodorovné dráhy</div>
+<div class="rovnice-text">
+                                $s_{let} = 0,187 \, \text{m/s} \cdot 0,45 \, \text{s} \approx 0,084 \, \text{m} = 8,4 \, \text{cm}$
+                            </div>
+</div>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p>
+                            Porovnáme vypočtenou dráhu s potřebnou vzdáleností pro překročení brankové čáry:
+                        </p>
+                        $$ 8,4 \, \text{cm} &lt; 50 \, \text{cm} $$
+                        <p>
+                            Vypočtená dráha je výrazně menší než vzdálenost k brankové čáře. Z toho plyne, že brankář s míčem za čáru nedoletí. Hlavním důvodem je obrovský rozdíl v hmotnosti mezi míčem a brankářem, kvůli kterému je společná rychlost po srážce velmi malá.
+                        </p>
+<p>
+<strong>Odpověď: Není žádná šance, že by brankář byl s míčem odnesen až za brankovou čáru. Posune se pouze o přibližně 8,4 cm.</strong>
+</p>
+            </div>
+            
+        </section>
+
+        <section id="shrnuti">
+            <h2>Shrnutí a kontrola</h2>
+
+            <div class="summary-box">
+                <strong>Hlavní poznatky:</strong>
+                <ul><li>Identifikovali jsme klíčové veličiny</li><li>Aplikovali jsme správné fyzikální zákony</li><li>Ověřili jsme jednotky a řády velikosti</li></ul>
+            </div>
+
+            
+            <div class="info-box">
+                <strong>Kontrola rozumnosti:</strong> Vždy zkontrolujte, zda výsledek dává fyzikální smysl vzhledem k zadání.
+            </div>
+            
+
+            <details>
+                <summary>🤔 Metakognitivní otázky</summary>
+                <div>
+                    <ul>
+                        
+                        <li>Proč můžeme při řešení srážky použít zákon zachování hybnosti, i když na soustavu působí vnější síla (gravitace)?</li>
+                        
+                        <li>Co je hlavním důvodem tak malého posunutí brankáře? Rychlost míče, hmotnost míče, nebo hmotnost brankáře? Jak by se výsledek změnil, kdyby brankář vážil jen 40 kg?</li>
+                        
+                        <li>Jak by se situace změnila, kdyby brankář chytal míč ve stoje na kluzkém ledu (bez tření)? Byl by výsledný posun větší, nebo menší?</li>
+                        
+                        <li>Ve filmech často vidíme, jak je postava po zásahu kulkou odhozena o několik metrů dozadu. Je to na základě tohoto výpočtu fyzikálně reálné?</li>
+                        
+                    </ul>
+                </div>
+            </details>
+        </section>
+
+    </main>
+</body>
+</html>

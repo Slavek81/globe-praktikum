@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Znázornění sil na těleso</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>1. Znázornění sil na těleso</h1>
+            <p>Dynamika - řešený příklad</p>
+        </header>
+
+        <!-- Motivační úvod pro studenty -->
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Praktická aplikace fyziky v reálném světě.
+        </div>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <div class="zadani-text">
+                    Nakreslete obrázky, kde znázorníte všechny síly působící na těleso v následujících případech. Vyznačte také výslednici sil:<br/>a) Volejbalový míč padá k zemi.<br/>b) Na stole stojí krabice mléka.<br>c) Na stole stojí krabice mléka a na ní je položen jogurt.<br/>d) Na provázku visí koule a na kouli je zavěšena ještě jedna koule.<br/>e) Zabržděné auto stojí na silnici ve svahu.<br/>f) Auto brzdí před přechodem.<br/>g) Lyžař klouže ze svahu prakticky bez tření a zrychluje.<br/>h) Lyžař klouže po svahu s třením a jede rovnoměrně.
+                </br></div>
+        </section>
+
+        
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+            
+
+            
+            <div class="calculation-step">
+                <p>V dynamice je klíčové umět správně identifikovat všechny síly působící na těleso a pochopit, jak ovlivňují jeho pohyb. Vždy se zaměřujeme na dané těleso a na to, co na něj působí.</p>
+            </div>
+            
+            <div class="calculation-step">
+                <p><strong>Identifikace sil:</strong></p>
+<ul>
+<li><strong>Gravitační síla ($F_g$)</strong> - směr: dolů, velikost: $m \cdot g$</li>
+<li><strong>Odpor vzduchu ($F_{ov}$)</strong> - směr: nahoru, proti pohybu</li>
+</ul>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">📐 Výslednice sil
+<div class="rovnice-text">$F_v = F_g - F_{ov}$</div>
+</div>
+<p>Výslednice směřuje dolů (míč zrychluje dokud $F_{ov}$ nevyrovná $F_g$).</p>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p><strong>Identifikace sil:</strong></p>
+<ul>
+<li><strong>Gravitační síla ($F_g$)</strong> - směr: dolů</li>
+<li><strong>Normálová síla ($F_n$)</strong> - směr: nahoru, kolmo k povrchu</li>
+</ul>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">📐 Rovnováha sil
+<div class="rovnice-text">$F_v = 0$ (krabice v klidu)
+$F_n = F_g$</div>
+</div>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p><strong>Síly působící na krabici:</strong></p>
+<ul>
+<li><strong>Gravitační síla krabice ($F_{g,k}$)</strong> - směr: dolů</li>
+<li><strong>Tlaková síla od jogurtu ($F_{tlak,j}$)</strong> - směr: dolů</li>
+<li><strong>Normálová síla od stolu ($F_n$)</strong> - směr: nahoru</li>
+</ul>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">📐 Rovnováha sil
+<div class="rovnice-text">$F_n = F_{g,k} + F_{tlak,j}$</div>
+</div>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p><strong>Síly na horní kouli:</strong></p>
+<ul>
+<li><strong>Gravitační síla horní koule ($F_{g,h}$)</strong> - směr: dolů</li>
+<li><strong>Tahová síla od spodní koule ($F_{t,d}$)</strong> - směr: dolů</li>
+<li><strong>Tahová síla provázku ($F_{t,p}$)</strong> - směr: nahoru</li>
+</ul>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">📐 Rovnováha sil
+<div class="rovnice-text">$F_{t,p} = F_{g,h} + F_{t,d}$</div>
+</div>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p><strong>Identifikace sil:</strong></p>
+<ul>
+<li><strong>Gravitační síla ($F_g$)</strong> - rozložit na $F_{g,\perp}$ (kolmá na svah) a $F_{g,\parallel}$ (rovnoběžná se svahem)</li>
+<li><strong>Normálová síla ($F_n$)</strong> - kolmá na svah, vyrovnává $F_{g,\perp}$</li>
+<li><strong>Statická třecí síla ($F_t$)</strong> - rovnoběžná se svahem nahoru</li>
+</ul>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">📐 Rozklad a rovnováha sil
+<div class="rovnice-text">$F_n = F_{g,\perp} = F_g \cdot \cos(\alpha)$
+$F_t = F_{g,\parallel} = F_g \cdot \sin(\alpha)$</div>
+</div>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p><strong>Identifikace sil:</strong></p>
+<ul>
+<li><strong>Gravitační síla ($F_g$)</strong> - dolů</li>
+<li><strong>Normálová síla ($F_n$)</strong> - nahoru ($F_n = F_g$)</li>
+<li><strong>Kinetická třecí síla ($F_t$)</strong> - proti směru pohybu</li>
+</ul>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">📐 Výslednice způsobující brzdění
+<div class="rovnice-text">$F_v = F_t$ (směr proti pohybu)</div>
+</div>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p><strong>Identifikace sil:</strong></p>
+<ul>
+<li><strong>Gravitační síla ($F_g$)</strong> - rozložit na $F_{g,\perp}$ a $F_{g,\parallel}$</li>
+<li><strong>Normálová síla ($F_n$)</strong> - vyrovnává $F_{g,\perp}$</li>
+<li>Tření zanedbatelné</li>
+</ul>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">📐 Výslednice sil
+<div class="rovnice-text">$F_v = F_{g,\parallel} = m \cdot g \cdot \sin(\alpha)$</div>
+</div>
+<p>Lyžař zrychluje dolů po svahu.</p>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p><strong>Identifikace sil:</strong></p>
+<ul>
+<li><strong>Gravitační síla ($F_g$)</strong> - rozložit na $F_{g,\perp}$ a $F_{g,\parallel}$</li>
+<li><strong>Normálová síla ($F_n$)</strong> - vyrovnává $F_{g,\perp}$</li>
+<li><strong>Kinetická třecí síla ($F_t$)</strong> - nahoru po svahu</li>
+</ul>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">📐 Rovnováha sil
+<div class="rovnice-text">$F_v = 0$
+$F_{g,\parallel} = F_t$</div>
+</div>
+<p>Lyžař jede konstantní rychlostí.</p>
+</div>
+            </div>
+            
+        </section>
+
+        <section id="shrnuti">
+            <h2>Shrnutí a kontrola</h2>
+
+            <div class="summary-box">
+                <strong>Hlavní poznatky:</strong>
+                <ul><li>Identifikovali jsme klíčové veličiny</li><li>Aplikovali jsme správné fyzikální zákony</li><li>Ověřili jsme jednotky a řády velikosti</li></ul>
+            </div>
+
+            
+            <div class="info-box">
+                <strong>Kontrola rozumnosti:</strong> Vždy zkontrolujte, zda výsledek dává fyzikální smysl vzhledem k zadání.
+            </div>
+            
+
+            <details>
+                <summary>🤔 Metakognitivní otázky</summary>
+                <div>
+                    <ul>
+                        
+                        <li>Jak rozpoznám, které síly působí na těleso v různých situacích?</li>
+                        
+                        <li>Proč je důležité rozložit gravitační sílu na nakloněné rovině?</li>
+                        
+                        <li>Kdy je výslednice sil nulová a co to znamená pro pohyb tělesa?</li>
+                        
+                        <li>Jaký je rozdíl mezi statickým a kinetickým třením?</li>
+                        
+                    </ul>
+                </div>
+            </details>
+        </section>
+
+    </main>
+</body>
+</html>

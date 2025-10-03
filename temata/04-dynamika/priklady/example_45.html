@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Člun a hozený kámen</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>45. Člun a hozený kámen</h1>
+            <p>Dynamika - řešený příklad</p>
+        </header>
+
+        <!-- Motivační úvod pro studenty -->
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Praktická aplikace fyziky v reálném světě.
+        </div>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <div class="zadani-text">
+                    Ve filmech se často vidí, že padouch při zásahu kulkou odletí dozadu. Je to reálné? Představte si situaci, že padouch stojí na kluzkém ledě a uvízne v něm střela z pistole, která letěla rychlostí <span class="hodnoty">800 m/s</span> a měla hmotnost <span class="hodnoty">3 g</span>. Jakou rychlostí by se rozpohyboval padouch?
+                </div>
+        </section>
+
+        
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+            
+
+            
+            <div class="calculation-step">
+                <p>
+                            Jde o <strong>dokonale nepružnou srážku</strong>, při které se kulka spojí s padouchem. Pro takový děj platí <strong>zákon zachování hybnosti</strong>. Porovnáme hybnost kulky před srážkou s hybností soustavy padouch+kulka po srážce.
+                        </p>
+<p>
+<strong>Data:</strong> $m_k = 0,003 \, \text{kg}$, $v_k = 800 \, \text{m/s}$, $m_p = 80 \, \text{kg}$
+                        </p>
+            </div>
+            
+            <div class="calculation-step">
+                <p>Zákon zachování hybnosti: hybnost soustavy před srážkou se rovná hybnosti po srážce.</p>
+<div class="rovnice-blok">
+<div class="rovnice-text">$m_k \cdot v_k = (m_p + m_k) \cdot v_{spol}$
+</div>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p>Hledáme společnou rychlost $v_{spol}$. Protože hmotnost kulky je zanedbatelná vůči hmotnosti padoucha ($m_p + m_k \approx m_p$), můžeme vzorec zjednodušit.</p>
+                        $$ v_{spol} \approx \frac{m_k \cdot v_k}{m_p} $$
+            </div>
+            
+            <div class="calculation-step">
+                <p>Dosadíme hodnoty do zjednodušeného vzorce.</p>
+<div class="rovnice-blok">
+<div class="rovnice-text">
+                                $v_{spol} \approx \frac{0,003 \, \text{kg} \cdot 800 \, \text{m/s}}{80 \, \text{kg}} = \frac{2,4}{80} \, \text{m/s} = 0,03 \, \text{m/s}$
+                            
+</div>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p>
+                            Výsledná rychlost je 0,03 m/s, což jsou pouhé 3 cm/s. To je velmi pomalý pohyb, který by byl sotva postřehnutelný.
+                        </p>
+<p>
+<strong>Odpověď: Filmové scény, kde padouch po zásahu odletí několik metrů, jsou fyzikálně naprosto nereálné.</strong>
+</p>
+            </div>
+            
+        </section>
+
+        <section id="shrnuti">
+            <h2>Shrnutí a kontrola</h2>
+
+            <div class="summary-box">
+                <strong>Hlavní poznatky:</strong>
+                <ul><li>Identifikovali jsme klíčové veličiny</li><li>Aplikovali jsme správné fyzikální zákony</li><li>Ověřili jsme jednotky a řády velikosti</li></ul>
+            </div>
+
+            
+            <div class="info-box">
+                <strong>Kontrola rozumnosti:</strong> Vždy zkontrolujte, zda výsledek dává fyzikální smysl vzhledem k zadání.
+            </div>
+            
+
+            <details>
+                <summary>🤔 Metakognitivní otázky</summary>
+                <div>
+                    <ul>
+                        
+                        <li>Proč je výsledná rychlost tak malá, i když má kulka obrovskou rychlost?</li>
+                        
+                        <li>Kulka je nebezpečná hlavně kvůli své kinetické energii, ne hybnosti. Proč?</li>
+                        
+                        <li>Jakou silou by musel střelec působit, aby se sám pohyboval rychlostí 3 cm/s?</li>
+                        
+                    </ul>
+                </div>
+            </details>
+        </section>
+
+    </main>
+</body>
+</html>

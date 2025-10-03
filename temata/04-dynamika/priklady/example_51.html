@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rychle rotující pulsar</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>51. Rychle rotující pulsar</h1>
+            <p>Dynamika - řešený příklad</p>
+        </header>
+
+        <!-- Motivační úvod pro studenty -->
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Pulsar je neutronová hvězda, která rotuje extrémně rychle. Rychlosti na jejich povrchu dosahují značných podílů rychlosti světla a dostředivá zrychlení jsou astronomická.
+        </div>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <div class="zadani">
+<h3>📋 Zadání</h3>
+<p>Pulsar o průměru <span class="hodnoty">15 km</span> se otáčí s frekvencí <span class="hodnoty">8 Hz</span>. Vypočítejte rychlost a dostředivé zrychlení hmotného bodu na rovníkovém průměru.</p>
+</div>
+        </section>
+
+        
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+            
+
+            
+            <div class="calculation-step">
+                <p>Nejdříve si připravíme všechne potřebné údaje v základních jednotkách:</p>
+<ul>
+<li>Frekvence: $f = 8$ Hz (pulsar se otočí 8krát za sekundu!)</li>
+<li>Průměr: $d = 15$ km $= 15\,000$ m</li>
+<li>Poloměr: $r = \frac{d}{2} = 7\,500$ m</li>
+</ul>
+            </div>
+            
+            <div class="calculation-step">
+                <p>Úhlová rychlost $\omega$ udává, jaký úhel opíše těleso za jednotku času:</p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">🌀 Úhlová rychlost
+<div class="rovnice-text">
+                                $\omega = 2 \pi f$<br/><br/>
+                                $\omega = 2 \times \pi \times 8 = 16\pi \approx 50{,}27$ rad·s⁻¹
+                            </div>
+</div>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p>Obvodová rychlost bodu na rovníku pulsaru:</p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">🏃 Obvodová rychlost
+<div class="rovnice-text">
+                                $v = \omega \times r$<br/><br/>
+                                $v = 50{,}27 \times 7\,500 \approx 377\,000$ m·s⁻¹
+                            </div>
+</div>
+<p>To je <strong>377 km/s</strong>! Pro srovnání:</p>
+<ul>
+<li>Rychlost zvuku ve vzduchu: cca 0,34 km/s</li>
+<li>Tento bod se pohybuje více než <strong>1000krát rychleji než zvuk</strong></li>
+</ul>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p>Dostředivé zrychlení udržuje těleso na kruhové dráze:</p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">⭕ Dostředivé zrychlení
+<div class="rovnice-text">
+                                $a_d = \omega^2 \times r$<br/><br/>
+                                $a_d = (50{,}27)^2 \times 7\,500$<br/><br/>
+                                $a_d \approx 2\,527 \times 7\,500 \approx 18\,950\,000$ m·s⁻²<br/><br/>
+                                $a_d \approx 1{,}9 \times 10^7$ m·s⁻²
+                            </div>
+</div>
+<p>Pro představu - tíhové zrychlení na Zemi je $g \approx 9{,}81$ m·s⁻². Zrychlení na povrchu pulsaru je zhruba <strong>2 milionkrát větší</strong>!</p>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p><strong>Rychlost bodu na rovníku pulsaru: 377 000 m·s⁻¹ (377 km/s)</strong></p>
+<p><strong>Dostředivé zrychlení: 1,9×10⁷ m·s⁻²</strong></p>
+<p>Tato čísla jsou vpravdě astronomická. Pulsar je jeden z nejextrémějších objektů ve vesmíru!</p>
+            </div>
+            
+        </section>
+
+        <section id="shrnuti">
+            <h2>Shrnutí a kontrola</h2>
+
+            <div class="summary-box">
+                <strong>Hlavní poznatky:</strong>
+                <ul><li>Identifikovali jsme klíčové veličiny</li><li>Aplikovali jsme správné fyzikální zákony</li><li>Ověřili jsme jednotky a řády velikosti</li></ul>
+            </div>
+
+            
+            <div class="info-box">
+                <strong>Kontrola rozumnosti:</strong> Vždy zkontrolujte, zda výsledek dává fyzikální smysl vzhledem k zadání.
+            </div>
+            
+
+            <details>
+                <summary>🤔 Metakognitivní otázky</summary>
+                <div>
+                    <ul>
+                        
+                        <li>Jaké síly musí držet hmotu na povrchu tak rychle se otáčející hvězdy?</li>
+                        
+                        <li>Proč se pulsar může otáčet tak rychle, aniž by se rozpadl?</li>
+                        
+                        <li>Co by se stalo s obyčejným objektem při takovém zrychlení?</li>
+                        
+                    </ul>
+                </div>
+            </details>
+        </section>
+
+    </main>
+</body>
+</html>

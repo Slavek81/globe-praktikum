@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Impuls síly při kulečníku</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>35. Impuls síly při kulečníku</h1>
+            <p>Dynamika - řešený příklad</p>
+        </header>
+
+        <!-- Motivační úvod pro studenty -->
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Při hře kulečník působí tágem na kouli jen krátký okamžik, ale i tak jí dokáže dát značnou rychlost. Klíčem je impulz síly - součin síly a času působení.
+        </div>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <div class="zadani">
+<h3>📋 Zadání</h3>
+<p>Klasická kulečníková koule má hmotnost <span class="hodnoty">200 g</span>. Během <span class="hodnoty">7 ms</span> na ni působila síla <span class="hodnoty">50 N</span>. Jakou rychlostí se po kontaktu tága bude koule pohybovat?</p>
+</div>
+        </section>
+
+        
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+            
+
+            
+            <div class="calculation-step">
+                <p>Impulz síly ($F \cdot t$) způsobí změnu hybnosti koule ($\Delta p$). Protože koule byla na začátku v klidu, její počáteční hybnost byla nulová.</p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">⚡ Impulz síly
+<div class="rovnice-text">
+                                $F \cdot t = \Delta p = p_2 - p_1 = m \cdot v_2 - 0$<br/><br/>
+                                $F \cdot t = m \cdot v_2$
+                            </div>
+</div>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p>Ze zadání máme (pozor na převody jednotek!):</p>
+<ul>
+<li>Hmotnost: $m = 200$ g = $0{,}2$ kg</li>
+<li>Čas: $t = 7$ ms = $0{,}007$ s</li>
+<li>Síla: $F = 50$ N</li>
+<li>Konečná rychlost: $v_2 = ?$</li>
+</ul>
+            </div>
+            
+            <div class="calculation-step">
+                <p>Z rovnice $F \cdot t = m \cdot v_2$ si vyjádříme rychlost:</p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">🎯 Vzorec pro rychlost
+<div class="rovnice-text">$v_2 = \frac{F \cdot t}{m}$</div>
+</div>
+<p>Dosadíme hodnoty:</p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">🧮 Výpočet</div>
+<div class="rovnice-text">
+                                $v_2 = \frac{50 \times 0{,}007}{0{,}2} = \frac{0{,}35}{0{,}2} = 1{,}75$ m·s⁻¹
+                            </div>
+</div>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p>Rychlost 1,75 m·s⁻¹ odpovídá 6,3 km/h - to je rozumná rychlost pro kulečníkovou kouli.</p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">📊 Dodatečné údaje
+<div class="rovnice-text">
+                                Impulz síly: $I = F \cdot t = 50 \times 0{,}007 = 0{,}35$ N·s<br/>
+                                Změna hybnosti: $\Delta p = m \cdot v_2 = 0{,}2 \times 1{,}75 = 0{,}35$ kg·m·s⁻¹ ✓
+                            </div>
+</div>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p><strong>Koule se bude po kontaktu pohybovat rychlostí 1,75 m·s⁻¹</strong> (což je 6,3 km/h)</p>
+            </div>
+            
+        </section>
+
+        <section id="shrnuti">
+            <h2>Shrnutí a kontrola</h2>
+
+            <div class="summary-box">
+                <strong>Hlavní poznatky:</strong>
+                <ul><li>Identifikovali jsme klíčové veličiny</li><li>Aplikovali jsme správné fyzikální zákony</li><li>Ověřili jsme jednotky a řády velikosti</li></ul>
+            </div>
+
+            
+            <div class="info-box">
+                <strong>Kontrola rozumnosti:</strong> Vždy zkontrolujte, zda výsledek dává fyzikální smysl vzhledem k zadání.
+            </div>
+            
+
+            <details>
+                <summary>🤔 Metakognitivní otázky</summary>
+                <div>
+                    <ul>
+                        
+                        <li>Proč stačí krátký kontakt k dosažení značné rychlosti?</li>
+                        
+                        <li>Jak by se změnila rychlost při dvojnásobné síle?</li>
+                        
+                        <li>Co by se stalo, kdyby kontakt trval 2krát déle?</li>
+                        
+                    </ul>
+                </div>
+            </details>
+        </section>
+
+    </main>
+</body>
+</html>

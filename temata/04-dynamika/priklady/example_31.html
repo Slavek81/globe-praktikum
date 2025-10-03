@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Výpočet výsledné síly</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>31. Výpočet výsledné síly</h1>
+            <p>Dynamika - řešený příklad</p>
+        </header>
+
+        <!-- Motivační úvod pro studenty -->
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Praktická aplikace fyziky v reálném světě.
+        </div>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <div class="zadani-text">
+                    Parašutistovi o celkové hmotnosti <span class="hodnoty">90 kg</span> se otevře padák a odporová síla vzduchu vzroste na <span class="hodnoty">1,1 kN</span>. Jaká bude velikost a směr zrychlení parašutisty? Jaký bude směr jeho rychlosti? Nakreslete. Pokud těsně před otevřením letěl rychlostí <span class="hodnoty">50 m/s</span>, jakou rychlostí poletí za dvě sekundy? Uvažujte g = <span class="hodnoty">10 m/s</span>2.
+                </div>
+        </section>
+
+        
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+            
+
+            
+            <div class="calculation-step">
+                <p>Na parašutistu po otevření padáku působí dvě síly ve svislém směru:</p>
+<ul>
+<li><strong>Tíhová síla $F_g$:</strong> Působí dolů. Její velikost je $F_g = m \cdot g$.</li>
+</ul>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">📐 Tíhová síla
+<div class="rovnice-text">$F_g = 90~\text{kg} \cdot 10~\text{m/s}^2 = 900~\text{N}$</div>
+</div>
+<ul>
+<li><strong>Odporová síla vzduchu $F_{odpor}$:</strong> Působí nahoru, proti směru pohybu. Ze zadání víme, že $F_{odpor} = 1{,}1~\text{kN} = 1100~\text{N}$.</li>
+</ul>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p>Výsledná síla $F_{vysl}$ je vektorovým součtem těchto dvou sil. Protože působí v opačných směrech, jejich velikosti od sebe odečteme.</p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">📐 Výsledná síla
+<div class="rovnice-text">$F_{vysl} = F_{odpor} - F_g = 1100~\text{N} - 900~\text{N} = 200~\text{N}$</div>
+</div>
+<p>Protože odporová síla je větší než tíhová, výsledná síla směřuje <strong>nahoru</strong>. Podle druhého Newtonova zákona ($F=ma$) tato síla způsobí zrychlení:</p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">📐 Zrychlení</div>
+<div class="rovnice-text">$a = \frac{F_{vysl}}{m} = \frac{200~\text{N}}{90~\text{kg}} \approx 2{,}22~\text{m/s}^2$</div>
+</div>
+<p><strong>Odpověď na 1. část:</strong> Zrychlení parašutisty je přibližně <strong>2,22 m/s² a směřuje nahoru</strong>. To neznamená, že letí nahoru, ale že velmi prudce brzdí!</p>
+<p><strong>Směr rychlosti:</strong> Parašutista stále padá <strong>dolů</strong>, ale jeho rychlost se snižuje.</p>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p>Pohyb je rovnoměrně zpomalený. Pro výpočet konečné rychlosti $v$ použijeme vztah $v = v_0 + a \cdot t$. Musíme si dát pozor na znaménka. Pokud počáteční rychlost dolů považujeme za kladnou ($v_0 = +50~\text{m/s}$), pak zrychlení směřující nahoru musí být záporné ($a = -2{,}22~\text{m/s}^2$).</p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">📐 Rychlost po čase
+<div class="rovnice-text">$v = 50~\text{m/s} + (-2{,}22~\text{m/s}^2) \cdot 2~\text{s} = 50 - 4{,}44 = 45{,}56~\text{m/s}$</div>
+</div>
+<p><strong>Odpověď na 2. část:</strong> Rychlost parašutisty za 2 sekundy klesne na přibližně <strong>45,6 m/s</strong>.</p>
+</div>
+            </div>
+            
+        </section>
+
+        <section id="shrnuti">
+            <h2>Shrnutí a kontrola</h2>
+
+            <div class="summary-box">
+                <strong>Hlavní poznatky:</strong>
+                <ul><li>Identifikovali jsme klíčové veličiny</li><li>Aplikovali jsme správné fyzikální zákony</li><li>Ověřili jsme jednotky a řády velikosti</li></ul>
+            </div>
+
+            
+            <div class="info-box">
+                <strong>Kontrola rozumnosti:</strong> Vždy zkontrolujte, zda výsledek dává fyzikální smysl vzhledem k zadání.
+            </div>
+            
+
+            <details>
+                <summary>🤔 Metakognitivní otázky</summary>
+                <div>
+                    <ul>
+                        
+                        <li>Jak je možné, že zrychlení směřuje nahoru, když parašutista stále padá dolů? Co to fyzikálně znamená?</li>
+                        
+                        <li>Jak se bude měnit odporová síla vzduchu, když parašutista zpomaluje? Co se stane, až dosáhne nové, nižší terminální rychlosti?</li>
+                        
+                        <li>Jaký pocit zažije parašutista v okamžiku otevření padáku? K čemu byste tento pocit přirovnali?</li>
+                        
+                        <li>Odpor vzduchu závisí na druhé mocnině rychlosti. Proč je tedy v této úloze zrychlení konstantní? (Jedná se o zjednodušení pro krátký časový úsek).</li>
+                        
+                    </ul>
+                </div>
+            </details>
+        </section>
+
+    </main>
+</body>
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Těleso na pohybujícím vozíku</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>55. Těleso na pohybujícím vozíku</h1>
+            <p>Dynamika - řešený příklad</p>
+        </header>
+
+        <!-- Motivační úvod pro studenty -->
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Praktická aplikace fyziky v reálném světě.
+        </div>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <div class="zadani-text">
+                    Pár jednoduchých otázeček:<br/>a) Bylo zjištěno, že na Měsíci na závaží o hmotnosti <span class="hodnoty">500 g</span> působí gravitační síla o velikosti <span class="hodnoty">0,8 N</span>. S jakým zrychlením bude závaží padat k povrchu Měsíce?<br/>b) Malý výtah o hmotnosti <span class="hodnoty">400 kg</span> se rozjíždí vzhůru se zrychlením <span class="hodnoty">1,5 m/s</span>2. Jakou velikost má výsledná síla, která na výtah působí? *Jakou velikost má síla, kterou za výtah táhne lano, na kterém je výtah pověšený?<br/>c) Na vozíček působila brzdná síla o velikosti <span class="hodnoty">200 N</span>, přičemž vozík začal zpomalovat se zrychlením <span class="hodnoty">4 m/s</span>2. Jaká je hmotnost vozíku?<br/>d) Fotbalový míč o hmotnosti <span class="hodnoty">400 g</span> padá přímo dolů a působí na něj odpor vzduchu o velikosti <span class="hodnoty">1,6 N</span>. Jakou velikost má zrychlení míče?<br/>e) Pan Jouda roztlačuje dokonale promazaný vozík o hmotnosti <span class="hodnoty">250 kg</span> silou o velikosti <span class="hodnoty">200 N</span>. Za jak dlouho vozík dosáhne rychlosti běhu, čili rychlosti <span class="hodnoty">4 m/s</span>?   
+                </div>
+        </section>
+
+        
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+            
+
+            
+            <div class="calculation-step">
+                <p>
+                            Tento příklad obsahuje pět samostatných úloh, které jsou všechny aplikací <strong>druhého Newtonova zákona ($\vec{F} = m \cdot \vec{a}$)</strong> a základních kinematických vztahů. U úloh se silami je klíčové správně identifikovat všechny působící síly a jejich směry.
+                        </p>
+            </div>
+            
+            <div class="calculation-step">
+                <p>
+                            Pro všechny úlohy budeme potřebovat následující základní rovnice:
+                        </p>
+<div class="rovnice-blok">
+<div class="rovnice-text">
+                                2. Newtonův zákon: $F = m \cdot a$<br/>
+                                Tíhová síla: $F_g = m \cdot g$ (použijeme $g \approx 10 \, \text{m/s}^2$)<br/>
+                                Rovnoměrně zrychlený pohyb: $v = a \cdot t$ (při $v_0=0$)
+                            
+</div>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p>
+                            Pro každou podúlohu si vyjádříme hledanou veličinu:
+                        </p>
+<p>
+                            a) $a = F_g / m$
+                            <br/>b) $F_{vysl} = m \cdot a$; $F_{tah} = F_{vysl} + F_g = m(a+g)$
+                            <br/>c) $m = F / a$
+                            <br/>d) $F_{vysl} = F_g - F_{odpor}$; $a = F_{vysl} / m$
+                            <br/>e) $a = F / m$; $t = v / a$
+                        </p>
+            </div>
+            
+            <div class="calculation-step">
+                <p>
+<strong>a) Pád na Měsíci:</strong> ($m=0,5$ kg)
+                        </p>
+<div class="rovnice-blok">
+<div class="rovnice-text">$a = \frac{0,8 \, \text{N}}{0,5 \, \text{kg}} = 1,6 \, \text{m/s}^2$
+</div>
+<p>
+<strong>b) Výtah vzhůru:</strong> ($m=400$ kg)
+                        </p>
+<div class="rovnice-blok">
+<div class="rovnice-text">$F_{vysl} = 400 \, \text{kg} \cdot 1,5 \, \text{m/s}^2 = 600 \, \text{N}$</div>
+</div>
+<div class="rovnice-blok">
+<div class="rovnice-text">$F_{tah} = 400 \cdot (1,5 + 10) = 400 \cdot 11,5 = 4600 \, \text{N}$</div>
+</div>
+<p>
+<strong>c) Brzděný vozík:</strong>
+</p>
+<div class="rovnice-blok">
+<div class="rovnice-text">$m = \frac{200 \, \text{N}}{4 \, \text{m/s}^2} = 50 \, \text{kg}$</div>
+</div>
+<p>
+<strong>d) Padající míč:</strong> ($m=0,4$ kg)
+                        </p>
+<div class="rovnice-blok">
+<div class="rovnice-text">$F_g = 0,4 \, \text{kg} \cdot 10 \, \text{m/s}^2 = 4 \, \text{N}$</div>
+</div>
+<div class="rovnice-blok">
+<div class="rovnice-text">$F_{vysl} = 4 \, \text{N} - 1,6 \, \text{N} = 2,4 \, \text{N}$</div>
+</div>
+<div class="rovnice-blok">
+<div class="rovnice-text">$a = \frac{2,4 \, \text{N}}{0,4 \, \text{kg}} = 6 \, \text{m/s}^2$</div>
+</div>
+<p>
+<strong>e) Roztlačování vozíku:</strong> ($m=250$ kg)
+                        </p>
+<div class="rovnice-blok">
+<div class="rovnice-text">$a = \frac{200 \, \text{N}}{250 \, \text{kg}} = 0,8 \, \text{m/s}^2$</div>
+</div>
+<div class="rovnice-blok">
+<div class="rovnice-text">$t = \frac{4 \, \text{m/s}}{0,8 \, \text{m/s}^2} = 5 \, \text{s}$</div>
+</div>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p>
+<strong>a)</strong> Zrychlení na Měsíci je <strong>1,6 m/s²</strong>.
+                            <br/><strong>b)</strong> Výsledná síla na výtah je <strong>600 N</strong>. Síla tahu lana je <strong>4600 N</strong>.
+                            <br/><strong>c)</strong> Hmotnost vozíku je <strong>50 kg</strong>.
+                            <br/><strong>d)</strong> Zrychlení míče je <strong>6 m/s²</strong>.
+                            <br/><strong>e)</strong> Vozík dosáhne rychlosti běhu za <strong>5 sekund</strong>.
+                        </p>
+            </div>
+            
+        </section>
+
+        <section id="shrnuti">
+            <h2>Shrnutí a kontrola</h2>
+
+            <div class="summary-box">
+                <strong>Hlavní poznatky:</strong>
+                <ul><li>Identifikovali jsme klíčové veličiny</li><li>Aplikovali jsme správné fyzikální zákony</li><li>Ověřili jsme jednotky a řády velikosti</li></ul>
+            </div>
+
+            
+            <div class="info-box">
+                <strong>Kontrola rozumnosti:</strong> Vždy zkontrolujte, zda výsledek dává fyzikální smysl vzhledem k zadání.
+            </div>
+            
+
+            <details>
+                <summary>🤔 Metakognitivní otázky</summary>
+                <div>
+                    <ul>
+                        
+                        <li>Proč je síla tahu lana v úloze b) větší než tíha výtahu? Co by se stalo, kdyby se výtah rozjížděl dolů?</li>
+                        
+                        <li>Proč je zrychlení padajícího míče v úloze d) menší než tíhové zrychlení g? Co je to terminální rychlost?</li>
+                        
+                        <li>Jak by se změnil čas v úloze e), kdyby pan Jouda tlačil stejnou silou, ale proti valivému odporu o velikosti 50 N?</li>
+                        
+                    </ul>
+                </div>
+            </details>
+        </section>
+
+    </main>
+</body>
+</html>

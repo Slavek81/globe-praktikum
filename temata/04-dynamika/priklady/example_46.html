@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pružná srážka stejných hmot</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>46. Pružná srážka stejných hmot</h1>
+            <p>Dynamika - řešený příklad</p>
+        </header>
+
+        <!-- Motivační úvod pro studenty -->
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Praktická aplikace fyziky v reálném světě.
+        </div>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <div class="zadani-text">
+                    Jaké množství pohonných hmot spotřebuje kosmická sonda o hmotnosti 3,2 tuny při zažehnutí svého raketového motoru, aby zvýšila svou rychlost o <span class="hodnoty">50 m/s</span>? Spalné plyny z trysek vystupují rychlostí asi 3 <strong>km/s</strong>. Změnu hmotnosti sondy v důsledku úbytku paliva považujte za zanedbatelnou a na konci tento předpoklad ověřte.
+                </div>
+        </section>
+
+        
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+            
+
+            
+            <div class="calculation-step">
+                <p>
+                            Raketový motor pracuje na principu <strong>zákona zachování hybnosti</strong> - vystřelování spalných plynů jedním směrem způsobí pohyb sondy opačným směrem.
+                        </p>
+<p>
+<strong>Data:</strong> hmotnost sondy $M = 3,2 \, \text{t} = 3200 \, \text{kg}$, změna rychlosti sondy $\Delta v_s = 50 \, \text{m/s}$, rychlost výstřiku plynů $v_p = 3 \, \text{km/s} = 3000 \, \text{m/s}$
+                        </p>
+            </div>
+            
+            <div class="calculation-step">
+                <p>
+                            Použijeme vztah pro raketový motor (odvozený ze zákona zachování hybnosti):
+                        </p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">Změna hybnosti systému sonda + palivo:
+<div class="rovnice-text">$M \cdot \Delta v_s = m_p \cdot v_p$</div>
+</div>
+<p>
+                            kde $m_p$ je hmotnost spotřebovaného paliva a $v_p$ je rychlost výstřiku plynů.
+                        </p>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p>
+                            Vyjádříme hmotnost spotřebovaného paliva:
+                        </p>
+<div class="rovnice-blok">
+<div class="rovnice-text">$m_p = \frac{M \cdot \Delta v_s}{v_p}$
+</div>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <div class="rovnice-blok">
+<div class="rovnice-text">$m_p = \frac{3200 \cdot 50}{3000} = \frac{160000}{3000} \approx 53,3 \, \text{kg}$
+</div>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p>
+<strong>Ověření předpokladu:</strong> Spotřebované palivo (53,3 kg) je pouze 1,7 % celkové hmotnosti sondy (3200 kg), takže předpoklad o zanedbatelné změně hmotnosti je oprávněný.
+                        </p>
+<p>
+<strong>Jednotky:</strong> kg ✓
+                        </p>
+<p>
+<strong>Odpověď:</strong> Kosmická sonda spotřebuje <strong>přibližně 53,3 kg</strong> pohonných hmot. Předpoklad o zanedbatelné změně hmotnosti je platný.
+                        </p>
+            </div>
+            
+        </section>
+
+        <section id="shrnuti">
+            <h2>Shrnutí a kontrola</h2>
+
+            <div class="summary-box">
+                <strong>Hlavní poznatky:</strong>
+                <ul><li>Identifikovali jsme klíčové veličiny</li><li>Aplikovali jsme správné fyzikální zákony</li><li>Ověřili jsme jednotky a řády velikosti</li></ul>
+            </div>
+
+            
+            <div class="info-box">
+                <strong>Kontrola rozumnosti:</strong> Vždy zkontrolujte, zda výsledek dává fyzikální smysl vzhledem k zadání.
+            </div>
+            
+
+            <details>
+                <summary>🤔 Metakognitivní otázky</summary>
+                <div>
+                    <ul>
+                        
+                        <li>Proč je rychlost výstřiku plynů (3 km/s) mnohem větší než změna rychlosti sondy (50 m/s)?</li>
+                        
+                        <li>Co by se stalo s potřebným množstvím paliva, kdyby byla rychlost výstřiku plynů poloviční?</li>
+                        
+                        <li>Kdy by předpoklad o zanedbatelné změně hmotnosti přestal platit?</li>
+                        
+                        <li>Jak fungují vícestupňové rakety z hlediska efektivity paliva?</li>
+                        
+                    </ul>
+                </div>
+            </details>
+        </section>
+
+    </main>
+</body>
+</html>

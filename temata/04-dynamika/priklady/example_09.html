@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Výpočet součinitele tření</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>9. Výpočet součinitele tření</h1>
+            <p>Dynamika - řešený příklad</p>
+        </header>
+
+        <!-- Motivační úvod pro studenty -->
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> V laboratoři často potřebujeme změřit třecí vlastnosti různých materiálů. Z naměřených hodnot síly a hmotnosti můžeme spočítat součinitel tření, který charakterizuje povrch.
+        </div>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <p class="zadani-text"><strong>K rovnoměrnému pohybu tělesa rychlostí <span class="hodnoty">v = 10 m·s⁻¹</span> o hmotnosti <span class="hodnoty">600 g</span> po vodorovné podložce je potřebná síla <span class="hodnoty">1,2 N</span>. Vypočítejte součinitel smykového tření.</strong></p>
+        </section>
+
+        
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+            
+
+            
+            <div class="calculation-step">
+                <p>Toto je obrácený předchozí příklad - známe sílu a hledáme součinitel tření.</p>
+<ul>
+<li>Pohyb: rovnoměrný, po vodorovné podložce</li>
+<li>Tažná síla: $F_{tah} = 1{,}2$ N</li>
+<li>Hmotnost: $m = 600$ g = $0{,}6$ kg <strong>(pozor na převod!)</strong></li>
+<li>Rychlost: $v = 10$ m·s⁻¹ (jen informativní)</li>
+</ul>
+            </div>
+            
+            <div class="calculation-step">
+                <p>Pro rovnoměrný pohyb platí:</p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">⚖️ Rovnováha sil
+<div class="rovnice-text">
+                                $F_{tah} = F_t$<br/>
+                                $1{,}2$ N $= F_t$
+                            </div>
+</div>
+<p>Víme, že $F_t = f \cdot F_n$ a na vodorovné rovině $F_n = m \cdot g$:</p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">🔗 Spojení vztahů</div>
+<div class="rovnice-text">$F_{tah} = f \cdot m \cdot g$</div>
+</div>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p>Z rovnice si vyjádříme neznámou $f$:</p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">🎯 Vzorec pro f
+<div class="rovnice-text">$f = \frac{F_{tah}}{m \cdot g}$</div>
+</div>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p>Dosadíme známé hodnoty:</p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">🧮 Výpočet f
+<div class="rovnice-text">
+                                $f = \frac{1{,}2}{0{,}6 \times 9{,}81}$<br/><br/>
+                                $f = \frac{1{,}2}{5{,}886} \approx 0{,}204$
+                            </div>
+</div>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p><strong>Součinitel smykového tření je přibližně 0,20.</strong></p>
+<p>Poznámka: Součinitel tření je bezrozměrné číslo.</p>
+            </div>
+            
+        </section>
+
+        <section id="shrnuti">
+            <h2>Shrnutí a kontrola</h2>
+
+            <div class="summary-box">
+                <strong>Hlavní poznatky:</strong>
+                <ul><li>Identifikovali jsme klíčové veličiny</li><li>Aplikovali jsme správné fyzikální zákony</li><li>Ověřili jsme jednotky a řády velikosti</li></ul>
+            </div>
+
+            
+            <div class="info-box">
+                <strong>Kontrola rozumnosti:</strong> Vždy zkontrolujte, zda výsledek dává fyzikální smysl vzhledem k zadání.
+            </div>
+            
+
+            <details>
+                <summary>🤔 Metakognitivní otázky</summary>
+                <div>
+                    <ul>
+                        
+                        <li>Proč rychlost pohybu neovlivňuje výpočet součinitele tření?</li>
+                        
+                        <li>Jak se liší statické a kinetic..</li>
+                        
+                        <li>Jaké hodnoty součinitele tření jsou typické pro různé materiály?</li>
+                        
+                    </ul>
+                </div>
+            </details>
+        </section>
+
+    </main>
+</body>
+</html>

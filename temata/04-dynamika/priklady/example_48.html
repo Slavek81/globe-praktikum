@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Srážka kulečníkových koulí</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>48. Srážka kulečníkových koulí</h1>
+            <p>Dynamika - řešený příklad</p>
+        </header>
+
+        <!-- Motivační úvod pro studenty -->
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Praktická aplikace fyziky v reálném světě.
+        </div>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <div class="zadani-text">
+                    Po kolejích se pohybuje vagon o hmotnosti 5 tun rychlostí <span class="hodnoty">4 m/s</span> směrem doprava a narazí do vagonu o hmotnosti 10 tun jedoucího stejným směrem rychlostí <span class="hodnoty">1 m/s</span>. Po srážce se spojí a pohybují společně.<br/><strong>a)</strong> určete jejich rychlost po srážce<br/><strong>b)</strong> Jak by se situace změnila, kdyby se těžší vagon pohyboval proti směrem doleva rychlostí <span class="hodnoty">3 m/s</span>?<br/><strong>c)</strong> Jakou rychlostí by se musel těžší vagon pohybovat směrem doleva, aby se srážkou a spojením vagony zastavily na místě?<br/><strong>d*)</strong> Levý vagon o hmotnosti 5 tun nechť se pohybuje jako v původním zadání, tedy <span class="hodnoty">4 m/s</span> směrem doprava. Jakou hmotnost by musel mít druhý vagon (ten napravo) v případě pohybu směrem doprava rychlostí <span class="hodnoty">1 m/s</span>, aby výsledná rychlost po spojení byla <span class="hodnoty">3,2 m/s</span>?
+                </div>
+        </section>
+
+        
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+            
+
+            
+            <div class="calculation-step">
+                <p>
+                            Máme zde dva vagony, které se srazí a následně se pohybují jako jeden celek. Jedná se o <strong>dokonale nepružnou srážku</strong>. Pro řešení takových úloh je klíčový <strong>zákon zachování hybnosti</strong>, který říká, že celková hybnost soustavy před srážkou je stejná jako celková hybnost po srážce.
+                        </p>
+<p>
+                            Zvolíme si směr doprava jako kladný (+). Obě rychlosti tedy budou mít kladné znaménko.
+                        </p>
+<p>
+<strong>Data:</strong>
+</p>
+<ul>
+<li>Vagon 1: $m_1 = 5 \, \text{tun} = 5000 \, \text{kg}$, $v_1 = +4 \, \text{m/s}$</li>
+<li>Vagon 2: $m_2 = 10 \, \text{tun} = 10000 \, \text{kg}$, $v_2 = +1 \, \text{m/s}$</li>
+</ul>
+<p>
+                            Hledáme společnou rychlost po srážce $v_{spol}$.
+                        </p>
+            </div>
+            
+            <div class="calculation-step">
+                <p>
+                            Zákon zachování hybnosti: součet hybností obou vagonů před srážkou se rovná hybnosti spojených vagonů po srážce.
+                        </p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">Zákon zachování hybnosti
+<div class="rovnice-text">$m_1 \cdot v_1 + m_2 \cdot v_2 = (m_1 + m_2) \cdot v_{spol}$</div>
+</div>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p>
+                            Naším cílem je vypočítat společnou rychlost $v_{spol}$. Z rovnice ji vyjádříme vydělením celkovou hmotností $(m_1 + m_2)$.
+                        </p>
+<div class="rovnice-blok">
+<div class="rovnice-text">$v_{spol} = \frac{m_1 \cdot v_1 + m_2 \cdot v_2}{m_1 + m_2}$
+</div>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p>
+                            Dosadíme číselné hodnoty do odvozeného vzorce.
+                        </p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">Výpočet společné rychlosti
+<div class="rovnice-text">
+                                $v_{spol} = \frac{5000 \cdot 4 + 10000 \cdot 1}{5000 + 10000} = \frac{20000 + 10000}{15000} = \frac{30000}{15000} = 2 \, \text{m/s}$
+                            </div>
+</div>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p>
+                            Výsledná rychlost (2 m/s) je kladná, takže se spojené vagony pohybují doprava. Její hodnota leží mezi původními rychlostmi (mezi 1 m/s a 4 m/s), což je logický výsledek – rychlejší vagon zpomalil a pomalejší zrychlil.
+                        </p>
+<p>
+<strong>Odpověď:</strong> Rychlost spojených vagonů po srážce bude <strong>2 m/s směrem doprava</strong>.
+                        </p>
+            </div>
+            
+        </section>
+
+        <section id="shrnuti">
+            <h2>Shrnutí a kontrola</h2>
+
+            <div class="summary-box">
+                <strong>Hlavní poznatky:</strong>
+                <ul><li>Identifikovali jsme klíčové veličiny</li><li>Aplikovali jsme správné fyzikální zákony</li><li>Ověřili jsme jednotky a řády velikosti</li></ul>
+            </div>
+
+            
+            <div class="info-box">
+                <strong>Kontrola rozumnosti:</strong> Vždy zkontrolujte, zda výsledek dává fyzikální smysl vzhledem k zadání.
+            </div>
+            
+
+            <details>
+                <summary>🤔 Metakognitivní otázky</summary>
+                <div>
+                    <ul>
+                        
+                        <li>Proč musí být výsledná rychlost při nepružné srážce těles pohybujících se stejným směrem vždy mezi jejich původními rychlostmi?</li>
+                        
+                        <li>Co fyzikálně znamená, že celková hybnost soustavy je nulová?</li>
+                        
+                        <li>Proč je důležité při algebraických úpravách správně pracovat se závorkami a znaménky?</li>
+                        
+                        <li>Jak by se výsledek změnil v části d), kdyby výsledná rychlost měla být 2 m/s?</li>
+                        
+                    </ul>
+                </div>
+            </details>
+        </section>
+
+    </main>
+</body>
+</html>

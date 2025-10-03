@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rotace pneumatiky</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>52. Rotace pneumatiky</h1>
+            <p>Dynamika - řešený příklad</p>
+        </header>
+
+        <!-- Motivační úvod pro studenty -->
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> I obyčejné předměty jako pneumatiky auta mohou mít značná dostředivá zrychlení. Při rychlé jízdě působí na pneumatiku obrovské síly.
+        </div>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <div class="zadani">
+<h3>📋 Zadání</h3>
+<p>Vozidlo se pohybuje rychlostí <span class="hodnoty">20 m·s⁻¹</span>. Poloměr pneumatiky je <span class="hodnoty">0,6 m</span>. Určete úhlovou rychlost a dostředivé zrychlení bodu na povrchu pneumatiky.</p>
+</div>
+        </section>
+
+        
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+            
+
+            
+            <div class="calculation-step">
+                <p>Zadání je trochu nejednoznačné. Fráze "pohybuje se po kružnici o poloměru 0,6 m" by mohla znamenat zatáčení, ale poloměr 0,6 m je pro auto nereálný.</p>
+<p>Pravděpodobněji je <strong>poloměr pneumatiky 0,6 m</strong> a vozidlo se pohybuje přímočaře. Rychlost vozidla (20 m·s⁻¹) je zároveň <strong>obvodovou rychlostí</strong> bodů na povrchu pneumatiky.</p>
+<ul>
+<li>Obvodová rychlost: $v = 20$ m·s⁻¹ (72 km/h)</li>
+<li>Poloměr pneumatiky: $r = 0{,}6$ m</li>
+</ul>
+            </div>
+            
+            <div class="calculation-step">
+                <p>Ze vztahu pro obvodovou rychlost $v = \omega \times r$ si vyjádříme úhlovou rychlost:</p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">🌀 Úhlová rychlost
+<div class="rovnice-text">
+                                $\omega = \frac{v}{r} = \frac{20}{0{,}6} = 33{,}33$ rad·s⁻¹
+                            </div>
+</div>
+<p>To odpovídá frekvenci:</p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">🔄 Frekvence</div>
+<div class="rovnice-text">
+                                $f = \frac{\omega}{2\pi} = \frac{33{,}33}{2\pi} \approx 5{,}3$ Hz
+                            </div>
+</div>
+<p>Pneumatika se otočí asi <strong>5,3krát za sekundu</strong>.</p>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p>Dostředivé zrychlení bodu na povrchu pneumatiky směřující do středu kola:</p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">⭕ Dostředivé zrychlení
+<div class="rovnice-text">
+                                $a_d = \frac{v^2}{r} = \frac{(20)^2}{0{,}6} = \frac{400}{0{,}6} = 666{,}7$ m·s⁻²
+                            </div>
+</div>
+<p>Pro porovnání s tíhovým zrychlením:</p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">📊 Porovnání</div>
+<div class="rovnice-text">
+                                $\frac{a_d}{g} = \frac{666{,}7}{9{,}81} \approx 68$
+                            </div>
+</div>
+<p>Dostředivé zrychlení je téměř <strong>68krát větší</strong> než tíhové zrychlení!</p>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p>Na každý kousek gumy na povrchu pneumatiky působí obrovská dostředivá síla. Toto vysvětluje:</p>
+<ul>
+<li>Proč se pneumatiky při vysokých rychlostech opotřebovávají</li>
+<li>Proč musí být pneumatiky vyrobeny z pevných materiálů</li>
+<li>Proč se pneumatiky při rychlé jízdě zahřívají</li>
+</ul>
+            </div>
+            
+            <div class="calculation-step">
+                <p><strong>Úhlová rychlost pneumatiky: 33,3 rad·s⁻¹</strong></p>
+<p><strong>Dostředivé zrychlení bodu na povrchu: 666,7 m·s⁻²</strong> (68krát větší než tíhové zrychlení)</p>
+            </div>
+            
+        </section>
+
+        <section id="shrnuti">
+            <h2>Shrnutí a kontrola</h2>
+
+            <div class="summary-box">
+                <strong>Hlavní poznatky:</strong>
+                <ul><li>Identifikovali jsme klíčové veličiny</li><li>Aplikovali jsme správné fyzikální zákony</li><li>Ověřili jsme jednotky a řády velikosti</li></ul>
+            </div>
+
+            
+            <div class="info-box">
+                <strong>Kontrola rozumnosti:</strong> Vždy zkontrolujte, zda výsledek dává fyzikální smysl vzhledem k zadání.
+            </div>
+            
+
+            <details>
+                <summary>🤔 Metakognitivní otázky</summary>
+                <div>
+                    <ul>
+                        
+                        <li>Proč nevyletí kousky gumy z pneumatiky při takových zrychleních?</li>
+                        
+                        <li>Jak se dostředivé zrychlení mění s rychlostí jízdy?</li>
+                        
+                        <li>Co by se stalo s pneumatikou při dvojnásobné rychlosti?</li>
+                        
+                    </ul>
+                </div>
+            </details>
+        </section>
+
+    </main>
+</body>
+</html>

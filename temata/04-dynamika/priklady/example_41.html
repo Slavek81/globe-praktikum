@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karel s medicinbalem</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>41. Karel s medicinbalem</h1>
+            <p>Dynamika - řešený příklad</p>
+        </header>
+
+        <!-- Motivační úvod pro studenty -->
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Analýza dopravních nehod využívá zákon zachování hybnosti. Tato znalost pomáhá znalcům rekonstruovat průběh nehody a stanovit příčiny. Stejný princip se používá i při analýze sportovních pohybů a kolizí!
+        </div>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <p class="zadani-text">Karel (<span class="hodnoty">60 kg</span>) na bruslích chytil medicinbal (<span class="hodnoty">4 kg</span>, rychlost <span class="hodnoty">5 m/s</span>). Urči rychlost, kterou se rozjel.</p>
+        </section>
+
+        
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+            
+
+            
+            <div class="calculation-step">
+                <ul>
+<li>Hmotnost Karla: $m_K = 60$ kg</li>
+<li>Hmotnost medicimbalu: $m_M = 4$ kg</li>
+<li>Rychlost medicimbalu před chycením: $v_M = 5$ m/s</li>
+<li>Rychlost Karla před chycením: $v_K = 0$ m/s</li>
+</ul>
+            </div>
+            
+            <div class="calculation-step">
+                <p>Celková hybnost před chycením = Celková hybnost po chycení</p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">📐 Zákon zachování hybnosti
+<div class="rovnice-text">p_před = p_po
+m_M × v_M + m_K × v_K = (m_M + m_K) × v</div>
+</div>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <div class="rovnice-blok">
+<div class="rovnice-nadpis">🧮 Výpočet
+<div class="rovnice-text">4 × 5 + 60 × 0 = (4 + 60) × v
+20 = 64 × v
+v = 20/64 = 5/16 = 0,3125 m/s</div>
+</div>
+<p><strong>Odpověď:</strong> Karel se rozjel rychlostí <strong>0,31 m/s</strong>.</p>
+</div>
+            </div>
+            
+        </section>
+
+        <section id="shrnuti">
+            <h2>Shrnutí a kontrola</h2>
+
+            <div class="summary-box">
+                <strong>Hlavní poznatky:</strong>
+                <ul><li>Identifikovali jsme klíčové veličiny</li><li>Aplikovali jsme správné fyzikální zákony</li><li>Ověřili jsme jednotky a řády velikosti</li></ul>
+            </div>
+
+            
+            <div class="info-box">
+                <strong>Kontrola rozumnosti:</strong> Vždy zkontrolujte, zda výsledek dává fyzikální smysl vzhledem k zadání.
+            </div>
+            
+
+            <details>
+                <summary>🤔 Metakognitivní otázky</summary>
+                <div>
+                    <ul>
+                        
+                        <li>Jaký je fyzikální význam výsledku?</li>
+                        
+                        <li>Jak bych tento problém vyřešil jiným způsobem?</li>
+                        
+                        <li>Kde mohu tento přístup aplikovat v praxi?</li>
+                        
+                    </ul>
+                </div>
+            </details>
+        </section>
+
+    </main>
+</body>
+</html>

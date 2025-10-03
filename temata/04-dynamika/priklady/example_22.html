@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pohyb na nakloněné rovině</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>22. Pohyb na nakloněné rovině</h1>
+            <p>Dynamika - řešený příklad</p>
+        </header>
+
+        <!-- Motivační úvod pro studenty -->
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Praktická aplikace fyziky v reálném světě.
+        </div>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <div class="zadani-text">
+                    Lucka táhne sáňky se Zdeňkem po svahu o sklonu 30° směrem nahoru. Sáňky mají hmotnost <span class="hodnoty">10 kg</span> a Zdeněk váží <span class="hodnoty">30 kg</span>. Koeficient smykového tření mezi sněhem a sáňkami budiž 0,2.<br/>a) Nakreslete přehledný nákres, vyznačte všechny síly působící NA SÁŇKY a vyznačte jejich výslednici (znázorněte i správně velikosti sil).<br/>b) Určete, jakou silou Lucka musí táhnout, aby táhla sáňky rovnoměrně.<br/>c) Jaké by bylo zrychlení sáněk, kdyby je pustila dolů svahem?<br/>d) Jakou dráhu by v takovém případě sáňky urazili za <span class="hodnoty">3 s</span>ekundy?
+                </div>
+        </section>
+
+        
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+            
+
+            
+            <div class="calculation-step">
+                <p>Máme sáňky se Zdeňkem na svahu se sklonem $\alpha = 30°$. Celková hmotnost je $m = m_{sáněk} + m_{Zdeňka} = 10~\text{kg} + 30~\text{kg} = 40~\text{kg}$. Na sáňky působí několik sil, které je klíčové správně identifikovat a rozložit do směrů rovnoběžného a kolmého ke svahu.</p>
+<ul>
+<li><strong>Tíhová síla $F_g$:</strong> Působí svisle dolů. Velikost $F_g = m \cdot g$. Tuto sílu rozložíme na dvě složky:
+                                <ul>
+<li><strong>Pohybová složka $F_p$:</strong> Působí rovnoběžně se svahem směrem dolů. Velikost $F_p = F_g \sin \alpha = mg \sin \alpha$.</li>
+<li><strong>Normálová (tlaková) složka $F_k$:</strong> Působí kolmo na svah. Velikost $F_k = F_g \cos \alpha = mg \cos \alpha$.</li>
+</ul>
+</li>
+<li><strong>Normálová síla $F_n$:</strong> Reakce svahu na sáňky, působí kolmo na svah směrem nahoru. Je v rovnováze s $F_k$, takže $F_n = F_k = mg \cos \alpha$.</li>
+<li><strong>Třecí síla $F_t$:</strong> Působí vždy proti směru pohybu, rovnoběžně se svahem. Velikost $F_t = f \cdot F_n = f mg \cos \alpha$.</li>
+<li><strong>Tažná síla $F_{tah}$:</strong> Síla, kterou Lucka táhne sáňky. Působí rovnoběžně se svahem směrem nahoru.</li>
+</ul>
+            </div>
+            
+            <div class="calculation-step">
+                <p>"Rovnoměrný pohyb" znamená, že zrychlení je nulové ($a=0$). Podle Newtonových zákonů musí být výslednice sil ve směru pohybu nulová. Síly táhnoucí nahoru se musí rovnat silám táhnoucím dolů.</p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">📐 Rovnováha sil
+<div class="rovnice-text">$F_{tah} = F_p + F_t$</div>
+</div>
+<p>Lucka musí překonat jak složku tíhové síly, která táhne sáňky dolů ($F_p$), tak tření ($F_t$), které také působí proti pohybu nahoru. Dosadíme vztahy pro síly:</p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">📐 Tažná síla</div>
+<div class="rovnice-text">$F_{tah} = mg \sin \alpha + f mg \cos \alpha = mg(\sin \alpha + f \cos \alpha)$</div>
+</div>
+<p>Nyní dosadíme hodnoty ($g \approx 10~\text{m/s}^2$, $\sin 30° = 0{,}5$, $\cos 30° \approx 0{,}866$):</p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">📐 Výpočet</div>
+<div class="rovnice-text">$F_{tah} = 40 \cdot 10 \cdot (0{,}5 + 0{,}2 \cdot 0{,}866) = 400 \cdot 0{,}6732 \approx 269~\text{N}$</div>
+</div>
+<p><strong>Odpověď b):</strong> Pro rovnoměrný pohyb nahoru musí Lucka táhnout silou přibližně <strong>269 N</strong>.</p>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p>Při sjezdu dolů Lucka sáňky netáhne ($F_{tah}=0$). Pohyb způsobuje tíhová složka $F_p$ (směrem dolů), zatímco třecí síla $F_t$ působí proti pohybu (tedy směrem nahoru). Výsledná síla $F_{vysl}$ je jejich rozdíl.</p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">📐 Výsledná síla
+<div class="rovnice-text">$m \cdot a = mg \sin \alpha - f mg \cos \alpha$</div>
+</div>
+<p>Hmotnost $m$ se opět vykrátí. Vzorec pro zrychlení při sjezdu je:</p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">📐 Zrychlení při sjezdu</div>
+<div class="rovnice-text">$a = g(\sin \alpha - f \cos \alpha)$</div>
+</div>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">📐 Výpočet</div>
+<div class="rovnice-text">$a = 10 \cdot (0{,}5 - 0{,}2 \cdot 0{,}866) = 10 \cdot 0{,}3268 \approx 3{,}27~\text{m/s}^2$</div>
+</div>
+<p><strong>Odpověď c):</strong> Zrychlení sáněk při sjezdu by bylo přibližně <strong>3,27 m/s²</strong>.</p>
+</div>
+            </div>
+            
+            <div class="calculation-step">
+                <p>Sáňky se rozjíždějí z klidu ($v_0=0$) a pohybují se rovnoměrně zrychleně se zrychlením $a$ vypočteným v předchozím kroku. Pro dráhu takového pohybu platí:</p>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">📐 Dráha rovnoměrně zrychleného pohybu
+<div class="rovnice-text">$s = \frac{1}{2} a t^2$</div>
+</div>
+<div class="rovnice-blok">
+<div class="rovnice-nadpis">📐 Výpočet</div>
+<div class="rovnice-text">$s = \frac{1}{2} \cdot 3{,}27 \cdot 9 \approx 14{,}7~\text{m}$</div>
+</div>
+<p><strong>Odpověď d):</strong> Za 3 sekundy by sáňky ujely přibližně <strong>14,7 metru</strong>.</p>
+</div>
+            </div>
+            
+        </section>
+
+        <section id="shrnuti">
+            <h2>Shrnutí a kontrola</h2>
+
+            <div class="summary-box">
+                <strong>Hlavní poznatky:</strong>
+                <ul><li>Identifikovali jsme klíčové veličiny</li><li>Aplikovali jsme správné fyzikální zákony</li><li>Ověřili jsme jednotky a řády velikosti</li></ul>
+            </div>
+
+            
+            <div class="info-box">
+                <strong>Kontrola rozumnosti:</strong> Vždy zkontrolujte, zda výsledek dává fyzikální smysl vzhledem k zadání.
+            </div>
+            
+
+            <details>
+                <summary>🤔 Metakognitivní otázky</summary>
+                <div>
+                    <ul>
+                        
+                        <li>Proč je síla potřebná k tažení nahoru (269 N) výrazně větší než jen tíhová složka sáněk (cca 200 N)?</li>
+                        
+                        <li>Co by se stalo, kdyby byl koeficient tření větší, například 0,6? Sjížděly by sáňky vůbec samy dolů?</li>
+                        
+                        <li>Jak by se změnila potřebná tažná síla, kdyby Lucka táhla provaz šikmo nahoru pod úhlem 15° vůči svahu?</li>
+                        
+                        <li>Jakou maximální rychlost by sáňky měly na konci 14,7 m dlouhého sjezdu?</li>
+                        
+                    </ul>
+                </div>
+            </details>
+        </section>
+
+    </main>
+</body>
+</html>
