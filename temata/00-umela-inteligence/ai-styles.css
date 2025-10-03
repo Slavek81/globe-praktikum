@@ -1426,3 +1426,72 @@
         align-self: flex-start;
     }
 }
+
+/* Advanced Section (Collapsible) */
+.advanced-section {
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+    border: 2px solid var(--accent-color);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-md);
+    margin: var(--spacing-xl) 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.advanced-summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    list-style: none;
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius);
+    transition: background 0.2s ease;
+    user-select: none;
+}
+
+.advanced-summary:hover {
+    background: rgba(251, 191, 36, 0.2);
+}
+
+.advanced-summary h4 {
+    margin: 0;
+    color: #92400e;
+    font-size: 1.5rem;
+    flex: 1;
+}
+
+.expand-icon {
+    font-size: 1.2rem;
+    color: var(--accent-color);
+    font-weight: 700;
+    transition: transform 0.3s ease;
+}
+
+.advanced-section[open] .expand-icon {
+    transform: rotate(180deg);
+}
+
+.advanced-content {
+    padding: var(--spacing-lg) 0;
+    animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Remove default arrow in Firefox */
+.advanced-summary::-webkit-details-marker {
+    display: none;
+}
+
+.advanced-summary::marker {
+    content: '';
+}
