@@ -60,13 +60,14 @@
             </div>
 
             <div class="example">
-                <h3>Konkrétní příklad</h3>
-                <p><strong>Zadání:</strong> Krabice o hmotnosti 10 kg leží na stole. Jaké síly na ni působí?</p>
+                <h3>Konkrétní příklad: Balík na stole</h3>
+                <p><strong>Zadání:</strong> Zásilková služba doručila balík o hmotnosti 10 kg, který leží na stole. Jaké síly na něj působí?</p>
                 <p><strong>Řešení:</strong>
-                <br>1. <strong>Tíhová síla:</strong> \( F_g = m \cdot g = 10 \times 9{,}81 = 98{,}1 \, \text{N} \) (dolů)
-                <br>2. <strong>Normálová síla:</strong> \( F_n = 98{,}1 \, \text{N} \) (nahoru)
+                <br>1. <strong>Tíhová síla:</strong> \( F_g = m \cdot g = 10 \times 9{,}81 = 98{,}1 \, \text{N} \) (dolů) - Země přitahuje balík
+                <br>2. <strong>Normálová síla:</strong> \( F_n = 98{,}1 \, \text{N} \) (nahoru) - Stůl tlačí na balík
                 <br>3. <strong>Výslednice:</strong> \( F_{vysl} = F_n - F_g = 0 \, \text{N} \)
-                <br>4. <strong>Závěr:</strong> Krabice je v rovnováze, nevzniká zrychlení
+                <br>4. <strong>Závěr:</strong> Balík je v rovnováze (síly se vzájemně ruší), nevzniká zrychlení
+                <br>5. <strong>Fyzikální interpretace:</strong> I když balík "nedělá nic", ve skutečnosti na něj působí dvě velké síly, které se navzájem vyrovnávají!
                 </p>
             </div>
         </section>
@@ -94,23 +95,25 @@
             </div>
 
             <div class="example">
-                <h3>Konkrétní příklad - Druhý Newtonův zákon</h3>
-                <p><strong>Zadání:</strong> Na těleso o hmotnosti 5 kg působí síla 20 N. Jaké je zrychlení tělesa?</p>
+                <h3>Konkrétní příklad: Tlačení nákupního vozíku</h3>
+                <p><strong>Zadání:</strong> V obchodě tlačíte do nákupního vozíku (včetně nákupu celková hmotnost 25 kg) silou 50 N. Předpokládejme, že tření je zanedbatelné. Jakým zrychlením se vozík rozjíždí?</p>
                 <p><strong>Výpočet:</strong>
-                <br>1. <strong>Dáno:</strong> \( m = 5 \, \text{kg} \), \( F = 20 \, \text{N} \)
-                <br>2. <strong>Zrychlení:</strong> \( a = \frac{F}{m} = \frac{20}{5} = 4 \, \text{m/s}^2 \)
-                <br>3. <strong>Fyzikální význam:</strong> Každou sekundu se rychlost zvýší o 4 m/s
+                <br>1. <strong>Dáno:</strong> \( m = 25 \, \text{kg} \), \( F = 50 \, \text{N} \)
+                <br>2. <strong>Zrychlení:</strong> \( a = \frac{F}{m} = \frac{50}{25} = 2 \, \text{m/s}^2 \)
+                <br>3. <strong>Fyzikální význam:</strong> Každou sekundu se rychlost vozíku zvýší o 2 m/s
+                <br>4. <strong>Praktická souvislost:</strong> Kdybyste tlačili s dvojnásobnou silou (100 N), zrychlení by bylo také dvojnásobné (4 m/s²). Kdyby měl vozík dvojnásobnou hmotnost (50 kg), zrychlení by bylo poloviční (1 m/s²).
                 </p>
 
-                <h4>Tabulka pohybu</h4>
+                <h4>Vývoj rychlosti a dráhy vozíku</h4>
                 <table>
-                    <tr><th>Čas [s]</th><th>Rychlost [m/s]</th><th>Dráha [m]</th></tr>
-                    <tr><td>0</td><td>0</td><td>0</td></tr>
-                    <tr><td>1</td><td>4</td><td>2</td></tr>
-                    <tr><td>2</td><td>8</td><td>8</td></tr>
-                    <tr><td>3</td><td>12</td><td>18</td></tr>
-                    <tr><td>4</td><td>16</td><td>32</td></tr>
+                    <tr><th>Čas [s]</th><th>Rychlost [m/s]</th><th>Rychlost [km/h]</th><th>Dráha [m]</th></tr>
+                    <tr><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+                    <tr><td>1</td><td>2</td><td>7,2</td><td>1</td></tr>
+                    <tr><td>2</td><td>4</td><td>14,4</td><td>4</td></tr>
+                    <tr><td>3</td><td>6</td><td>21,6</td><td>9</td></tr>
+                    <tr><td>4</td><td>8</td><td>28,8</td><td>16</td></tr>
                 </table>
+                <p><strong>💡 Pozor:</strong> Ve skutečnosti by vás vozík za 4 sekundy neposlouchal - tření a odpor vzduchu by působily proti vašemu tlačení!</p>
             </div>
         </section>
 
@@ -203,6 +206,13 @@
                 $$ \vec{I} = \vec{F} \cdot \Delta t = \Delta \vec{p} $$</p>
                 <p>Jednotka: [I] = N·s = kg·m·s⁻¹</p>
 
+                <p><strong>💡 Praktický význam impulzu:</strong></p>
+                <ul style="list-style-position: inside; margin-left: 1rem;">
+                    <li><strong>Prodloužení času působení snižuje sílu:</strong> Proto sportovci při dopadu ohýbají kolena, airbagy se nafukují pomalu, boxeři ustupují úderu...</li>
+                    <li><strong>Zkrácení času zvyšuje sílu:</strong> Proto sekera rozsekne dřevo (krátký náraz), karate údery jsou rychlé a tuhé...</li>
+                    <li><strong>Stejná změna hybnosti = stejný impuls:</strong> Můžeme použít velkou sílu na krátkou dobu NEBO malou sílu na dlouhou dobu.</li>
+                </ul>
+
                 <h3>Zákon zachování hybnosti</h3>
                 <p><strong>Znění:</strong> "Celková hybnost izolované soustavy těles se nemění."</p>
                 <p>$$ \vec{p}_{před} = \vec{p}_{po} $$</p>
@@ -210,23 +220,45 @@
             </div>
 
             <div class="example">
-                <h3>Konkrétní příklad - Srážka</h3>
-                <p><strong>Zadání:</strong> Auto o hmotnosti 1000 kg jedoucí rychlostí 20 m/s narazí do stojícího auta o hmotnosti 800 kg. Po srážce se obě auta pohybují společně. Jaká je jejich společná rychlost?</p>
-                <p><strong>Výpočet:</strong>
-                <br>1. <strong>Dáno:</strong> \( m_1 = 1000 \, \text{kg} \), \( v_1 = 20 \, \text{m/s} \), \( m_2 = 800 \, \text{kg} \), \( v_2 = 0 \, \text{m/s} \)
-                <br>2. <strong>Hybnost před srážkou:</strong> \( p_{před} = m_1 v_1 + m_2 v_2 = 1000 \times 20 + 0 = 20{,}000 \, \text{kg·m/s} \)
-                <br>3. <strong>Hybnost po srážce:</strong> \( p_{po} = (m_1 + m_2) v' = 1800 \times v' \)
-                <br>4. <strong>Zákon zachování hybnosti:</strong> \( p_{před} = p_{po} \)
-                <br>5. <strong>Společná rychlost:</strong> \( v' = \frac{20{,}000}{1800} = 11{,}1 \, \text{m/s} \)
+                <h3>Příklad 1: Impuls síly - Dopad míče</h3>
+                <p><strong>Zadání:</strong> Hokejový puk (m = 160 g) letí rychlostí 30 m/s a odrazí se od mantinelu za 0,02 s s rychlostí 25 m/s opačným směrem. Jaká průměrná síla působila na puk?</p>
+
+                <p><strong>Řešení:</strong></p>
+                <p>1. <strong>Změna hybnosti:</strong>
+                <br>   • Před: p₁ = 0,16 × 30 = 4,8 kg·m/s (směr doprava →)
+                <br>   • Po: p₂ = 0,16 × (-25) = -4,0 kg·m/s (směr doleva ←)
+                <br>   • Δp = p₂ - p₁ = -4,0 - 4,8 = -8,8 kg·m/s
                 </p>
 
-                <h4>Srovnání hybností</h4>
+                <p>2. <strong>Průměrná síla:</strong>
+                <br>   F = Δp / Δt = -8,8 / 0,02 = <strong>-440 N</strong> (síla směřuje doleva)
+                </p>
+
+                <p>3. <strong>Fyzikální interpretace:</strong> Mantinel působil na puk silou 440 N po dobu 0,02 s. To je velká síla (odpovídá tíze 45 kg), ale působí velmi krátce!</p>
+
+                <h3>Příklad 2: Srážka aut</h3>
+                <p><strong>Zadání:</strong> Auto o hmotnosti 1000 kg jedoucí rychlostí 20 m/s (72 km/h) narazí do stojícího auta o hmotnosti 800 kg. Po srážce se obě auta pohybují společně. Jaká je jejich společná rychlost?</p>
+
+                <p><strong>Řešení (Zákon zachování hybnosti):</strong>
+                <br>1. <strong>Dáno:</strong> m₁ = 1000 kg, v₁ = 20 m/s, m₂ = 800 kg, v₂ = 0 m/s
+                <br>2. <strong>Hybnost před srážkou:</strong> p<sub>před</sub> = m₁v₁ + m₂v₂ = 1000 × 20 + 0 = 20 000 kg·m/s
+                <br>3. <strong>Hybnost po srážce:</strong> p<sub>po</sub> = (m₁ + m₂) × v' = 1800 × v'
+                <br>4. <strong>Zákon zachování:</strong> p<sub>před</sub> = p<sub>po</sub>
+                <br>5. <strong>Společná rychlost:</strong> v' = 20 000 / 1800 = <strong>11,1 m/s</strong> (40 km/h)
+                </p>
+
+                <p><strong>Závěr:</strong> První auto ztratilo skoro polovinu rychlosti (z 72 na 40 km/h), druhé auto se rozjelo. Celková hybnost zůstala zachována!</p>
+
+                <h4>Srovnání hybností různých objektů</h4>
                 <table>
-                    <tr><th>Objekt</th><th>Hmotnost</th><th>Rychlost</th><th>Hybnost</th></tr>
-                    <tr><td>Tenisový míček</td><td>58 g</td><td>30 km/h</td><td>0,48 kg·m/s</td></tr>
-                    <tr><td>Fotbalový míč</td><td>430 g</td><td>30 km/h</td><td>3,6 kg·m/s</td></tr>
-                    <tr><td>Auto</td><td>1000 kg</td><td>50 km/h</td><td>13{,}900 kg·m/s</td></tr>
+                    <tr><th>Objekt</th><th>Hmotnost</th><th>Rychlost</th><th>Hybnost</th><th>Poznámka</th></tr>
+                    <tr><td>Tenisový míček</td><td>58 g</td><td>30 km/h</td><td>0,48 kg·m/s</td><td>Malá m, malá v</td></tr>
+                    <tr><td>Fotbalový míč</td><td>430 g</td><td>30 km/h</td><td>3,6 kg·m/s</td><td>Větší m → větší p</td></tr>
+                    <tr><td>Hokejový puk</td><td>160 g</td><td>160 km/h</td><td>7,1 kg·m/s</td><td>Malá m, velká v</td></tr>
+                    <tr><td>Auto</td><td>1000 kg</td><td>50 km/h</td><td>13 900 kg·m/s</td><td>Velká m → ohromná p!</td></tr>
                 </table>
+
+                <p><strong>💡 Poučení:</strong> I lehký objekt může mít velkou hybnost, pokud se pohybuje velmi rychle. Proto je nebezpečná i malá kulka vystřelená z pistole!</p>
             </div>
         </section>
 
@@ -300,6 +332,300 @@
                     <tr><td>72</td><td>20</td><td>8,0</td><td><code>9,6</code></td></tr>
                     <tr><td>90</td><td>25</td><td>12,5</td><td>15,0</td></tr>
                 </table>
+            </div>
+        </section>
+
+        <!-- JAK ŘEŠIT ÚLOHY -->
+        <section id="problem-solving" class="unit-section">
+            <h2>6. Jak řešit úlohy z dynamiky</h2>
+            <p><strong>Princip:</strong> Systematický postup při řešení úloh pomáhá se v nich neztratit a správně je vyřešit. Každý krok má svůj význam!</p>
+
+            <div class="equations">
+                <h3>📋 Krok za krokem</h3>
+                <p><strong>1. Přečíst zadání a načrtnout situaci</strong></p>
+                <ul style="list-style-position: inside; margin-left: 1rem;">
+                    <li>Nakreslete si jednoduchou skicu celé situace</li>
+                    <li>Vyznačte důležité informace (hmotnosti, rychlosti, úhly...)</li>
+                </ul>
+
+                <p><strong>2. Nakreslit diagram sil (Free Body Diagram)</strong></p>
+                <ul style="list-style-position: inside; margin-left: 1rem;">
+                    <li><strong>Izolujte</strong> těleso, které vás zajímá</li>
+                    <li><strong>Zakreslete všechny síly</strong>, které na něj působí</li>
+                    <li>Každá síla = šipka s označením (F<sub>g</sub>, F<sub>n</sub>, F<sub>t</sub>...)</li>
+                    <li>Nezapomeňte: tíhová síla, normálová síla, tření, tahy, tlaky</li>
+                </ul>
+
+                <p><strong>3. Zvolit souřadnicový systém</strong></p>
+                <ul style="list-style-position: inside; margin-left: 1rem;">
+                    <li>Obvykle: osa x = směr pohybu, osa y = kolmo na pohyb</li>
+                    <li>U nakloněné roviny: osa x = podél roviny, osa y = kolmo na rovinu</li>
+                </ul>
+
+                <p><strong>4. Napsat pohybové rovnice (2. Newtonův zákon)</strong></p>
+                <ul style="list-style-position: inside; margin-left: 1rem;">
+                    <li>Pro osu x: \( \sum F_x = m \cdot a_x \)</li>
+                    <li>Pro osu y: \( \sum F_y = m \cdot a_y \)</li>
+                    <li>Pozor na znaménka! (+ = ve směru osy, - = proti směru osy)</li>
+                </ul>
+
+                <p><strong>5. Vyřešit soustavu rovnic</strong></p>
+                <ul style="list-style-position: inside; margin-left: 1rem;">
+                    <li>Vyjádřit neznámou veličinu</li>
+                    <li>Dosadit číselné hodnoty s jednotkami</li>
+                    <li>Vypočítat výsledek</li>
+                </ul>
+
+                <p><strong>6. Zkontrolovat výsledek</strong></p>
+                <ul style="list-style-position: inside; margin-left: 1rem;">
+                    <li>Dává výsledek fyzikální smysl?</li>
+                    <li>Jsou správné jednotky?</li>
+                    <li>Je řád velikosti rozumný?</li>
+                </ul>
+            </div>
+
+            <div class="example">
+                <h3>Demonstrace postupu</h3>
+                <p><strong>Zadání:</strong> Sáňky o hmotnosti 30 kg sjíždějí ze sněhového kopce se sklonem 20°. Koeficient tření mezi sáňkami a sněhem je 0,1. Jaké je zrychlení sáněk?</p>
+
+                <p><strong>Řešení:</strong></p>
+                <p><strong>1. Skica:</strong> Nakloněná rovina, sáňky jedou dolů</p>
+
+                <p><strong>2. Diagram sil:</strong>
+                <br>• Tíhová síla F<sub>g</sub> = m·g (svisle dolů)
+                <br>• Normálová síla F<sub>n</sub> (kolmo na rovinu)
+                <br>• Třecí síla F<sub>t</sub> (proti směru pohybu - vzhůru po rovině)
+                </p>
+
+                <p><strong>3. Souřadnice:</strong>
+                <br>• Osa x: podél roviny (dolů = kladný směr)
+                <br>• Osa y: kolmo na rovinu (od roviny = kladný směr)
+                </p>
+
+                <p><strong>4. Rozklad sil a pohybové rovnice:</strong>
+                <br>• F<sub>g,x</sub> = m·g·sin(20°) = 30 × 9,81 × 0,342 = 100,6 N (po rovině dolů)
+                <br>• F<sub>g,y</sub> = m·g·cos(20°) = 30 × 9,81 × 0,940 = 276,7 N (do roviny)
+                <br>• F<sub>n</sub> = F<sub>g,y</sub> = 276,7 N (od roviny)
+                <br>• F<sub>t</sub> = f × F<sub>n</sub> = 0,1 × 276,7 = 27,7 N (proti pohybu)
+                </p>
+
+                <p><strong>Osa x:</strong> F<sub>g,x</sub> - F<sub>t</sub> = m·a
+                <br>100,6 - 27,7 = 30·a
+                <br>72,9 = 30·a
+                <br>a = 2,43 m/s²
+                </p>
+
+                <p><strong>6. Kontrola:</strong> Zrychlení je menší než g·sin(20°) = 3,35 m/s², což dává smysl (tření zpomaluje). ✓</p>
+            </div>
+        </section>
+
+        <!-- DIAGRAMY SIL -->
+        <section id="free-body-diagrams" class="unit-section">
+            <h2>7. Diagramy sil (Free Body Diagrams)</h2>
+            <p><strong>Princip:</strong> Diagram sil je zásadní nástroj pro řešení jakékoli úlohy z dynamiky. Bez něj je téměř nemožné úlohu správně vyřešit!</p>
+
+            <div class="schema-container">
+                <svg width="600" height="280" viewBox="0 0 600 280">
+                    <defs>
+                        <marker id="arrow2" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                            <path d="M 0 0 L 10 5 L 0 10 z" fill="#333" />
+                        </marker>
+                    </defs>
+
+                    <!-- Levý obrázek - situace -->
+                    <text x="80" y="20" font-family="Verdana" font-size="14" font-weight="bold">Situace</text>
+
+                    <!-- Stůl -->
+                    <line x1="20" y1="150" x2="200" y2="150" stroke="#666" stroke-width="6"/>
+
+                    <!-- Krabice tažená -->
+                    <rect x="80" y="110" width="60" height="40" fill="#FFB74D" stroke="#333" stroke-width="2"/>
+                    <text x="95" y="135" font-family="Verdana" font-size="12">Bedna</text>
+
+                    <!-- Ruka táhne -->
+                    <line x1="140" y1="130" x2="190" y2="100" stroke="#3498db" stroke-width="3"/>
+                    <circle cx="190" cy="100" r="8" fill="#3498db"/>
+
+                    <!-- Pravý obrázek - diagram sil -->
+                    <text x="400" y="20" font-family="Verdana" font-size="14" font-weight="bold">Diagram sil</text>
+
+                    <!-- Těleso (bod) -->
+                    <circle cx="450" cy="130" r="8" fill="#FFB74D" stroke="#333" stroke-width="2"/>
+
+                    <!-- Tažná síla F -->
+                    <line x1="450" y1="130" x2="520" y2="100" stroke="#3498db" stroke-width="3" marker-end="url(#arrow2)"/>
+                    <text x="495" y="110" font-family="Verdana" font-size="12" fill="#3498db">F</text>
+
+                    <!-- Tíhová síla Fg -->
+                    <line x1="450" y1="130" x2="450" y2="200" stroke="#e74c3c" stroke-width="3" marker-end="url(#arrow2)"/>
+                    <text x="455" y="170" font-family="Verdana" font-size="12" fill="#e74c3c">F_g</text>
+
+                    <!-- Normálová síla Fn -->
+                    <line x1="450" y1="130" x2="450" y2="60" stroke="#27ae60" stroke-width="3" marker-end="url(#arrow2)"/>
+                    <text x="455" y="90" font-family="Verdana" font-size="12" fill="#27ae60">F_n</text>
+
+                    <!-- Třecí síla Ft -->
+                    <line x1="450" y1="130" x2="380" y2="130" stroke="#f39c12" stroke-width="3" marker-end="url(#arrow2)"/>
+                    <text x="405" y="120" font-family="Verdana" font-size="12" fill="#f39c12">F_t</text>
+
+                    <!-- Popisky -->
+                    <text x="220" y="260" font-family="Verdana" font-size="11">Reálná situace s prostředím</text>
+                    <text x="380" y="260" font-family="Verdana" font-size="11">Izolované těleso + všechny síly</text>
+                </svg>
+            </div>
+
+            <div class="equations">
+                <h3>Pravidla pro kreslení diagramů sil</h3>
+                <p><strong>Co ZAHRNOUT:</strong></p>
+                <ul style="list-style-position: inside; margin-left: 1rem;">
+                    <li>✅ <strong>Tíhová síla</strong> (F<sub>g</sub> = m·g) - vždy svisle dolů</li>
+                    <li>✅ <strong>Normálová síla</strong> (F<sub>n</sub>) - kolmo od povrchu</li>
+                    <li>✅ <strong>Třecí síla</strong> (F<sub>t</sub>) - proti směru (možného) pohybu</li>
+                    <li>✅ <strong>Tahy, tlaky</strong> (F) - ve směru působení</li>
+                    <li>✅ <strong>Odpor vzduchu</strong> - proti směru pohybu (pokud významný)</li>
+                </ul>
+
+                <p><strong>Co NEZAHRNOVAT:</strong></p>
+                <ul style="list-style-position: inside; margin-left: 1rem;">
+                    <li>❌ Rychlost, zrychlení (nejsou to síly!)</li>
+                    <li>❌ "Setrvačnou sílu" (ta neexistuje!)</li>
+                    <li>❌ Síly, které těleso působí NA jiná tělesa (3. NZ - partnerské síly)</li>
+                </ul>
+
+                <p><strong>💡 Praktická rada:</strong> Vždy si položte otázku: "Kdo nebo co tuto sílu způsobuje?" Pokud nenajdete původce, pravděpodobně to není síla!</p>
+            </div>
+
+            <div class="example">
+                <h3>Cvičný příklad: Výtah</h3>
+                <p><strong>Situace:</strong> Stojíte ve výtahu o hmotnosti 80 kg, který zrychluje nahoru zrychlením 2 m/s². Nakreslete diagram sil.</p>
+
+                <p><strong>Diagram sil:</strong></p>
+                <p>• <strong>F<sub>g</sub></strong> = 80 × 9,81 = 784,8 N (dolů) - Země přitahuje člověka</p>
+                <p>• <strong>F<sub>n</sub></strong> = ? (nahoru) - Podlaha výtahu tlačí na člověka</p>
+
+                <p><strong>Pohybová rovnice:</strong> F<sub>n</sub> - F<sub>g</sub> = m·a</p>
+                <p>F<sub>n</sub> = m·a + F<sub>g</sub> = 80 × 2 + 784,8 = <strong>944,8 N</strong></p>
+
+                <p><strong>Fyzikální interpretace:</strong> Cítíte se "těžší", protože podlaha na vás tlačí silou větší než vaše tíha!</p>
+            </div>
+        </section>
+
+        <!-- SKLÁDÁNÍ A ROZKLÁDÁNÍ SIL -->
+        <section id="force-components" class="unit-section">
+            <h2>8. Skládání a rozkládání sil</h2>
+            <p><strong>Princip:</strong> Síly jsou vektory, proto je můžeme rozkládat do složek nebo je skládat. To je klíčové u nakloněných rovin, šikmého tahu, nebo složitějších situací.</p>
+
+            <div class="schema-container">
+                <svg width="500" height="300" viewBox="0 0 500 300">
+                    <defs>
+                        <marker id="arrow3" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                            <path d="M 0 0 L 10 5 L 0 10 z" fill="#333" />
+                        </marker>
+                    </defs>
+
+                    <text x="150" y="20" font-family="Verdana" font-size="14" font-weight="bold">Rozklad síly na nakloněné rovině</text>
+
+                    <!-- Nakloněná rovina -->
+                    <line x1="50" y1="250" x2="400" y2="120" stroke="#666" stroke-width="4"/>
+                    <text x="410" y="125" font-family="Verdana" font-size="11">rovina</text>
+
+                    <!-- Těleso -->
+                    <circle cx="200" cy="170" r="15" fill="#FFB74D" stroke="#333" stroke-width="2"/>
+
+                    <!-- Tíhová síla celá (červená) -->
+                    <line x1="200" y1="170" x2="200" y2="270" stroke="#e74c3c" stroke-width="3" marker-end="url(#arrow3)"/>
+                    <text x="205" y="225" font-family="Verdana" font-size="12" fill="#e74c3c">F_g</text>
+
+                    <!-- Složka rovnoběžná s rovinou (oranžová) -->
+                    <line x1="200" y1="170" x2="272" y2="145" stroke="#f39c12" stroke-width="2" marker-end="url(#arrow3)" stroke-dasharray="5,5"/>
+                    <text x="240" y="150" font-family="Verdana" font-size="11" fill="#f39c12">F_g,∥</text>
+
+                    <!-- Složka kolmá na rovinu (modrá) -->
+                    <line x1="200" y1="170" x2="165" y2="223" stroke="#3498db" stroke-width="2" marker-end="url(#arrow3)" stroke-dasharray="5,5"/>
+                    <text x="150" y="210" font-family="Verdana" font-size="11" fill="#3498db">F_g,⊥</text>
+
+                    <!-- Úhel α -->
+                    <path d="M 200 240 Q 210 235 215 225" stroke="#666" stroke-width="1" fill="none"/>
+                    <text x="218" y="233" font-family="Verdana" font-size="11">α</text>
+
+                    <!-- Rovnice -->
+                    <text x="50" y="285" font-family="Verdana" font-size="11">F_g,∥ = F_g · sin(α)</text>
+                    <text x="250" y="285" font-family="Verdana" font-size="11">F_g,⊥ = F_g · cos(α)</text>
+                </svg>
+            </div>
+
+            <div class="equations">
+                <h3>Rozklad síly na složky</h3>
+                <p><strong>Obecné pravidlo:</strong> Sílu rozkládáme podle souřadnic, které jsme si zvolili.</p>
+
+                <p><strong>Pro nakloněnou rovinu se sklonem α:</strong></p>
+                <p>$$ F_{g,\parallel} = F_g \cdot \sin(\alpha) = m \cdot g \cdot \sin(\alpha) $$</p>
+                <p>$$ F_{g,\perp} = F_g \cdot \cos(\alpha) = m \cdot g \cdot \cos(\alpha) $$</p>
+
+                <p><strong>Pro šikmý tah:</strong> Pokud táhneme pod úhlem α k vodorovné rovině:</p>
+                <p>$$ F_x = F \cdot \cos(\alpha) $$ (vodorovná složka)</p>
+                <p>$$ F_y = F \cdot \sin(\alpha) $$ (svislá složka)</p>
+
+                <p><strong>💡 Mnemotechnická pomůcka:</strong></p>
+                <ul style="list-style-position: inside; margin-left: 1rem;">
+                    <li><strong>sin</strong> = složka <strong>rovnoběžná</strong> s rovinou (s=stejným směrem)</li>
+                    <li><strong>cos</strong> = složka <strong>kolmá</strong> na rovinu (c=napříč)</li>
+                </ul>
+            </div>
+
+            <div class="example">
+                <h3>Konkrétní příklad</h3>
+                <p><strong>Zadání:</strong> Bedna o hmotnosti 50 kg leží na nakloněné rovině se sklonem 30°. Jaká je normálová síla a jaká síla má tendenci bednu sunout dolů?</p>
+
+                <p><strong>Řešení:</strong></p>
+                <p>1. <strong>Tíhová síla:</strong> F<sub>g</sub> = 50 × 9,81 = 490,5 N</p>
+                <p>2. <strong>Rozklad na složky:</strong></p>
+                <p>   • Rovnoběžně s rovinou: F<sub>g,∥</sub> = 490,5 × sin(30°) = 490,5 × 0,5 = <strong>245,3 N</strong></p>
+                <p>   • Kolmo na rovinu: F<sub>g,⊥</sub> = 490,5 × cos(30°) = 490,5 × 0,866 = <strong>424,8 N</strong></p>
+                <p>3. <strong>Normálová síla:</strong> F<sub>n</sub> = F<sub>g,⊥</sub> = <strong>424,8 N</strong></p>
+                <p>4. <strong>Síla dolů po rovině:</strong> 245,3 N (pokud není tření nebo jiná síla, bedna se rozjede!)</p>
+            </div>
+        </section>
+
+        <!-- PRÁCE A ENERGIE -->
+        <section id="work-energy" class="unit-section">
+            <h2>9. Práce a energie (úvod)</h2>
+            <p><strong>Poznámka:</strong> Práce a energie jsou důležitá témata, která úzce souvisí s dynamikou. Zde je krátký úvod, detailní studium následuje v další kapitole.</p>
+
+            <div class="equations">
+                <h3>Základní koncepty</h3>
+
+                <p><strong>Práce síly:</strong> Energie přenesená silou při pohybu tělesa</p>
+                <p>$$ W = F \cdot s \cdot \cos(\alpha) $$</p>
+                <p>kde α je úhel mezi silou a posunutím</p>
+
+                <p><strong>Kinetická energie:</strong> Energie pohybu</p>
+                <p>$$ E_k = \frac{1}{2} m v^2 $$</p>
+
+                <p><strong>Potenciální energie:</strong> Energie polohy (výška)</p>
+                <p>$$ E_p = m \cdot g \cdot h $$</p>
+
+                <p><strong>Věta o kinetické energii:</strong> Práce = změna kinetické energie</p>
+                <p>$$ W = \Delta E_k = \frac{1}{2} m v_2^2 - \frac{1}{2} m v_1^2 $$</p>
+
+                <p><strong>Zákon zachování mechanické energie:</strong> V izolované soustavě bez tření:</p>
+                <p>$$ E_k + E_p = \text{konstantní} $$</p>
+
+                <p><strong>Propojení s dynamikou:</strong> Zatímco dynamika se ptá "jaké síly působí?", energetický přístup se ptá "jak se mění energie?"</p>
+                <p>Oba přístupy vedou ke stejným výsledkům, ale energetický je často jednodušší pro složitější úlohy!</p>
+            </div>
+
+            <div class="example">
+                <h3>Rychlý příklad</h3>
+                <p><strong>Otázka:</strong> Auto (m = 1000 kg) brzdí ze 72 km/h (20 m/s) na 0. Jakou práci vykonala brzdná síla?</p>
+
+                <p><strong>Energetický přístup:</strong></p>
+                <p>1. Kinetická energie na začátku: E<sub>k1</sub> = ½ × 1000 × 20² = 200 000 J</p>
+                <p>2. Kinetická energie na konci: E<sub>k2</sub> = 0 J</p>
+                <p>3. Práce brzdné síly: W = E<sub>k2</sub> - E<sub>k1</sub> = -200 000 J</p>
+                <p><strong>Závěr:</strong> Brzdy musely "pohltit" 200 kJ energie (přeměnily ji na teplo).</p>
+
+                <p><strong>💡 Poznámka:</strong> Zkuste spočítat tutéž úlohu klasicky přes F=ma. Uvidíte, že energetický přístup je jednodušší!</p>
             </div>
         </section>
 
