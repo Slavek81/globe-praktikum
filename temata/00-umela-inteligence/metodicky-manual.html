@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metodický manuál pro učitele - Využití umělé inteligence</title>
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="ai-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="site-header">
+        <div class="container">
+            <nav class="main-nav">
+                <a href="../../index.html" class="logo">Praktické aplikace fyziky</a>
+                <div class="nav-links">
+                    <a href="index.html"><i class="fas fa-arrow-left"></i> Zpět na lekci</a>
+                    <a href="../../index.html">Hlavní stránka</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Title Section -->
+    <section class="hero-section" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+        <div class="container">
+            <h1 class="hero-title">📚 Metodický manuál pro učitele</h1>
+            <p class="hero-subtitle">Kompletní průvodce lekcí "Využití umělé inteligence" (2 vyučovací hodiny / 90 minut)</p>
+        </div>
+    </section>
+
+    <!-- Úvod -->
+    <section class="section">
+        <div class="container">
+            <div class="manual-intro">
+                <h2>🎯 O tomuto manuálu</h2>
+                <p>Tento metodický manuál poskytuje učitelům detailní návod k vedení lekce o umělé inteligenci pro studenty střední školy. Obsahuje časový plán, přípravné materiály, tipy na facilitaci a hodnocení studentů.</p>
+
+                <div class="manual-overview">
+                    <div class="overview-item">
+                        <i class="fas fa-clock"></i>
+                        <strong>Doba trvání:</strong> 90 minut (2 vyučovací hodiny)
+                    </div>
+                    <div class="overview-item">
+                        <i class="fas fa-users"></i>
+                        <strong>Cílová skupina:</strong> Studenti střední školy (15-19 let)
+                    </div>
+                    <div class="overview-item">
+                        <i class="fas fa-laptop"></i>
+                        <strong>Technické požadavky:</strong> PC/notebook s internetem pro každého studenta
+                    </div>
+                    <div class="overview-item">
+                        <i class="fas fa-graduation-cap"></i>
+                        <strong>Předpoklady:</strong> Žádné nutné - lekce je určena pro začátečníky
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Learning Outcomes -->
+    <section class="section section-gray">
+        <div class="container">
+            <h2 class="section-title">🎓 Cíle a výstupy lekce</h2>
+
+            <div class="outcomes-grid">
+                <div class="outcome-category">
+                    <h3><i class="fas fa-brain"></i> Znalosti (co se student naučí)</h3>
+                    <ul>
+                        <li>Co je AI a kde ji potkáváme v běžném životě</li>
+                        <li>Rozdíly mezi hlavními AI poskytovateli (ChatGPT, Claude, Gemini)</li>
+                        <li>Limity AI: halucinace, bias, zastaralé informace, matematické chyby</li>
+                        <li>Základní principy promptování</li>
+                        <li>Profesionální workflow: Perplexity AI → Google NotebookLM</li>
+                    </ul>
+                </div>
+
+                <div class="outcome-category">
+                    <h3><i class="fas fa-tools"></i> Dovednosti (co student umí)</h3>
+                    <ul>
+                        <li>Napsat efektivní prompt s rolí, kontextem a formátem</li>
+                        <li>Použít Perplexity AI pro hloubkový výzkum</li>
+                        <li>Vytvořit seznam ověřených zdrojů</li>
+                        <li>Pracovat s Google NotebookLM pro studium</li>
+                        <li>Kriticky zhodnotit AI odpovědi</li>
+                    </ul>
+                </div>
+
+                <div class="outcome-category">
+                    <h3><i class="fas fa-balance-scale"></i> Postoje (jak student uvažuje)</h3>
+                    <ul>
+                        <li>Kritické myšlení - ověřování faktů a zdrojů</li>
+                        <li>Akademická poctivost - citování zdrojů</li>
+                        <li>Odpovědné používání AI - ne jako náhrada myšlení</li>
+                        <li>Vědomí limitů technologie</li>
+                        <li>Ochota experimentovat s novými nástroji</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Příprava před lekcí -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">🎒 Příprava před lekcí</h2>
+
+            <div class="preparation-checklist">
+                <h3>✅ Technická příprava (1 den předem)</h3>
+                <div class="checklist-items">
+                    <div class="checklist-item">
+                        <input type="checkbox" id="prep1">
+                        <label for="prep1">Ověřit funkčnost Wi-Fi v učebně a dostatečnou kapacitu</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="prep2">
+                        <label for="prep2">Otestovat přístup k Perplexity AI (perplexity.ai) - není nutná registrace</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="prep3">
+                        <label for="prep3">Otestovat přístup k Google NotebookLM (notebooklm.google.com) - vyžaduje Google účet</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="prep4">
+                        <label for="prep4">Připravit záložní plán pro případ výpadku internetu (offline materiály)</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="prep5">
+                        <label for="prep5">Zkontrolovat projektor/dataprojector pro sdílení obrazovky</label>
+                    </div>
+                </div>
+
+                <h3>✅ Obsahová příprava (1 hodina předem)</h3>
+                <div class="checklist-items">
+                    <div class="checklist-item">
+                        <input type="checkbox" id="prep6">
+                        <label for="prep6">Připravit si 2-3 příklady dobrých a špatných promptů</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="prep7">
+                        <label for="prep7">Vyzkoušet si workflow Perplexity → NotebookLM na fyzikálním tématu</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="prep8">
+                        <label for="prep8">Připravit diskuzní otázky pro etickou sekci</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="prep9">
+                        <label for="prep9">Vytisknout/připravit interaktivní kvíz (nebo použít online nástroj)</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="prep10">
+                        <label for="prep10">Připravit zadání domácího úkolu (workflow na fyzikální téma)</label>
+                    </div>
+                </div>
+
+                <h3>✅ Organizační příprava (před lekcí)</h3>
+                <div class="checklist-items">
+                    <div class="checklist-item">
+                        <input type="checkbox" id="prep11">
+                        <label for="prep11">Informovat studenty o nutnosti Google účtu (pro NotebookLM)</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="prep12">
+                        <label for="prep12">Rozdělit studenty do skupin pro diskuzi (3-4 studenti na skupinu)</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="prep13">
+                        <label for="prep13">Připravit časovač/stopky pro sledování času během lekce</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tip-box" style="margin-top: 2rem;">
+                <h4><i class="fas fa-lightbulb"></i> Tip pro první hodinu s AI:</h4>
+                <p>Pokud studenti nikdy nepracovali s AI nástroji, zvažte <strong>prodloužení lekce o 15-20 minut</strong> na registraci a první orientaci v nástrojích. Alternativně můžete poslat návod na registraci předem jako domácí přípravu.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Detailní průvodce bloky -->
+    <section class="section section-gray">
+        <div class="container">
+            <h2 class="section-title">⏱️ Detailní průvodce bloky lekce</h2>
+
+            <div class="lesson-blocks">
+                <!-- Blok 1 -->
+                <div class="lesson-block">
+                    <div class="block-header">
+                        <h3>Blok 1: Úvod a motivace (15 minut)</h3>
+                        <span class="block-time">0-15 min</span>
+                    </div>
+                    <div class="block-content">
+                        <div class="block-activities">
+                            <h4>📋 Aktivity:</h4>
+                            <div class="activity">
+                                <strong>0-5 min: Úvodní diskuze</strong>
+                                <p><strong>Otázka:</strong> "Jaké AI nástroje již používáte?" (ChatGPT, Snapchat AI, Instagram filtry, atd.)</p>
+                                <p><strong>Cíl:</strong> Aktivovat předchozí znalosti a zjistit úroveň zkušeností</p>
+                                <p><strong>Tip:</strong> Zapisujte odpovědi na tabuli → ukáže rozmanitost použití AI</p>
+                            </div>
+                            <div class="activity">
+                                <strong>5-10 min: Co je AI a kde ji potkáváme</strong>
+                                <p><strong>Obsah:</strong> Netflix doporučení, Siri/Google Assistant, Google Mapy (predikce dopravy)</p>
+                                <p><strong>Tip:</strong> Použijte konkrétní příklady ze života studentů - TikTok algoritmus, Spotify playlist</p>
+                            </div>
+                            <div class="activity">
+                                <strong>10-15 min: Přehled AI poskytovatelů</strong>
+                                <p><strong>Obsah:</strong> ChatGPT (nejpoužívanější), Claude (delší kontext), Gemini (multimodální)</p>
+                                <p><strong>Demo:</strong> Ukažte stejnou otázku ve 2 různých AI a porovnejte odpovědi</p>
+                            </div>
+                        </div>
+                        <div class="block-tips">
+                            <h4>💡 Tipy pro facilitaci:</h4>
+                            <ul>
+                                <li><strong>Pokud studenti mlčí:</strong> Začněte sami příkladem ("Já používám ChatGPT na...")</li>
+                                <li><strong>Pokud diskuze zabere více času:</strong> Zkraťte přehled poskytovatelů na 5 minut</li>
+                                <li><strong>Pokud někdo zná hodně:</strong> Požádejte ho o sdílení zkušeností</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Blok 2 -->
+                <div class="lesson-block">
+                    <div class="block-header">
+                        <h3>Blok 2: Praktický workshop (40 minut)</h3>
+                        <span class="block-time">15-55 min</span>
+                    </div>
+                    <div class="block-content">
+                        <div class="block-activities">
+                            <h4>📋 Aktivity:</h4>
+                            <div class="activity">
+                                <strong>15-25 min: Limity AI a kritické myšlení</strong>
+                                <p><strong>Obsah:</strong> Halucinace, bias, zastaralé informace, matematické chyby</p>
+                                <p><strong>Demo:</strong> Ukažte reálný příklad halucinace (např. "Kdo vyhrál mistrovství světa 2026?")</p>
+                                <p><strong>Diskuze:</strong> "Jak poznáme, že AI odpověď je správná?" → Ověřování zdrojů</p>
+                            </div>
+                            <div class="activity">
+                                <strong>25-40 min: Jak promptovat - Prompt Builder hands-on</strong>
+                                <p><strong>Úkol:</strong> Studenti zkouší Prompt Builder na stránce</p>
+                                <p><strong>Progrese:</strong> Špatný prompt → Dobrý prompt → Studenti vytvoří vlastní</p>
+                                <p><strong>Sdílení:</strong> 2-3 studenti sdílí své prompty se třídou</p>
+                            </div>
+                            <div class="activity">
+                                <strong>40-55 min: Workflow Perplexity → NotebookLM</strong>
+                                <p><strong>Demo:</strong> Live ukázka celého workflow na fyzikálním tématu (např. tepelná čerpadla)</p>
+                                <p><strong>Kroky:</strong> 1) Perplexity výzkum 2) Seznam zdrojů 3) Přesun do NotebookLM 4) Analýza</p>
+                                <p><strong>Studenti zkouší:</strong> Každý student vyzkouší alespoň Perplexity na své téma</p>
+                            </div>
+                        </div>
+                        <div class="block-tips">
+                            <h4>💡 Tipy pro facilitaci:</h4>
+                            <ul>
+                                <li><strong>Technické problémy:</strong> Připravte si záložní video ukázku workflow</li>
+                                <li><strong>Různé tempo studentů:</strong> Rychlí mohou zkusit kompletní workflow, pomalí jen Perplexity</li>
+                                <li><strong>Pokud zabere více času:</strong> Workflow ukažte jen jako demo, hands-on až jako domácí úkol</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Blok 3 -->
+                <div class="lesson-block">
+                    <div class="block-header">
+                        <h3>Blok 3: Etika a diskuze (20 minut)</h3>
+                        <span class="block-time">55-75 min</span>
+                    </div>
+                    <div class="block-content">
+                        <div class="block-activities">
+                            <h4>📋 Aktivity:</h4>
+                            <div class="activity">
+                                <strong>55-65 min: Etické otázky</strong>
+                                <p><strong>Téma 1:</strong> Akademická poctivost - kdy je OK použít AI, kdy ne?</p>
+                                <p><strong>Téma 2:</strong> Odpovědnost za chyby AI - kdo je zodpovědný?</p>
+                                <p><strong>Formát:</strong> Krátká prezentace (5 min) + diskuze (5 min)</p>
+                            </div>
+                            <div class="activity">
+                                <strong>65-75 min: Skupinová diskuze</strong>
+                                <p><strong>Otázka:</strong> "Jak ovlivní AI vaše budoucí studium a kariéru?"</p>
+                                <p><strong>Formát:</strong> Skupiny 3-4 studentů, 5 min diskuze, 5 min sdílení</p>
+                                <p><strong>Cíl:</strong> Propojit AI s jejich budoucností, motivace k dalšímu učení</p>
+                            </div>
+                        </div>
+                        <div class="block-tips">
+                            <h4>💡 Tipy pro facilitaci:</h4>
+                            <ul>
+                                <li><strong>Kontraverze je OK:</strong> Různé názory jsou užitečné, moderujte diskuzi</li>
+                                <li><strong>Pokud diskuze zabere více času:</strong> Je to dobré znamení! Můžete zkrátit závěrečný kvíz</li>
+                                <li><strong>Tiché skupiny:</strong> Připravte si follow-up otázky ("Co by se stalo kdyby...")</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Blok 4 -->
+                <div class="lesson-block">
+                    <div class="block-header">
+                        <h3>Blok 4: Shrnutí a procvičení (15 minut)</h3>
+                        <span class="block-time">75-90 min</span>
+                    </div>
+                    <div class="block-content">
+                        <div class="block-activities">
+                            <h4>📋 Aktivity:</h4>
+                            <div class="activity">
+                                <strong>75-85 min: Interaktivní kvíz</strong>
+                                <p><strong>Obsah:</strong> 5-7 otázek pokrývajících hlavní body lekce</p>
+                                <p><strong>Formát:</strong> Online kvíz (Kahoot/Quizizz) nebo papírový</p>
+                                <p><strong>Příklady otázek:</strong> "Co je halucinace v AI?", "Jaké jsou 3 hlavní části dobrého promptu?"</p>
+                            </div>
+                            <div class="activity">
+                                <strong>85-90 min: Domácí úkol</strong>
+                                <p><strong>Zadání:</strong> "Použijte workflow Perplexity→NotebookLM na fyzikální téma dle vlastního výběru"</p>
+                                <p><strong>Odevzdání:</strong> Screenshot Perplexity + odkaz na NotebookLM nebo krátké shrnutí (200 slov)</p>
+                                <p><strong>Termín:</strong> Do příští hodiny</p>
+                            </div>
+                        </div>
+                        <div class="block-tips">
+                            <h4>💡 Tipy pro facilitaci:</h4>
+                            <ul>
+                                <li><strong>Pokud nestihne kvíz:</strong> Pošlete ho jako domácí přípravu online</li>
+                                <li><strong>Domácí úkol:</strong> Buďte flexibilní - i částečné dokončení je úspěch</li>
+                                <li><strong>Follow-up:</strong> Další hodina - sdílení výsledků a diskuze</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hodnocení studentů -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">📊 Hodnocení studentů</h2>
+
+            <div class="evaluation-grid">
+                <div class="evaluation-method">
+                    <h3><i class="fas fa-clipboard-check"></i> Co hodnotit</h3>
+                    <ul>
+                        <li><strong>Účast a aktivita v diskuzích</strong> (30%)</li>
+                        <li><strong>Vytvoření vlastního promptu</strong> (20%)</li>
+                        <li><strong>Výsledek kvízu</strong> (20%)</li>
+                        <li><strong>Domácí úkol - workflow</strong> (30%)</li>
+                    </ul>
+                </div>
+
+                <div class="evaluation-method">
+                    <h3><i class="fas fa-star"></i> Kritéria hodnocení domácího úkolu</h3>
+                    <ul>
+                        <li>✅ Použil/a Perplexity AI pro výzkum</li>
+                        <li>✅ Získal/a seznam ověřených zdrojů</li>
+                        <li>✅ Přenesl/a zdroje do NotebookLM</li>
+                        <li>✅ Vytvořil/a shrnutí nebo analýzu</li>
+                        <li>✅ Prokázal/a kritické myšlení</li>
+                    </ul>
+                </div>
+
+                <div class="evaluation-method">
+                    <h3><i class="fas fa-chart-line"></i> Formativní hodnocení</h3>
+                    <p><strong>Během lekce:</strong></p>
+                    <ul>
+                        <li>Pozorování účasti v diskuzích</li>
+                        <li>Kvalita vytvořených promptů</li>
+                        <li>Schopnost kriticky hodnotit AI odpovědi</li>
+                        <li>Ochota experimentovat a zkoušet nové</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="tip-box" style="margin-top: 2rem;">
+                <h4><i class="fas fa-lightbulb"></i> Poznámka k hodnocení:</h4>
+                <p>Tato lekce je primárně <strong>formativní</strong> - cílem je naučit studenty nové dovednosti, ne je testovat. Buďte štědří s hodnocením procesů, ne jen výsledků.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Troubleshooting -->
+    <section class="section section-gray">
+        <div class="container">
+            <h2 class="section-title">🔧 Řešení častých problémů</h2>
+
+            <div class="troubleshooting-grid">
+                <div class="problem-solution">
+                    <h4>❌ Problém: Internet nefunguje / je pomalý</h4>
+                    <p><strong>Řešení:</strong></p>
+                    <ul>
+                        <li>Připravte si offline video ukázku workflow</li>
+                        <li>Studenti mohou pracovat ve dvojicích na jednom PC</li>
+                        <li>Použijte hotspot z mobilu jako záložní připojení</li>
+                        <li>V krajním případě: pouze teoretické vysvětlení + domácí úkol</li>
+                    </ul>
+                </div>
+
+                <div class="problem-solution">
+                    <h4>❌ Problém: Studenti nemají Google účet</h4>
+                    <p><strong>Řešení:</strong></p>
+                    <ul>
+                        <li>NotebookLM vyžaduje Google účet - informujte studenty předem</li>
+                        <li>Alternativa: Ukažte jen Perplexity, NotebookLM až příště</li>
+                        <li>Studenti mohou vytvořit Google účet během lekce (5 min)</li>
+                    </ul>
+                </div>
+
+                <div class="problem-solution">
+                    <h4>❌ Problém: AI nástroj je zablokovaný ve škole</h4>
+                    <p><strong>Řešení:</strong></p>
+                    <ul>
+                        <li>Kontaktujte IT předem a požádejte o povolení pro perplexity.ai a notebooklm.google.com</li>
+                        <li>Alternativa: Studenti pracují na mobilních datech</li>
+                        <li>V krajním případě: Pouze demo od učitele přes sdílenou obrazovku</li>
+                    </ul>
+                </div>
+
+                <div class="problem-solution">
+                    <h4>❌ Problém: Studenti jsou ve velmi různých úrovních</h4>
+                    <p><strong>Řešení:</strong></p>
+                    <ul>
+                        <li>Rychlí studenti: Zkusit kompletní workflow + pokročilé techniky (XML tagy)</li>
+                        <li>Pomalí studenti: Zaměřit se jen na Perplexity</li>
+                        <li>Párování: Zkušenější pomáhají méně zkušeným</li>
+                    </ul>
+                </div>
+
+                <div class="problem-solution">
+                    <h4>❌ Problém: Nestíháme časový plán</h4>
+                    <p><strong>Řešení:</strong></p>
+                    <ul>
+                        <li>Priorita 1: Limity AI a kritické myšlení (MUSÍ být pokryto)</li>
+                        <li>Priorita 2: Základy promptování</li>
+                        <li>Lze zkrátit: Etická diskuze (10 min místo 20), Kvíz (dát jako domácí přípravu)</li>
+                        <li>Workflow demo můžete nahrát a poslat studentům na doma</li>
+                    </ul>
+                </div>
+
+                <div class="problem-solution">
+                    <h4>❌ Problém: Studenti kopírují AI odpovědi doslovně</h4>
+                    <p><strong>Řešení:</strong></p>
+                    <ul>
+                        <li>Zdůrazněte: AI je nástroj pro pochopení, ne kopírování</li>
+                        <li>Ukažte příklad: "AI odpověď" vs "vlastní vysvětlení na základě AI"</li>
+                        <li>Domácí úkol: Vyžadujte vlastní formulaci, ne copy-paste</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Závěr -->
+    <section class="section">
+        <div class="container" style="text-align: center;">
+            <h2>✅ Jste připraveni vést lekci!</h2>
+            <p style="font-size: 1.2rem; margin: 2rem 0;">Tento manuál je živý dokument - přizpůsobte ho potřebám vašich studentů.</p>
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <a href="index.html" class="btn-primary" style="display: inline-block; padding: 1rem 2rem; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; text-decoration: none; border-radius: 8px; font-weight: 600;">
+                    <i class="fas fa-chalkboard-teacher"></i> Zpět na lekci
+                </a>
+                <a href="../../index.html" class="btn-secondary" style="display: inline-block; padding: 1rem 2rem; background: #e5e7eb; color: #374151; text-decoration: none; border-radius: 8px; font-weight: 600;">
+                    <i class="fas fa-home"></i> Hlavní stránka
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script src="ai-lecture.js"></script>
+</body>
+</html>
