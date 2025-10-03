@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontrolní checklist pro studenty - Využití umělé inteligence</title>
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="ai-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .checklist-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .checklist-section {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        .checklist-section h3 {
+            color: #2563eb;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 0.75rem;
+            margin: 0.5rem 0;
+            border-radius: 8px;
+            transition: background 0.2s ease;
+        }
+        .checklist-item:hover {
+            background: #f3f4f6;
+        }
+        .checklist-item input[type="checkbox"] {
+            width: 24px;
+            height: 24px;
+            margin-top: 0.25rem;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+        .checklist-item label {
+            flex: 1;
+            cursor: pointer;
+            line-height: 1.6;
+            font-size: 1.05rem;
+        }
+        .progress-bar {
+            background: #e5e7eb;
+            height: 30px;
+            border-radius: 15px;
+            overflow: hidden;
+            margin: 1rem 0;
+        }
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            transition: width 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+        }
+        .score-box {
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            margin: 2rem 0;
+            border-left: 6px solid #2563eb;
+        }
+        .score-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #2563eb;
+            margin: 0.5rem 0;
+        }
+        .next-steps {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+            border-left: 6px solid #f59e0b;
+        }
+        .badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            border-radius: 20px;
+            font-weight: 600;
+            margin: 0.5rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        }
+        .badge.gold {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+        }
+        .badge.silver {
+            background: linear-gradient(135deg, #6b7280 0%, #4b5563 100%);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="site-header">
+        <div class="container">
+            <nav class="main-nav">
+                <a href="../../index.html" class="logo">Praktické aplikace fyziky</a>
+                <div class="nav-links">
+                    <a href="index.html"><i class="fas fa-arrow-left"></i> Zpět na lekci</a>
+                    <a href="../../index.html">Hlavní stránka</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Title Section -->
+    <section class="hero-section" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">
+        <div class="container">
+            <h1 class="hero-title">✅ Kontrolní checklist pro studenty</h1>
+            <p class="hero-subtitle">Ověř si, co jsi se naučil/a o využití umělé inteligence</p>
+        </div>
+    </section>
+
+    <!-- Úvod -->
+    <section class="section">
+        <div class="container checklist-container">
+            <div style="background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); padding: 2rem; border-radius: 12px; border-left: 6px solid #2563eb; margin-bottom: 2rem;">
+                <h2 style="color: #1e40af; margin-bottom: 1rem;">
+                    <i class="fas fa-info-circle"></i> Jak používat tento checklist?
+                </h2>
+                <p style="line-height: 1.7; margin-bottom: 1rem;">
+                    Tento checklist ti pomůže ověřit, že jsi pochopil/a všechny klíčové koncepty z lekce o AI. Projdi si všechny položky a zaškrtni ty, u kterých si jsi jistý/á.
+                </p>
+                <p style="line-height: 1.7;">
+                    <strong>Cíl:</strong> Dosáhnout alespoň <strong>80% (24/30 bodů)</strong> → to znamená, že jsi připraven/a používat AI efektivně a odpovědně!
+                </p>
+            </div>
+
+            <!-- Progress Tracker -->
+            <div class="score-box">
+                <h3 style="color: #1e40af; margin-bottom: 0.5rem;">Tvůj progress</h3>
+                <div class="score-number" id="score">0 / 30</div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill" style="width: 0%;">0%</div>
+                </div>
+                <div id="badge-display" style="margin-top: 1rem;"></div>
+            </div>
+
+            <!-- Sekce 1: Základní pochopení AI -->
+            <div class="checklist-section">
+                <h3><i class="fas fa-brain"></i> 1. Základní pochopení AI (6 bodů)</h3>
+                <div class="checklist-item">
+                    <input type="checkbox" id="q1" onchange="updateScore()">
+                    <label for="q1">Umím vysvětlit co je umělá inteligence vlastními slovy</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="q2" onchange="updateScore()">
+                    <label for="q2">Znám alespoň 3 příklady AI v běžném životě (Netflix, Google Mapy, Siri...)</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="q3" onchange="updateScore()">
+                    <label for="q3">Vím, jaký je rozdíl mezi ChatGPT, Claude a Gemini</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="q4" onchange="updateScore()">
+                    <label for="q4">Rozumím pojmu "generativní AI" a "velké jazykové modely (LLM)"</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="q5" onchange="updateScore()">
+                    <label for="q5">Umím popsat alespoň 2 způsoby, jak AI ovlivní moji budoucí studium/kariéru</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="q6" onchange="updateScore()">
+                    <label for="q6">Vím, že AI je nástroj, ne náhrada za vlastní myšlení</label>
+                </div>
+            </div>
+
+            <!-- Sekce 2: Limity a kritické myšlení -->
+            <div class="checklist-section">
+                <h3><i class="fas fa-exclamation-triangle"></i> 2. Limity AI a kritické myšlení (6 bodů)</h3>
+                <div class="checklist-item">
+                    <input type="checkbox" id="q7" onchange="updateScore()">
+                    <label for="q7">Umím vysvětlit co jsou "halucinace" v AI a uvést příklad</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="q8" onchange="updateScore()">
+                    <label for="q8">Rozumím pojmu "bias" v AI (předpojatost, zkreslení dat)</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="q9" onchange="updateScore()">
+                    <label for="q9">Vím, že AI může mít zastaralé informace a nevím vždy o aktuálních událostech</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="q10" onchange="updateScore()">
+                    <label for="q10">Umím kriticky zhodnotit AI odpověď - vždy ověřuji fakta ze zdrojů</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="q11" onchange="updateScore()">
+                    <label for="q11">Vím, že AI může dělat matematické chyby a vždy kontroluji výpočty</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="q12" onchange="updateScore()">
+                    <label for="q12">Rozumím pravidlu: "AI je pomocník, ne náhrada za vlastní učení"</label>
+                </div>
+            </div>
+
+            <!-- Sekce 3: Promptování -->
+            <div class="checklist-section">
+                <h3><i class="fas fa-comment-dots"></i> 3. Efektivní promptování (6 bodů)</h3>
+                <div class="checklist-item">
+                    <input type="checkbox" id="q13" onchange="updateScore()">
+                    <label for="q13">Umím napsat dobrý prompt s rolí, kontextem a požadavkem</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="q14" onchange="updateScore()">
+                    <label for="q14">Vím, jaký je rozdíl mezi špatným a dobrým promptem (konkrétnost!)</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="q15" onchange="updateScore()">
+                    <label for="q15">Umím specifikovat formát výstupu (seznam, body, tabulka...)</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="q16" onchange="updateScore()">
+                    <label for="q16">Vím, že čím konkrétnější prompt, tím lepší odpověď dostanu</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="q17" onchange="updateScore()">
+                    <label for="q17">Umím iterovat - zkusit prompt, zhodnotit odpověď, upravit prompt</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="q18" onchange="updateScore()">
+                    <label for="q18">Vyzkoušel/a jsem si Prompt Builder na stránce a vytvořil/a vlastní prompt</label>
+                </div>
+            </div>
+
+            <!-- Sekce 4: Workflow Perplexity + NotebookLM -->
+            <div class="checklist-section">
+                <h3><i class="fas fa-route"></i> 4. Výzkumný workflow (6 bodů)</h3>
+                <div class="checklist-item">
+                    <input type="checkbox" id="q19" onchange="updateScore()">
+                    <label for="q19">Umím použít Perplexity AI pro hloubkový výzkum fyzikálního tématu</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="q20" onchange="updateScore()">
+                    <label for="q20">Vím, jak získat seznam zdrojů z Perplexity ("Vytvoř mi seznam všech zdrojů...")</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="q21" onchange="updateScore()">
+                    <label for="q21">Umím přenést zdroje do Google NotebookLM (URL nebo text)</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="q22" onchange="updateScore()">
+                    <label for="q22">Vím, jak využít NotebookLM pro analýzu (shrnutí, klíčové pojmy, audio...)</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="q23" onchange="updateScore()">
+                    <label for="q23">Rozumím celému 6-krokovému workflow (Otázka → Perplexity → Zdroje → NotebookLM → Analýza → Syntéza)</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="q24" onchange="updateScore()">
+                    <label for="q24">Vyzkoušel/a jsem si workflow na konkrétním fyzikálním tématu</label>
+                </div>
+            </div>
+
+            <!-- Sekce 5: Etika a odpovědnost -->
+            <div class="checklist-section">
+                <h3><i class="fas fa-balance-scale"></i> 5. Etika a odpovědnost (6 bodů)</h3>
+                <div class="checklist-item">
+                    <input type="checkbox" id="q25" onchange="updateScore()">
+                    <label for="q25">Vím, kdy je OK použít AI pro školní práci a kdy ne</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="q26" onchange="updateScore()">
+                    <label for="q26">Rozumím akademické poctivosti - vždy cituji zdroje a AI nástroje</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="q27" onchange="updateScore()">
+                    <label for="q27">Vím, že odpovědnost za chyby AI leží na mně, ne na AI</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="q28" onchange="updateScore()">
+                    <label for="q28">Umím rozlišit "použití AI pro pochopení" vs "kopírování AI odpovědí"</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="q29" onchange="updateScore()">
+                    <label for="q29">Vím, že AI může být součástí mého učebního procesu, ne náhradou za něj</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="q30" onchange="updateScore()">
+                    <label for="q30">Promýšlím dlouhodobé dopady AI na své studium a budoucí kariéru</label>
+                </div>
+            </div>
+
+            <!-- Další kroky -->
+            <div class="next-steps">
+                <h3 style="color: #92400e; margin-bottom: 1rem;">
+                    <i class="fas fa-rocket"></i> Co dělat dál?
+                </h3>
+                <div id="recommendations"></div>
+            </div>
+
+            <!-- Tlačítka -->
+            <div style="text-align: center; margin-top: 3rem;">
+                <button onclick="window.print()" style="padding: 1rem 2rem; background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%); color: white; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; margin: 0.5rem; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);">
+                    <i class="fas fa-print"></i> Vytisknout checklist
+                </button>
+                <button onclick="location.reload()" style="padding: 1rem 2rem; background: linear-gradient(135deg, #6b7280 0%, #4b5563 100%); color: white; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; margin: 0.5rem; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);">
+                    <i class="fas fa-redo"></i> Reset checklistu
+                </button>
+                <a href="index.html" style="display: inline-block; padding: 1rem 2rem; background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: white; text-decoration: none; border-radius: 8px; font-weight: 600; margin: 0.5rem; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);">
+                    <i class="fas fa-arrow-left"></i> Zpět na lekci
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function updateScore() {
+            const total = 30;
+            let checked = 0;
+
+            for (let i = 1; i <= total; i++) {
+                if (document.getElementById('q' + i).checked) {
+                    checked++;
+                }
+            }
+
+            const percentage = Math.round((checked / total) * 100);
+            document.getElementById('score').textContent = checked + ' / ' + total;
+            document.getElementById('progress-fill').style.width = percentage + '%';
+            document.getElementById('progress-fill').textContent = percentage + '%';
+
+            // Badges
+            let badgeHTML = '';
+            let recommendationsHTML = '';
+
+            if (percentage >= 90) {
+                badgeHTML = '<span class="badge gold">🏆 Expert v AI!</span>';
+                recommendationsHTML = `
+                    <p style="line-height: 1.7; margin-bottom: 1rem;"><strong>Gratulujeme! Jsi expert na používání AI.</strong> Máš skvělé základy a můžeš se posunout dál:</p>
+                    <ul style="line-height: 1.8;">
+                        <li>✨ Vyzkoušej pokročilé techniky (XML tagy, Chain of Thought) v collapsible sekci "Pro pokročilé"</li>
+                        <li>📚 Použij workflow na komplexnější fyzikální projekty (tepelná čerpadla, elektrická auta...)</li>
+                        <li>🎯 Zkus vyřešit všechny 3 praktické fyzikální úkoly na stránce</li>
+                        <li>🌟 Pomoz spolužákům pochopit AI workflow</li>
+                    </ul>
+                `;
+            } else if (percentage >= 80) {
+                badgeHTML = '<span class="badge">✅ Velmi dobré!</span>';
+                recommendationsHTML = `
+                    <p style="line-height: 1.7; margin-bottom: 1rem;"><strong>Výborně! Ovládáš základy AI.</strong> Jsi připraven/á používat AI efektivně:</p>
+                    <ul style="line-height: 1.8;">
+                        <li>💪 Procvičuj workflow Perplexity → NotebookLM na různých tématech</li>
+                        <li>🎯 Zkus vyřešit alespoň 1 praktický fyzikální úkol</li>
+                        <li>📖 Přečti si sekce, u kterých jsi nebyl/a 100% jistý/á</li>
+                        <li>🔄 Opakuj checklist za týden - měl/a bys mít 90%+</li>
+                    </ul>
+                `;
+            } else if (percentage >= 60) {
+                badgeHTML = '<span class="badge silver">📚 Dobré, ale...</span>';
+                recommendationsHTML = `
+                    <p style="line-height: 1.7; margin-bottom: 1rem;"><strong>Dobré základy, ale potřebuješ ještě procvičit.</strong> Zaměř se na oblasti, kde si nejsi jistý/á:</p>
+                    <ul style="line-height: 1.8;">
+                        <li>🔄 Projdi si znovu lekci - věnuj pozornost částem s nízkou zaškrtnutostí</li>
+                        <li>💬 Zkus si Prompt Builder a vytvoř alespoň 3 vlastní prompty</li>
+                        <li>🔍 Vyzkoušej si Perplexity AI na jednoduchém tématu (např. "Jak funguje žárovka?")</li>
+                        <li>👥 Popros spolužáky nebo učitele o vysvětlení částí, kterým nerozumíš</li>
+                    </ul>
+                `;
+            } else {
+                badgeHTML = '';
+                recommendationsHTML = `
+                    <p style="line-height: 1.7; margin-bottom: 1rem;"><strong>Potřebuješ věnovat více času studiu.</strong> Nevzdávej to - AI je nástroj budoucnosti:</p>
+                    <ul style="line-height: 1.8;">
+                        <li>📖 Začni znovu od začátku lekce - čti pozorně a zkouš si všechno vyzkoušet</li>
+                        <li>🎬 Podívej se na video tutoriály k Perplexity a NotebookLM (YouTube)</li>
+                        <li>👨‍🏫 Popros učitele o individuální konzultaci</li>
+                        <li>⏰ Věnuj alespoň 1 hodinu praktickému vyzkoušení nástrojů</li>
+                        <li>🔄 Vrať se k checklistu za týden a snaž se dosáhnout alespoň 80%</li>
+                    </ul>
+                `;
+            }
+
+            document.getElementById('badge-display').innerHTML = badgeHTML;
+            document.getElementById('recommendations').innerHTML = recommendationsHTML;
+
+            // Save to localStorage
+            localStorage.setItem('aiChecklistProgress', checked);
+        }
+
+        // Load progress on page load
+        window.onload = function() {
+            const saved = localStorage.getItem('aiChecklistProgress');
+            if (saved) {
+                for (let i = 1; i <= parseInt(saved); i++) {
+                    const checkbox = document.getElementById('q' + i);
+                    if (checkbox) {
+                        checkbox.checked = true;
+                    }
+                }
+                updateScore();
+            }
+        };
+    </script>
+</body>
+</html>
