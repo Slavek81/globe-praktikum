@@ -71,6 +71,10 @@
                     <i class="fas fa-cog"></i>
                     <span>Nastavení AI</span>
                 </a>
+                <a href="#ai-limits" class="quick-nav-item">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <span>Limity AI</span>
+                </a>
                 <a href="#try-it" class="quick-nav-item">
                     <i class="fas fa-comment"></i>
                     <span>Promptování</span>
@@ -127,6 +131,80 @@
                     </div>
                     <h3>Kritické myšlení</h3>
                     <p>Diskutovat etické otázky AI, rizika a dopad na společnost a vzdělávání.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Časový plán lekce -->
+    <section id="lesson-plan" class="section">
+        <div class="container">
+            <h2 class="section-title">⏱️ Časový plán lekce (90 minut)</h2>
+            <p class="section-subtitle">Strukturovaný průvodce dvouhodinovou lekcí o využití AI ve studiu fyziky</p>
+
+            <div class="timeline-container">
+                <div class="timeline-block">
+                    <div class="timeline-badge">15'</div>
+                    <div class="timeline-content">
+                        <h3>Blok 1: Úvod a motivace</h3>
+                        <ul>
+                            <li><strong>0-5 min:</strong> Úvodní diskuze: "Jaké AI nástroje již používáte?"</li>
+                            <li><strong>5-10 min:</strong> Co je AI a kde ji potkáváme?</li>
+                            <li><strong>10-15 min:</strong> Přehled AI poskytovatelů</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-block">
+                    <div class="timeline-badge">40'</div>
+                    <div class="timeline-content">
+                        <h3>Blok 2: Praktický workshop</h3>
+                        <ul>
+                            <li><strong>15-25 min:</strong> Limity AI a kritické myšlení</li>
+                            <li><strong>25-40 min:</strong> Jak promptovat - Prompt Builder (hands-on)</li>
+                            <li><strong>40-55 min:</strong> Workflow Perplexity → NotebookLM</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-block">
+                    <div class="timeline-badge">20'</div>
+                    <div class="timeline-content">
+                        <h3>Blok 3: Etika a diskuze</h3>
+                        <ul>
+                            <li><strong>55-65 min:</strong> Etické otázky (akademická poctivost, odpovědnost)</li>
+                            <li><strong>65-75 min:</strong> Skupinová diskuze: "Jak ovlivní AI vaše studium?"</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-block">
+                    <div class="timeline-badge">15'</div>
+                    <div class="timeline-content">
+                        <h3>Blok 4: Shrnutí a procvičení</h3>
+                        <ul>
+                            <li><strong>75-85 min:</strong> Interaktivní kvíz</li>
+                            <li><strong>85-90 min:</strong> Domácí úkol: Vyzkoušejte workflow na fyzikální téma</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="teacher-notes">
+                <h3><i class="fas fa-chalkboard-teacher"></i> Poznámky pro učitele</h3>
+                <div class="notes-grid">
+                    <div class="note-item">
+                        <strong>📦 Příprava:</strong> Zajistěte přístup k internetu a AI nástrojům (Perplexity, NotebookLM - zdarma)
+                    </div>
+                    <div class="note-item">
+                        <strong>🎯 Diferenciace:</strong> Pokročilí studenti mohou prozkoumávat XML tagy a pokročilé techniky
+                    </div>
+                    <div class="note-item">
+                        <strong>⚡ Flexibilita:</strong> Pokud diskuze zabere více času, zkraťte blok 4 na povinný kvíz
+                    </div>
+                    <div class="note-item">
+                        <strong>🔄 Follow-up:</strong> Další hodina: sdílení výsledků domácího úkolu a hlubší rozbor
+                    </div>
                 </div>
             </div>
         </div>
@@ -784,6 +862,124 @@ Používej praktické příklady a typické situace. Rozděl složitá témata n
                     </div>
                 </div>
 
+            </div>
+        </div>
+    </section>
+
+    <!-- Limity AI -->
+    <section id="ai-limits" class="section section-warning">
+        <div class="container">
+            <h2 class="section-title">⚠️ Na co si dát pozor: Limity a chyby AI</h2>
+            <p class="section-subtitle">AI není neomylná - důležité je vědět, kde může selhat</p>
+
+            <div class="warning-grid">
+                <div class="warning-card">
+                    <div class="warning-icon">
+                        <i class="fas fa-theater-masks"></i>
+                    </div>
+                    <h3>🎭 Halucinace</h3>
+                    <p><strong>Co to je:</strong> AI může vymýšlet fakta, která zní věrohodně, ale jsou zcela nepravdivá. Například vymyslí neexistující vědecký článek nebo nesprávné fyzikální hodnoty.</p>
+                    <div class="warning-example">
+                        <strong>Příklad:</strong> AI může tvrdit, že "rychlost světla ve vakuu je 299 792 458 m/s±100 m/s", což je sice blízko pravdě, ale přesná hodnota má nulovou nejistotu podle definice.
+                    </div>
+                    <div class="warning-solution">
+                        <strong>✅ Řešení:</strong> Vždy ověřuj fakta a čísla z více nezávislých zdrojů. Pro fyzikální konstanty používej oficiální tabulky (NIST, CODATA).
+                    </div>
+                </div>
+
+                <div class="warning-card">
+                    <div class="warning-icon">
+                        <i class="fas fa-balance-scale-left"></i>
+                    </div>
+                    <h3>📊 Bias (předpojatost)</h3>
+                    <p><strong>Co to je:</strong> AI se učí z dat vytvořených lidmi, která mohou obsahovat předsudky, stereotypy nebo historické nerovnosti.</p>
+                    <div class="warning-example">
+                        <strong>Příklad:</strong> AI systém pro hodnocení životopisů může diskriminovat ženy, pokud byl trénován na historických datech z odvětví s převahou mužů.
+                    </div>
+                    <div class="warning-solution">
+                        <strong>✅ Řešení:</strong> Buď kritický a uvědomuj si možné zkreslení. Ptej se: "Kdo vytvořil tato data?" a "Jaká může být jejich perspektiva?"
+                    </div>
+                </div>
+
+                <div class="warning-card">
+                    <div class="warning-icon">
+                        <i class="fas fa-calendar-times"></i>
+                    </div>
+                    <h3>📅 Zastaralé informace</h3>
+                    <p><strong>Co to je:</strong> AI modely mají "cutoff datum" - nejsou trénovány na nejnovějších informacích a neznají aktuální události.</p>
+                    <div class="warning-example">
+                        <strong>Příklad:</strong> Claude 4.5 Sonnet má cutoff leden 2025 - neví o událostech po tomto datu. ChatGPT-5 má podobné limity.
+                    </div>
+                    <div class="warning-solution">
+                        <strong>✅ Řešení:</strong> Pro aktuální data použij Perplexity AI (přístup k internetu) nebo Google. Pro historická témata je standardní AI dostačující.
+                    </div>
+                </div>
+
+                <div class="warning-card">
+                    <div class="warning-icon">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <h3>🔢 Matematické chyby</h3>
+                    <p><strong>Co to je:</strong> AI někdy dělá chyby v aritmetických výpočtech, jednotkách nebo složitějších matematických úlohách.</p>
+                    <div class="warning-example">
+                        <strong>Příklad:</strong> Při převodu jednotek může AI zaměnit km/h a m/s nebo udělat chybu v exponenciálních výpočtech.
+                    </div>
+                    <div class="warning-solution">
+                        <strong>✅ Řešení:</strong> Vždy kontroluj výpočty pomocí kalkulačky nebo zpětným dosazením. Pro složité fyzikální úlohy používej specializované nástroje (Wolfram Alpha, Python).
+                    </div>
+                </div>
+            </div>
+
+            <div class="critical-thinking-box">
+                <h3><i class="fas fa-brain"></i> Pravidla kritického myšlení při práci s AI</h3>
+                <div class="thinking-rules">
+                    <div class="rule-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span><strong>Ověřuj fakta:</strong> Nikdy nespoléhej na AI jako jediný zdroj informací</span>
+                    </div>
+                    <div class="rule-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span><strong>Kontroluj výpočty:</strong> AI není kalkulačka - může dělat chyby</span>
+                    </div>
+                    <div class="rule-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span><strong>Ptej se "Proč?":</strong> Nespokojuj se s odpovědí bez vysvětlení</span>
+                    </div>
+                    <div class="rule-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span><strong>Porovnávaj zdroje:</strong> Použij více AI modelů nebo lidských expertů</span>
+                    </div>
+                    <div class="rule-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span><strong>Buď skeptický:</strong> Pokud něco zní příliš dobře/špatně, pravděpodobně je to chyba</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="good-practice">
+                <h3><i class="fas fa-lightbulb"></i> Dobrá praxe při používání AI</h3>
+                <div class="practice-grid">
+                    <div class="practice-do">
+                        <h4>✅ DĚLEJTE</h4>
+                        <ul>
+                            <li>Používejte AI jako pomocníka, ne jako náhradu myšlení</li>
+                            <li>Ověřujte důležité informace z primárních zdrojů</li>
+                            <li>Citujte AI jako zdroj v pracích (pokud to pravidla dovolují)</li>
+                            <li>Učte se z AI odpovědí, ale kriticky je hodnoťte</li>
+                            <li>Požádejte AI o vysvětlení, pokud něčemu nerozumíte</li>
+                        </ul>
+                    </div>
+                    <div class="practice-dont">
+                        <h4>❌ NEDĚLEJTE</h4>
+                        <ul>
+                            <li>Nekopírujte AI odpovědi doslovně do seminárních prací</li>
+                            <li>Nespoléhejte na AI při důležitých rozhodnutích bez ověření</li>
+                            <li>Nesdílejte citlivé osobní informace s AI</li>
+                            <li>Nepředpokládejte, že AI má vždy pravdu</li>
+                            <li>Nepoužívejte AI k podvádění na zkouškách</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </section>

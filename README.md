@@ -100,6 +100,32 @@ Pro vlastní doménu (např. `fyzika-chemie.gymglobe.cz`):
 4. **Kinematika** - Pohyb těles, rychlost, zrychlení, dráha
 5. **Dynamika** - Síly, Newtonovy zákony, hybnost a energie
 
+### ⏱️ Časový plán lekce 00 - Využití umělé inteligence (2 vyučovací hodiny / 90 minut)
+
+#### Blok 1: Úvod a motivace (15 minut)
+- **0-5 min:** Úvodní otázka pro studenty: "Jaké AI nástroje již používáte?" (diskuze)
+- **5-10 min:** Co je AI a kde ji potkáváme? (AI kolem nás - Netflix, Siri, Google Mapy)
+- **10-15 min:** Přehled AI poskytovatelů (ChatGPT, Claude, Gemini - základní rozdíly)
+
+#### Blok 2: Praktický workshop (40 minut)
+- **15-25 min:** Limity AI a kritické myšlení (halucinace, bias, ověřování faktů)
+- **25-40 min:** Jak promptovat - Prompt Builder hands-on (studenti zkouší vytvářet vlastní prompty)
+- **40-55 min:** Workflow Perplexity → NotebookLM (krok za krokem s praktickým příkladem)
+
+#### Blok 3: Etika a diskuze (20 minut)
+- **55-65 min:** Etické otázky (2 témata: akademická poctivost, odpovědnost za chyby AI)
+- **65-75 min:** Diskuze ve skupinách: "Jak ovlivní AI vaše budoucí studium a kariéru?"
+
+#### Blok 4: Shrnutí a procvičení (15 minut)
+- **75-85 min:** Interaktivní kvíz (kontrola pochopení základních konceptů)
+- **85-90 min:** Domácí úkol: "Použijte workflow Perplexity→NotebookLM na fyzikální téma dle vlastního výběru a přineste výsledky příště"
+
+#### Poznámky pro učitele:
+- **Materiály k přípravě:** Zajistěte přístup k internetu a AI nástrojům (Perplexity, NotebookLM jsou zdarma)
+- **Diferenciace:** Pokročilí studenti mohou prozkoumávat XML tagy a pokročilé techniky promptování
+- **Flexibilita:** Pokud diskuze zabere více času, zkraťte blok 4 na povinný kvíz bez domácího úkolu
+- **Follow-up:** Další hodina může být věnována sdílení výsledků domácího úkolu a hlubšímu rozboru workflow
+
 ### Semestrální projekty (4 projekty)
 1. **Akumulace tepla** - PCM systémy, úspora 35%, ROI 4.2 roky
 2. **Rekuperace tepla** - 85% účinnost, úspora 156 MWh/rok

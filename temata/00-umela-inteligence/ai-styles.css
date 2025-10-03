@@ -923,3 +923,294 @@
 .workflow-summary {
     margin-top: var(--spacing-xl);
 }
+
+/* AI Limits Section */
+.section-warning {
+    background: linear-gradient(135deg, #fff5f5 0%, #ffe5e5 100%);
+    border-top: 4px solid #ef4444;
+}
+
+.warning-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-lg);
+    margin: var(--spacing-xl) 0;
+}
+
+.warning-card {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: var(--spacing-lg);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-left: 4px solid #ef4444;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.warning-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.warning-icon {
+    font-size: 2.5rem;
+    color: #ef4444;
+    margin-bottom: var(--spacing-md);
+    text-align: center;
+}
+
+.warning-card h3 {
+    color: #dc2626;
+    margin-bottom: var(--spacing-md);
+    font-size: 1.3rem;
+}
+
+.warning-example {
+    background: #fef2f2;
+    border-left: 3px solid #fca5a5;
+    padding: var(--spacing-md);
+    margin: var(--spacing-md) 0;
+    border-radius: 4px;
+    font-size: 0.95rem;
+}
+
+.warning-solution {
+    background: #f0fdf4;
+    border-left: 3px solid #86efac;
+    padding: var(--spacing-md);
+    margin: var(--spacing-md) 0;
+    border-radius: 4px;
+    font-size: 0.95rem;
+}
+
+.critical-thinking-box {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: var(--spacing-xl);
+    margin: var(--spacing-xl) 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-top: 4px solid var(--primary-color);
+}
+
+.critical-thinking-box h3 {
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-lg);
+}
+
+.thinking-rules {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.rule-item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-md);
+    padding: var(--spacing-sm);
+    background: #f8fafc;
+    border-radius: 8px;
+    transition: background 0.2s ease;
+}
+
+.rule-item:hover {
+    background: #e0f2fe;
+}
+
+.rule-item i {
+    color: var(--secondary-color);
+    font-size: 1.2rem;
+    margin-top: 2px;
+    flex-shrink: 0;
+}
+
+.good-practice {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: var(--spacing-xl);
+    margin: var(--spacing-xl) 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.good-practice h3 {
+    color: var(--accent-color);
+    margin-bottom: var(--spacing-lg);
+}
+
+.practice-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-xl);
+    margin-top: var(--spacing-lg);
+}
+
+.practice-do h4 {
+    color: var(--secondary-color);
+    margin-bottom: var(--spacing-md);
+    font-size: 1.2rem;
+}
+
+.practice-dont h4 {
+    color: #ef4444;
+    margin-bottom: var(--spacing-md);
+    font-size: 1.2rem;
+}
+
+.practice-do ul,
+.practice-dont ul {
+    list-style: none;
+    padding: 0;
+}
+
+.practice-do li,
+.practice-dont li {
+    padding: var(--spacing-sm);
+    margin: var(--spacing-xs) 0;
+    border-radius: 6px;
+    line-height: 1.6;
+}
+
+.practice-do li {
+    background: #f0fdf4;
+    border-left: 3px solid var(--secondary-color);
+}
+
+.practice-dont li {
+    background: #fef2f2;
+    border-left: 3px solid #ef4444;
+}
+
+/* Lesson Timeline */
+.timeline-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+    margin: var(--spacing-xl) 0;
+    position: relative;
+}
+
+.timeline-block {
+    display: flex;
+    gap: var(--spacing-lg);
+    align-items: flex-start;
+    position: relative;
+}
+
+.timeline-badge {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    font-weight: 700;
+    font-size: 1.2rem;
+    padding: var(--spacing-md);
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+    z-index: 2;
+}
+
+.timeline-content {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: var(--spacing-lg);
+    flex: 1;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-left: 4px solid var(--primary-color);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.timeline-content:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.timeline-content h3 {
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-md);
+    font-size: 1.3rem;
+}
+
+.timeline-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.timeline-content li {
+    padding: var(--spacing-sm) 0;
+    line-height: 1.6;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.timeline-content li:last-child {
+    border-bottom: none;
+}
+
+.timeline-content li strong {
+    color: var(--secondary-color);
+    margin-right: var(--spacing-xs);
+}
+
+.teacher-notes {
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-xl);
+    margin: var(--spacing-xl) 0;
+    border-left: 6px solid var(--accent-color);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.teacher-notes h3 {
+    color: #92400e;
+    margin-bottom: var(--spacing-lg);
+    font-size: 1.4rem;
+}
+
+.notes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-md);
+}
+
+.note-item {
+    background: white;
+    padding: var(--spacing-md);
+    border-radius: 8px;
+    line-height: 1.6;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease;
+}
+
+.note-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.note-item strong {
+    display: block;
+    color: var(--accent-color);
+    margin-bottom: var(--spacing-xs);
+    font-size: 1.05rem;
+}
+
+/* Responsive timeline */
+@media (max-width: 768px) {
+    .timeline-block {
+        flex-direction: column;
+        gap: var(--spacing-md);
+    }
+
+    .timeline-badge {
+        width: 50px;
+        height: 50px;
+        font-size: 1rem;
+    }
+
+    .notes-grid {
+        grid-template-columns: 1fr;
+    }
+}
