@@ -1,18 +1,27 @@
-# Praktické aplikace fyziky a chemie
+# Fyzika - opakování a prohloubení
 
 > Webové stránky předmětu na Gymnáziu Globe
 
+## 🌐 Živá stránka
+
+**Stránky jsou dostupné na:** [https://slavek81.github.io/globe-praktikum/](https://slavek81.github.io/globe-praktikum/)
+
+📚 Systematické opakování a prohloubení všech oblastí fyziky s důrazem na výpočty a řešení praktických příkladů.
+
+---
+
 ## 🚀 O projektu
 
-Moderní, responzivní webová stránka pro předmět **Praktické aplikace fyziky a chemie** vyučovaný na Gymnáziu Globe. Stránka poskytuje studentům přístup k přednáškám, semestrálním projektům, cvičením a praktickým nástrojům.
+Moderní, responzivní webová stránka pro předmět **Fyzika - opakování a prohloubení** vyučovaný na Gymnáziu Globe. Stránka poskytuje studentům systematické opakování všech oblastí fyziky s důrazem na výpočty a řešení praktických příkladů.
 
 ### ✨ Hlavní funkce
 
-- 📚 **Přednášky** - Kompletní materiály k 6 tematickým oblastem
-- 🎯 **Semestrální projekty** - 4 praktické projekty s reálnými ekonomickými výsledky
-- 💻 **Praktické nástroje** - Python skripty, Excel šablony, AI návody
+- 📚 **Okruhy témat** - Kompletní materiály k 17 fyzikálním oblastem (od kinematiky po elektrodynamiku)
+- 🎯 **Semestrální projekty** - 4 praktické projekty z energetiky s reálnými ekonomickými výsledky
+- 💻 **Praktické nástroje** - Python skripty, Excel kalkulačky, AI návody pro efektivní studium
 - 🎨 **Moderní design** - Responzivní design fungující na všech zařízeních
 - ⚡ **Rychlé načítání** - Optimalizované pro maximální výkon
+- 🧮 **Výpočetní zaměření** - Hlavní důraz na výpočty, teorie vysvětlována během řešení příkladů
 
 ## 📁 Struktura projektu
 
@@ -62,7 +71,12 @@ Stránka je plně responzivní a optimalizovaná pro:
 
 ## 🚀 GitHub Pages Nasazení
 
-### Postup nasazení:
+### Aktuální nasazení:
+
+**Repository:** [https://github.com/Slavek81/globe-praktikum](https://github.com/Slavek81/globe-praktikum)
+**Živá stránka:** [https://slavek81.github.io/globe-praktikum/](https://slavek81.github.io/globe-praktikum/)
+
+### Postup nasazení pro nové projekty:
 
 1. **Vytvořte GitHub repozitář**
    ```bash
@@ -70,7 +84,7 @@ Stránka je plně responzivní a optimalizovaná pro:
    git add .
    git commit -m "Initial commit"
    git branch -M main
-   git remote add origin https://github.com/USERNAME/praktické-aplikace-fyziky-chemie.git
+   git remote add origin https://github.com/USERNAME/PROJECT-NAME.git
    git push -u origin main
    ```
 
@@ -81,7 +95,7 @@ Stránka je plně responzivní a optimalizovaná pro:
    - Klikněte Save
 
 3. **Vaše stránka bude dostupná na:**
-   `https://USERNAME.github.io/praktické-aplikace-fyziky-chemie/`
+   `https://USERNAME.github.io/PROJECT-NAME/`
 
 ### Vlastní doména (volitelné)
 
@@ -93,12 +107,29 @@ Pro vlastní doménu (např. `fyzika-chemie.gymglobe.cz`):
 
 ## 📊 Obsah stránky
 
-### Přednášky (5 hlavních témat)
-1. **Využití umělé inteligence** - AI nástroje pro studium, Perplexity AI workflow pro hloubkový výzkum, Google NotebookLM pro analýzu
-2. **Matematické praktikum** - Python, Excel, numerické metody
-3. **Úvod a bilance** - Materiálové a energetické bilance
-4. **Kinematika** - Pohyb těles, rychlost, zrychlení, dráha
-5. **Dynamika** - Síly, Newtonovy zákony, hybnost a energie
+### Okruhy témat (17 fyzikálních oblastí)
+
+**Aktuálně dostupné témata:**
+1. **00 - Využití umělé inteligence** - AI nástroje pro studium (ChatGPT, Claude, Perplexity AI, NotebookLM)
+2. **01 - Matematické praktikum** - Python, Excel, numerické metody
+3. **02 - Úvod a bilance** - Materiálové a energetické bilance
+4. **03 - Kinematika** - Pohyb těles, rychlost, zrychlení, dráha (98 příkladů s řešeními)
+5. **04 - Dynamika** - Síly, Newtonovy zákony, hybnost, energie, FBD diagramy
+
+**Plánovaná témata:**
+- 05 - Mechanická práce a energie
+- 06 - Gravitační pole
+- 07 - Mechanika tuhého tělesa
+- 08 - Mechanika tekutin
+- 09 - Molekulová fyzika a termika
+- 10 - Vnitřní energie, práce, teplo
+- 11 - Struktura a vlastnosti plynů
+- 12 - Struktura a vlastnosti pevných látek
+- 13 - Struktura a vlastnosti kapalin
+- 14 - Změny skupenství látek
+- 15 - Kmitání mechanického oscilátoru
+- 16 - Mechanické vlnění
+- 17 - Elektrický náboj a elektrické pole
 
 ### ⏱️ Časový plán lekce 00 - Využití umělé inteligence (2 vyučovací hodiny / 90 minut)
 
