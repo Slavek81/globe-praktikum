@@ -93,8 +93,8 @@ Pro vlastní doménu (např. `fyzika-chemie.gymglobe.cz`):
 
 ## 📊 Obsah stránky
 
-### Přednášky (5 témat)
-1. **Využití umělé inteligence** - AI nástroje pro studium
+### Přednášky (5 hlavních témat)
+1. **Využití umělé inteligence** - AI nástroje pro studium, Perplexity AI workflow pro hloubkový výzkum, Google NotebookLM pro analýzu
 2. **Matematické praktikum** - Python, Excel, numerické metody
 3. **Úvod a bilance** - Materiálové a energetické bilance
 4. **Kinematika** - Pohyb těles, rychlost, zrychlení, dráha
@@ -109,7 +109,7 @@ Pro vlastní doménu (např. `fyzika-chemie.gymglobe.cz`):
 ### Praktické nástroje
 - **Python skripty** - Tepelné výpočty, proudění, simulace
 - **Excel šablony** - Bilance, ekonomické analýzy, návrhy
-- **AI návody** - ChatGPT, Claude, GitHub Copilot
+- **AI návody** - ChatGPT, Claude, Perplexity AI pro výzkum, Google NotebookLM pro analýzu, GitHub Copilot
 - **Řešené příklady** - Postupy a vysvětlení
 
 ## 🛠️ Technologie
