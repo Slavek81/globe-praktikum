@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projekt 1: Akumulace tepla v budovách | Fyzika - opakování a prohloubení</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background: #f8fafc;
+        }
+        .project-document {
+            max-width: 900px;
+            margin: 2rem auto;
+            background: white;
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+        .project-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 3px solid #3b82f6;
+        }
+        .project-title {
+            font-size: 2rem;
+            color: #1f2937;
+            margin-bottom: 1rem;
+        }
+        .project-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        .info-box {
+            background: #f0f9ff;
+            border-left: 4px solid #3b82f6;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 8px;
+        }
+        .info-box h3 {
+            color: #1e40af;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+        .info-box ul {
+            list-style: none;
+            padding: 0;
+        }
+        .info-box li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        .info-box li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #3b82f6;
+            font-weight: bold;
+        }
+        .section-heading {
+            color: #1f2937;
+            font-size: 1.8rem;
+            margin-top: 3rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #e5e7eb;
+        }
+        .subsection-heading {
+            color: #374151;
+            font-size: 1.4rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .subsubsection-heading {
+            color: #4b5563;
+            font-size: 1.1rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+        .content-text {
+            line-height: 1.8;
+            color: #374151;
+            margin-bottom: 1rem;
+        }
+        .content-list {
+            margin: 1rem 0 1rem 2rem;
+            line-height: 1.8;
+        }
+        .content-list li {
+            margin: 0.5rem 0;
+        }
+        .warning-box {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 8px;
+        }
+        .warning-box h4 {
+            color: #92400e;
+            margin-bottom: 0.5rem;
+        }
+        .table-container {
+            overflow-x: auto;
+            margin: 2rem 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+        }
+        th {
+            background: #3b82f6;
+            color: white;
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+        td {
+            padding: 1rem;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        tr:hover {
+            background: #f9fafb;
+        }
+        .criteria-box {
+            background: #f0fdf4;
+            border-left: 4px solid #10b981;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-radius: 8px;
+        }
+        .print-button {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: #3b82f6;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+            cursor: pointer;
+            border: none;
+            font-weight: 600;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+        .print-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(59, 130, 246, 0.4);
+        }
+        @media print {
+            .print-button, header, .back-link {
+                display: none;
+            }
+            .project-document {
+                box-shadow: none;
+                padding: 0;
+            }
+            body {
+                background: white;
+            }
+        }
+        .back-link {
+            display: inline-block;
+            margin: 2rem auto;
+            text-align: center;
+            padding: 0.8rem 1.5rem;
+            background: #6b7280;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: background 0.3s ease;
+        }
+        .back-link:hover {
+            background: #4b5563;
+        }
+    </style>
+</head>
+<body>
+    <div style="text-align: center; padding: 2rem 0;">
+        <a href="projekty.html" class="back-link">
+            <i class="fas fa-arrow-left"></i> Zpět na přehled projektů
+        </a>
+    </div>
+
+    <div class="project-document">
+        <div class="project-header">
+            <div class="project-badge">Projekt 1</div>
+            <h1 class="project-title">Analýza a návrh systému akumulace tepla pro rodinný dům</h1>
+        </div>
+
+        <div class="info-box">
+            <h3><i class="fas fa-info-circle"></i> Základní informace</h3>
+            <ul>
+                <li><strong>Předmět:</strong> Praktické použití fyziky a chemie</li>
+                <li><strong>Typ projektu:</strong> Teoretická studie</li>
+                <li><strong>Časová dotace:</strong> 16 týdnů (2 hodiny týdně + domácí příprava)</li>
+                <li><strong>Práce v týmu:</strong> 2-3 studenti</li>
+            </ul>
+        </div>
+
+        <h2 class="section-heading">Charakteristika projektu</h2>
+        <p class="content-text">Studenti provedou komplexní teoretickou studii možností akumulace tepelné energie pro konkrétní rodinný dům. Projekt zahrnuje analýzu různých technologií ukládání tepla, provedení tepelně-technických výpočtů a návrh optimálního řešení včetně ekonomického zhodnocení.</p>
+
+        <h2 class="section-heading">Cíle projektu</h2>
+
+        <h3 class="subsection-heading">Hlavní cíl</h3>
+        <p class="content-text">Navrhnout optimální systém akumulace tepla pro modelový rodinný dům s důrazem na technickou proveditelnost a ekonomickou návratnost.</p>
+
+        <h3 class="subsection-heading">Dílčí cíle</h3>
+        <ol class="content-list">
+            <li>Pochopit principy různých způsobů akumulace tepelné energie</li>
+            <li>Naučit se provádět tepelně-technické výpočty</li>
+            <li>Osvojit si práci s odbornými zdroji a technickými katalogy</li>
+            <li>Rozvíjet schopnost kritického myšlení a rozhodování</li>
+            <li>Připravit se na psaní odborných prací</li>
+        </ol>
+
+        <h2 class="section-heading">Zadání projektu</h2>
+
+        <h3 class="subsection-heading">1. Rešeršní část (30% hodnocení)</h3>
+
+        <h4 class="subsubsection-heading">1.1 Technologie akumulace tepla</h4>
+        <p class="content-text">Popište minimálně 3 různé technologie:</p>
+        <ul class="content-list">
+            <li>Akumulace citelného tepla (voda, kameny, beton)</li>
+            <li>Akumulace latentního tepla (PCM materiály - parafíny, hydráty solí)</li>
+            <li>Termochemická akumulace (silikagel, zeolit)</li>
+        </ul>
+
+        <h4 class="subsubsection-heading">1.2 Srovnávací analýza</h4>
+        <p class="content-text">Vytvořte přehlednou tabulku porovnávající:</p>
+        <ul class="content-list">
+            <li>Tepelnou kapacitu [kJ/kg·K nebo kJ/m³·K]</li>
+            <li>Pracovní teplotní rozsah [°C]</li>
+            <li>Hustotu energie [kWh/m³]</li>
+            <li>Orientační cenu [Kč/kWh kapacity]</li>
+            <li>Životnost systému [roky]</li>
+            <li>Výhody a nevýhody</li>
+        </ul>
+
+        <h4 class="subsubsection-heading">1.3 Případové studie</h4>
+        <ul class="content-list">
+            <li>Najděte a popište minimálně 2 reálné příklady použití v ČR nebo EU</li>
+            <li>Analyzujte jejich parametry a zkušenosti z provozu</li>
+        </ul>
+
+        <h3 class="subsection-heading">2. Výpočetní část (40% hodnocení)</h3>
+
+        <h4 class="subsubsection-heading">2.1 Modelový dům - parametry</h4>
+        <ul class="content-list">
+            <li>Zastavěná plocha: 100 m²</li>
+            <li>Výška místností: 2,6 m</li>
+            <li>Tepelná ztráta: 8 kW při -15°C</li>
+            <li>Zdroj tepla: tepelné čerpadlo nebo plynový kotel</li>
+            <li>Otopná soustava: podlahové vytápění (35/28°C)</li>
+        </ul>
+
+        <h4 class="subsubsection-heading">2.2 Požadované výpočty</h4>
+
+        <p class="content-text"><strong>A) Tepelné ztráty a spotřeba</strong></p>
+        <ul class="content-list">
+            <li>Vypočítejte roční potřebu tepla na vytápění [GJ/rok]</li>
+            <li>Určete maximální denní spotřebu v nejchladnějším období [kWh/den]</li>
+            <li>Stanovte průměrnou denní spotřebu v topné sezóně [kWh/den]</li>
+        </ul>
+
+        <p class="content-text"><strong>B) Dimenzování akumulátoru</strong></p>
+        <p class="content-text">Pro každou zvolenou technologii vypočítejte:</p>
+        <ul class="content-list">
+            <li>Potřebnou kapacitu pro 24hodinový provoz [kWh]</li>
+            <li>Objem akumulátoru [m³]</li>
+            <li>Hmotnost akumulačního média [kg]</li>
+            <li>Tepelné ztráty akumulátoru (2% denně)</li>
+        </ul>
+
+        <p class="content-text"><strong>C) Dynamika systému</strong></p>
+        <ul class="content-list">
+            <li>Dobu nabíjení při výkonu zdroje 12 kW [h]</li>
+            <li>Dobu vybíjení při průměrné spotřebě [h]</li>
+            <li>Účinnost cyklu nabití/vybití [%]</li>
+        </ul>
+
+        <h3 class="subsection-heading">3. Návrhová část (20% hodnocení)</h3>
+
+        <h4 class="subsubsection-heading">3.1 Výběr optimální varianty</h4>
+        <ul class="content-list">
+            <li>Zdůvodněte výběr technologie na základě multikriteriální analýzy</li>
+            <li>Použijte minimálně 5 kritérií (cena, účinnost, prostorové nároky, životnost, ekologie)</li>
+        </ul>
+
+        <h4 class="subsubsection-heading">3.2 Technické řešení</h4>
+        <ul class="content-list">
+            <li>Nakreslete schéma zapojení akumulátoru v otopném systému</li>
+            <li>Specifikujte hlavní komponenty (čerpadla, ventily, regulace)</li>
+            <li>Navrhněte umístění v domě (sklep, technická místnost)</li>
+        </ul>
+
+        <h4 class="subsubsection-heading">3.3 Ekonomická analýza</h4>
+        <ul class="content-list">
+            <li>Investiční náklady (akumulátor, instalace, příslušenství)</li>
+            <li>Roční úspora při využití nízkého tarifu (D57d)</li>
+            <li>Prostá návratnost investice [roky]</li>
+            <li>NPV za 15 let provozu při diskontní sazbě 4%</li>
+        </ul>
+
+        <h3 class="subsection-heading">4. Výstupy projektu (10% hodnocení)</h3>
+
+        <h4 class="subsubsection-heading">4.1 Písemná zpráva (10-15 stran)</h4>
+        <p class="content-text"><strong>Struktura:</strong></p>
+        <ol class="content-list">
+            <li>Titulní strana</li>
+            <li>Abstrakt (max. 150 slov)</li>
+            <li>Úvod a cíle práce</li>
+            <li>Teoretická část (rešerše)</li>
+            <li>Výpočetní část</li>
+            <li>Návrh řešení</li>
+            <li>Ekonomické zhodnocení</li>
+            <li>Diskuze výsledků</li>
+            <li>Závěr</li>
+            <li>Seznam použité literatury (min. 10 zdrojů)</li>
+            <li>Přílohy (tabulky, grafy, schémata)</li>
+        </ol>
+
+        <h4 class="subsubsection-heading">4.2 PowerPoint prezentace</h4>
+        <ul class="content-list">
+            <li>Délka: 15 minut + 5 minut diskuze</li>
+            <li>Obsah: 15-20 snímků</li>
+        </ul>
+        <p class="content-text"><strong>Povinné prvky:</strong></p>
+        <ul class="content-list">
+            <li>Úvodní snímek s názvem a autory</li>
+            <li>Motivace a cíle</li>
+            <li>Srovnání technologií (graf/tabulka)</li>
+            <li>Klíčové výpočty</li>
+            <li>Schéma navrženého řešení</li>
+            <li>Ekonomická návratnost (graf)</li>
+            <li>Závěry a doporučení</li>
+        </ul>
+
+        <h4 class="subsubsection-heading">4.3 Executive summary</h4>
+        <ul class="content-list">
+            <li>Rozsah: 1 strana A4</li>
+            <li>Shrnutí pro "manažera" - stručně, jasně, s čísly</li>
+            <li>Obsahuje: problém, řešení, přínosy, náklady, doporučení</li>
+        </ul>
+
+        <h2 class="section-heading">Hodnotící kritéria</h2>
+
+        <h3 class="subsection-heading">Rozdělení bodů (celkem 100 bodů)</h3>
+
+        <div class="criteria-box">
+            <h4><strong>Rešeršní část (30 bodů)</strong></h4>
+            <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                <li>Kvalita a relevance zdrojů: 10 bodů</li>
+                <li>Úplnost zpracování technologií: 10 bodů</li>
+                <li>Případové studie: 10 bodů</li>
+            </ul>
+        </div>
+
+        <div class="criteria-box">
+            <h4><strong>Výpočetní část (40 bodů)</strong></h4>
+            <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                <li>Správnost výpočtů: 20 bodů</li>
+                <li>Použití správných vzorců a jednotek: 10 bodů</li>
+                <li>Interpretace výsledků: 10 bodů</li>
+            </ul>
+        </div>
+
+        <div class="criteria-box">
+            <h4><strong>Návrhová část (20 bodů)</strong></h4>
+            <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                <li>Zdůvodnění výběru: 8 bodů</li>
+                <li>Technické zpracování: 7 bodů</li>
+                <li>Ekonomická analýza: 5 bodů</li>
+            </ul>
+        </div>
+
+        <div class="criteria-box">
+            <h4><strong>Formální zpracování (10 bodů)</strong></h4>
+            <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                <li>Struktura a úprava zprávy: 4 body</li>
+                <li>Kvalita prezentace: 4 body</li>
+                <li>Dodržení rozsahu a termínů: 2 body</li>
+            </ul>
+        </div>
+
+        <h3 class="subsection-heading">Známkování</h3>
+        <ul class="content-list">
+            <li>90-100 bodů: výborně (1)</li>
+            <li>75-89 bodů: chvalitebně (2)</li>
+            <li>60-74 bodů: dobře (3)</li>
+            <li>45-59 bodů: dostatečně (4)</li>
+            <li>0-44 bodů: nedostatečně (5)</li>
+        </ul>
+
+        <h2 class="section-heading">Časový harmonogram</h2>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Týden</th>
+                        <th>Činnost</th>
+                        <th>Výstup</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1-2</td>
+                        <td>Vytvoření týmů, studium zadání</td>
+                        <td>Registrace týmů</td>
+                    </tr>
+                    <tr>
+                        <td>3-4</td>
+                        <td>Úvodní rešerše, výběr technologií</td>
+                        <td>Seznam literatury</td>
+                    </tr>
+                    <tr>
+                        <td>5-6</td>
+                        <td>Detailní rešerše technologií</td>
+                        <td>Draft rešeršní části</td>
+                    </tr>
+                    <tr>
+                        <td>7-8</td>
+                        <td>Tepelně-technické výpočty</td>
+                        <td>Výpočetní protokol</td>
+                    </tr>
+                    <tr>
+                        <td>9-10</td>
+                        <td>Dimenzování akumulátorů</td>
+                        <td>Srovnávací tabulky</td>
+                    </tr>
+                    <tr>
+                        <td>11-12</td>
+                        <td>Návrh řešení, ekonomická analýza</td>
+                        <td>Schémata, grafy</td>
+                    </tr>
+                    <tr>
+                        <td>13-14</td>
+                        <td>Psaní závěrečné zprávy</td>
+                        <td>Kompletní zpráva</td>
+                    </tr>
+                    <tr>
+                        <td>15</td>
+                        <td>Příprava prezentace</td>
+                        <td>PowerPoint</td>
+                    </tr>
+                    <tr>
+                        <td>16</td>
+                        <td>Prezentace projektů</td>
+                        <td>Obhajoba</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2 class="section-heading">Doporučené zdroje</h2>
+
+        <h3 class="subsection-heading">Literatura</h3>
+        <ol class="content-list">
+            <li>KAREL, M. a kol.: Tepelná čerpadla a akumulace tepla. Praha: ČVUT, 2020</li>
+            <li>TZB-info: Sekce Vytápění - Akumulace tepla [online]</li>
+            <li>Katalogy výrobců: Regulus, Dražice, Austria Email</li>
+            <li>ČSN EN 15316 - Tepelné soustavy v budovách</li>
+            <li>CENTNEROVÁ, L.: Tepelná technika budov. Praha: ČVUT, 2015</li>
+        </ol>
+
+        <h3 class="subsection-heading">Online nástroje</h3>
+        <ul class="content-list">
+            <li>Kalkulačka tepelných ztrát: www.tzb-info.cz/tabulky-a-vypocty</li>
+            <li>Ceníky energií: www.eru.cz</li>
+            <li>Klimatická data: portal.chmi.cz</li>
+        </ul>
+
+        <h3 class="subsection-heading">Software (volitelně)</h3>
+        <ul class="content-list">
+            <li>MS Excel pro výpočty a grafy</li>
+            <li>AutoCAD/SketchUp pro schémata (nebo ruční kreslení)</li>
+        </ul>
+
+        <h2 class="section-heading">Konzultace a podpora</h2>
+
+        <h3 class="subsection-heading">Pravidelné konzultace</h3>
+        <ul class="content-list">
+            <li>Každý týden: středa 14:00-15:00 (kabinet fyziky)</li>
+            <li>Online konzultace: MS Teams (po domluvě)</li>
+        </ul>
+
+        <h3 class="subsection-heading">Kontrolní body</h3>
+        <ul class="content-list">
+            <li><strong>Týden 6:</strong> Odevzdání rešeršní části (draft)</li>
+            <li><strong>Týden 10:</strong> Kontrola výpočtů</li>
+            <li><strong>Týden 14:</strong> Preview prezentace</li>
+        </ul>
+
+        <h2 class="section-heading">Poznámky pro realizaci</h2>
+
+        <h3 class="subsection-heading">Tipy pro úspěšné zpracování</h3>
+        <ol class="content-list">
+            <li>Začněte rešerší co nejdříve</li>
+            <li>Výpočty průběžně kontrolujte (jednotky!)</li>
+            <li>Používejte reálná data (ceníky, katalogy)</li>
+            <li>Citujte všechny zdroje správně</li>
+            <li>Nechte si čas na korektury</li>
+        </ol>
+
+        <div class="warning-box">
+            <h4><i class="fas fa-exclamation-triangle"></i> Častá úskalí</h4>
+            <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                <li>Podceňování časové náročnosti</li>
+                <li>Špatné jednotky ve výpočtech</li>
+                <li>Nereálné parametry (příliš optimistické účinnosti)</li>
+                <li>Chybějící ekonomické zhodnocení</li>
+                <li>Formální nedostatky ve zprávě</li>
+            </ul>
+        </div>
+
+        <h3 class="subsection-heading">Bonusové body (max. 5 bodů navíc)</h3>
+        <ul class="content-list">
+            <li>Využití pokročilých výpočetních metod</li>
+            <li>Simulace v specializovaném software</li>
+            <li>Kontakt s reálnou firmou/projektem</li>
+            <li>Výjimečná kvalita zpracování</li>
+        </ul>
+
+        <div style="text-align: center; margin-top: 4rem; padding-top: 2rem; border-top: 2px solid #e5e7eb;">
+            <p style="color: #6b7280; font-size: 0.9rem;">
+                <strong>Vyučující:</strong> Slavek Kilkovsky<br>
+                <strong>Kontakt:</strong> kabinet fyziky<br>
+                <strong>Konzultační hodiny:</strong> středa 14:00-15:00
+            </p>
+        </div>
+    </div>
+
+    <div style="text-align: center; padding: 2rem 0;">
+        <a href="projekty.html" class="back-link">
+            <i class="fas fa-arrow-left"></i> Zpět na přehled projektů
+        </a>
+    </div>
+
+    <button class="print-button" onclick="window.print()">
+        <i class="fas fa-print"></i> Vytisknout zadání
+    </button>
+</body>
+</html>
