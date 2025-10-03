@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projekt 4: Optimalizace tepelné izolace školy | Fyzika - opakování a prohloubení</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background: #f8fafc;
+        }
+        .project-document {
+            max-width: 900px;
+            margin: 2rem auto;
+            background: white;
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+        .project-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 3px solid #3b82f6;
+        }
+        .project-title {
+            font-size: 2rem;
+            color: #1f2937;
+            margin-bottom: 1rem;
+        }
+        .project-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        .info-box {
+            background: #f0f9ff;
+            border-left: 4px solid #3b82f6;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 8px;
+        }
+        .info-box h3 {
+            color: #1e40af;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+        .info-box ul {
+            list-style: none;
+            padding: 0;
+        }
+        .info-box li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        .info-box li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #3b82f6;
+            font-weight: bold;
+        }
+        .section-heading {
+            color: #1f2937;
+            font-size: 1.8rem;
+            margin-top: 3rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #e5e7eb;
+        }
+        .subsection-heading {
+            color: #374151;
+            font-size: 1.4rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .subsubsection-heading {
+            color: #4b5563;
+            font-size: 1.1rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+        .content-text {
+            line-height: 1.8;
+            color: #374151;
+            margin-bottom: 1rem;
+        }
+        .content-list {
+            margin: 1rem 0 1rem 2rem;
+            line-height: 1.8;
+        }
+        .content-list li {
+            margin: 0.5rem 0;
+        }
+        .warning-box {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 8px;
+        }
+        .warning-box h4 {
+            color: #92400e;
+            margin-bottom: 0.5rem;
+        }
+        .table-container {
+            overflow-x: auto;
+            margin: 2rem 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+        }
+        th {
+            background: #3b82f6;
+            color: white;
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+        td {
+            padding: 1rem;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        tr:hover {
+            background: #f9fafb;
+        }
+        .criteria-box {
+            background: #f0fdf4;
+            border-left: 4px solid #10b981;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-radius: 8px;
+        }
+        .print-button {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: #3b82f6;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+            cursor: pointer;
+            border: none;
+            font-weight: 600;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+        .print-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(59, 130, 246, 0.4);
+        }
+        @media print {
+            .print-button, header, .back-link {
+                display: none;
+            }
+            .project-document {
+                box-shadow: none;
+                padding: 0;
+            }
+            body {
+                background: white;
+            }
+        }
+        .back-link {
+            display: inline-block;
+            margin: 2rem auto;
+            text-align: center;
+            padding: 0.8rem 1.5rem;
+            background: #6b7280;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: background 0.3s ease;
+        }
+        .back-link:hover {
+            background: #4b5563;
+        }
+    </style>
+</head>
+<body>
+    <div style="text-align: center; padding: 2rem 0;">
+        <a href="projekty.html" class="back-link">
+            <i class="fas fa-arrow-left"></i> Zpět na přehled projektů
+        </a>
+    </div>
+
+    <div class="project-document">
+        <div class="project-header">
+            <div class="project-badge">Projekt 4</div>
+            <h1 class="project-title">Optimalizace tepelné izolace školy - teoretická studie</h1>
+        </div>
+
+        <div class="info-box">
+            <h3><i class="fas fa-info-circle"></i> Základní informace</h3>
+            <ul>
+                <li><strong>Předmět:</strong> Praktické použití fyziky a chemie</li>
+                <li><strong>Typ projektu:</strong> Energetický audit a optimalizační studie</li>
+                <li><strong>Časová dotace:</strong> 16 týdnů (2 hodiny týdně + domácí příprava)</li>
+                <li><strong>Práce v týmu:</strong> 2-3 studenti</li>
+            </ul>
+        </div>
+
+        <h2 class="section-heading">Charakteristika projektu</h2>
+        <p class="content-text">Studenti zpracují zjednodušený energetický audit školní budovy se zaměřením na tepelné ztráty a navrhnou optimalizaci tepelné izolace. Projekt kombinuje teoretické znalosti stavební fyziky s praktickou aplikací na reálnou budovu, ekonomickým hodnocením a environmentálními aspekty.</p>
+
+        <h2 class="section-heading">Cíle projektu</h2>
+
+        <h3 class="subsection-heading">Hlavní cíl</h3>
+        <p class="content-text">Analyzovat tepelně-technické vlastnosti školní budovy, identifikovat kritická místa tepelných ztrát a navrhnout ekonomicky optimální řešení zateplení.</p>
+
+        <h3 class="subsection-heading">Dílčí cíle</h3>
+        <ol class="content-list">
+            <li>Osvojit si principy přenosu tepla ve stavebních konstrukcích</li>
+            <li>Naučit se pracovat s normami ČSN v oblasti stavební fyziky</li>
+            <li>Pochopit metodiku energetického auditu</li>
+            <li>Rozvíjet schopnost systémového přístupu k řešení problémů</li>
+            <li>Získat praktické zkušenosti s hodnocením investic</li>
+        </ol>
+
+        <h2 class="section-heading">Zadání projektu</h2>
+
+        <h3 class="subsection-heading">1. Mapování současného stavu (25% hodnocení)</h3>
+
+        <h4 class="subsubsection-heading">1.1 Dokumentace budovy</h4>
+
+        <p class="content-text"><strong>Získání podkladů</strong></p>
+        <ul class="content-list">
+            <li>Půdorysy všech podlaží (1:100)</li>
+            <li>Řezy budovou (1:100)</li>
+            <li>Situační plán</li>
+            <li>Rok výstavby a rekonstrukcí</li>
+            <li>Technická dokumentace (pokud existuje)</li>
+        </ul>
+
+        <p class="content-text"><strong>Vlastní měření a dokumentace</strong></p>
+        <ul class="content-list">
+            <li>Ověření rozměrů</li>
+            <li>Fotodokumentace fasád</li>
+            <li>Identifikace konstrukčního systému</li>
+            <li>Orientace ke světovým stranám</li>
+        </ul>
+
+        <h4 class="subsubsection-heading">1.2 Stavební konstrukce</h4>
+
+        <p class="content-text"><strong>Obvodové stěny</strong></p>
+        <ul class="content-list">
+            <li>Materiál a tloušťka</li>
+            <li>Součinitel prostupu tepla U [W/m²·K]</li>
+            <li>Plocha stěn podle orientace [m²]</li>
+            <li>Tepelné mosty</li>
+        </ul>
+
+        <p class="content-text"><strong>Střecha/strop pod půdou</strong></p>
+        <ul class="content-list">
+            <li>Typ konstrukce</li>
+            <li>Skladba vrstev</li>
+            <li>Současné zateplení</li>
+            <li>Součinitel U [W/m²·K]</li>
+        </ul>
+
+        <p class="content-text"><strong>Výplně otvorů</strong></p>
+        <ul class="content-list">
+            <li>Typy oken (jednoduché, dvojité, trojité)</li>
+            <li>Materiál rámů</li>
+            <li>Součinitel Uw [W/m²·K]</li>
+            <li>Celková plocha oken [m²]</li>
+        </ul>
+
+        <p class="content-text"><strong>Podlaha/strop nad suterénem</strong></p>
+        <ul class="content-list">
+            <li>Konstrukce</li>
+            <li>Zateplení (pokud existuje)</li>
+            <li>Součinitel U [W/m²·K]</li>
+        </ul>
+
+        <h4 class="subsubsection-heading">1.3 Vytápěcí systém</h4>
+        <ul class="content-list">
+            <li>Zdroj tepla (typ, výkon, účinnost)</li>
+            <li>Roční spotřeba energie [GJ/rok]</li>
+            <li>Náklady na vytápění [Kč/rok]</li>
+            <li>Otopná soustava (radiátory, podlahové)</li>
+        </ul>
+
+        <h3 class="subsection-heading">2. Výpočet tepelných ztrát (35% hodnocení)</h3>
+
+        <h4 class="subsubsection-heading">2.1 Tepelné ztráty prostupem</h4>
+
+        <p class="content-text"><strong>Metodika výpočtu dle ČSN 73 0540</strong></p>
+        <p class="content-text">Pro každou konstrukci vypočítejte:</p>
+        <p class="content-text" style="font-family: monospace; background: #f3f4f6; padding: 1rem; border-radius: 4px;">
+            H<sub>T,i</sub> = A<sub>i</sub> × U<sub>i</sub> × b<sub>i</sub> [W/K]
+        </p>
+
+        <p class="content-text">kde:</p>
+        <ul class="content-list">
+            <li>A<sub>i</sub> = plocha konstrukce [m²]</li>
+            <li>U<sub>i</sub> = součinitel prostupu tepla [W/m²·K]</li>
+            <li>b<sub>i</sub> = teplotní redukční činitel [-]</li>
+        </ul>
+
+        <p class="content-text"><strong>Výpočty pro:</strong></p>
+        <ul class="content-list">
+            <li>Obvodové stěny (S, J, V, Z)</li>
+            <li>Střecha/strop pod půdou</li>
+            <li>Podlaha/strop nad suterénem</li>
+            <li>Okna a dveře</li>
+        </ul>
+
+        <p class="content-text"><strong>Celková měrná ztráta prostupem:</strong></p>
+        <p class="content-text" style="font-family: monospace; background: #f3f4f6; padding: 1rem; border-radius: 4px;">
+            H<sub>T</sub> = ΣH<sub>T,i</sub> + ΔH<sub>T,tb</sub> [W/K]
+        </p>
+        <p class="content-text">kde ΔH<sub>T,tb</sub> jsou tepelné mosty (10-15% z H<sub>T</sub>)</p>
+
+        <h4 class="subsubsection-heading">2.2 Tepelné ztráty větráním</h4>
+
+        <p class="content-text"><strong>Přirozené větrání</strong></p>
+        <p class="content-text" style="font-family: monospace; background: #f3f4f6; padding: 1rem; border-radius: 4px;">
+            H<sub>V</sub> = 0,34 × n × V [W/K]
+        </p>
+
+        <p class="content-text">kde:</p>
+        <ul class="content-list">
+            <li>n = intenzita výměny vzduchu [h⁻¹]</li>
+            <li>V = objem vytápěného prostoru [m³]</li>
+        </ul>
+
+        <p class="content-text"><strong>Nucené větrání (pokud existuje)</strong></p>
+        <ul class="content-list">
+            <li>Průtok vzduchu [m³/h]</li>
+            <li>Účinnost rekuperace [%]</li>
+        </ul>
+
+        <h4 class="subsubsection-heading">2.3 Celková tepelná ztráta</h4>
+
+        <p class="content-text" style="font-family: monospace; background: #f3f4f6; padding: 1rem; border-radius: 4px;">
+            Q = (H<sub>T</sub> + H<sub>V</sub>) × (t<sub>i</sub> - t<sub>e</sub>) [W]
+        </p>
+
+        <p class="content-text">kde:</p>
+        <ul class="content-list">
+            <li>t<sub>i</sub> = vnitřní teplota (20°C)</li>
+            <li>t<sub>e</sub> = venkovní výpočtová teplota (-15°C)</li>
+        </ul>
+
+        <h4 class="subsubsection-heading">2.4 Roční potřeba tepla</h4>
+
+        <p class="content-text"><strong>Denostupňová metoda</strong></p>
+        <p class="content-text" style="font-family: monospace; background: #f3f4f6; padding: 1rem; border-radius: 4px;">
+            E = 24 × ε × (H<sub>T</sub> + H<sub>V</sub>) × D / 1000 [GJ/rok]
+        </p>
+
+        <p class="content-text">kde:</p>
+        <ul class="content-list">
+            <li>ε = opravný součinitel (0,8-0,9)</li>
+            <li>D = počet denostupňů [K·den]</li>
+        </ul>
+
+        <h3 class="subsection-heading">3. Návrh úsporných opatření (30% hodnocení)</h3>
+
+        <h4 class="subsubsection-heading">3.1 Katalog opatření</h4>
+
+        <p class="content-text">Pro každé opatření určete:</p>
+        <ul class="content-list">
+            <li>Technické řešení</li>
+            <li>Zlepšení součinitele U</li>
+            <li>Investiční náklady [Kč]</li>
+            <li>Úspora energie [GJ/rok]</li>
+            <li>Prostá návratnost [roky]</li>
+        </ul>
+
+        <p class="content-text"><strong>Opatření 1: Zateplení fasády</strong></p>
+        <ul class="content-list">
+            <li>ETICS 160 mm EPS/MW</li>
+            <li>U před: 1,2 W/m²·K → U po: 0,20 W/m²·K</li>
+            <li>Cena: 1 800 Kč/m² včetně montáže</li>
+        </ul>
+
+        <p class="content-text"><strong>Opatření 2: Zateplení střechy/stropu</strong></p>
+        <ul class="content-list">
+            <li>300 mm minerální vaty</li>
+            <li>U před: 0,8 W/m²·K → U po: 0,12 W/m²·K</li>
+            <li>Cena: 800 Kč/m²</li>
+        </ul>
+
+        <p class="content-text"><strong>Opatření 3: Výměna oken</strong></p>
+        <ul class="content-list">
+            <li>Trojsklo s teplým rámem</li>
+            <li>Uw před: 2,8 W/m²·K → Uw po: 0,8 W/m²·K</li>
+            <li>Cena: 12 000 Kč/m²</li>
+        </ul>
+
+        <p class="content-text"><strong>Opatření 4: Zateplení soklu</strong></p>
+        <ul class="content-list">
+            <li>XPS 120 mm</li>
+            <li>U před: 1,5 W/m²·K → U po: 0,25 W/m²·K</li>
+            <li>Cena: 2 200 Kč/m²</li>
+        </ul>
+
+        <p class="content-text"><strong>Opatření 5: Instalace rekuperace</strong></p>
+        <ul class="content-list">
+            <li>Účinnost 85%</li>
+            <li>Investice: 500 000 Kč</li>
+            <li>Úspora větrání: 70%</li>
+        </ul>
+
+        <h4 class="subsubsection-heading">3.2 Výpočet úspor</h4>
+
+        <p class="content-text">Pro každé opatření:</p>
+        <p class="content-text" style="font-family: monospace; background: #f3f4f6; padding: 1rem; border-radius: 4px;">
+            ΔE = 24 × ε × ΔH × D / 1000 [GJ/rok]
+        </p>
+        <p class="content-text">kde ΔH = snížení tepelné ztráty [W/K]</p>
+
+        <p class="content-text">Finanční úspora:</p>
+        <p class="content-text" style="font-family: monospace; background: #f3f4f6; padding: 1rem; border-radius: 4px;">
+            ΔN = ΔE × cena_tepla [Kč/rok]
+        </p>
+
+        <h4 class="subsubsection-heading">3.3 Kombinace opatření</h4>
+
+        <p class="content-text"><strong>Varianta A: Minimální</strong></p>
+        <ul class="content-list">
+            <li>Pouze nejnutnější opravy</li>
+            <li>Investice do 1 mil. Kč</li>
+        </ul>
+
+        <p class="content-text"><strong>Varianta B: Optimální</strong></p>
+        <ul class="content-list">
+            <li>Nejlepší poměr cena/výkon</li>
+            <li>Návratnost do 10 let</li>
+        </ul>
+
+        <p class="content-text"><strong>Varianta C: Komplexní</strong></p>
+        <ul class="content-list">
+            <li>Pasivní standard</li>
+            <li>Maximální úspory</li>
+        </ul>
+
+        <h3 class="subsection-heading">4. Ekonomické vyhodnocení (10% hodnocení)</h3>
+
+        <h4 class="subsubsection-heading">4.1 Investiční náklady</h4>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Opatření</th>
+                        <th>Množství</th>
+                        <th>Jednotková cena</th>
+                        <th>Celkem</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Zateplení fasády</td>
+                        <td>m²</td>
+                        <td>Kč/m²</td>
+                        <td>Kč</td>
+                    </tr>
+                    <tr>
+                        <td>Zateplení střechy</td>
+                        <td>m²</td>
+                        <td>Kč/m²</td>
+                        <td>Kč</td>
+                    </tr>
+                    <tr>
+                        <td>Výměna oken</td>
+                        <td>m²</td>
+                        <td>Kč/m²</td>
+                        <td>Kč</td>
+                    </tr>
+                    <tr>
+                        <td><strong>CELKEM</strong></td>
+                        <td></td>
+                        <td></td>
+                        <td><strong>Kč</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h4 class="subsubsection-heading">4.2 Hodnocení variant</h4>
+
+        <p class="content-text">Pro každou variantu vypočítejte:</p>
+        <ul class="content-list">
+            <li>Celkové investiční náklady [Kč]</li>
+            <li>Roční úspora energie [GJ]</li>
+            <li>Roční úspora nákladů [Kč]</li>
+            <li>Prostá návratnost [roky]</li>
+            <li>NPV (20 let, i = 4%)</li>
+            <li>IRR [%]</li>
+        </ul>
+
+        <h4 class="subsubsection-heading">4.3 Prioritizace opatření</h4>
+
+        <p class="content-text">Seřaďte opatření podle:</p>
+        <ol class="content-list">
+            <li>Návratnosti (nejkratší první)</li>
+            <li>Absolutní úspory (největší první)</li>
+            <li>Technické naléhavosti</li>
+        </ol>
+
+        <h4 class="subsubsection-heading">4.4 Dotační možnosti</h4>
+        <ul class="content-list">
+            <li>Nová zelená úsporám</li>
+            <li>OPŽP</li>
+            <li>Vlastní zdroje</li>
+        </ul>
+
+        <h2 class="section-heading">Výstupy projektu</h2>
+
+        <h3 class="subsection-heading">1. Energetický audit (15-20 stran)</h3>
+
+        <p class="content-text"><strong>Struktura dokumentu:</strong></p>
+
+        <ol class="content-list">
+            <li><strong>Identifikační údaje</strong>
+                <ul style="margin-left: 1.5rem;">
+                    <li>Název budovy</li>
+                    <li>Adresa</li>
+                    <li>Vlastník/provozovatel</li>
+                    <li>Zpracovatel auditu</li>
+                </ul>
+            </li>
+            <li><strong>Executive summary</strong> (1 strana)
+                <ul style="margin-left: 1.5rem;">
+                    <li>Hlavní zjištění</li>
+                    <li>Doporučení</li>
+                    <li>Ekonomické ukazatele</li>
+                </ul>
+            </li>
+            <li><strong>Popis budovy</strong>
+                <ul style="margin-left: 1.5rem;">
+                    <li>Stavebně-technické řešení</li>
+                    <li>Vytápěcí systém</li>
+                    <li>Současná spotřeba</li>
+                </ul>
+            </li>
+            <li><strong>Výpočet tepelných ztrát</strong>
+                <ul style="margin-left: 1.5rem;">
+                    <li>Metodika</li>
+                    <li>Detailní výpočty</li>
+                    <li>Souhrnné tabulky</li>
+                </ul>
+            </li>
+            <li><strong>Návrh opatření</strong>
+                <ul style="margin-left: 1.5rem;">
+                    <li>Technická řešení</li>
+                    <li>Výpočet úspor</li>
+                    <li>Investiční náklady</li>
+                </ul>
+            </li>
+            <li><strong>Ekonomické vyhodnocení</strong>
+                <ul style="margin-left: 1.5rem;">
+                    <li>Varianty řešení</li>
+                    <li>Finanční analýza</li>
+                    <li>Doporučení</li>
+                </ul>
+            </li>
+            <li><strong>Environmentální přínosy</strong>
+                <ul style="margin-left: 1.5rem;">
+                    <li>Snížení emisí CO₂</li>
+                    <li>Úspora primární energie</li>
+                </ul>
+            </li>
+            <li><strong>Závěr a doporučení</strong></li>
+            <li><strong>Přílohy</strong>
+                <ul style="margin-left: 1.5rem;">
+                    <li>Výpočtové tabulky</li>
+                    <li>Půdorysy s vyznačením opatření</li>
+                    <li>Fotodokumentace</li>
+                    <li>Cenové nabídky</li>
+                </ul>
+            </li>
+        </ol>
+
+        <h3 class="subsection-heading">2. Prezentace pro vedení školy</h3>
+
+        <p class="content-text"><strong>PowerPoint (15 minut)</strong></p>
+        <ul class="content-list">
+            <li>Současný stav (fotky, termovize)</li>
+            <li>Tepelné ztráty (graf rozdělení)</li>
+            <li>Navrhovaná opatření (vizualizace)</li>
+            <li>Investice vs. úspory (graf návratnosti)</li>
+            <li>Varianty řešení (srovnávací tabulka)</li>
+            <li>Dotační možnosti</li>
+            <li>Doporučený postup</li>
+        </ul>
+
+        <h3 class="subsection-heading">3. Informační leták</h3>
+
+        <p class="content-text"><strong>A4 oboustranně</strong></p>
+        <ul class="content-list">
+            <li>Pro studenty a rodiče</li>
+            <li>Jednoduché vysvětlení problému</li>
+            <li>Navrhovaná řešení</li>
+            <li>Přínosy (úspory, komfort, ekologie)</li>
+        </ul>
+
+        <h3 class="subsection-heading">4. 3D vizualizace (bonus)</h3>
+        <ul class="content-list">
+            <li>Model budovy před/po zateplení</li>
+            <li>Tepelné toky</li>
+            <li>Kritická místa</li>
+        </ul>
+
+        <h2 class="section-heading">Hodnotící kritéria</h2>
+
+        <h3 class="subsection-heading">Bodové hodnocení (100 bodů)</h3>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Část</th>
+                        <th>Body</th>
+                        <th>Kritéria</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Analýza stavu</strong></td>
+                        <td>25</td>
+                        <td>Úplnost dat, správnost U-hodnot</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Výpočty</strong></td>
+                        <td>35</td>
+                        <td>Metodika, správnost, interpretace</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Návrh opatření</strong></td>
+                        <td>30</td>
+                        <td>Realističnost, komplexnost, inovace</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Ekonomika</strong></td>
+                        <td>10</td>
+                        <td>Správnost analýzy, závěry</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3 class="subsection-heading">Bonusové body (max. 10)</h3>
+        <ul class="content-list">
+            <li>Termovizní snímky: +3 body</li>
+            <li>Konzultace s energetickým auditorem: +2 body</li>
+            <li>3D model/vizualizace: +3 body</li>
+            <li>Měření infiltrace (blower door): +2 body</li>
+        </ul>
+
+        <h2 class="section-heading">Časový harmonogram</h2>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Týden</th>
+                        <th>Fáze</th>
+                        <th>Úkoly</th>
+                        <th>Výstup</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1-2</td>
+                        <td>Start</td>
+                        <td>Týmy, studium zadání</td>
+                        <td>Plán projektu</td>
+                    </tr>
+                    <tr>
+                        <td>3-4</td>
+                        <td>Mapování</td>
+                        <td>Dokumentace budovy</td>
+                        <td>Technické podklady</td>
+                    </tr>
+                    <tr>
+                        <td>5-6</td>
+                        <td>Analýza</td>
+                        <td>Součinitele U, plochy</td>
+                        <td>Tabulka konstrukcí</td>
+                    </tr>
+                    <tr>
+                        <td>7-8</td>
+                        <td>Výpočty I</td>
+                        <td>Tepelné ztráty</td>
+                        <td>Výpočtový protokol</td>
+                    </tr>
+                    <tr>
+                        <td>9-10</td>
+                        <td>Výpočty II</td>
+                        <td>Roční spotřeba</td>
+                        <td>Energetická bilance</td>
+                    </tr>
+                    <tr>
+                        <td>11-12</td>
+                        <td>Návrhy</td>
+                        <td>Opatření, úspory</td>
+                        <td>Katalog opatření</td>
+                    </tr>
+                    <tr>
+                        <td>13</td>
+                        <td>Ekonomika</td>
+                        <td>Hodnocení variant</td>
+                        <td>Finanční analýza</td>
+                    </tr>
+                    <tr>
+                        <td>14-15</td>
+                        <td>Dokumentace</td>
+                        <td>Audit, prezentace</td>
+                        <td>Finální dokumenty</td>
+                    </tr>
+                    <tr>
+                        <td>16</td>
+                        <td>Prezentace</td>
+                        <td>Obhajoby</td>
+                        <td>Prezentace</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2 class="section-heading">Doporučené zdroje</h2>
+
+        <h3 class="subsection-heading">Normy a předpisy</h3>
+        <ol class="content-list">
+            <li>ČSN 73 0540 - Tepelná ochrana budov</li>
+            <li>ČSN EN ISO 13790 - Energetická náročnost budov</li>
+            <li>Vyhláška 78/2013 Sb. - Energetická náročnost budov</li>
+            <li>TNI 73 0329 - Zjednodušené výpočtové hodnocení</li>
+        </ol>
+
+        <h3 class="subsection-heading">Literatura</h3>
+        <ol class="content-list">
+            <li>VAVERKA, J. a kol.: Stavební tepelná technika a energetika budov. Brno: VUTIUM, 2006</li>
+            <li>ŘEHÁNEK, J.: Tepelná akumulace budov. Praha: ČKAIT, 2002</li>
+            <li>HÁJEK, P.: Pozemní stavitelství III. Praha: ČVUT, 2004</li>
+        </ol>
+
+        <h3 class="subsection-heading">Online nástroje</h3>
+        <ul class="content-list">
+            <li>www.tzb-info.cz/tabulky-a-vypocty/58-prostup-tepla-vicevrstvou-konstrukci</li>
+            <li>www.isover.cz/aplikace/tep-technika</li>
+            <li>www.knaufinsulation.cz/kalkulacka-uspor</li>
+            <li>www.nkn.cz - Národní kalkulační nástroj</li>
+        </ul>
+
+        <h3 class="subsection-heading">Software (volitelné)</h3>
+        <ul class="content-list">
+            <li>Teplo (Svoboda Software)</li>
+            <li>Area (Svoboda Software)</li>
+            <li>Energy+ (pokročilí)</li>
+        </ul>
+
+        <h3 class="subsection-heading">Katalogy materiálů</h3>
+        <ul class="content-list">
+            <li>ISOVER, ROCKWOOL - tepelné izolace</li>
+            <li>BAUMIT, STO - ETICS systémy</li>
+            <li>VEKRA, INTERNORM - okna a dveře</li>
+        </ul>
+
+        <h2 class="section-heading">Praktické pokyny</h2>
+
+        <h3 class="subsection-heading">Získávání dat</h3>
+        <ol class="content-list">
+            <li><strong>Kontaktujte správce budovy</strong> - technická dokumentace</li>
+            <li><strong>Změřte si sami</strong> - laser, pásmo</li>
+            <li><strong>Využijte katastr</strong> - půdorys budovy</li>
+            <li><strong>Fotodokumentace</strong> - všechny fasády</li>
+            <li><strong>Ptejte se</strong> - rok rekonstrukcí, problémy</li>
+        </ol>
+
+        <h3 class="subsection-heading">Určení součinitelů U</h3>
+
+        <p class="content-text"><strong>Pokud neznáte skladbu:</strong></p>
+        <ul class="content-list">
+            <li>Použijte tabulkové hodnoty dle roku výstavby</li>
+        </ul>
+        <p class="content-text">Orientační hodnoty:</p>
+        <ul class="content-list">
+            <li>Nezateplená zeď 45 cm: U = 1,2 W/m²·K</li>
+            <li>Okna dvojitá stará: U = 2,8 W/m²·K</li>
+            <li>Střecha nezateplená: U = 0,8-1,0 W/m²·K</li>
+        </ul>
+
+        <h3 class="subsection-heading">Časté chyby</h3>
+        <ul class="content-list">
+            <li>Zapomenutí na tepelné mosty (+10-15%)</li>
+            <li>Špatné jednotky (W vs. kW, GJ vs. kWh)</li>
+            <li>Nereálné ceny (ověřte u firem)</li>
+            <li>Zanedbání údržby a životnosti</li>
+            <li>Podcenění přípravných prací</li>
+        </ul>
+
+        <h3 class="subsection-heading">Tipy pro úspěch</h3>
+        <ol class="content-list">
+            <li><strong>Začněte včas</strong> - získání dat trvá</li>
+            <li><strong>Rozdělte si práci</strong> - každý člen něco</li>
+            <li><strong>Kontrolujte výpočty</strong> - řády veličin</li>
+            <li><strong>Používejte Excel</strong> - snadné přepočty</li>
+            <li><strong>Konzultujte</strong> - využijte všech možností</li>
+        </ol>
+
+        <h2 class="section-heading">Rozšíření projektu</h2>
+
+        <h3 class="subsection-heading">Pokročilé analýzy</h3>
+        <ul class="content-list">
+            <li>Dynamická simulace (hodinový krok)</li>
+            <li>Tepelné zisky (sluneční, vnitřní)</li>
+            <li>Letní přehřívání</li>
+            <li>Denní světlo</li>
+        </ul>
+
+        <h3 class="subsection-heading">Další opatření</h3>
+        <ul class="content-list">
+            <li>Fotovoltaika</li>
+            <li>Tepelné čerpadlo</li>
+            <li>Zelená střecha</li>
+            <li>Stínění</li>
+        </ul>
+
+        <h2 class="section-heading">Konzultace</h2>
+
+        <h3 class="subsection-heading">Pravidelné</h3>
+        <ul class="content-list">
+            <li><strong>Středa:</strong> 14:00-15:00 (kabinet fyziky)</li>
+            <li><strong>Online:</strong> MS Teams (rezervace)</li>
+            <li>Email: <a href="mailto:kilkovsky.s@seznam.cz">kilkovsky.s@seznam.cz</a></li>
+        </ul>
+
+        <h3 class="subsection-heading">Speciální (po domluvě)</h3>
+        <ul class="content-list">
+            <li>Energetický auditor</li>
+            <li>Projektant pozemních staveb</li>
+            <li>Zástupce dodavatele izolací</li>
+        </ul>
+
+        <h3 class="subsection-heading">Kontrolní body</h3>
+        <ul class="content-list">
+            <li><strong>Týden 4:</strong> Dokumentace budovy</li>
+            <li><strong>Týden 8:</strong> Kontrola výpočtů</li>
+            <li><strong>Týden 12:</strong> Návrh opatření</li>
+        </ul>
+
+        <h2 class="section-heading">Poznámky</h2>
+
+        <h3 class="subsection-heading">Bezpečnost</h3>
+        <ul class="content-list">
+            <li>Při dokumentaci dodržujte bezpečnost</li>
+            <li>Nevstupujte na střechu bez povolení</li>
+            <li>Při měření používejte OOPP</li>
+        </ul>
+
+        <h3 class="subsection-heading">Etika</h3>
+        <ul class="content-list">
+            <li>Respektujte soukromí</li>
+            <li>Nefotografujte osoby</li>
+            <li>Data používejte pouze pro projekt</li>
+        </ul>
+
+        <div style="text-align: center; margin-top: 4rem; padding-top: 2rem; border-top: 2px solid #e5e7eb;">
+            <p style="color: #6b7280; font-size: 0.9rem;">
+                <strong>Vyučující:</strong> Slavek Kilkovsky<br>
+                <strong>Email:</strong> <a href="mailto:kilkovsky.s@seznam.cz" style="color: #3b82f6;">kilkovsky.s@seznam.cz</a><br>
+                <strong>Konzultační hodiny:</strong> středa 14:00-15:00
+            </p>
+        </div>
+    </div>
+
+    <div style="text-align: center; padding: 2rem 0;">
+        <a href="projekty.html" class="back-link">
+            <i class="fas fa-arrow-left"></i> Zpět na přehled projektů
+        </a>
+    </div>
+
+    <button class="print-button" onclick="window.print()">
+        <i class="fas fa-print"></i> Vytisknout zadání
+    </button>
+</body>
+</html>

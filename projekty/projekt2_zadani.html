@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projekt 2: Rekuperace tepla ve školní jídelně | Fyzika - opakování a prohloubení</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background: #f8fafc;
+        }
+        .project-document {
+            max-width: 900px;
+            margin: 2rem auto;
+            background: white;
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+        .project-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 3px solid #3b82f6;
+        }
+        .project-title {
+            font-size: 2rem;
+            color: #1f2937;
+            margin-bottom: 1rem;
+        }
+        .project-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        .info-box {
+            background: #f0f9ff;
+            border-left: 4px solid #3b82f6;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 8px;
+        }
+        .info-box h3 {
+            color: #1e40af;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+        .info-box ul {
+            list-style: none;
+            padding: 0;
+        }
+        .info-box li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        .info-box li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #3b82f6;
+            font-weight: bold;
+        }
+        .section-heading {
+            color: #1f2937;
+            font-size: 1.8rem;
+            margin-top: 3rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #e5e7eb;
+        }
+        .subsection-heading {
+            color: #374151;
+            font-size: 1.4rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .subsubsection-heading {
+            color: #4b5563;
+            font-size: 1.1rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+        .content-text {
+            line-height: 1.8;
+            color: #374151;
+            margin-bottom: 1rem;
+        }
+        .content-list {
+            margin: 1rem 0 1rem 2rem;
+            line-height: 1.8;
+        }
+        .content-list li {
+            margin: 0.5rem 0;
+        }
+        .warning-box {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 8px;
+        }
+        .warning-box h4 {
+            color: #92400e;
+            margin-bottom: 0.5rem;
+        }
+        .table-container {
+            overflow-x: auto;
+            margin: 2rem 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+        }
+        th {
+            background: #3b82f6;
+            color: white;
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+        td {
+            padding: 1rem;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        tr:hover {
+            background: #f9fafb;
+        }
+        .criteria-box {
+            background: #f0fdf4;
+            border-left: 4px solid #10b981;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-radius: 8px;
+        }
+        .print-button {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: #3b82f6;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+            cursor: pointer;
+            border: none;
+            font-weight: 600;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+        .print-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(59, 130, 246, 0.4);
+        }
+        @media print {
+            .print-button, header, .back-link {
+                display: none;
+            }
+            .project-document {
+                box-shadow: none;
+                padding: 0;
+            }
+            body {
+                background: white;
+            }
+        }
+        .back-link {
+            display: inline-block;
+            margin: 2rem auto;
+            text-align: center;
+            padding: 0.8rem 1.5rem;
+            background: #6b7280;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: background 0.3s ease;
+        }
+        .back-link:hover {
+            background: #4b5563;
+        }
+    </style>
+</head>
+<body>
+    <div style="text-align: center; padding: 2rem 0;">
+        <a href="projekty.html" class="back-link">
+            <i class="fas fa-arrow-left"></i> Zpět na přehled projektů
+        </a>
+    </div>
+
+    <div class="project-document">
+        <div class="project-header">
+            <div class="project-badge">Projekt 2</div>
+            <h1 class="project-title">Studie proveditelnosti rekuperace tepla ve školní jídelně</h1>
+        </div>
+
+        <div class="info-box">
+            <h3><i class="fas fa-info-circle"></i> Základní informace</h3>
+            <ul>
+                <li><strong>Předmět:</strong> Praktické použití fyziky a chemie</li>
+                <li><strong>Typ projektu:</strong> Teoretická studie s praktickými prvky</li>
+                <li><strong>Časová dotace:</strong> 16 týdnů (2 hodiny týdně + domácí příprava)</li>
+                <li><strong>Práce v týmu:</strong> 2-3 studenti</li>
+            </ul>
+        </div>
+
+        <h2 class="section-heading">Charakteristika projektu</h2>
+        <p class="content-text">Studenti zpracují komplexní studii možností využití odpadního tepla ze školní kuchyně. Projekt zahrnuje energetický audit stávajícího stavu, návrh systému rekuperace tepla a ekonomickou analýzu návratnosti investice. Práce kombinuje teoretické znalosti s analýzou reálných dat z provozu školní jídelny.</p>
+
+        <h2 class="section-heading">Cíle projektu</h2>
+
+        <h3 class="subsection-heading">Hlavní cíl</h3>
+        <p class="content-text">Navrhnout technicky a ekonomicky optimální systém rekuperace tepla pro školní jídelnu s cílem snížení spotřeby energie a provozních nákladů.</p>
+
+        <h3 class="subsection-heading">Dílčí cíle</h3>
+        <ol class="content-list">
+            <li>Osvojit si principy přenosu tepla a práce výměníků</li>
+            <li>Naučit se provádět energetický audit</li>
+            <li>Pochopit ekonomické aspekty energetických úspor</li>
+            <li>Rozvíjet analytické a prezentační dovednosti</li>
+            <li>Aplikovat teoretické znalosti na reálný problém</li>
+        </ol>
+
+        <h2 class="section-heading">Zadání projektu</h2>
+
+        <h3 class="subsection-heading">1. Analýza současného stavu (25% hodnocení)</h3>
+
+        <h4 class="subsubsection-heading">1.1 Mapování zdrojů odpadního tepla</h4>
+        <p class="content-text">Identifikujte a kvantifikujte hlavní zdroje:</p>
+
+        <p class="content-text"><strong>Varné zařízení</strong></p>
+        <ul class="content-list">
+            <li>Plynové sporáky (počet hořáků, výkon)</li>
+            <li>Elektrické plotny</li>
+            <li>Konvektomaty</li>
+            <li>Fritézy</li>
+        </ul>
+
+        <p class="content-text"><strong>Myčky nádobí</strong></p>
+        <ul class="content-list">
+            <li>Typ a počet myček</li>
+            <li>Spotřeba vody a energie</li>
+            <li>Teplota odpadní vody</li>
+        </ul>
+
+        <p class="content-text"><strong>Vzduchotechnika</strong></p>
+        <ul class="content-list">
+            <li>Digestoře a odsávání</li>
+            <li>Průtok odváděného vzduchu</li>
+            <li>Teplota odpadního vzduchu</li>
+        </ul>
+
+        <h4 class="subsubsection-heading">1.2 Měření a odhady</h4>
+        <ul class="content-list">
+            <li>Počet připravovaných jídel denně: 500</li>
+            <li>Provozní doba: 6:00-14:00</li>
+            <li>Spotřeba teplé vody: 20 l/jídlo</li>
+            <li>Teplota odpadní vody z myček: 50-60°C</li>
+            <li>Teplota odpadního vzduchu: 35-45°C</li>
+        </ul>
+
+        <h4 class="subsubsection-heading">1.3 Energetická bilance</h4>
+        <p class="content-text">Vypočítejte:</p>
+        <ul class="content-list">
+            <li>Denní spotřebu energie na ohřev vody [kWh]</li>
+            <li>Tepelné ztráty odpadním vzduchem [kWh]</li>
+            <li>Tepelný obsah odpadní vody [kWh]</li>
+            <li>Celkový potenciál odpadního tepla [kWh/den]</li>
+        </ul>
+
+        <h3 class="subsection-heading">2. Technologická rešerše (25% hodnocení)</h3>
+
+        <h4 class="subsubsection-heading">2.1 Typy výměníků tepla</h4>
+        <p class="content-text">Popište a porovnejte minimálně 3 typy:</p>
+
+        <p class="content-text"><strong>Deskové výměníky</strong></p>
+        <ul class="content-list">
+            <li>Princip, účinnost, použití</li>
+            <li>Výhody a nevýhody</li>
+            <li>Cenová úroveň</li>
+        </ul>
+
+        <p class="content-text"><strong>Trubkové výměníky</strong></p>
+        <ul class="content-list">
+            <li>Konstrukce "trubka v trubce"</li>
+            <li>Shell & tube výměníky</li>
+            <li>Spirálové výměníky</li>
+        </ul>
+
+        <p class="content-text"><strong>Rekuperátory vzduchu</strong></p>
+        <ul class="content-list">
+            <li>Křížové rekuperátory</li>
+            <li>Rotační rekuperátory</li>
+            <li>Tepelné trubice</li>
+        </ul>
+
+        <h4 class="subsubsection-heading">2.2 Systémy rekuperace v gastro provozech</h4>
+        <ul class="content-list">
+            <li>Rekuperace z odpadní vody (šedá voda)</li>
+            <li>Rekuperace z digestoří</li>
+            <li>Rekuperace z chladicích zařízení</li>
+            <li>Kombinované systémy</li>
+        </ul>
+
+        <h4 class="subsubsection-heading">2.3 Případové studie</h4>
+        <p class="content-text">Najděte minimálně 2 realizace v ČR:</p>
+        <ul class="content-list">
+            <li>Parametry instalace</li>
+            <li>Dosažené úspory</li>
+            <li>Investiční náklady</li>
+            <li>Zkušenosti z provozu</li>
+        </ul>
+
+        <h3 class="subsection-heading">3. Výpočty a návrh (35% hodnocení)</h3>
+
+        <h4 class="subsubsection-heading">3.1 Modelová jídelna - parametry</h4>
+        <ul class="content-list">
+            <li>Počet jídel: 500/den</li>
+            <li>Provozní dny: 190/rok</li>
+            <li>Spotřeba teplé vody: 10 m³/den</li>
+            <li>Teplota studené vody: 10°C</li>
+            <li>Požadovaná teplota TUV: 55°C</li>
+            <li>Cena zemního plynu: 1,50 Kč/kWh</li>
+            <li>Cena elektřiny: 5,00 Kč/kWh</li>
+        </ul>
+
+        <h4 class="subsubsection-heading">3.2 Návrh systému rekuperace</h4>
+
+        <p class="content-text"><strong>Varianta A: Rekuperace z odpadní vody</strong></p>
+        <ul class="content-list">
+            <li>Deskový výměník voda-voda</li>
+            <li>Předehřev studené vody</li>
+        </ul>
+        <p class="content-text">Výpočty:</p>
+        <ul class="content-list">
+            <li>Tepelný výkon výměníku [kW]</li>
+            <li>Účinnost rekuperace [%]</li>
+            <li>Potřebná teplosměnná plocha [m²]</li>
+            <li>Tlakové ztráty [kPa]</li>
+        </ul>
+
+        <p class="content-text"><strong>Varianta B: Rekuperace z odpadního vzduchu</strong></p>
+        <ul class="content-list">
+            <li>Křížový rekuperátor</li>
+            <li>Předehřev přiváděného vzduchu</li>
+        </ul>
+        <p class="content-text">Výpočty:</p>
+        <ul class="content-list">
+            <li>Průtok vzduchu [m³/h]</li>
+            <li>Přenesený výkon [kW]</li>
+            <li>Účinnost výměníku [%]</li>
+            <li>Návrhové parametry</li>
+        </ul>
+
+        <p class="content-text"><strong>Varianta C: Kombinovaný systém</strong></p>
+        <ul class="content-list">
+            <li>Kombinace variant A a B</li>
+            <li>Synergické efekty</li>
+            <li>Celková účinnost</li>
+        </ul>
+
+        <h4 class="subsubsection-heading">3.3 Dimenzování komponent</h4>
+        <p class="content-text">Pro vybranou variantu určete:</p>
+        <ul class="content-list">
+            <li>Hlavní rozměry výměníku</li>
+            <li>Průměry potrubí</li>
+            <li>Výkon čerpadel</li>
+            <li>Parametry regulace</li>
+            <li>Akumulační nádrž (objem, izolace)</li>
+        </ul>
+
+        <h3 class="subsection-heading">4. Ekonomická analýza (15% hodnocení)</h3>
+
+        <h4 class="subsubsection-heading">4.1 Investiční náklady</h4>
+        <p class="content-text">Sestavte rozpočet obsahující:</p>
+        <ul class="content-list">
+            <li>Výměník tepla: [Kč]</li>
+            <li>Potrubí a armatury: [Kč]</li>
+            <li>Čerpadla a regulace: [Kč]</li>
+            <li>Montáž a uvedení do provozu: [Kč]</li>
+            <li>Projektová dokumentace: [Kč]</li>
+            <li><strong>Celkem investice:</strong> [Kč]</li>
+        </ul>
+
+        <h4 class="subsubsection-heading">4.2 Provozní úspory</h4>
+        <p class="content-text">Vypočítejte:</p>
+        <ul class="content-list">
+            <li>Roční úspora energie [kWh/rok]</li>
+            <li>Finanční úspora [Kč/rok]</li>
+            <li>Snížení emisí CO₂ [t/rok]</li>
+            <li>Úspora vody (pokud relevantní) [m³/rok]</li>
+        </ul>
+
+        <h4 class="subsubsection-heading">4.3 Ekonomické vyhodnocení</h4>
+        <ul class="content-list">
+            <li>Prostá doba návratnosti [roky]</li>
+            <li>Diskontovaná doba návratnosti (i = 4%)</li>
+            <li>NPV za 10 let provozu</li>
+            <li>IRR projektu</li>
+            <li>Citlivostní analýza (ceny energií ±30%)</li>
+        </ul>
+
+        <h2 class="section-heading">Výstupy projektu</h2>
+
+        <h3 class="subsection-heading">1. Technická zpráva (12-18 stran)</h3>
+        <p class="content-text"><strong>Povinná struktura:</strong></p>
+        <ol class="content-list">
+            <li><strong>Titulní strana</strong></li>
+            <li><strong>Abstrakt</strong> (max. 200 slov)</li>
+            <li><strong>Obsah</strong></li>
+            <li><strong>Seznam použitých symbolů a zkratek</strong></li>
+            <li><strong>Úvod</strong> (motivace, cíle)</li>
+            <li><strong>Analýza současného stavu</strong>
+                <ul style="margin-left: 1.5rem;">
+                    <li>Popis jídelny</li>
+                    <li>Energetické toky</li>
+                    <li>Identifikace potenciálu</li>
+                </ul>
+            </li>
+            <li><strong>Návrh řešení</strong>
+                <ul style="margin-left: 1.5rem;">
+                    <li>Varianty řešení</li>
+                    <li>Výpočty</li>
+                    <li>Výběr optimální varianty</li>
+                </ul>
+            </li>
+            <li><strong>Ekonomické zhodnocení</strong></li>
+            <li><strong>Environmentální přínosy</strong></li>
+            <li><strong>Diskuze a doporučení</strong></li>
+            <li><strong>Závěr</strong></li>
+            <li><strong>Literatura</strong> (min. 12 zdrojů)</li>
+            <li><strong>Přílohy</strong>
+                <ul style="margin-left: 1.5rem;">
+                    <li>Výpočtové tabulky</li>
+                    <li>Technické výkresy</li>
+                    <li>Katalogové listy</li>
+                </ul>
+            </li>
+        </ol>
+
+        <h3 class="subsection-heading">2. Prezentace pro vedení školy</h3>
+        <ul class="content-list">
+            <li><strong>Formát:</strong> PowerPoint/Google Slides</li>
+            <li><strong>Délka:</strong> 15 minut + diskuze</li>
+        </ul>
+        <p class="content-text"><strong>Obsah:</strong></p>
+        <ul class="content-list">
+            <li>Současná situace a problémy</li>
+            <li>Navrhované řešení (vizualizace)</li>
+            <li>Technické parametry</li>
+            <li>Ekonomické přínosy (grafy)</li>
+            <li>Environmentální aspekty</li>
+            <li>Realizační plán</li>
+            <li>Závěry a doporučení</li>
+        </ul>
+
+        <h3 class="subsection-heading">3. Informační poster</h3>
+        <ul class="content-list">
+            <li><strong>Formát:</strong> A1 (594 × 841 mm)</li>
+        </ul>
+        <p class="content-text"><strong>Obsah:</strong></p>
+        <ul class="content-list">
+            <li>Schéma systému rekuperace</li>
+            <li>Klíčová čísla (úspory, návratnost)</li>
+            <li>Infografika s přínosy</li>
+            <li>QR kód na detailní zprávu</li>
+        </ul>
+
+        <h2 class="section-heading">Hodnotící kritéria</h2>
+
+        <h3 class="subsection-heading">Bodové hodnocení (100 bodů)</h3>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Kritérium</th>
+                        <th>Body</th>
+                        <th>Popis</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Analýza současného stavu</strong></td>
+                        <td>25</td>
+                        <td>Úplnost dat, správnost bilance</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Technická rešerše</strong></td>
+                        <td>25</td>
+                        <td>Kvalita zdrojů, relevance informací</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Výpočty a návrh</strong></td>
+                        <td>35</td>
+                        <td>Správnost výpočtů, reálnost návrhu</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Ekonomická analýza</strong></td>
+                        <td>15</td>
+                        <td>Komplexnost, správnost metod</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3 class="subsection-heading">Bonusové body (max. 10)</h3>
+        <ul class="content-list">
+            <li>Kontakt s dodavatelem/výrobcem: +3 body</li>
+            <li>Konzultace s provozovatelem jídelny: +2 body</li>
+            <li>3D model/vizualizace řešení: +3 body</li>
+            <li>Návrh pilotního projektu: +2 body</li>
+        </ul>
+
+        <h2 class="section-heading">Časový harmonogram</h2>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Fáze</th>
+                        <th>Týdny</th>
+                        <th>Činnost</th>
+                        <th>Kontrolní bod</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>I. Příprava</strong></td>
+                        <td>1-2</td>
+                        <td>Studium zadání, tvorba týmů</td>
+                        <td>Registrace</td>
+                    </tr>
+                    <tr>
+                        <td><strong>II. Analýza</strong></td>
+                        <td>3-5</td>
+                        <td>Sběr dat o jídelně, měření</td>
+                        <td>Data report</td>
+                    </tr>
+                    <tr>
+                        <td><strong>III. Rešerše</strong></td>
+                        <td>6-8</td>
+                        <td>Studium technologií</td>
+                        <td>Rešeršní zpráva</td>
+                    </tr>
+                    <tr>
+                        <td><strong>IV. Návrh</strong></td>
+                        <td>9-11</td>
+                        <td>Výpočty, dimenzování</td>
+                        <td>Technický návrh</td>
+                    </tr>
+                    <tr>
+                        <td><strong>V. Ekonomika</strong></td>
+                        <td>12-13</td>
+                        <td>Ekonomická analýza</td>
+                        <td>Finanční model</td>
+                    </tr>
+                    <tr>
+                        <td><strong>VI. Finalizace</strong></td>
+                        <td>14-15</td>
+                        <td>Zpráva, prezentace, poster</td>
+                        <td>Finální dokumenty</td>
+                    </tr>
+                    <tr>
+                        <td><strong>VII. Prezentace</strong></td>
+                        <td>16</td>
+                        <td>Obhajoby projektů</td>
+                        <td>Prezentace</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2 class="section-heading">Doporučené zdroje</h2>
+
+        <h3 class="subsection-heading">Odborná literatura</h3>
+        <ol class="content-list">
+            <li>JÍCHA, M.: Přenos tepla a látky. Brno: VUT, 2019</li>
+            <li>NOVÝ, R. a kol.: Technika prostředí. Praha: ČVUT, 2018</li>
+            <li>Směrnice 2012/27/EU o energetické účinnosti</li>
+            <li>ČSN 06 0320 - Tepelné soustavy v budovách</li>
+        </ol>
+
+        <h3 class="subsection-heading">Online zdroje</h3>
+        <ul class="content-list">
+            <li>www.tzb-info.cz - sekce Vytápění a Úspory energie</li>
+            <li>www.mpo-efekt.cz - dotační programy</li>
+            <li>www.svn.cz - Svaz výrobců nerezového nádobí (gastro)</li>
+            <li>www.rehau.cz - systémy rekuperace</li>
+        </ul>
+
+        <h3 class="subsection-heading">Výpočtové nástroje</h3>
+        <ul class="content-list">
+            <li>Excel/Google Sheets pro výpočty</li>
+            <li>www.tzb-info.cz/tabulky-a-vypocty</li>
+            <li>CAD software pro schémata (AutoCAD, SketchUp)</li>
+        </ul>
+
+        <h3 class="subsection-heading">Katalogy a ceníky</h3>
+        <ul class="content-list">
+            <li>Alfa Laval - deskové výměníky</li>
+            <li>Secespol - trubkové výměníky</li>
+            <li>Atrea, Mandík - rekuperační jednotky</li>
+            <li>Grundfos, Wilo - čerpadla</li>
+        </ul>
+
+        <h2 class="section-heading">Praktické tipy</h2>
+
+        <h3 class="subsection-heading">Doporučení pro úspěch</h3>
+        <ol class="content-list">
+            <li><strong>Reálná data:</strong> Snažte se získat skutečné údaje z vaší jídelny</li>
+            <li><strong>Konzultace:</strong> Využijte znalostí kuchařek a údržby</li>
+            <li><strong>Systematičnost:</strong> Veďte si průběžně dokumentaci</li>
+            <li><strong>Kontrola jednotek:</strong> Pozor na kW vs. kWh</li>
+            <li><strong>Vizualizace:</strong> Grafy a schémata výrazně pomohou</li>
+        </ol>
+
+        <h3 class="subsection-heading">Časté chyby</h3>
+        <ul class="content-list">
+            <li>Nereálně vysoká účinnost rekuperace (max. 70-80%)</li>
+            <li>Zanedbání tlakových ztrát</li>
+            <li>Chybějící náklady na údržbu</li>
+            <li>Podcenění instalačních nákladů</li>
+            <li>Špatný převod jednotek</li>
+        </ul>
+
+        <h3 class="subsection-heading">Inspirace</h3>
+        <ul class="content-list">
+            <li>Projekt "Zelená škola" - úspory energie</li>
+            <li>Gastro veletrhy - novinky v technologiích</li>
+            <li>Energetické audity podobných zařízení</li>
+        </ul>
+
+        <h2 class="section-heading">Konzultace</h2>
+
+        <h3 class="subsection-heading">Pravidelné termíny</h3>
+        <ul class="content-list">
+            <li><strong>Středa:</strong> 14:00-15:00 (kabinet fyziky)</li>
+            <li><strong>Online:</strong> MS Teams (nutná rezervace)</li>
+            <li>Email: <a href="mailto:kilkovsky.s@seznam.cz">kilkovsky.s@seznam.cz</a></li>
+        </ul>
+
+        <h3 class="subsection-heading">Specialisté (po domluvě)</h3>
+        <ul class="content-list">
+            <li>Energetický auditor</li>
+            <li>Projektant TZB</li>
+            <li>Zástupce dodavatele technologií</li>
+        </ul>
+
+        <h2 class="section-heading">Poznámka o bezpečnosti</h2>
+        <p class="content-text">Při případné návštěvě kuchyně dodržujte:</p>
+        <ul class="content-list">
+            <li>Hygienické předpisy</li>
+            <li>Bezpečnostní pokyny personálu</li>
+            <li>Zákaz vstupu během přípravy jídel</li>
+            <li>Fotografování pouze se souhlasem</li>
+        </ul>
+
+        <div style="text-align: center; margin-top: 4rem; padding-top: 2rem; border-top: 2px solid #e5e7eb;">
+            <p style="color: #6b7280; font-size: 0.9rem;">
+                <strong>Vyučující:</strong> Slavek Kilkovsky<br>
+                <strong>Email:</strong> <a href="mailto:kilkovsky.s@seznam.cz" style="color: #3b82f6;">kilkovsky.s@seznam.cz</a><br>
+                <strong>Konzultační hodiny:</strong> středa 14:00-15:00
+            </p>
+        </div>
+    </div>
+
+    <div style="text-align: center; padding: 2rem 0;">
+        <a href="projekty.html" class="back-link">
+            <i class="fas fa-arrow-left"></i> Zpět na přehled projektů
+        </a>
+    </div>
+
+    <button class="print-button" onclick="window.print()">
+        <i class="fas fa-print"></i> Vytisknout zadání
+    </button>
+</body>
+</html>

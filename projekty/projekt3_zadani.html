@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projekt 3: Tepelné čerpadlo vs. plynový kotel | Fyzika - opakování a prohloubení</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background: #f8fafc;
+        }
+        .project-document {
+            max-width: 900px;
+            margin: 2rem auto;
+            background: white;
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+        .project-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 3px solid #3b82f6;
+        }
+        .project-title {
+            font-size: 2rem;
+            color: #1f2937;
+            margin-bottom: 1rem;
+        }
+        .project-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        .info-box {
+            background: #f0f9ff;
+            border-left: 4px solid #3b82f6;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 8px;
+        }
+        .info-box h3 {
+            color: #1e40af;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+        .info-box ul {
+            list-style: none;
+            padding: 0;
+        }
+        .info-box li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        .info-box li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #3b82f6;
+            font-weight: bold;
+        }
+        .section-heading {
+            color: #1f2937;
+            font-size: 1.8rem;
+            margin-top: 3rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #e5e7eb;
+        }
+        .subsection-heading {
+            color: #374151;
+            font-size: 1.4rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .subsubsection-heading {
+            color: #4b5563;
+            font-size: 1.1rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+        .content-text {
+            line-height: 1.8;
+            color: #374151;
+            margin-bottom: 1rem;
+        }
+        .content-list {
+            margin: 1rem 0 1rem 2rem;
+            line-height: 1.8;
+        }
+        .content-list li {
+            margin: 0.5rem 0;
+        }
+        .warning-box {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 8px;
+        }
+        .warning-box h4 {
+            color: #92400e;
+            margin-bottom: 0.5rem;
+        }
+        .table-container {
+            overflow-x: auto;
+            margin: 2rem 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+        }
+        th {
+            background: #3b82f6;
+            color: white;
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+        td {
+            padding: 1rem;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        tr:hover {
+            background: #f9fafb;
+        }
+        .criteria-box {
+            background: #f0fdf4;
+            border-left: 4px solid #10b981;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-radius: 8px;
+        }
+        .print-button {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: #3b82f6;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+            cursor: pointer;
+            border: none;
+            font-weight: 600;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+        .print-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(59, 130, 246, 0.4);
+        }
+        @media print {
+            .print-button, header, .back-link {
+                display: none;
+            }
+            .project-document {
+                box-shadow: none;
+                padding: 0;
+            }
+            body {
+                background: white;
+            }
+        }
+        .back-link {
+            display: inline-block;
+            margin: 2rem auto;
+            text-align: center;
+            padding: 0.8rem 1.5rem;
+            background: #6b7280;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: background 0.3s ease;
+        }
+        .back-link:hover {
+            background: #4b5563;
+        }
+    </style>
+</head>
+<body>
+    <div style="text-align: center; padding: 2rem 0;">
+        <a href="projekty.html" class="back-link">
+            <i class="fas fa-arrow-left"></i> Zpět na přehled projektů
+        </a>
+    </div>
+
+    <div class="project-document">
+        <div class="project-header">
+            <div class="project-badge">Projekt 3</div>
+            <h1 class="project-title">Srovnávací studie vytápění - tepelné čerpadlo vs. plynový kotel</h1>
+        </div>
+
+        <div class="info-box">
+            <h3><i class="fas fa-info-circle"></i> Základní informace</h3>
+            <ul>
+                <li><strong>Předmět:</strong> Praktické použití fyziky a chemie</li>
+                <li><strong>Typ projektu:</strong> Teoretická srovnávací studie</li>
+                <li><strong>Časová dotace:</strong> 16 týdnů (2 hodiny týdně + domácí příprava)</li>
+                <li><strong>Práce v týmu:</strong> 2-3 studenti</li>
+            </ul>
+        </div>
+
+        <h2 class="section-heading">Charakteristika projektu</h2>
+        <p class="content-text">Studenti zpracují komplexní srovnávací studii dvou nejběžnějších způsobů vytápění rodinných domů v ČR. Projekt zahrnuje teoretické základy obou technologií, detailní výpočty provozních nákladů, environmentální analýzu a ekonomické vyhodnocení včetně citlivostní analýzy na změny cen energií.</p>
+
+        <h2 class="section-heading">Cíle projektu</h2>
+
+        <h3 class="subsection-heading">Hlavní cíl</h3>
+        <p class="content-text">Objektivně porovnat tepelné čerpadlo a plynový kondenzační kotel z technického, ekonomického a environmentálního hlediska pro konkrétní modelový dům.</p>
+
+        <h3 class="subsection-heading">Dílčí cíle</h3>
+        <ol class="content-list">
+            <li>Pochopit termodynamické principy obou technologií</li>
+            <li>Naučit se komplexní ekonomické hodnocení investic</li>
+            <li>Osvojit si výpočet carbon footprint</li>
+            <li>Rozvíjet kritické myšlení při hodnocení technologií</li>
+            <li>Připravit podklady pro racionální rozhodování</li>
+        </ol>
+
+        <h2 class="section-heading">Zadání projektu</h2>
+
+        <h3 class="subsection-heading">1. Teoretický základ (30% hodnocení)</h3>
+
+        <h4 class="subsubsection-heading">1.1 Tepelné čerpadlo</h4>
+
+        <p class="content-text"><strong>Termodynamické principy</strong></p>
+        <ul class="content-list">
+            <li>Carnotův cyklus - ideální případ</li>
+            <li>Skutečný chladicí oběh</li>
+            <li>Kompresorový cyklus (detailní popis)</li>
+            <li>Absorpční tepelná čerpadla (princip)</li>
+        </ul>
+
+        <p class="content-text"><strong>Typy tepelných čerpadel</strong></p>
+        <p class="content-text">Podrobně popište:</p>
+        <ul class="content-list">
+            <li>Vzduch-voda (charakteristika, COP)</li>
+            <li>Země-voda (vrty, plošné kolektory)</li>
+            <li>Voda-voda (studny, podmínky)</li>
+            <li>Vzduch-vzduch (split systémy)</li>
+        </ul>
+
+        <p class="content-text"><strong>Klíčové parametry</strong></p>
+        <ul class="content-list">
+            <li>COP (Coefficient of Performance)</li>
+            <li>SCOP (Seasonal COP)</li>
+            <li>Bivalentní bod</li>
+            <li>Ekvitermní regulace</li>
+        </ul>
+
+        <h4 class="subsubsection-heading">1.2 Plynový kondenzační kotel</h4>
+
+        <p class="content-text"><strong>Principy spalování</strong></p>
+        <ul class="content-list">
+            <li>Stechiometrie spalování zemního plynu</li>
+            <li>Výhřevnost vs. spalné teplo</li>
+            <li>Kondenzace spalin</li>
+        </ul>
+
+        <p class="content-text"><strong>Technologie kondenzačních kotlů</strong></p>
+        <ul class="content-list">
+            <li>Konstrukce výměníku</li>
+            <li>Modulace výkonu</li>
+            <li>Neutralizace kondenzátu</li>
+            <li>Lambda sonda</li>
+        </ul>
+
+        <p class="content-text"><strong>Účinnost</strong></p>
+        <ul class="content-list">
+            <li>Normovaný stupeň využití</li>
+            <li>Závislost na teplotě zpátečky</li>
+            <li>Sezónní účinnost</li>
+        </ul>
+
+        <h4 class="subsubsection-heading">1.3 Srovnání principů</h4>
+        <ul class="content-list">
+            <li>Exergetická analýza obou systémů</li>
+            <li>Primární energie vs. dodaná energie</li>
+            <li>Konverzní faktory</li>
+        </ul>
+
+        <h3 class="subsection-heading">2. Modelový objekt (10% hodnocení)</h3>
+
+        <h4 class="subsubsection-heading">Parametry domu</h4>
+        <ul class="content-list">
+            <li><strong>Zastavěná plocha:</strong> 150 m²</li>
+            <li><strong>Vytápěná plocha:</strong> 135 m²</li>
+            <li><strong>Počet podlaží:</strong> 2 (přízemí + patro)</li>
+            <li><strong>Počet obyvatel:</strong> 4</li>
+            <li><strong>Konstrukce:</strong> zděná, zateplená (U = 0,25 W/m²K)</li>
+            <li><strong>Okna:</strong> trojskla (Uw = 0,8 W/m²K)</li>
+            <li><strong>Tepelná ztráta:</strong> 12 kW při -15°C</li>
+        </ul>
+
+        <h4 class="subsubsection-heading">Otopná soustava</h4>
+        <ul class="content-list">
+            <li>Podlahové vytápění (35/28°C)</li>
+            <li>Radiátory v koupelnách (55/45°C)</li>
+            <li>Akumulační nádrž 500 l</li>
+        </ul>
+
+        <h4 class="subsubsection-heading">Lokalita</h4>
+        <ul class="content-list">
+            <li>Klimatická oblast: Praha</li>
+            <li>Průměrná roční teplota: 9,1°C</li>
+            <li>Délka otopného období: 242 dnů</li>
+            <li>Denostupně: 3 680 K·den</li>
+        </ul>
+
+        <h3 class="subsection-heading">3. Výpočetní analýza (40% hodnocení)</h3>
+
+        <h4 class="subsubsection-heading">3.1 Potřeba tepla</h4>
+
+        <p class="content-text"><strong>Vytápění</strong></p>
+        <ul class="content-list">
+            <li>Roční potřeba tepla [GJ/rok]</li>
+            <li>Měsíční rozložení spotřeby</li>
+            <li>Špičkový výkon [kW]</li>
+            <li>Průměrný výkon v topné sezóně [kW]</li>
+        </ul>
+
+        <p class="content-text"><strong>Teplá voda</strong></p>
+        <ul class="content-list">
+            <li>Denní spotřeba: 50 l/osoba při 55°C</li>
+            <li>Roční potřeba tepla pro TUV [GJ/rok]</li>
+            <li>Letní/zimní provoz</li>
+        </ul>
+
+        <h4 class="subsubsection-heading">3.2 Varianta A: Tepelné čerpadlo vzduch-voda</h4>
+
+        <p class="content-text"><strong>Návrh systému</strong></p>
+        <ul class="content-list">
+            <li>Výběr konkrétního modelu (použijte reálný katalog)</li>
+            <li>Jmenovitý výkon při A7/W35</li>
+            <li>COP při různých teplotách</li>
+            <li>Bivalentní provoz (elektrokotel 6 kW)</li>
+        </ul>
+
+        <p class="content-text"><strong>Výpočty spotřeby</strong></p>
+        <ul class="content-list">
+            <li>Měsíční spotřeba elektřiny [kWh]</li>
+            <li>SCOP pro danou lokalitu</li>
+            <li>Spotřeba bivalentního zdroje</li>
+            <li>Roční spotřeba celkem [kWh/rok]</li>
+        </ul>
+
+        <p class="content-text"><strong>Provozní náklady</strong></p>
+        <ul class="content-list">
+            <li>Tarif D57d (NT/VT)</li>
+            <li>Měsíční platby za jistič</li>
+            <li>Roční náklady na vytápění [Kč]</li>
+            <li>Náklady na TUV [Kč]</li>
+        </ul>
+
+        <h4 class="subsubsection-heading">3.3 Varianta B: Kondenzační kotel</h4>
+
+        <p class="content-text"><strong>Návrh systému</strong></p>
+        <ul class="content-list">
+            <li>Výběr kotle (15-20 kW, modulace 1:10)</li>
+            <li>Účinnost při různých režimech</li>
+            <li>Odkouření, komín</li>
+        </ul>
+
+        <p class="content-text"><strong>Výpočty spotřeby</strong></p>
+        <ul class="content-list">
+            <li>Měsíční spotřeba plynu [m³]</li>
+            <li>Průměrná sezónní účinnost [%]</li>
+            <li>Roční spotřeba [m³/rok]</li>
+        </ul>
+
+        <p class="content-text"><strong>Provozní náklady</strong></p>
+        <ul class="content-list">
+            <li>Cena plynu (komodita + distribuce)</li>
+            <li>Měsíční platby za kapacitu</li>
+            <li>Roční náklady celkem [Kč]</li>
+        </ul>
+
+        <h4 class="subsubsection-heading">3.4 Environmentální analýza</h4>
+
+        <p class="content-text"><strong>Emise CO₂</strong></p>
+        <p class="content-text">Emisní faktory:</p>
+        <ul class="content-list">
+            <li>Elektřina ČR: 0,43 kg CO₂/kWh</li>
+            <li>Zemní plyn: 0,20 kg CO₂/kWh</li>
+        </ul>
+        <ul class="content-list">
+            <li>Roční emise - tepelné čerpadlo [t CO₂]</li>
+            <li>Roční emise - plynový kotel [t CO₂]</li>
+            <li>Úspora emisí [%]</li>
+        </ul>
+
+        <p class="content-text"><strong>Primární energie</strong></p>
+        <p class="content-text">Faktor primární energie:</p>
+        <ul class="content-list">
+            <li>Elektřina: 2,6</li>
+            <li>Zemní plyn: 1,1</li>
+        </ul>
+        <ul class="content-list">
+            <li>Spotřeba primární energie [GJ/rok]</li>
+        </ul>
+
+        <h3 class="subsection-heading">4. Ekonomická analýza (20% hodnocení)</h3>
+
+        <h4 class="subsubsection-heading">4.1 Investiční náklady</h4>
+
+        <p class="content-text"><strong>Tepelné čerpadlo</strong></p>
+        <ul class="content-list">
+            <li>Jednotka TČ: [Kč]</li>
+            <li>Akumulační nádrž: [Kč]</li>
+            <li>Elektroinstalace (jistič, kabeláž): [Kč]</li>
+            <li>Montáž a uvedení do provozu: [Kč]</li>
+            <li>Projektová dokumentace: [Kč]</li>
+            <li><strong>Celkem:</strong> [Kč]</li>
+        </ul>
+
+        <p class="content-text"><strong>Plynový kotel</strong></p>
+        <ul class="content-list">
+            <li>Kondenzační kotel: [Kč]</li>
+            <li>Odkouření, komín: [Kč]</li>
+            <li>Plynová přípojka: [Kč]</li>
+            <li>Montáž a regulace: [Kč]</li>
+            <li>Revize a projekt: [Kč]</li>
+            <li><strong>Celkem:</strong> [Kč]</li>
+        </ul>
+
+        <h4 class="subsubsection-heading">4.2 TCO analýza (15 let)</h4>
+
+        <p class="content-text">Pro obě varianty vypočítejte:</p>
+        <ul class="content-list">
+            <li>Investiční náklady</li>
+            <li>Provozní náklady (diskontované, i = 4%)</li>
+            <li>Náklady na údržbu a servis</li>
+            <li>Náklady na reinvestice (výměna kompresoru/kotle)</li>
+            <li><strong>TCO celkem</strong></li>
+        </ul>
+
+        <h4 class="subsubsection-heading">4.3 Citlivostní analýza</h4>
+
+        <p class="content-text">Analyzujte vliv změny:</p>
+        <ul class="content-list">
+            <li>Ceny elektřiny: ±30%</li>
+            <li>Ceny plynu: ±30%</li>
+            <li>Kombinace obou</li>
+            <li>Vliv dotace na TČ (30% invest. nákladů)</li>
+        </ul>
+
+        <p class="content-text">Vytvořte:</p>
+        <ul class="content-list">
+            <li>Tabulku citlivosti</li>
+            <li>Graf bodu zvratu</li>
+            <li>Spider diagram</li>
+        </ul>
+
+        <h4 class="subsubsection-heading">4.4 Finanční metody hodnocení</h4>
+        <ul class="content-list">
+            <li>NPV obou variant</li>
+            <li>IRR rozdílové investice</li>
+            <li>Prostá doba návratnosti</li>
+            <li>Diskontovaná doba návratnosti</li>
+        </ul>
+
+        <h2 class="section-heading">Výstupy projektu</h2>
+
+        <h3 class="subsection-heading">1. Odborná zpráva (15-20 stran)</h3>
+
+        <p class="content-text"><strong>Povinná struktura:</strong></p>
+        <ol class="content-list">
+            <li><strong>Titulní strana</strong></li>
+            <li><strong>Abstrakt</strong> (CZ + EN, max. 250 slov)</li>
+            <li><strong>Obsah</strong></li>
+            <li><strong>Seznam symbolů a zkratek</strong></li>
+            <li><strong>Úvod</strong>
+                <ul style="margin-left: 1.5rem;">
+                    <li>Motivace studie</li>
+                    <li>Současný stav problematiky</li>
+                    <li>Cíle práce</li>
+                </ul>
+            </li>
+            <li><strong>Teoretická část</strong>
+                <ul style="margin-left: 1.5rem;">
+                    <li>Princip tepelného čerpadla</li>
+                    <li>Princip kondenzačního kotle</li>
+                    <li>Srovnání technologií</li>
+                </ul>
+            </li>
+            <li><strong>Metodika</strong>
+                <ul style="margin-left: 1.5rem;">
+                    <li>Popis modelového domu</li>
+                    <li>Výpočtové postupy</li>
+                    <li>Použité normy a předpisy</li>
+                </ul>
+            </li>
+            <li><strong>Výsledky</strong>
+                <ul style="margin-left: 1.5rem;">
+                    <li>Energetická bilance</li>
+                    <li>Provozní náklady</li>
+                    <li>Environmentální dopady</li>
+                </ul>
+            </li>
+            <li><strong>Ekonomické vyhodnocení</strong>
+                <ul style="margin-left: 1.5rem;">
+                    <li>TCO analýza</li>
+                    <li>Citlivostní analýza</li>
+                    <li>Doporučení</li>
+                </ul>
+            </li>
+            <li><strong>Diskuze</strong>
+                <ul style="margin-left: 1.5rem;">
+                    <li>Srovnání s literaturou</li>
+                    <li>Limity studie</li>
+                    <li>Další faktory</li>
+                </ul>
+            </li>
+            <li><strong>Závěr</strong></li>
+            <li><strong>Literatura</strong> (min. 15 zdrojů)</li>
+            <li><strong>Přílohy</strong>
+                <ul style="margin-left: 1.5rem;">
+                    <li>Detailní výpočty</li>
+                    <li>Katalogové listy</li>
+                    <li>Grafy a tabulky</li>
+                </ul>
+            </li>
+        </ol>
+
+        <h3 class="subsection-heading">2. Prezentace výsledků</h3>
+
+        <p class="content-text"><strong>PowerPoint prezentace (20 snímků)</strong></p>
+        <ul class="content-list">
+            <li>Úvod do problematiky</li>
+            <li>Princip technologií (animace)</li>
+            <li>Modelový dům</li>
+            <li>Klíčové výpočty</li>
+        </ul>
+        <p class="content-text">Srovnávací grafy:</p>
+        <ul class="content-list">
+            <li>Roční náklady</li>
+            <li>Emise CO₂</li>
+            <li>TCO</li>
+        </ul>
+        <ul class="content-list">
+            <li>Citlivostní analýza</li>
+            <li>Závěry a doporučení</li>
+        </ul>
+
+        <h3 class="subsection-heading">3. Poster pro veřejnost</h3>
+        <ul class="content-list">
+            <li><strong>Formát:</strong> A1</li>
+        </ul>
+        <p class="content-text"><strong>Obsah:</strong></p>
+        <ul class="content-list">
+            <li>Infografika obou systémů</li>
+            <li>Porovnání v číslech</li>
+            <li>Environmentální aspekty</li>
+            <li>Kdy se co vyplatí</li>
+        </ul>
+
+        <h3 class="subsection-heading">4. Kalkulačka pro rozhodování</h3>
+        <ul class="content-list">
+            <li>Excel soubor s parametry</li>
+            <li>Možnost zadat vlastní údaje</li>
+            <li>Automatický výpočet a doporučení</li>
+        </ul>
+
+        <h2 class="section-heading">Hodnotící kritéria</h2>
+
+        <h3 class="subsection-heading">Bodové hodnocení (100 bodů)</h3>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Oblast</th>
+                        <th>Body</th>
+                        <th>Hodnocené aspekty</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Teoretická část</strong></td>
+                        <td>30</td>
+                        <td>Pochopení principů, úplnost, správnost</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Výpočty</strong></td>
+                        <td>40</td>
+                        <td>Správnost, metodika, interpretace</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Ekonomická analýza</strong></td>
+                        <td>20</td>
+                        <td>TCO, citlivost, finanční metody</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Formální zpracování</strong></td>
+                        <td>10</td>
+                        <td>Struktura, citace, grafy, jazyk</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3 class="subsection-heading">Známkování</h3>
+        <ul class="content-list">
+            <li>90-100 bodů: výborně (1)</li>
+            <li>75-89 bodů: chvalitebně (2)</li>
+            <li>60-74 bodů: dobře (3)</li>
+            <li>45-59 bodů: dostatečně (4)</li>
+            <li>méně než 45 bodů: nedostatečně (5)</li>
+        </ul>
+
+        <h3 class="subsection-heading">Bonusové body (max. 10)</h3>
+        <ul class="content-list">
+            <li>Konzultace s instalační firmou: +3 body</li>
+            <li>Reálná data z provozu: +3 body</li>
+            <li>Interaktivní kalkulátor (web): +4 body</li>
+        </ul>
+
+        <h2 class="section-heading">Časový harmonogram</h2>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Týden</th>
+                        <th>Fáze</th>
+                        <th>Činnost</th>
+                        <th>Výstup</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1-2</td>
+                        <td>Zahájení</td>
+                        <td>Tvorba týmů, studium zadání</td>
+                        <td>Projektový plán</td>
+                    </tr>
+                    <tr>
+                        <td>3-4</td>
+                        <td>Teorie</td>
+                        <td>Studium principů TČ a kotlů</td>
+                        <td>Teoretická rešerše</td>
+                    </tr>
+                    <tr>
+                        <td>5-6</td>
+                        <td>Modelování</td>
+                        <td>Definice modelového domu</td>
+                        <td>Technické zadání</td>
+                    </tr>
+                    <tr>
+                        <td>7-9</td>
+                        <td>Výpočty I</td>
+                        <td>Energetické výpočty</td>
+                        <td>Energetická bilance</td>
+                    </tr>
+                    <tr>
+                        <td>10-11</td>
+                        <td>Výpočty II</td>
+                        <td>Ekonomické výpočty</td>
+                        <td>TCO model</td>
+                    </tr>
+                    <tr>
+                        <td>12-13</td>
+                        <td>Analýza</td>
+                        <td>Citlivostní analýza</td>
+                        <td>Grafy, tabulky</td>
+                    </tr>
+                    <tr>
+                        <td>14</td>
+                        <td>Dokumentace</td>
+                        <td>Psaní zprávy</td>
+                        <td>Draft zprávy</td>
+                    </tr>
+                    <tr>
+                        <td>15</td>
+                        <td>Finalizace</td>
+                        <td>Prezentace, poster</td>
+                        <td>Finální dokumenty</td>
+                    </tr>
+                    <tr>
+                        <td>16</td>
+                        <td>Obhajoby</td>
+                        <td>Prezentace projektů</td>
+                        <td>Obhajoba</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2 class="section-heading">Zdroje informací</h2>
+
+        <h3 class="subsection-heading">Základní literatura</h3>
+        <ol class="content-list">
+            <li>KARLÍK, R.: Tepelné čerpadlo pro váš dům. Praha: Grada, 2020</li>
+            <li>POČINKOVÁ, M., TREUOVÁ, L.: Vytápění. Brno: ERA, 2018</li>
+            <li>Vyhláška 78/2013 Sb. o energetické náročnosti budov</li>
+            <li>ČSN EN 14511 - Tepelná čerpadla</li>
+            <li>ČSN EN 15378 - Tepelné soustavy v budovách</li>
+        </ol>
+
+        <h3 class="subsection-heading">Online zdroje</h3>
+        <ul class="content-list">
+            <li>www.tzb-info.cz - komplexní informace</li>
+            <li>www.mpo.cz - dotační programy</li>
+            <li>www.eru.cz - ceny energií</li>
+            <li>www.chmi.cz - klimatická data</li>
+            <li>výrobci: Viessmann, Bosch, Daikin, Vaillant</li>
+        </ul>
+
+        <h3 class="subsection-heading">Výpočtové nástroje</h3>
+        <ul class="content-list">
+            <li>PENB kalkulačka (www.mpo-enex.cz)</li>
+            <li>Výpočet tepelných ztrát (TZB-info)</li>
+            <li>Klimatická data (ČHMÚ)</li>
+        </ul>
+
+        <h3 class="subsection-heading">Katalogy a ceníky</h3>
+        <ul class="content-list">
+            <li>Tepelná čerpadla: Regulus, NIBE, Daikin</li>
+            <li>Plynové kotle: Viessmann, Buderus, Vaillant</li>
+            <li>Ceníky energií: ČEZ, E.ON, PRE</li>
+        </ul>
+
+        <h2 class="section-heading">Praktické pokyny</h2>
+
+        <h3 class="subsection-heading">Tipy pro kvalitní zpracování</h3>
+        <ol class="content-list">
+            <li><strong>Používejte reálné údaje</strong> - katalogy, ceníky</li>
+            <li><strong>Ověřujte výpočty</strong> - kontrola řádu veličin</li>
+            <li><strong>Konzultujte</strong> - využijte všech konzultací</li>
+            <li><strong>Dokumentujte</strong> - zapisujte zdroje průběžně</li>
+            <li><strong>Vizualizujte</strong> - grafy říkají více než tabulky</li>
+        </ol>
+
+        <h3 class="subsection-heading">Nejčastější chyby</h3>
+        <ul class="content-list">
+            <li>Nereálné hodnoty COP (pozor na podmínky)</li>
+            <li>Špatné jednotky (kW vs. kWh)</li>
+            <li>Zanedbání pomocné energie (čerpadla)</li>
+            <li>Chybějící citlivostní analýza</li>
+            <li>Jednostranné hodnocení</li>
+        </ul>
+
+        <h3 class="subsection-heading">Etické aspekty</h3>
+        <ul class="content-list">
+            <li>Objektivita - neskreslovat data</li>
+            <li>Transparentnost - uvést všechny předpoklady</li>
+            <li>Citace - korektní uvedení zdrojů</li>
+        </ul>
+
+        <h2 class="section-heading">Rozšiřující témata</h2>
+        <ul class="content-list">
+            <li>Hybridní systémy (TČ + kotel)</li>
+            <li>Fotovoltaika + tepelné čerpadlo</li>
+            <li>Akumulace tepla</li>
+            <li>Smart home řízení</li>
+            <li>Dotační politika EU</li>
+        </ul>
+
+        <h2 class="section-heading">Konzultace a podpora</h2>
+
+        <h3 class="subsection-heading">Pravidelné konzultace</h3>
+        <ul class="content-list">
+            <li><strong>Středa:</strong> 14:00-15:00, kabinet fyziky</li>
+            <li><strong>Online:</strong> MS Teams (rezervace předem)</li>
+            <li>Email: <a href="mailto:kilkovsky.s@seznam.cz">kilkovsky.s@seznam.cz</a></li>
+        </ul>
+
+        <h3 class="subsection-heading">Kontrolní body</h3>
+        <ul class="content-list">
+            <li><strong>Týden 4:</strong> Schválení teoretické části</li>
+            <li><strong>Týden 9:</strong> Kontrola výpočtů</li>
+            <li><strong>Týden 13:</strong> Preview prezentace</li>
+        </ul>
+
+        <h3 class="subsection-heading">Odborné konzultace</h3>
+        <p class="content-text">Po domluvě možnost konzultace s:</p>
+        <ul class="content-list">
+            <li>Energetický poradce</li>
+            <li>Projektant TZB</li>
+            <li>Zástupce výrobce</li>
+        </ul>
+
+        <div style="text-align: center; margin-top: 4rem; padding-top: 2rem; border-top: 2px solid #e5e7eb;">
+            <p style="color: #6b7280; font-size: 0.9rem;">
+                <strong>Vyučující:</strong> Slavek Kilkovsky<br>
+                <strong>Email:</strong> <a href="mailto:kilkovsky.s@seznam.cz" style="color: #3b82f6;">kilkovsky.s@seznam.cz</a><br>
+                <strong>Konzultační hodiny:</strong> středa 14:00-15:00
+            </p>
+        </div>
+    </div>
+
+    <div style="text-align: center; padding: 2rem 0;">
+        <a href="projekty.html" class="back-link">
+            <i class="fas fa-arrow-left"></i> Zpět na přehled projektů
+        </a>
+    </div>
+
+    <button class="print-button" onclick="window.print()">
+        <i class="fas fa-print"></i> Vytisknout zadání
+    </button>
+</body>
+</html>
