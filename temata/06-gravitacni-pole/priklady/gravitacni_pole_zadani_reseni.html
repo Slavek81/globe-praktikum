@@ -1,0 +1,1586 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gravitační pole - Kompletní zadání a řešení (1-14)</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c5282;
+            border-bottom: 3px solid #2c5282;
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            color: #2a4365;
+            margin: 40px 0 20px 0;
+            background: linear-gradient(90deg, #e2e8f0, #f7fafc);
+            padding: 15px 20px;
+            border-radius: 10px;
+            border-left: 5px solid #3182ce;
+            font-size: 20px;
+        }
+
+        .priklad {
+            background-color: white;
+            margin: 25px 0;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-left: 5px solid #3182ce;
+            overflow: hidden;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .priklad:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .priklad-header {
+            background: linear-gradient(135deg, #3182ce, #2b6cb0);
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .priklad-cislo {
+            background: rgba(255,255,255,0.2);
+            padding: 8px 15px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 18px;
+            min-width: 30px;
+            text-align: center;
+        }
+
+        .priklad-title {
+            flex: 1;
+            font-weight: 500;
+            font-size: 16px;
+        }
+
+        .priklad-content {
+            padding: 20px;
+        }
+
+        .zadani {
+            background: linear-gradient(135deg, #f7fafc, #edf2f7);
+            padding: 18px;
+            border-radius: 10px;
+            border: 1px solid #cbd5e0;
+            margin-bottom: 15px;
+        }
+
+        .zadani h3 {
+            color: #2b6cb0;
+            margin: 0 0 10px 0;
+            font-size: 16px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .zadani h3:before {
+            content: "📝";
+            font-size: 18px;
+        }
+
+        .zadani-text {
+            color: #2d3748;
+            margin: 0;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .toggle-reseni {
+            background: linear-gradient(135deg, #4299e1, #3182ce);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+            cursor: pointer;
+            margin-bottom: 15px;
+            transition: all 0.2s ease;
+        }
+
+        .toggle-reseni:hover {
+            background: linear-gradient(135deg, #3182ce, #2c5282);
+            transform: translateY(-1px);
+        }
+
+
+        .reseni {
+            background: linear-gradient(135deg, #f0fff4, #e6fffa);
+            padding: 18px;
+            border-radius: 10px;
+            border: 1px solid #9ae6b4;
+        }
+
+        .reseni.hidden {
+            display: none;
+        }
+
+        .reseni h3 {
+            color: #2f855a;
+            margin: 0 0 15px 0;
+            font-size: 16px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .reseni h3:before {
+            content: "✅";
+            font-size: 18px;
+        }
+
+        .reseni-text {
+            color: #2d3748;
+            margin: 0;
+            font-size: 14px;
+            line-height: 1.7;
+            white-space: pre-line;
+        }
+
+        .hodnoty {
+            background: linear-gradient(135deg, #bee3f8, #90cdf4);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 600;
+            color: #1a365d;
+        }
+
+        .sekce-popis {
+            background: linear-gradient(135deg, #fef5e7, #fed7aa);
+            padding: 15px 20px;
+            border-radius: 10px;
+            border-left: 4px solid #ed8936;
+            margin-bottom: 20px;
+            font-style: italic;
+            color: #c05621;
+            font-weight: 500;
+        }
+
+        .statistiky {
+            background: linear-gradient(135deg, #e6fffa, #b2f5ea);
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            text-align: center;
+            color: #234e52;
+            font-weight: 600;
+            font-size: 18px;
+        }
+
+        .zdroj {
+            text-align: center;
+            margin-top: 50px;
+            padding: 25px;
+            background: linear-gradient(135deg, #e2e8f0, #edf2f7);
+            border-radius: 15px;
+            border-top: 4px solid #3182ce;
+        }
+
+        .zdroj h3 {
+            color: #2c5282;
+            margin: 0 0 10px 0;
+        }
+
+        .zdroj a {
+            color: #3182ce;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .zdroj a:hover {
+            text-decoration: underline;
+        }
+
+        /* Blok pro rovnice a výpočty */
+        .rovnice-blok {
+            background: white;
+            border: 2px solid #4299e1;
+            border-left: 6px solid #4299e1;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.8;
+            box-shadow: 0 2px 4px rgba(66, 153, 225, 0.1);
+        }
+
+        .rovnice-blok .rovnice-nadpis {
+            color: #2b6cb0;
+            font-weight: 600;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0 0 10px 0;
+            font-size: 13px;
+        }
+
+        .rovnice-blok .rovnice-text {
+            color: #2d3748;
+            margin: 0;
+            white-space: pre-line;
+        }
+
+        /* Pedagogické elementy pro lepší výuku */
+
+        /* Varovné boxy pro časté chyby */
+        .chyba-box {
+            background: linear-gradient(135deg, #ffe0e0, #ffebee);
+            border-left: 5px solid #f44336;
+            padding: 12px 15px;
+            margin: 15px 0;
+            color: #a00;
+            font-size: 0.95em;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(244, 67, 54, 0.1);
+        }
+        .chyba-box::before {
+            content: "⚠️ Pozor na častou chybu!";
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+            color: #f44336;
+        }
+
+        /* Motivační sekce s reálnými souvislostmi */
+        .motivace-box {
+            background: linear-gradient(135deg, #e3f2fd, #e1f5fe);
+            border-left: 5px solid #2196f3;
+            padding: 12px 15px;
+            margin: 15px 0 25px 0;
+            color: #1a237e;
+            font-size: 0.95em;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(33, 150, 243, 0.1);
+        }
+        .motivace-box::before {
+            content: "💡 Proč se to učím?";
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+            color: #2196f3;
+        }
+
+        /* Metakognitivní otázky/checklisty */
+        .metakognice-box {
+            background: linear-gradient(135deg, #fffde7, #fff9c4);
+            border-left: 5px solid #ffeb3b;
+            padding: 12px 15px;
+            margin: 25px 0 15px 0;
+            color: #795548;
+            font-size: 0.95em;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(255, 235, 59, 0.1);
+        }
+        .metakognice-box::before {
+            content: "🧠 Zamysli se:";
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+            color: #f57f17;
+        }
+        .metakognice-box ul {
+            list-style-type: disc;
+            padding-left: 25px;
+            margin-top: 10px;
+            margin-bottom: 0;
+        }
+        .metakognice-box li {
+            margin-bottom: 5px;
+        }
+
+        /* Krok-za-krokem struktura */
+        .reseni-kroky {
+            counter-reset: reseni-krok-counter;
+            margin-top: 20px;
+        }
+
+        .reseni-krok {
+            margin-bottom: 25px;
+            padding-left: 40px;
+            position: relative;
+            border-left: 2px solid #e0e0e0;
+            padding-bottom: 15px;
+        }
+
+        .reseni-krok::before {
+            counter-increment: reseni-krok-counter;
+            content: counter(reseni-krok-counter);
+            font-weight: bold;
+            font-size: 1.4em;
+            color: #3f51b5;
+            background: white;
+            border: 2px solid #3f51b5;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            left: -16px;
+            top: 0;
+        }
+
+        .reseni-krok h4 {
+            color: #3f51b5;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+            font-weight: 600;
+        }
+
+        /* Responzivní design */
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+
+            .priklad-header {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+
+            .priklad-cislo {
+                align-self: center;
+            }
+
+            .priklad-content {
+                padding: 15px;
+            }
+        }
+    </style>
+    <script>
+    // MathJax konfigurace MUSÍ být před načtením knihovny
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true,
+        processEnvironments: true
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+      }
+    };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+    <h1>Gravitační pole - Kompletní zadání a řešení</h1>
+
+    <div class="statistiky">
+        📚 Kompletních <strong>14 příkladů</strong> z gravitačního pole - zadání a podrobná řešení<br>
+        <button type="button" id="master-toggle" onclick="toggleAllReseni()" style="margin-top: 10px; padding: 8px 20px; background: #2c5282; color: white; border: none; border-radius: 20px; cursor: pointer;">
+            🔄 Zobrazit/Skrýt všechna řešení
+        </button>
+    </div>
+
+    <h2>🌍 Newtonův gravitační zákon (1-2)</h2>
+    <div class="sekce-popis">
+        Zákon univerzální gravitace, gravitační síla mezi tělesy.
+    </div>
+
+    <!-- Příklad 1 -->
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">1</div>
+            <div class="priklad-title">Gravitační síla Země-Měsíc</div>
+        </div>
+        <div class="priklad-content">
+            <div class="motivace-box">
+                Tato síla drží Měsíc na oběžné dráze kolem Země a způsobuje přílivy a odlivy oceánů. Pochopení gravitační interakce mezi nebeskými tělesy je základem navigace kosmických lodí a předpovídání pohybu planet!
+            </div>
+
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <p class="zadani-text">Jaká gravitační síla působí mezi Zemí a Měsícem?</p>
+                <p class="zadani-text">Dáno: <span class="hodnoty">m<sub>Z</sub> = 5,972×10²⁴ kg</span>, <span class="hodnoty">m<sub>M</sub> = 7,342×10²² kg</span>, <span class="hodnoty">r = 3,844×10⁸ m</span>, <span class="hodnoty">G = 6,674×10⁻¹¹ N·m²·kg⁻²</span></p>
+            </div>
+
+            <button type="button" class="toggle-reseni" onclick="toggleReseni(this)">
+                👁️ Zobrazit řešení
+            </button>
+
+            <div class="reseni hidden">
+                <h3>Řešení</h3>
+
+                <div class="reseni-kroky">
+                    <div class="reseni-krok">
+                        <h4>Analýza situace</h4>
+                        <p>Hledáme gravitační sílu mezi dvěma velmi hmotný mi tělesy - Zemí a Měsícem.</p>
+                        <p><strong>Dané hodnoty:</strong></p>
+                        <ul>
+                            <li>Hmotnost Země: m<sub>Z</sub> = 5,972×10²⁴ kg</li>
+                            <li>Hmotnost Měsíce: m<sub>M</sub> = 7,342×10²² kg</li>
+                            <li>Vzdálenost: r = 3,844×10⁸ m</li>
+                            <li>Gravitační konstanta: G = 6,674×10⁻¹¹ N·m²·kg⁻²</li>
+                        </ul>
+                    </div>
+
+                    <div class="reseni-krok">
+                        <h4>Výběr fyzikální rovnice</h4>
+                        <p>Použijeme Newtonův gravitační zákon:</p>
+                        <div class="rovnice-blok">
+                            <div class="rovnice-nadpis">📐 Newtonův gravitační zákon</div>
+                            <div class="rovnice-text">$$F_g = G \cdot \frac{m_1 \cdot m_2}{r^2}$$</div>
+                        </div>
+                    </div>
+
+                    <div class="reseni-krok">
+                        <h4>Dosazení hodnot</h4>
+                        <div class="rovnice-blok">
+                            <div class="rovnice-nadpis">📐 Dosazení do vzorce</div>
+                            <div class="rovnice-text">$$F_g = (6{,}674 \times 10^{-11}) \cdot \frac{(5{,}972 \times 10^{24}) \cdot (7{,}342 \times 10^{22})}{(3{,}844 \times 10^8)^2}$$</div>
+                        </div>
+                    </div>
+
+                    <div class="reseni-krok">
+                        <h4>Výpočet</h4>
+                        <div class="rovnice-blok">
+                            <div class="rovnice-nadpis">📐 Postupný výpočet</div>
+                            <div class="rovnice-text">$$\begin{align}
+\text{Součin hmotností:} &\quad 5{,}972 \times 7{,}342 \approx 43{,}84 \rightarrow 43{,}84 \times 10^{46} \text{ kg}^2 \\
+\text{Vzdálenost na druhou:} &\quad (3{,}844)^2 \approx 14{,}776 \rightarrow 14{,}776 \times 10^{16} \text{ m}^2 \\
+\\
+F_g &= (6{,}674 \times 10^{-11}) \cdot \frac{43{,}84 \times 10^{46}}{14{,}776 \times 10^{16}} \\
+F_g &\approx (6{,}674 \times 10^{-11}) \cdot (2{,}967 \times 10^{30}) \\
+F_g &\approx 19{,}80 \times 10^{19} \text{ N} \approx 1{,}98 \times 10^{20} \text{ N}
+\end{align}$$</div>
+                        </div>
+                        <div class="chyba-box">
+                            Pozor na správné zacházení s mocninami desítky! Při násobení se exponent y sčítají, při dělení odčítají.
+                        </div>
+                    </div>
+
+                    <div class="reseni-krok">
+                        <h4>Kontrola a odpověď</h4>
+                        <p><strong>Odpověď:</strong> Gravitační síla mezi Zemí a Měsícem je přibližně <span class="hodnoty">1,98×10²⁰ N</span>.</p>
+                        <p>💡 Pro srovnání: Tato obrovská síla je ekvivalentní tíze asi 2×10¹⁹ tun!</p>
+                    </div>
+                </div>
+
+                <div class="metakognice-box">
+                    <ul>
+                        <li>Jak by se změnila síla, kdyby se vzdálenost Země-Měsíc zdvojnásobila?</li>
+                        <li>Proč je gravitační konstanta G tak malé číslo?</li>
+                        <li>Působí stejně velká síla i ze strany Měsíce na Zemi? (3. Newtonův zákon)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Příklad 2 -->
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">2</div>
+            <div class="priklad-title">Závislost síly na vzdálenosti</div>
+        </div>
+        <div class="priklad-content">
+            <div class="motivace-box">
+                Pochopení závislosti síly na vzdálenosti (1/r²) je klíčové pro návrh družic ových drah, plánování kosmických misí a pochopení stability planetárních systémů. Inženýři ESA a NASA s tím pracují každý den!
+            </div>
+
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <p class="zadani-text">Gravitační síla mezi dvěma tělesy je <span class="hodnoty">2×10⁵ N</span>. Jaká bude síla mezi tělesy:</p>
+                <p class="zadani-text">a) když se jejich vzdálenost zdvojnásobí?</p>
+                <p class="zadani-text">b) když bude hmotnost obou těles dvojnásobná?</p>
+            </div>
+
+            <button type="button" class="toggle-reseni" onclick="toggleReseni(this)">
+                👁️ Zobrazit řešení
+            </button>
+
+            <div class="reseni hidden">
+                <h3>Řešení</h3>
+
+                <div class="reseni-kroky">
+                    <div class="reseni-krok">
+                        <h4>Analýza úměrnosti</h4>
+                        <p>Newtonův gravitační zákon říká, že gravitační síla závisí na:</p>
+                        <ul>
+                            <li>Přímo úměrně na součinu hmotností: $F \propto m_1 \cdot m_2$</li>
+                            <li>Nepřímo úměrně na druhé mocnině vzdálenosti: $F \propto \frac{1}{r^2}$</li>
+                        </ul>
+                        <div class="chyba-box">
+                            Pozor! Síla klesá s druhou mocninou vzdálenosti, ne lineárně. Zdvojnásobení vzdálenosti → síla klesne 4× (ne 2×)!
+                        </div>
+                    </div>
+
+                    <div class="reseni-krok">
+                        <h4>Část a) Zdvojnásobení vzdálenosti</h4>
+                        <p>Když $r_2 = 2r_1$, síla se změní podle poměru:</p>
+                        <div class="rovnice-blok">
+                            <div class="rovnice-nadpis">📐 Změna vzdálenosti</div>
+                            <div class="rovnice-text">$$\begin{align}
+\frac{F_2}{F_1} &= \left(\frac{r_1}{r_2}\right)^2 = \left(\frac{r_1}{2r_1}\right)^2 = \left(\frac{1}{2}\right)^2 = \frac{1}{4} \\
+\\
+F_2 &= \frac{F_1}{4} = \frac{2 \times 10^5 \text{ N}}{4} = 5 \times 10^4 \text{ N}
+\end{align}$$</div>
+                        </div>
+                        <p><strong>Odpověď a):</strong> Síla klesne <strong>4krát</strong> na hodnotu <strong>$5 \times 10^4$ N</strong>.</p>
+                    </div>
+
+                    <div class="reseni-krok">
+                        <h4>Část b) Zdvojnásobení hmotností</h4>
+                        <p>Když $m_1' = 2m_1$ a $m_2' = 2m_2$, síla se změní:</p>
+                        <div class="rovnice-blok">
+                            <div class="rovnice-nadpis">📐 Změna hmotností</div>
+                            <div class="rovnice-text">$$\begin{align}
+\frac{F_3}{F_1} &= \frac{m_1' \cdot m_2'}{m_1 \cdot m_2} = \frac{(2m_1) \cdot (2m_2)}{m_1 \cdot m_2} = 4 \\
+\\
+F_3 &= 4 \cdot F_1 = 4 \cdot (2 \times 10^5 \text{ N}) = 8 \times 10^5 \text{ N}
+\end{align}$$</div>
+                        </div>
+                        <p><strong>Odpověď b):</strong> Síla vzroste <strong>4krát</strong> na hodnotu <strong>$8 \times 10^5$ N</strong>.</p>
+                    </div>
+
+                    <div class="reseni-krok">
+                        <h4>Kontrola a shrnutí</h4>
+                        <p><strong>Shrnutí závislostí:</strong></p>
+                        <ul>
+                            <li>Vzdálenost 2× větší → síla 4× menší (1/r²)</li>
+                            <li>Obě hmotnosti 2× větší → síla 4× větší (m₁ × m₂)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="metakognice-box">
+                    <ul>
+                        <li>Co se stane se silou, když vzdálenost ztrojnásobíme?</li>
+                        <li>Proč je závislost na r² a ne na r³?</li>
+                        <li>Jak by se změnila síla, kdyby se zdvojnásobila jen jedna hmotnost?</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h2>⚡ Intenzita a zrychlení (3-6)</h2>
+    <div class="sekce-popis">
+        Intenzita gravitačního pole, gravitační zrychlení na různých tělesech.
+    </div>
+
+    <!-- Příklad 3 -->
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">3</div>
+            <div class="priklad-title">Intenzita na povrchu Měsíce</div>
+        </div>
+        <div class="priklad-content">
+            <div class="motivace-box">
+                Astronauti programu Apollo zažili měsíční gravitaci na vlastní kůži - mohli skákat výš a nosit těžké vybavení snadněji. Pochopení intenzity gravitačního pole je klíčové pro návrh skafandrů, pohyb vozítek a plánování měsíčních misí!
+            </div>
+
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <p class="zadani-text">Na astronauta o hmotnosti <span class="hodnoty">75 kg</span> působí v těžišti síla <span class="hodnoty">126 N</span>. Vypočítejte hodnotu intenzity na povrchu Měsíce.</p>
+            </div>
+
+            <button type="button" class="toggle-reseni" onclick="toggleReseni(this)">
+                👁️ Zobrazit řešení
+            </button>
+
+            <div class="reseni hidden">
+                <h3>Řešení</h3>
+
+                <div class="reseni-kroky">
+                    <div class="reseni-krok">
+                        <h4>Analýza situace</h4>
+                        <p>Intenzita gravitačního pole K je síla působící na jednotkovou hmotnost.</p>
+                        <p><strong>Dané hodnoty:</strong></p>
+                        <ul>
+                            <li>Hmotnost astronauta: m = 75 kg</li>
+                            <li>Gravitační síla na astronauta: F<sub>g</sub> = 126 N</li>
+                            <li>Hledáme: intenzitu K</li>
+                        </ul>
+                    </div>
+
+                    <div class="reseni-krok">
+                        <h4>Výběr fyzikální rovnice</h4>
+                        <p>Intenzita gravitačního pole je definována jako:</p>
+                        <div class="rovnice-blok">
+                            <div class="rovnice-nadpis">📐 Intenzita gravitačního pole</div>
+                            <div class="rovnice-text">$$K = \frac{F_g}{m}$$
+
+[jednotky: N/kg, což je číselně rovno m/s²]</div>
+                        </div>
+                    </div>
+
+                    <div class="reseni-krok">
+                        <h4>Dosazení a výpočet</h4>
+                        <div class="rovnice-blok">
+                            <div class="rovnice-nadpis">📐 Výpočet intenzity</div>
+                            <div class="rovnice-text">$$K = \frac{126 \text{ N}}{75 \text{ kg}} = 1{,}68 \text{ N/kg}$$</div>
+                        </div>
+                    </div>
+
+                    <div class="reseni-krok">
+                        <h4>Kontrola a odpověď</h4>
+                        <p><strong>Odpověď:</strong> Hodnota intenzity gravitačního pole na povrchu Měsíce je <strong>1,68 N/kg</strong>.</p>
+                        <p>💡 Pro srovnání: Na Zemi je $K \approx 9{,}81$ N/kg, takže gravitace na Měsíci je přibližně <strong>6krát slabší</strong>.</p>
+                    </div>
+                </div>
+
+                <div class="metakognice-box">
+                    <ul>
+                        <li>Kolik by vážil stejný astronaut na Zemi?</li>
+                        <li>Proč se používá jednotka N/kg místo m/s²?</li>
+                        <li>Jaký vliv má slabší gravitace na pohyb astronautů?</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Příklad 4 -->
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">4</div>
+            <div class="priklad-title">Intenzita ve výšce nad Zemí</div>
+        </div>
+        <div class="priklad-content">
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <p class="zadani-text">Hodnota K na zemském povrchu je kolem <span class="hodnoty">10 N·kg⁻¹</span>. Stanovte hodnotu intenzity ve výšce h nad povrchem Země, jestliže:</p>
+                <p class="zadani-text">a) h = R<sub>Z</sub> (poloměr Země)</p>
+                <p class="zadani-text">b) h = 3R<sub>Z</sub></p>
+            </div>
+
+            <button type="button" class="toggle-reseni" onclick="toggleReseni(this)">
+                👁️ Zobrazit řešení
+            </button>
+
+            <div class="reseni hidden">
+                <h3>Řešení</h3>
+
+                <div class="reseni-kroky">
+                    <div class="reseni-krok">
+                        <h4>Analýza závislosti intenzity</h4>
+                        <p>Intenzita klesá s druhou mocninou vzdálenosti od středu Země: K ∝ 1/r²</p>
+                        <div class="chyba-box">
+                            Pozor! Vzdálenost r se počítá od STŘEDU Země, ne od povrchu. Při výšce h je celková vzdálenost r = R<sub>Z</sub> + h!
+                        </div>
+                    </div>
+
+                    <div class="reseni-krok">
+                        <h4>Část a) Výška h = R<sub>Z</sub></h4>
+                        <div class="rovnice-blok">
+                            <div class="rovnice-nadpis">📐 Výpočet pro h = R<sub>Z</sub></div>
+                            <div class="rovnice-text">$$\begin{align}
+r_2 &= R_Z + h = R_Z + R_Z = 2R_Z \\
+K_2 &= K_1 \cdot \left(\frac{R_Z}{r_2}\right)^2 = 10 \cdot \left(\frac{R_Z}{2R_Z}\right)^2 \\
+&= 10 \cdot \left(\frac{1}{2}\right)^2 = \frac{10}{4} = 2{,}5 \text{ N/kg}
+\end{align}$$</div>
+                        </div>
+                        <p><strong>Odpověď a):</strong> Ve výšce $R_Z$ je intenzita <strong>2,5 N/kg</strong>.</p>
+                    </div>
+
+                    <div class="reseni-krok">
+                        <h4>Část b) Výška h = 3R<sub>Z</sub></h4>
+                        <div class="rovnice-blok">
+                            <div class="rovnice-nadpis">📐 Výpočet pro h = 3R<sub>Z</sub></div>
+                            <div class="rovnice-text">$$\begin{align}
+r_3 &= R_Z + 3R_Z = 4R_Z \\
+K_3 &= K_1 \cdot \left(\frac{R_Z}{r_3}\right)^2 = 10 \cdot \left(\frac{R_Z}{4R_Z}\right)^2 \\
+&= 10 \cdot \left(\frac{1}{4}\right)^2 = \frac{10}{16} = 0{,}625 \text{ N/kg}
+\end{align}$$</div>
+                        </div>
+                        <p><strong>Odpověď b):</strong> Ve výšce $3R_Z$ je intenzita <strong>0,625 N/kg</strong>.</p>
+                    </div>
+
+                    <div class="reseni-krok">
+                        <h4>Shrnutí</h4>
+                        <p>Intenzita klesá velmi rychle s výškou:</p>
+                        <ul>
+                            <li>Na povrchu (h=0): K = 10 N/kg</li>
+                            <li>Ve výšce R<sub>Z</sub>: K = 2,5 N/kg (4× menší)</li>
+                            <li>Ve výšce 3R<sub>Z</sub>: K = 0,625 N/kg (16× menší)</li>
+                        </ul>
+                    </div>
+
+                    <div class="reseni-krok">
+                        <h4>Kontrola a odpověď</h4>
+                        <p><strong>Odpověď:</strong></p>
+                        <ul>
+                            <li>a) Ve výšce $R_Z$ nad povrchem: $K = 2{,}5$ N/kg</li>
+                            <li>b) Ve výšce $3R_Z$ nad povrchem: $K = 0{,}625$ N/kg</li>
+                        </ul>
+                        <p>Ověření: Při zdvojnásobení vzdálenosti od středu (2$R_Z$) je intenzita 4× menší: $10/4 = 2{,}5$ ✓</p>
+                        <p>Při zčtyřnásobení vzdálenosti (4$R_Z$) je intenzita 16× menší: $10/16 = 0{,}625$ ✓</p>
+                    </div>
+                </div>
+
+                <div class="metakognice-box">
+                    <ul>
+                        <li>Ve které výšce bude intenzita 9× menší než na povrchu?</li>
+                        <li>Proč astronauti na ISS (h ≈ 400 km) pociťují téměř stejnou gravitaci jako na Zemi?</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Příklad 5 -->
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">5</div>
+            <div class="priklad-title">Gravitační zrychlení na Měsíci působící ze Země</div>
+        </div>
+        <div class="priklad-content">
+            <div class="motivace-box">
+                Toto malé zrychlení udržuje Měsíc na jeho oběžné dráze a způsobuje přílivy a odlivy. Je to perfektní rovnováha - kdyby bylo větší, Měsíc by se k nám přibližoval, kdyby menší, oddaloval by se!
+            </div>
+
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <p class="zadani-text">Určete gravitační zrychlení, působící na Měsíci vlivem působení Země.</p>
+                <p class="zadani-text">Dáno: <span class="hodnoty">G = 6,674×10⁻¹¹ N·m²·kg⁻²</span>, <span class="hodnoty">M<sub>Z</sub> = 5,972×10²⁴ kg</span>, <span class="hodnoty">r = 3,844×10⁸ m</span></p>
+            </div>
+
+            <button type="button" class="toggle-reseni" onclick="toggleReseni(this)">
+                👁️ Zobrazit řešení
+            </button>
+
+            <div class="reseni hidden">
+                <h3>Řešení</h3>
+
+                <div class="reseni-kroky">
+                    <div class="reseni-krok">
+                        <h4>Výběr fyzikální rovnice</h4>
+                        <p>Gravitační zrychlení je číselně rovno intenzitě gravitačního pole:</p>
+                        <div class="rovnice-blok">
+                            <div class="rovnice-nadpis">📐 Gravitační zrychlení</div>
+                            <div class="rovnice-text">$$a_g = K = \frac{G \cdot M}{r^2}$$</div>
+                        </div>
+                    </div>
+
+                    <div class="reseni-krok">
+                        <h4>Dosazení hodnot</h4>
+                        <div class="rovnice-blok">
+                            <div class="rovnice-nadpis">📐 Dosazení</div>
+                            <div class="rovnice-text">$$a_g = \frac{(6{,}674 \times 10^{-11}) \cdot (5{,}972 \times 10^{24})}{(3{,}844 \times 10^8)^2}$$</div>
+                        </div>
+                    </div>
+
+                    <div class="reseni-krok">
+                        <h4>Výpočet</h4>
+                        <div class="rovnice-blok">
+                            <div class="rovnice-nadpis">📐 Postupný výpočet</div>
+                            <div class="rovnice-text">$$\begin{align}
+\text{Jmenovatel:} &\quad (3{,}844 \times 10^8)^2 \approx 14{,}776 \times 10^{16} \text{ m}^2 \\
+\text{Čitatel:} &\quad (6{,}674 \times 10^{-11}) \cdot (5{,}972 \times 10^{24}) \approx 39{,}86 \times 10^{13} \\
+\\
+a_g &= \frac{39{,}86 \times 10^{13}}{14{,}776 \times 10^{16}} \approx 0{,}0027 \text{ m/s}^2
+\end{align}$$</div>
+                        </div>
+                    </div>
+
+                    <div class="reseni-krok">
+                        <h4>Kontrola a odpověď</h4>
+                        <p><strong>Odpověď:</strong> Gravitační zrychlení na Měsíci vlivem Země je <span class="hodnoty">0,0027 m/s²</span> (≈ 2,7 mm/s²).</p>
+                        <p>💡 Toto zrychlení působí jako dostředivé zrychlení pro kruhový pohyb Měsíce!</p>
+                    </div>
+                </div>
+
+                <div class="metakognice-box">
+                    <ul>
+                        <li>Jaké gravitační zrychlení působí Země na Slunce vlivem zemské gravitace?</li>
+                        <li>Proč Měsíc nespadne na Zemi, když na něj působí toto zrychlení?</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Příklad 6 -->
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">6</div>
+            <div class="priklad-title">Gravitační zrychlení na povrchu Měsíce</div>
+        </div>
+        <div class="priklad-content">
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <p class="zadani-text">Vypočítejte hodnotu zrychlení na povrchu Měsíce.</p>
+                <p class="zadani-text">Dáno: <span class="hodnoty">G = 6,674×10⁻¹¹ N·m²·kg⁻²</span>, <span class="hodnoty">M<sub>M</sub> = 7,342×10²² kg</span>, <span class="hodnoty">R<sub>M</sub> = 1,737×10⁶ m</span></p>
+            </div>
+
+            <button type="button" class="toggle-reseni" onclick="toggleReseni(this)">
+                👁️ Zobrazit řešení
+            </button>
+
+            <div class="reseni hidden">
+                <h3>Řešení</h3>
+
+                <div class="reseni-kroky">
+                    <div class="reseni-krok">
+                        <h4>Výběr fyzikální rovnice</h4>
+                        <p>Pro gravitační zrychlení na povrchu tělesa:</p>
+                        <div class="rovnice-blok">
+                            <div class="rovnice-nadpis">📐 Gravitační zrychlení na povrchu</div>
+                            <div class="rovnice-text">$$g = \frac{G \cdot M}{R^2}$$</div>
+                        </div>
+                    </div>
+
+                    <div class="reseni-krok">
+                        <h4>Dosazení a výpočet</h4>
+                        <div class="rovnice-blok">
+                            <div class="rovnice-nadpis">📐 Výpočet</div>
+                            <div class="rovnice-text">$$\begin{align}
+g_M &= \frac{(6{,}674 \times 10^{-11}) \cdot (7{,}342 \times 10^{22})}{(1{,}737 \times 10^6)^2} \\
+\\
+\text{Jmenovatel:} &\quad (1{,}737 \times 10^6)^2 \approx 3{,}017 \times 10^{12} \text{ m}^2 \\
+\text{Čitatel:} &\quad (6{,}674 \times 10^{-11}) \cdot (7{,}342 \times 10^{22}) \approx 4{,}899 \times 10^{12} \\
+\\
+g_M &= \frac{4{,}899 \times 10^{12}}{3{,}017 \times 10^{12}} \approx 1{,}62 \text{ m/s}^2
+\end{align}$$</div>
+                        </div>
+                    </div>
+
+                    <div class="reseni-krok">
+                        <h4>Kontrola a odpověď</h4>
+                        <p><strong>Odpověď:</strong> Gravitační zrychlení na povrchu Měsíce je <span class="hodnoty">1,62 m/s²</span>.</p>
+                        <p>💡 To je přibližně <strong>6krát méně</strong> než na Zemi (g<sub>Z</sub> ≈ 9,81 m/s²). Astronauti proto mohli skákat mnohem výš!</p>
+                    </div>
+                </div>
+
+                <div class="metakognice-box">
+                    <ul>
+                        <li>Jak vysoko by vyskočil astronaut na Měsíci, když na Zemi skočí 50 cm?</li>
+                        <li>Proč má Měsíc slabší gravitaci než Země?</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h2>💫 Potenciál a energie (7-9)</h2>
+    <div class="sekce-popis">
+        Gravitační potenciál, mechanická energie, zákon zachování energie.
+    </div>
+
+    <!-- Příklad 7 -->
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">7</div>
+            <div class="priklad-title">Svislý vrh vzhůru</div>
+        </div>
+        <div class="priklad-content">
+            <div class="motivace-box">
+                Svislý vrh popisuje pohyb rakety, míčů, střel i kamenů vyhozených vzhůru. Sportovní trenéři, kaskadéři a konstruktéři fontán využívají tyto výpočty každý den!
+            </div>
+
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <p class="zadani-text">Těleso se pohybuje svisle nahoru rychlostí <span class="hodnoty">40 m·s⁻¹</span>. Vypočítejte rychlost a vzdálenost v čase <span class="hodnoty">2 sekundy</span> od začátku pohybu. Určete maximální výšku a dobu výstupu. Vypočítejte rychlost dopadu a vzdálenost, do které dopadne na zem. Narýsujte grafy závislosti rychlosti na čase a okamžité rychlosti na čase, najděte rozdíly a diskutujte o nich.</p>
+                <p class="zadani-text">Použijte: <span class="hodnoty">g ≈ 10 m·s⁻²</span></p>
+            </div>
+
+            <button type="button" class="toggle-reseni" onclick="toggleReseni(this)">
+                👁️ Zobrazit řešení
+            </button>
+
+            <div class="reseni hidden">
+                <h3>Řešení</h3>
+
+                <div class="reseni-kroky">
+                    <div class="reseni-krok">
+                        <h4>Rychlost a výška v čase t = 2 s</h4>
+                        <div class="rovnice-blok">
+                            <div class="rovnice-nadpis">📐 Kinematické rovnice</div>
+                            <div class="rovnice-text">$$\begin{align}
+v(t) &= v_0 - g \cdot t = 40 - 10 \cdot 2 = 20 \text{ m/s} \\
+y(t) &= v_0 \cdot t - \frac{1}{2}g \cdot t^2 = 40 \cdot 2 - 5 \cdot 4 = 80 - 20 = 60 \text{ m}
+\end{align}$$</div>
+                        </div>
+                    </div>
+
+                    <div class="reseni-krok">
+                        <h4>Maximální výška a doba výstupu</h4>
+                        <p>V nejvyšším bodě je rychlost v = 0:</p>
+                        <div class="rovnice-blok">
+                            <div class="rovnice-nadpis">📐 Vrchol trajektorie</div>
+                            <div class="rovnice-text">$$\begin{align}
+t_\text{výstupu} &= \frac{v_0}{g} = \frac{40}{10} = 4 \text{ s} \\
+y_\text{max} &= v_0 \cdot t - \frac{1}{2}g \cdot t^2 = 40 \cdot 4 - 5 \cdot 16 = 160 - 80 = 80 \text{ m}
+\end{align}$$</div>
+                        </div>
+                    </div>
+
+                    <div class="reseni-krok">
+                        <h4>Rychlost dopadu a konečná poloha</h4>
+                        <p>Pohyb je symetrický - doba sestupu = doba výstupu:</p>
+                        <div class="rovnice-blok">
+                            <div class="rovnice-nadpis">📐 Dopad</div>
+                            <div class="rovnice-text">Celková doba letu: **8 s**
+
+$$v(8) = 40 - 10 \cdot 8 = -40 \text{ m/s}$$ (velikost 40 m/s, směr dolů)
+
+Konečná poloha: **0 m** (návrat na místo startu)</div>
+                        </div>
+                    </div>
+
+                    <div class="reseni-krok">
+                        <h4>Grafy a jejich interpretace</h4>
+                        <p><strong>Graf v(t):</strong> Přímka klesající z 40 m/s přes 0 (t=4s) do -40 m/s (t=8s)</p>
+                        <p><strong>Graf |v(t)|:</strong> Tvar "V" - klesá z 40 do 0, pak roste zpět na 40</p>
+                        <div class="chyba-box">
+                            Pozor na rozdíl! Rychlost v(t) je vektor (může být záporná), velikost rychlosti |v(t)| je vždy nezáporná.
+                        </div>
+                    </div>
+
+                    <div class="reseni-krok">
+                        <h4>Kontrola a odpověď</h4>
+                        <p><strong>Odpověď:</strong></p>
+                        <ul>
+                            <li>V čase t=2s: rychlost $v = 20$ m/s, výška $y = 60$ m</li>
+                            <li>Maximální výška: $y_\text{max} = 80$ m, doba výstupu $t = 4$ s</li>
+                            <li>Rychlost dopadu: $|v| = 40$ m/s (směr dolů), celková doba letu: 8 s</li>
+                            <li>Konečná poloha: 0 m (návrat na místo startu)</li>
+                        </ul>
+                        <p>Ověření symetrie: Doba výstupu = doba sestupu = 4 s ✓</p>
+                        <p>Ověření energie: Počáteční a konečná rychlost mají stejnou velikost (40 m/s) ✓</p>
+                    </div>
+                </div>
+
+                <div class="metakognice-box">
+                    <ul>
+                        <li>Proč je pohyb symetrický?</li>
+                        <li>Co by se stalo s maximální výškou, kdyby byla počáteční rychlost 2× větší?</li>
+                        <li>Proč je rychlost dopadu stejná jako počáteční rychlost (velikostí)?</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Příklad 8 -->
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">8</div>
+            <div class="priklad-title">Volný pád a svislý vrh z helikoptéry</div>
+        </div>
+        <div class="priklad-content">
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <p class="zadani-text">Těleso je vyhozeno z helikoptéry ve výšce <span class="hodnoty">55 m</span> od povrchu Země.</p>
+                <p class="zadani-text">a) Jakou dobu bude padat a jakou rychlostí dopadne, je-li helikoptéra v okamžiku vyhození tělesa v klidu?</p>
+                <p class="zadani-text">b) Jakou dobu bude padat a jakou rychlostí dopadne, klesá-li helikoptéra v okamžiku vyhození tělesa rychlostí <span class="hodnoty">1 m·s⁻¹</span>?</p>
+                <p class="zadani-text">Dosazujte <span class="hodnoty">g = 9,81 m·s⁻²</span>. Výsledek uveďte s přesností na dvě desetinná místa.</p>
+            </div>
+
+            <button type="button" class="toggle-reseni" onclick="toggleReseni(this)">
+                👁️ Zobrazit řešení
+            </button>
+
+            <div class="reseni hidden">
+                <h3>Řešení</h3>
+
+                <div class="reseni-kroky">
+                    <div class="reseni-krok">
+                        <h4>Část a) Volný pád (v₀ = 0)</h4>
+                        <div class="rovnice-blok">
+                            <div class="rovnice-nadpis">📐 Volný pád</div>
+                            <div class="rovnice-text">$$\begin{align}
+t &= \sqrt{\frac{2y}{g}} = \sqrt{\frac{2 \cdot 55}{9{,}81}} = \sqrt{11{,}213} \approx 3{,}35 \text{ s} \\
+v &= g \cdot t = 9{,}81 \cdot 3{,}35 \approx 32{,}85 \text{ m/s}
+\end{align}$$</div>
+                        </div>
+                    </div>
+
+                    <div class="reseni-krok">
+                        <h4>Část b) Svislý vrh dolů (v₀ = 1 m/s)</h4>
+                        <p>Kvadratická rovnice: $y = v_0 \cdot t + \frac{1}{2}g \cdot t^2$</p>
+                        <div class="rovnice-blok">
+                            <div class="rovnice-nadpis">📐 Řešení kvadratické rovnice</div>
+                            <div class="rovnice-text">$$\begin{align}
+55 &= 1 \cdot t + 4{,}905 \cdot t^2 \\
+4{,}905t^2 + t - 55 &= 0 \\
+\\
+t &= \frac{-1 + \sqrt{1 + 1079{,}1}}{9{,}81} \approx 3{,}25 \text{ s} \\
+v &= v_0 + g \cdot t = 1 + 9{,}81 \cdot 3{,}25 \approx 32{,}87 \text{ m/s}
+\end{align}$$</div>
+                        </div>
+                    </div>
+
+                    <div class="reseni-krok">
+                        <h4>Shrnutí</h4>
+                        <p>Počáteční rychlost dolů zkrátila dobu pádu o 0,1 s a zvýšila rychlost dopadu minimálně (+ 0,02 m/s).</p>
+                    </div>
+
+                    <div class="reseni-krok">
+                        <h4>Kontrola a odpověď</h4>
+                        <p><strong>Odpověď:</strong></p>
+                        <ul>
+                            <li>a) Volný pád (v₀=0): doba pádu $t \approx 3{,}35$ s, rychlost dopadu $v \approx 32{,}85$ m/s</li>
+                            <li>b) Svislý vrh dolů (v₀=1 m/s): doba pádu $t \approx 3{,}25$ s, rychlost dopadu $v \approx 32{,}87$ m/s</li>
+                        </ul>
+                        <p>Ověření: Počáteční rychlost 1 m/s zkrátila dobu o $3{,}35 - 3{,}25 = 0{,}1$ s ✓</p>
+                        <p>Konečné rychlosti se liší minimálně: $32{,}87 - 32{,}85 = 0{,}02$ m/s ✓</p>
+                    </div>
+                </div>
+
+                <div class="metakognice-box">
+                    <ul>
+                        <li>Proč je vliv počáteční rychlosti 1 m/s na konečnou rychlost tak malý?</li>
+                        <li>Jaký by byl rozdíl, kdyby helikoptéra stoupala rychlostí 1 m/s?</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Příklad 9 -->
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">9</div>
+            <div class="priklad-title">Vodorovný vrh a energie šípu</div>
+        </div>
+        <div class="priklad-content">
+            <div class="motivace-box">
+                Zákon zachování energie je jeden z nejfundamentálnějších přírodních zákonů. Používá se při navrhování horských drah, skokanských můstek, vodních fontán i při analýze balistických trajektorií!
+            </div>
+
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <p class="zadani-text">Šíp o hmotnosti <span class="hodnoty">10 g</span> byl vystřelen vodorovně z věže vysoké <span class="hodnoty">80 m</span> rychlostí <span class="hodnoty">25 m·s⁻¹</span>.</p>
+                <p class="zadani-text">a) Do jaké vzdálenosti od paty věže dopadne na povrchu Země a jak dlouho bude padat?</p>
+                <p class="zadani-text">b) Jaká bude jeho kinetická a potenciální energie na začátku pohybu?</p>
+                <p class="zadani-text">c) Jaká bude celková mechanická energie během pohybu?</p>
+                <p class="zadani-text">Použijte: <span class="hodnoty">g = 10 m·s⁻²</span></p>
+            </div>
+
+            <button type="button" class="toggle-reseni" onclick="toggleReseni(this)">
+                👁️ Zobrazit řešení
+            </button>
+
+            <div class="reseni hidden">
+                <h3>Řešení</h3>
+
+                <div class="reseni-kroky">
+                    <div class="reseni-krok">
+                        <h4>Převod jednotek a analýza</h4>
+                        <p>m = 10 g = <span class="hodnoty">0,01 kg</span></p>
+                        <p>Vodorovný vrh: pohyb ve vodorovném směru rovnoměrný, ve svislém volný pád.</p>
+                    </div>
+
+                    <div class="reseni-krok">
+                        <h4>Část a) Vzdálenost a doba</h4>
+                        <div class="rovnice-blok">
+                            <div class="rovnice-nadpis">📐 Vodorovný vrh</div>
+                            <div class="rovnice-text">$$\begin{align}
+t &= \sqrt{\frac{2h}{g}} = \sqrt{\frac{2 \cdot 80}{10}} = \sqrt{16} = 4 \text{ s} \\
+d &= v_x \cdot t = 25 \cdot 4 = 100 \text{ m}
+\end{align}$$</div>
+                        </div>
+                    </div>
+
+                    <div class="reseni-krok">
+                        <h4>Část b) Počáteční energie</h4>
+                        <div class="rovnice-blok">
+                            <div class="rovnice-nadpis">📐 Kinetická a potenciální energie</div>
+                            <div class="rovnice-text">$$\begin{align}
+E_k &= \frac{1}{2}mv^2 = \frac{1}{2} \cdot 0{,}01 \cdot 25^2 = 3{,}125 \text{ J} \\
+E_p &= mgh = 0{,}01 \cdot 10 \cdot 80 = 8 \text{ J}
+\end{align}$$</div>
+                        </div>
+                    </div>
+
+                    <div class="reseni-krok">
+                        <h4>Část c) Celková mechanická energie</h4>
+                        <div class="rovnice-blok">
+                            <div class="rovnice-nadpis">📐 Zákon zachování energie</div>
+                            <div class="rovnice-text">$$E_m = E_k + E_p = 3{,}125 + 8 = 11{,}125 \text{ J}$$</div>
+                        </div>
+                        <p>💡 Celková energie zůstává konstantní během celého pohybu (bez odporu vzduchu)!</p>
+                    </div>
+
+                    <div class="reseni-krok">
+                        <h4>Kontrola a odpověď</h4>
+                        <p><strong>Odpověď:</strong></p>
+                        <ul>
+                            <li>a) Doba pádu: $t = 4$ s, vzdálenost dopadu: $d = 100$ m</li>
+                            <li>b) Počáteční energie: $E_k = 3{,}125$ J (kinetická), $E_p = 8$ J (potenciální)</li>
+                            <li>c) Celková mechanická energie: $E_m = 11{,}125$ J (konstantní po celou dobu letu)</li>
+                        </ul>
+                        <p>Ověření energie: $E_m = E_k + E_p = 3{,}125 + 8 = 11{,}125$ J ✓</p>
+                        <p>Kontrola času: $t = \sqrt{2h/g} = \sqrt{160/10} = 4$ s ✓</p>
+                    </div>
+                </div>
+
+                <div class="metakognice-box">
+                    <ul>
+                        <li>Jak se mění Eₖ a Eₚ během letu?</li>
+                        <li>Jaká bude kinetická energie těsně před dopadem?</li>
+                        <li>Proč je užitečný zákon zachování energie?</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h2>📉 Pohyby v tíhovém poli (10-11)</h2>
+    <div class="sekce-popis">
+        Vodorovný vrh, šikmý vrh, trajektorie pohybu.
+    </div>
+
+    <!-- Příklad 10 -->
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">10</div>
+            <div class="priklad-title">Test automobilů - vodorovný vrh</div>
+        </div>
+        <div class="priklad-content">
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <p class="zadani-text">Výrobci automobilů testují odolnost aut testem na principu vodorovného vrhu. Auto, jedoucí po vodorovné rovině ve výšce <span class="hodnoty">15 m</span> rychlostí <span class="hodnoty">20 m·s⁻¹</span>, spadne z roviny na betonový povrch. Určete úhel dopadu, rychlost dopadu a vzdálenost na betonovém povrchu, kam dopadne.</p>
+                <p class="zadani-text">Použijte: <span class="hodnoty">g = 10 m·s⁻²</span></p>
+            </div>
+
+            <button type="button" class="toggle-reseni" onclick="toggleReseni(this)">
+                👁️ Zobrazit řešení
+            </button>
+
+            <div class="reseni hidden">
+                <h3>Řešení</h3>
+
+                <div class="reseni-kroky">
+                    <div class="reseni-krok">
+                        <h4>Doba letu</h4>
+                        <div class="rovnice-blok">
+                            <div class="rovnice-nadpis">📐 Čas pádu</div>
+                            <div class="rovnice-text">$$t = \sqrt{\frac{2y}{g}} = \sqrt{\frac{2 \cdot 15}{10}} = \sqrt{3} \approx 1{,}73 \text{ s}$$</div>
+                        </div>
+                    </div>
+
+                    <div class="reseni-krok">
+                        <h4>Vzdálenost dopadu</h4>
+                        <div class="rovnice-blok">
+                            <div class="rovnice-nadpis">📐 Horizontální vzdálenost</div>
+                            <div class="rovnice-text">$$x = v_x \cdot t = 20 \cdot 1{,}73 \approx 34{,}6 \text{ m}$$</div>
+                        </div>
+                    </div>
+
+                    <div class="reseni-krok">
+                        <h4>Rychlost dopadu</h4>
+                        <div class="rovnice-blok">
+                            <div class="rovnice-nadpis">📐 Složky rychlosti</div>
+                            <div class="rovnice-text">$$\begin{align}
+v_x &= 20 \text{ m/s} \quad \text{(konstantní)} \\
+v_y &= g \cdot t = 10 \cdot 1{,}73 = 17{,}3 \text{ m/s} \\
+\\
+v &= \sqrt{v_x^2 + v_y^2} = \sqrt{400 + 299{,}29} \approx 26{,}4 \text{ m/s}
+\end{align}$$</div>
+                        </div>
+                    </div>
+
+                    <div class="reseni-krok">
+                        <h4>Úhel dopadu</h4>
+                        <div class="rovnice-blok">
+                            <div class="rovnice-nadpis">📐 Úhel vůči horizontále</div>
+                            <div class="rovnice-text">$$\begin{align}
+\tan(\alpha) &= \frac{v_y}{v_x} = \frac{17{,}3}{20} = 0{,}865 \\
+\alpha &= \arctan(0{,}865) \approx 40{,}8°
+\end{align}$$</div>
+                        </div>
+                    </div>
+
+                    <div class="reseni-krok">
+                        <h4>Kontrola a odpověď</h4>
+                        <p><strong>Odpověď:</strong></p>
+                        <ul>
+                            <li>Doba pádu: $t \approx 1{,}73$ s</li>
+                            <li>Vzdálenost dopadu: $x \approx 34{,}6$ m</li>
+                            <li>Rychlost dopadu: $v \approx 26{,}4$ m/s</li>
+                            <li>Úhel dopadu: $\alpha \approx 40{,}8°$ (vůči horizontále)</li>
+                        </ul>
+                        <p>Ověření rychlosti: $v = \sqrt{v_x^2 + v_y^2} = \sqrt{20^2 + 17{,}3^2} = \sqrt{699{,}29} \approx 26{,}4$ m/s ✓</p>
+                        <p>Kontrola: Vodorovná složka zůstává konstantní ($v_x = 20$ m/s), svislá roste ($v_y = gt$) ✓</p>
+                    </div>
+                </div>
+
+                <div class="metakognice-box">
+                    <ul>
+                        <li>Proč je vodorovná složka rychlosti konstantní během celého letu?</li>
+                        <li>Jak by se změnil úhel dopadu, kdyby auto jelo rychleji?</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Příklad 11 -->
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">11</div>
+            <div class="priklad-title">Šikmý vrh fotbalového míče</div>
+        </div>
+        <div class="priklad-content">
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <p class="zadani-text">Fotbalista kopl míč pod úhlem <span class="hodnoty">45°</span>. Balón dopadne na zem ve vzdálenosti <span class="hodnoty">40 m</span> od místa výkopu. Jak velkou rychlost fotbalista udělil míči?</p>
+                <p class="zadani-text">Použijte: <span class="hodnoty">g = 9,81 m·s⁻²</span></p>
+            </div>
+
+            <button type="button" class="toggle-reseni" onclick="toggleReseni(this)">
+                👁️ Zobrazit řešení
+            </button>
+
+            <div class="reseni hidden">
+                <h3>Řešení</h3>
+
+                <div class="reseni-kroky">
+                    <div class="reseni-krok">
+                        <h4>Vzorec pro dostřel</h4>
+                        <p>Pro šikmý vrh platí vzorec pro vzdálenost:</p>
+                        <div class="rovnice-blok">
+                            <div class="rovnice-nadpis">📐 Dostřel šikmého vrhu</div>
+                            <div class="rovnice-text">$$d = \frac{v_0^2 \cdot \sin(2\alpha)}{g}$$</div>
+                        </div>
+                    </div>
+
+                    <div class="reseni-krok">
+                        <h4>Zjednodušení pro α = 45°</h4>
+                        <div class="rovnice-blok">
+                            <div class="rovnice-nadpis">📐 Speciální případ</div>
+                            <div class="rovnice-text">$$\begin{align}
+\sin(2 \cdot 45°) &= \sin(90°) = 1 \\
+\\
+d &= \frac{v_0^2}{g}
+\end{align}$$</div>
+                        </div>
+                        <div class="chyba-box">
+                            Tip: Úhel 45° dává maximální dostřel! Proto se sin(90°) = 1 a vzorec se zjednodušuje.
+                        </div>
+                    </div>
+
+                    <div class="reseni-krok">
+                        <h4>Výpočet rychlosti</h4>
+                        <div class="rovnice-blok">
+                            <div class="rovnice-nadpis">📐 Vyjádření v₀</div>
+                            <div class="rovnice-text">v₀² = d · g = 40 · 9,81 = 392,4
+v₀ = √392,4 ≈ <span class="hodnoty">19,8 m/s</span> ≈ <span class="hodnoty">71 km/h</span></div>
+                        </div>
+                    </div>
+
+                    <div class="reseni-krok">
+                        <h4>Odpověď</h4>
+                        <p>Fotbalista udělil míči rychlost <span class="hodnoty">19,8 m/s</span> (přibližně 71 km/h).</p>
+                    </div>
+
+                    <div class="reseni-krok">
+                        <h4>Kontrola a odpověď</h4>
+                        <p><strong>Odpověď:</strong> Počáteční rychlost míče byla $v_0 \approx 19{,}8$ m/s (≈ 71 km/h)</p>
+                        <p>Ověření: $d = \frac{v_0^2}{g} = \frac{19{,}8^2}{9{,}81} = \frac{392{,}04}{9{,}81} \approx 40$ m ✓</p>
+                        <p>Kontrola jednotek: $\frac{(\text{m/s})^2}{\text{m/s}^2} = \text{m}$ ✓</p>
+                        <p>Speciální vlastnost úhlu 45°: Maximální dostřel při dané počáteční rychlosti ✓</p>
+                    </div>
+                </div>
+
+                <div class="metakognice-box">
+                    <ul>
+                        <li>Proč úhel 45° dává maximální dostřel?</li>
+                        <li>Do jaké maximální výšky by míč vyletěl?</li>
+                        <li>Jak by se změnil dostřel při úhlu 30° se stejnou rychlostí?</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h2>🛰️ Umělé družice a planety (12-14)</h2>
+    <div class="sekce-popis">
+        Kruhová rychlost, geostacionární družice, kosmické rychlosti.
+    </div>
+
+    <!-- Příklad 12 -->
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">12</div>
+            <div class="priklad-title">Vodorovný vrh z letadla</div>
+        </div>
+        <div class="priklad-content">
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <p class="zadani-text">Těleso je vypuštěno z letadla letícího vodorovně stálou rychlostí <span class="hodnoty">150 m·s⁻¹</span> ve výšce <span class="hodnoty">800 m</span>. Neuvažujte odpor vzduchu a berte <span class="hodnoty">g = 10 m·s⁻²</span>. Zjistěte:</p>
+                <p class="zadani-text">a) za jak dlouho těleso dopadne na zem</p>
+                <p class="zadani-text">b) vodorovnou vzdálenost, kterou urazí těleso od opuštění letadla do dopadu na zem</p>
+            </div>
+
+            <button type="button" class="toggle-reseni" onclick="toggleReseni(this)">
+                👁️ Zobrazit řešení
+            </button>
+
+            <div class="reseni hidden">
+                <h3>Řešení</h3>
+
+                <div class="reseni-kroky">
+                    <div class="reseni-krok">
+                        <h4>Část a) Doba dopadu</h4>
+                        <p>Doba závisí pouze na výšce (volný pád ve svislém směru):</p>
+                        <div class="rovnice-blok">
+                            <div class="rovnice-nadpis">📐 Čas volného pádu</div>
+                            <div class="rovnice-text">t = √(2h/g) = √(2·800/10) = √160 ≈ <span class="hodnoty">12,65 s</span></div>
+                        </div>
+                    </div>
+
+                    <div class="reseni-krok">
+                        <h4>Část b) Vodorovná vzdálenost</h4>
+                        <div class="rovnice-blok">
+                            <div class="rovnice-nadpis">📐 Horizontální dostřel</div>
+                            <div class="rovnice-text">d = vₓ · t = 150 · 12,65 = <span class="hodnoty">1897,5 m</span> ≈ <span class="hodnoty">1,9 km</span></div>
+                        </div>
+                    </div>
+
+                    <div class="reseni-krok">
+                        <h4>Odpověď</h4>
+                        <p>a) Těleso dopadne za <span class="hodnoty">12,65 s</span></p>
+                        <p>b) Dopadne ve vzdálenosti <span class="hodnoty">1897,5 m</span> (téměř 1,9 km) od místa vypuštění.</p>
+                    </div>
+
+                    <div class="reseni-krok">
+                        <h4>Kontrola a odpověď</h4>
+                        <p><strong>Odpověď:</strong></p>
+                        <ul>
+                            <li>a) Doba pádu: $t \approx 12{,}65$ s</li>
+                            <li>b) Horizontální vzdálenost: $d \approx 1897{,}5$ m ≈ 1,9 km</li>
+                        </ul>
+                        <p>Ověření času: $t = \sqrt{2h/g} = \sqrt{1600/10} = \sqrt{160} \approx 12{,}65$ s ✓</p>
+                        <p>Ověření vzdálenosti: $d = v_x \cdot t = 150 \cdot 12{,}65 = 1897{,}5$ m ✓</p>
+                        <p>Klíčový poznatek: Doba pádu nezávisí na horizontální rychlosti, pouze na výšce ✓</p>
+                    </div>
+                </div>
+
+                <div class="metakognice-box">
+                    <ul>
+                        <li>Proč doba dopadu nezávisí na horizontální rychlosti letadla?</li>
+                        <li>Jak daleko by dopadlo při dvojnásobné rychlosti letadla?</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Příklad 13 -->
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">13</div>
+            <div class="priklad-title">Kruhová rychlost (1. kosmická rychlost)</div>
+        </div>
+        <div class="priklad-content">
+            <div class="motivace-box">
+                1. kosmická rychlost je minimální rychlost potřebná pro oběžnou dráhu kolem Země. Všechny družice, včetně ISS, musí dosahovat této rychlosti! Je to základ kosmonautiky a satelitní navigace GPS.
+            </div>
+
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <p class="zadani-text">Vypočítejte kruhovou rychlost pro výšku <span class="hodnoty">h ≪ R<sub>Z</sub></span> (např. <span class="hodnoty">20 km</span>).</p>
+                <p class="zadani-text">Poznámka: 1. kosmická rychlost. 2. kosmická rychlost je pro opuštění gravitačního pole Země – těleso se stane oběžnicí kolem Slunce, je to √2·v<sub>k</sub>.</p>
+                <p class="zadani-text">Dáno: <span class="hodnoty">G = 6,674×10⁻¹¹ N·m²·kg⁻²</span>, <span class="hodnoty">M<sub>Z</sub> = 5,972×10²⁴ kg</span>, <span class="hodnoty">R<sub>Z</sub> = 6371 km</span>, <span class="hodnoty">h = 20 km</span></p>
+            </div>
+
+            <button type="button" class="toggle-reseni" onclick="toggleReseni(this)">
+                👁️ Zobrazit řešení
+            </button>
+
+            <div class="reseni hidden">
+                <h3>Řešení</h3>
+
+                <div class="reseni-kroky">
+                    <div class="reseni-krok">
+                        <h4>Rovnováha sil</h4>
+                        <p>Gravitační síla = Dostředivá síla:</p>
+                        <div class="rovnice-blok">
+                            <div class="rovnice-nadpis">📐 Rovnováha sil na oběžné dráze</div>
+                            <div class="rovnice-text">F<sub>g</sub> = F<sub>d</sub>
+G·M<sub>Z</sub>·m/r² = m·v<sub>k</sub>²/r
+
+v<sub>k</sub> = √(G·M<sub>Z</sub>/r)</div>
+                        </div>
+                    </div>
+
+                    <div class="reseni-krok">
+                        <h4>Vzdálenost od středu Země</h4>
+                        <div class="rovnice-blok">
+                            <div class="rovnice-nadpis">📐 Poloměr oběžné dráhy</div>
+                            <div class="rovnice-text">r = R<sub>Z</sub> + h = 6371 + 20 = 6391 km = <span class="hodnoty">6,391×10⁶ m</span></div>
+                        </div>
+                    </div>
+
+                    <div class="reseni-krok">
+                        <h4>Výpočet kruhové rychlosti</h4>
+                        <div class="rovnice-blok">
+                            <div class="rovnice-nadpis">📐 1. kosmická rychlost</div>
+                            <div class="rovnice-text">v<sub>k</sub> = √((6,674×10⁻¹¹)·(5,972×10²⁴)/(6,391×10⁶))
+v<sub>k</sub> = √(6,236×10⁷) ≈ <span class="hodnoty">7897 m/s</span> ≈ <span class="hodnoty">7,9 km/s</span></div>
+                        </div>
+                    </div>
+
+                    <div class="reseni-krok">
+                        <h4>Odpověď a kontext</h4>
+                        <p><strong>Odpověď:</strong> Kruhová rychlost (1. kosmická) je <span class="hodnoty">7,9 km/s</span> ≈ <span class="hodnoty">28 440 km/h</span>.</p>
+                        <p>💡 2. kosmická (úniková) rychlost: √2·v<sub>k</sub> ≈ <span class="hodnoty">11,2 km/s</span></p>
+                    </div>
+
+                    <div class="reseni-krok">
+                        <h4>Kontrola a odpověď</h4>
+                        <p><strong>Odpověď:</strong> 1. kosmická rychlost (kruhová) ve výšce 20 km je $v_k \approx 7{,}9$ km/s ≈ 28 440 km/h</p>
+                        <p>Ověření: $v_k = \sqrt{GM_Z/r} = \sqrt{6{,}674 \times 10^{-11} \cdot 5{,}972 \times 10^{24} / 6{,}391 \times 10^6} \approx 7897$ m/s ✓</p>
+                        <p>Kontrola jednotek: $\sqrt{\frac{\text{N·m}^2/\text{kg}^2 \cdot \text{kg}}{\text{m}}} = \sqrt{\frac{\text{m}^3/\text{s}^2}{\text{m}}} = \sqrt{\text{m}^2/\text{s}^2} = \text{m/s}$ ✓</p>
+                        <p>Kontext: 2. kosmická rychlost (úniková) = $\sqrt{2} \cdot v_k \approx 11{,}2$ km/s ✓</p>
+                    </div>
+                </div>
+
+                <div class="metakognice-box">
+                    <ul>
+                        <li>Proč se satelit při této rychlosti nespadne na Zemi?</li>
+                        <li>Jak se mění kruhová rychlost s výškou?</li>
+                        <li>Proč je 2. kosmická rychlost √2× větší než 1. kosmická?</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Příklad 14 -->
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">14</div>
+            <div class="priklad-title">Výška geostacionární družice</div>
+        </div>
+        <div class="priklad-content">
+            <div class="motivace-box">
+                Geostacionární družice jsou klíčové pro televizní přenos, telekomunikace a meteorologii. Zůstávají stále nad stejným bodem na Zemi, což umožňuje zaměřit na ně pevné antény (např. satelitní talíře).
+            </div>
+
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <p class="zadani-text">Vypočítejte výšku geostacionární družice.</p>
+                <p class="zadani-text">Dáno: <span class="hodnoty">G = 6,674×10⁻¹¹ N·m²·kg⁻²</span>, <span class="hodnoty">M<sub>Z</sub> = 5,972×10²⁴ kg</span>, <span class="hodnoty">R<sub>Z</sub> = 6378 km</span> (rovníkový poloměr), <span class="hodnoty">T = 86 164 s</span> (siderický den)</p>
+            </div>
+
+            <button type="button" class="toggle-reseni" onclick="toggleReseni(this)">
+                👁️ Zobrazit řešení
+            </button>
+
+            <div class="reseni hidden">
+                <h3>Řešení</h3>
+
+                <div class="reseni-kroky">
+                    <div class="reseni-krok">
+                        <h4>Podmínka geostacionarity</h4>
+                        <p>Oběžná doba T musí být rovna době rotace Země (siderický den = 86 164 s).</p>
+                    </div>
+
+                    <div class="reseni-krok">
+                        <h4>Odvození vzorce</h4>
+                        <p>Z rovnosti gravitační a dostředivé síly:</p>
+                        <div class="rovnice-blok">
+                            <div class="rovnice-nadpis">📐 Keplerův zákon</div>
+                            <div class="rovnice-text">G·M<sub>Z</sub>/r² = ω²·r = (2π/T)²·r
+
+r³ = G·M<sub>Z</sub>·T²/(4π²)</div>
+                        </div>
+                    </div>
+
+                    <div class="reseni-krok">
+                        <h4>Výpočet poloměru dráhy</h4>
+                        <div class="rovnice-blok">
+                            <div class="rovnice-nadpis">📐 Poloměr geostacionární dráhy</div>
+                            <div class="rovnice-text">r = ∛((6,674×10⁻¹¹)·(5,972×10²⁴)·(86164)²/(4π²))
+r = ∛(7,495×10²²) ≈ <span class="hodnoty">4,216×10⁷ m</span> ≈ <span class="hodnoty">42 160 km</span></div>
+                        </div>
+                    </div>
+
+                    <div class="reseni-krok">
+                        <h4>Výška nad povrchem</h4>
+                        <div class="rovnice-blok">
+                            <div class="rovnice-nadpis">📐 Výška h</div>
+                            <div class="rovnice-text">h = r - R<sub>Z</sub> = 42 160 - 6378 ≈ <span class="hodnoty">35 782 km</span> ≈ <span class="hodnoty">35 800 km</span></div>
+                        </div>
+                        <p><strong>Odpověď:</strong> Geostacionární družice obíhá ve výšce <span class="hodnoty">≈35 800 km</span> nad rovníkem.</p>
+                    </div>
+
+                    <div class="reseni-krok">
+                        <h4>Kontrola a odpověď</h4>
+                        <p><strong>Odpověď:</strong> Výška geostacionární družice je $h \approx 35\,800$ km nad povrchem Země (rovník)</p>
+                        <p>Ověření: Poloměr dráhy $r = \sqrt[3]{GM_Z T^2/(4\pi^2)} \approx 4{,}216 \times 10^7$ m ✓</p>
+                        <p>Výška: $h = r - R_Z \approx 42\,160 - 6\,378 = 35\,782$ km ✓</p>
+                        <p>Kontrola podmínky: Oběžná doba $T = 86\,164$ s = 1 siderický den ✓</p>
+                        <p>Fyzikální význam: Družice rotuje se stejnou rychlostí jako Země, zůstává nad stejným bodem ✓</p>
+                    </div>
+                </div>
+
+                <div class="metakognice-box">
+                    <ul>
+                        <li>Proč musí být geostacionární družice přesně nad rovníkem?</li>
+                        <li>Kolik družic může být na geostacionární dráze?</li>
+                        <li>Jaká je kruhová rychlost těchto družic?</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleReseni(button) {
+            const reseniDiv = button.nextElementSibling;
+            reseniDiv.classList.toggle('hidden');
+            button.textContent = reseniDiv.classList.contains('hidden') ? '👁️ Zobrazit řešení' : '🙈 Skrýt řešení';
+
+            // Re-render MathJax po změně viditelnosti
+            if (typeof MathJax !== 'undefined' && MathJax.typesetPromise) {
+                MathJax.typesetPromise([reseniDiv]).catch((err) => console.log("MathJax error:", err.message));
+            }
+        }
+
+        function toggleAllReseni() {
+            const allReseni = document.querySelectorAll('.reseni');
+            const allButtons = document.querySelectorAll('.toggle-reseni');
+            const anyHidden = Array.from(allReseni).some(r => r.classList.contains('hidden'));
+
+            allReseni.forEach(reseni => {
+                if (anyHidden) {
+                    reseni.classList.remove('hidden');
+                } else {
+                    reseni.classList.add('hidden');
+                }
+            });
+
+            allButtons.forEach(button => {
+                button.textContent = anyHidden ? '🙈 Skrýt řešení' : '👁️ Zobrazit řešení';
+            });
+
+            // Re-render MathJax pro všechny viditelné řešení
+            if (typeof MathJax !== 'undefined' && MathJax.typesetPromise) {
+                MathJax.typesetPromise().catch((err) => console.log("MathJax error:", err.message));
+            }
+        }
+    </script>
+</body>
+</html>

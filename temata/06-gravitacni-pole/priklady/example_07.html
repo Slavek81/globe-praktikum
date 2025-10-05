@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Svislý vrh vzhůru</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>7. Svislý vrh vzhůru</h1>
+            <p>Gravitační pole - řešený příklad</p>
+        </header>
+
+        <!-- Motivační úvod pro studenty -->
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Svislý vrh popisuje pohyb rakety, míčů, střel i kamenů vyhozených vzhůru. Sportovní trenéři, kaskadéři a konstruktéři fontán využívají tyto výpočty každý den!
+        </div>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <div class="zadani-text">
+                Těleso se pohybuje svisle nahoru rychlostí 40 m·s⁻¹. Vypočítejte rychlost a vzdálenost v čase 2 sekundy od začátku pohybu. Určete maximální výšku a dobu výstupu. Vypočítejte rychlost dopadu a vzdálenost, do které dopadne na zem. Narýsujte grafy závislosti rychlosti na čase a okamžité rychlosti na čase, najděte rozdíly a diskutujte o nich.<br/>
+                Použijte: g ≈ 10 m·s⁻²
+            </div>
+        </section>
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+            
+            <div class="calculation-step">
+                <h3>1. Rychlost a výška v čase t = 2 s</h3>
+                <div class="rovnice-blok">
+                    <div class="rovnice-nadpis">📐 Kinematické rovnice</div>
+                    <div class="rovnice-text">$$\begin{align}
+v(t) &= v_0 - g \cdot t = 40 - 10 \cdot 2 = 20 \text{ m/s} \\
+y(t) &= v_0 \cdot t - \frac{1}{2}g \cdot t^2 = 40 \cdot 2 - 5 \cdot 4 = 80 - 20 = 60 \text{ m}
+\end{align}$$</div>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h3>2. Maximální výška a doba výstupu</h3>
+                <p>V nejvyšším bodě je rychlost v = 0:</p>
+                <div class="rovnice-blok">
+                    <div class="rovnice-nadpis">📐 Vrchol trajektorie</div>
+                    <div class="rovnice-text">$$\begin{align}
+t_\text{výstupu} &= \frac{v_0}{g} = \frac{40}{10} = 4 \text{ s} \\
+y_\text{max} &= v_0 \cdot t - \frac{1}{2}g \cdot t^2 = 40 \cdot 4 - 5 \cdot 16 = 160 - 80 = 80 \text{ m}
+\end{align}$$</div>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h3>3. Rychlost dopadu a konečná poloha</h3>
+                <p>Pohyb je symetrický - doba sestupu = doba výstupu:</p>
+                <div class="rovnice-blok">
+                    <div class="rovnice-nadpis">📐 Dopad</div>
+                    <div class="rovnice-text">
+                        Celková doba letu: 8 s<br/>
+                        $$v(8) = 40 - 10 \cdot 8 = -40 \text{ m/s}$$<br/>
+                        (velikost 40 m/s, směr dolů)<br/>
+                        Konečná poloha: 0 m (návrat na místo startu)
+                    </div>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h3>4. Grafy a jejich interpretace</h3>
+                <p><strong>Graf v(t):</strong> Přímka klesající z 40 m/s přes 0 (t=4s) do -40 m/s (t=8s)</p>
+                <p><strong>Graf |v(t)|:</strong> Tvar "V" - klesá z 40 do 0, pak roste zpět na 40</p>
+                <div class="warning-box">
+                    ⚠️ <strong>Pozor na častou chybu:</strong> Rychlost v(t) je vektor (může být záporná), velikost rychlosti |v(t)| je vždy nezáporná.
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h3>5. Kontrola a odpověď</h3>
+                <p><strong>Odpověď:</strong></p>
+                <ul>
+                    <li>V čase t=2s: rychlost v = 20 m/s, výška y = 60 m</li>
+                    <li>Maximální výška: y<sub>max</sub> = 80 m, doba výstupu t = 4 s</li>
+                    <li>Rychlost dopadu: |v| = 40 m/s (směr dolů), celková doba letu: 8 s</li>
+                    <li>Konečná poloha: 0 m (návrat na místo startu)</li>
+                </ul>
+                <p>Ověření symetrie: Doba výstupu = doba sestupu = 4 s ✓</p>
+                <p>Ověření energie: Počáteční a konečná rychlost mají stejnou velikost (40 m/s) ✓</p>
+            </div>
+        </section>
+
+        <section id="shrnuti">
+            <h2>Shrnutí a kontrola</h2>
+
+            <div class="summary-box">
+                <strong>Hlavní poznatky:</strong>
+                <ul>
+                    <li>Svislý vrh je symetrický pohyb - doba výstupu = doba sestupu</li>
+                    <li>V nejvyšším bodě je rychlost nulová</li>
+                    <li>Velikost rychlosti dopadu = počáteční rychlost (zákon zachování energie)</li>
+                </ul>
+            </div>
+
+            <div class="info-box">
+                <strong>Kontrola rozumnosti:</strong> Vždy zkontrolujte, zda výsledek dává fyzikální smysl vzhledem k zadání.
+            </div>
+
+            <details>
+                <summary>🤔 Metakognitivní otázky</summary>
+                <div>
+                    <ul>
+                        <li>Proč je pohyb symetrický?</li>
+                        <li>Co by se stalo s maximální výškou, kdyby byla počáteční rychlost 2× větší?</li>
+                        <li>Proč je rychlost dopadu stejná jako počáteční rychlost (velikostí)?</li>
+                    </ul>
+                </div>
+            </details>
+        </section>
+
+    </main>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Výška geostacionární družice</title>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>14. Výška geostacionární družice</h1>
+            <p>Gravitační pole - řešený příklad</p>
+        </header>
+
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Geostacionární družice jsou klíčové pro televizní přenos, telekomunikace a meteorologii. Zůstávají stále nad stejným bodem na Zemi, což umožňuje zaměřit na ně pevné antény (např. satelitní talíře).
+        </div>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <div class="zadani-text">
+                Vypočítejte výšku geostacionární družice.<br/>
+                Dáno: G = 6,674×10⁻¹¹ N·m²·kg⁻², M<sub>Z</sub> = 5,972×10²⁴ kg, R<sub>Z</sub> = 6378 km (rovníkový poloměr), T = 86 164 s (siderický den)
+            </div>
+        </section>
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+            
+            <div class="calculation-step">
+                <h3>1. Podmínka geostacionarity</h3>
+                <p>Oběžná doba T musí být rovna době rotace Země (siderický den = 86 164 s).</p>
+            </div>
+
+            <div class="calculation-step">
+                <h3>2. Odvození vzorce</h3>
+                <p>Z rovnosti gravitační a dostředivé síly:</p>
+                <div class="rovnice-blok">
+                    <div class="rovnice-nadpis">📐 Keplerův zákon</div>
+                    <div class="rovnice-text">$$\begin{align}
+\frac{G \cdot M_Z}{r^2} &= \omega^2 \cdot r = \left(\frac{2\pi}{T}\right)^2 \cdot r \\
+r^3 &= \frac{G \cdot M_Z \cdot T^2}{4\pi^2}
+\end{align}$$</div>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h3>3. Výpočet poloměru dráhy</h3>
+                <div class="rovnice-blok">
+                    <div class="rovnice-nadpis">📐 Poloměr geostacionární dráhy</div>
+                    <div class="rovnice-text">$$\begin{align}
+r &= \sqrt[3]{\frac{(6{,}674 \times 10^{-11}) \cdot (5{,}972 \times 10^{24}) \cdot (86164)^2}{4\pi^2}} \\
+r &= \sqrt[3]{7{,}495 \times 10^{22}} \approx 4{,}216 \times 10^7 \text{ m} \approx 42\,160 \text{ km}
+\end{align}$$</div>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h3>4. Výška nad povrchem</h3>
+                <div class="rovnice-blok">
+                    <div class="rovnice-nadpis">📐 Výška h</div>
+                    <div class="rovnice-text">$$h = r - R_Z = 42\,160 - 6\,378 \approx 35\,782 \text{ km} \approx 35\,800 \text{ km}$$</div>
+                </div>
+                <p><strong>Odpověď:</strong> Geostacionární družice obíhá ve výšce ≈35 800 km nad rovníkem.</p>
+            </div>
+        </section>
+
+        <section id="shrnuti">
+            <h2>Shrnutí a kontrola</h2>
+            <div class="summary-box">
+                <strong>Hlavní poznatky:</strong>
+                <ul>
+                    <li>Geostacionární družice musí mít oběžnou dobu = doba rotace Země (1 siderický den)</li>
+                    <li>Výška geostacionární dráhy je přesně určena: ≈35 800 km</li>
+                    <li>Družice musí být nad rovníkem pro stálou pozici</li>
+                </ul>
+            </div>
+            <div class="info-box">
+                <strong>Kontrola rozumnosti:</strong> Vždy zkontrolujte, zda výsledek dává fyzikální smysl vzhledem k zadání.
+            </div>
+            <details>
+                <summary>🤔 Metakognitivní otázky</summary>
+                <div>
+                    <ul>
+                        <li>Proč musí být geostacionární družice přesně nad rovníkem?</li>
+                        <li>Kolik družic může být na geostacionární dráze?</li>
+                        <li>Jaká je kruhová rychlost těchto družic?</li>
+                    </ul>
+                </div>
+            </details>
+        </section>
+    </main>
+</body>
+</html>

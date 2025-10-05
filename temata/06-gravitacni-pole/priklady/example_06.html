@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gravitační zrychlení na povrchu Měsíce</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>6. Gravitační zrychlení na povrchu Měsíce</h1>
+            <p>Gravitační pole - řešený příklad</p>
+        </header>
+
+        <!-- Motivační úvod pro studenty -->
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Slabší gravitace na Měsíci umožnila astronautům skákat mnohem výš než na Zemi! Pochopení gravitačního zrychlení různých těles je klíčové pro plánování kosmických misí a pohyb na jejich povrchu.
+        </div>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <div class="zadani-text">
+                Vypočítejte hodnotu zrychlení na povrchu Měsíce.<br/>
+                Dáno: G = 6,674×10⁻¹¹ N·m²·kg⁻², M<sub>M</sub> = 7,342×10²² kg, R<sub>M</sub> = 1,737×10⁶ m
+            </div>
+        </section>
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+            
+            <div class="calculation-step">
+                <h3>1. Výběr fyzikální rovnice</h3>
+                <p>Pro gravitační zrychlení na povrchu tělesa:</p>
+                <div class="rovnice-blok">
+                    <div class="rovnice-nadpis">📐 Gravitační zrychlení na povrchu</div>
+                    <div class="rovnice-text">$$g = \frac{G \cdot M}{R^2}$$</div>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h3>2. Dosazení a výpočet</h3>
+                <div class="rovnice-blok">
+                    <div class="rovnice-nadpis">📐 Výpočet</div>
+                    <div class="rovnice-text">$$\begin{align}
+g_M &= \frac{(6{,}674 \times 10^{-11}) \cdot (7{,}342 \times 10^{22})}{(1{,}737 \times 10^6)^2} \\
+\\
+\text{Jmenovatel:} &\quad (1{,}737 \times 10^6)^2 \approx 3{,}017 \times 10^{12} \text{ m}^2 \\
+\text{Čitatel:} &\quad (6{,}674 \times 10^{-11}) \cdot (7{,}342 \times 10^{22}) \approx 4{,}899 \times 10^{12} \\
+\\
+g_M &= \frac{4{,}899 \times 10^{12}}{3{,}017 \times 10^{12}} \approx 1{,}62 \text{ m/s}^2
+\end{align}$$</div>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h3>3. Kontrola a odpověď</h3>
+                <p><strong>Odpověď:</strong> Gravitační zrychlení na povrchu Měsíce je přibližně <strong>1,62 m/s²</strong>.</p>
+                <p>💡 To je přibližně <strong>6krát méně</strong> než na Zemi (g<sub>Z</sub> ≈ 9,81 m/s²). Astronauti proto mohli skákat mnohem výš!</p>
+            </div>
+        </section>
+
+        <section id="shrnuti">
+            <h2>Shrnutí a kontrola</h2>
+
+            <div class="summary-box">
+                <strong>Hlavní poznatky:</strong>
+                <ul>
+                    <li>Gravitační zrychlení závisí na hmotnosti a poloměru tělesa</li>
+                    <li>Na Měsíci je gravitace asi 6× slabší než na Zemi</li>
+                    <li>Slabší gravitace umožňuje snadnější pohyb po povrchu</li>
+                </ul>
+            </div>
+
+            <div class="info-box">
+                <strong>Kontrola rozumnosti:</strong> Vždy zkontrolujte, zda výsledek dává fyzikální smysl vzhledem k zadání.
+            </div>
+
+            <details>
+                <summary>🤔 Metakognitivní otázky</summary>
+                <div>
+                    <ul>
+                        <li>Jak vysoko by vyskočil astronaut na Měsíci, když na Zemi skočí 50 cm?</li>
+                        <li>Proč má Měsíc slabší gravitaci než Země?</li>
+                    </ul>
+                </div>
+            </details>
+        </section>
+
+    </main>
+</body>
+</html>

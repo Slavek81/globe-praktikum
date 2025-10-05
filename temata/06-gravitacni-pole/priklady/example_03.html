@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intenzita na povrchu Měsíce</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>3. Intenzita na povrchu Měsíce</h1>
+            <p>Gravitační pole - řešený příklad</p>
+        </header>
+
+        <!-- Motivační úvod pro studenty -->
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Astronauti programu Apollo zažili měsíční gravitaci na vlastní kůži - mohli skákat výš a nosit těžké vybavení snadněji. Pochopení intenzity gravitačního pole je klíčové pro návrh skafandrů, pohyb vozítek a plánování měsíčních misí!
+        </div>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <div class="zadani-text">
+                Na astronauta o hmotnosti 75 kg působí v těžišti síla 126 N. Vypočítejte hodnotu intenzity na povrchu Měsíce.
+            </div>
+        </section>
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+            
+            <div class="calculation-step">
+                <h3>1. Analýza situace</h3>
+                <p>Intenzita gravitačního pole K je síla působící na jednotkovou hmotnost.</p>
+                <p><strong>Dané hodnoty:</strong></p>
+                <ul>
+                    <li>Hmotnost astronauta: m = 75 kg</li>
+                    <li>Gravitační síla na astronauta: F<sub>g</sub> = 126 N</li>
+                    <li>Hledáme: intenzitu K</li>
+                </ul>
+            </div>
+
+            <div class="calculation-step">
+                <h3>2. Výběr fyzikální rovnice</h3>
+                <p>Intenzita gravitačního pole je definována jako:</p>
+                <div class="rovnice-blok">
+                    <div class="rovnice-nadpis">📐 Intenzita gravitačního pole</div>
+                    <div class="rovnice-text">$$K = \frac{F_g}{m}$$
+[jednotky: N/kg, což je číselně rovno m/s²]</div>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h3>3. Dosazení a výpočet</h3>
+                <div class="rovnice-blok">
+                    <div class="rovnice-nadpis">📐 Výpočet intenzity</div>
+                    <div class="rovnice-text">$$K = \frac{126 \text{ N}}{75 \text{ kg}} = 1{,}68 \text{ N/kg}$$</div>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h3>4. Kontrola a odpověď</h3>
+                <p><strong>Odpověď:</strong> Hodnota intenzity gravitačního pole na povrchu Měsíce je <strong>1,68 N/kg</strong>.</p>
+                <p>💡 Pro srovnání: Na Zemi je $K \approx 9{,}81$ N/kg, takže gravitace na Měsíci je přibližně <strong>6krát slabší</strong>.</p>
+            </div>
+        </section>
+
+        <section id="shrnuti">
+            <h2>Shrnutí a kontrola</h2>
+
+            <div class="summary-box">
+                <strong>Hlavní poznatky:</strong>
+                <ul>
+                    <li>Intenzita gravitačního pole je síla na jednotkovou hmotnost</li>
+                    <li>Jednotka N/kg je číselně ekvivalentní m/s²</li>
+                    <li>Měsíční gravitace je asi 6× slabší než zemská</li>
+                </ul>
+            </div>
+
+            <div class="info-box">
+                <strong>Kontrola rozumnosti:</strong> Vždy zkontrolujte, zda výsledek dává fyzikální smysl vzhledem k zadání.
+            </div>
+
+            <details>
+                <summary>🤔 Metakognitivní otázky</summary>
+                <div>
+                    <ul>
+                        <li>Kolik by vážil stejný astronaut na Zemi?</li>
+                        <li>Proč se používá jednotka N/kg místo m/s²?</li>
+                        <li>Jaký vliv má slabší gravitace na pohyb astronautů?</li>
+                    </ul>
+                </div>
+            </details>
+        </section>
+
+    </main>
+</body>
+</html>

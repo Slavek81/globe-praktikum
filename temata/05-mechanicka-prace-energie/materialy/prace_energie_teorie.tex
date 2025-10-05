@@ -1,0 +1,359 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[czech]{babel}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{longtable}
+
+\title{Mechanická práce a energie - Teoretický přehled}
+\author{Fyzika - opakování a prohloubení}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Mechanická práce}
+
+\subsection{Definice}
+
+\textbf{Obecná definice:}
+\begin{quote}
+Mechanická práce je energie přenesená silou, která působí na těleso po určité dráze.
+\end{quote}
+
+\textbf{Rovnice:}
+\[W = F \cdot s \cdot \cos\alpha\]
+
+\textbf{Speciální případy:}
+\begin{itemize}
+\item $\alpha = 0°$ (síla ve směru pohybu): $W = F \cdot s$
+\item $\alpha = 90°$ (síla kolmá k pohybu): $W = 0$
+\item $\alpha = 180°$ (síla proti pohybu): $W = -F \cdot s$
+\end{itemize}
+
+\textbf{Popis veličin:}
+
+\begin{longtable}{lll}
+\toprule
+Veličina & Popis & Jednotka \\
+\midrule
+$W$ & Mechanická práce & J (Joule) \\
+$F$ & Síla & N \\
+$s$ & Dráha & m \\
+$\alpha$ & Úhel mezi silou a dráhou & ° nebo rad \\
+\bottomrule
+\end{longtable}
+
+\textbf{Fyzikální význam:}
+\begin{itemize}
+\item Práce je skalární veličina (může být kladná, záporná i nulová)
+\item Kladná práce: síla koná práci (přidává energii)
+\item Záporná práce: síla brzdí (odebírá energii)
+\item Nulová práce: síla nekoná práci (kolmá k pohybu)
+\end{itemize}
+
+\clearpage
+
+\section{Výkon}
+
+\subsection{Průměrný výkon}
+
+\textbf{Definice:}
+\begin{quote}
+Průměrný výkon je práce vykonaná za jednotku času.
+\end{quote}
+
+\textbf{Rovnice:}
+\[P_p = \frac{W}{t}\]
+
+\subsection{Okamžitý výkon}
+
+\textbf{Rovnice:}
+\[P = F \cdot v\]
+
+\textbf{Popis veličin:}
+
+\begin{longtable}{lll}
+\toprule
+Veličina & Popis & Jednotka \\
+\midrule
+$P$ & Výkon & W (Watt) \\
+$W$ & Práce & J \\
+$t$ & Čas & s \\
+$F$ & Síla & N \\
+$v$ & Rychlost & m/s \\
+\bottomrule
+\end{longtable}
+
+\textbf{Jednotka:}
+\begin{itemize}
+\item 1 W (Watt) = 1 J/s
+\item 1 kW = 1000 W
+\item 1 MW = 1\,000\,000 W
+\end{itemize}
+
+\subsection{Účinnost}
+
+\textbf{Definice:}
+\begin{quote}
+Účinnost vyjadřuje poměr užitečné energie (výkonu) k celkové dodané energii (výkonu).
+\end{quote}
+
+\textbf{Rovnice:}
+\[\eta = \frac{P_{výst}}{P_{vst}} = \frac{W_{výst}}{W_{vst}}\]
+
+\textbf{Vyjádření:}
+\begin{itemize}
+\item V desetinném tvaru: $0 < \eta < 1$
+\item V procentech: $0\% < \eta < 100\%$
+\end{itemize}
+
+\textbf{Fyzikální význam:}
+\begin{itemize}
+\item Vždy $\eta < 1$ (nebo $\eta < 100\%$)
+\item Část energie se vždy ztratí (nejčastěji jako teplo třením)
+\item Ideální stroj by měl $\eta = 1$ (neexistuje)
+\end{itemize}
+
+\clearpage
+
+\section{Mechanická energie}
+
+\subsection{Kinetická energie}
+
+\textbf{Definice:}
+\begin{quote}
+Kinetická energie je energie pohybujícího se tělesa.
+\end{quote}
+
+\textbf{Rovnice:}
+\[E_k = \frac{1}{2}mv^2\]
+
+\textbf{Popis veličin:}
+
+\begin{longtable}{lll}
+\toprule
+Veličina & Popis & Jednotka \\
+\midrule
+$E_k$ & Kinetická energie & J \\
+$m$ & Hmotnost & kg \\
+$v$ & Rychlost & m/s \\
+\bottomrule
+\end{longtable}
+
+\textbf{Fyzikální význam:}
+\begin{itemize}
+\item Závisí na druhé mocnině rychlosti
+\item Zdvojnásobení rychlosti → zčtyřnásobení energie
+\item Vždy kladná hodnota (rychlost je na druhou)
+\end{itemize}
+
+\subsection{Potenciální energie}
+
+\textbf{Definice:}
+\begin{quote}
+Potenciální energie je energie polohy tělesa v gravitačním poli.
+\end{quote}
+
+\textbf{Rovnice:}
+\[E_p = mgh\]
+
+\textbf{Popis veličin:}
+
+\begin{longtable}{lll}
+\toprule
+Veličina & Popis & Jednotka \\
+\midrule
+$E_p$ & Potenciální energie & J \\
+$m$ & Hmotnost & kg \\
+$g$ & Tíhové zrychlení & m/s² \\
+$h$ & Výška nad referenční hladinou & m \\
+\bottomrule
+\end{longtable}
+
+\textbf{Fyzikální význam:}
+\begin{itemize}
+\item Závisí na výběru nulové hladiny (referenční úrovně)
+\item Čím výše, tím větší potenciální energie
+\item Při pádu se mění na kinetickou energii
+\end{itemize}
+
+\subsection{Celková mechanická energie}
+
+\textbf{Rovnice:}
+\[E = E_k + E_p = \frac{1}{2}mv^2 + mgh\]
+
+\clearpage
+
+\section{Zákony zachování}
+
+\subsection{Zákon zachování mechanické energie}
+
+\textbf{Formulace:}
+\begin{quote}
+V konzervativním systému (bez třecích sil) zůstává celková mechanická energie konstantní.
+\end{quote}
+
+\textbf{Rovnice:}
+\[E_k + E_p = \text{konst.}\]
+
+\[\frac{1}{2}mv^2 + mgh = \text{konst.}\]
+
+\textbf{Aplikace na volný pád:}
+
+V nejvyšším bodě (h = $h_{max}$, v = 0):
+\[E = E_p = mgh_{max}\]
+
+Při dopadu (h = 0, v = $v_{max}$):
+\[E = E_k = \frac{1}{2}mv_{max}^2\]
+
+\textbf{Rovnost:}
+\[mgh_{max} = \frac{1}{2}mv_{max}^2\]
+
+\textbf{Rychlost při volném pádu:}
+\[v = \sqrt{2gh}\]
+
+\subsection{Zákon zachování hybnosti}
+
+\textbf{Formulace:}
+\begin{quote}
+V izolované soustavě je celková hybnost konstantní.
+\end{quote}
+
+\textbf{Rovnice:}
+\[\vec{p}_{před} = \vec{p}_{po}\]
+
+Pro dvě tělesa:
+\[m_1\vec{v}_1 + m_2\vec{v}_2 = m_1\vec{v}'_1 + m_2\vec{v}'_2\]
+
+\textbf{Aplikace:}
+\begin{itemize}
+\item Srážky těles
+\item Výbuch
+\item Raketový pohon
+\end{itemize}
+
+\textbf{Důležité:}
+\begin{itemize}
+\item Platí vždy (i při nepružných srážkách)
+\item Zachovává se i v případech, kdy se nezachovává mechanická energie
+\end{itemize}
+
+\clearpage
+
+\section{Druhy srážek}
+
+\subsection{Pružná srážka}
+
+\textbf{Charakteristika:}
+\begin{itemize}
+\item Zachovává se hybnost
+\item Zachovává se kinetická energie
+\item Dokonale pružné tělesa (idealizace)
+\end{itemize}
+
+\textbf{Zákony:}
+\[m_1v_1 + m_2v_2 = m_1v'_1 + m_2v'_2\]
+\[\frac{1}{2}m_1v_1^2 + \frac{1}{2}m_2v_2^2 = \frac{1}{2}m_1v'^2_1 + \frac{1}{2}m_2v'^2_2\]
+
+\subsection{Nepružná srážka}
+
+\textbf{Charakteristika:}
+\begin{itemize}
+\item Zachovává se hybnost
+\item Nezachovává se kinetická energie (část se mění na teplo, deformaci)
+\item Reálné srážky
+\end{itemize}
+
+\textbf{Zákon:}
+\[m_1v_1 + m_2v_2 = m_1v'_1 + m_2v'_2\]
+
+\textbf{Dokonale nepružná srážka:}
+\begin{itemize}
+\item Tělesa se po srážce spojí
+\item Pohybují se společnou rychlostí
+\end{itemize}
+
+\[m_1v_1 + m_2v_2 = (m_1 + m_2)v'\]
+
+\clearpage
+
+\section{Praktické vztahy}
+
+\subsection{Vztah mezi prací a energií}
+
+\textbf{Práce jako změna kinetické energie:}
+\[W = \Delta E_k = \frac{1}{2}mv^2 - \frac{1}{2}mv_0^2\]
+
+\textbf{Práce tíhové síly:}
+\[W_g = -\Delta E_p = -(mgh_2 - mgh_1) = mg(h_1 - h_2)\]
+
+\subsection{Brzdná dráha}
+
+\textbf{Z kinetické energie:}
+\[E_k = W_{tření}\]
+\[\frac{1}{2}mv^2 = F_t \cdot s\]
+\[s = \frac{mv^2}{2F_t} = \frac{v^2}{2a}\]
+
+Kde $a = F_t/m$ je brzdné zrychlení.
+
+\textbf{Závislost na rychlosti:}
+\begin{itemize}
+\item Zdvojnásobení rychlosti → zčtyřnásobení brzdné dráhy
+\item Proto je rychlost kritická pro bezpečnost
+\end{itemize}
+
+\clearpage
+
+\section{Fyzikální konstanty}
+
+\begin{longtable}{llll}
+\toprule
+Konstanta & Symbol & Hodnota & Jednotka \\
+\midrule
+Tíhové zrychlení (Země) & $g$ & 9,81 & m/s² \\
+Tíhové zrychlení (Měsíc) & $g_M$ & 1,62 & m/s² \\
+\bottomrule
+\end{longtable}
+
+\clearpage
+
+\section{Souhrn jednotek v SI}
+
+\begin{longtable}{llll}
+\toprule
+Veličina & Jednotka SI & Odvození & Poznámka \\
+\midrule
+Práce & J (Joule) & N·m = kg·m²/s² & 1 J = práce síly 1 N po dráze 1 m \\
+Energie & J (Joule) & N·m = kg·m²/s² & Stejná jako práce \\
+Výkon & W (Watt) & J/s = kg·m²/s³ & 1 W = 1 J/s \\
+Účinnost & - & - & Bezrozměrná veličina (0-1 nebo 0-100\%) \\
+\bottomrule
+\end{longtable}
+
+\textbf{Běžné násobky:}
+\begin{itemize}
+\item 1 kJ = 1000 J
+\item 1 MJ = 1\,000\,000 J
+\item 1 kW = 1000 W
+\item 1 MW = 1\,000\,000 W
+\item 1 kWh = 3\,600\,000 J = 3,6 MJ
+\end{itemize}
+
+\clearpage
+
+\section*{Poznámky}
+
+\begin{itemize}
+\item \textbf{Konzervativní síla:} Síla, u které práce nezávisí na dráze, ale jen na počáteční a koncové poloze (gravitační síla, elektrická síla)
+\item \textbf{Nekonzervativní síla:} Síla, u které práce závisí na dráze (třecí síla)
+\item \textbf{Energetická bilance:} Součet všech energií zůstává konstantní (ale může se měnit forma energie)
+\item \textbf{Práce a teplo:} Jsou to formy přenosu energie, ne druhy energie
+\item \textbf{Perpetuum mobile:} Stroj s účinností 100\% nebo větší - neexistuje (porušoval by termodynamické zákony)
+\item \textbf{Vztah práce a výkonu:} Stejná práce může být vykonána s různým výkonem (záleží na čase)
+\item \textbf{Elastická potenciální energie:} $E_{pel} = \frac{1}{2}kx^2$ (pružina, kde k je tuhost a x je prodloužení)
+\end{itemize}
+
+\end{document}

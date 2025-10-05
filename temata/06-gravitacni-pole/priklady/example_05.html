@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gravitační zrychlení na Měsíci působící ze Země</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>5. Gravitační zrychlení na Měsíci působící ze Země</h1>
+            <p>Gravitační pole - řešený příklad</p>
+        </header>
+
+        <!-- Motivační úvod pro studenty -->
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Toto malé zrychlení udržuje Měsíc na jeho oběžné dráze a způsobuje přílivy a odlivy. Je to perfektní rovnováha - kdyby bylo větší, Měsíc by se k nám přibližoval, kdyby menší, oddaloval by se!
+        </div>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <div class="zadani-text">
+                Určete gravitační zrychlení, působící na Měsíci vlivem působení Země.<br/>
+                Dáno: G = 6,674×10⁻¹¹ N·m²·kg⁻², M<sub>Z</sub> = 5,972×10²⁴ kg, r = 3,844×10⁸ m
+            </div>
+        </section>
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+            
+            <div class="calculation-step">
+                <h3>1. Výběr fyzikální rovnice</h3>
+                <p>Gravitační zrychlení je číselně rovno intenzitě gravitačního pole:</p>
+                <div class="rovnice-blok">
+                    <div class="rovnice-nadpis">📐 Gravitační zrychlení</div>
+                    <div class="rovnice-text">$$a_g = K = \frac{G \cdot M}{r^2}$$</div>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h3>2. Dosazení hodnot</h3>
+                <div class="rovnice-blok">
+                    <div class="rovnice-nadpis">📐 Dosazení</div>
+                    <div class="rovnice-text">$$a_g = \frac{(6{,}674 \times 10^{-11}) \cdot (5{,}972 \times 10^{24})}{(3{,}844 \times 10^8)^2}$$</div>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h3>3. Výpočet</h3>
+                <div class="rovnice-blok">
+                    <div class="rovnice-nadpis">📐 Postupný výpočet</div>
+                    <div class="rovnice-text">$$\begin{align}
+\text{Jmenovatel:} &\quad (3{,}844 \times 10^8)^2 \approx 14{,}776 \times 10^{16} \text{ m}^2 \\
+\text{Čitatel:} &\quad (6{,}674 \times 10^{-11}) \cdot (5{,}972 \times 10^{24}) \approx 39{,}86 \times 10^{13} \\
+\\
+a_g &= \frac{39{,}86 \times 10^{13}}{14{,}776 \times 10^{16}} \approx 0{,}0027 \text{ m/s}^2
+\end{align}$$</div>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h3>4. Kontrola a odpověď</h3>
+                <p><strong>Odpověď:</strong> Gravitační zrychlení na Měsíci vlivem Země je přibližně <strong>0,0027 m/s²</strong> (≈ 2,7 mm/s²).</p>
+                <p>💡 Toto zrychlení působí jako dostředivé zrychlení pro kruhový pohyb Měsíce!</p>
+            </div>
+        </section>
+
+        <section id="shrnuti">
+            <h2>Shrnutí a kontrola</h2>
+
+            <div class="summary-box">
+                <strong>Hlavní poznatky:</strong>
+                <ul>
+                    <li>Gravitační zrychlení vypočítáme ze vztahu a<sub>g</sub> = G·M/r²</li>
+                    <li>Zrychlení je číselně rovno intenzitě gravitačního pole</li>
+                    <li>Toto zrychlení udržuje Měsíc na oběžné dráze</li>
+                </ul>
+            </div>
+
+            <div class="info-box">
+                <strong>Kontrola rozumnosti:</strong> Vždy zkontrolujte, zda výsledek dává fyzikální smysl vzhledem k zadání.
+            </div>
+
+            <details>
+                <summary>🤔 Metakognitivní otázky</summary>
+                <div>
+                    <ul>
+                        <li>Jaké gravitační zrychlení působí Země na Slunce vlivem zemské gravitace?</li>
+                        <li>Proč Měsíc nespadne na Zemi, když na něj působí toto zrychlení?</li>
+                    </ul>
+                </div>
+            </details>
+        </section>
+
+    </main>
+</body>
+</html>

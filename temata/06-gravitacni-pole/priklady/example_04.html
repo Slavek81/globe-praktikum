@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intenzita ve výšce nad Zemí</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>4. Intenzita ve výšce nad Zemí</h1>
+            <p>Gravitační pole - řešený příklad</p>
+        </header>
+
+        <!-- Motivační úvod pro studenty -->
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Pochopení, jak se mění intenzita gravitačního pole s výškou, je klíčové pro výpočty drah satelitů a kosmických lodí. Intenzita gravitačního pole ovlivňuje množství paliva potřebného pro vzlet rakety a umístění komunikačních satelitů!
+        </div>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <div class="zadani-text">
+                Hodnota K na zemském povrchu je kolem 10 N·kg⁻¹. Stanovte hodnotu intenzity ve výšce h nad povrchem Země, jestliže:<br/>
+                a) h = R<sub>Z</sub> (poloměr Země)<br/>
+                b) h = 3R<sub>Z</sub>
+            </div>
+        </section>
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+            
+            <div class="calculation-step">
+                <h3>1. Analýza závislosti intenzity</h3>
+                <p>Intenzita klesá s druhou mocninou vzdálenosti od středu Země: K ∝ 1/r²</p>
+                <div class="warning-box">
+                    ⚠️ <strong>Pozor na častou chybu:</strong> Vzdálenost r se počítá od STŘEDU Země, ne od povrchu. Při výšce h je celková vzdálenost r = R<sub>Z</sub> + h!
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h3>2. Část a) Výška h = R<sub>Z</sub></h3>
+                <div class="rovnice-blok">
+                    <div class="rovnice-nadpis">📐 Výpočet pro h = R<sub>Z</sub></div>
+                    <div class="rovnice-text">$$\begin{align}
+r_2 &= R_Z + h = R_Z + R_Z = 2R_Z \\
+K_2 &= K_1 \cdot \left(\frac{R_Z}{r_2}\right)^2 = 10 \cdot \left(\frac{R_Z}{2R_Z}\right)^2 \\
+&= 10 \cdot \left(\frac{1}{2}\right)^2 = \frac{10}{4} = 2{,}5 \text{ N/kg}
+\end{align}$$</div>
+                </div>
+                <p><strong>Odpověď a):</strong> Ve výšce R<sub>Z</sub> je intenzita <strong>2,5 N/kg</strong>.</p>
+            </div>
+
+            <div class="calculation-step">
+                <h3>3. Část b) Výška h = 3R<sub>Z</sub></h3>
+                <div class="rovnice-blok">
+                    <div class="rovnice-nadpis">📐 Výpočet pro h = 3R<sub>Z</sub></div>
+                    <div class="rovnice-text">$$\begin{align}
+r_3 &= R_Z + 3R_Z = 4R_Z \\
+K_3 &= K_1 \cdot \left(\frac{R_Z}{r_3}\right)^2 = 10 \cdot \left(\frac{R_Z}{4R_Z}\right)^2 \\
+&= 10 \cdot \left(\frac{1}{4}\right)^2 = \frac{10}{16} = 0{,}625 \text{ N/kg}
+\end{align}$$</div>
+                </div>
+                <p><strong>Odpověď b):</strong> Ve výšce 3R<sub>Z</sub> je intenzita <strong>0,625 N/kg</strong>.</p>
+            </div>
+
+            <div class="calculation-step">
+                <h3>4. Shrnutí</h3>
+                <p>Intenzita klesá velmi rychle s výškou:</p>
+                <ul>
+                    <li>Na povrchu (h=0): K = 10 N/kg</li>
+                    <li>Ve výšce R<sub>Z</sub>: K = 2,5 N/kg (4× menší)</li>
+                    <li>Ve výšce 3R<sub>Z</sub>: K = 0,625 N/kg (16× menší)</li>
+                </ul>
+            </div>
+
+            <div class="calculation-step">
+                <h3>5. Kontrola a odpověď</h3>
+                <p><strong>Odpověď:</strong></p>
+                <ul>
+                    <li>a) Ve výšce R<sub>Z</sub> nad povrchem: K = 2,5 N/kg</li>
+                    <li>b) Ve výšce 3R<sub>Z</sub> nad povrchem: K = 0,625 N/kg</li>
+                </ul>
+                <p>Ověření: Při zdvojnásobení vzdálenosti od středu (2R<sub>Z</sub>) je intenzita 4× menší: 10/4 = 2,5 ✓</p>
+                <p>Při zčtyřnásobení vzdálenosti (4R<sub>Z</sub>) je intenzita 16× menší: 10/16 = 0,625 ✓</p>
+            </div>
+        </section>
+
+        <section id="shrnuti">
+            <h2>Shrnutí a kontrola</h2>
+
+            <div class="summary-box">
+                <strong>Hlavní poznatky:</strong>
+                <ul>
+                    <li>Intenzita klesá se čtvercem vzdálenosti od středu Země</li>
+                    <li>Vzdálenost se počítá od středu Země: r = R<sub>Z</sub> + h</li>
+                    <li>Zdvojnásobení vzdálenosti znamená čtyřnásobný pokles intenzity</li>
+                </ul>
+            </div>
+
+            <div class="info-box">
+                <strong>Kontrola rozumnosti:</strong> Vždy zkontrolujte, zda výsledek dává fyzikální smysl vzhledem k zadání.
+            </div>
+
+            <details>
+                <summary>🤔 Metakognitivní otázky</summary>
+                <div>
+                    <ul>
+                        <li>Ve které výšce bude intenzita 9× menší než na povrchu?</li>
+                        <li>Proč astronauti na ISS (h ≈ 400 km) pociťují téměř stejnou gravitaci jako na Zemi?</li>
+                    </ul>
+                </div>
+            </details>
+        </section>
+
+    </main>
+</body>
+</html>

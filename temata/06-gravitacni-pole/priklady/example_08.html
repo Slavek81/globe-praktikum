@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volný pád a svislý vrh z helikoptéry</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>8. Volný pád a svislý vrh z helikoptéry</h1>
+            <p>Gravitační pole - řešený příklad</p>
+        </header>
+
+        <!-- Motivační úvod pro studenty -->
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Pochopení volného pádu a svislého vrhu je klíčové pro bezpečnost v letectví, skoky padákem, i shazování zásob z helikoptér v záchranných operacích!
+        </div>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <div class="zadani-text">
+                Těleso je vyhozeno z helikoptéry ve výšce 55 m od povrchu Země.<br/>
+                a) Jakou dobu bude padat a jakou rychlostí dopadne, je-li helikoptéra v okamžiku vyhození tělesa v klidu?<br/>
+                b) Jakou dobu bude padat a jakou rychlostí dopadne, klesá-li helikoptéra v okamžiku vyhození tělesa rychlostí 1 m·s⁻¹?<br/>
+                Dosazujte g = 9,81 m·s⁻². Výsledek uveďte s přesností na dvě desetinná místa.
+            </div>
+        </section>
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+            
+            <div class="calculation-step">
+                <h3>1. Část a) Volný pád (v₀ = 0)</h3>
+                <div class="rovnice-blok">
+                    <div class="rovnice-nadpis">📐 Volný pád</div>
+                    <div class="rovnice-text">$$\begin{align}
+t &= \sqrt{\frac{2y}{g}} = \sqrt{\frac{2 \cdot 55}{9{,}81}} = \sqrt{11{,}213} \approx 3{,}35 \text{ s} \\
+v &= g \cdot t = 9{,}81 \cdot 3{,}35 \approx 32{,}85 \text{ m/s}
+\end{align}$$</div>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h3>2. Část b) Svislý vrh dolů (v₀ = 1 m/s)</h3>
+                <p>Kvadratická rovnice: y = v₀·t + ½g·t²</p>
+                <div class="rovnice-blok">
+                    <div class="rovnice-nadpis">📐 Řešení kvadratické rovnice</div>
+                    <div class="rovnice-text">$$\begin{align}
+55 &= 1 \cdot t + 4{,}905 \cdot t^2 \\
+4{,}905t^2 + t - 55 &= 0 \\
+\\
+t &= \frac{-1 + \sqrt{1 + 1079{,}1}}{9{,}81} \approx 3{,}25 \text{ s} \\
+v &= v_0 + g \cdot t = 1 + 9{,}81 \cdot 3{,}25 \approx 32{,}87 \text{ m/s}
+\end{align}$$</div>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h3>3. Shrnutí</h3>
+                <p>Počáteční rychlost dolů zkrátila dobu pádu o 0,1 s a zvýšila rychlost dopadu minimálně (+ 0,02 m/s).</p>
+            </div>
+
+            <div class="calculation-step">
+                <h3>4. Kontrola a odpověď</h3>
+                <p><strong>Odpověď:</strong></p>
+                <ul>
+                    <li>a) Volný pád (v₀=0): doba pádu t ≈ 3,35 s, rychlost dopadu v ≈ 32,85 m/s</li>
+                    <li>b) Svislý vrh dolů (v₀=1 m/s): doba pádu t ≈ 3,25 s, rychlost dopadu v ≈ 32,87 m/s</li>
+                </ul>
+                <p>Ověření: Počáteční rychlost 1 m/s zkrátila dobu o 3,35 - 3,25 = 0,1 s ✓</p>
+                <p>Konečné rychlosti se liší minimálně: 32,87 - 32,85 = 0,02 m/s ✓</p>
+            </div>
+        </section>
+
+        <section id="shrnuti">
+            <h2>Shrnutí a kontrola</h2>
+
+            <div class="summary-box">
+                <strong>Hlavní poznatky:</strong>
+                <ul>
+                    <li>Volný pád: počáteční rychlost v₀ = 0</li>
+                    <li>Svislý vrh dolů: počáteční rychlost v₀ > 0</li>
+                    <li>Malá počáteční rychlost má relativně malý vliv na konečnou rychlost</li>
+                </ul>
+            </div>
+
+            <div class="info-box">
+                <strong>Kontrola rozumnosti:</strong> Vždy zkontrolujte, zda výsledek dává fyzikální smysl vzhledem k zadání.
+            </div>
+
+            <details>
+                <summary>🤔 Metakognitivní otázky</summary>
+                <div>
+                    <ul>
+                        <li>Proč je vliv počáteční rychlosti 1 m/s na konečnou rychlost tak malý?</li>
+                        <li>Jaký by byl rozdíl, kdyby helikoptéra stoupala rychlostí 1 m/s?</li>
+                    </ul>
+                </div>
+            </details>
+        </section>
+
+    </main>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test automobilů - vodorovný vrh</title>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>10. Test automobilů - vodorovný vrh</h1>
+            <p>Gravitační pole - řešený příklad</p>
+        </header>
+
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Crash testy automobilů využívají principy vodorovného vrhu k testování bezpečnosti. Znalost úhlu a rychlosti dopadu je klíčová pro návrh bezpečnostních prvků!
+        </div>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <div class="zadani-text">
+                Výrobci automobilů testují odolnost aut testem na principu vodorovného vrhu. Auto, jedoucí po vodorovné rovině ve výšce 15 m rychlostí 20 m·s⁻¹, spadne z roviny na betonový povrch. Určete úhel dopadu, rychlost dopadu a vzdálenost na betonovém povrchu, kam dopadne.<br/>
+                Použijte: g = 10 m·s⁻²
+            </div>
+        </section>
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+            
+            <div class="calculation-step">
+                <h3>1. Doba letu</h3>
+                <div class="rovnice-blok">
+                    <div class="rovnice-nadpis">📐 Čas pádu</div>
+                    <div class="rovnice-text">$$t = \sqrt{\frac{2y}{g}} = \sqrt{\frac{2 \cdot 15}{10}} = \sqrt{3} \approx 1{,}73 \text{ s}$$</div>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h3>2. Vzdálenost dopadu</h3>
+                <div class="rovnice-blok">
+                    <div class="rovnice-nadpis">📐 Horizontální vzdálenost</div>
+                    <div class="rovnice-text">$$x = v_x \cdot t = 20 \cdot 1{,}73 \approx 34{,}6 \text{ m}$$</div>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h3>3. Rychlost dopadu</h3>
+                <div class="rovnice-blok">
+                    <div class="rovnice-nadpis">📐 Složky rychlosti</div>
+                    <div class="rovnice-text">$$\begin{align}
+v_x &= 20 \text{ m/s} \quad \text{(konstantní)} \\
+v_y &= g \cdot t = 10 \cdot 1{,}73 = 17{,}3 \text{ m/s} \\
+\\
+v &= \sqrt{v_x^2 + v_y^2} = \sqrt{400 + 299{,}29} \approx 26{,}4 \text{ m/s}
+\end{align}$$</div>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h3>4. Úhel dopadu</h3>
+                <div class="rovnice-blok">
+                    <div class="rovnice-nadpis">📐 Úhel vůči horizontále</div>
+                    <div class="rovnice-text">$$\begin{align}
+\tan(\alpha) &= \frac{v_y}{v_x} = \frac{17{,}3}{20} = 0{,}865 \\
+\alpha &= \arctan(0{,}865) \approx 40{,}8°
+\end{align}$$</div>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h3>5. Kontrola a odpověď</h3>
+                <p><strong>Odpověď:</strong></p>
+                <ul>
+                    <li>Doba pádu: t ≈ 1,73 s</li>
+                    <li>Vzdálenost dopadu: x ≈ 34,6 m</li>
+                    <li>Rychlost dopadu: v ≈ 26,4 m/s</li>
+                    <li>Úhel dopadu: α ≈ 40,8° (vůči horizontále)</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="shrnuti">
+            <h2>Shrnutí a kontrola</h2>
+            <div class="summary-box">
+                <strong>Hlavní poznatky:</strong>
+                <ul>
+                    <li>Vodorovná složka rychlosti zůstává konstantní během celého letu</li>
+                    <li>Svislá složka rychlosti roste podle v<sub>y</sub> = g·t</li>
+                    <li>Výsledná rychlost dopadu je vektoro
+
+vým součtem obou složek</li>
+                </ul>
+            </div>
+            <div class="info-box">
+                <strong>Kontrola rozumnosti:</strong> Vždy zkontrolujte, zda výsledek dává fyzikální smysl vzhledem k zadání.
+            </div>
+            <details>
+                <summary>🤔 Metakognitivní otázky</summary>
+                <div>
+                    <ul>
+                        <li>Proč je vodorovná složka rychlosti konstantní během celého letu?</li>
+                        <li>Jak by se změnil úhel dopadu, kdyby auto jelo rychleji?</li>
+                    </ul>
+                </div>
+            </details>
+        </section>
+    </main>
+</body>
+</html>

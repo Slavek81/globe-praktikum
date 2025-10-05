@@ -1,0 +1,384 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[czech]{babel}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{longtable}
+
+\title{Kinematika - Teoretický přehled}
+\author{Fyzika - opakování a prohloubení}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Základní pojmy}
+
+\subsection{Pohyb}
+
+\textbf{Definice:}
+\begin{quote}
+Pohyb je změna polohy tělesa vůči zvolenému vztažnému systému v čase.
+\end{quote}
+
+\textbf{Druhy pohybu:}
+\begin{itemize}
+\item \textbf{Přímočarý} - trajektorie je přímka
+\item \textbf{Křivočarý} - trajektorie je křivka
+\item \textbf{Rovnoměrný} - rychlost je konstantní
+\item \textbf{Nerovnoměrný} - rychlost se mění
+\end{itemize}
+
+\subsection{Dráha a posunutí}
+
+\textbf{Dráha (s):}
+\begin{itemize}
+\item \textbf{Skalární} veličina
+\item Délka trajektorie, kterou těleso urazilo
+\item Jednotka: m (metr)
+\end{itemize}
+
+\textbf{Posunutí ($\vec{r}$):}
+\begin{itemize}
+\item \textbf{Vektorová} veličina
+\item Přímá vzdálenost mezi počáteční a koncovou polohou
+\item Jednotka: m (metr)
+\end{itemize}
+
+\subsection{Rychlost}
+
+\textbf{Průměrná rychlost:}
+\[v_p = \frac{s}{t}\]
+
+\textbf{Okamžitá rychlost:}
+\[v = \lim_{\Delta t \to 0} \frac{\Delta s}{\Delta t} = \frac{ds}{dt}\]
+
+\textbf{Jednotka:} m/s (metr za sekundu)
+
+\subsection{Zrychlení}
+
+\textbf{Definice:}
+\begin{quote}
+Zrychlení je změna rychlosti v čase.
+\end{quote}
+
+\textbf{Rovnice:}
+\[a = \frac{\Delta v}{\Delta t} = \frac{v - v_0}{t}\]
+
+\textbf{Jednotka:} m/s² (metr za sekundu na druhou)
+
+\clearpage
+
+\section{Rovnoměrný přímočarý pohyb}
+
+\subsection{Základní rovnice}
+
+\textbf{Dráha:}
+\[s = v \cdot t\]
+
+\textbf{Rychlost:}
+\[v = \text{konstantní}\]
+
+\textbf{Popis veličin:}
+
+\begin{longtable}{lll}
+\toprule
+Veličina & Popis & Jednotka \\
+\midrule
+$s$ & Dráha & m \\
+$v$ & Rychlost & m/s \\
+$t$ & Čas & s \\
+\bottomrule
+\end{longtable}
+
+\textbf{Grafické znázornění:}
+\begin{itemize}
+\item \textbf{Graf s(t):} Přímka procházející počátkem (při $s_0 = 0$)
+\item \textbf{Graf v(t):} Vodorovná přímka (konstantní rychlost)
+\item \textbf{Graf a(t):} Nulová hodnota (žádné zrychlení)
+\end{itemize}
+
+\clearpage
+
+\section{Rovnoměrně zrychlený pohyb}
+
+\subsection{Kinematické rovnice}
+
+\textbf{Rychlost:}
+\[v = v_0 + a \cdot t\]
+
+\textbf{Dráha (se začáteční rychlostí):}
+\[s = v_0 \cdot t + \frac{1}{2} a \cdot t^2\]
+
+\textbf{Dráha (bez času):}
+\[v^2 = v_0^2 + 2 a \cdot s\]
+
+\textbf{Popis veličin:}
+
+\begin{longtable}{lll}
+\toprule
+Veličina & Popis & Jednotka \\
+\midrule
+$v$ & Koncová rychlost & m/s \\
+$v_0$ & Počáteční rychlost & m/s \\
+$a$ & Zrychlení & m/s² \\
+$t$ & Čas & s \\
+$s$ & Dráha & m \\
+\bottomrule
+\end{longtable}
+
+\textbf{Grafické znázornění:}
+\begin{itemize}
+\item \textbf{Graf s(t):} Parabola
+\item \textbf{Graf v(t):} Přímka se sklonem $a$
+\item \textbf{Graf a(t):} Vodorovná přímka (konstantní zrychlení)
+\end{itemize}
+
+\subsection{Speciální případy}
+
+\textbf{Rozjezd z klidu ($v_0 = 0$):}
+\[s = \frac{1}{2} a \cdot t^2\]
+\[v = a \cdot t\]
+\[v^2 = 2 a \cdot s\]
+
+\textbf{Brzdění do zastavení ($v = 0$):}
+\[0 = v_0 + a \cdot t \quad \Rightarrow \quad t = -\frac{v_0}{a}\]
+\[s = v_0 \cdot t + \frac{1}{2} a \cdot t^2 = \frac{v_0^2}{2|a|}\]
+
+\clearpage
+
+\section{Volný pád}
+
+\subsection{Základní rovnice}
+
+\textbf{Výška:}
+\[h = \frac{1}{2} g \cdot t^2\]
+
+\textbf{Rychlost:}
+\[v = g \cdot t\]
+
+\textbf{Rychlost bez času:}
+\[v^2 = 2 g \cdot h\]
+
+\textbf{Popis veličin:}
+
+\begin{longtable}{lll}
+\toprule
+Veličina & Popis & Jednotka \\
+\midrule
+$h$ & Výška & m \\
+$v$ & Rychlost & m/s \\
+$g$ & Gravitační zrychlení & m/s² \\
+$t$ & Čas & s \\
+\bottomrule
+\end{longtable}
+
+\textbf{Fyzikální význam:}
+\begin{itemize}
+\item Volný pád je speciální případ rovnoměrně zrychleného pohybu
+\item Zrychlení $a = g = 9{,}81$ m/s² (na Zemi)
+\item Zanedbáváme odpor vzduchu
+\end{itemize}
+
+\clearpage
+
+\section{Vrhy}
+
+\subsection{Svislý vrh vzhůru}
+
+\textbf{Výška:}
+\[y = v_0 \cdot t - \frac{1}{2} g \cdot t^2\]
+
+\textbf{Rychlost:}
+\[v_y = v_0 - g \cdot t\]
+
+\textbf{Maximální výška:}
+\[h_{max} = \frac{v_0^2}{2g}\]
+
+\textbf{Doba výstupu (do maximální výšky):}
+\[t_{max} = \frac{v_0}{g}\]
+
+\textbf{Doba letu (celková):}
+\[t_{celk} = \frac{2v_0}{g}\]
+
+\subsection{Vodorovný vrh}
+
+\textbf{Vodorovná složka:}
+\[x = v_0 \cdot t\]
+\[v_x = v_0 = \text{konstantní}\]
+
+\textbf{Svislá složka:}
+\[y = -\frac{1}{2} g \cdot t^2\]
+\[v_y = -g \cdot t\]
+
+\textbf{Trajektorie:}
+\[y = -\frac{g}{2v_0^2} \cdot x^2\] (parabola)
+
+\textbf{Dopad na zem (z výšky $h$):}
+\[t = \sqrt{\frac{2h}{g}}\]
+\[x = v_0 \cdot \sqrt{\frac{2h}{g}}\]
+
+\subsection{Vrh šikmo vzhůru}
+
+\textbf{Rozklad počáteční rychlosti:}
+\[v_x = v_0 \cos \alpha\]
+\[v_y = v_0 \sin \alpha\]
+
+\textbf{Pohybové rovnice:}
+\[x = v_0 \cos \alpha \cdot t\]
+\[y = v_0 \sin \alpha \cdot t - \frac{1}{2} g \cdot t^2\]
+
+\textbf{Trajektorie:}
+\[y = x \tan \alpha - \frac{g x^2}{2 v_0^2 \cos^2 \alpha}\]
+
+\textbf{Dosah (R):}
+\[R = \frac{v_0^2 \sin 2\alpha}{g}\]
+
+\textbf{Maximální výška:}
+\[h_{max} = \frac{v_0^2 \sin^2 \alpha}{2g}\]
+
+\textbf{Doba letu:}
+\[t_{celk} = \frac{2v_0 \sin \alpha}{g}\]
+
+\textbf{Popis veličin:}
+
+\begin{longtable}{lll}
+\toprule
+Veličina & Popis & Jednotka \\
+\midrule
+$v_0$ & Počáteční rychlost & m/s \\
+$\alpha$ & Úhel vrhu & ° nebo rad \\
+$v_x, v_y$ & Složky rychlosti & m/s \\
+$R$ & Dosah & m \\
+$h_{max}$ & Maximální výška & m \\
+\bottomrule
+\end{longtable}
+
+\clearpage
+
+\section{Pohyb po kružnici}
+
+\subsection{Základní veličiny}
+
+\textbf{Úhlová rychlost:}
+\[\omega = \frac{2\pi}{T} = 2\pi f = \frac{\varphi}{t}\]
+
+\textbf{Obvodová rychlost:}
+\[v = \omega \cdot r = \frac{2\pi r}{T}\]
+
+\textbf{Perioda:}
+\[T = \frac{2\pi}{\omega} = \frac{1}{f}\]
+
+\textbf{Frekvence:}
+\[f = \frac{1}{T} = \frac{\omega}{2\pi}\]
+
+\textbf{Popis veličin:}
+
+\begin{longtable}{lll}
+\toprule
+Veličina & Popis & Jednotka \\
+\midrule
+$\omega$ & Úhlová rychlost & rad/s \\
+$v$ & Obvodová rychlost & m/s \\
+$r$ & Poloměr & m \\
+$T$ & Perioda & s \\
+$f$ & Frekvence & Hz \\
+$\varphi$ & Úhel & rad \\
+\bottomrule
+\end{longtable}
+
+\subsection{Dostředivé zrychlení a síla}
+
+\textbf{Dostředivé zrychlení:}
+\[a_d = \frac{v^2}{r} = \omega^2 \cdot r\]
+
+\textbf{Dostředivá síla:}
+\[F_d = m \cdot a_d = \frac{m v^2}{r} = m \omega^2 \cdot r\]
+
+\textbf{Fyzikální význam:}
+\begin{itemize}
+\item Dostředivé zrychlení směřuje k středu kružnice
+\item Dostředivá síla je výslednice všech sil, které udržují těleso na kruhové dráze
+\item Tato síla neprovádí práci (je kolmá na rychlost)
+\end{itemize}
+
+\clearpage
+
+\section{Převody jednotek rychlosti}
+
+\subsection{Základní převody}
+
+\textbf{km/h ↔ m/s:}
+\[1 \text{ km/h} = \frac{1000 \text{ m}}{3600 \text{ s}} = \frac{1}{3{,}6} \text{ m/s} \approx 0{,}278 \text{ m/s}\]
+
+\[1 \text{ m/s} = 3{,}6 \text{ km/h}\]
+
+\textbf{Praktický vzorec:}
+\[v[\text{m/s}] = \frac{v[\text{km/h}]}{3{,}6}\]
+\[v[\text{km/h}] = v[\text{m/s}] \times 3{,}6\]
+
+\subsection{Příklady převodů}
+
+\begin{longtable}{lll}
+\toprule
+km/h & m/s & Poznámka \\
+\midrule
+36 & 10 & Běžná rychlost ve městě \\
+50 & 13,9 & Rychlost ve městě \\
+90 & 25 & Rychlost mimo obec \\
+130 & 36,1 & Maximální rychlost na dálnici \\
+360 & 100 & Vysoká rychlost \\
+\bottomrule
+\end{longtable}
+
+\clearpage
+
+\section{Fyzikální konstanty}
+
+\begin{longtable}{llll}
+\toprule
+Konstanta & Symbol & Hodnota & Jednotka \\
+\midrule
+Gravitační zrychlení (Země) & $g$ & 9,81 & m/s² \\
+Gravitační zrychlení (Měsíc) & $g_M$ & 1,62 & m/s² \\
+Rychlost světla ve vakuu & $c$ & 299\,792\,458 & m/s \\
+Rychlost zvuku ve vzduchu (20°C) & $v_{zvuk}$ & 343 & m/s \\
+\bottomrule
+\end{longtable}
+
+\clearpage
+
+\section{Souhrn jednotek v SI}
+
+\begin{longtable}{llll}
+\toprule
+Veličina & Jednotka SI & Další jednotky & Převody \\
+\midrule
+Dráha, posunutí & m (metr) & km, cm, mm & 1 km = 1000 m \\
+Rychlost & m/s & km/h & 1 m/s = 3,6 km/h \\
+Zrychlení & m/s² & - & - \\
+Čas & s (sekunda) & min, h & 1 h = 3600 s \\
+Úhel & rad (radián) & ° (stupeň) & 1 rad = 57,3° \\
+Úhlová rychlost & rad/s & °/s, ot/min & 1 ot/min = 0,105 rad/s \\
+Frekvence & Hz (Hertz) & ot/min & 1 Hz = 1/s \\
+Perioda & s (sekunda) & min & T = 1/f \\
+\bottomrule
+\end{longtable}
+
+\clearpage
+
+\section*{Poznámky}
+
+\begin{itemize}
+\item \textbf{Trajektorie:} Křivka, po které se těleso pohybuje
+\item \textbf{Vztažný systém:} Soustava souřadnic, vůči které měříme pohyb
+\item \textbf{Vektor vs. skalár:} Vektor má velikost i směr (posunutí, rychlost, zrychlení), skalár má jen velikost (dráha, rychlost v absolutní hodnotě, čas)
+\item \textbf{Pohyb je relativní:} Závisí na volbě vztažného systému (v jednom může být těleso v klidu, v jiném se pohybuje)
+\item \textbf{Grafická analýza:} Z grafu s(t) lze určit rychlost (směrnice tečny), z grafu v(t) lze určit zrychlení (směrnice) a dráhu (obsah pod křivkou)
+\item \textbf{Optimální úhel vrhu:} Pro maximální dosah je optimální úhel 45° (při vrhu ze stejné výšky na stejnou výšku)
+\item \textbf{Kruhový pohyb:} I při konstantní velikosti rychlosti se mění směr → existuje zrychlení (dostředivé)
+\end{itemize}
+
+\end{document}

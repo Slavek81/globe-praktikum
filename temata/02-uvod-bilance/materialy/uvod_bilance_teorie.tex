@@ -1,0 +1,311 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[czech]{babel}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{longtable}
+
+\title{Úvod a bilance - Teoretický přehled}
+\author{Fyzika - opakování a prohloubení}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Základní pojmy}
+
+\subsection{Teplota (Temperature)}
+
+\textbf{Definice:}
+\begin{quote}
+Teplota je stavová veličina vyjadřující průměrnou kinetickou energii molekul látky. Je nezávislá na množství látky.
+\end{quote}
+
+\textbf{Jednotky:}
+\begin{itemize}
+\item \textbf{°C} (stupeň Celsia) - nejběžnější v Evropě
+\item \textbf{K} (Kelvin) - základní jednotka SI, absolutní teplota
+\item \textbf{°F} (stupeň Fahrenheita) - používá se v USA
+\end{itemize}
+
+\textbf{Převody:}
+\[T[K] = T[°C] + 273{,}15\]
+\[T[°F] = T[°C] \times \frac{9}{5} + 32\]
+
+\subsection{Teplo (Heat)}
+
+\textbf{Definice:}
+\begin{quote}
+Teplo je dějová veličina - forma energie, která se přenáší mezi tělesy s různou teplotou. Závisí na množství látky, teplotním rozdílu a druhu látky.
+\end{quote}
+
+\textbf{Jednotka:} J (Joule)
+
+\subsection{Tepelný tok (Heat Flow)}
+
+\textbf{Definice:}
+\begin{quote}
+Tepelný tok udává množství tepla přenášeného za jednotku času.
+\end{quote}
+
+\textbf{Rovnice:}
+\[\dot{Q} = \frac{Q}{t}\]
+
+\textbf{Jednotka:} W (Watt) = J/s
+
+\subsection{Entalpie (Enthalpy)}
+
+\textbf{Definice:}
+\begin{quote}
+Entalpie je fyzikální veličina rozměru energie, která vyjadřuje celkovou energii systému včetně vnitřní energie a energie spojené s tlakem a objemem.
+\end{quote}
+
+\textbf{Symbol:} H \\
+\textbf{Jednotka:} J (Joule)
+
+\clearpage
+
+\section{Základní rovnice}
+
+\subsection{Diskontinuální provoz (bez průtoku v čase)}
+
+\textbf{Ohřev nebo ochlazení látky:}
+\[Q = m \cdot c_p \cdot (T_2 - T_1)\]
+
+\textbf{Popis veličin:}
+
+\begin{longtable}{lll}
+\toprule
+Veličina & Popis & Jednotka \\
+\midrule
+$Q$ & Teplo & J (Joule) \\
+$m$ & Hmotnost & kg \\
+$c_p$ & Měrná tepelná kapacita & J/(kg·K) \\
+$T_1$ & Počáteční teplota & °C nebo K \\
+$T_2$ & Konečná teplota & °C nebo K \\
+\bottomrule
+\end{longtable}
+
+\subsection{Kontinuální provoz (s průtokem v čase)}
+
+\textbf{Ohřev nebo ochlazení tekutiny:}
+\[\dot{Q} = \dot{m} \cdot c_p \cdot (T_2 - T_1)\]
+
+\textbf{Popis veličin:}
+
+\begin{longtable}{lll}
+\toprule
+Veličina & Popis & Jednotka \\
+\midrule
+$\dot{Q}$ & Tepelný tok & W (Watt) \\
+$\dot{m}$ & Hmotnostní tok & kg/s \\
+$c_p$ & Měrná tepelná kapacita & J/(kg·K) \\
+$T_1$ & Teplota na vstupu & °C nebo K \\
+$T_2$ & Teplota na výstupu & °C nebo K \\
+\bottomrule
+\end{longtable}
+
+\subsection{S fázovou změnou (var/kondenzace)}
+
+\textbf{Kompletní rovnice s odpařováním:}
+\[\dot{Q} = \dot{m} \cdot c_{p,kapaliny} \cdot (T_{var} - T_1) + \dot{m} \cdot l_v + \dot{m} \cdot c_{p,páry} \cdot (T_2 - T_{var})\]
+
+\textbf{Popis veličin:}
+
+\begin{longtable}{lll}
+\toprule
+Veličina & Popis & Jednotka \\
+\midrule
+$c_{p,kapaliny}$ & Měrná tepelná kapacita kapaliny & J/(kg·K) \\
+$c_{p,páry}$ & Měrná tepelná kapacita páry & J/(kg·K) \\
+$l_v$ & Měrné skupenské teplo varu & J/kg \\
+$T_{var}$ & Teplota varu & °C nebo K \\
+\bottomrule
+\end{longtable}
+
+\textbf{Fyzikální význam:}
+\begin{itemize}
+\item \textbf{První člen:} Ohřev kapaliny na teplotu varu
+\item \textbf{Druhý člen:} Energie potřebná ke změně skupenství (odpařování)
+\item \textbf{Třetí člen:} Ohřev páry nad teplotu varu
+\end{itemize}
+
+\clearpage
+
+\section{Zákony zachování}
+
+\subsection{Zákon zachování hmoty}
+
+\textbf{Obecná bilance:}
+\[\text{Vstup} = \text{Výstup} + \text{Akumulace}\]
+
+\textbf{Pro ustálený stav (akumulace = 0):}
+\[\dot{m}_{vstup} = \dot{m}_{výstup}\]
+
+\textbf{Fyzikální význam:}
+\begin{itemize}
+\item Hmota nemůže vzniknout ani zaniknout
+\item V uzavřeném systému je celková hmotnost konstantní
+\item Hmotnostní toky do systému se rovnají hmotnostním tokům ze systému
+\end{itemize}
+
+\subsection{Zákon zachování energie}
+
+\textbf{První termodynamický zákon:}
+\[\text{Energie vstupující} - \text{Energie vystupující} = \text{Akumulace energie}\]
+
+\textbf{Pro ustálený stav:}
+\[\dot{Q}_{vstup} + \dot{W}_{vstup} = \dot{Q}_{výstup} + \dot{W}_{výstup}\]
+
+\textbf{Fyzikální význam:}
+\begin{itemize}
+\item Energie nemůže vzniknout ani zaniknout, pouze se přeměňuje
+\item Celková energie izolovaného systému je konstantní
+\item Energetická bilance zahrnuje teplo i práci
+\end{itemize}
+
+\subsection{Obecná bilance}
+
+\textbf{Univerzální rovnice bilance:}
+\[\text{Vstup} + \text{Výroba} = \text{Výstup} + \text{Spotřeba} + \text{Akumulace}\]
+
+\textbf{Aplikace:}
+\begin{itemize}
+\item \textbf{Hmotnostní bilance:} Výroba = 0, Spotřeba = 0
+\item \textbf{Energetická bilance:} Energie se nemění na hmotu
+\item \textbf{Látkové bilance:} Pro jednotlivé složky směsi
+\end{itemize}
+
+\clearpage
+
+\section{Měrné tepelné kapacity běžných látek}
+
+\begin{longtable}{lll}
+\toprule
+Látka & $c_p$ [J/(kg·K)] & Poznámka \\
+\midrule
+Voda (kapalná) & 4\,186 & Nejvyšší ze společných látek \\
+Vzduch & 1\,005 & Při konstantním tlaku \\
+Led & 2\,050 & Při 0°C \\
+Vodní pára & 2\,010 & Při 100°C \\
+Hliník & 897 & Kovy obecně nízká hodnota \\
+Měď & 385 & \\
+Železo & 449 & \\
+Olovo & 129 & \\
+Ethanol & 2\,440 & \\
+Rtuť & 140 & \\
+\bottomrule
+\end{longtable}
+
+\textbf{Důležité poznatky:}
+\begin{itemize}
+\item Voda má jednu z nejvyšších měrných tepelných kapacit
+\item Kovy mají obecně nízké hodnoty $c_p$
+\item Vyšší $c_p$ znamená větší schopnost akumulovat teplo
+\end{itemize}
+
+\clearpage
+
+\section{Měrná skupenská tepla}
+
+\subsection{Voda}
+
+\begin{longtable}{llll}
+\toprule
+Děj & Symbol & Hodnota & Jednotka \\
+\midrule
+Tání ledu & $l_t$ & 334\,000 & J/kg \\
+Tuhnutí vody & $l_t$ & 334\,000 & J/kg \\
+Var vody & $l_v$ & 2\,260\,000 & J/kg \\
+Kondenzace páry & $l_v$ & 2\,260\,000 & J/kg \\
+\bottomrule
+\end{longtable}
+
+\textbf{Fyzikální význam:}
+\begin{itemize}
+\item Skupenské teplo je energie potřebná ke změně skupenství bez změny teploty
+\item Při varu a kondenzaci se přenáší velké množství energie
+\item Proto je vodní pára efektivní pro přenos tepla (parní topení)
+\end{itemize}
+
+\subsection{Další látky}
+
+\begin{longtable}{lll}
+\toprule
+Látka & Tání $l_t$ [J/kg] & Var $l_v$ [J/kg] \\
+\midrule
+Ethanol & 108\,000 & 838\,000 \\
+Hliník & 397\,000 & 10\,900\,000 \\
+Olovo & 23\,000 & 858\,000 \\
+Rtuť & 11\,800 & 272\,000 \\
+\bottomrule
+\end{longtable}
+
+\clearpage
+
+\section{Praktické aplikace}
+
+\subsection{Výpočet tepla pro ohřev vody}
+
+\textbf{Bez fázové změny:}
+\[Q = m \cdot c_p \cdot \Delta T\]
+
+\textbf{Příklad:} Ohřát 2 kg vody z 20°C na 80°C
+\[Q = 2 \cdot 4186 \cdot (80-20) = 502{,}320 \text{ J} = 502{,}3 \text{ kJ}\]
+
+\subsection{Výpočet výkonu pro var vody}
+
+\textbf{S fázovou změnou:}
+\[\dot{Q} = \dot{m} \cdot (c_p \cdot \Delta T + l_v)\]
+
+\textbf{Příklad:} Odpařit 0,1 kg/s vody při 100°C (již horká voda)
+\[\dot{Q} = 0{,}1 \cdot 2{,}26 \times 10^6 = 226{,}000 \text{ W} = 226 \text{ kW}\]
+
+\subsection{Směšování látek}
+
+\textbf{Zákon zachování energie při směšování:}
+\[m_1 \cdot c_{p1} \cdot (T_1 - T_{výsl}) = m_2 \cdot c_{p2} \cdot (T_{výsl} - T_2)\]
+
+Kde:
+\begin{itemize}
+\item $T_1$ > $T_{výsl}$ > $T_2$
+\item Teplejší látka odevzdává teplo, chladnější přijímá
+\item Výsledná teplota $T_{výsl}$ leží mezi $T_1$ a $T_2$
+\end{itemize}
+
+\clearpage
+
+\section{Souhrn jednotek v SI}
+
+\begin{longtable}{llll}
+\toprule
+Veličina & Jednotka SI & Další jednotky & Převody \\
+\midrule
+Teplota & K (Kelvin) & °C, °F & K = °C + 273,15 \\
+Teplo & J (Joule) & kJ, MJ, cal & 1 cal = 4,186 J \\
+Tepelný tok & W (Watt) & kW, MW & 1 W = 1 J/s \\
+Entalpie & J (Joule) & kJ, MJ & - \\
+Hmotnost & kg (kilogram) & g, t & 1 t = 1000 kg \\
+Hmotnostní tok & kg/s & kg/h, t/h & 1 kg/h = 0,000278 kg/s \\
+Měrná tepelná kapacita & J/(kg·K) & kJ/(kg·K) & - \\
+Měrné skupenské teplo & J/kg & kJ/kg, MJ/kg & - \\
+Čas & s (sekunda) & min, h & 1 h = 3600 s \\
+\bottomrule
+\end{longtable}
+
+\clearpage
+
+\section*{Poznámky}
+
+\begin{itemize}
+\item \textbf{Teplota vs. Teplo:} Teplota je stavová veličina (nezávisí na množství), teplo je dějová (závisí na množství)
+\item \textbf{Uzavřený systém:} Systém, který nevyměňuje hmotu s okolím (ale může vyměňovat energii)
+\item \textbf{Izolovaný systém:} Systém, který nevyměňuje ani hmotu, ani energii s okolím
+\item \textbf{Ustálený stav:} Stav, kdy se veličiny v systému nemění v čase (akumulace = 0)
+\item \textbf{Fázová změna:} Změna skupenství probíhá při konstantní teplotě (bod varu, bod tání)
+\item \textbf{Měrná vs. celková veličina:} Měrná veličina je vztažena na jednotku hmotnosti (J/kg), celková na celkové množství (J)
+\end{itemize}
+
+\end{document}

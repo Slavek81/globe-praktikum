@@ -1,0 +1,347 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[czech]{babel}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{longtable}
+
+\title{Gravitační pole - Teoretický přehled}
+\author{Fyzika - opakování a prohloubení}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Newtonův gravitační zákon}
+
+\subsection{Zákon univerzální gravitace}
+
+\textbf{Rovnice:}
+\[F_g = \kappa \frac{m_1 m_2}{r^2}\]
+
+\textbf{Popis veličin:}
+
+\begin{longtable}{lll}
+\toprule
+Veličina & Popis & Jednotka \\
+\midrule
+$F_g$ & Gravitační síla & N (newton) \\
+$\kappa$ & Gravitační konstanta & N·m²·kg⁻² \\
+$m_1, m_2$ & Hmotnosti těles & kg (kilogram) \\
+$r$ & Vzdálenost středů těles & m (metr) \\
+\bottomrule
+\end{longtable}
+
+\textbf{Hodnota gravitační konstanty:}
+\[\kappa = 6{,}674 \times 10^{-11} \text{ N·m}^2\text{·kg}^{-2}\]
+
+\textbf{Důležité vlastnosti:}
+
+\begin{itemize}
+\item Gravitační síla je vždy \textbf{přitažlivá}
+\item Síla klesá s \textbf{druhou mocninou} vzdálenosti
+\item Síla působí podél spojnice středů těles
+\item Gravitace je \textbf{univerzální} - působí mezi všemi tělesy s hmotností
+\end{itemize}
+
+\clearpage
+
+\section{Gravitační pole}
+
+\subsection{Intenzita gravitačního pole}
+
+\textbf{Rovnice:}
+\[K = \frac{F_g}{m} = \kappa \frac{M}{r^2}\]
+
+\textbf{Popis veličin:}
+
+\begin{longtable}{lll}
+\toprule
+Veličina & Popis & Jednotka \\
+\midrule
+$K$ & Intenzita gravitačního pole & N/kg nebo m/s² \\
+$F_g$ & Gravitační síla & N \\
+$m$ & Hmotnost zkušebního tělesa & kg \\
+$M$ & Hmotnost tělesa vytvářejícího pole & kg \\
+$r$ & Vzdálenost od středu pole & m \\
+\bottomrule
+\end{longtable}
+
+\textbf{Fyzikální význam:}
+
+\begin{itemize}
+\item Intenzita pole udává \textbf{sílu na jednotku hmotnosti}
+\item Číselně rovna \textbf{gravitačnímu zrychlení} v daném místě
+\item Nezávisí na hmotnosti zkušebního tělesa
+\end{itemize}
+
+\subsection{Gravitační zrychlení}
+
+\textbf{Rovnice:}
+\[a_g = K = \kappa \frac{M}{r^2}\]
+
+\textbf{Na povrchu Země:}
+\[g = \kappa \frac{M_Z}{R_Z^2} \approx 9{,}81 \text{ m/s}^2\]
+
+\textbf{Popis veličin:}
+
+\begin{longtable}{lll}
+\toprule
+Veličina & Popis & Jednotka \\
+\midrule
+$a_g$ & Gravitační zrychlení & m/s² \\
+$g$ & Tíhové zrychlení na Zemi & m/s² \\
+$M_Z$ & Hmotnost Země & kg \\
+$R_Z$ & Poloměr Země & m \\
+\bottomrule
+\end{longtable}
+
+\clearpage
+
+\section{Gravitační potenciál}
+
+\textbf{Rovnice:}
+\[\varphi = -\kappa \frac{M}{r}\]
+
+\textbf{Popis veličin:}
+
+\begin{longtable}{lll}
+\toprule
+Veličina & Popis & Jednotka \\
+\midrule
+$\varphi$ & Gravitační potenciál & J/kg \\
+$M$ & Hmotnost tělesa & kg \\
+$r$ & Vzdálenost od středu & m \\
+\bottomrule
+\end{longtable}
+
+\textbf{Fyzikální význam:}
+
+\begin{itemize}
+\item Potenciál je \textbf{záporný} (gravitace je přitažlivá síla)
+\item Udává \textbf{práci na jednotku hmotnosti} potřebnou k přenesení tělesa z daného místa do nekonečna
+\item Souvisí s potenciální energií: $E_p = m\varphi$
+\end{itemize}
+
+\clearpage
+
+\section{Kosmické rychlosti}
+
+\subsection{Kruhová rychlost (1. kosmická rychlost)}
+
+\textbf{Rovnice:}
+\[v_k = \sqrt{\kappa \frac{M}{r}}\]
+
+\textbf{Pro nízké oběžné dráhy kolem Země:}
+\[v_k \approx 7{,}9 \text{ km/s}\]
+
+\textbf{Popis veličin:}
+
+\begin{longtable}{lll}
+\toprule
+Veličina & Popis & Jednotka \\
+\midrule
+$v_k$ & Kruhová rychlost & m/s \\
+$M$ & Hmotnost centrálního tělesa & kg \\
+$r$ & Poloměr oběžné dráhy & m \\
+\bottomrule
+\end{longtable}
+
+\textbf{Fyzikální význam:}
+
+\begin{itemize}
+\item Rychlost potřebná pro \textbf{kruhovou oběžnou dráhu}
+\item Dostředivá síla se rovná gravitační síle
+\item Pro nízké dráhy kolem Země: $v_k \approx 7{,}9$ km/s
+\end{itemize}
+
+\subsection{Úniková rychlost (2. kosmická rychlost)}
+
+\textbf{Rovnice:}
+\[v_u = \sqrt{2\kappa \frac{M}{r}} = v_k\sqrt{2}\]
+
+\textbf{Z povrchu Země:}
+\[v_u \approx 11{,}2 \text{ km/s}\]
+
+\textbf{Popis veličin:}
+
+\begin{longtable}{lll}
+\toprule
+Veličina & Popis & Jednotka \\
+\midrule
+$v_u$ & Úniková rychlost & m/s \\
+$M$ & Hmotnost tělesa & kg \\
+$r$ & Vzdálenost od středu tělesa & m \\
+\bottomrule
+\end{longtable}
+
+\textbf{Fyzikální význam:}
+
+\begin{itemize}
+\item Minimální rychlost k \textbf{opuštění gravitačního pole}
+\item Kinetická energie se rovná potenciální energii
+\item Úniková rychlost je $\sqrt{2}$-krát větší než kruhová rychlost
+\end{itemize}
+
+\subsection{Další kosmické rychlosti}
+
+\textbf{3. kosmická rychlost} (únik ze Sluneční soustavy):
+\[v_3 \approx 16{,}7 \text{ km/s}\]
+
+\textbf{4. kosmická rychlost} (únik z Galaxie):
+\[v_4 \approx 525 \text{ km/s}\]
+
+\clearpage
+
+\section{Keplerovy zákony}
+
+\subsection{1. Keplerův zákon (zákon elips)}
+
+\textbf{Formulace:}
+
+\begin{quote}
+Planety se pohybují po \textbf{elipsách}, v jejichž jednom \textbf{ohnisku} je Slunce.
+\end{quote}
+
+\textbf{Matematický popis:}
+
+\begin{itemize}
+\item Dráha planety je elipsa s hlavní poloosou $a$ a vedlejší poloosou $b$
+\item Slunce je v jednom z ohnisek elipsy
+\item Vzdálenost mezi ohnisky: $2c$, kde $c = \sqrt{a^2 - b^2}$
+\end{itemize}
+
+\subsection{2. Keplerův zákon (zákon ploch)}
+
+\textbf{Formulace:}
+
+\begin{quote}
+Plocha opsaná \textbf{průvodičem} planety je za stejný čas \textbf{stejná}.
+\end{quote}
+
+\textbf{Fyzikální důsledek:}
+
+\begin{itemize}
+\item Planeta se pohybuje \textbf{rychleji}, když je blíže Slunci (v \textbf{perihelu})
+\item Planeta se pohybuje \textbf{pomaleji}, když je dále od Slunce (v \textbf{afelu})
+\item Zachování \textbf{momentu hybnosti}
+\end{itemize}
+
+\subsection{3. Keplerův zákon (harmonický zákon)}
+
+\textbf{Rovnice:}
+\[\frac{T_1^2}{T_2^2} = \frac{a_1^3}{a_2^3}\]
+
+nebo pro jednu planetu:
+\[T^2 = \frac{4\pi^2}{GM} a^3\]
+
+\textbf{Popis veličin:}
+
+\begin{longtable}{lll}
+\toprule
+Veličina & Popis & Jednotka \\
+\midrule
+$T$ & Oběžná doba planety & s (sekunda) \\
+$a$ & Hlavní poloosa dráhy & m \\
+$G$ & Gravitační konstanta ($\kappa$) & N·m²·kg⁻² \\
+$M$ & Hmotnost centrálního tělesa & kg \\
+\bottomrule
+\end{longtable}
+
+\textbf{Fyzikální význam:}
+
+\begin{itemize}
+\item Druhá mocnina oběžné doby je úměrná třetí mocnině hlavní poloosy
+\item Platí pro všechna tělesa obíhající kolem stejného centrálního tělesa
+\end{itemize}
+
+\clearpage
+
+\section{Fyzikální konstanty}
+
+\begin{longtable}{llll}
+\toprule
+Konstanta & Symbol & Hodnota & Jednotka \\
+\midrule
+Gravitační konstanta & $\kappa$ nebo $G$ & $6{,}674 \times 10^{-11}$ & N·m²·kg⁻² \\
+Hmotnost Země & $M_Z$ & $5{,}972 \times 10^{24}$ & kg \\
+Poloměr Země & $R_Z$ & $6{,}371 \times 10^{6}$ & m \\
+Hmotnost Slunce & $M_S$ & $1{,}989 \times 10^{30}$ & kg \\
+Hmotnost Měsíce & $M_M$ & $7{,}342 \times 10^{22}$ & kg \\
+Vzdálenost Země-Měsíc & $r_{ZM}$ & $3{,}844 \times 10^{8}$ & m \\
+Tíhové zrychlení na Zemi & $g$ & $9{,}81$ & m/s² \\
+\bottomrule
+\end{longtable}
+
+\clearpage
+
+\section{Užitečné vztahy a vzorce}
+
+\subsection{Energie v gravitačním poli}
+
+\textbf{Potenciální energie:}
+\[E_p = -\kappa \frac{Mm}{r}\]
+
+\textbf{Kinetická energie kruhové oběžné dráhy:}
+\[E_k = \frac{1}{2}mv_k^2 = \kappa \frac{Mm}{2r}\]
+
+\textbf{Celková mechanická energie:}
+\[E = E_k + E_p = -\kappa \frac{Mm}{2r}\]
+
+\subsection{Vztah mezi zrychlením a výškou}
+
+\textbf{Gravitační zrychlení ve výšce $h$ nad povrchem:}
+\[g_h = g \frac{R^2}{(R+h)^2}\]
+
+kde:
+\begin{itemize}
+\item $g$ je tíhové zrychlení na povrchu
+\item $R$ je poloměr tělesa
+\item $h$ je výška nad povrchem
+\end{itemize}
+
+\subsection{Podmínky pro oběžné dráhy}
+
+\textbf{Kruhová dráha:}
+\[F_g = F_{ds} \quad \Rightarrow \quad \kappa \frac{Mm}{r^2} = m\frac{v^2}{r}\]
+
+\textbf{Eliptická dráha:}
+\[v_k < v < v_u\]
+
+\textbf{Únik z gravitačního pole:}
+\[v \geq v_u\]
+
+\clearpage
+
+\section{Souhrn jednotek v SI}
+
+\begin{longtable}{lll}
+\toprule
+Veličina & Jednotka SI & Další jednotky \\
+\midrule
+Síla & N (newton) & kg·m/s² \\
+Hmotnost & kg (kilogram) & - \\
+Vzdálenost & m (metr) & km = 10³ m \\
+Rychlost & m/s & km/s, km/h \\
+Zrychlení & m/s² & - \\
+Energie & J (joule) & N·m, kg·m²/s² \\
+Potenciál & J/kg & m²/s² \\
+Intenzita pole & N/kg & m/s² \\
+Čas & s (sekunda) & h (hodina), den, rok \\
+\bottomrule
+\end{longtable}
+
+\clearpage
+
+\section*{Poznámky}
+
+\begin{itemize}
+\item Všechny vzorce předpokládají \textbf{bodové hmotnosti} nebo \textbf{kulově symetrická tělesa}
+\item Vzdálenost $r$ se měří od \textbf{středu těles}
+\item V reálných situacích může být třeba zohlednit \textbf{atmosféru} a \textbf{odpor vzduchu}
+\item Pro velmi přesné výpočty je nutné použít \textbf{relativistickou mechaniku}
+\end{itemize}
+
+\end{document}

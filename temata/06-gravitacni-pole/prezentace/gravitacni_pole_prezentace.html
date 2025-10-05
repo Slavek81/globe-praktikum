@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gravitační pole - Studium gravitace pro střední školy</title>
+    <!-- Import pro renderování LaTeX matematických vzorců -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>Průvodce Gravitačním polem</h1>
+            <p>Pojďme společně odhalit tajemství gravitace a pohybu těles v kosmu!</p>
+        </header>
+
+        <section class="intro-box">
+            <h2>Co je gravitační pole a proč ho studujeme?</h2>
+            <p>Představte si, že sledujete jablko padající ze stromu, planety obíhající kolem Slunce nebo družice kroužící kolem Země. Všechna tato tělesa mají něco společného - jsou ovlivněna gravitační silou!</p>
+            <p><strong>Gravitační pole</strong> je prostor kolem tělesa, ve kterém působí gravitační síla na jiná tělesa. Studium gravitace nám pomáhá pochopit <strong>pohyb planet, fungování vesmíru i běžné jevy na Zemi</strong>.</p>
+        </section>
+
+        <!-- SEKCE 1: NEWTONŮV GRAVITAČNÍ ZÁKON -->
+        <section id="newton" class="unit-section">
+            <h2>📐 Newtonův gravitační zákon</h2>
+
+            <h3>🔴 1. Zákon univerzální gravitace</h3>
+            <p><strong>Definice:</strong> Každá dvě tělesa se navzájem přitahují silou (\(F_g\)), která je <strong>přímo úměrná</strong> součinu jejich hmotností (\(m_1\), \(m_2\)) a <strong>nepřímo úměrná</strong> druhé mocnině jejich vzdálenosti (\(r\)).</p>
+
+            <div class="formula-box">
+                \[F_g = \kappa \frac{m_1 m_2}{r^2}\]
+                <p>kde \(\kappa = 6,674 \times 10^{-11} \text{ N·m}^2\text{·kg}^{-2}\) je gravitační konstanta</p>
+            </div>
+
+            <h3>📊 2. Význam veličin</h3>
+            <ul>
+                <li>\(F_g\) - gravitační síla v Newtonech (N)</li>
+                <li>\(m_1, m_2\) - hmotnosti obou těles v kilogramech (kg)</li>
+                <li>\(r\) - vzdálenost mezi středy těles v metrech (m)</li>
+                <li>\(\kappa\) (kappa) - gravitační konstanta</li>
+            </ul>
+
+            <h3>💡 3. Příklad: Gravitační síla Země-Měsíc</h3>
+            <div class="example-box">
+                <p><strong>Zadání:</strong> Jaká gravitační síla působí mezi Zemí a Měsícem?</p>
+                <p><strong>Dáno:</strong></p>
+                <ul>
+                    <li>\(m_Z = 5,972 \times 10^{24}\) kg (hmotnost Země)</li>
+                    <li>\(m_M = 7,342 \times 10^{22}\) kg (hmotnost Měsíce)</li>
+                    <li>\(r = 3,844 \times 10^8\) m (vzdálenost Země-Měsíc)</li>
+                    <li>\(\kappa = 6,674 \times 10^{-11} \text{ N·m}^2\text{·kg}^{-2}\)</li>
+                </ul>
+                <p><strong>Řešení:</strong></p>
+                \[F_g = 6,674 \times 10^{-11} \cdot \frac{5,972 \times 10^{24} \cdot 7,342 \times 10^{22}}{(3,844 \times 10^8)^2} \approx 1,98 \times 10^{20} \text{ N}\]
+                <p><strong>Odpověď:</strong> Gravitační síla mezi Zemí a Měsícem je přibližně \(1,98 \times 10^{20}\) N.</p>
+            </div>
+
+            <h3>🔢 4. Příklad: Závislost síly na vzdálenosti</h3>
+            <div class="example-box">
+                <p><strong>Zadání:</strong> Gravitační síla mezi dvěma tělesy je \(2 \times 10^5\) N. Jaká bude síla:</p>
+                <p>a) když se vzdálenost zdvojnásobí?</p>
+                <p>b) když bude hmotnost obou těles dvojnásobná?</p>
+                <p><strong>Řešení a):</strong> Při zdvojnásobení vzdálenosti:</p>
+                \[F_2 = \kappa \frac{m_1 m_2}{(2r_1)^2} = \frac{1}{4} \cdot F_1 = \frac{1}{4} \cdot 2 \times 10^5 = 5 \times 10^4 \text{ N}\]
+                <p><strong>Odpověď a):</strong> Síla klesne 4× na \(5 \times 10^4\) N.</p>
+                <p><strong>Řešení b):</strong> Při zdvojnásobení obou hmotností:</p>
+                \[F_3 = \kappa \frac{(2m_1)(2m_2)}{r^2} = 4 \cdot F_1 = 8 \times 10^5 \text{ N}\]
+                <p><strong>Odpověď b):</strong> Síla vzroste 4× na \(8 \times 10^5\) N.</p>
+            </div>
+        </section>
+
+        <!-- SEKCE 2: INTENZITA GRAVITAČNÍHO POLE -->
+        <section id="intenzita" class="unit-section">
+            <h2>⚡ Intenzita gravitačního pole</h2>
+
+            <h3>🔴 1. Definice intenzity</h3>
+            <p><strong>Intenzita gravitačního pole</strong> (\(\vec{K}\)) je vektorová veličina definovaná jako podíl gravitační síly (\(\vec{F_g}\)), jež v daném místě působí na těleso, a hmotnosti (\(m\)) tohoto tělesa.</p>
+
+            <div class="formula-box">
+                \[\vec{K} = \frac{\vec{F_g}}{m}\]
+                <p>Jednotka: N/kg (nebo m/s²)</p>
+            </div>
+
+            <h3>📊 2. Intenzita pole vytvořeného planetou</h3>
+            <p>Pro těleso o hmotnosti \(M\) (např. planeta) je intenzita pole ve vzdálenosti \(r\) od jeho středu:</p>
+            <div class="formula-box">
+                \[K = \kappa \frac{M}{r^2}\]
+            </div>
+            <p>Intenzita udává, <strong>jaká síla působí na 1 kg hmoty</strong> v daném bodě.</p>
+
+            <h3>💡 3. Příklad: Intenzita na povrchu Měsíce</h3>
+            <div class="example-box">
+                <p><strong>Zadání:</strong> Na astronauta o hmotnosti 75 kg působí na Měsíci síla 126 N. Vypočítejte hodnotu intenzity na povrchu Měsíce.</p>
+                <p><strong>Dáno:</strong> \(m = 75\) kg, \(F_g = 126\) N</p>
+                <p><strong>Řešení:</strong></p>
+                \[K = \frac{F_g}{m} = \frac{126}{75} = 1,68 \text{ N/kg}\]
+                <p><strong>Odpověď:</strong> Intenzita gravitačního pole na Měsíci je 1,68 N/kg (na Zemi je to 9,81 N/kg).</p>
+            </div>
+
+            <h3>🔢 4. Příklad: Intenzita ve výšce nad Zemí</h3>
+            <div class="example-box">
+                <p><strong>Zadání:</strong> Hodnota \(K\) na zemském povrchu je 10 N/kg. Stanovte hodnotu intenzity ve výšce \(h\) nad povrchem, jestliže:</p>
+                <p>a) \(h = R_Z\) (poloměr Země)</p>
+                <p>b) \(h = 3R_Z\)</p>
+                <p><strong>Řešení a):</strong> Vzdálenost od středu: \(r = R_Z + h = 2R_Z\)</p>
+                <p>Vzdálenost se zdvojnásobila, intenzita klesne 4×:</p>
+                \[K_2 = \frac{K_1}{4} = \frac{10}{4} = 2,5 \text{ N/kg}\]
+                <p><strong>Řešení b):</strong> Vzdálenost od středu: \(r = R_Z + 3R_Z = 4R_Z\)</p>
+                <p>Vzdálenost se zčtyřnásobila, intenzita klesne 16×:</p>
+                \[K_3 = \frac{K_1}{16} = \frac{10}{16} = 0,625 \text{ N/kg}\]
+            </div>
+        </section>
+
+        <!-- SEKCE 3: GRAVITAČNÍ ZRYCHLENÍ -->
+        <section id="zrychleni" class="unit-section">
+            <h2>🚀 Gravitační zrychlení</h2>
+
+            <h3>🔴 1. Gravitační zrychlení</h3>
+            <p><strong>Gravitační zrychlení</strong> (\(a_g\)) je zrychlení, které tělesu udílí gravitační síla. Je <strong>číselně rovno intenzitě gravitačního pole</strong>.</p>
+
+            <div class="formula-box">
+                \[a_g = \frac{F_g}{m} = K\]
+                <p>Pro povrch Země: \(a_g \approx 9,81 \text{ m/s}^2\)</p>
+            </div>
+
+            <h3>📊 2. Gravitační zrychlení různých planet</h3>
+            <div class="comparison-box">
+                <div class="comparison-item">
+                    <h4>🌍 Země</h4>
+                    <p>\(g = 9,81 \text{ m/s}^2\)</p>
+                </div>
+                <div class="comparison-item">
+                    <h4>🌙 Měsíc</h4>
+                    <p>\(g = 1,62 \text{ m/s}^2\) (≈ 1/6 Země)</p>
+                </div>
+                <div class="comparison-item">
+                    <h4>♂️ Mars</h4>
+                    <p>\(g = 3,71 \text{ m/s}^2\) (≈ 1/3 Země)</p>
+                </div>
+                <div class="comparison-item">
+                    <h4>♃ Jupiter</h4>
+                    <p>\(g = 24,79 \text{ m/s}^2\) (≈ 2,5× Země)</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEKCE 4: GRAVITAČNÍ A TÍHOVÁ SÍLA -->
+        <section id="gravitacni-tihova" class="unit-section">
+            <h2>⚖️ Gravitační a tíhová síla (rozdíl)</h2>
+
+            <div class="comparison-box">
+                <div class="comparison-item">
+                    <h4>🌌 Gravitační síla (\(\vec{F_g}\))</h4>
+                    <p>Čistá přitažlivá síla mezi dvěma tělesy podle Newtonova gravitačního zákona.</p>
+                    <p><strong>Nezahrnuje vliv rotace Země</strong></p>
+                    <div class="formula-box">
+                        \[F_g = \kappa \frac{Mm}{r^2}\]
+                    </div>
+                </div>
+                <div class="comparison-item">
+                    <h4>⚖️ Tíhová síla (\(\vec{F_t}\))</h4>
+                    <p>Výslednice gravitační síly a odstředivé síly způsobené rotací Země.</p>
+                    <p><strong>Síla měřená váhou nebo siloměrem</strong></p>
+                    <div class="formula-box">
+                        \[\vec{F_t} = \vec{F_g} + \vec{F_{odstřed}}\]
+                    </div>
+                </div>
+            </div>
+
+            <h3>🌍 Důsledky rotace Země</h3>
+            <p>Země se otáčí kolem své osy (1 otočka za 24 hodin). Tato rotace způsobuje odstředivou sílu, která:</p>
+            <ul>
+                <li><strong>Na rovníku:</strong> je maximální → tíhové zrychlení \(g \approx 9,78 \text{ m/s}^2\)</li>
+                <li><strong>Na pólech:</strong> je nulová → tíhové zrychlení \(g \approx 9,83 \text{ m/s}^2\)</li>
+                <li><strong>Rozdíl:</strong> přibližně 0,5% (zdánlivě malý, ale významný pro přesná měření)</li>
+            </ul>
+            <p><strong>Proto:</strong> Těleso na rovníku je "lehčí" než na pólech!</p>
+
+            <h3>💡 Příklad: Rozdíl hmotnosti na rovníku a pólech</h3>
+            <div class="example-box">
+                <p><strong>Zadání:</strong> Jakou tíhovou sílu působí Země na těleso o hmotnosti 100 kg na rovníku a na pólu?</p>
+                <p><strong>Řešení:</strong></p>
+                <p>Na pólu: \(F_{t,pól} = m \cdot g_{pól} = 100 \cdot 9,83 = 983 \text{ N}\)</p>
+                <p>Na rovníku: \(F_{t,rov} = m \cdot g_{rov} = 100 \cdot 9,78 = 978 \text{ N}\)</p>
+                <p>Rozdíl: \(\Delta F = 983 - 978 = 5 \text{ N}\)</p>
+                <p><strong>Odpověď:</strong> Těleso je na rovníku o 5 N "lehčí" než na pólu. To odpovídá rozdílu asi půl kilogramu!</p>
+            </div>
+        </section>
+
+        <!-- SEKCE 5: UMĚLÉ DRUŽICE A KOSMICKÉ RYCHLOSTI -->
+        <section id="druzice" class="unit-section">
+            <h2>🛰️ Umělé družice a kosmické rychlosti</h2>
+
+            <h3>🔴 1. První kosmická rychlost</h3>
+            <p><strong>První kosmická rychlost</strong> (\(v_1\)) je minimální rychlost, kterou musí mít těleso na povrchu planety, aby se mohlo pohybovat po kruhové dráze těsně nad povrchem.</p>
+
+            <div class="formula-box">
+                \[v_1 = \sqrt{\frac{\kappa M}{R}} = \sqrt{gR}\]
+                <p>Pro Zemi: \(v_1 \approx 7,9 \text{ km/s}\)</p>
+            </div>
+
+            <h3>🚀 2. Druhá kosmická rychlost</h3>
+            <p><strong>Druhá kosmická rychlost</strong> (\(v_2\)) je minimální rychlost potřebná k opuštění gravitačního pole planety (úniková rychlost).</p>
+
+            <div class="formula-box">
+                \[v_2 = \sqrt{\frac{2\kappa M}{R}} = \sqrt{2gR} = v_1 \sqrt{2}\]
+                <p>Pro Zemi: \(v_2 \approx 11,2 \text{ km/s}\)</p>
+            </div>
+
+            <h3>🌌 3. Třetí kosmická rychlost</h3>
+            <p><strong>Třetí kosmická rychlost</strong> (\(v_3\)) je rychlost potřebná k opuštění sluneční soustavy z povrchu Země.</p>
+            <div class="formula-box">
+                <p>Pro Zemi: \(v_3 \approx 16,7 \text{ km/s}\)</p>
+            </div>
+        </section>
+
+        <!-- SEKCE 6: KEPLEROVY ZÁKONY -->
+        <section id="kepler" class="unit-section">
+            <h2>🪐 Keplerovy zákony</h2>
+
+            <h3>🔴 1. Keplerův zákon (zákon elips)</h3>
+            <p>Planety se pohybují po <strong>elipsách</strong>, v jejichž jednom společném ohnisku je Slunce.</p>
+
+            <h3>📊 2. Keplerův zákon (zákon ploch)</h3>
+            <p>Obsahy ploch opsaných průvodičem planety za stejné časy jsou stejné. To znamená, že planeta se pohybuje rychleji, když je blíže Slunci.</p>
+
+            <h3>⏱️ 3. Keplerův zákon (zákon period)</h3>
+            <p>Poměr druhých mocnin oběžných dob dvou planet se rovná poměru třetích mocnin velkých poloos jejich drah.</p>
+
+            <div class="formula-box">
+                \[\frac{T_1^2}{T_2^2} = \frac{a_1^3}{a_2^3}\]
+                <p>kde \(T\) je oběžná doba a \(a\) je velká poloosa dráhy</p>
+            </div>
+        </section>
+
+        <!-- SEKCE 7: INTERAKTIVNÍ KALKULÁTORY -->
+        <section id="calculators" class="unit-section">
+            <h2>🧮 Interaktivní kalkulátory</h2>
+            <p><strong>Praktické nástroje pro rychlé výpočty gravitačních úloh</strong></p>
+
+            <!-- Kalkulátor gravitační síly -->
+            <div class="calculator-container">
+                <h3>🌍 Kalkulátor gravitační síly</h3>
+                <div class="calc-inputs">
+                    <div class="input-group">
+                        <label for="grav-m1">Hmotnost m₁ [kg]:</label>
+                        <input type="number" id="grav-m1" placeholder="např. 5.972e24">
+                    </div>
+                    <div class="input-group">
+                        <label for="grav-m2">Hmotnost m₂ [kg]:</label>
+                        <input type="number" id="grav-m2" placeholder="např. 100">
+                    </div>
+                    <div class="input-group">
+                        <label for="grav-r">Vzdálenost r [m]:</label>
+                        <input type="number" id="grav-r" placeholder="např. 6371000">
+                    </div>
+                    <button onclick="calculateGravForce()" class="calc-button">Vypočítat gravitační sílu</button>
+                </div>
+                <div id="grav-result" class="calc-result"></div>
+            </div>
+
+            <!-- Kalkulátor intenzity pole -->
+            <div class="calculator-container">
+                <h3>⚡ Kalkulátor intenzity gravitačního pole</h3>
+                <div class="calc-inputs">
+                    <div class="input-group">
+                        <label for="int-mass">Hmotnost planety M [kg]:</label>
+                        <input type="number" id="int-mass" placeholder="např. 5.972e24">
+                    </div>
+                    <div class="input-group">
+                        <label for="int-radius">Vzdálenost od středu r [m]:</label>
+                        <input type="number" id="int-radius" placeholder="např. 6371000">
+                    </div>
+                    <button onclick="calculateIntensity()" class="calc-button">Vypočítat intenzitu</button>
+                </div>
+                <div id="int-result" class="calc-result"></div>
+            </div>
+
+            <!-- Kalkulátor kosmických rychlostí -->
+            <div class="calculator-container">
+                <h3>🚀 Kalkulátor kosmických rychlostí</h3>
+                <div class="calc-inputs">
+                    <div class="input-group">
+                        <label for="cosm-mass">Hmotnost planety M [kg]:</label>
+                        <input type="number" id="cosm-mass" placeholder="např. 5.972e24">
+                    </div>
+                    <div class="input-group">
+                        <label for="cosm-radius">Poloměr planety R [m]:</label>
+                        <input type="number" id="cosm-radius" placeholder="např. 6371000">
+                    </div>
+                    <button onclick="calculateCosmicVelocities()" class="calc-button">Vypočítat rychlosti</button>
+                </div>
+                <div id="cosm-result" class="calc-result"></div>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        // Gravitační konstanta
+        const KAPPA = 6.674e-11;
+
+        // Kalkulátor gravitační síly
+        function calculateGravForce() {
+            const m1 = parseFloat(document.getElementById('grav-m1').value);
+            const m2 = parseFloat(document.getElementById('grav-m2').value);
+            const r = parseFloat(document.getElementById('grav-r').value);
+            
+            if (isNaN(m1) || isNaN(m2) || isNaN(r) || r <= 0) {
+                document.getElementById('grav-result').innerHTML = 
+                    '<p style="color: #e53e3e;">⚠️ Zadejte platné hodnoty!</p>';
+                return;
+            }
+            
+            const F = KAPPA * (m1 * m2) / (r * r);
+            
+            document.getElementById('grav-result').innerHTML = 
+                `<p><strong>Výsledek:</strong></p>
+                 <p>Gravitační síla: <span class="result-value">F = ${F.toExponential(3)} N</span></p>`;
+        }
+
+        // Kalkulátor intenzity gravitačního pole
+        function calculateIntensity() {
+            const M = parseFloat(document.getElementById('int-mass').value);
+            const r = parseFloat(document.getElementById('int-radius').value);
+            
+            if (isNaN(M) || isNaN(r) || r <= 0) {
+                document.getElementById('int-result').innerHTML = 
+                    '<p style="color: #e53e3e;">⚠️ Zadejte platné hodnoty!</p>';
+                return;
+            }
+            
+            const K = KAPPA * M / (r * r);
+            
+            document.getElementById('int-result').innerHTML = 
+                `<p><strong>Výsledek:</strong></p>
+                 <p>Intenzita gravitačního pole: <span class="result-value">K = ${K.toFixed(3)} N/kg</span></p>
+                 <p>Gravitační zrychlení: <span class="result-value">a = ${K.toFixed(3)} m/s²</span></p>`;
+        }
+
+        // Kalkulátor kosmických rychlostí
+        function calculateCosmicVelocities() {
+            const M = parseFloat(document.getElementById('cosm-mass').value);
+            const R = parseFloat(document.getElementById('cosm-radius').value);
+            
+            if (isNaN(M) || isNaN(R) || R <= 0) {
+                document.getElementById('cosm-result').innerHTML = 
+                    '<p style="color: #e53e3e;">⚠️ Zadejte platné hodnoty!</p>';
+                return;
+            }
+            
+            const v1 = Math.sqrt(KAPPA * M / R);
+            const v2 = Math.sqrt(2 * KAPPA * M / R);
+            
+            document.getElementById('cosm-result').innerHTML = 
+                `<p><strong>Výsledky:</strong></p>
+                 <p>První kosmická rychlost: <span class="result-value">v₁ = ${(v1/1000).toFixed(2)} km/s</span></p>
+                 <p>Druhá kosmická rychlost: <span class="result-value">v₂ = ${(v2/1000).toFixed(2)} km/s</span></p>
+                 <p><small>(${v1.toFixed(0)} m/s a ${v2.toFixed(0)} m/s)</small></p>`;
+        }
+    </script>
+</body>
+</html>

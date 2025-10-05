@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Závislost síly na vzdálenosti</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>2. Závislost síly na vzdálenosti</h1>
+            <p>Gravitační pole - řešený příklad</p>
+        </header>
+
+        <!-- Motivační úvod pro studenty -->
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Pochopení závislosti síly na vzdálenosti (1/r²) je klíčové pro návrh družicových drah, plánování kosmických misí a pochopení stability planetárních systémů. Inženýři ESA a NASA s tím pracují každý den!
+        </div>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <div class="zadani-text">
+                Gravitační síla mezi dvěma tělesy je 2×10⁵ N. Jaká bude síla mezi tělesy:<br/>
+                a) když se jejich vzdálenost zdvojnásobí?<br/>
+                b) když bude hmotnost obou těles dvojnásobná?
+            </div>
+        </section>
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+            
+            <div class="calculation-step">
+                <h3>1. Analýza úměrnosti</h3>
+                <p>Newtonův gravitační zákon říká, že gravitační síla závisí na:</p>
+                <ul>
+                    <li>Přímo úměrně na součinu hmotností: $F \propto m_1 \cdot m_2$</li>
+                    <li>Nepřímo úměrně na druhé mocnině vzdálenosti: $F \propto \frac{1}{r^2}$</li>
+                </ul>
+                <div class="warning-box">
+                    ⚠️ <strong>Pozor na častou chybu:</strong> Síla klesá s druhou mocninou vzdálenosti, ne lineárně. Zdvojnásobení vzdálenosti → síla klesne 4× (ne 2×)!
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h3>2. Část a) Zdvojnásobení vzdálenosti</h3>
+                <p>Když $r_2 = 2r_1$, síla se změní podle poměru:</p>
+                <div class="rovnice-blok">
+                    <div class="rovnice-nadpis">📐 Změna vzdálenosti</div>
+                    <div class="rovnice-text">$$\begin{align}
+\frac{F_2}{F_1} &= \left(\frac{r_1}{r_2}\right)^2 = \left(\frac{r_1}{2r_1}\right)^2 = \left(\frac{1}{2}\right)^2 = \frac{1}{4} \\
+\\
+F_2 &= \frac{F_1}{4} = \frac{2 \times 10^5 \text{ N}}{4} = 5 \times 10^4 \text{ N}
+\end{align}$$</div>
+                </div>
+                <p><strong>Odpověď a):</strong> Síla klesne <strong>4krát</strong> na hodnotu <strong>$5 \times 10^4$ N</strong>.</p>
+            </div>
+
+            <div class="calculation-step">
+                <h3>3. Část b) Zdvojnásobení hmotností</h3>
+                <p>Když $m_1' = 2m_1$ a $m_2' = 2m_2$, síla se změní:</p>
+                <div class="rovnice-blok">
+                    <div class="rovnice-nadpis">📐 Změna hmotností</div>
+                    <div class="rovnice-text">$$\begin{align}
+\frac{F_3}{F_1} &= \frac{m_1' \cdot m_2'}{m_1 \cdot m_2} = \frac{(2m_1) \cdot (2m_2)}{m_1 \cdot m_2} = 4 \\
+\\
+F_3 &= 4 \cdot F_1 = 4 \cdot (2 \times 10^5 \text{ N}) = 8 \times 10^5 \text{ N}
+\end{align}$$</div>
+                </div>
+                <p><strong>Odpověď b):</strong> Síla vzroste <strong>4krát</strong> na hodnotu <strong>$8 \times 10^5$ N</strong>.</p>
+            </div>
+
+            <div class="calculation-step">
+                <h3>4. Kontrola a shrnutí</h3>
+                <p><strong>Shrnutí závislostí:</strong></p>
+                <ul>
+                    <li>Vzdálenost 2× větší → síla 4× menší (1/r²)</li>
+                    <li>Obě hmotnosti 2× větší → síla 4× větší (m₁ × m₂)</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="shrnuti">
+            <h2>Shrnutí a kontrola</h2>
+
+            <div class="summary-box">
+                <strong>Hlavní poznatky:</strong>
+                <ul>
+                    <li>Gravitační síla závisí nepřímo úměrně na r²</li>
+                    <li>Gravitační síla závisí přímo úměrně na součinu hmotností</li>
+                    <li>Porozuměli jsme kvadratické závislosti na vzdálenosti</li>
+                </ul>
+            </div>
+
+            <div class="info-box">
+                <strong>Kontrola rozumnosti:</strong> Vždy zkontrolujte, zda výsledek dává fyzikální smysl vzhledem k zadání.
+            </div>
+
+            <details>
+                <summary>🤔 Metakognitivní otázky</summary>
+                <div>
+                    <ul>
+                        <li>Co se stane se silou, když vzdálenost ztrojnásobíme?</li>
+                        <li>Proč je závislost na r² a ne na r³?</li>
+                        <li>Jak by se změnila síla, kdyby se zdvojnásobila jen jedna hmotnost?</li>
+                    </ul>
+                </div>
+            </details>
+        </section>
+
+    </main>
+</body>
+</html>

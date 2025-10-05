@@ -1,0 +1,312 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[czech]{babel}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{longtable}
+
+\title{Dynamika - Teoretický přehled}
+\author{Fyzika - opakování a prohloubení}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Newtonovy zákony pohybu}
+
+\subsection{1. Newtonův zákon (Zákon setrvačnosti)}
+
+\textbf{Formulace:}
+\begin{quote}
+Těleso setrvává v klidu nebo v rovnoměrném přímočarém pohybu, pokud není nuceno vnějšími silami tento stav změnit.
+\end{quote}
+
+\textbf{Fyzikální význam:}
+\begin{itemize}
+\item Každé těleso má vlastnost setrvačnosti
+\item Setrvačnost závisí na hmotnosti
+\item Platí v inerciálních vztažných soustavách
+\end{itemize}
+
+\subsection{2. Newtonův zákon (Zákon síly)}
+
+\textbf{Rovnice:}
+\[\vec{F} = m \cdot \vec{a}\]
+
+nebo
+
+\[\vec{a} = \frac{\vec{F}}{m}\]
+
+\textbf{Popis veličin:}
+
+\begin{longtable}{lll}
+\toprule
+Veličina & Popis & Jednotka \\
+\midrule
+$\vec{F}$ & Síla (vektor) & N (Newton) \\
+$m$ & Hmotnost & kg \\
+$\vec{a}$ & Zrychlení (vektor) & m/s² \\
+\bottomrule
+\end{longtable}
+
+\textbf{Fyzikální význam:}
+\begin{itemize}
+\item Síla způsobuje zrychlení
+\item Zrychlení je přímo úměrné síle a nepřímo úměrné hmotnosti
+\item Směr zrychlení je stejný jako směr výsledné síly
+\end{itemize}
+
+\subsection{3. Newtonův zákon (Zákon akce a reakce)}
+
+\textbf{Formulace:}
+\begin{quote}
+Každé působení (akce) vyvolává stejně velké opačné působení (reakci).
+\end{quote}
+
+\textbf{Rovnice:}
+\[\vec{F}_{12} = -\vec{F}_{21}\]
+
+\textbf{Fyzikální význam:}
+\begin{itemize}
+\item Síly vznikají vždy ve dvojicích
+\item Akce a reakce působí na různá tělesa
+\item Akce a reakce mají stejnou velikost a opačný směr
+\end{itemize}
+
+\clearpage
+
+\section{Druhy sil}
+
+\subsection{Tíhová síla}
+
+\textbf{Rovnice:}
+\[F_g = m \cdot g\]
+
+\textbf{Popis veličin:}
+
+\begin{longtable}{lll}
+\toprule
+Veličina & Popis & Jednotka \\
+\midrule
+$F_g$ & Tíhová síla & N \\
+$m$ & Hmotnost & kg \\
+$g$ & Tíhové zrychlení & m/s² \\
+\bottomrule
+\end{longtable}
+
+\textbf{Fyzikální význam:}
+\begin{itemize}
+\item Gravitační síla působící na těleso v blízkosti Země
+\item Na Zemi: $g \approx 9{,}81$ m/s²
+\item Směřuje svisle dolů k středu Země
+\end{itemize}
+
+\subsection{Třecí síla}
+
+\textbf{Rovnice:}
+\[F_t = f \cdot F_n\]
+
+\textbf{Popis veličin:}
+
+\begin{longtable}{lll}
+\toprule
+Veličina & Popis & Jednotka \\
+\midrule
+$F_t$ & Třecí síla & N \\
+$f$ & Součinitel tření & - \\
+$F_n$ & Normálová síla & N \\
+\bottomrule
+\end{longtable}
+
+\textbf{Druhy tření:}
+\begin{itemize}
+\item \textbf{Statické tření} ($f_s$) - těleso v klidu
+\item \textbf{Kinetické tření} ($f_k$) - těleso v pohybu
+\item Platí: $f_s > f_k$
+\end{itemize}
+
+\subsection{Dostředivá síla}
+
+\textbf{Rovnice:}
+\[F_d = m \cdot \frac{v^2}{r} = m \cdot \omega^2 \cdot r\]
+
+\textbf{Popis veličin:}
+
+\begin{longtable}{lll}
+\toprule
+Veličina & Popis & Jednotka \\
+\midrule
+$F_d$ & Dostředivá síla & N \\
+$m$ & Hmotnost & kg \\
+$v$ & Obvodová rychlost & m/s \\
+$r$ & Poloměr & m \\
+$\omega$ & Úhlová rychlost & rad/s \\
+\bottomrule
+\end{longtable}
+
+\textbf{Fyzikální význam:}
+\begin{itemize}
+\item Výslednice sil při pohybu po kružnici
+\item Směřuje k středu kružnice
+\item Nutná pro udržení kruhové trajektorie
+\end{itemize}
+
+\clearpage
+
+\section{Síla na nakloněné rovině}
+
+\subsection{Rozklad tíhové síly}
+
+\textbf{Rovnoběžná složka (po nakloněné rovině):}
+\[F_{||} = m \cdot g \cdot \sin \alpha\]
+
+\textbf{Kolmá složka (na nakloněnou rovinu):}
+\[F_{\perp} = m \cdot g \cdot \cos \alpha\]
+
+\textbf{Popis veličin:}
+
+\begin{longtable}{lll}
+\toprule
+Veličina & Popis & Jednotka \\
+\midrule
+$F_{||}$ & Síla rovnoběžná s rovinou & N \\
+$F_{\perp}$ & Síla kolmá k rovině & N \\
+$\alpha$ & Úhel sklonu roviny & ° nebo rad \\
+\bottomrule
+\end{longtable}
+
+\textbf{Normálová síla:}
+\[F_n = F_{\perp} = m \cdot g \cdot \cos \alpha\]
+
+\textbf{Podmínka rovnováhy (bez tření):}
+\[F_{tah} = F_{||} = m \cdot g \cdot \sin \alpha\]
+
+\textbf{S třením:}
+\[F_{tah} = m \cdot g \cdot \sin \alpha + f \cdot m \cdot g \cdot \cos \alpha\]
+
+\clearpage
+
+\section{Hybnost a zákony zachování}
+
+\subsection{Hybnost}
+
+\textbf{Definice:}
+\begin{quote}
+Hybnost je vektorová veličina rovná součinu hmotnosti a rychlosti.
+\end{quote}
+
+\textbf{Rovnice:}
+\[\vec{p} = m \cdot \vec{v}\]
+
+\textbf{Popis veličin:}
+
+\begin{longtable}{lll}
+\toprule
+Veličina & Popis & Jednotka \\
+\midrule
+$\vec{p}$ & Hybnost & kg·m/s \\
+$m$ & Hmotnost & kg \\
+$\vec{v}$ & Rychlost & m/s \\
+\bottomrule
+\end{longtable}
+
+\subsection{Zákon zachování hybnosti}
+
+\textbf{Formulace:}
+\begin{quote}
+V izolované soustavě je celková hybnost konstantní.
+\end{quote}
+
+\textbf{Rovnice:}
+\[\sum \vec{p}_{\text{před}} = \sum \vec{p}_{\text{po}}\]
+
+Pro dvě tělesa:
+\[m_1 \vec{v}_1 + m_2 \vec{v}_2 = m_1 \vec{v}'_1 + m_2 \vec{v}'_2\]
+
+\textbf{Aplikace:}
+\begin{itemize}
+\item Srážky těles (pružné i nepružné)
+\item Výstřel z děla (zpětný ráz)
+\item Raketový pohon
+\end{itemize}
+
+\subsection{Impuls síly}
+
+\textbf{Definice:}
+\begin{quote}
+Impuls síly je změna hybnosti.
+\end{quote}
+
+\textbf{Rovnice:}
+\[\Delta \vec{p} = \vec{F} \cdot \Delta t\]
+
+nebo
+\[\vec{F} = \frac{\Delta \vec{p}}{\Delta t}\]
+
+\textbf{Fyzikální význam:}
+\begin{itemize}
+\item Stejná změna hybnosti může být dosažena malou silou po dlouhý čas nebo velkou silou po krátký čas
+\item Airbag v autě prodlužuje dobu nárazu → menší síla
+\end{itemize}
+
+\clearpage
+
+\section{Fyzikální konstanty}
+
+\begin{longtable}{llll}
+\toprule
+Konstanta & Symbol & Hodnota & Jednotka \\
+\midrule
+Tíhové zrychlení (Země) & $g$ & 9,81 & m/s² \\
+Tíhové zrychlení (Měsíc) & $g_M$ & 1,62 & m/s² \\
+\bottomrule
+\end{longtable}
+
+\subsection{Typické hodnoty součinitelů tření}
+
+\begin{longtable}{lll}
+\toprule
+Materiály & Statické $f_s$ & Kinetické $f_k$ \\
+\midrule
+Ocel - ocel & 0,74 & 0,57 \\
+Dřevo - dřevo & 0,25-0,50 & 0,20 \\
+Led - led & 0,10 & 0,03 \\
+Guma - suchý asfalt & 1,0 & 0,8 \\
+Guma - mokrý asfalt & 0,7 & 0,5 \\
+\bottomrule
+\end{longtable}
+
+\clearpage
+
+\section{Souhrn jednotek v SI}
+
+\begin{longtable}{llll}
+\toprule
+Veličina & Jednotka SI & Odvození & Poznámka \\
+\midrule
+Síla & N (Newton) & kg·m/s² & 1 N = síla potřebná k udělení zrychlení 1 m/s² tělesu o hmotnosti 1 kg \\
+Hmotnost & kg (kilogram) & - & Základní jednotka \\
+Zrychlení & m/s² & - & - \\
+Hybnost & kg·m/s & - & Alternativně N·s \\
+Impuls síly & N·s & - & Alternativně kg·m/s \\
+\bottomrule
+\end{longtable}
+
+\clearpage
+
+\section*{Poznámky}
+
+\begin{itemize}
+\item \textbf{Inerciální soustava:} Vztažná soustava, ve které platí Newtonovy zákony (soustava pohybující se rovnoměrně přímočaře nebo v klidu)
+\item \textbf{Setrvačná hmotnost vs. tíhová hmotnost:} V klasické mechanice jsou totožné, obecně mohou být různé
+\item \textbf{Výsledná síla:} Vektorový součet všech sil působících na těleso
+\item \textbf{Rovnováha sil:} $\sum \vec{F} = 0$ → těleso je v klidu nebo se pohybuje rovnoměrně přímočaře
+\item \textbf{Třecí síla:} Vždy působí proti směru pohybu (nebo možného pohybu)
+\item \textbf{Izolovaná soustava:} Soustava, na kterou nepůsobí vnější síly (uzavřená soustava)
+\item \textbf{Pružná srážka:} Zachovává se hybnost i kinetická energie
+\item \textbf{Nepružná srážka:} Zachovává se pouze hybnost, ne kinetická energie
+\end{itemize}
+
+\end{document}

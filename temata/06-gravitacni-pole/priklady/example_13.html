@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kruhová rychlost (1. kosmická rychlost)</title>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>13. Kruhová rychlost (1. kosmická rychlost)</h1>
+            <p>Gravitační pole - řešený příklad</p>
+        </header>
+
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> 1. kosmická rychlost je minimální rychlost potřebná pro oběžnou dráhu kolem Země. Všechny družice, včetně ISS, musí dosahovat této rychlosti! Je to základ kosmonautiky a satelitní navigace GPS.
+        </div>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <div class="zadani-text">
+                Vypočítejte kruhovou rychlost pro výšku h ≪ R<sub>Z</sub> (např. 20 km).<br/>
+                Poznámka: 1. kosmická rychlost. 2. kosmická rychlost je pro opuštění gravitačního pole Země – těleso se stane oběžnicí kolem Slunce, je to √2·v<sub>k</sub>.<br/>
+                Dáno: G = 6,674×10⁻¹¹ N·m²·kg⁻², M<sub>Z</sub> = 5,972×10²⁴ kg, R<sub>Z</sub> = 6371 km, h = 20 km
+            </div>
+        </section>
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+            
+            <div class="calculation-step">
+                <h3>1. Rovnováha sil</h3>
+                <p>Gravitační síla = Dostředivá síla:</p>
+                <div class="rovnice-blok">
+                    <div class="rovnice-nadpis">📐 Rovnováha sil na oběžné dráze</div>
+                    <div class="rovnice-text">$$\begin{align}
+F_g &= F_d \\
+\frac{G \cdot M_Z \cdot m}{r^2} &= \frac{m \cdot v_k^2}{r} \\
+v_k &= \sqrt{\frac{G \cdot M_Z}{r}}
+\end{align}$$</div>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h3>2. Vzdálenost od středu Země</h3>
+                <div class="rovnice-blok">
+                    <div class="rovnice-nadpis">📐 Poloměr oběžné dráhy</div>
+                    <div class="rovnice-text">$$r = R_Z + h = 6371 + 20 = 6391 \text{ km} = 6{,}391 \times 10^6 \text{ m}$$</div>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h3>3. Výpočet kruhové rychlosti</h3>
+                <div class="rovnice-blok">
+                    <div class="rovnice-nadpis">📐 1. kosmická rychlost</div>
+                    <div class="rovnice-text">$$\begin{align}
+v_k &= \sqrt{\frac{(6{,}674 \times 10^{-11}) \cdot (5{,}972 \times 10^{24})}{6{,}391 \times 10^6}} \\
+v_k &= \sqrt{6{,}236 \times 10^7} \approx 7897 \text{ m/s} \approx 7{,}9 \text{ km/s}
+\end{align}$$</div>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h3>4. Odpověď a kontext</h3>
+                <p><strong>Odpověď:</strong> Kruhová rychlost (1. kosmická) je 7,9 km/s ≈ 28 440 km/h.</p>
+                <p>💡 2. kosmická (úniková) rychlost: √2·v<sub>k</sub> ≈ 11,2 km/s</p>
+            </div>
+        </section>
+
+        <section id="shrnuti">
+            <h2>Shrnutí a kontrola</h2>
+            <div class="summary-box">
+                <strong>Hlavní poznatky:</strong>
+                <ul>
+                    <li>1. kosmická rychlost = minimální rychlost pro oběžnou dráhu</li>
+                    <li>Gravitační síla poskytuje dostředivou sílu pro kruhový pohyb</li>
+                    <li>2. kosmická rychlost (úniková) = √2 × 1. kosmická ≈ 11,2 km/s</li>
+                </ul>
+            </div>
+            <div class="info-box">
+                <strong>Kontrola rozumnosti:</strong> Vždy zkontrolujte, zda výsledek dává fyzikální smysl vzhledem k zadání.
+            </div>
+            <details>
+                <summary>🤔 Metakognitivní otázky</summary>
+                <div>
+                    <ul>
+                        <li>Proč se satelit při této rychlosti nespadne na Zemi?</li>
+                        <li>Jak se mění kruhová rychlost s výškou?</li>
+                        <li>Proč je 2. kosmická rychlost √2× větší než 1. kosmická?</li>
+                    </ul>
+                </div>
+            </details>
+        </section>
+    </main>
+</body>
+</html>

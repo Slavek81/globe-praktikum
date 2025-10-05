@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vodorovný vrh a energie šípu</title>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>9. Vodorovný vrh a energie šípu</h1>
+            <p>Gravitační pole - řešený příklad</p>
+        </header>
+
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Zákon zachování energie je jeden z nejfundamentálnějších přírodních zákonů. Používá se při navrhování horských drah, skokanských můstek, vodních fontán i při analýze balistických trajektorií!
+        </div>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <div class="zadani-text">
+                Šíp o hmotnosti 10 g byl vystřelen vodorovně z věže vysoké 80 m rychlostí 25 m·s⁻¹.<br/>
+                a) Do jaké vzdálenosti od paty věže dopadne na povrchu Země a jak dlouho bude padat?<br/>
+                b) Jaká bude jeho kinetická a potenciální energie na začátku pohybu?<br/>
+                c) Jaká bude celková mechanická energie během pohybu?<br/>
+                Použijte: g = 10 m·s⁻²
+            </div>
+        </section>
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+            
+            <div class="calculation-step">
+                <h3>1. Převod jednotek a analýza</h3>
+                <p>m = 10 g = 0,01 kg</p>
+                <p>Vodorovný vrh: pohyb ve vodorovném směru rovnoměrný, ve svislém volný pád.</p>
+            </div>
+
+            <div class="calculation-step">
+                <h3>2. Část a) Vzdálenost a doba</h3>
+                <div class="rovnice-blok">
+                    <div class="rovnice-nadpis">📐 Vodorovný vrh</div>
+                    <div class="rovnice-text">$$\begin{align}
+t &= \sqrt{\frac{2h}{g}} = \sqrt{\frac{2 \cdot 80}{10}} = \sqrt{16} = 4 \text{ s} \\
+d &= v_x \cdot t = 25 \cdot 4 = 100 \text{ m}
+\end{align}$$</div>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h3>3. Část b) Počáteční energie</h3>
+                <div class="rovnice-blok">
+                    <div class="rovnice-nadpis">📐 Kinetická a potenciální energie</div>
+                    <div class="rovnice-text">$$\begin{align}
+E_k &= \frac{1}{2}mv^2 = \frac{1}{2} \cdot 0{,}01 \cdot 25^2 = 3{,}125 \text{ J} \\
+E_p &= mgh = 0{,}01 \cdot 10 \cdot 80 = 8 \text{ J}
+\end{align}$$</div>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h3>4. Část c) Celková mechanická energie</h3>
+                <div class="rovnice-blok">
+                    <div class="rovnice-nadpis">📐 Zákon zachování energie</div>
+                    <div class="rovnice-text">$$E_m = E_k + E_p = 3{,}125 + 8 = 11{,}125 \text{ J}$$</div>
+                </div>
+                <p>💡 Celková energie zůstává konstantní během celého pohybu (bez odporu vzduchu)!</p>
+            </div>
+
+            <div class="calculation-step">
+                <h3>5. Kontrola a odpověď</h3>
+                <p><strong>Odpověď:</strong></p>
+                <ul>
+                    <li>a) Doba pádu: t = 4 s, vzdálenost dopadu: d = 100 m</li>
+                    <li>b) Počáteční energie: E<sub>k</sub> = 3,125 J (kinetická), E<sub>p</sub> = 8 J (potenciální)</li>
+                    <li>c) Celková mechanická energie: E<sub>m</sub> = 11,125 J (konstantní po celou dobu letu)</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="shrnuti">
+            <h2>Shrnutí a kontrola</h2>
+            <div class="summary-box">
+                <strong>Hlavní poznatky:</strong>
+                <ul>
+                    <li>Vodorovný vrh: rovnoměrný pohyb vodorovně, volný pád svisle</li>
+                    <li>Celková mechanická energie se zachovává (E<sub>m</sub> = E<sub>k</sub> + E<sub>p</sub> = konst.)</li>
+                    <li>Během letu se E<sub>k</sub> zvětšuje, E<sub>p</sub> klesá, ale součet zůstává stejný</li>
+                </ul>
+            </div>
+            <div class="info-box">
+                <strong>Kontrola rozumnosti:</strong> Vždy zkontrolujte, zda výsledek dává fyzikální smysl vzhledem k zadání.
+            </div>
+            <details>
+                <summary>🤔 Metakognitivní otázky</summary>
+                <div>
+                    <ul>
+                        <li>Jak se mění E<sub>k</sub> a E<sub>p</sub> během letu?</li>
+                        <li>Jaká bude kinetická energie těsně před dopadem?</li>
+                        <li>Proč je užitečný zákon zachování energie?</li>
+                    </ul>
+                </div>
+            </details>
+        </section>
+    </main>
+</body>
+</html>

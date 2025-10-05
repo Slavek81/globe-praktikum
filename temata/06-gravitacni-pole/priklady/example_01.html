@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gravitační síla Země-Měsíc</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>1. Gravitační síla Země-Měsíc</h1>
+            <p>Gravitační pole - řešený příklad</p>
+        </header>
+
+        <!-- Motivační úvod pro studenty -->
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Tato síla drží Měsíc na oběžné dráze kolem Země a způsobuje přílivy a odlivy oceánů. Pochopení gravitační interakce mezi nebeskými tělesy je základem navigace kosmických lodí a předpovídání pohybu planet!
+        </div>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <div class="zadani-text">
+                Jaká gravitační síla působí mezi Zemí a Měsícem?<br/>
+                Dáno: m<sub>Z</sub> = 5,972×10²⁴ kg, m<sub>M</sub> = 7,342×10²² kg, r = 3,844×10⁸ m, G = 6,674×10⁻¹¹ N·m²·kg⁻²
+            </div>
+        </section>
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+            
+            <div class="calculation-step">
+                <h3>1. Analýza situace</h3>
+                <p>Hledáme gravitační sílu mezi dvěma velmi hmotnými tělesy - Zemí a Měsícem.</p>
+                <p><strong>Dané hodnoty:</strong></p>
+                <ul>
+                    <li>Hmotnost Země: m<sub>Z</sub> = 5,972×10²⁴ kg</li>
+                    <li>Hmotnost Měsíce: m<sub>M</sub> = 7,342×10²² kg</li>
+                    <li>Vzdálenost: r = 3,844×10⁸ m</li>
+                    <li>Gravitační konstanta: G = 6,674×10⁻¹¹ N·m²·kg⁻²</li>
+                </ul>
+            </div>
+
+            <div class="calculation-step">
+                <h3>2. Výběr fyzikální rovnice</h3>
+                <p>Použijeme Newtonův gravitační zákon:</p>
+                <div class="rovnice-blok">
+                    <div class="rovnice-nadpis">📐 Newtonův gravitační zákon</div>
+                    <div class="rovnice-text">$$F_g = G \cdot \frac{m_1 \cdot m_2}{r^2}$$</div>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h3>3. Dosazení hodnot</h3>
+                <div class="rovnice-blok">
+                    <div class="rovnice-nadpis">📐 Dosazení do vzorce</div>
+                    <div class="rovnice-text">$$F_g = (6{,}674 \times 10^{-11}) \cdot \frac{(5{,}972 \times 10^{24}) \cdot (7{,}342 \times 10^{22})}{(3{,}844 \times 10^8)^2}$$</div>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h3>4. Výpočet</h3>
+                <div class="rovnice-blok">
+                    <div class="rovnice-nadpis">📐 Postupný výpočet</div>
+                    <div class="rovnice-text">$$\begin{align}
+\text{Součin hmotností:} &\quad 5{,}972 \times 7{,}342 \approx 43{,}84 \rightarrow 43{,}84 \times 10^{46} \text{ kg}^2 \\
+\text{Vzdálenost na druhou:} &\quad (3{,}844)^2 \approx 14{,}776 \rightarrow 14{,}776 \times 10^{16} \text{ m}^2 \\
+\\
+F_g &= (6{,}674 \times 10^{-11}) \cdot \frac{43{,}84 \times 10^{46}}{14{,}776 \times 10^{16}} \\
+F_g &\approx (6{,}674 \times 10^{-11}) \cdot (2{,}967 \times 10^{30}) \\
+F_g &\approx 19{,}80 \times 10^{19} \text{ N} \approx 1{,}98 \times 10^{20} \text{ N}
+\end{align}$$</div>
+                </div>
+                <div class="warning-box">
+                    ⚠️ <strong>Pozor na častou chybu:</strong> Pozor na správné zacházení s mocninami desítky! Při násobení se exponenty sčítají, při dělení odčítají.
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h3>5. Kontrola a odpověď</h3>
+                <p><strong>Odpověď:</strong> Gravitační síla mezi Zemí a Měsícem je přibližně <strong>1,98×10²⁰ N</strong>.</p>
+                <p>💡 Pro srovnání: Tato obrovská síla je ekvivalentní tíze asi 2×10¹⁹ tun!</p>
+            </div>
+        </section>
+
+        <section id="shrnuti">
+            <h2>Shrnutí a kontrola</h2>
+
+            <div class="summary-box">
+                <strong>Hlavní poznatky:</strong>
+                <ul>
+                    <li>Aplikovali jsme Newtonův gravitační zákon</li>
+                    <li>Správně jsme pracovali s mocninami desítky</li>
+                    <li>Ověřili jsme fyzikální smysl výsledku</li>
+                </ul>
+            </div>
+
+            <div class="info-box">
+                <strong>Kontrola rozumnosti:</strong> Vždy zkontrolujte, zda výsledek dává fyzikální smysl vzhledem k zadání.
+            </div>
+
+            <details>
+                <summary>🤔 Metakognitivní otázky</summary>
+                <div>
+                    <ul>
+                        <li>Jak by se změnila síla, kdyby se vzdálenost Země-Měsíc zdvojnásobila?</li>
+                        <li>Proč je gravitační konstanta G tak malé číslo?</li>
+                        <li>Působí stejně velká síla i ze strany Měsíce na Zemi? (3. Newtonův zákon)</li>
+                    </ul>
+                </div>
+            </details>
+        </section>
+
+    </main>
+</body>
+</html>
