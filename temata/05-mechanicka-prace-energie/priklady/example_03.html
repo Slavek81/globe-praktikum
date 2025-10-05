@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vozíčky na nakloněné rovině</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>3. Vozíčky na nakloněné rovině</h1>
+            <p>Mechanická práce a energie - řešený příklad</p>
+        </header>
+
+        <!-- Motivační úvod pro studenty -->
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Ve skladech a distribučních centrech se denně pohybují tisíce vozíků s nákladem. Pochopení přeměny energií a srážek je klíčové pro bezpečnost - projektanti musí navrhovat brzdné systémy a ochranné bariéry. Podobné principy se využívají v dopravních systémech, horských drahách a všude, kde se pohybují vozidla!
+        </div>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <div class="zadani-text">
+                Vozíček A o hmotnosti <strong>4 kg</strong> s lehkými kolečky je udržován na hladké nakloněné rovině. Po uvolnění bez tření sjede po nakloněné rovině tak, že jeho hmotný střed je na vodorovné rovině o <strong>3,45 m</strong> níže než na počátku a narazí do druhého podobného vozíčku B o hmotnosti <strong>2,5 kg</strong>, který stál na vodorovné rovině. Po srážce se oba vozíčky pohybují jako jedno těleso. (g = <strong>10 m·s⁻²</strong>)<br><br>
+                <strong>a)</strong> Vypočtěte rychlost vozíčku A bezprostředně před srážkou<br>
+                <strong>b)</strong> Vypočítejte rychlost obou vozíčků po srážce s využitím zákona zachování hybnosti<br>
+                <strong>c)</strong> Vypočtěte kinetickou energii vozíčku A těsně před srážkou a kinetickou energii obou vozíčků po srážce<br>
+                <strong>d)</strong> Vysvětlete, proč je kinetická energie před a po srážce různá
+            </div>
+        </section>
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+
+            <div class="calculation-step">
+                <h3>Krok 1: Analýza situace a převody jednotek</h3>
+                <p><strong>Dané hodnoty:</strong></p>
+                <ul>
+                    <li>Hmotnost vozíčku A: $$m_A = 4 \text{ kg}$$</li>
+                    <li>Hmotnost vozíčku B: $$m_B = 2{,}5 \text{ kg}$$</li>
+                    <li>Výškový rozdíl: $$h = 3{,}45 \text{ m}$$</li>
+                    <li>Počáteční rychlost B: $$v_{B0} = 0$$ (stál)</li>
+                </ul>
+                <div class="chyba-box">
+                    Pozor: Po srážce se vozíčky spojí → nepružná srážka! Energie se NEZACHOVÁ, ale hybnost ANO!
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h3>Krok 2: Výběr fyzikální rovnice</h3>
+                <p>Pro sjezd vozíčku A - zákon zachování energie:</p>
+                <div class="rovnice-blok">
+                    <div class="rovnice-nadpis">📐 Zákon zachování energie</div>
+                    <div class="rovnice-text">$$E_p = E_k$$
+$$m_Agh = \frac{1}{2}m_Av_A^2$$</div>
+                </div>
+                <p>Pro srážku - zákon zachování hybnosti:</p>
+                <div class="rovnice-blok">
+                    <div class="rovnice-nadpis">📐 Zákon zachování hybnosti</div>
+                    <div class="rovnice-text">$$m_Av_A + m_Bv_{B0} = (m_A + m_B)v'$$</div>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h3>Krok 3: Algebraické vyjádření</h3>
+                <p>Rychlost A před srážkou:</p>
+                <div class="rovnice-blok">
+                    <div class="rovnice-text">$$v_A = \sqrt{2gh} = \sqrt{2 \cdot 10 \cdot 3{,}45} = \sqrt{69} \approx 8{,}31 \text{ m/s}$$</div>
+                </div>
+                <p>Rychlost po srážce:</p>
+                <div class="rovnice-blok">
+                    <div class="rovnice-text">$$v' = \frac{m_Av_A}{m_A + m_B} = \frac{4 \cdot 8{,}31}{4 + 2{,}5} = \frac{33{,}24}{6{,}5} \approx 5{,}11 \text{ m/s}$$</div>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h3>Krok 4: Dosazení a výpočet</h3>
+                <p><strong>a) Rychlost A před srážkou:</strong> $$v_A \approx 8{,}31 \text{ m/s}$$</p>
+
+                <p><strong>b) Rychlost po srážce:</strong> $$v' \approx 5{,}11 \text{ m/s}$$</p>
+
+                <p><strong>c) Kinetické energie:</strong></p>
+                <p>Před srážkou (jen A): $$E_{k,před} = m_Agh = 4 \cdot 10 \cdot 3{,}45 = 138 \text{ J}$$</p>
+                <p>Po srážce (oba): $$E_{k,po} = \frac{1}{2}(m_A+m_B)(v')^2 = \frac{1}{2} \cdot 6{,}5 \cdot (5{,}11)^2 \approx 84{,}9 \text{ J}$$</p>
+
+                <p><strong>d) Ztráta energie:</strong> $$\Delta E = 138 - 84{,}9 = 53{,}1 \text{ J}$$</p>
+            </div>
+
+            <div class="calculation-step">
+                <h3>Krok 5: Kontrola a odpověď</h3>
+                <p><strong>Odpovědi:</strong></p>
+                <ul>
+                    <li>a) $$v_A \approx 8{,}31 \text{ m/s}$$</li>
+                    <li>b) $$v' \approx 5{,}11 \text{ m/s}$$</li>
+                    <li>c) Před: 138 J, Po: 84,9 J</li>
+                    <li>d) Ztráta: 53,1 J</li>
+                </ul>
+                <p><strong>Vysvětlení:</strong> Srážka byla nepružná (vozíčky se spojily). Při nepružné srážce se ZACHOVÁVÁ hybnost, ale NEZACHOVÁVÁ se mechanická energie. Ztracená energie (53,1 J) se přeměnila na teplo, zvuk a deformaci materiálu v místě spojení.</p>
+            </div>
+        </section>
+
+        <section id="shrnuti">
+            <h2>Shrnutí a kontrola</h2>
+
+            <div class="summary-box">
+                <strong>Hlavní poznatky:</strong>
+                <ul>
+                    <li>Při sjezdu z nakloněné roviny se potenciální energie mění na kinetickou</li>
+                    <li>Při nepružné srážce se zachovává hybnost: $$m_Av_A = (m_A + m_B)v'$$</li>
+                    <li>Při nepružné srážce se mechanická energie nezachovává</li>
+                    <li>Ztracená energie se přemění na teplo, zvuk a deformaci</li>
+                </ul>
+            </div>
+
+            <div class="info-box">
+                <strong>Kontrola rozumnosti:</strong> Rychlost klesla z 8,31 na 5,11 m/s a energie z 138 na 85 J - typické pro nepružnou srážku.
+            </div>
+
+            <details>
+                <summary>🤔 Metakognitivní otázky</summary>
+                <div>
+                    <ul>
+                        <li>Co by se stalo, kdyby vozíček B byl těžší než A?</li>
+                        <li>Proč se při nepružné srážce nezachová energie, ale hybnost ano?</li>
+                        <li>Jak byste experimentálně ověřili, že se energie skutečně ztratila?</li>
+                        <li>Jaký význam má tato úloha pro bezpečnost v reálných dopravních systémech?</li>
+                    </ul>
+                </div>
+            </details>
+        </section>
+
+    </main>
+</body>
+</html>

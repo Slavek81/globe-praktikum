@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Odraz míče z výšky</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>2. Odraz míče z výšky</h1>
+            <p>Mechanická práce a energie - řešený příklad</p>
+        </header>
+
+        <!-- Motivační úvod pro studenty -->
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Výrobci sportovního vybavení testují míče podle toho, jak dobře se odrážejí. Basketbalové, tenisové i volejbalové míče musí splňovat přesné standardy odrazovosti. Podobně fungují bezpečnostní nárazníky aut - část energie srážky se přemění na deformaci materiálu, aby chránila posádku!
+        </div>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <div class="zadani-text">
+                Pružný míč o hmotnosti <strong>50 g</strong> byl volně puštěn z výšky <strong>1,55 m</strong> nad upevněnou vodorovnou kovovou deskou. Po odrazu vyskočil do výšky <strong>1,00 m</strong> nad deskou. Vypočtěte (g = <strong>10 m·s⁻²</strong>):<br><br>
+                <strong>a)</strong> rychlost míče těsně před dopadem<br>
+                <strong>b)</strong> hybnost míče těsně před dopadem<br>
+                <strong>c)</strong> kinetickou energii míče těsně před dopadem<br>
+                <strong>d)</strong> změnu energie při dopadu. Zdůvodněte.
+            </div>
+        </section>
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+
+            <div class="calculation-step">
+                <h3>Krok 1: Analýza situace a převody jednotek</h3>
+                <p><strong>Dané hodnoty:</strong></p>
+                <ul>
+                    <li>Hmotnost: $$m = 50 \text{ g} = 0{,}05 \text{ kg}$$</li>
+                    <li>Počáteční výška: $$h_1 = 1{,}55 \text{ m}$$</li>
+                    <li>Výška po odrazu: $$h_2 = 1{,}00 \text{ m}$$</li>
+                    <li>Tíhové zrychlení: $$g = 10 \text{ m/s}^2$$</li>
+                </ul>
+                <div class="chyba-box">
+                    Nezapomeň převést gramy na kilogramy! 50 g = 0,05 kg
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h3>Krok 2: Výběr fyzikální rovnice</h3>
+                <p>Použijeme zákon zachování mechanické energie:</p>
+                <div class="rovnice-blok">
+                    <div class="rovnice-nadpis">📐 Zákon zachování energie</div>
+                    <div class="rovnice-text">$$E_p = E_k$$
+$$mgh = \frac{1}{2}mv^2$$</div>
+                </div>
+                <div class="rovnice-blok">
+                    <div class="rovnice-nadpis">📐 Hybnost</div>
+                    <div class="rovnice-text">$$p = mv$$</div>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h3>Krok 3: Algebraické vyjádření</h3>
+                <p>Z rovnice $$mgh_1 = \frac{1}{2}mv_1^2$$ zkrátíme hmotnost a vyjádříme rychlost:</p>
+                <div class="rovnice-blok">
+                    <div class="rovnice-text">$$v_1 = \sqrt{2gh_1} = \sqrt{2 \cdot 10 \cdot 1{,}55} = \sqrt{31} \approx 5{,}57 \text{ m/s}$$</div>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h3>Krok 4: Dosazení a výpočet</h3>
+                <p><strong>a) Rychlost před dopadem:</strong></p>
+                <div class="rovnice-blok">
+                    <div class="rovnice-text">$$v_1 = 5{,}57 \text{ m/s}$$</div>
+                </div>
+
+                <p><strong>b) Hybnost před dopadem:</strong></p>
+                <div class="rovnice-blok">
+                    <div class="rovnice-text">$$p_1 = mv_1 = 0{,}05 \cdot 5{,}57 = 0{,}28 \text{ kg·m/s}$$</div>
+                </div>
+
+                <p><strong>c) Kinetická energie před dopadem:</strong></p>
+                <div class="rovnice-blok">
+                    <div class="rovnice-text">$$E_{k1} = E_{p1} = mgh_1 = 0{,}05 \cdot 10 \cdot 1{,}55 = 0{,}775 \text{ J}$$</div>
+                </div>
+
+                <p><strong>d) Změna energie:</strong></p>
+                <p>Energie po odrazu: $$E_2 = mgh_2 = 0{,}05 \cdot 10 \cdot 1{,}00 = 0{,}5 \text{ J}$$</p>
+                <div class="rovnice-blok">
+                    <div class="rovnice-text">$$\Delta E = E_1 - E_2 = 0{,}775 - 0{,}5 = 0{,}275 \text{ J}$$</div>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h3>Krok 5: Kontrola a odpověď</h3>
+                <p><strong>Odpovědi:</strong></p>
+                <ul>
+                    <li>a) $$v_1 \approx 5{,}57 \text{ m/s}$$</li>
+                    <li>b) $$p_1 \approx 0{,}28 \text{ kg·m/s}$$</li>
+                    <li>c) $$E_{k1} = 0{,}775 \text{ J}$$</li>
+                    <li>d) $$\Delta E = 0{,}275 \text{ J}$$ ztraceno</li>
+                </ul>
+                <p><strong>Zdůvodnění:</strong> Srážka nebyla dokonale pružná. Ztracená energie (0,275 J) se přeměnila na teplo (zahřátí míče a desky) a zvuk (slyšeli jsme "bouchnutí"). Energie se nezachovala v mechanické formě, ale celková energie včetně tepla a zvuku se zachovala.</p>
+            </div>
+        </section>
+
+        <section id="shrnuti">
+            <h2>Shrnutí a kontrola</h2>
+
+            <div class="summary-box">
+                <strong>Hlavní poznatky:</strong>
+                <ul>
+                    <li>Při pádu se potenciální energie mění na kinetickou</li>
+                    <li>Rychlost před dopadem lze spočítat z výšky: v = √(2gh)</li>
+                    <li>Při nepružné srážce se část mechanické energie "ztratí" (přemění na jiné formy)</li>
+                    <li>Celková energie se vždy zachovává (včetně tepla a zvuku)</li>
+                </ul>
+            </div>
+
+            <div class="info-box">
+                <strong>Kontrola rozumnosti:</strong> Míč nevyskočil do původní výšky, což je očekávané - žádný reálný míč není dokonale pružný.
+            </div>
+
+            <details>
+                <summary>🤔 Metakognitivní otázky</summary>
+                <div>
+                    <ul>
+                        <li>Proč míč nevyskočil do stejné výšky, ze které byl puštěn?</li>
+                        <li>Co by se stalo, kdyby byl míč dokonale pružný?</li>
+                        <li>Jak byste změřili, kolik energie se přeměnilo na teplo?</li>
+                        <li>Proč některé míče (basketbal) odrážejí lépe než jiné (tenisák)?</li>
+                    </ul>
+                </div>
+            </details>
+        </section>
+
+    </main>
+</body>
+</html>

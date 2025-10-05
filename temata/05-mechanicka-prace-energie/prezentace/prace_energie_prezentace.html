@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mechanická práce a energie - Fyzika pro střední školy</title>
+    <!-- Import pro renderování LaTeX matematických vzorců -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>Mechanická práce a energie</h1>
+            <p>Objevte tajemství práce, energie a jejich přeměn v reálném světě!</p>
+        </header>
+
+        <section class="intro-box">
+            <h2>Co je mechanická práce a energie?</h2>
+            <p>Představte si, že zvedáte těžkou krabici, jezdíte na kole do kopce nebo sledujete horskou dráhu v akčním parku. Ve všech těchto situacích se koná mechanická práce a přeměňuje se energie z jedné formy na druhou.</p>
+            <p><strong>Mechanická práce a energie</strong> jsou fundamentální fyzikální pojmy, které popisují schopnost konat práci a způsob, jakým se tato schopnost přenáší a transformuje. Pochopení těchto konceptů je klíčem k vysvětlení fungování motorů, výtahů, větrných elektráren i lidského těla při sportu.</p>
+        </section>
+
+        <!-- CÍLE PŘEDNÁŠKY -->
+        <section id="learning-goals" class="unit-section">
+            <h2>🎯 Cíle přednášky</h2>
+            <p>Po absolvování této lekce budete schopni:</p>
+
+            <div class="equations">
+                <h3>Praktické dovednosti</h3>
+                <ul style="list-style-position: inside; margin-left: 1rem; line-height: 1.8;">
+                    <li><strong>Mechanická práce:</strong> Vypočítat práci vykonanou silou při přemístění tělesa</li>
+                    <li><strong>Výkon:</strong> Rozlišit průměrný a okamžitý výkon, vypočítat výkon motorů a strojů</li>
+                    <li><strong>Účinnost:</strong> Určit účinnost různých zařízení a pochopit energetické ztráty</li>
+                    <li><strong>Kinetická energie:</strong> Vypočítat energii pohybujícího se tělesa</li>
+                    <li><strong>Potenciální energie:</strong> Určit energii tělesa v gravitačním poli</li>
+                    <li><strong>Zákon zachování energie:</strong> Aplikovat zákon na řešení praktických úloh</li>
+                    <li><strong>Srážky těles:</strong> Analyzovat pružné a nepružné srážky pomocí zákonů zachování</li>
+                </ul>
+            </div>
+
+            <div class="example">
+                <h3>💡 Reálné aplikace v praxi</h3>
+                <p><strong>Proč je to důležité?</strong></p>
+                <ul style="list-style-position: inside; margin-left: 1rem;">
+                    <li><strong>Automobilový průmysl:</strong> Návrh brzdných systémů využívá zákon zachování energie (brzdná dráha roste s druhou mocninou rychlosti)</li>
+                    <li><strong>Energetika:</strong> Výpočet účinnosti elektráren a solárních panelů</li>
+                    <li><strong>Stavebnictví:</strong> Návrh výtahů, jeřábů a zdvihacích mechanismů</li>
+                    <li><strong>Sport:</strong> Optimalizace výkonu sportovců (skok do výšky, hod oštěpem)</li>
+                    <li><strong>Analýza nehod:</strong> Rekonstrukce dopravních nehod pomocí energie a hybnosti</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- TEORETICKÉ ZÁKLADY -->
+        <section id="theoretical-foundations" class="unit-section">
+            <h2>📚 Teoretické základy</h2>
+
+            <!-- Mechanická práce -->
+            <div id="work" style="margin-top: 30px;">
+                <h3>1. Mechanická práce (W)</h3>
+                <p><strong>Princip:</strong> Práce je fyzikální veličina charakterizující děj, při kterém se přemísťují tělesa vlivem působení síly. Práce se koná pouze když síla působí ve směru (nebo proti směru) pohybu.</p>
+
+                <div class="schema-container">
+                    <svg width="400" height="180" viewBox="0 0 400 180">
+                        <defs><marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#333" /></marker></defs>
+                        <text x="120" y="20" font-family="Verdana" font-size="12">Práce - tlačení krabice</text>
+
+                        <!-- Krabice -->
+                        <rect x="100" y="110" width="50" height="40" fill="#FFB74D" stroke="#333" stroke-width="2"/>
+                        <text x="112" y="135" font-family="Verdana" font-size="12">m</text>
+
+                        <!-- Síla doprava -->
+                        <line x1="150" y1="130" x2="210" y2="130" stroke="#e74c3c" stroke-width="3" marker-end="url(#arrow)" />
+                        <text x="170" y="120" font-family="Verdana" font-size="12" fill="#e74c3c">F</text>
+
+                        <!-- Dráha -->
+                        <line x1="100" y1="165" x2="300" y2="165" stroke="#3498db" stroke-width="2" marker-end="url(#arrow)" />
+                        <text x="190" y="175" font-family="Verdana" font-size="12" fill="#3498db">s</text>
+
+                        <!-- Podložka -->
+                        <line x1="50" y1="150" x2="350" y2="150" stroke="#666" stroke-width="4"/>
+                    </svg>
+                </div>
+
+                <div class="equations">
+                    <h3>Základní vzorec pro práci</h3>
+                    <p><strong>Práce síly:</strong>
+                    $$ W = F \cdot s \cdot \cos\alpha $$</p>
+                    <p>kde:<br>
+                    \( W \) = práce [J - Joule]<br>
+                    \( F \) = síla [N]<br>
+                    \( s \) = dráha [m]<br>
+                    \( \alpha \) = úhel mezi silou a směrem pohybu</p>
+
+                    <p><strong>Speciální případy:</strong></p>
+                    <ul style="list-style-position: inside; margin-left: 1rem;">
+                        <li>\( \alpha = 0° \): \( \cos 0° = 1 \) → \( W = F \cdot s \) (kladná práce)</li>
+                        <li>\( \alpha = 90° \): \( \cos 90° = 0 \) → \( W = 0 \) (žádná práce!)</li>
+                        <li>\( \alpha = 180° \): \( \cos 180° = -1 \) → \( W = -F \cdot s \) (záporná práce - brzdění)</li>
+                    </ul>
+                </div>
+
+                <div class="example">
+                    <h3>Konkrétní příklad: Tlačení auta</h3>
+                    <p><strong>Zadání:</strong> Auto se pokazilo a musíte ho tlačit do servisu. Působíte silou 400 N ve vodorovném směru a auto posunete o 15 m. Kolik práce jste vykonali?</p>
+                    <p><strong>Výpočet:</strong>
+                    <br>1. <strong>Dáno:</strong> \( F = 400 \, \text{N} \), \( s = 15 \, \text{m} \), \( \alpha = 0° \)
+                    <br>2. <strong>Práce:</strong> \( W = F \cdot s \cdot \cos 0° = 400 \times 15 \times 1 = 6\,000 \, \text{J} = 6 \, \text{kJ} \)
+                    <br>3. <strong>Závěr:</strong> Vykonali jste práci 6 kJ (což odpovídá energii potřebné k zahřátí 1,4 litru vody o 1°C!)
+                    </p>
+                </div>
+            </div>
+
+            <!-- Výkon -->
+            <div id="power" style="margin-top: 30px;">
+                <h3>2. Výkon (P)</h3>
+                <p><strong>Princip:</strong> Výkon vyjadřuje, jak rychle se práce koná. Je to práce vykonaná za jednotku času.</p>
+
+                <div class="equations">
+                    <h3>Dva typy výkonu</h3>
+                    <p><strong>a) Průměrný výkon:</strong>
+                    $$ P_p = \frac{W}{t} $$</p>
+                    <p>kde:<br>
+                    \( P_p \) = průměrný výkon [W - Watt]<br>
+                    \( W \) = práce [J]<br>
+                    \( t \) = čas [s]</p>
+
+                    <p><strong>b) Okamžitý výkon:</strong>
+                    $$ P = F \cdot v $$</p>
+                    <p>kde:<br>
+                    \( P \) = okamžitý výkon [W]<br>
+                    \( F \) = síla [N]<br>
+                    \( v \) = rychlost [m/s]</p>
+
+                    <p><strong>Jednotka:</strong> [P] = W (Watt) = J/s</p>
+                </div>
+
+                <div class="example">
+                    <h3>Konkrétní příklad: Motor výtahu</h3>
+                    <p><strong>Zadání:</strong> Výtah zdvihá náklad 500 kg do výšky 20 m za 10 sekund. Jaký je průměrný výkon motoru?</p>
+                    <p><strong>Výpočet:</strong>
+                    <br>1. <strong>Dáno:</strong> \( m = 500 \, \text{kg} \), \( h = 20 \, \text{m} \), \( t = 10 \, \text{s} \), \( g = 9{,}81 \, \text{m/s}^2 \)
+                    <br>2. <strong>Síla:</strong> \( F = m \cdot g = 500 \times 9{,}81 = 4\,905 \, \text{N} \)
+                    <br>3. <strong>Práce:</strong> \( W = F \cdot h = 4\,905 \times 20 = 98\,100 \, \text{J} \)
+                    <br>4. <strong>Výkon:</strong> \( P = \frac{W}{t} = \frac{98\,100}{10} = 9\,810 \, \text{W} \approx 9{,}8 \, \text{kW} \)
+                    <br>5. <strong>Závěr:</strong> Motor musí mít výkon alespoň 9,8 kW (≈ 13 koňských sil)
+                    </p>
+                </div>
+            </div>
+
+            <!-- Účinnost -->
+            <div id="efficiency" style="margin-top: 30px;">
+                <h3>3. Účinnost (η)</h3>
+                <p><strong>Princip:</strong> Účinnost vyjadřuje, jaká část dodané energie se přemění na užitečnou práci. Zbytek se "ztratí" (přemění na teplo, zvuk, vibrace).</p>
+
+                <div class="equations">
+                    <h3>Vzorec pro účinnost</h3>
+                    <p><strong>Účinnost:</strong>
+                    $$ \eta = \frac{P_{výst}}{P_{vst}} = \frac{W_{výst}}{W_{vst}} $$</p>
+                    <p>kde:<br>
+                    \( \eta \) = účinnost (řecké písmeno éta) [-] nebo [%]<br>
+                    \( P_{výst} \) = výstupní (užitečný) výkon [W]<br>
+                    \( P_{vst} \) = vstupní výkon (příkon) [W]</p>
+
+                    <p><strong>Důležité:</strong> \( \eta < 1 \) (vždy menší než 100 %)</p>
+
+                    <h4>Typické účinnosti</h4>
+                    <table style="font-size: 0.95em;">
+                        <tr><th>Zařízení</th><th>Účinnost η</th></tr>
+                        <tr><td>Klasická žárovka</td><td>~5 %</td></tr>
+                        <tr><td>LED žárovka</td><td>~40 %</td></tr>
+                        <tr><td>Spalovací motor</td><td>25-30 %</td></tr>
+                        <tr><td>Elektromobil</td><td>85-90 %</td></tr>
+                        <tr><td>Zdvihací jeřáb</td><td>60-70 %</td></tr>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Kinetická energie -->
+            <div id="kinetic-energy" style="margin-top: 30px;">
+                <h3>4. Kinetická energie (E_k)</h3>
+                <p><strong>Princip:</strong> Kinetická (pohybová) energie je energie, kterou má těleso díky svému pohybu.</p>
+
+                <div class="equations">
+                    <h3>Vzorec pro kinetickou energii</h3>
+                    <p><strong>Kinetická energie:</strong>
+                    $$ E_k = \frac{1}{2}mv^2 $$</p>
+                    <p>kde:<br>
+                    \( E_k \) = kinetická energie [J]<br>
+                    \( m \) = hmotnost [kg]<br>
+                    \( v \) = rychlost [m/s]</p>
+
+                    <p><strong>⚠️ Kvadratická závislost na rychlosti!</strong><br>
+                    Když zdvojnásobíte rychlost, kinetická energie se <strong>zčtyřnásobí</strong>!<br>
+                    Proto je brzdná dráha při 100 km/h 4× delší než při 50 km/h.</p>
+                </div>
+
+                <div class="example">
+                    <h3>Konkrétní příklad: Auto při různých rychlostech</h3>
+                    <p><strong>Auto o hmotnosti 1000 kg:</strong></p>
+                    <table>
+                        <tr><th>Rychlost</th><th>v [m/s]</th><th>E_k [kJ]</th><th>Poměr</th></tr>
+                        <tr><td>50 km/h</td><td>13,9</td><td>96,6</td><td>1×</td></tr>
+                        <tr><td>100 km/h</td><td>27,8</td><td>386,4</td><td>4×</td></tr>
+                        <tr><td>150 km/h</td><td>41,7</td><td>869,4</td><td>9×</td></tr>
+                    </table>
+                    <p><strong>Závěr:</strong> Při 3× vyšší rychlosti má auto 9× větší energii! Proto je vysoká rychlost tak nebezpečná.</p>
+                </div>
+            </div>
+
+            <!-- Potenciální energie -->
+            <div id="potential-energy" style="margin-top: 30px;">
+                <h3>5. Potenciální energie (E_p)</h3>
+                <p><strong>Princip:</strong> Potenciální (polohová) energie je energie, kterou má těleso díky své poloze v gravitačním poli.</p>
+
+                <div class="schema-container">
+                    <svg width="400" height="200" viewBox="0 0 400 200">
+                        <defs><marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#333" /></marker></defs>
+                        <text x="130" y="20" font-family="Verdana" font-size="12">Potenciální energie</text>
+
+                        <!-- Země -->
+                        <line x1="50" y1="180" x2="350" y2="180" stroke="#8b4513" stroke-width="6"/>
+                        <text x="180" y="195" font-family="Verdana" font-size="10">h = 0 (nulová hladina)</text>
+
+                        <!-- Těleso nahoře -->
+                        <circle cx="200" cy="80" r="15" fill="#e74c3c"/>
+                        <text x="192" y="87" font-family="Verdana" font-size="12" fill="white">m</text>
+
+                        <!-- Výška -->
+                        <line x1="250" y1="80" x2="250" y2="180" stroke="#3498db" stroke-width="2" stroke-dasharray="5,5"/>
+                        <line x1="245" y1="80" x2="255" y2="80" stroke="#3498db" stroke-width="2"/>
+                        <line x1="245" y1="180" x2="255" y2="180" stroke="#3498db" stroke-width="2"/>
+                        <text x="260" y="135" font-family="Verdana" font-size="12" fill="#3498db">h</text>
+
+                        <!-- Šipka dolů -->
+                        <line x1="200" y1="100" x2="200" y2="160" stroke="#27ae60" stroke-width="3" marker-end="url(#arrow)" />
+                        <text x="205" y="135" font-family="Verdana" font-size="10" fill="#27ae60">F_g</text>
+                    </svg>
+                </div>
+
+                <div class="equations">
+                    <h3>Vzorec pro potenciální energii</h3>
+                    <p><strong>Tíhová potenciální energie:</strong>
+                    $$ E_p = mgh $$</p>
+                    <p>kde:<br>
+                    \( E_p \) = potenciální energie [J]<br>
+                    \( m \) = hmotnost [kg]<br>
+                    \( g \) = tíhové zrychlení ≈ 9,81 m/s²<br>
+                    \( h \) = výška nad nulovou hladinou [m]</p>
+
+                    <p><strong>⚠️ Pozor na volbu nulové hladiny!</strong><br>
+                    Výška h se měří od <strong>zvolené nulové hladiny</strong> (podlaha, země, stůl...).</p>
+                </div>
+            </div>
+
+            <!-- Zákon zachování energie -->
+            <div id="energy-conservation" style="margin-top: 30px;">
+                <h3>6. Zákon zachování mechanické energie</h3>
+                <p><strong>Princip:</strong> V izolované soustavě bez odporových sil se celková mechanická energie nemění. Energie se pouze přelévá mezi kinetickou a potenciální formou.</p>
+
+                <div class="equations">
+                    <h3>Zákon zachování mechanické energie</h3>
+                    <p><strong>Matematické vyjádření:</strong>
+                    $$ E_k + E_p = \text{konst.} $$
+                    $$ \frac{1}{2}mv^2 + mgh = \text{konst.} $$</p>
+
+                    <p><strong>Praktické použití - volný pád:</strong><br>
+                    Těleso padá z výšky h. Jaká je jeho rychlost při dopadu?</p>
+                    <p>$$ E_p = E_k $$
+                    $$ mgh = \frac{1}{2}mv^2 $$
+                    $$ v = \sqrt{2gh} $$</p>
+                </div>
+
+                <div class="example">
+                    <h3>Konkrétní příklad: Skok ze srázu do vody</h3>
+                    <p><strong>Zadání:</strong> Skokan skočí ze srázu výšky 10 m. Jakou rychlostí dopadne na hladinu?</p>
+                    <p><strong>Výpočet:</strong>
+                    <br>1. <strong>Dáno:</strong> \( h = 10 \, \text{m} \), \( g = 9{,}81 \, \text{m/s}^2 \)
+                    <br>2. <strong>Rychlost:</strong> \( v = \sqrt{2gh} = \sqrt{2 \times 9{,}81 \times 10} = \sqrt{196{,}2} \approx 14 \, \text{m/s} \)
+                    <br>3. <strong>Převod:</strong> \( v = 14 \, \text{m/s} = 50{,}4 \, \text{km/h} \)
+                    <br>4. <strong>Závěr:</strong> Skokan dopadne rychlostí asi 50 km/h!
+                    </p>
+                </div>
+            </div>
+
+            <!-- Srážky těles -->
+            <div id="collisions" style="margin-top: 30px;">
+                <h3>7. Srážky těles</h3>
+                <p><strong>Princip:</strong> Při srážce těles se vždy zachovává hybnost, ale kinetická energie se zachovává pouze u pružných srážek.</p>
+
+                <div class="example">
+                    <h3>💡 Praktická aplikace</h3>
+                    <p>Analýza dopravních nehod využívá principy pružných a nepružných srážek. Znalci dokážou z deformace vozidel a stop na silnici rekonstruovat rychlost před nárazem. Toto je praktická aplikace zákonů zachování!</p>
+                </div>
+
+                <h4 style="margin-top: 25px; color: #2b6cb0;">📊 Dva typy srážek</h4>
+
+                <div class="comparison-box">
+                    <div class="comparison-item">
+                        <h4>1️⃣ Pružná srážka</h4>
+
+                        <p><strong>Co se děje?</strong> Tělesa se <strong>od sebe odrazí</strong> a pokračují v pohybu odděleně. Nedochází k trvalé deformaci ani spojení těles.</p>
+
+                        <p style="margin-top: 15px;"><strong>Fyzikální zákony:</strong></p>
+                        <ul style="list-style-position: inside; margin-left: 1rem; line-height: 1.8;">
+                            <li>✅ <strong>Zachovává se kinetická energie:</strong> \( E_{k,před} = E_{k,po} \)<br>
+                            <span style="margin-left: 1.5rem;">• Celková kinetická energie soustavy se nemění</span><br>
+                            <span style="margin-left: 1.5rem;">• Energie se pouze "přerozdělí" mezi tělesy</span></li>
+                            <li style="margin-top: 10px;">✅ <strong>Zachovává se hybnost:</strong> \( \vec{p}_{před} = \vec{p}_{po} \)</li>
+                        </ul>
+
+                        <p style="margin-top: 15px;"><strong>💡 Praktické příklady:</strong></p>
+                        <ul style="list-style-position: inside; margin-left: 1rem; line-height: 1.8;">
+                            <li><strong>Kulečníkové koule:</strong> Bílá koule narazí do červené → obě se odrazí</li>
+                            <li><strong>Tenisový míč o zeď:</strong> Míč se odrazí téměř stejnou rychlostí zpět</li>
+                            <li><strong>Newtonova kolébka:</strong> Kovové kuličky na niti</li>
+                            <li><strong>Pružiny mezi vozíky:</strong> Vozíky se odrazí bez deformace</li>
+                        </ul>
+
+                        <p style="margin-top: 15px; padding: 10px; background: #fff3cd; border-left: 4px solid #ffc107; border-radius: 4px;">
+                            <strong>⚠️ Důležité:</strong> V reálném světě je pružná srážka <strong>idealizace</strong>! Vždy dochází k malým ztrátám energie (teplo, zvuk, vibrace). Kulečníkové koule jsou dobrá aproximace.
+                        </p>
+                    </div>
+
+                    <div class="comparison-item">
+                        <h4>2️⃣ Nepružná srážka</h4>
+
+                        <p><strong>Co se děje?</strong> Tělesa se při srážce <strong>spojí</strong> (slípnou dohromady) nebo se <strong>trvale zdeformují</strong>. Po srážce se pohybují společně nebo s výrazně změněnou strukturou.</p>
+
+                        <p style="margin-top: 15px;"><strong>Fyzikální zákony:</strong></p>
+                        <ul style="list-style-position: inside; margin-left: 1rem; line-height: 1.8;">
+                            <li>❌ <strong>Nezachovává se kinetická energie:</strong> \( E_{k,před} > E_{k,po} \)<br>
+                            <span style="margin-left: 1.5rem;">• Část energie se "ztratí" (ve skutečnosti se přemění na jiné formy)</span></li>
+                            <li style="margin-top: 10px;"><strong>Kam se energie přemění?</strong><br>
+                            <span style="margin-left: 1.5rem;">→ 🔥 <strong>Teplo:</strong> Zahřátí materiálů při nárazu</span><br>
+                            <span style="margin-left: 1.5rem;">→ 🔊 <strong>Zvuk:</strong> Ráz, třesk při srážce</span><br>
+                            <span style="margin-left: 1.5rem;">→ 💥 <strong>Deformace:</strong> Plechové karoserie se pomačkají</span><br>
+                            <span style="margin-left: 1.5rem;">→ 🌊 <strong>Vibrace:</strong> Rozkmitání molekul v materiálu</span></li>
+                            <li style="margin-top: 10px;">✅ <strong>Zachovává se hybnost:</strong> \( \vec{p}_{před} = \vec{p}_{po} \) (vždy platí!)</li>
+                        </ul>
+
+                        <p style="margin-top: 15px;"><strong>💡 Praktické příklady:</strong></p>
+                        <ul style="list-style-position: inside; margin-left: 1rem; line-height: 1.8;">
+                            <li><strong>Dopravní nehoda:</strong> Auta se srazí → spojí se/pomačkají (↑ teplo, ↑ zvuk)</li>
+                            <li><strong>Plastelínové koule:</strong> Po nárazu vytvoří jeden kus</li>
+                            <li><strong>Spojení železničních vagonů:</strong> Oba se po spojení pohybují společně</li>
+                            <li><strong>Kulka do dřevěného bloku:</strong> Kulka uvízne v bloku → pohyb společně</li>
+                            <li><strong>Pád vajíčka na zem:</strong> Energie → rozbití skořápky + zvuk + teplo</li>
+                        </ul>
+
+                        <p style="margin-top: 15px; padding: 10px; background: #e8f4fd; border-left: 4px solid #2196f3; border-radius: 4px;">
+                            <strong>📐 Důležitý vzorec pro dokonale nepružnou srážku:</strong><br>
+                            Když se obě tělesa spojí a pohybují společně:<br>
+                            $$ m_1 v_1 + m_2 v_2 = (m_1 + m_2)v' $$
+                            kde \( v' \) je společná rychlost po srážce
+                        </p>
+                    </div>
+                </div>
+
+                <div class="equations">
+                    <h3>Zákon zachování hybnosti</h3>
+                    <p><strong>Platí vždy (u obou typů srážek):</strong>
+                    $$ \vec{p}_{před} = \vec{p}_{po} $$
+                    $$ m_1\vec{v}_1 + m_2\vec{v}_2 = m_1\vec{v}'_1 + m_2\vec{v}'_2 $$</p>
+
+                    <p style="margin-top: 15px;">kde:<br>
+                    \( \vec{p} \) = hybnost (vektorová veličina!) [kg·m/s]<br>
+                    \( m_1, m_2 \) = hmotnosti těles [kg]<br>
+                    \( \vec{v}_1, \vec{v}_2 \) = rychlosti před srážkou [m/s]<br>
+                    \( \vec{v}'_1, \vec{v}'_2 \) = rychlosti po srážce [m/s]</p>
+
+                    <p style="margin-top: 15px; padding: 10px; background: #fff0f0; border-left: 4px solid #ff4d4f; border-radius: 4px; color: #a30000;">
+                        <strong>⚠️ Pozor:</strong> Rychlosti jsou vektory → záleží na směru!
+                    </p>
+                </div>
+
+                <div class="example" style="margin-top: 20px;">
+                    <h3>💡 Praktický příklad - dopravní nehoda</h3>
+                    <p>Auto A (1500 kg, 20 m/s) narazí do stojícího auta B (1200 kg).<br>
+                    Po nárazu se spojí a pohybují společně.</p>
+
+                    <p style="margin-top: 10px;"><strong>Hybnost před:</strong> \( p = 1500 \cdot 20 + 1200 \cdot 0 = 30\,000 \) kg·m/s<br>
+                    <strong>Rychlost po:</strong> \( v' = \frac{30\,000}{1500+1200} = 11{,}1 \) m/s</p>
+
+                    <p style="margin-top: 10px;"><strong>Energie před:</strong> \( E_k = \frac{1}{2} \cdot 1500 \cdot 20^2 = 300\,000 \) J<br>
+                    <strong>Energie po:</strong> \( E_k' = \frac{1}{2} \cdot 2700 \cdot 11{,}1^2 = 166\,635 \) J</p>
+
+                    <p style="margin-top: 10px; font-weight: bold;">→ Ztráta: 133 365 J (deformace vozidel, teplo, zvuk!)</p>
+                </div>
+
+                <div style="margin-top: 20px; padding: 15px; background: #fff0f0; border-left: 4px solid #ff4d4f; border-radius: 4px; color: #a30000;">
+                    <strong>⚠️ Časté chyby při srážkách:</strong>
+                    <ul style="list-style-position: inside; margin-left: 1rem; margin-top: 10px; line-height: 1.8;">
+                        <li>Zaměnění pružné a nepružné srážky</li>
+                        <li>Zapomenutí na vektorový charakter hybnosti (směr!)</li>
+                        <li>Použití zákona zachování \( E_k \) u nepružné srážky (neplatí!)</li>
+                        <li>Přehlédnutí záporných rychlostí (opačný směr pohybu)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- INTERAKTIVNÍ PREZENTACE -->
+        <section id="interactive" class="unit-section">
+            <h2>🧮 Interaktivní kalkulátory</h2>
+
+            <!-- Kalkulátor mechanické práce -->
+            <div class="calculator-container">
+                <h3>Kalkulátor mechanické práce</h3>
+                <div class="calc-inputs">
+                    <div class="input-group">
+                        <label>Síla F [N]:</label>
+                        <input type="number" id="f-prace" placeholder="100" step="0.1">
+                    </div>
+                    <div class="input-group">
+                        <label>Dráha s [m]:</label>
+                        <input type="number" id="s-prace" placeholder="10" step="0.1">
+                    </div>
+                    <div class="input-group">
+                        <label>Úhel α [°]:</label>
+                        <input type="number" id="uhel-prace" placeholder="0" step="1" value="0">
+                    </div>
+                    <button class="calc-button" onclick="vypocitejPraci()">Vypočítat práci</button>
+                </div>
+                <div id="vysledek-prace" class="calc-result"></div>
+            </div>
+
+            <!-- Kalkulátor výkonu -->
+            <div class="calculator-container">
+                <h3>Kalkulátor výkonu</h3>
+                <div class="calc-inputs">
+                    <div class="input-group">
+                        <label>Práce W [J]:</label>
+                        <input type="number" id="w-vykon" placeholder="1000" step="0.1">
+                    </div>
+                    <div class="input-group">
+                        <label>Čas t [s]:</label>
+                        <input type="number" id="t-vykon" placeholder="5" step="0.1">
+                    </div>
+                    <button class="calc-button" onclick="vypocitejVykon()">Vypočítat výkon</button>
+                </div>
+                <div id="vysledek-vykon" class="calc-result"></div>
+            </div>
+
+            <!-- Kalkulátor účinnosti -->
+            <div class="calculator-container">
+                <h3>Kalkulátor účinnosti</h3>
+                <div class="calc-inputs">
+                    <div class="input-group">
+                        <label>Příkon P_vst [W]:</label>
+                        <input type="number" id="p-vst" placeholder="100" step="0.1">
+                    </div>
+                    <div class="input-group">
+                        <label>Výstupní výkon P_výst [W]:</label>
+                        <input type="number" id="p-vyst" placeholder="75" step="0.1">
+                    </div>
+                    <button class="calc-button" onclick="vypocitejUcinnost()">Vypočítat účinnost</button>
+                </div>
+                <div id="vysledek-ucinnost" class="calc-result"></div>
+            </div>
+
+            <!-- Kalkulátor kinetické energie -->
+            <div class="calculator-container">
+                <h3>Kalkulátor kinetické energie</h3>
+                <div class="calc-inputs">
+                    <div class="input-group">
+                        <label>Hmotnost m [kg]:</label>
+                        <input type="number" id="m-ek" placeholder="10" step="0.1">
+                    </div>
+                    <div class="input-group">
+                        <label>Rychlost v [m/s]:</label>
+                        <input type="number" id="v-ek" placeholder="5" step="0.1">
+                    </div>
+                    <button class="calc-button" onclick="vypocitejEk()">Vypočítat E_k</button>
+                </div>
+                <div id="vysledek-ek" class="calc-result"></div>
+            </div>
+
+            <!-- Kalkulátor potenciální energie -->
+            <div class="calculator-container">
+                <h3>Kalkulátor potenciální energie</h3>
+                <div class="calc-inputs">
+                    <div class="input-group">
+                        <label>Hmotnost m [kg]:</label>
+                        <input type="number" id="m-ep" placeholder="2" step="0.1">
+                    </div>
+                    <div class="input-group">
+                        <label>Výška h [m]:</label>
+                        <input type="number" id="h-ep" placeholder="10" step="0.1">
+                    </div>
+                    <button class="calc-button" onclick="vypocitejEp()">Vypočítat E_p</button>
+                </div>
+                <div id="vysledek-ep" class="calc-result"></div>
+            </div>
+
+            <!-- Kalkulátor volného pádu -->
+            <div class="calculator-container">
+                <h3>Kalkulátor volného pádu</h3>
+                <p style="margin-bottom: 15px;">Vypočítá rychlost tělesa při dopadu z výšky h</p>
+                <div class="calc-inputs">
+                    <div class="input-group">
+                        <label>Výška pádu h [m]:</label>
+                        <input type="number" id="h-pad" placeholder="10" step="0.1">
+                    </div>
+                    <button class="calc-button" onclick="vypocitejVolnyPad()">Vypočítat rychlost dopadu</button>
+                </div>
+                <div id="vysledek-pad" class="calc-result"></div>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        // Kalkulátor mechanické práce
+        function vypocitejPraci() {
+            const F = parseFloat(document.getElementById('f-prace').value);
+            const s = parseFloat(document.getElementById('s-prace').value);
+            const uhel = parseFloat(document.getElementById('uhel-prace').value);
+
+            if (isNaN(F) || isNaN(s) || isNaN(uhel)) {
+                document.getElementById('vysledek-prace').innerHTML = '<p style="color: red;">Prosím vyplňte všechny hodnoty!</p>';
+                return;
+            }
+
+            const uhelRad = uhel * Math.PI / 180;
+            const W = F * s * Math.cos(uhelRad);
+
+            document.getElementById('vysledek-prace').innerHTML = `
+                <h4>Výsledek:</h4>
+                <p>Práce W = <span class="highlight">${W.toFixed(2)} J</span></p>
+                <p>cos(${uhel}°) = ${Math.cos(uhelRad).toFixed(3)}</p>
+            `;
+        }
+
+        // Kalkulátor výkonu
+        function vypocitejVykon() {
+            const W = parseFloat(document.getElementById('w-vykon').value);
+            const t = parseFloat(document.getElementById('t-vykon').value);
+
+            if (isNaN(W) || isNaN(t) || t === 0) {
+                document.getElementById('vysledek-vykon').innerHTML = '<p style="color: red;">Prosím vyplňte všechny hodnoty!</p>';
+                return;
+            }
+
+            const P = W / t;
+
+            document.getElementById('vysledek-vykon').innerHTML = `
+                <h4>Výsledek:</h4>
+                <p>Průměrný výkon P = <span class="highlight">${P.toFixed(2)} W</span></p>
+            `;
+        }
+
+        // Kalkulátor účinnosti
+        function vypocitejUcinnost() {
+            const Pvst = parseFloat(document.getElementById('p-vst').value);
+            const Pvyst = parseFloat(document.getElementById('p-vyst').value);
+
+            if (isNaN(Pvst) || isNaN(Pvyst) || Pvst === 0) {
+                document.getElementById('vysledek-ucinnost').innerHTML = '<p style="color: red;">Prosím vyplňte všechny hodnoty!</p>';
+                return;
+            }
+
+            const eta = Pvyst / Pvst;
+            const etaProc = eta * 100;
+            const ztraty = Pvst - Pvyst;
+
+            document.getElementById('vysledek-ucinnost').innerHTML = `
+                <h4>Výsledek:</h4>
+                <p>Účinnost η = <span class="highlight">${etaProc.toFixed(1)} %</span> (${eta.toFixed(3)})</p>
+                <p>Ztráty: ${ztraty.toFixed(2)} W</p>
+            `;
+        }
+
+        // Kalkulátor kinetické energie
+        function vypocitejEk() {
+            const m = parseFloat(document.getElementById('m-ek').value);
+            const v = parseFloat(document.getElementById('v-ek').value);
+
+            if (isNaN(m) || isNaN(v)) {
+                document.getElementById('vysledek-ek').innerHTML = '<p style="color: red;">Prosím vyplňte všechny hodnoty!</p>';
+                return;
+            }
+
+            const Ek = 0.5 * m * v * v;
+
+            document.getElementById('vysledek-ek').innerHTML = `
+                <h4>Výsledek:</h4>
+                <p>Kinetická energie E_k = <span class="highlight">${Ek.toFixed(2)} J</span></p>
+                <p>E_k = ½mv² = ½ × ${m} × ${v}² = ${Ek.toFixed(2)} J</p>
+            `;
+        }
+
+        // Kalkulátor potenciální energie
+        function vypocitejEp() {
+            const m = parseFloat(document.getElementById('m-ep').value);
+            const h = parseFloat(document.getElementById('h-ep').value);
+            const g = 9.81;
+
+            if (isNaN(m) || isNaN(h)) {
+                document.getElementById('vysledek-ep').innerHTML = '<p style="color: red;">Prosím vyplňte všechny hodnoty!</p>';
+                return;
+            }
+
+            const Ep = m * g * h;
+
+            document.getElementById('vysledek-ep').innerHTML = `
+                <h4>Výsledek:</h4>
+                <p>Potenciální energie E_p = <span class="highlight">${Ep.toFixed(2)} J</span></p>
+                <p>E_p = mgh = ${m} × 9,81 × ${h} = ${Ep.toFixed(2)} J</p>
+            `;
+        }
+
+        // Kalkulátor volného pádu
+        function vypocitejVolnyPad() {
+            const h = parseFloat(document.getElementById('h-pad').value);
+            const g = 9.81;
+
+            if (isNaN(h)) {
+                document.getElementById('vysledek-pad').innerHTML = '<p style="color: red;">Prosím vyplňte výšku pádu!</p>';
+                return;
+            }
+
+            const v = Math.sqrt(2 * g * h);
+            const vKmh = v * 3.6;
+
+            document.getElementById('vysledek-pad').innerHTML = `
+                <h4>Výsledek:</h4>
+                <p>Rychlost při dopadu v = <span class="highlight">${v.toFixed(2)} m/s</span> (${vKmh.toFixed(1)} km/h)</p>
+                <p><em>Odvození: E_p = E_k → mgh = ½mv² → v = √(2gh)</em></p>
+            `;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,1107 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mechanická práce, výkon a energie - Zadání a řešení (1-6)</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c5282;
+            border-bottom: 3px solid #2c5282;
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            color: #2a4365;
+            margin: 40px 0 20px 0;
+            background: linear-gradient(90deg, #e2e8f0, #f7fafc);
+            padding: 15px 20px;
+            border-radius: 10px;
+            border-left: 5px solid #3182ce;
+            font-size: 20px;
+        }
+
+        .priklad {
+            background-color: white;
+            margin: 25px 0;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-left: 5px solid #3182ce;
+            overflow: hidden;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .priklad:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .priklad-header {
+            background: linear-gradient(135deg, #3182ce, #2b6cb0);
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .priklad-cislo {
+            background: rgba(255,255,255,0.2);
+            padding: 8px 15px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 18px;
+            min-width: 30px;
+            text-align: center;
+        }
+
+        .priklad-title {
+            flex: 1;
+            font-weight: 500;
+            font-size: 16px;
+        }
+
+        .priklad-content {
+            padding: 20px;
+        }
+
+        .zadani {
+            background: linear-gradient(135deg, #f7fafc, #edf2f7);
+            padding: 18px;
+            border-radius: 10px;
+            border: 1px solid #cbd5e0;
+            margin-bottom: 15px;
+        }
+
+        .zadani h3 {
+            color: #2b6cb0;
+            margin: 0 0 10px 0;
+            font-size: 16px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .zadani h3:before {
+            content: "📝";
+            font-size: 18px;
+        }
+
+        .zadani-text {
+            color: #2d3748;
+            margin: 0;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .toggle-reseni {
+            background: linear-gradient(135deg, #4299e1, #3182ce);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+            cursor: pointer;
+            margin-bottom: 15px;
+            transition: all 0.2s ease;
+        }
+
+        .toggle-reseni:hover {
+            background: linear-gradient(135deg, #3182ce, #2c5282);
+            transform: translateY(-1px);
+        }
+
+        .reseni {
+            background: linear-gradient(135deg, #f0fff4, #e6fffa);
+            padding: 18px;
+            border-radius: 10px;
+            border: 1px solid #9ae6b4;
+        }
+
+        .reseni.hidden {
+            display: none;
+        }
+
+        .reseni h3 {
+            color: #2f855a;
+            margin: 0 0 15px 0;
+            font-size: 16px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .reseni h3:before {
+            content: "✅";
+            font-size: 18px;
+        }
+
+        .reseni-text {
+            color: #2d3748;
+            margin: 0;
+            font-size: 14px;
+            line-height: 1.7;
+            white-space: pre-line;
+        }
+
+        .hodnoty {
+            background: linear-gradient(135deg, #bee3f8, #90cdf4);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 600;
+            color: #1a365d;
+        }
+
+        .sekce-popis {
+            background: linear-gradient(135deg, #fef5e7, #fed7aa);
+            padding: 15px 20px;
+            border-radius: 10px;
+            border-left: 4px solid #ed8936;
+            margin-bottom: 20px;
+            font-style: italic;
+            color: #c05621;
+            font-weight: 500;
+        }
+
+        .statistiky {
+            background: linear-gradient(135deg, #e6fffa, #b2f5ea);
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            text-align: center;
+            color: #234e52;
+            font-weight: 600;
+            font-size: 18px;
+        }
+
+        .zdroj {
+            text-align: center;
+            margin-top: 50px;
+            padding: 25px;
+            background: linear-gradient(135deg, #e2e8f0, #edf2f7);
+            border-radius: 15px;
+            border-top: 4px solid #3182ce;
+        }
+
+        .zdroj h3 {
+            color: #2c5282;
+            margin: 0 0 10px 0;
+        }
+
+        .zdroj a {
+            color: #3182ce;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .zdroj a:hover {
+            text-decoration: underline;
+        }
+
+        .rovnice-blok {
+            background: white;
+            border: 2px solid #4299e1;
+            border-left: 6px solid #4299e1;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.8;
+            box-shadow: 0 2px 4px rgba(66, 153, 225, 0.1);
+        }
+
+        .rovnice-blok .rovnice-nadpis {
+            color: #2b6cb0;
+            font-weight: 600;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0 0 10px 0;
+            font-size: 13px;
+        }
+
+        .rovnice-blok .rovnice-text {
+            color: #2d3748;
+            margin: 0;
+            white-space: pre-line;
+        }
+
+        .chyba-box {
+            background: linear-gradient(135deg, #ffe0e0, #ffebee);
+            border-left: 5px solid #f44336;
+            padding: 12px 15px;
+            margin: 15px 0;
+            color: #a00;
+            font-size: 0.95em;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(244, 67, 54, 0.1);
+        }
+        .chyba-box::before {
+            content: "⚠️ Pozor na častou chybu!";
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+            color: #f44336;
+        }
+
+        .motivace-box {
+            background: linear-gradient(135deg, #e3f2fd, #e1f5fe);
+            border-left: 5px solid #2196f3;
+            padding: 12px 15px;
+            margin: 15px 0 25px 0;
+            color: #1a237e;
+            font-size: 0.95em;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(33, 150, 243, 0.1);
+        }
+        .motivace-box::before {
+            content: "💡 Proč se to učím?";
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+            color: #2196f3;
+        }
+
+        .metakognice-box {
+            background: linear-gradient(135deg, #fffde7, #fff9c4);
+            border-left: 5px solid #ffeb3b;
+            padding: 12px 15px;
+            margin: 25px 0 15px 0;
+            color: #795548;
+            font-size: 0.95em;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(255, 235, 59, 0.1);
+        }
+        .metakognice-box::before {
+            content: "🧠 Zamysli se:";
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+            color: #f57f17;
+        }
+        .metakognice-box ul {
+            list-style-type: disc;
+            padding-left: 25px;
+            margin-top: 10px;
+            margin-bottom: 0;
+        }
+        .metakognice-box li {
+            margin-bottom: 5px;
+        }
+
+        .reseni-kroky {
+            counter-reset: reseni-krok-counter;
+            margin-top: 20px;
+        }
+
+        .reseni-krok {
+            margin-bottom: 25px;
+            padding-left: 40px;
+            position: relative;
+            border-left: 2px solid #e0e0e0;
+            padding-bottom: 15px;
+        }
+
+        .reseni-krok::before {
+            counter-increment: reseni-krok-counter;
+            content: counter(reseni-krok-counter);
+            font-weight: bold;
+            font-size: 1.4em;
+            color: #3f51b5;
+            background: white;
+            border: 2px solid #3f51b5;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            left: -16px;
+            top: 0;
+        }
+
+        .reseni-krok h4 {
+            color: #3f51b5;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+            .priklad-header {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+            .priklad-cislo {
+                align-self: center;
+            }
+            .priklad-content {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Mechanická práce, výkon a energie - Zadání a řešení</h1>
+
+    <div class="statistiky">
+        📚 Kompletních <strong>6 příkladů</strong> z mechanické práce, výkonu a energie - zadání a podrobná řešení<br>
+        <button id="master-toggle" onclick="toggleAllReseni()" style="margin-top: 10px; padding: 8px 20px; background: #2c5282; color: white; border: none; border-radius: 20px; cursor: pointer;">
+            🔄 Zobrazit/Skrýt všechna řešení
+        </button>
+    </div>
+
+    <!-- PŘÍKLAD 1 -->
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">1</div>
+            <div class="priklad-title">Práce a výkon stálé síly</div>
+        </div>
+        <div class="priklad-content">
+            <div class="motivace-box">
+                GPS navigace v autech počítá předpokládané časy příjezdu na základě výkonu a práce motoru. Dispečeři dopravních firem plánují trasy podle spotřeby paliva, která přímo souvisí s prací vykonanou motorem. Bez těchto výpočtů by moderní doprava a logistika nemohly efektivně fungovat!
+            </div>
+
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <p class="zadani-text">Na těleso, jež bylo na počátku v klidu, působí výsledná síla <span class="hodnoty">80 N</span> po dobu <span class="hodnoty">5 s</span>. Předpokládejte, že hmotnost tělesa je <span class="hodnoty">2 kg</span> a vypočtěte:</p>
+                <ol style="margin-left: 20px;">
+                    <li><strong>a)</strong> práci, kterou síla vykoná</li>
+                    <li><strong>b)</strong> její průměrný výkon</li>
+                    <li><strong>c)</strong> okamžitý výkon v 5 s od začátku pohybu</li>
+                    <li><strong>d)</strong> porovnejte b) a c), diskutujte případný rozdíl výsledků</li>
+                </ol>
+            </div>
+
+            <button class="toggle-reseni" onclick="toggleReseni(this)" data-cislo="1">🔽 Zobrazit řešení</button>
+
+            <div class="reseni hidden" id="reseni-1">
+                <h3>Řešení</h3>
+
+                <div class="reseni-kroky">
+                    <div class="reseni-krok">
+                        <h4>Analýza situace a převody jednotek</h4>
+                        <p><strong>Dané hodnoty:</strong></p>
+                        <ul>
+                            <li>Síla: $$F = 80 \text{ N}$$</li>
+                            <li>Čas: $$t = 5 \text{ s}$$</li>
+                            <li>Hmotnost: $$m = 2 \text{ kg}$$</li>
+                            <li>Počáteční rychlost: $$v_0 = 0 \text{ m/s}$$ (těleso bylo v klidu)</li>
+                        </ul>
+                        <p>Těleso se pohybuje s konstantním zrychlením - rovnoměrně zrychlený pohyb.</p>
+                        <div class="chyba-box">
+                            Pamatuj: Pro výpočet práce potřebujeme znát dráhu, kterou musíme nejdřív vypočítat přes zrychlení!
+                        </div>
+                    </div>
+
+                    <div class="reseni-krok">
+                        <h4>Výběr fyzikálních rovnic</h4>
+                        <p>Budeme potřebovat:</p>
+                        <div class="rovnice-blok">
+                            <div class="rovnice-nadpis">📐 Druhý Newtonův zákon</div>
+                            <div class="rovnice-text">$$a = \frac{F}{m}$$</div>
+                        </div>
+                        <div class="rovnice-blok">
+                            <div class="rovnice-nadpis">📐 Dráha při rovnoměrně zrychleném pohybu</div>
+                            <div class="rovnice-text">$$s = v_0 t + \frac{1}{2}at^2 = \frac{1}{2}at^2$$ (protože $$v_0 = 0$$)</div>
+                        </div>
+                        <div class="rovnice-blok">
+                            <div class="rovnice-nadpis">📐 Práce a výkon</div>
+                            <div class="rovnice-text">$$W = F \cdot s$$
+$$\bar{P} = \frac{W}{t}$$
+$$P = F \cdot v$$</div>
+                        </div>
+                    </div>
+
+                    <div class="reseni-krok">
+                        <h4>Algebraické vyjádření</h4>
+                        <p>Nejdříve vypočítáme zrychlení:</p>
+                        <div class="rovnice-blok">
+                            <div class="rovnice-text">$$a = \frac{80}{2} = 40 \text{ m/s}^2$$</div>
+                        </div>
+                        <p>Pak dráhu:</p>
+                        <div class="rovnice-blok">
+                            <div class="rovnice-text">$$s = \frac{1}{2} \cdot 40 \cdot 5^2 = 20 \cdot 25 = 500 \text{ m}$$</div>
+                        </div>
+                    </div>
+
+                    <div class="reseni-krok">
+                        <h4>Dosazení a výpočet</h4>
+                        <p><strong>a) Práce:</strong></p>
+                        <div class="rovnice-blok">
+                            <div class="rovnice-text">$$W = F \cdot s = 80 \cdot 500 = 40\,000 \text{ J} = 40 \text{ kJ}$$</div>
+                        </div>
+
+                        <p><strong>b) Průměrný výkon:</strong></p>
+                        <div class="rovnice-blok">
+                            <div class="rovnice-text">$$\bar{P} = \frac{W}{t} = \frac{40\,000}{5} = 8\,000 \text{ W} = 8 \text{ kW}$$</div>
+                        </div>
+
+                        <p><strong>c) Okamžitý výkon v t=5s:</strong></p>
+                        <p>Nejdříve konečná rychlost: $$v = v_0 + at = 0 + 40 \cdot 5 = 200 \text{ m/s}$$</p>
+                        <div class="rovnice-blok">
+                            <div class="rovnice-text">$$P = F \cdot v = 80 \cdot 200 = 16\,000 \text{ W} = 16 \text{ kW}$$</div>
+                        </div>
+
+                        <p><strong>d) Porovnání:</strong></p>
+                        <p>Okamžitý výkon (16 kW) je přesně dvojnásobný oproti průměrnému (8 kW).</p>
+                    </div>
+
+                    <div class="reseni-krok">
+                        <h4>Kontrola a odpověď</h4>
+                        <p><strong>Odpovědi:</strong></p>
+                        <ul>
+                            <li>a) Práce: <strong>W = 40 kJ</strong></li>
+                            <li>b) Průměrný výkon: <strong>P̄ = 8 kW</strong></li>
+                            <li>c) Okamžitý výkon: <strong>P = 16 kW</strong></li>
+                            <li>d) Okamžitý výkon je 2× větší</li>
+                        </ul>
+                        <p><strong>Vysvětlení rozdílu:</strong> Výkon roste lineárně s rychlostí (P = F·v). Protože rychlost roste od 0 do 200 m/s, výkon roste od 0 do 16 kW. Průměrná hodnota lineárního růstu je polovina maxima: (0 + 16)/2 = 8 kW.</p>
+                    </div>
+                </div>
+
+                <div class="metakognice-box">
+                    <ul>
+                        <li>Co by se stalo s výkonem, kdyby síla působila pouze polovinu času?</li>
+                        <li>Proč je okamžitý výkon na konci větší než průměrný?</li>
+                        <li>Jak souvisí graf v-t s rozdílem mezi průměrným a okamžitým výkonem?</li>
+                        <li>V jakých reálných situacích je důležitý okamžitý vs. průměrný výkon?</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PŘÍKLAD 2 -->
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">2</div>
+            <div class="priklad-title">Odraz míče z výšky</div>
+        </div>
+        <div class="priklad-content">
+            <div class="motivace-box">
+                Výrobci sportovního vybavení testují míče podle toho, jak dobře se odrážejí. Basketbalové, tenisové i volejbalové míče musí splňovat přesné standardy odrazovosti. Podobně fungují bezpečnostní nárazníky aut - část energie srážky se přemění na deformaci materiálu, aby chránila posádku!
+            </div>
+
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <p class="zadani-text">Pružný míč o hmotnosti <span class="hodnoty">50 g</span> byl volně puštěn z výšky <span class="hodnoty">1,55 m</span> nad upevněnou vodorovnou kovovou deskou. Po odrazu vyskočil do výšky <span class="hodnoty">1,00 m</span> nad deskou. Vypočtěte (g = <span class="hodnoty">10 m·s⁻²</span>):</p>
+                <ol style="margin-left: 20px;">
+                    <li><strong>a)</strong> rychlost míče těsně před dopadem</li>
+                    <li><strong>b)</strong> hybnost míče těsně před dopadem</li>
+                    <li><strong>c)</strong> kinetickou energii míče těsně před dopadem</li>
+                    <li><strong>d)</strong> změnu energie při dopadu. Zdůvodněte.</li>
+                </ol>
+            </div>
+
+            <button class="toggle-reseni" onclick="toggleReseni(this)" data-cislo="2">🔽 Zobrazit řešení</button>
+
+            <div class="reseni hidden" id="reseni-2">
+                <h3>Řešení</h3>
+
+                <div class="reseni-kroky">
+                    <div class="reseni-krok">
+                        <h4>Analýza situace a převody jednotek</h4>
+                        <p><strong>Dané hodnoty:</strong></p>
+                        <ul>
+                            <li>Hmotnost: $$m = 50 \text{ g} = 0{,}05 \text{ kg}$$</li>
+                            <li>Počáteční výška: $$h_1 = 1{,}55 \text{ m}$$</li>
+                            <li>Výška po odrazu: $$h_2 = 1{,}00 \text{ m}$$</li>
+                            <li>Tíhové zrychlení: $$g = 10 \text{ m/s}^2$$</li>
+                        </ul>
+                        <div class="chyba-box">
+                            Nezapomeň převést gramy na kilogramy! 50 g = 0,05 kg
+                        </div>
+                    </div>
+
+                    <div class="reseni-krok">
+                        <h4>Výběr fyzikální rovnice</h4>
+                        <p>Použijeme zákon zachování mechanické energie:</p>
+                        <div class="rovnice-blok">
+                            <div class="rovnice-nadpis">📐 Zákon zachování energie</div>
+                            <div class="rovnice-text">$$E_p = E_k$$
+$$mgh = \frac{1}{2}mv^2$$</div>
+                        </div>
+                        <div class="rovnice-blok">
+                            <div class="rovnice-nadpis">📐 Hybnost</div>
+                            <div class="rovnice-text">$$p = mv$$</div>
+                        </div>
+                    </div>
+
+                    <div class="reseni-krok">
+                        <h4>Algebraické vyjádření</h4>
+                        <p>Z rovnice $$mgh_1 = \frac{1}{2}mv_1^2$$ zkrátíme hmotnost a vyjádříme rychlost:</p>
+                        <div class="rovnice-blok">
+                            <div class="rovnice-text">$$v_1 = \sqrt{2gh_1} = \sqrt{2 \cdot 10 \cdot 1{,}55} = \sqrt{31} \approx 5{,}57 \text{ m/s}$$</div>
+                        </div>
+                    </div>
+
+                    <div class="reseni-krok">
+                        <h4>Dosazení a výpočet</h4>
+                        <p><strong>a) Rychlost před dopadem:</strong></p>
+                        <div class="rovnice-blok">
+                            <div class="rovnice-text">$$v_1 = 5{,}57 \text{ m/s}$$</div>
+                        </div>
+
+                        <p><strong>b) Hybnost před dopadem:</strong></p>
+                        <div class="rovnice-blok">
+                            <div class="rovnice-text">$$p_1 = mv_1 = 0{,}05 \cdot 5{,}57 = 0{,}28 \text{ kg·m/s}$$</div>
+                        </div>
+
+                        <p><strong>c) Kinetická energie před dopadem:</strong></p>
+                        <div class="rovnice-blok">
+                            <div class="rovnice-text">$$E_{k1} = E_{p1} = mgh_1 = 0{,}05 \cdot 10 \cdot 1{,}55 = 0{,}775 \text{ J}$$</div>
+                        </div>
+
+                        <p><strong>d) Změna energie:</strong></p>
+                        <p>Energie po odrazu: $$E_2 = mgh_2 = 0{,}05 \cdot 10 \cdot 1{,}00 = 0{,}5 \text{ J}$$</p>
+                        <div class="rovnice-blok">
+                            <div class="rovnice-text">$$\Delta E = E_1 - E_2 = 0{,}775 - 0{,}5 = 0{,}275 \text{ J}$$</div>
+                        </div>
+                    </div>
+
+                    <div class="reseni-krok">
+                        <h4>Kontrola a odpověď</h4>
+                        <p><strong>Odpovědi:</strong></p>
+                        <ul>
+                            <li>a) $$v_1 \approx 5{,}57 \text{ m/s}$$</li>
+                            <li>b) $$p_1 \approx 0{,}28 \text{ kg·m/s}$$</li>
+                            <li>c) $$E_{k1} = 0{,}775 \text{ J}$$</li>
+                            <li>d) $$\Delta E = 0{,}275 \text{ J}$$ ztraceno</li>
+                        </ul>
+                        <p><strong>Zdůvodnění:</strong> Srážka nebyla dokonale pružná. Ztracená energie (0,275 J) se přeměnila na teplo (zahřátí míče a desky) a zvuk (slyšeli jsme "bouchnutí"). Energie se nezachovala v mechanické formě, ale celková energie včetně tepla a zvuku se zachovala.</p>
+                    </div>
+                </div>
+
+                <div class="metakognice-box">
+                    <ul>
+                        <li>Proč míč nevyskočil do stejné výšky, ze které byl puštěn?</li>
+                        <li>Co by se stalo, kdyby byl míč dokonale pružný?</li>
+                        <li>Jak byste změřili, kolik energie se přeměnilo na teplo?</li>
+                        <li>Proč některé míče (basketbal) odrážejí lépe než jiné (tenisák)?</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PŘÍKLAD 3 -->
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">3</div>
+            <div class="priklad-title">Vozíčky na nakloněné rovině</div>
+        </div>
+        <div class="priklad-content">
+            <div class="motivace-box">
+                Ve skladech a distribučních centrech se denně pohybují tisíce vozíků s nákladem. Pochopení přeměny energií a srážek je klíčové pro bezpečnost - projektanti musí navrhovat brzdné systémy a ochranné bariéry. Podobné principy se využívají v dopravních systémech, horských drahách a všude, kde se pohybují vozidla!
+            </div>
+
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <p class="zadani-text">Vozíček A o hmotnosti <span class="hodnoty">4 kg</span> s lehkými kolečky je udržován na hladké nakloněné rovině. Po uvolnění bez tření sjede po nakloněné rovině tak, že jeho hmotný střed je na vodorovné rovině o <span class="hodnoty">3,45 m</span> níže než na počátku a narazí do druhého podobného vozíčku B o hmotnosti <span class="hodnoty">2,5 kg</span>, který stál na vodorovné rovině. Po srážce se oba vozíčky pohybují jako jedno těleso. (g = <span class="hodnoty">10 m·s⁻²</span>)</p>
+                <ol style="margin-left: 20px;">
+                    <li><strong>a)</strong> Vypočtěte rychlost vozíčku A bezprostředně před srážkou</li>
+                    <li><strong>b)</strong> Vypočítejte rychlost obou vozíčků po srážce s využitím zákona zachování hybnosti</li>
+                    <li><strong>c)</strong> Vypočtěte kinetickou energii vozíčku A těsně před srážkou a kinetickou energii obou vozíčků po srážce</li>
+                    <li><strong>d)</strong> Vysvětlete, proč je kinetická energie před a po srážce různá</li>
+                </ol>
+            </div>
+
+            <button class="toggle-reseni" onclick="toggleReseni(this)" data-cislo="3">🔽 Zobrazit řešení</button>
+
+            <div class="reseni hidden" id="reseni-3">
+                <h3>Řešení</h3>
+
+                <div class="reseni-kroky">
+                    <div class="reseni-krok">
+                        <h4>Analýza situace a převody jednotek</h4>
+                        <p><strong>Dané hodnoty:</strong></p>
+                        <ul>
+                            <li>Hmotnost vozíčku A: $$m_A = 4 \text{ kg}$$</li>
+                            <li>Hmotnost vozíčku B: $$m_B = 2{,}5 \text{ kg}$$</li>
+                            <li>Výškový rozdíl: $$h = 3{,}45 \text{ m}$$</li>
+                            <li>Počáteční rychlost B: $$v_{B0} = 0$$ (stál)</li>
+                        </ul>
+                        <div class="chyba-box">
+                            Pozor: Po srážce se vozíčky spojí → nepružná srážka! Energie se NEZACHOVÁ, ale hybnost ANO!
+                        </div>
+                    </div>
+
+                    <div class="reseni-krok">
+                        <h4>Výběr fyzikální rovnice</h4>
+                        <p>Pro sjezd vozíčku A - zákon zachování energie:</p>
+                        <div class="rovnice-blok">
+                            <div class="rovnice-nadpis">📐 Zákon zachování energie</div>
+                            <div class="rovnice-text">$$E_p = E_k$$
+$$m_Agh = \frac{1}{2}m_Av_A^2$$</div>
+                        </div>
+                        <p>Pro srážku - zákon zachování hybnosti:</p>
+                        <div class="rovnice-blok">
+                            <div class="rovnice-nadpis">📐 Zákon zachování hybnosti</div>
+                            <div class="rovnice-text">$$m_Av_A + m_Bv_{B0} = (m_A + m_B)v'$$</div>
+                        </div>
+                    </div>
+
+                    <div class="reseni-krok">
+                        <h4>Algebraické vyjádření</h4>
+                        <p>Rychlost A před srážkou:</p>
+                        <div class="rovnice-blok">
+                            <div class="rovnice-text">$$v_A = \sqrt{2gh} = \sqrt{2 \cdot 10 \cdot 3{,}45} = \sqrt{69} \approx 8{,}31 \text{ m/s}$$</div>
+                        </div>
+                        <p>Rychlost po srážce:</p>
+                        <div class="rovnice-blok">
+                            <div class="rovnice-text">$$v' = \frac{m_Av_A}{m_A + m_B} = \frac{4 \cdot 8{,}31}{4 + 2{,}5} = \frac{33{,}24}{6{,}5} \approx 5{,}11 \text{ m/s}$$</div>
+                        </div>
+                    </div>
+
+                    <div class="reseni-krok">
+                        <h4>Dosazení a výpočet</h4>
+                        <p><strong>a) Rychlost A před srážkou:</strong> $$v_A \approx 8{,}31 \text{ m/s}$$</p>
+
+                        <p><strong>b) Rychlost po srážce:</strong> $$v' \approx 5{,}11 \text{ m/s}$$</p>
+
+                        <p><strong>c) Kinetické energie:</strong></p>
+                        <p>Před srážkou (jen A): $$E_{k,před} = m_Agh = 4 \cdot 10 \cdot 3{,}45 = 138 \text{ J}$$</p>
+                        <p>Po srážce (oba): $$E_{k,po} = \frac{1}{2}(m_A+m_B)(v')^2 = \frac{1}{2} \cdot 6{,}5 \cdot (5{,}11)^2 \approx 84{,}9 \text{ J}$$</p>
+
+                        <p><strong>d) Ztráta energie:</strong> $$\Delta E = 138 - 84{,}9 = 53{,}1 \text{ J}$$</p>
+                    </div>
+
+                    <div class="reseni-krok">
+                        <h4>Kontrola a odpověď</h4>
+                        <p><strong>Odpovědi:</strong></p>
+                        <ul>
+                            <li>a) $$v_A \approx 8{,}31 \text{ m/s}$$</li>
+                            <li>b) $$v' \approx 5{,}11 \text{ m/s}$$</li>
+                            <li>c) Před: 138 J, Po: 84,9 J</li>
+                            <li>d) Ztráta: 53,1 J</li>
+                        </ul>
+                        <p><strong>Vysvětlení:</strong> Srážka byla nepružná (vozíčky se spojily). Při nepružné srážce se ZACHOVÁVÁ hybnost, ale NEZACHOVÁVÁ se mechanická energie. Ztracená energie (53,1 J) se přeměnila na teplo, zvuk a deformaci materiálu v místě spojení.</p>
+                    </div>
+                </div>
+
+                <div class="metakognice-box">
+                    <ul>
+                        <li>Co by se stalo, kdyby vozíček B byl těžší než A?</li>
+                        <li>Proč se při nepružné srážce nezachová energie, ale hybnost ano?</li>
+                        <li>Jak byste experimentálně ověřili, že se energie skutečně ztratila?</li>
+                        <li>Jaký význam má tato úloha pro bezpečnost v reálných dopravních systémech?</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PŘÍKLAD 4 -->
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">4</div>
+            <div class="priklad-title">Srážka vozíků v opačném směru</div>
+        </div>
+        <div class="priklad-content">
+            <div class="motivace-box">
+                Crash testy automobilů simulují různé typy srážek, aby inženýři mohli navrhovat bezpečnější vozidla. Airbags, bezpečnostní pásy a deformační zóny fungují na principech zachování hybnosti a přeměny kinetické energie. Pochopení pružných a nepružných srážek je klíčové pro automobilový průmysl!
+            </div>
+
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <p class="zadani-text">Vozík A o hmotnosti <span class="hodnoty">2 kg</span> se pohybuje rychlostí <span class="hodnoty">2 m·s⁻¹</span> a vozík B o hmotnosti <span class="hodnoty">5 kg</span> se pohybuje v opačném směru rychlostí <span class="hodnoty">4 m·s⁻¹</span>.</p>
+                <ol style="margin-left: 20px;">
+                    <li><strong>a)</strong> Předpokládáme-li nepružnou srážku, jak velká část jejich kinetické energie se přemění v jinou formu energie?</li>
+                    <li><strong>b)</strong> Jaká by byla rychlost obou vozíků po srážce, kdyby byla dokonale pružná?</li>
+                </ol>
+            </div>
+
+            <button class="toggle-reseni" onclick="toggleReseni(this)" data-cislo="4">🔽 Zobrazit řešení</button>
+
+            <div class="reseni hidden" id="reseni-4">
+                <h3>Řešení</h3>
+
+                <div class="reseni-kroky">
+                    <div class="reseni-krok">
+                        <h4>Analýza situace a převody jednotek</h4>
+                        <p><strong>Dané hodnoty (volba kladného směru = směr A):</strong></p>
+                        <ul>
+                            <li>Hmotnost A: $$m_A = 2 \text{ kg}$$</li>
+                            <li>Rychlost A: $$v_A = +2 \text{ m/s}$$ (kladný směr)</li>
+                            <li>Hmotnost B: $$m_B = 5 \text{ kg}$$</li>
+                            <li>Rychlost B: $$v_B = -4 \text{ m/s}$$ (opačný směr)</li>
+                        </ul>
+                        <div class="chyba-box">
+                            Pozor na znaménka! Vozíky jedou proti sobě, takže jedna rychlost musí být záporná!
+                        </div>
+                    </div>
+
+                    <div class="reseni-krok">
+                        <h4>Výběr fyzikální rovnice</h4>
+                        <p><strong>Pro nepružnou srážku:</strong></p>
+                        <div class="rovnice-blok">
+                            <div class="rovnice-nadpis">📐 Zákon zachování hybnosti</div>
+                            <div class="rovnice-text">$$m_Av_A + m_Bv_B = (m_A + m_B)v'$$</div>
+                        </div>
+                        <p><strong>Pro pružnou srážku:</strong></p>
+                        <div class="rovnice-blok">
+                            <div class="rovnice-nadpis">📐 Vzorce pro pružnou srážku</div>
+                            <div class="rovnice-text">$$v'_A = \frac{(m_A - m_B)v_A + 2m_Bv_B}{m_A + m_B}$$
+$$v'_B = \frac{2m_Av_A + (m_B - m_A)v_B}{m_A + m_B}$$</div>
+                        </div>
+                    </div>
+
+                    <div class="reseni-krok">
+                        <h4>Algebraické vyjádření</h4>
+                        <p><strong>Nepružná srážka - celková energie před:</strong></p>
+                        <div class="rovnice-blok">
+                            <div class="rovnice-text">$$E_{k,před} = \frac{1}{2}m_Av_A^2 + \frac{1}{2}m_Bv_B^2 = \frac{1}{2} \cdot 2 \cdot 2^2 + \frac{1}{2} \cdot 5 \cdot (-4)^2 = 4 + 40 = 44 \text{ J}$$</div>
+                        </div>
+                        <p><strong>Rychlost po nepružné srážce:</strong></p>
+                        <div class="rovnice-blok">
+                            <div class="rovnice-text">$$v' = \frac{2 \cdot 2 + 5 \cdot (-4)}{2 + 5} = \frac{4 - 20}{7} = -\frac{16}{7} \approx -2{,}29 \text{ m/s}$$</div>
+                        </div>
+                    </div>
+
+                    <div class="reseni-krok">
+                        <h4>Dosazení a výpočet</h4>
+                        <p><strong>a) Nepružná srážka:</strong></p>
+                        <p>Energie po srážce: $$E_{k,po} = \frac{1}{2}(m_A+m_B)(v')^2 = \frac{1}{2} \cdot 7 \cdot (-2{,}29)^2 \approx 18{,}4 \text{ J}$$</p>
+                        <p>Ztráta energie: $$\Delta E_k = 44 - 18{,}4 = 25{,}6 \text{ J}$$</p>
+
+                        <p><strong>b) Pružná srážka:</strong></p>
+                        <div class="rovnice-blok">
+                            <div class="rovnice-text">$$v'_A = \frac{(2-5) \cdot 2 + 2 \cdot 5 \cdot (-4)}{7} = \frac{-6 - 40}{7} = -\frac{46}{7} \approx -6{,}57 \text{ m/s}$$
+
+$$v'_B = \frac{2 \cdot 2 \cdot 2 + (5-2) \cdot (-4)}{7} = \frac{8 - 12}{7} = -\frac{4}{7} \approx -0{,}57 \text{ m/s}$$</div>
+                        </div>
+                    </div>
+
+                    <div class="reseni-krok">
+                        <h4>Kontrola a odpověď</h4>
+                        <p><strong>Odpovědi:</strong></p>
+                        <ul>
+                            <li>a) Při nepružné srážce se ztratilo <strong>25,6 J</strong> energie</li>
+                            <li>b) Po pružné srážce: $$v'_A \approx -6{,}57 \text{ m/s}$$, $$v'_B \approx -0{,}57 \text{ m/s}$$</li>
+                        </ul>
+                        <p><strong>Význam:</strong> U nepružné srážky se část energie "ztratí" (přemění na teplo, zvuk). U pružné srážky se energie zachová a vozíky se od sebe "odrazí". Oba mají po srážce zápornou rychlost → jed ou směrem vozíku B.</p>
+                    </div>
+                </div>
+
+                <div class="metakognice-box">
+                    <ul>
+                        <li>Proč oba vozíky jedou po srážce stejným směrem?</li>
+                        <li>Co je rozdíl mezi pružnou a nepružnou srážkou v reálném světě?</li>
+                        <li>Jak souvisí ztráta energie s bezpečností při autonehodách?</li>
+                        <li>Které předpoklady jsme udělali? (Tření, odpor vzduchu...)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PŘÍKLAD 5 -->
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">5</div>
+            <div class="priklad-title">Odraz míče a impuls síly</div>
+        </div>
+        <div class="priklad-content">
+            <div class="motivace-box">
+                Sportovní výkon v baseballu, tenisu či golfu závisí na tom, jak velkou silou a po jakou dobu působí hráč na míček. Trenéři analyzují dobu kontaktu pálky s míčem a sílu úderu pomocí high-speed kamer. Podobně ochranné pomůcky (helmy, chrániče) prodlužují dobu nárazu, aby snížily maximální sílu působící na tělo!
+            </div>
+
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <p class="zadani-text">Míč o hmotnosti <span class="hodnoty">0,25 kg</span> byl spuštěn z výšky <span class="hodnoty">2,0 m</span> a odrazil do výšky <span class="hodnoty">0,38 m</span>. Vypočtěte:</p>
+                <ol style="margin-left: 20px;">
+                    <li><strong>a)</strong> rychlost míče těsně před dopadem</li>
+                    <li><strong>b)</strong> rychlost míče těsně po odrazu</li>
+                    <li><strong>c)</strong> změnu hybnosti míče při odrazu</li>
+                    <li><strong>d)</strong> sílu působící při odrazu, jestliže kontakt s povrchem trval <span class="hodnoty">0,070 s</span></li>
+                </ol>
+            </div>
+
+            <button class="toggle-reseni" onclick="toggleReseni(this)" data-cislo="5">🔽 Zobrazit řešení</button>
+
+            <div class="reseni hidden" id="reseni-5">
+                <h3>Řešení</h3>
+
+                <div class="reseni-kroky">
+                    <div class="reseni-krok">
+                        <h4>Analýza situace a převody jednotek</h4>
+                        <p><strong>Dané hodnoty:</strong></p>
+                        <ul>
+                            <li>Hmotnost: $$m = 0{,}25 \text{ kg}$$</li>
+                            <li>Počáteční výška: $$h_1 = 2{,}0 \text{ m}$$</li>
+                            <li>Výška po odrazu: $$h_2 = 0{,}38 \text{ m}$$</li>
+                            <li>Doba kontaktu: $$\Delta t = 0{,}070 \text{ s}$$</li>
+                            <li>Tíhové zrychlení: $$g = 9{,}81 \text{ m/s}^2$$</li>
+                        </ul>
+                        <div class="chyba-box">
+                            Hybnost je vektorová veličina! Před dopadem míří dolů (záporná), po odrazu nahoru (kladná).
+                        </div>
+                    </div>
+
+                    <div class="reseni-krok">
+                        <h4>Výběr fyzikální rovnice</h4>
+                        <div class="rovnice-blok">
+                            <div class="rovnice-nadpis">📐 Zákon zachování energie</div>
+                            <div class="rovnice-text">$$E_p = E_k$$
+$$v = \sqrt{2gh}$$</div>
+                        </div>
+                        <div class="rovnice-blok">
+                            <div class="rovnice-nadpis">📐 Impuls síly</div>
+                            <div class="rovnice-text">$$F \cdot \Delta t = \Delta p = m(v_2 - v_1)$$</div>
+                        </div>
+                    </div>
+
+                    <div class="reseni-krok">
+                        <h4>Algebraické vyjádření</h4>
+                        <p><strong>Rychlosti:</strong></p>
+                        <div class="rovnice-blok">
+                            <div class="rovnice-text">$$v_1 = \sqrt{2gh_1} = \sqrt{2 \cdot 9{,}81 \cdot 2{,}0} \approx 6{,}26 \text{ m/s}$$ (dolů)
+$$v_2 = \sqrt{2gh_2} = \sqrt{2 \cdot 9{,}81 \cdot 0{,}38} \approx 2{,}73 \text{ m/s}$$ (nahoru)</div>
+                        </div>
+                    </div>
+
+                    <div class="reseni-krok">
+                        <h4>Dosazení a výpočet</h4>
+                        <p><strong>a) a b) Rychlosti:</strong> $$v_1 \approx 6{,}26 \text{ m/s}$$, $$v_2 \approx 2{,}73 \text{ m/s}$$</p>
+
+                        <p><strong>c) Změna hybnosti (volíme nahoru jako kladný směr):</strong></p>
+                        <div class="rovnice-blok">
+                            <div class="rovnice-text">$$\Delta p = m(v_2 - v_1) = m(+2{,}73 - (-6{,}26)) = 0{,}25 \cdot 8{,}99 \approx 2{,}25 \text{ kg·m/s}$$</div>
+                        </div>
+
+                        <p><strong>d) Síla při odrazu:</strong></p>
+                        <div class="rovnice-blok">
+                            <div class="rovnice-text">$$F = \frac{\Delta p}{\Delta t} = \frac{2{,}25}{0{,}070} \approx 32{,}1 \text{ N}$$</div>
+                        </div>
+                    </div>
+
+                    <div class="reseni-krok">
+                        <h4>Kontrola a odpověď</h4>
+                        <p><strong>Odpovědi:</strong></p>
+                        <ul>
+                            <li>a) $$v_1 \approx 6{,}26 \text{ m/s}$$</li>
+                            <li>b) $$v_2 \approx 2{,}73 \text{ m/s}$$</li>
+                            <li>c) $$\Delta p \approx 2{,}25 \text{ kg·m/s}$$</li>
+                            <li>d) $$F \approx 32{,}1 \text{ N}$$</li>
+                        </ul>
+                        <p><strong>Zajímavost:</strong> Síla 32 N je asi 13× větší než tíha míče (2,45 N)! To ukazuje, jak velké síly vznikají při krátkých nárazech.</p>
+                    </div>
+                </div>
+
+                <div class="metakognice-box">
+                    <ul>
+                        <li>Proč je důležité, že kontakt trval pouze 0,07 sekundy?</li>
+                        <li>Co by se stalo se silou, kdyby kontakt trval déle (např. 0,14 s)?</li>
+                        <li>Jak tento princip využívají ochranné helmy a chrániče?</li>
+                        <li>Proč jsme museli uvažovat směr rychlostí?</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PŘÍKLAD 6 -->
+    <div class="priklad">
+        <div class="priklad-header">
+            <div class="priklad-cislo">6</div>
+            <div class="priklad-title">Srážka železničních vagonů</div>
+        </div>
+        <div class="priklad-content">
+            <div class="motivace-box">
+                Železniční logistika vyžaduje časté spojování a rozpojování vagonů. Dispečeři musí vypočítat, jakou rychlostí smí vagony najíždět, aby nedošlo k poškození nákladu. Pochopení zachování hybnosti a ztráty energie při srážkách je klíčové pro bezpečnou železniční dopravu!
+            </div>
+
+            <div class="zadani">
+                <h3>Zadání</h3>
+                <p class="zadani-text">Železniční vagon o hmotnosti <span class="hodnoty">1800 kg</span> pohybující se rychlostí <span class="hodnoty">1,7 m·s⁻¹</span> narazí do třech stejných stojících vagonů. Po nárazu se vagony spojí a pohybují se společně. Vypočtěte:</p>
+                <ol style="margin-left: 20px;">
+                    <li><strong>a)</strong> rychlost vagonů po nárazu</li>
+                    <li><strong>b)</strong> změnu kinetické energie v důsledku srážky</li>
+                    <li><strong>c)</strong> předpokládejte, že tři vagony nestojí, ale pohybují se všechny stejnou rychlostí <span class="hodnoty">1 m·s⁻¹</span> opačným směrem než uvažovaný vagon a vypočtěte rychlost vagonů po nárazu a změnu kinetické energie</li>
+                </ol>
+            </div>
+
+            <button class="toggle-reseni" onclick="toggleReseni(this)" data-cislo="6">🔽 Zobrazit řešení</button>
+
+            <div class="reseni hidden" id="reseni-6">
+                <h3>Řešení</h3>
+
+                <div class="reseni-kroky">
+                    <div class="reseni-krok">
+                        <h4>Analýza situace a převody jednotek</h4>
+                        <p><strong>Dané hodnoty:</strong></p>
+                        <ul>
+                            <li>Hmotnost 1 vagonu: $$m = 1800 \text{ kg}$$</li>
+                            <li>Vagon A: $$m_A = m$$, $$v_A = 1{,}7 \text{ m/s}$$</li>
+                            <li>Tři vagony B: $$m_B = 3m = 5400 \text{ kg}$$</li>
+                            <li>Celková hmotnost po spojení: $$M = 4m = 7200 \text{ kg}$$</li>
+                        </ul>
+                        <div class="chyba-box">
+                            Pozor: Celková hmotnost je 4 vagony! Nezapomeň na to při výpočtech.
+                        </div>
+                    </div>
+
+                    <div class="reseni-krok">
+                        <h4>Výběr fyzikální rovnice</h4>
+                        <div class="rovnice-blok">
+                            <div class="rovnice-nadpis">📐 Zákon zachování hybnosti</div>
+                            <div class="rovnice-text">$$m_Av_A + m_Bv_B = Mv'$$</div>
+                        </div>
+                    </div>
+
+                    <div class="reseni-krok">
+                        <h4>Algebraické vyjádření</h4>
+                        <p><strong>a) b) Stojící vagony (vB = 0):</strong></p>
+                        <div class="rovnice-blok">
+                            <div class="rovnice-text">$$v' = \frac{m_Av_A}{M} = \frac{1800 \cdot 1{,}7}{7200} = \frac{3060}{7200} = 0{,}425 \text{ m/s}$$</div>
+                        </div>
+                        <p><strong>c) Protijedoucí vagony (vB = -1 m/s):</strong></p>
+                        <div class="rovnice-blok">
+                            <div class="rovnice-text">$$v'' = \frac{m_Av_A + m_Bv_B}{M} = \frac{1800 \cdot 1{,}7 + 5400 \cdot (-1)}{7200} = \frac{3060 - 5400}{7200} = -0{,}325 \text{ m/s}$$</div>
+                        </div>
+                    </div>
+
+                    <div class="reseni-krok">
+                        <h4>Dosazení a výpočet</h4>
+                        <p><strong>a) Rychlost po nárazu (stojící):</strong> $$v' = 0{,}425 \text{ m/s}$$</p>
+
+                        <p><strong>b) Změna energie (stojící):</strong></p>
+                        <div class="rovnice-blok">
+                            <div class="rovnice-text">$$E_{k,před} = \frac{1}{2}m_Av_A^2 = \frac{1}{2} \cdot 1800 \cdot 1{,}7^2 = 2601 \text{ J}$$
+$$E_{k,po} = \frac{1}{2}M(v')^2 = \frac{1}{2} \cdot 7200 \cdot 0{,}425^2 \approx 650 \text{ J}$$
+$$\Delta E_k = 650 - 2601 = -1951 \text{ J}$$</div>
+                        </div>
+
+                        <p><strong>c) Čelní srážka:</strong></p>
+                        <p>Rychlost: $$v'' = -0{,}325 \text{ m/s}$$ (záporná = směr původních tří vagonů)</p>
+                        <div class="rovnice-blok">
+                            <div class="rovnice-text">$$E_{k,před} = \frac{1}{2} \cdot 1800 \cdot 1{,}7^2 + \frac{1}{2} \cdot 5400 \cdot 1^2 = 2601 + 2700 = 5301 \text{ J}$$
+$$E_{k,po} = \frac{1}{2} \cdot 7200 \cdot 0{,}325^2 \approx 380 \text{ J}$$
+$$\Delta E_k = 380 - 5301 = -4921 \text{ J}$$</div>
+                        </div>
+                    </div>
+
+                    <div class="reseni-krok">
+                        <h4>Kontrola a odpověď</h4>
+                        <p><strong>Odpovědi:</strong></p>
+                        <ul>
+                            <li>a) $$v' = 0{,}425 \text{ m/s}$$</li>
+                            <li>b) $$\Delta E_k = -1951 \text{ J}$$</li>
+                            <li>c) Čelní: $$v'' = -0{,}325 \text{ m/s}$$, $$\Delta E_k = -4921 \text{ J}$$</li>
+                        </ul>
+                        <p><strong>Porovnání:</strong> Čelní srážka má mnohem větší ztrátu energie (4921 J vs 1951 J)! To potvrzuje, že čelní srážky jsou mnohem nebezpečnější.</p>
+                    </div>
+                </div>
+
+                <div class="metakognice-box">
+                    <ul>
+                        <li>Proč je ztráta energie u čelní srážky více než dvojnásobná?</li>
+                        <li>Kam se "ztracená" energie přeměnila?</li>
+                        <li>Jak tento princip souvisí s bezpečností silniční dopravy?</li>
+                        <li>Co by se stalo, kdyby všechny 4 vagony jely stejně rychle stejným směrem?</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="zdroj">
+        <h3>📚 Zdroje</h3>
+        <p>Fyzikální příklady pro gymnázium | Mechanická práce, výkon a energie</p>
+        <p style="margin-top: 10px; font-size: 14px; color: #64748b;">6 příkladů s podrobnými řešeními</p>
+    </div>
+
+    <script>
+    // MathJax konfigurace
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true,
+        processEnvironments: true
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+      }
+    };
+
+    // Funkce pro toggle jednotlivých řešení
+    function toggleReseni(button) {
+        const cislo = button.getAttribute('data-cislo');
+        const reseni = document.getElementById('reseni-' + cislo);
+
+        if (!reseni) {
+            console.error("Řešení element nenalezen pro cislo:", cislo);
+            return;
+        }
+
+        if (reseni.classList.contains('hidden')) {
+            reseni.classList.remove('hidden');
+            button.innerHTML = '🔼 Skrýt řešení';
+        } else {
+            reseni.classList.add('hidden');
+            button.innerHTML = '🔽 Zobrazit řešení';
+        }
+
+        // Re-render MathJax po změně viditelnosti
+        if (typeof MathJax !== 'undefined' && MathJax.typesetPromise) {
+            MathJax.typesetPromise([reseni]).catch((err) => console.log("MathJax error:", err.message));
+        }
+    }
+
+    // Funkce pro zobrazení/skrytí všech řešení
+    function toggleAllReseni() {
+        const allReseniDivs = document.querySelectorAll('.reseni.hidden, .reseni:not(.hidden)');
+        const allToggleButtons = document.querySelectorAll('.toggle-reseni');
+
+        const hiddenCount = document.querySelectorAll('.reseni.hidden').length;
+        const shouldShow = hiddenCount > 0;
+
+        allReseniDivs.forEach(reseni => {
+            if (shouldShow) {
+                reseni.classList.remove('hidden');
+            } else {
+                reseni.classList.add('hidden');
+            }
+        });
+
+        allToggleButtons.forEach(button => {
+            if (shouldShow) {
+                button.innerHTML = '🔼 Skrýt řešení';
+            } else {
+                button.innerHTML = '🔽 Zobrazit řešení';
+            }
+        });
+
+        // Re-render MathJax pro všechny viditelné řešení
+        if (typeof MathJax !== 'undefined' && MathJax.typesetPromise) {
+            MathJax.typesetPromise().catch((err) => console.log("MathJax error:", err.message));
+        }
+    }
+    </script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</body>
+</html>

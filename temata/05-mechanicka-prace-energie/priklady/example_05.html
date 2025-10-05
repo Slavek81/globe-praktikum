@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Odraz míče a impuls síly</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>5. Odraz míče a impuls síly</h1>
+            <p>Mechanická práce a energie - řešený příklad</p>
+        </header>
+
+        <!-- Motivační úvod pro studenty -->
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Sportovní výkon v baseballu, tenisu či golfu závisí na tom, jak velkou silou a po jakou dobu působí hráč na míček. Trenéři analyzují dobu kontaktu pálky s míčem a sílu úderu pomocí high-speed kamer. Podobně ochranné pomůcky (helmy, chrániče) prodlužují dobu nárazu, aby snížily maximální sílu působící na tělo!
+        </div>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <div class="zadani-text">
+                Míč o hmotnosti <strong>0,25 kg</strong> byl spuštěn z výšky <strong>2,0 m</strong> a odrazil do výšky <strong>0,38 m</strong>. Vypočtěte:<br><br>
+                <strong>a)</strong> rychlost míče těsně před dopadem<br>
+                <strong>b)</strong> rychlost míče těsně po odrazu<br>
+                <strong>c)</strong> změnu hybnosti míče při odrazu<br>
+                <strong>d)</strong> sílu působící při odrazu, jestliže kontakt s povrchem trval <strong>0,070 s</strong>
+            </div>
+        </section>
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+
+            <div class="calculation-step">
+                <h3>Krok 1: Analýza situace a převody jednotek</h3>
+                <p><strong>Dané hodnoty:</strong></p>
+                <ul>
+                    <li>Hmotnost: $$m = 0{,}25 \text{ kg}$$</li>
+                    <li>Počáteční výška: $$h_1 = 2{,}0 \text{ m}$$</li>
+                    <li>Výška po odrazu: $$h_2 = 0{,}38 \text{ m}$$</li>
+                    <li>Doba kontaktu: $$\Delta t = 0{,}070 \text{ s}$$</li>
+                    <li>Tíhové zrychlení: $$g = 9{,}81 \text{ m/s}^2$$</li>
+                </ul>
+                <div class="chyba-box">
+                    Hybnost je vektorová veličina! Před dopadem míří dolů (záporná), po odrazu nahoru (kladná).
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h3>Krok 2: Výběr fyzikální rovnice</h3>
+                <div class="rovnice-blok">
+                    <div class="rovnice-nadpis">📐 Zákon zachování energie</div>
+                    <div class="rovnice-text">$$E_p = E_k$$
+$$v = \sqrt{2gh}$$</div>
+                </div>
+                <div class="rovnice-blok">
+                    <div class="rovnice-nadpis">📐 Impuls síly</div>
+                    <div class="rovnice-text">$$F \cdot \Delta t = \Delta p = m(v_2 - v_1)$$</div>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h3>Krok 3: Algebraické vyjádření</h3>
+                <p><strong>Rychlosti:</strong></p>
+                <div class="rovnice-blok">
+                    <div class="rovnice-text">$$v_1 = \sqrt{2gh_1} = \sqrt{2 \cdot 9{,}81 \cdot 2{,}0} \approx 6{,}26 \text{ m/s}$$ (dolů)
+$$v_2 = \sqrt{2gh_2} = \sqrt{2 \cdot 9{,}81 \cdot 0{,}38} \approx 2{,}73 \text{ m/s}$$ (nahoru)</div>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h3>Krok 4: Dosazení a výpočet</h3>
+                <p><strong>a) a b) Rychlosti:</strong> $$v_1 \approx 6{,}26 \text{ m/s}$$, $$v_2 \approx 2{,}73 \text{ m/s}$$</p>
+
+                <p><strong>c) Změna hybnosti (volíme nahoru jako kladný směr):</strong></p>
+                <div class="rovnice-blok">
+                    <div class="rovnice-text">$$\Delta p = m(v_2 - v_1) = m(+2{,}73 - (-6{,}26)) = 0{,}25 \cdot 8{,}99 \approx 2{,}25 \text{ kg·m/s}$$</div>
+                </div>
+
+                <p><strong>d) Síla při odrazu:</strong></p>
+                <div class="rovnice-blok">
+                    <div class="rovnice-text">$$F = \frac{\Delta p}{\Delta t} = \frac{2{,}25}{0{,}070} \approx 32{,}1 \text{ N}$$</div>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h3>Krok 5: Kontrola a odpověď</h3>
+                <p><strong>Odpovědi:</strong></p>
+                <ul>
+                    <li>a) $$v_1 \approx 6{,}26 \text{ m/s}$$</li>
+                    <li>b) $$v_2 \approx 2{,}73 \text{ m/s}$$</li>
+                    <li>c) $$\Delta p \approx 2{,}25 \text{ kg·m/s}$$</li>
+                    <li>d) $$F \approx 32{,}1 \text{ N}$$</li>
+                </ul>
+                <p><strong>Zajímavost:</strong> Síla 32 N je asi 13× větší než tíha míče (2,45 N)! To ukazuje, jak velké síly vznikají při krátkých nárazech.</p>
+            </div>
+        </section>
+
+        <section id="shrnuti">
+            <h2>Shrnutí a kontrola</h2>
+
+            <div class="summary-box">
+                <strong>Hlavní poznatky:</strong>
+                <ul>
+                    <li>Rychlost při volném pádu: v = √(2gh)</li>
+                    <li>Změna hybnosti: Δp = m(v₂ - v₁) - pozor na znaménka!</li>
+                    <li>Impuls síly: F·Δt = Δp</li>
+                    <li>Krátký kontakt → velká síla (pro stejnou změnu hybnosti)</li>
+                </ul>
+            </div>
+
+            <div class="info-box">
+                <strong>Kontrola rozumnosti:</strong> Síla 32 N je více než 10× větší než tíha míče - typické pro krátké nárazy.
+            </div>
+
+            <details>
+                <summary>🤔 Metakognitivní otázky</summary>
+                <div>
+                    <ul>
+                        <li>Proč je důležité, že kontakt trval pouze 0,07 sekundy?</li>
+                        <li>Co by se stalo se silou, kdyby kontakt trval déle (např. 0,14 s)?</li>
+                        <li>Jak tento princip využívají ochranné helmy a chrániče?</li>
+                        <li>Proč jsme museli uvažovat směr rychlostí?</li>
+                    </ul>
+                </div>
+            </details>
+        </section>
+
+    </main>
+</body>
+</html>

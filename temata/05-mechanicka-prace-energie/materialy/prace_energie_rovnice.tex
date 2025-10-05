@@ -1,0 +1,331 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[czech]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\usepackage{fancyhdr}
+
+\geometry{margin=2cm}
+
+\tcbuselibrary{skins,breakable}
+
+% Definice boxů
+\newtcolorbox{definitionbox}{
+    colback=green!5!white,
+    colframe=green!50!black,
+    fonttitle=\bfseries,
+    breakable,
+    enhanced
+}
+
+\newtcolorbox{equationbox}{
+    colback=blue!5!white,
+    colframe=blue!50!black,
+    fonttitle=\bfseries,
+    breakable,
+    enhanced
+}
+
+\newtcolorbox{notebox}{
+    colback=gray!5!white,
+    colframe=gray!50!black,
+    fonttitle=\bfseries,
+    breakable,
+    enhanced
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Gymnázium Globe}
+\lhead{Mechanická práce a energie - Rovnice a definice}
+\cfoot{\thepage}
+
+\begin{document}
+
+\begin{center}
+    {\Huge \textbf{MECHANICKÁ PRÁCE A ENERGIE}}\\[0.5cm]
+    {\Large Kompletní přehled rovnic a definic}\\[1cm]
+\end{center}
+
+\section{MECHANICKÁ PRÁCE}
+
+\subsection{Definice mechanické práce}
+
+\begin{definitionbox}
+Mechanická práce je fyzikální veličina charakterizující děj, při kterém se přemísťují tělesa vlivem působení síly.
+\end{definitionbox}
+
+\begin{equationbox}
+\begin{equation*}
+    W = F \cdot s \cdot \cos\alpha
+\end{equation*}
+\end{equationbox}
+
+\begin{notebox}
+kde: $W$ [J] - práce (Joule), $F$ [N] - síla, $s$ [m] - dráha, $\alpha$ [°] - úhel mezi silou a směrem pohybu
+\end{notebox}
+
+\subsection{Speciální případy}
+
+\begin{notebox}
+\begin{itemize}
+    \item $\alpha = 0°$: $\cos 0° = 1$ $\Rightarrow$ $W = F \cdot s$ (kladná práce)
+    \item $\alpha = 90°$: $\cos 90° = 0$ $\Rightarrow$ $W = 0$ (žádná práce)
+    \item $\alpha = 180°$: $\cos 180° = -1$ $\Rightarrow$ $W = -F \cdot s$ (záporná práce)
+\end{itemize}
+\end{notebox}
+
+\section{VÝKON}
+
+\subsection{Průměrný výkon}
+
+\begin{definitionbox}
+Výkon vyjadřuje, jak rychle se práce koná.
+\end{definitionbox}
+
+\begin{equationbox}
+\begin{equation*}
+    P_p = \frac{W}{t}
+\end{equation*}
+\end{equationbox}
+
+\begin{notebox}
+kde: $P_p$ [W] - průměrný výkon (Watt), $W$ [J] - práce, $t$ [s] - čas
+\end{notebox}
+
+\subsection{Okamžitý výkon}
+
+\begin{equationbox}
+\begin{equation*}
+    P = F \cdot v
+\end{equation*}
+\end{equationbox}
+
+\begin{notebox}
+kde: $P$ [W] - okamžitý výkon, $F$ [N] - síla, $v$ [m$\cdot$s$^{-1}$] - rychlost
+\end{notebox}
+
+\newpage
+
+\section{ÚČINNOST}
+
+\begin{definitionbox}
+Účinnost je poměr mezi výstupní (užitečnou) a vstupní (dodanou) energií nebo výkonem.
+\end{definitionbox}
+
+\begin{equationbox}
+\begin{equation*}
+    \eta = \frac{P_{\text{výst}}}{P_{\text{vst}}} = \frac{W_{\text{výst}}}{W_{\text{vst}}}
+\end{equation*}
+\end{equationbox}
+
+\begin{notebox}
+kde: $\eta$ - účinnost (řecké písmeno éta) [bezrozměrné číslo 0-1 nebo \%]\\
+\textbf{Důležité:} $\eta < 1$ (vždy menší než 100\%)
+\end{notebox}
+
+\section{MECHANICKÁ ENERGIE}
+
+\subsection{Kinetická energie (pohybová)}
+
+\begin{definitionbox}
+Energie, kterou má těleso díky svému pohybu.
+\end{definitionbox}
+
+\begin{equationbox}
+\begin{equation*}
+    E_k = \frac{1}{2}mv^2
+\end{equation*}
+\end{equationbox}
+
+\begin{notebox}
+kde: $E_k$ [J] - kinetická energie, $m$ [kg] - hmotnost, $v$ [m$\cdot$s$^{-1}$] - rychlost\\
+\textbf{Pozor:} Při zdvojnásobení rychlosti se $E_k$ zčtyřnásobí!
+\end{notebox}
+
+\subsection{Potenciální energie (polohová)}
+
+\begin{definitionbox}
+Energie, kterou má těleso díky své poloze v gravitačním poli.
+\end{definitionbox}
+
+\begin{equationbox}
+\begin{equation*}
+    E_p = mgh
+\end{equation*}
+\end{equationbox}
+
+\begin{notebox}
+kde: $E_p$ [J] - potenciální energie, $m$ [kg] - hmotnost, $g = 9{,}81$ m$\cdot$s$^{-2}$ - tíhové zrychlení, $h$ [m] - výška nad nulovou hladinou
+\end{notebox}
+
+\newpage
+
+\section{ZÁKON ZACHOVÁNÍ MECHANICKÉ ENERGIE}
+
+\begin{definitionbox}
+V izolované soustavě bez odporových sil se celková mechanická energie nemění.
+\end{definitionbox}
+
+\begin{equationbox}
+\begin{equation*}
+    E_k + E_p = \text{konst.}
+\end{equation*}
+\end{equationbox}
+
+\begin{equationbox}
+\begin{equation*}
+    \frac{1}{2}mv^2 + mgh = \text{konst.}
+\end{equation*}
+\end{equationbox}
+
+\subsection{Rychlost při volném pádu}
+
+\begin{equationbox}
+\begin{equation*}
+    v = \sqrt{2gh}
+\end{equation*}
+\end{equationbox}
+
+\begin{notebox}
+Odvozeno ze zákona zachování energie: $E_p = E_k$ $\Rightarrow$ $mgh = \frac{1}{2}mv^2$
+\end{notebox}
+
+\section{SRÁŽKY TĚLES}
+
+\subsection{Zákon zachování hybnosti}
+
+\begin{definitionbox}
+Platí vždy u všech typů srážek.
+\end{definitionbox}
+
+\begin{equationbox}
+\begin{equation*}
+    \vec{p}_{\text{před}} = \vec{p}_{\text{po}}
+\end{equation*}
+\end{equationbox}
+
+\begin{equationbox}
+\begin{equation*}
+    m_1\vec{v}_1 + m_2\vec{v}_2 = m_1\vec{v}'_1 + m_2\vec{v}'_2
+\end{equation*}
+\end{equationbox}
+
+\begin{notebox}
+kde: $\vec{p}$ [kg$\cdot$m$\cdot$s$^{-1}$] - hybnost (vektorová veličina!)
+\end{notebox}
+
+\subsection{Pružná srážka}
+
+\begin{definitionbox}
+Tělesa se od sebe odrazí. Zachovává se hybnost i kinetická energie.
+\end{definitionbox}
+
+\begin{equationbox}
+\begin{equation*}
+    E_{k,\text{před}} = E_{k,\text{po}}
+\end{equation*}
+\end{equationbox}
+
+\begin{equationbox}
+\begin{equation*}
+    \frac{1}{2}m_1v_1^2 + \frac{1}{2}m_2v_2^2 = \frac{1}{2}m_1v_1'^2 + \frac{1}{2}m_2v_2'^2
+\end{equation*}
+\end{equationbox}
+
+\subsection{Nepružná srážka}
+
+\begin{definitionbox}
+Tělesa se spojí nebo trvale zdeformují. Zachovává se hybnost, ale nikoliv kinetická energie.
+\end{definitionbox}
+
+\begin{equationbox}
+\begin{equation*}
+    E_{k,\text{před}} > E_{k,\text{po}}
+\end{equation*}
+\end{equationbox}
+
+\begin{notebox}
+Část energie se přemění na: teplo, zvuk, deformaci, vibrace
+\end{notebox}
+
+\subsection{Dokonale nepružná srážka}
+
+\begin{definitionbox}
+Tělesa se spojí a pohybují společně.
+\end{definitionbox}
+
+\begin{equationbox}
+\begin{equation*}
+    m_1v_1 + m_2v_2 = (m_1 + m_2)v'
+\end{equation*}
+\end{equationbox}
+
+\begin{notebox}
+kde: $v'$ [m$\cdot$s$^{-1}$] - společná rychlost po srážce
+\end{notebox}
+
+\newpage
+
+\section{IMPULZ SÍLY}
+
+\begin{definitionbox}
+Impulz síly je změna hybnosti tělesa.
+\end{definitionbox}
+
+\begin{equationbox}
+\begin{equation*}
+    I = F \cdot \Delta t = \Delta p = m \cdot \Delta v
+\end{equation*}
+\end{equationbox}
+
+\begin{notebox}
+kde: $I$ [N$\cdot$s] - impulz síly, $\Delta t$ [s] - doba působení síly, $\Delta p$ [kg$\cdot$m$\cdot$s$^{-1}$] - změna hybnosti
+\end{notebox}
+
+\section{UŽITEČNÉ VZTAHY}
+
+\subsection{Převody jednotek}
+
+\begin{notebox}
+\begin{itemize}
+    \item 1 J = 1 N$\cdot$m = 1 kg$\cdot$m$^2\cdot$s$^{-2}$
+    \item 1 W = 1 J$\cdot$s$^{-1}$ = 1 N$\cdot$m$\cdot$s$^{-1}$
+    \item 1 kWh = 3,6 MJ (1 kilowatthodina = 3,6 megajoulů)
+    \item 1 km$\cdot$h$^{-1}$ = 1/3,6 m$\cdot$s$^{-1}$
+    \item 1 m$\cdot$s$^{-1}$ = 3,6 km$\cdot$h$^{-1}$
+\end{itemize}
+\end{notebox}
+
+\subsection{Důležité konstanty}
+
+\begin{notebox}
+\begin{itemize}
+    \item $g = 9{,}81$ m$\cdot$s$^{-2}$ $\approx$ 10 m$\cdot$s$^{-2}$ (tíhové zrychlení na Zemi)
+\end{itemize}
+\end{notebox}
+
+\subsection{Praktické příklady účinnosti}
+
+\begin{notebox}
+\begin{itemize}
+    \item Klasická žárovka: $\eta \approx 5\%$
+    \item LED žárovka: $\eta \approx 40\%$
+    \item Spalovací motor: $\eta \approx 25-30\%$
+    \item Elektromobil: $\eta \approx 85-90\%$
+    \item Cyklista: $\eta \approx 20\%$
+    \item Zdvihací jeřáb: $\eta \approx 60-70\%$
+\end{itemize}
+\end{notebox}
+
+\vfill
+
+\begin{center}
+\rule{0.8\textwidth}{0.5pt}\\[0.3cm]
+{\small Gymnázium Globe | Praktické aplikace fyziky a chemie}
+\end{center}
+
+\end{document}

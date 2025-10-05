@@ -1,0 +1,478 @@
+/* Jednotný styl pro všechny HTML soubory - Fyzika a chemie */
+
+:root {
+    --primary-color: #005A9C;
+    --secondary-color: #00AEEF;
+    --accent-color: #FDBB30;
+    --bg-color: #f9f9f9;
+    --text-color: #333;
+    --header-color: #2c3e50;
+    --border-color: #e0e0e0;
+    --shadow: 0 4px 12px rgba(0,0,0,0.08);
+    --formula-bg: #fff3cd;
+    --formula-border: #ffc107;
+    --result-bg: #d4edda;
+    --result-border: #28a745;
+    --note-bg: #e8f4fd;
+    --note-border: #2196f3;
+}
+
+/* Základní styly pro celou stránku */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.7;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    margin: 0;
+    padding: 0;
+}
+
+/* Hlavní kontejner pro obsah */
+main {
+    max-width: 1100px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+/* Styly pro hlavičku */
+header {
+    text-align: center;
+    padding: 30px 20px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    margin-bottom: 30px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.8em;
+    font-weight: 600;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+header p {
+    margin: 10px 0 0 0;
+    font-size: 1.2em;
+    opacity: 0.9;
+    font-weight: 300;
+}
+
+/* Styly pro sekce */
+section {
+    background: white;
+    padding: 25px;
+    margin: 25px 0;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    border-left: 4px solid var(--primary-color);
+}
+
+section h2 {
+    color: var(--header-color);
+    margin: 0 0 20px 0;
+    font-size: 1.8em;
+    font-weight: 600;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 10px;
+}
+
+section h3 {
+    color: var(--primary-color);
+    margin: 25px 0 15px 0;
+    font-size: 1.3em;
+    font-weight: 600;
+}
+
+/* Styly pro tabulky */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    box-shadow: var(--shadow);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+thead {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+}
+
+thead th {
+    padding: 15px 12px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 1.1em;
+}
+
+tbody tr {
+    border-bottom: 1px solid var(--border-color);
+    transition: background-color 0.2s ease;
+}
+
+tbody tr:hover {
+    background-color: #f8f9fa;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #fafbfc;
+}
+
+tbody td {
+    padding: 12px;
+    font-size: 1em;
+}
+
+.variable {
+    font-weight: 600;
+    color: var(--primary-color);
+    font-style: italic;
+}
+
+.value {
+    font-weight: 700;
+    color: var(--accent-color);
+    background-color: #fef9e7;
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+.unit {
+    font-style: italic;
+    color: #666;
+    font-size: 0.9em;
+}
+
+/* Styly pro vzorce */
+.formula-box {
+    background-color: var(--formula-bg);
+    border: 2px solid var(--formula-border);
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px 0;
+    text-align: center;
+}
+
+.formula-box strong {
+    color: var(--header-color);
+    font-size: 1.1em;
+    display: block;
+    margin-bottom: 10px;
+}
+
+/* Styly pro výsledky */
+.result-box {
+    background-color: var(--result-bg);
+    border: 2px solid var(--result-border);
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px 0;
+    text-align: center;
+}
+
+.result-box strong {
+    color: var(--header-color);
+    font-size: 1.3em;
+    display: block;
+    margin-bottom: 10px;
+}
+
+/* Styly pro poznámky */
+.note-box {
+    background-color: var(--note-bg);
+    border: 2px solid var(--note-border);
+    border-radius: 8px;
+    padding: 15px;
+    margin: 20px 0;
+}
+
+.note-box strong {
+    color: var(--primary-color);
+    font-size: 1.1em;
+}
+
+/* Styly pro kroky postupu */
+article {
+    margin: 25px 0;
+    padding: 20px;
+    background: #fafbfc;
+    border-radius: 8px;
+    border-left: 4px solid var(--secondary-color);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    main {
+        margin: 10px;
+        padding: 15px;
+    }
+
+    header h1 {
+        font-size: 2.2em;
+    }
+
+    section {
+        padding: 20px;
+        margin: 20px 0;
+    }
+
+    table {
+        font-size: 0.9em;
+    }
+
+    thead th, tbody td {
+        padding: 10px 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.8em;
+    }
+
+    section h2 {
+        font-size: 1.5em;
+    }
+
+    table {
+        font-size: 0.8em;
+    }
+
+    thead th, tbody td {
+        padding: 8px 6px;
+    }
+}
+
+/* ========================================= */
+/* EDUKATIVNÍ PRVKY PRO ZLEPŠENÍ VÝUKY     */
+/* ========================================= */
+
+/* Oddělovač sekcí */
+.section-separator {
+    border: none;
+    border-top: 1px dashed #e0e0e0;
+    margin: 20px 0;
+}
+
+/* Úvodní kontext */
+.intro-context {
+    background-color: #f8f9fa;
+    border-left: 4px solid var(--secondary-color);
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 6px;
+    font-style: italic;
+    color: #495057;
+}
+
+/* Edukativní boxy */
+.tip-box, .warning-box, .analogy-box, .interpretation-box, .summary-box, .equation-logic-box, .alternative-method-box, .info-box {
+    padding: 12px 15px;
+    margin: 15px 0;
+    border-radius: 6px;
+    font-size: 0.95em;
+    line-height: 1.5;
+    position: relative;
+    padding-left: 45px; /* Místo pro ikonu */
+}
+
+/* Tip box - tipy a rady */
+.tip-box {
+    background-color: #fffbe6;
+    border-left: 4px solid #ffcc00;
+    color: #8a6d00;
+}
+.tip-box::before {
+    content: '💡';
+    position: absolute;
+    left: 15px;
+    top: 12px;
+    font-size: 1.2em;
+}
+
+/* Warning box - upozornění na chyby */
+.warning-box {
+    background-color: #fff0f0;
+    border-left: 4px solid #ff4d4f;
+    color: #a30000;
+}
+.warning-box::before {
+    content: '⚠️';
+    position: absolute;
+    left: 15px;
+    top: 12px;
+    font-size: 1.2em;
+}
+
+/* Analogy box - praktické analogie */
+.analogy-box {
+    background-color: #e6ffe6;
+    border-left: 4px solid #33cc33;
+    color: #006600;
+}
+.analogy-box::before {
+    content: '🌍';
+    position: absolute;
+    left: 15px;
+    top: 12px;
+    font-size: 1.2em;
+}
+
+/* Interpretation box - fyzikální interpretace */
+.interpretation-box {
+    background-color: #f0e6ff;
+    border-left: 4px solid #9933ff;
+    color: #4d0080;
+}
+.interpretation-box::before {
+    content: '📈';
+    position: absolute;
+    left: 15px;
+    top: 12px;
+    font-size: 1.2em;
+}
+
+/* Summary box - shrnutí */
+.summary-box {
+    background-color: #e0f2f7;
+    border-left: 4px solid #00bcd4;
+    color: #006064;
+    font-weight: bold;
+}
+.summary-box::before {
+    content: '✅';
+    position: absolute;
+    left: 15px;
+    top: 12px;
+    font-size: 1.2em;
+}
+
+/* Equation logic box - logika výběru rovnice */
+.equation-logic-box {
+    background-color: #f8f8f8;
+    border-left: 4px solid #888;
+    color: #555;
+}
+.equation-logic-box::before {
+    content: '🧠';
+    position: absolute;
+    left: 15px;
+    top: 12px;
+    font-size: 1.2em;
+}
+
+/* Alternative method box - alternativní postupy */
+.alternative-method-box {
+    background-color: #f0f8ff;
+    border-left: 4px solid #6699ff;
+    color: #003366;
+}
+.alternative-method-box::before {
+    content: '🔄';
+    position: absolute;
+    left: 15px;
+    top: 12px;
+    font-size: 1.2em;
+}
+
+/* Info box - obecné informace */
+.info-box {
+    background-color: #e6f7ff;
+    border-left: 4px solid #3399ff;
+    color: #225a80;
+}
+.info-box::before {
+    content: 'ℹ️';
+    position: absolute;
+    left: 15px;
+    top: 12px;
+    font-size: 1.2em;
+}
+
+/* Rozbalovací sekce */
+details {
+    margin: 15px 0;
+    background-color: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+}
+
+summary {
+    font-weight: bold;
+    padding: 10px 15px;
+    cursor: pointer;
+    outline: none;
+    list-style: none;
+    color: var(--primary-color);
+    background-color: #f1f3f4;
+    border-radius: 6px 6px 0 0;
+}
+
+summary::-webkit-details-marker {
+    display: none;
+}
+
+summary::before {
+    content: '▶️ ';
+    margin-right: 8px;
+    transition: transform 0.2s;
+}
+
+details[open] summary::before {
+    content: '🔽 ';
+    transform: rotate(90deg);
+}
+
+details p, details ul, details div {
+    padding: 0 15px 10px 15px;
+    margin: 10px 0;
+}
+
+details[open] summary {
+    border-radius: 6px 6px 0 0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+/* Vizualizace situace */
+.situation-visual {
+    background-color: #f8f9fa;
+    border: 2px dashed #6c757d;
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 8px;
+    text-align: center;
+    font-family: monospace;
+    color: #495057;
+}
+
+/* Vylepšené calculation-step */
+.calculation-step {
+    background-color: #ffffff;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.calculation-step h4 {
+    color: var(--primary-color);
+    margin-top: 0;
+    margin-bottom: 15px;
+    border-bottom: 2px solid var(--secondary-color);
+    padding-bottom: 8px;
+}
+
+/* Responsive úpravy pro edukativní prvky */
+@media (max-width: 768px) {
+    .tip-box, .warning-box, .analogy-box, .interpretation-box, .summary-box, .equation-logic-box, .alternative-method-box, .info-box {
+        padding-left: 15px;
+        font-size: 0.9em;
+    }
+
+    .tip-box::before, .warning-box::before, .analogy-box::before, .interpretation-box::before, .summary-box::before, .equation-logic-box::before, .alternative-method-box::before, .info-box::before {
+        display: none; /* Skryj ikony na mobilech pro lepší čitelnost */
+    }
+}

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Srážka železničních vagonů</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>6. Srážka železničních vagonů</h1>
+            <p>Mechanická práce a energie - řešený příklad</p>
+        </header>
+
+        <!-- Motivační úvod pro studenty -->
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Železniční logistika vyžaduje časté spojování a rozpojování vagonů. Dispečeři musí vypočítat, jakou rychlostí smí vagony najíždět, aby nedošlo k poškození nákladu. Pochopení zachování hybnosti a ztráty energie při srážkách je klíčové pro bezpečnou železniční dopravu!
+        </div>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <div class="zadani-text">
+                Železniční vagon o hmotnosti <strong>1800 kg</strong> pohybující se rychlostí <strong>1,7 m·s⁻¹</strong> narazí do třech stejných stojících vagonů. Po nárazu se vagony spojí a pohybují se společně. Vypočtěte:<br><br>
+                <strong>a)</strong> rychlost vagonů po nárazu<br>
+                <strong>b)</strong> změnu kinetické energie v důsledku srážky<br>
+                <strong>c)</strong> předpokládejte, že tři vagony nestojí, ale pohybují se všechny stejnou rychlostí <strong>1 m·s⁻¹</strong> opačným směrem než uvažovaný vagon a vypočtěte rychlost vagonů po nárazu a změnu kinetické energie
+            </div>
+        </section>
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+
+            <div class="calculation-step">
+                <h3>Krok 1: Analýza situace a převody jednotek</h3>
+                <p><strong>Dané hodnoty:</strong></p>
+                <ul>
+                    <li>Hmotnost 1 vagonu: $$m = 1800 \text{ kg}$$</li>
+                    <li>Vagon A: $$m_A = m$$, $$v_A = 1{,}7 \text{ m/s}$$</li>
+                    <li>Tři vagony B: $$m_B = 3m = 5400 \text{ kg}$$</li>
+                    <li>Celková hmotnost po spojení: $$M = 4m = 7200 \text{ kg}$$</li>
+                </ul>
+                <div class="chyba-box">
+                    Pozor: Celková hmotnost je 4 vagony! Nezapomeň na to při výpočtech.
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h3>Krok 2: Výběr fyzikální rovnice</h3>
+                <div class="rovnice-blok">
+                    <div class="rovnice-nadpis">📐 Zákon zachování hybnosti</div>
+                    <div class="rovnice-text">$$m_Av_A + m_Bv_B = Mv'$$</div>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h3>Krok 3: Algebraické vyjádření</h3>
+                <p><strong>a) b) Stojící vagony (vB = 0):</strong></p>
+                <div class="rovnice-blok">
+                    <div class="rovnice-text">$$v' = \frac{m_Av_A}{M} = \frac{1800 \cdot 1{,}7}{7200} = \frac{3060}{7200} = 0{,}425 \text{ m/s}$$</div>
+                </div>
+                <p><strong>c) Protijedoucí vagony (vB = -1 m/s):</strong></p>
+                <div class="rovnice-blok">
+                    <div class="rovnice-text">$$v'' = \frac{m_Av_A + m_Bv_B}{M} = \frac{1800 \cdot 1{,}7 + 5400 \cdot (-1)}{7200} = \frac{3060 - 5400}{7200} = -0{,}325 \text{ m/s}$$</div>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h3>Krok 4: Dosazení a výpočet</h3>
+                <p><strong>a) Rychlost po nárazu (stojící):</strong> $$v' = 0{,}425 \text{ m/s}$$</p>
+
+                <p><strong>b) Změna energie (stojící):</strong></p>
+                <div class="rovnice-blok">
+                    <div class="rovnice-text">$$E_{k,před} = \frac{1}{2}m_Av_A^2 = \frac{1}{2} \cdot 1800 \cdot 1{,}7^2 = 2601 \text{ J}$$
+$$E_{k,po} = \frac{1}{2}M(v')^2 = \frac{1}{2} \cdot 7200 \cdot 0{,}425^2 \approx 650 \text{ J}$$
+$$\Delta E_k = 650 - 2601 = -1951 \text{ J}$$</div>
+                </div>
+
+                <p><strong>c) Čelní srážka:</strong></p>
+                <p>Rychlost: $$v'' = -0{,}325 \text{ m/s}$$ (záporná = směr původních tří vagonů)</p>
+                <div class="rovnice-blok">
+                    <div class="rovnice-text">$$E_{k,před} = \frac{1}{2} \cdot 1800 \cdot 1{,}7^2 + \frac{1}{2} \cdot 5400 \cdot 1^2 = 2601 + 2700 = 5301 \text{ J}$$
+$$E_{k,po} = \frac{1}{2} \cdot 7200 \cdot 0{,}325^2 \approx 380 \text{ J}$$
+$$\Delta E_k = 380 - 5301 = -4921 \text{ J}$$</div>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h3>Krok 5: Kontrola a odpověď</h3>
+                <p><strong>Odpovědi:</strong></p>
+                <ul>
+                    <li>a) $$v' = 0{,}425 \text{ m/s}$$</li>
+                    <li>b) $$\Delta E_k = -1951 \text{ J}$$</li>
+                    <li>c) Čelní: $$v'' = -0{,}325 \text{ m/s}$$, $$\Delta E_k = -4921 \text{ J}$$</li>
+                </ul>
+                <p><strong>Porovnání:</strong> Čelní srážka má mnohem větší ztrátu energie (4921 J vs 1951 J)! To potvrzuje, že čelní srážky jsou mnohem nebezpečnější.</p>
+            </div>
+        </section>
+
+        <section id="shrnuti">
+            <h2>Shrnutí a kontrola</h2>
+
+            <div class="summary-box">
+                <strong>Hlavní poznatky:</strong>
+                <ul>
+                    <li>Při nepružné srážce se zachovává hybnost, ne energie</li>
+                    <li>Rychlost po srážce: v' = (m₁v₁ + m₂v₂)/(m₁ + m₂)</li>
+                    <li>Čelní srážka má mnohem větší ztrátu energie než srážka se stojícím objektem</li>
+                    <li>Ztracená energie se přemění na teplo, zvuk a deformaci</li>
+                </ul>
+            </div>
+
+            <div class="info-box">
+                <strong>Kontrola rozumnosti:</strong> U čelní srážky se ztratí 93% původní energie (4921 z 5301 J) - extrémně nebezpečné!
+            </div>
+
+            <details>
+                <summary>🤔 Metakognitivní otázky</summary>
+                <div>
+                    <ul>
+                        <li>Proč je ztráta energie u čelní srážky více než dvojnásobná?</li>
+                        <li>Kam se "ztracená" energie přeměnila?</li>
+                        <li>Jak tento princip souvisí s bezpečností silniční dopravy?</li>
+                        <li>Co by se stalo, kdyby všechny 4 vagony jely stejně rychle stejným směrem?</li>
+                    </ul>
+                </div>
+            </details>
+        </section>
+
+    </main>
+</body>
+</html>

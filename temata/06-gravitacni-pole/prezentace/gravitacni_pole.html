@@ -1,0 +1,1514 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gravitační pole - Teorie pro střední školy</title>
+
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+                ignoreHtmlClass: 'tex2jax_ignore',
+                processHtmlClass: 'tex2jax_process'
+            }
+        };
+    </script>
+
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c5282;
+            border-bottom: 3px solid #2c5282;
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            color: #2a4365;
+            margin: 40px 0 20px 0;
+            background: linear-gradient(90deg, #e2e8f0, #f7fafc);
+            padding: 15px 20px;
+            border-radius: 10px;
+            border-left: 5px solid #3182ce;
+            font-size: 20px;
+        }
+
+        .teorie-sekce {
+            background-color: white;
+            margin: 25px 0;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-left: 5px solid #3182ce;
+            overflow: hidden;
+        }
+
+        .sekce-header {
+            background: linear-gradient(135deg, #3182ce, #2b6cb0);
+            color: white;
+            padding: 15px 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .sekce-header h2 {
+            color: white !important;
+            background: none !important;
+            border: none !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            font-size: 20px !important;
+        }
+
+        .sekce-content {
+            padding: 25px;
+            display: none;
+        }
+
+        .sekce-content.active {
+            display: block;
+        }
+
+        .toggle-btn {
+            font-size: 16px;
+            transition: transform 0.3s ease;
+        }
+
+        .toggle-btn.active {
+            transform: rotate(90deg);
+        }
+
+        .teorie {
+            background: linear-gradient(135deg, #f7fafc, #edf2f7);
+            padding: 18px;
+            border-radius: 10px;
+            border: 1px solid #cbd5e0;
+            margin-bottom: 15px;
+        }
+
+        .teorie h3 {
+            color: #2b6cb0;
+            margin: 0 0 10px 0;
+            font-size: 16px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .teorie h3:before {
+            content: "📚";
+            font-size: 18px;
+        }
+
+        .teorie-text {
+            color: #2d3748;
+            margin: 0;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .toggle-button {
+            background: linear-gradient(135deg, #4299e1, #3182ce);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+            cursor: pointer;
+            margin: 10px 5px;
+            transition: all 0.2s ease;
+        }
+
+        .toggle-button:hover {
+            background: linear-gradient(135deg, #3182ce, #2c5282);
+            transform: translateY(-1px);
+        }
+
+        .simulace {
+            background: linear-gradient(135deg, #fef5e7, #fed7aa);
+            padding: 18px;
+            border-radius: 10px;
+            border: 1px solid #fdba74;
+            margin: 15px 0;
+            display: none;
+        }
+
+        .simulace.show {
+            display: block;
+        }
+
+        .simulace h3 {
+            color: #c2410c;
+            margin: 0 0 15px 0;
+            font-size: 16px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .simulace h3:before {
+            content: "🎯";
+            font-size: 18px;
+        }
+
+        .demo {
+            background: linear-gradient(135deg, #f0fff4, #e6fffa);
+            padding: 18px;
+            border-radius: 10px;
+            border: 1px solid #9ae6b4;
+            margin: 15px 0;
+            display: none;
+        }
+
+        .demo.show {
+            display: block;
+        }
+
+        .demo h3 {
+            color: #2f855a;
+            margin: 0 0 15px 0;
+            font-size: 16px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .demo h3:before {
+            content: "⚡";
+            font-size: 18px;
+        }
+
+        .kviz {
+            background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+            padding: 18px;
+            border-radius: 10px;
+            border: 1px solid #c4b5fd;
+            margin: 15px 0;
+            display: none;
+        }
+
+        .kviz.show {
+            display: block;
+        }
+
+        .kviz h3 {
+            color: #7c3aed;
+            margin: 0 0 15px 0;
+            font-size: 16px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .kviz h3:before {
+            content: "❓";
+            font-size: 18px;
+        }
+
+        .vzorec {
+            background: #f7fafc;
+            padding: 15px;
+            border-left: 3px solid #4299e1;
+            margin: 10px 0;
+            border-radius: 5px;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        .definice {
+            background: linear-gradient(135deg, #f0fff4, #e6fffa);
+            padding: 18px;
+            border-radius: 10px;
+            border: 1px solid #9ae6b4;
+            margin: 15px 0;
+        }
+
+        .definice h3 {
+            color: #2f855a;
+            margin: 0 0 10px 0;
+            font-size: 16px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .definice h3:before {
+            content: "📖";
+            font-size: 18px;
+        }
+
+        .definice-text {
+            color: #2d3748;
+            margin: 0;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .priklad-box {
+            background: linear-gradient(135deg, #fff5f5, #fed7d7);
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #e53e3e;
+            margin: 10px 0;
+        }
+
+        .priklad-box h4 {
+            color: #c53030;
+            margin: 0 0 8px 0;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .hodnoty {
+            background: linear-gradient(135deg, #bee3f8, #90cdf4);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 600;
+            color: #1a365d;
+        }
+
+        .demo-area {
+            border: 2px dashed #3182ce;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 15px 0;
+            min-height: 150px;
+            position: relative;
+            background: #f8fafc;
+        }
+
+        .moving-object {
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(135deg, #e53e3e, #c53030);
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 20px;
+            transform: translateY(-50%);
+            transition: all 2s ease-in-out;
+        }
+
+        .slider-container {
+            margin: 15px 0;
+        }
+
+        .slider {
+            width: 100%;
+            margin: 10px 0;
+        }
+
+        .quiz-option {
+            background: #f8fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 10px 15px;
+            margin: 8px 0;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .quiz-option:hover {
+            border-color: #3182ce;
+            background: #e6f3ff;
+        }
+
+        .quiz-option.correct {
+            background: #f0fff4;
+            border-color: #38a169;
+            color: #2f855a;
+        }
+
+        .quiz-option.incorrect {
+            background: #fed7d7;
+            border-color: #e53e3e;
+            color: #c53030;
+        }
+
+        .statistiky {
+            background: linear-gradient(135deg, #e6fffa, #b2f5ea);
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            text-align: center;
+            color: #234e52;
+            font-weight: 600;
+            font-size: 18px;
+        }
+
+        .navigace {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .krok {
+            margin-bottom: 15px;
+        }
+
+        .motivace-box {
+            background: linear-gradient(135deg, #e3f2fd, #e1f5fe);
+            border-left: 5px solid #2196f3;
+            padding: 12px 15px;
+            margin: 15px 0 25px 0;
+            color: #1a237e;
+            font-size: 0.95em;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(33, 150, 243, 0.1);
+        }
+
+        .vypocet {
+            background: #f7fafc;
+            padding: 10px;
+            border-left: 3px solid #4299e1;
+            margin: 10px 0;
+            font-family: 'Courier New', monospace;
+            border-radius: 5px;
+        }
+
+        .obtiznost {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+
+        .obtiznost-zaklad {
+            background: #c6f6d5;
+            color: #22543d;
+        }
+
+        .obtiznost-pokrocile {
+            background: #fed7d7;
+            color: #742a2a;
+        }
+
+        .obtiznost-experti {
+            background: #e9d8fd;
+            color: #44337a;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+
+            .kapitola-header {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+
+            .kapitola-cislo {
+                align-self: center;
+            }
+
+            .kapitola-content {
+                padding: 15px;
+            }
+        }
+
+        .quiz-option {
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            padding: 12px 15px;
+            margin: 8px 0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .quiz-option:hover {
+            background: #e9ecef;
+            border-color: #6c757d;
+        }
+
+        .quiz-option.correct {
+            background: #c8f7c5;
+            border-color: #28a745;
+            color: #155724;
+        }
+
+        .quiz-option.incorrect {
+            background: #fddede;
+            border-color: #dc3545;
+            color: #721c24;
+        }
+
+        @keyframes rotate {
+            from { transform: translate(-50%, -50%) translateX(70px) rotate(0deg); }
+            to { transform: translate(-50%, -50%) translateX(70px) rotate(360deg); }
+        }
+
+        @-webkit-keyframes rotate {
+            from { -webkit-transform: translate(-50%, -50%) translateX(70px) rotate(0deg); }
+            to { -webkit-transform: translate(-50%, -50%) translateX(70px) rotate(360deg); }
+        }
+
+        #planet {
+            animation-timing-function: linear;
+        }
+
+        .slider-container {
+            margin: 15px 0;
+        }
+
+        .slider-container label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #2d3748;
+        }
+
+        .slider {
+            width: 100%;
+            height: 8px;
+            border-radius: 5px;
+            background: #e2e8f0;
+            outline: none;
+            -webkit-appearance: none;
+        }
+
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #3182ce;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .slider::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #3182ce;
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .demo-area {
+            border: 2px solid #cbd5e0;
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+            margin: 15px 0;
+        }
+
+        .ball, .moving-object {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            position: absolute;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            background: #3182ce;
+            transition: none;
+        }
+
+        * {
+            -webkit-animation-fill-mode: both;
+            animation-fill-mode: both;
+        }
+    </style>
+</head>
+<body>
+    <h1>🌍 Gravitační pole - Teorie pro gymnázia</h1>
+
+
+    <!-- Sekce 1: Newtonův gravitační zákon -->
+    <div class="teorie-sekce">
+        <div class="sekce-header" onclick="toggleSekce(this)">
+            <span class="toggle-btn">▶</span>
+            <h2>📐 Newtonův gravitační zákon <span class="obtiznost obtiznost-zaklad">ZÁKLAD</span></h2>
+        </div>
+        <div class="sekce-content">
+            <div class="definice">
+                <h3>Zákon univerzální gravitace</h3>
+                <div class="definice-text">
+                    Každá dvě tělesa se navzájem přitahují silou ($F_g$), která je <strong>přímo úměrná</strong> součinu jejich hmotností ($m_1$, $m_2$) a <strong>nepřímo úměrná</strong> druhé mocnině jejich vzdálenosti ($r$).
+                </div>
+            </div>
+
+            <div class="vzorec">
+                $$F_g = \kappa \frac{m_1 m_2}{r^2}$$
+                <div style="margin-top: 10px; font-size: 14px;">
+                    kde $\kappa = 6,674 \times 10^{-11} \text{ N·m}^2\text{·kg}^{-2}$ je gravitační konstanta
+                </div>
+            </div>
+
+            <div class="teorie">
+                <h3>Význam veličin</h3>
+                <div class="teorie-text">
+                    • <span class="hodnoty">$F_g$</span> - gravitační síla v Newtonech (N)<br>
+                    • <span class="hodnoty">$m_1, m_2$</span> - hmotnosti obou těles v kilogramech (kg)<br>
+                    • <span class="hodnoty">$r$</span> - vzdálenost mezi středy těles v metrech (m)<br>
+                    • <span class="hodnoty">$\kappa$ (kappa)</span> - gravitační konstanta
+                </div>
+            </div>
+
+            <div class="priklad-box">
+                <h4>💡 Příklad 1: Gravitační síla Země-Měsíc</h4>
+                <strong>Zadání:</strong> Jaká gravitační síla působí mezi Zemí a Měsícem?<br><br>
+                <strong>Dáno:</strong><br>
+                • $m_Z = 5,972 \times 10^{24}$ kg (hmotnost Země)<br>
+                • $m_M = 7,342 \times 10^{22}$ kg (hmotnost Měsíce)<br>
+                • $r = 3,844 \times 10^8$ m (vzdálenost Země-Měsíc)<br>
+                • $\kappa = 6,674 \times 10^{-11} \text{ N·m}^2\text{·kg}^{-2}$<br><br>
+                <strong>Řešení:</strong><br>
+                $$F_g = 6,674 \times 10^{-11} \cdot \frac{5,972 \times 10^{24} \cdot 7,342 \times 10^{22}}{(3,844 \times 10^8)^2}$$
+                $$F_g \approx 1,98 \times 10^{20} \text{ N}$$<br>
+                <strong>Odpověď:</strong> Gravitační síla mezi Zemí a Měsícem je přibližně $1,98 \times 10^{20}$ N.
+            </div>
+
+            <div class="priklad-box">
+                <h4>💡 Příklad 2: Závislost síly na vzdálenosti</h4>
+                <strong>Zadání:</strong> Gravitační síla mezi dvěma tělesy je $2 \times 10^5$ N. Jaká bude síla:<br>
+                a) když se vzdálenost zdvojnásobí?<br>
+                b) když bude hmotnost obou těles dvojnásobná?<br><br>
+                <strong>Řešení a):</strong> Při zdvojnásobení vzdálenosti ($r_2 = 2r_1$):
+                $$F_2 = \kappa \frac{m_1 m_2}{(2r_1)^2} = \frac{1}{4} \cdot F_1 = \frac{1}{4} \cdot 2 \times 10^5 = 5 \times 10^4 \text{ N}$$
+                <strong>Odpověď a):</strong> Síla klesne 4× na $5 \times 10^4$ N.<br><br>
+                <strong>Řešení b):</strong> Při zdvojnásobení obou hmotností:
+                $$F_3 = \kappa \frac{(2m_1)(2m_2)}{r^2} = 4 \cdot F_1 = 4 \cdot 2 \times 10^5 = 8 \times 10^5 \text{ N}$$
+                <strong>Odpověď b):</strong> Síla vzroste 4× na $8 \times 10^5$ N.
+            </div>
+
+            <div class="motivace-box">
+                🌟 <strong>Proč je to důležité?</strong> Tento zákon vysvětluje, proč Měsíc obíhá kolem Země, prože planety obíhají kolem Slunce a proč všichni stojíme pevně na zemi. Gravitační konstanta $\kappa$ je jedna z fundamentálních konstant vesmíru.
+            </div>
+
+            <button class="toggle-button" onclick="toggleDemo(this)">🌊 Zobrazit: Slapové síly</button>
+            <div class="demo">
+                <h3>Slapové síly a přílivy/odlivy</h3>
+                <div class="teorie-text">
+                    <strong>Slapové síly</strong> vznikají díky rozdílné gravitační síle, kterou Měsíc (nebo Slunce) působí na různé části Země.<br><br>
+
+                    <strong>Jak vznikají:</strong><br>
+                    • Strana Země <span class="hodnoty">blíže k Měsíci</span> je přitahována <strong>silněji</strong> než střed Země<br>
+                    • Strana Země <span class="hodnoty">dále od Měsíce</span> je přitahována <strong>slaběji</strong> než střed Země<br>
+                    • Výsledek: Vznikají <strong>dvě "boule"</strong> oceánů - jedna směrem k Měsíci, druhá na opačné straně<br><br>
+
+                    <strong>Důsledky:</strong><br>
+                    • <span class="hodnoty">Příliv</span> nastává 2× denně (když je naše místo pod "boulí")<br>
+                    • <span class="hodnoty">Odliv</span> nastává mezi přílivy<br>
+                    • Nejvyšší přílivy jsou při úplňku a novoluní (Měsíc a Slunce spolupracují)<br>
+                    • Slapové síly způsobují také zpomalování rotace Země (den se prodlužuje o ~2 ms za století!)
+                </div>
+
+                <div class="priklad-box" style="margin-top: 15px;">
+                    <h4>💡 Zajímavost: Slapové uzamčení</h4>
+                    Měsíc je "slapově uzamčený" k Zemi - proto vidíme vždy jen jednu jeho stranu!
+                    Slapové síly Země zpomalily rotaci Měsíce tak, že jeho perioda rotace = perioda oběhu kolem Země (27,3 dne).
+                </div>
+            </div>
+
+            <button class="toggle-button" onclick="toggleKviz(this)">📝 Zobrazit kvíz</button>
+            <div class="kviz">
+                <h3>Kvíz: Newtonův gravitační zákon</h3>
+                <p><strong>Jak se změní gravitační síla, když vzdálenost mezi tělesy ztrojnásobíme?</strong></p>
+                <div class="quiz-option" onclick="selectAnswer(this, false)">A) Klesne 3×</div>
+                <div class="quiz-option" onclick="selectAnswer(this, false)">B) Klesne 6×</div>
+                <div class="quiz-option" onclick="selectAnswer(this, true)">C) Klesne 9×</div>
+                <div class="quiz-option" onclick="selectAnswer(this, false)">D) Vzroste 9×</div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Sekce 2: Intenzita gravitačního pole -->
+    <div class="teorie-sekce">
+        <div class="sekce-header" onclick="toggleSekce(this)">
+            <span class="toggle-btn">▶</span>
+            <h2>⚡ Intenzita gravitačního pole <span class="obtiznost obtiznost-pokrocile">POKROČILÉ</span></h2>
+        </div>
+        <div class="sekce-content">
+            <div class="definice">
+                <h3>Definice intenzity</h3>
+                <div class="definice-text">
+                    <strong>Intenzita gravitačního pole</strong> ($\vec{K}$) je vektorová veličina definovaná jako podíl gravitační síly ($\vec{F_g}$), jež v daném místě působí na těleso, a hmotnosti ($m$) tohoto tělesa.
+                </div>
+            </div>
+
+            <div class="vzorec">
+                $$\vec{K} = \frac{\vec{F_g}}{m}$$
+                <div style="margin-top: 10px; font-size: 14px;">
+                    Jednotka: N/kg (nebo m/s²)
+                </div>
+            </div>
+
+            <div class="teorie">
+                <h3>Intenzita pole vytvořeného planetou</h3>
+                <div class="teorie-text">
+                    Pro těleso o hmotnosti $M$ (např. planeta) je intenzita pole ve vzdálenosti $r$ od jeho středu:
+                    $$K = \kappa \frac{M}{r^2}$$
+                    Intenzita udává, <strong>jaká síla působí na 1 kg hmoty</strong> v daném bodě.
+                </div>
+            </div>
+
+            <div class="priklad-box">
+                <h4>💡 Příklad 3: Intenzita na povrchu Měsíce</h4>
+                <strong>Zadání:</strong> Na astronauta o hmotnosti 75 kg působí na Měsíci síla 126 N. Vypočítejte hodnotu intenzity na povrchu Měsíce.<br><br>
+                <strong>Dáno:</strong> $m = 75$ kg, $F_g = 126$ N<br><br>
+                <strong>Řešení:</strong>
+                $$K = \frac{F_g}{m} = \frac{126}{75} = 1,68 \text{ N/kg}$$
+                <strong>Odpověď:</strong> Intenzita gravitačního pole na Měsíci je 1,68 N/kg (na Zemi je to 9,81 N/kg).
+            </div>
+
+            <div class="priklad-box">
+                <h4>💡 Příklad 4: Intenzita ve výšce nad Zemí</h4>
+                <strong>Zadání:</strong> Hodnota $K$ na zemském povrchu je 10 N/kg. Stanovte hodnotu intenzity ve výšce $h$ nad povrchem, jestliže:<br>
+                a) $h = R_Z$ (poloměr Země)<br>
+                b) $h = 3R_Z$<br><br>
+                <strong>Řešení a):</strong> Vzdálenost od středu: $r = R_Z + h = 2R_Z$<br>
+                Vzdálenost se zdvojnásobila, intenzita klesne 4×:
+                $$K_2 = \frac{K_1}{4} = \frac{10}{4} = 2,5 \text{ N/kg}$$<br>
+                <strong>Řešení b):</strong> Vzdálenost od středu: $r = R_Z + 3R_Z = 4R_Z$<br>
+                Vzdálenost se zčtyřnásobila, intenzita klesne 16×:
+                $$K_3 = \frac{K_1}{16} = \frac{10}{16} = 0,625 \text{ N/kg}$$
+            </div>
+
+            <div class="motivace-box">
+                🛰️ <strong>Praktické využití:</strong> Znalost intenzity pole je klíčová pro výpočet oběžných drah družic a kosmických lodí. Čím dále od Země, tím slabší pole a menší síla potřebná k udržení oběžné dráhy.
+            </div>
+
+            <button class="toggle-button" onclick="toggleKviz(this)">📝 Zobrazit kvíz</button>
+            <div class="kviz">
+                <h3>Kvíz: Intenzita gravitačního pole</h3>
+                <p><strong>Jaká je jednotka intenzity gravitačního pole?</strong></p>
+                <div class="quiz-option" onclick="selectAnswer(this, false)">A) N</div>
+                <div class="quiz-option" onclick="selectAnswer(this, true)">B) N/kg</div>
+                <div class="quiz-option" onclick="selectAnswer(this, false)">C) kg/m</div>
+                <div class="quiz-option" onclick="selectAnswer(this, false)">D) m/s</div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Sekce 3: Gravitační zrychlení -->
+    <div class="teorie-sekce">
+        <div class="sekce-header" onclick="toggleSekce(this)">
+            <span class="toggle-btn">▶</span>
+            <h2>🚀 Gravitační zrychlení <span class="obtiznost obtiznost-pokrocile">POKROČILÉ</span></h2>
+        </div>
+        <div class="sekce-content">
+            <div class="definice">
+                <h3>Gravitační zrychlení</h3>
+                <div class="definice-text">
+                    <strong>Gravitační zrychlení</strong> ($a_g$) je zrychlení, které tělesu udílí gravitační síla. Je <strong>číselně rovno intenzitě gravitačního pole</strong>.
+                </div>
+            </div>
+
+            <div class="vzorec">
+                $$a_g = K = \kappa \frac{M}{r^2}$$
+                <div style="margin-top: 10px; font-size: 14px;">
+                    Na povrchu Země: $g \approx 9,81 \text{ m/s}^2$
+                </div>
+            </div>
+
+            <div class="teorie">
+                <h3>Vlastnosti gravitačního zrychlení</h3>
+                <div class="teorie-text">
+                    • Na povrchu Země je $g \approx 9,81 \text{ m/s}^2$<br>
+                    • Rychlost volně padajícího tělesa se každou sekundu zvýší o 9,81 m/s<br>
+                    • Klesá se vzdáleností od Země (na Mount Everestu je menší než u moře)<br>
+                    • Je nezávislé na hmotnosti padajícího tělesa
+                </div>
+            </div>
+
+            <div class="priklad-box">
+                <h4>💡 Příklad 5: Gravitační zrychlení Měsíce od Země</h4>
+                <strong>Zadání:</strong> Určete gravitační zrychlení působící na Měsíci vlivem Země.<br><br>
+                <strong>Dáno:</strong><br>
+                • $M_Z = 5,972 \times 10^{24}$ kg<br>
+                • $r = 3,844 \times 10^8$ m<br>
+                • $\kappa = 6,674 \times 10^{-11} \text{ N·m}^2\text{·kg}^{-2}$<br><br>
+                <strong>Řešení:</strong>
+                $$a_g = \kappa \frac{M_Z}{r^2} = \frac{6,674 \times 10^{-11} \cdot 5,972 \times 10^{24}}{(3,844 \times 10^8)^2} \approx 0,0027 \text{ m/s}^2$$
+                <strong>Odpověď:</strong> Gravitační zrychlení, které Země uděluje Měsíci, je 0,0027 m/s². Toto malé zrychlení působí jako dostředivé zrychlení, které udržuje Měsíc na oběžné dráze.
+            </div>
+
+            <div class="priklad-box">
+                <h4>💡 Příklad 6: Zrychlení na povrchu Měsíce</h4>
+                <strong>Zadání:</strong> Vypočítejte hodnotu zrychlení na povrchu Měsíce.<br><br>
+                <strong>Dáno:</strong> $M_M = 7,342 \times 10^{22}$ kg, $R_M = 1,737 \times 10^6$ m<br><br>
+                <strong>Řešení:</strong>
+                $$g_M = \kappa \frac{M_M}{R_M^2} = \frac{6,674 \times 10^{-11} \cdot 7,342 \times 10^{22}}{(1,737 \times 10^6)^2} \approx 1,62 \text{ m/s}^2$$
+                <strong>Odpověď:</strong> Gravitační zrychlení na povrchu Měsíce je 1,62 m/s² (přibližně 6× menší než na Zemi).
+            </div>
+
+            <div class="motivace-box">
+                🌙 <strong>Proč astronauti skáčou vysoko?</strong> Gravitační zrychlení na Měsíci je 6× menší než na Zemi, proto astronauti mohli dělat vysoké a dlouhé skoky!
+            </div>
+        </div>
+    </div>
+
+    <!-- Sekce 3.5: Gravitační vs. Tíhová síla -->
+    <div class="teorie-sekce">
+        <div class="sekce-header" onclick="toggleSekce(this)">
+            <span class="toggle-btn">▶</span>
+            <h2>⚖️ Gravitační a tíhová síla (rozdíl) <span class="obtiznost obtiznost-pokrocile">POKROČILÉ</span></h2>
+        </div>
+        <div class="sekce-content">
+            <div class="definice">
+                <h3>Gravitační síla</h3>
+                <div class="definice-text">
+                    <strong>Gravitační síla</strong> ($\vec{F_g}$) je čistá přitažlivá síla mezi dvěma tělesy podle Newtonova gravitačního zákona. <strong>Nezahrnuje vliv rotace Země</strong>.
+                </div>
+            </div>
+
+            <div class="vzorec">
+                $$F_g = \kappa \frac{Mm}{r^2}$$
+                <div style="margin-top: 10px; font-size: 14px;">
+                    Čistá gravitační síla (bez rotace planety)
+                </div>
+            </div>
+
+            <div class="definice">
+                <h3>Tíhová síla</h3>
+                <div class="definice-text">
+                    <strong>Tíhová síla</strong> ($\vec{F_t}$) je výslednice gravitační síly a odstředivé síly způsobené rotací Země. Je to síla, kterou měříme <strong>váhou nebo siloměrem</strong> na povrchu Země.
+                </div>
+            </div>
+
+            <div class="vzorec">
+                $$\vec{F_t} = \vec{F_g} + \vec{F_{odstřed}}$$
+                <div style="margin-top: 10px; font-size: 14px;">
+                    Tíhová síla = gravitační síla + odstředivá síla (z rotace Země)
+                </div>
+            </div>
+
+            <div class="teorie">
+                <h3>Důsledky rotace Země</h3>
+                <div class="teorie-text">
+                    Země se otáčí kolem své osy (1 otočka za 24 hodin). Tato rotace způsobuje odstředivou sílu, která:<br><br>
+                    • <span class="hodnoty">Na rovníku</span>: je maximální → tíhové zrychlení $g \approx 9,78 \text{ m/s}^2$<br>
+                    • <span class="hodnoty">Na pólech</span>: je nulová → tíhové zrychlení $g \approx 9,83 \text{ m/s}^2$<br>
+                    • <span class="hodnoty">Rozdíl</span>: přibližně 0,5% (zdánlivě malý, ale významný pro přesná měření)<br><br>
+                    <strong>Proto:</strong> Těleso na rovníku je "lehčí" než na pólech!
+                </div>
+            </div>
+
+            <div class="priklad-box">
+                <h4>💡 Příklad 7: Rozdíl hmotnosti na rovníku a pólech</h4>
+                <strong>Zadání:</strong> Jakou tíhovou sílu působí Země na těleso o hmotnosti 100 kg na rovníku a na pólu?<br><br>
+                <strong>Řešení:</strong><br>
+                Na pólu: $F_{t,pól} = m \cdot g_{pól} = 100 \cdot 9,83 = 983 \text{ N}$<br>
+                Na rovníku: $F_{t,rov} = m \cdot g_{rov} = 100 \cdot 9,78 = 978 \text{ N}$<br>
+                Rozdíl: $\Delta F = 983 - 978 = 5 \text{ N}$<br><br>
+                <strong>Odpověď:</strong> Těleso je na rovníku o 5 N "lehčí" než na pólu. To odpovídá rozdílu asi půl kilogramu!
+            </div>
+
+            <div class="motivace-box">
+                🌍 <strong>Proč je to důležité?</strong> Profesionální váhy musí být kalibrovány podle zeměpisné šířky! Váha zkalibrovaná v Praze ukáže na rovníku o 0,3% menší hodnotu.
+            </div>
+
+            <button class="toggle-button" onclick="toggleKviz(this)">📝 Zobrazit kvíz</button>
+            <div class="kviz">
+                <h3>Kvíz: Gravitační vs. Tíhová síla</h3>
+                <p><strong>Kde je tíhová síla největší?</strong></p>
+                <div class="quiz-option" onclick="selectAnswer(this, false)">A) Na rovníku</div>
+                <div class="quiz-option" onclick="selectAnswer(this, true)">B) Na pólech</div>
+                <div class="quiz-option" onclick="selectAnswer(this, false)">C) Všude stejná</div>
+                <div class="quiz-option" onclick="selectAnswer(this, false)">D) Na Mount Everestu</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sekce 4: Gravitační potenciál -->
+    <div class="teorie-sekce">
+        <div class="sekce-header" onclick="toggleSekce(this)">
+            <span class="toggle-btn">▶</span>
+            <h2>💫 Gravitační potenciál <span class="obtiznost obtiznost-experti">EXPERTI</span></h2>
+        </div>
+        <div class="sekce-content">
+            <div class="definice">
+                <h3>Gravitační potenciál</h3>
+                <div class="definice-text">
+                    <strong>Gravitační potenciál</strong> ($\varphi$) v daném bodě pole je podíl gravitační potenciální energie ($E_p$) tělesa v tomto bodě a jeho hmotnosti ($m$).
+                </div>
+            </div>
+
+            <div class="vzorec">
+                $$\varphi = \frac{E_p}{m} = -\kappa \frac{M}{r}$$
+                <div style="margin-top: 10px; font-size: 14px;">
+                    Jednotka: J/kg
+                </div>
+            </div>
+
+            <button class="toggle-button" onclick="toggleDemo(this)">🔗 Zobrazit: Gravitační potenciální energie</button>
+            <div class="demo">
+                <h3>Gravitační potenciální energie</h3>
+                <div class="definice">
+                    <h3>Co je gravitační potenciální energie?</h3>
+                    <div class="definice-text">
+                        <strong>Gravitační potenciální energie</strong> ($E_p$) je energie, kterou má těleso díky své poloze v gravitačním poli. Představuje práci, kterou by vykonala gravitační síla při přemístění tělesa z daného místa do referenční úrovně.
+                    </div>
+                </div>
+
+                <div class="teorie">
+                    <h3>Dva přístupy podle situace</h3>
+                    <div class="teorie-text">
+                        <strong>1) Homogenní pole (blízko povrchu Země):</strong><br>
+                        Pro malé výšky ($h \ll R_{Země}$) můžeme pole považovat za homogenní s konstantním $g$.
+                    </div>
+                </div>
+
+                <div class="vzorec">
+                    $$E_p = m \cdot g \cdot h$$
+                    <div style="margin-top: 10px; font-size: 14px;">
+                        kde $h$ je výška nad referenční hladinou (obvykle nad zemí)
+                    </div>
+                </div>
+
+                <div class="teorie">
+                    <div class="teorie-text">
+                        <strong>2) Obecné gravitační pole (velké vzdálenosti):</strong><br>
+                        Pro velké vzdálenosti (např. družice, planety) musíme použít obecný vzorec.
+                    </div>
+                </div>
+
+                <div class="vzorec">
+                    $$E_p = -\kappa \frac{M \cdot m}{r}$$
+                    <div style="margin-top: 10px; font-size: 14px;">
+                        kde $r$ je vzdálenost od středu centrálního tělesa (M)
+                    </div>
+                </div>
+
+                <div class="motivace-box">
+                    ⚠️ <strong>Proč záporná energie?</strong> Záporné znaménko znamená, že gravitace je <strong>přitažlivá síla</strong>. Nulovou energii má těleso až v nekonečné vzdálenosti ($r \to \infty$). Čím blíže k planetě, tím je energie zápornější (hlubší potenciálová jáma).
+                </div>
+
+                <div class="priklad-box">
+                    <h3>💡 Příklad 16: Porovnání vzorců</h3>
+                    <strong>Zadání:</strong> Kosmická loď o hmotnosti 1000 kg je ve výšce 300 km nad povrchem Země. Porovnejte výpočet potenciální energie oběma vzorci.<br><br>
+                    <strong>Údaje:</strong> $M_{Země} = 5{,}97 \times 10^{24}$ kg, $R_{Země} = 6{,}371 \times 10^6$ m, $g = 9{,}81$ m/s²<br><br>
+                    <strong>Řešení 1 (homogenní pole):</strong><br>
+                    $E_p = mgh = 1000 \cdot 9{,}81 \cdot 300\,000 = 2{,}943 \times 10^9$ J<br><br>
+                    <strong>Řešení 2 (obecný vzorec):</strong><br>
+                    $r = R_{Země} + h = 6{,}371 \times 10^6 + 0{,}3 \times 10^6 = 6{,}671 \times 10^6$ m<br>
+                    $E_p = -\kappa \frac{Mm}{r} = -6{,}67 \times 10^{-11} \cdot \frac{5{,}97 \times 10^{24} \cdot 1000}{6{,}671 \times 10^6}$<br>
+                    $E_p \approx -5{,}97 \times 10^{10}$ J<br><br>
+                    <strong>Referenční úroveň na povrchu:</strong><br>
+                    $E_{p,povrch} = -\kappa \frac{Mm}{R_{Země}} \approx -6{,}26 \times 10^{10}$ J<br>
+                    <strong>Změna energie:</strong> $\Delta E_p = E_p - E_{p,povrch} \approx 2{,}9 \times 10^9$ J<br><br>
+                    <strong>Závěr:</strong> Pro malé výšky ($h \ll R$) dává vzorec $mgh$ téměř stejný výsledek jako rozdíl obecných potenciálních energií!
+                </div>
+
+                <div class="teorie">
+                    <h3>Zákon zachování energie v gravitačním poli</h3>
+                    <div class="teorie-text">
+                        V gravitačním poli se celková mechanická energie zachovává:
+                    </div>
+                </div>
+
+                <div class="vzorec">
+                    $$E_{celková} = E_k + E_p = \text{konstantní}$$
+                    <div style="margin-top: 10px; font-size: 14px;">
+                        $$\frac{1}{2}mv^2 - \kappa \frac{Mm}{r} = \text{konst.}$$
+                    </div>
+                </div>
+
+                <div class="priklad-box">
+                    <h3>💡 Příklad 17: Úniková rychlost (energetický přístup)</h3>
+                    <strong>Zadání:</strong> Odvoďte 2. kosmickou rychlost pomocí zákona zachování energie.<br><br>
+                    <strong>Řešení:</strong><br>
+                    Na povrchu Země: $E_{celk} = \frac{1}{2}mv_2^2 - \kappa \frac{Mm}{R}$<br>
+                    V nekonečnu: $E_{celk} = 0$ (těleso má nulovou rychlost i potenciální energii)<br><br>
+                    Zákon zachování: $\frac{1}{2}mv_2^2 - \kappa \frac{Mm}{R} = 0$<br>
+                    Úprava: $\frac{1}{2}mv_2^2 = \kappa \frac{Mm}{R}$<br>
+                    $$v_2 = \sqrt{\frac{2\kappa M}{R}} = \sqrt{2gR}$$<br>
+                    Dosazení: $v_2 = \sqrt{2 \cdot 9{,}81 \cdot 6{,}371 \times 10^6} \approx 11{,}2$ km/s<br><br>
+                    <strong>Závěr:</strong> Energetický přístup nám elegantně dává stejný výsledek jako dynamický!
+                </div>
+            </div>
+
+            <div class="teorie">
+                <h3>Vlastnosti gravitačního potenciálu</h3>
+                <div class="teorie-text">
+                    • Je <strong>skalární</strong> veličina (nemá směr)<br>
+                    • Je vždy <strong>záporný</strong> (nulový až v nekonečnu)<br>
+                    • Záporné znaménko znamená, že musíme dodat energii pro "vytažení" tělesa z pole<br>
+                    • <strong>Ekvipotenciální plochy</strong> jsou plochy se stejným potenciálem (koule kolem planety)
+                </div>
+            </div>
+
+            <div class="motivace-box">
+                🚀 <strong>Potenciálová jáma:</strong> Gravitace je přitažlivá síla, která nás "drží" v potenciálové jámě. Čím blíže planetě, tím hlubší jáma a tím více energie potřebujeme na únik do vesmíru!
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Sekce 5: Pohyby v tíhovém poli -->
+    <div class="teorie-sekce">
+        <div class="sekce-header" onclick="toggleSekce(this)">
+            <span class="toggle-btn">▶</span>
+            <h2>📉 Pohyby v homogenním tíhovém poli <span class="obtiznost obtiznost-pokrocile">POKROČILÉ</span></h2>
+        </div>
+        <div class="sekce-content">
+            <div class="definice">
+                <h3>Homogenní tíhové pole Země</h3>
+                <div class="definice-text">
+                    Blízko povrchu Země předpokládáme, že gravitační pole je všude stejné – má konstantní velikost ($g$) a směr (svisle dolů). Trajektorie pohybů jsou <strong>paraboly</strong>.
+                </div>
+            </div>
+
+            <div class="teorie">
+                <h3>Typy pohybů</h3>
+                <div class="teorie-text">
+                    • <span class="hodnoty">Volný pád</span> - těleso padá z klidu pouze vlivem gravitace<br>
+                    • <span class="hodnoty">Svislý vrh</span> - těleso vrženo svisle nahoru nebo dolů<br>
+                    • <span class="hodnoty">Vodorovný vrh</span> - počáteční rychlost ve vodorovném směru<br>
+                    • <span class="hodnoty">Šikmý vrh</span> - počáteční rychlost pod úhlem
+                </div>
+            </div>
+
+            <div class="priklad-box">
+                <h4>💡 Příklad 8: Testovací náraz auta (vodorovný vrh)</h4>
+                <strong>Zadání:</strong> Auto jedoucí rychlostí 20 m/s spadne z výšky 15 m na betonový povrch. Určete úhel dopadu, rychlost dopadu a vzdálenost.<br><br>
+                <strong>Řešení:</strong><br>
+                1) Doba letu: $t = \sqrt{\frac{2h}{g}} = \sqrt{\frac{30}{10}} \approx 1,73$ s<br>
+                2) Vzdálenost: $x = v_x \cdot t = 20 \cdot 1,73 \approx 34,6$ m<br>
+                3) Svislá rychlost: $v_y = g \cdot t = 10 \cdot 1,73 = 17,3$ m/s<br>
+                4) Celková rychlost: $v = \sqrt{v_x^2 + v_y^2} = \sqrt{400 + 299} \approx 26,4$ m/s<br>
+                5) Úhel dopadu: $\alpha = \arctan(\frac{v_y}{v_x}) = \arctan(0,865) \approx 40,8°$
+            </div>
+
+            <div class="priklad-box">
+                <h4>💡 Příklad 12: Fotbalový kop (šikmý vrh)</h4>
+                <strong>Zadání:</strong> Fotbalista kopl míč pod úhlem 45°. Balón dopadne 40 m od místa výkopu. Jak velkou rychlost udělil míči?<br><br>
+                <strong>Vzorec pro dostřel:</strong> $d = \frac{v_0^2 \cdot \sin(2\alpha)}{g}$<br>
+                Pro $\alpha = 45°$: $\sin(90°) = 1$, vzorec se zjednoduší na $d = \frac{v_0^2}{g}$<br><br>
+                <strong>Řešení:</strong>
+                $$v_0 = \sqrt{d \cdot g} = \sqrt{40 \cdot 9,81} = \sqrt{392,4} \approx 19,8 \text{ m/s}$$
+                <strong>Odpověď:</strong> Fotbalista kopnul míč rychlostí 19,8 m/s (cca 71 km/h).
+            </div>
+        </div>
+    </div>
+
+    <!-- Sekce 6: Umělé družice -->
+    <div class="teorie-sekce">
+        <div class="sekce-header" onclick="toggleSekce(this)">
+            <span class="toggle-btn">▶</span>
+            <h2>🛰️ Umělé družice a kosmické rychlosti <span class="obtiznost obtiznost-experti">EXPERTI</span></h2>
+        </div>
+        <div class="sekce-content">
+            <div class="definice">
+                <h3>Pohyb v centrálním gravitačním poli</h3>
+                <div class="definice-text">
+                    Když se vzdálíme od Země, pole není homogenní - síla směřuje do středu Země a klesá s druhou mocninou vzdálenosti. Gravitační síla zde působí jako <strong>dostředivá síla</strong>.
+                </div>
+            </div>
+
+            <div class="teorie">
+                <h3>Kruhová rychlost (1. kosmická)</h3>
+                <div class="teorie-text">
+                    Je to rychlost, kterou musí mít těleso, aby obíhalo po kruhové dráze ve vzdálenosti $r$ od středu planety.
+                </div>
+            </div>
+
+            <div class="vzorec">
+                $$v_k = \sqrt{\kappa \frac{M}{r}}$$
+                <div style="margin-top: 10px; font-size: 14px;">
+                    Pro nízké oběžné dráhy kolem Země: $v_k \approx 7,9$ km/s
+                </div>
+            </div>
+
+            <div class="teorie">
+                <h3>Úniková rychlost (2. kosmická)</h3>
+                <div class="teorie-text">
+                    Minimální rychlost potřebná k překonání gravitačního pole planety a úniku do meziplanetárního prostoru.
+                </div>
+            </div>
+
+            <div class="vzorec">
+                $$v_u = \sqrt{2\kappa \frac{M}{r}} = v_k \sqrt{2}$$
+                <div style="margin-top: 10px; font-size: 14px;">
+                    Z povrchu Země: $v_u \approx 11,2$ km/s
+                </div>
+            </div>
+
+            <div class="priklad-box">
+                <h4>💡 Příklad 13: Kruhová rychlost ve výšce 20 km</h4>
+                <strong>Zadání:</strong> Vypočítejte kruhovou rychlost pro výšku 20 km nad povrchem Země.<br><br>
+                <strong>Dáno:</strong> $h = 20$ km, $R_Z = 6371$ km<br>
+                Vzdálenost od středu: $r = R_Z + h = 6391$ km = $6,391 \times 10^6$ m<br><br>
+                <strong>Řešení:</strong>
+                $$v_k = \sqrt{\frac{\kappa \cdot M_Z}{r}} = \sqrt{\frac{3,986 \times 10^{14}}{6,391 \times 10^6}} \approx 7897 \text{ m/s} \approx 7,9 \text{ km/s}$$
+            </div>
+
+            <div class="priklad-box">
+                <h4>💡 Příklad 14: Geostacionární družice</h4>
+                <strong>Zadání:</strong> Vypočítejte výšku geostacionární družice.<br><br>
+                <strong>Princip:</strong> Oběžná doba = 1 siderický den = 86 164 s<br>
+                Z 3. Keplerova zákona: $r^3 = \frac{\kappa M_Z T^2}{4\pi^2}$<br><br>
+                <strong>Řešení:</strong>
+                $$r = \sqrt[3]{\frac{3,986 \times 10^{14} \cdot (86164)^2}{39,48}} \approx 4,216 \times 10^7 \text{ m} = 42160 \text{ km}$$
+                Výška nad povrchem: $h = r - R_Z = 42160 - 6378 \approx 35782$ km<br>
+                <strong>Odpověď:</strong> Geostacionární družice obíhá ve výšce přibližně 35 800 km nad rovníkem.
+            </div>
+
+            <div class="teorie">
+                <h3>Třetí kosmická rychlost (heliocent rychlost)</h3>
+                <div class="teorie-text">
+                    Minimální rychlost potřebná k úniku ze Sluneční soustavy (vypočteno ze Země). Těleso musí překonat nejen gravitační pole Země, ale i gravitační pole Slunce.
+                </div>
+            </div>
+
+            <div class="vzorec">
+                $$v_3 \approx 16,7 \text{ km/s}$$
+                <div style="margin-top: 10px; font-size: 14px;">
+                    Únik ze Sluneční soustavy (ze Země)
+                </div>
+            </div>
+
+            <div class="teorie">
+                <h3>Čtvrtá kosmická rychlost (galaktická rychlost)</h3>
+                <div class="teorie-text">
+                    Minimální rychlost potřebná k úniku z gravitačního pole naší Galaxie (Mléčné dráhy). Tato hodnota se liší podle polohy ve Galaxii.
+                </div>
+            </div>
+
+            <div class="vzorec">
+                $$v_4 \approx 525 \text{ km/s}$$
+                <div style="margin-top: 10px; font-size: 14px;">
+                    Únik z Galaxie (ze Sluneční soustavy)
+                </div>
+            </div>
+
+            <div class="priklad-box">
+                <h4>💡 Příklad 15: Porovnání kosmických rychlostí</h4>
+                <strong>Zadání:</strong> Porovnejte všechny čtyři kosmické rychlosti.<br><br>
+                <strong>Shrnutí:</strong><br>
+                • 1. kosmická (kruhová): $v_1 \approx 7,9$ km/s - oběžná dráha kolem Země<br>
+                • 2. kosmická (úniková): $v_2 \approx 11,2$ km/s - únik z gravitačního pole Země<br>
+                • 3. kosmická (heliocent): $v_3 \approx 16,7$ km/s - únik ze Sluneční soustavy<br>
+                • 4. kosmická (galaktická): $v_4 \approx 525$ km/s - únik z Galaxie<br><br>
+                <strong>Zajímavost:</strong> Rychlost potřebná k úniku roste s velikostí systému!
+            </div>
+
+            <div class="motivace-box">
+                📡 <strong>Praktické využití:</strong> Geostacionární satelity (GPS, komunikační, meteorologické) "visí" stále nad stejným místem, což je ideální pro spojení a sledování počasí!
+            </div>
+
+            <button class="toggle-button" onclick="toggleKviz(this)">📝 Zobrazit kvíz</button>
+            <div class="kviz">
+                <h3>Kvíz: Kosmické rychlosti</h3>
+                <p><strong>Která kosmická rychlost je potřebná pro únik ze Sluneční soustavy?</strong></p>
+                <div class="quiz-option" onclick="selectAnswer(this, false)">A) 1. kosmická rychlost</div>
+                <div class="quiz-option" onclick="selectAnswer(this, false)">B) 2. kosmická rychlost</div>
+                <div class="quiz-option" onclick="selectAnswer(this, true)">C) 3. kosmická rychlost</div>
+                <div class="quiz-option" onclick="selectAnswer(this, false)">D) 4. kosmická rychlost</div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Sekce 7: Keplerovy zákony -->
+    <div class="teorie-sekce">
+        <div class="sekce-header" onclick="toggleSekce(this)">
+            <span class="toggle-btn">▶</span>
+            <h2>🪐 Keplerovy zákony <span class="obtiznost obtiznost-experti">EXPERTI</span></h2>
+        </div>
+        <div class="sekce-content">
+            <div class="definice">
+                <h3>Pohyb planet v gravitačním poli Slunce</h3>
+                <div class="definice-text">
+                    Planety, komety a asteroidy se pohybují v dominantním centrálním gravitačním poli Slunce. Tyto pohyby dokonale popisují <strong>Keplerovy zákony</strong>, které Newton později fyzikálně zdůvodnil svým gravitačním zákonem.
+                </div>
+            </div>
+
+            <div class="teorie">
+                <h3>1. Keplerův zákon (zákon elips)</h3>
+                <div class="teorie-text">
+                    Planety se pohybují po <strong>elipsách</strong>, v jejichž jednom společném ohnisku je Slunce. Nejsou to tedy dokonalé kružnice.
+                </div>
+            </div>
+
+            <button class="toggle-button" onclick="toggleDemo(this)">📐 Zobrazit: Geometrie elipsy</button>
+            <div class="demo">
+                <h3>Co je to elipsa?</h3>
+                <div class="teorie-text">
+                    <strong>Elipsa</strong> je geometrická křivka definovaná jako množina všech bodů, pro které <strong>součet vzdáleností od dvou pevných bodů (ohnisek) je konstantní</strong>.
+                </div>
+
+                <div class="definice">
+                    <h3>Základní parametry elipsy</h3>
+                    <div class="definice-text">
+                        <strong>Hlavní poloosa</strong> ($a$): Polovina nejdelší délky elipsy (největší vzdálenost od středu)<br>
+                        <strong>Vedlejší poloosa</strong> ($b$): Polovina nejkratší délky elipsy (nejmenší vzdálenost od středu)<br>
+                        <strong>Ohniska</strong> ($F_1$, $F_2$): Dva pevné body, od kterých se měří vzdálenosti<br>
+                        <strong>Vzdálenost ohnisek od středu</strong> ($c$): $c = \sqrt{a^2 - b^2}$
+                    </div>
+                </div>
+
+                <div class="vzorec">
+                    $$a^2 = b^2 + c^2$$
+                    <div style="margin-top: 10px; font-size: 14px;">
+                        Pythagorova věta pro elipsu
+                    </div>
+                </div>
+
+                <div class="teorie">
+                    <h3>Výstřednost (excentricita) elipsy</h3>
+                    <div class="teorie-text">
+                        <strong>Výstřednost</strong> $e$ určuje, jak moc je elipsa "protažená" (jak moc se liší od kružnice).
+                    </div>
+                </div>
+
+                <div class="vzorec">
+                    $$e = \frac{c}{a}$$
+                    <div style="margin-top: 10px; font-size: 14px;">
+                        kde $0 \leq e < 1$ (pro $e = 0$ je elipsa kružnice, pro $e \to 1$ je velmi protažená)
+                    </div>
+                </div>
+
+                <div class="priklad-box">
+                    <h3>💡 Příklad: Výstřednost planet</h3>
+                    <p><strong>Zadání:</strong> Země má výstřednost dráhy $e_{Země} \approx 0{,}017$ (téměř kružnice). Merkur má $e_{Merkur} \approx 0{,}206$ (výrazně eliptická). Porovnejte jejich dráhy.</p>
+                    <div class="reseni">
+                        <strong>Řešení:</strong><br>
+                        Země: $e = 0{,}017 \to$ dráha je téměř dokonalá kružnice<br>
+                        Merkur: $e = 0{,}206 \to$ dráha je výrazně protažená elipsa<br><br>
+                        <strong>Důsledek:</strong> Merkur má mnohem větší rozdíl mezi největší (afélium) a nejmenší (perihélium) vzdáleností od Slunce než Země.
+                    </div>
+                </div>
+
+                <div class="motivace-box">
+                    📍 <strong>Perihélium a afélium:</strong> Bod nejblíže Slunci se nazývá <strong>perihélium</strong> (vzdálenost $a - c$), bod nejdále od Slunce je <strong>afélium</strong> (vzdálenost $a + c$).
+                </div>
+            </div>
+
+            <div class="teorie">
+                <h3>2. Keplerův zákon (zákon ploch)</h3>
+                <div class="teorie-text">
+                    Plocha opsaná průvodičem (spojnicí) planety a Slunce je za stejný čas vždy stejná.<br><br>
+                    <strong>Důsledek:</strong> Planeta se pohybuje <span class="hodnoty">rychleji, když je blíže ke Slunci</span> (v perihéliu) a <span class="hodnoty">pomaleji, když je nejdále</span> (v aféliu).
+                </div>
+            </div>
+
+            <div class="teorie">
+                <h3>3. Keplerův zákon (harmonický zákon)</h3>
+                <div class="teorie-text">
+                    Poměr druhých mocnin oběžných dob dvou planet se rovná poměru třetích mocnin jejich hlavních poloos (středních vzdáleností od Slunce).
+                </div>
+            </div>
+
+            <div class="vzorec">
+                $$\frac{T_1^2}{T_2^2} = \frac{a_1^3}{a_2^3}$$
+                <div style="margin-top: 10px; font-size: 14px;">
+                    kde $T$ je oběžná doba a $a$ je hlavní poloosa dráhy (střední vzdálenost od Slunce)
+                </div>
+            </div>
+
+            <div class="teorie">
+                <h3>Odvození 3. Keplerova zákona z Newtonova zákona</h3>
+                <div class="teorie-text">
+                    Pro kruhovou dráhu platí rovnost gravitační a dostředivé síly:<br>
+                    $$\kappa \frac{M_{Slunce} \cdot m_{planeta}}{r^2} = m_{planeta} \cdot \frac{v^2}{r}$$<br>
+                    Po úpravě a dosazení $v = \frac{2\pi r}{T}$ získáme:<br>
+                    $$T^2 = \frac{4\pi^2}{\kappa M_{Slunce}} \cdot r^3$$<br>
+                    To dokazuje, že $T^2 \propto r^3$, což je přesně 3. Keplerův zákon!
+                </div>
+            </div>
+
+            <div class="motivace-box">
+                ⭐ <strong>Newtonův triumf:</strong> Newton ukázal, že Keplerovy zákony jsou přímým důsledkem gravitační síly klesající s druhou mocninou vzdálenosti. Tím propojil nebeskou mechaniku s pozemskou fyzikou!
+            </div>
+
+            <button class="toggle-button" onclick="toggleKviz(this)">📝 Zobrazit kvíz</button>
+            <div class="kviz">
+                <h3>Kvíz: Keplerovy zákony</h3>
+                <p><strong>Podle jakého Keplerova zákona se planeta pohybuje rychleji, když je blíže ke Slunci?</strong></p>
+                <div class="quiz-option" onclick="selectAnswer(this, false)">A) 1. Keplerův zákon</div>
+                <div class="quiz-option" onclick="selectAnswer(this, true)">B) 2. Keplerův zákon</div>
+                <div class="quiz-option" onclick="selectAnswer(this, false)">C) 3. Keplerův zákon</div>
+                <div class="quiz-option" onclick="selectAnswer(this, false)">D) Žádný z nich</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sekce 7.5: Sluneční soustava -->
+    <div class="teorie-sekce">
+        <div class="sekce-header" onclick="toggleSekce(this)">
+            <span class="toggle-btn">▶</span>
+            <h2>🌌 Sluneční soustava <span class="obtiznost obtiznost-zaklad">ZÁKLAD</span></h2>
+        </div>
+        <div class="sekce-content">
+            <div class="definice">
+                <h3>Složení Sluneční soustavy</h3>
+                <div class="definice-text">
+                    Sluneční soustava je gravitačně vázaný systém obsahující Slunce a všechna tělesa, která kolem něj obíhají pod vlivem gravitace.
+                </div>
+            </div>
+
+            <div class="teorie">
+                <h3>Osm planet Sluneční soustavy</h3>
+                <div class="teorie-text">
+                    Kolem Slunce obíhá <strong>8 planet</strong> v pořadí od Slunce:<br><br>
+                    <span class="hodnoty">Vnitřní planety (kamenné):</span><br>
+                    1. <strong>Merkur</strong> (0,39 AU) - nejmenší, nejbližší ke Slunci<br>
+                    2. <strong>Venuše</strong> (0,72 AU) - nejžhavější planeta<br>
+                    3. <strong>Země</strong> (1,00 AU) - jediná planeta s život <br>
+                    4. <strong>Mars</strong> (1,52 AU) - "červená planeta"<br><br>
+
+                    <span class="hodnoty">Vnější planety (plynní obři):</span><br>
+                    5. <strong>Jupiter</strong> (5,20 AU) - největší planeta<br>
+                    6. <strong>Saturn</strong> (9,58 AU) - planeta s prstenci<br>
+                    7. <strong>Uran</strong> (19,20 AU) - "ležící" planeta<br>
+                    8. <strong>Neptun</strong> (30,05 AU) - nejvzdálenější planeta<br><br>
+
+                    <em>1 AU (astronomická jednotka) = 150 milionů km = vzdálenost Země-Slunce</em>
+                </div>
+            </div>
+
+            <div class="priklad-box">
+                <h4>💡 Co se stalo s Plutem?</h4>
+                <strong>Historická změna:</strong> 24. srpna 2006 přijala Mezinárodní astronomická unie novou definici planety.<br><br>
+                <strong>Důvod:</strong> Pluto nevyčistilo okolí své dráhy od ostatních těles (je to trpasličí planeta).<br>
+                <strong>Výsledek:</strong> Sluneční soustava má oficiálně jen <strong>8 planet</strong> (dříve 9).
+            </div>
+
+            <div class="teorie">
+                <h3>Další tělesa Sluneční soustavy</h3>
+                <div class="teorie-text">
+                    • <span class="hodnoty">Měsíce (satelity)</span> - obíhají kolem planet (Země má 1, Jupiter 95!)<br>
+                    • <span class="hodnoty">Planetky (asteroidy)</span> - převážně mezi Marsem a Jupiterem<br>
+                    • <span class="hodnoty">Komety</span> - ledová tělesa s dlouhými oběžnými drahami<br>
+                    • <span class="hodnoty">Meteoroidy</span> - drobná tělíska (od prachu do několika metrů)<br>
+                    • <span class="hodnoty">Trpasličí planety</span> - Pluto, Eris, Ceres, Makemake, Haumea<br>
+                    • <span class="hodnoty">Meziplanetární hmota</span> - plyn a prach mezi planetami
+                </div>
+            </div>
+
+            <div class="priklad-box">
+                <h4>💡 Příklad 16: Meteoroid, meteor, meteorit - jaký je rozdíl?</h4>
+                <strong>Meteoroid:</strong> Malé těleso pohybující se ve vesmíru (zrnko prachu až pár metrů)<br>
+                <strong>Meteor:</strong> Světelný jev při průchodu meteoroidu atmosférou ("padající hvězda")<br>
+                <strong>Meteorit:</strong> Zbytek meteoroidu, který dopadl na povrch Země<br><br>
+                <strong>Jednoduše:</strong> Meteoroid venku → meteor svítí → meteorit na zemi
+            </div>
+
+            <div class="teorie">
+                <h3>Umělé objekty ve Sluneční soustavě</h3>
+                <div class="teorie-text">
+                    Kromě přirozených těles se ve Sluneční soustavě pohybují i <strong>umělé objekty</strong>:<br>
+                    • Umělé družice Země (GPS, komunikační, meteorologické, ...)<br>
+                    • Meziplanetární sondy (Mars rovers, Voyager 1 a 2, ...)<br>
+                    • Kosmické lodě a stanice (ISS, ...)<br><br>
+                    Tyto objekty plní různé úkoly - výzkum planet, sledování počasí, komunikace, navigace.
+                </div>
+            </div>
+
+            <div class="motivace-box">
+                🚀 <strong>Voyager 1 a 2:</strong> Vypuštěny v roce 1977, nyní jsou ve vzdálenosti přes 20 miliard km! Voyager 1 opustil Sluneční soustavu a je nejdále od Země vytvořeným objektem.
+            </div>
+
+            <button class="toggle-button" onclick="toggleKviz(this)">📝 Zobrazit kvíz</button>
+            <div class="kviz">
+                <h3>Kvíz: Sluneční soustava</h3>
+                <p><strong>Kolik planet má Sluneční soustava od roku 2006?</strong></p>
+                <div class="quiz-option" onclick="selectAnswer(this, false)">A) 7 planet</div>
+                <div class="quiz-option" onclick="selectAnswer(this, true)">B) 8 planet</div>
+                <div class="quiz-option" onclick="selectAnswer(this, false)">C) 9 planet</div>
+                <div class="quiz-option" onclick="selectAnswer(this, false)">D) 10 planet</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sekce 8: Shrnutí a závěrečný kvíz -->
+    <div class="teorie-sekce">
+        <div class="sekce-header" onclick="toggleSekce(this)">
+            <span class="toggle-btn">▶</span>
+            <h2>📝 Shrnutí a závěrečný kvíz <span class="obtiznost obtiznost-zaklad">ZÁKLAD</span></h2>
+        </div>
+        <div class="sekce-content">
+            <div class="statistiky">
+                🌍 Gravitační pole - Klíčové poznatky
+            </div>
+
+            <div class="teorie">
+                <h3>Základní vzorce</h3>
+                <div class="teorie-text">
+                    <strong>1. Newtonův gravitační zákon:</strong><br>
+                    $$F_g = \kappa \frac{m_1 m_2}{r^2}$$<br><br>
+                    
+                    <strong>2. Intenzita gravitačního pole:</strong><br>
+                    $$K = \frac{F_g}{m} = \kappa \frac{M}{r^2}$$<br><br>
+                    
+                    <strong>3. Gravitační zrychlení:</strong><br>
+                    $$a_g = K = \kappa \frac{M}{r^2}$$<br><br>
+                    
+                    <strong>4. Kruhová rychlost:</strong><br>
+                    $$v_k = \sqrt{\kappa \frac{M}{r}}$$<br><br>
+                    
+                    <strong>5. Úniková rychlost:</strong><br>
+                    $$v_u = v_k \sqrt{2}$$<br><br>
+                    
+                    <strong>6. Třetí Keplerův zákon:</strong><br>
+                    $$\frac{T_1^2}{T_2^2} = \frac{r_1^3}{r_2^3}$$
+                </div>
+            </div>
+
+            <div class="teorie">
+                <h3>Důležité konstanty</h3>
+                <div class="teorie-text">
+                    • Gravitační konstanta: $\kappa = 6,674 \times 10^{-11} \text{ N·m}^2\text{·kg}^{-2}$<br>
+                    • Hmotnost Země: $M_Z = 5,972 \times 10^{24}$ kg<br>
+                    • Poloměr Země: $R_Z \approx 6371$ km<br>
+                    • Tíhové zrychlení na Zemi: $g = 9,81 \text{ m/s}^2$<br>
+                    • 1. kosmická rychlost: $v_k \approx 7,9$ km/s<br>
+                    • 2. kosmická rychlost: $v_u \approx 11,2$ km/s
+                </div>
+            </div>
+
+            <div class="motivace-box">
+                🚀 <strong>Kam dál?</strong> Gravitační pole je základem pro pochopení pohybů ve vesmíru - od pádu jablka až po черné díry a expanzi vesmíru!
+            </div>
+
+            <button class="toggle-button" onclick="toggleKviz(this)">📝 Závěrečný test</button>
+            <div class="kviz">
+                <h3>Závěrečný kvíz: Otestujte si znalosti!</h3>
+                
+                <p><strong>1. Co se stane s gravitační silou, když hmotnost jednoho tělesa zdvojnásobíme?</strong></p>
+                <div class="quiz-option" onclick="selectAnswer(this, false)">A) Zůstane stejná</div>
+                <div class="quiz-option" onclick="selectAnswer(this, true)">B) Zdvojnásobí se</div>
+                <div class="quiz-option" onclick="selectAnswer(this, false)">C) Zčtyřnásobí se</div>
+                <div class="quiz-option" onclick="selectAnswer(this, false)">D) Klesne na polovinu</div>
+
+                <p style="margin-top: 20px;"><strong>2. Jaká je jednotka intenzity gravitačního pole?</strong></p>
+                <div class="quiz-option" onclick="selectAnswer(this, false)">A) N</div>
+                <div class="quiz-option" onclick="selectAnswer(this, false)">B) m/s</div>
+                <div class="quiz-option" onclick="selectAnswer(this, true)">C) N/kg (nebo m/s²)</div>
+                <div class="quiz-option" onclick="selectAnswer(this, false)">D) J</div>
+
+                <p style="margin-top: 20px;"><strong>3. Jak vysoko nad Zemí obíhá geostacionární družice?</strong></p>
+                <div class="quiz-option" onclick="selectAnswer(this, false)">A) 200 km</div>
+                <div class="quiz-option" onclick="selectAnswer(this, false)">B) 2 000 km</div>
+                <div class="quiz-option" onclick="selectAnswer(this, true)">C) 35 800 km</div>
+                <div class="quiz-option" onclick="selectAnswer(this, false)">D) 384 000 km</div>
+
+                <p style="margin-top: 20px;"><strong>4. Který Keplerův zákon říká, že planety obíhají po elipsách?</strong></p>
+                <div class="quiz-option" onclick="selectAnswer(this, true)">A) 1. Keplerův zákon</div>
+                <div class="quiz-option" onclick="selectAnswer(this, false)">B) 2. Keplerův zákon</div>
+                <div class="quiz-option" onclick="selectAnswer(this, false)">C) 3. Keplerův zákon</div>
+                <div class="quiz-option" onclick="selectAnswer(this, false)">D) Žádný z nich</div>
+            </div>
+
+            <div class="navigace">
+                <p style="margin: 10px 0; font-size: 16px;">
+                    ✨ <strong>Gratulujeme!</strong> Dokončili jste studium gravitačního pole! ✨
+                </p>
+                <p style="margin: 5px 0;">
+                    Nyní rozumíte silám, které udržují planety na oběžných drahách a družice na obloze! 🌌
+                </p>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        // Toggle sekce (rozbalit/sbalit)
+        function toggleSekce(header) {
+            const content = header.nextElementSibling;
+            const toggleBtn = header.querySelector('.toggle-btn');
+            
+            content.classList.toggle('active');
+            toggleBtn.classList.toggle('active');
+        }
+
+        // Toggle kvíz (zobrazit/skrýt)
+        function toggleKviz(button) {
+            const kviz = button.nextElementSibling;
+
+            if (kviz.classList.contains('show')) {
+                kviz.classList.remove('show');
+                button.textContent = '📝 Zobrazit kvíz';
+            } else {
+                kviz.classList.add('show');
+                button.textContent = '📝 Skrýt kvíz';
+            }
+        }
+
+        // Toggle demo (zobrazit/skrýt)
+        function toggleDemo(button) {
+            const demo = button.nextElementSibling;
+
+            if (demo.classList.contains('show')) {
+                demo.classList.remove('show');
+                button.textContent = button.textContent.replace('Skrýt', 'Zobrazit');
+            } else {
+                demo.classList.add('show');
+                button.textContent = button.textContent.replace('Zobrazit', 'Skrýt');
+            }
+        }
+
+        // Vyhodnocení odpovědi v kvízu
+        function selectAnswer(element, isCorrect) {
+            // Resetovat všechny odpovědi v tomto kvízu
+            const allOptions = element.parentElement.querySelectorAll('.quiz-option');
+            allOptions.forEach(option => {
+                option.classList.remove('correct', 'incorrect');
+            });
+
+            // Označit zvolenou odpověď
+            if (isCorrect) {
+                element.classList.add('correct');
+                element.innerHTML += ' ✅ Správně!';
+            } else {
+                element.classList.add('incorrect');
+                element.innerHTML += ' ❌ Špatně, zkuste znovu';
+            }
+
+            // Odstranit ikony po 2 sekundách
+            setTimeout(() => {
+                allOptions.forEach(option => {
+                    option.innerHTML = option.innerHTML.replace(' ✅ Správně!', '').replace(' ❌ Špatně, zkuste znovu', '');
+                });
+            }, 2000);
+        }
+
+        // Automaticky rozbalit první sekci při načtení stránky
+        window.addEventListener('DOMContentLoaded', function() {
+            const firstSekce = document.querySelector('.teorie-sekce .sekce-header');
+            if (firstSekce) {
+                toggleSekce(firstSekce);
+            }
+        });
+    </script>
+</body>
+</html>

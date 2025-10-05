@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Práce a výkon stálé síly</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>1. Práce a výkon stálé síly</h1>
+            <p>Mechanická práce a energie - řešený příklad</p>
+        </header>
+
+        <!-- Motivační úvod pro studenty -->
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> GPS navigace v autech počítá předpokládané časy příjezdu na základě výkonu a práce motoru. Dispečeři dopravních firem plánují trasy podle spotřeby paliva, která přímo souvisí s prací vykonanou motorem. Bez těchto výpočtů by moderní doprava a logistika nemohly efektivně fungovat!
+        </div>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <div class="zadani-text">
+                Na těleso, jež bylo na počátku v klidu, působí výsledná síla <strong>80 N</strong> po dobu <strong>5 s</strong>. Předpokládejte, že hmotnost tělesa je <strong>2 kg</strong> a vypočtěte:<br><br>
+                <strong>a)</strong> práci, kterou síla vykoná<br>
+                <strong>b)</strong> její průměrný výkon<br>
+                <strong>c)</strong> okamžitý výkon v 5 s od začátku pohybu<br>
+                <strong>d)</strong> porovnejte b) a c), diskutujte případný rozdíl výsledků
+            </div>
+        </section>
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+
+            <div class="calculation-step">
+                <h3>Krok 1: Analýza situace a převody jednotek</h3>
+                <p><strong>Dané hodnoty:</strong></p>
+                <ul>
+                    <li>Síla: $$F = 80 \text{ N}$$</li>
+                    <li>Čas: $$t = 5 \text{ s}$$</li>
+                    <li>Hmotnost: $$m = 2 \text{ kg}$$</li>
+                    <li>Počáteční rychlost: $$v_0 = 0 \text{ m/s}$$ (těleso bylo v klidu)</li>
+                </ul>
+                <p>Těleso se pohybuje s konstantním zrychlením - rovnoměrně zrychlený pohyb.</p>
+                <div class="chyba-box">
+                    Pamatuj: Pro výpočet práce potřebujeme znát dráhu, kterou musíme nejdřív vypočítat přes zrychlení!
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h3>Krok 2: Výběr fyzikálních rovnic</h3>
+                <p>Budeme potřebovat:</p>
+                <div class="rovnice-blok">
+                    <div class="rovnice-nadpis">📐 Druhý Newtonův zákon</div>
+                    <div class="rovnice-text">$$a = \frac{F}{m}$$</div>
+                </div>
+                <div class="rovnice-blok">
+                    <div class="rovnice-nadpis">📐 Dráha při rovnoměrně zrychleném pohybu</div>
+                    <div class="rovnice-text">$$s = v_0 t + \frac{1}{2}at^2 = \frac{1}{2}at^2$$ (protože $$v_0 = 0$$)</div>
+                </div>
+                <div class="rovnice-blok">
+                    <div class="rovnice-nadpis">📐 Práce a výkon</div>
+                    <div class="rovnice-text">$$W = F \cdot s$$
+$$\bar{P} = \frac{W}{t}$$
+$$P = F \cdot v$$</div>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h3>Krok 3: Algebraické vyjádření</h3>
+                <p>Nejdříve vypočítáme zrychlení:</p>
+                <div class="rovnice-blok">
+                    <div class="rovnice-text">$$a = \frac{80}{2} = 40 \text{ m/s}^2$$</div>
+                </div>
+                <p>Pak dráhu:</p>
+                <div class="rovnice-blok">
+                    <div class="rovnice-text">$$s = \frac{1}{2} \cdot 40 \cdot 5^2 = 20 \cdot 25 = 500 \text{ m}$$</div>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h3>Krok 4: Dosazení a výpočet</h3>
+                <p><strong>a) Práce:</strong></p>
+                <div class="rovnice-blok">
+                    <div class="rovnice-text">$$W = F \cdot s = 80 \cdot 500 = 40\,000 \text{ J} = 40 \text{ kJ}$$</div>
+                </div>
+
+                <p><strong>b) Průměrný výkon:</strong></p>
+                <div class="rovnice-blok">
+                    <div class="rovnice-text">$$\bar{P} = \frac{W}{t} = \frac{40\,000}{5} = 8\,000 \text{ W} = 8 \text{ kW}$$</div>
+                </div>
+
+                <p><strong>c) Okamžitý výkon v t=5s:</strong></p>
+                <p>Nejdříve konečná rychlost: $$v = v_0 + at = 0 + 40 \cdot 5 = 200 \text{ m/s}$$</p>
+                <div class="rovnice-blok">
+                    <div class="rovnice-text">$$P = F \cdot v = 80 \cdot 200 = 16\,000 \text{ W} = 16 \text{ kW}$$</div>
+                </div>
+
+                <p><strong>d) Porovnání:</strong></p>
+                <p>Okamžitý výkon (16 kW) je přesně dvojnásobný oproti průměrnému (8 kW).</p>
+            </div>
+
+            <div class="calculation-step">
+                <h3>Krok 5: Kontrola a odpověď</h3>
+                <p><strong>Odpovědi:</strong></p>
+                <ul>
+                    <li>a) Práce: <strong>W = 40 kJ</strong></li>
+                    <li>b) Průměrný výkon: <strong>P̄ = 8 kW</strong></li>
+                    <li>c) Okamžitý výkon: <strong>P = 16 kW</strong></li>
+                    <li>d) Okamžitý výkon je 2× větší</li>
+                </ul>
+                <p><strong>Vysvětlení rozdílu:</strong> Výkon roste lineárně s rychlostí (P = F·v). Protože rychlost roste od 0 do 200 m/s, výkon roste od 0 do 16 kW. Průměrná hodnota lineárního růstu je polovina maxima: (0 + 16)/2 = 8 kW.</p>
+            </div>
+        </section>
+
+        <section id="shrnuti">
+            <h2>Shrnutí a kontrola</h2>
+
+            <div class="summary-box">
+                <strong>Hlavní poznatky:</strong>
+                <ul>
+                    <li>Práce stálé síly závisí na velikosti síly a uražené dráze: W = F · s</li>
+                    <li>Průměrný výkon je práce dělená časem: P̄ = W/t</li>
+                    <li>Okamžitý výkon je součin síly a okamžité rychlosti: P = F · v</li>
+                    <li>Při rovnoměrně zrychleném pohybu roste výkon lineárně s časem</li>
+                </ul>
+            </div>
+
+            <div class="info-box">
+                <strong>Kontrola rozumnosti:</strong> Výkon 8-16 kW odpovídá výkonu silného automobilu. Pro malé těleso 2 kg s obrovským zrychlením 40 m/s² je to realistické.
+            </div>
+
+            <details>
+                <summary>🤔 Metakognitivní otázky</summary>
+                <div>
+                    <ul>
+                        <li>Co by se stalo s výkonem, kdyby síla působila pouze polovinu času?</li>
+                        <li>Proč je okamžitý výkon na konci větší než průměrný?</li>
+                        <li>Jak souvisí graf v-t s rozdílem mezi průměrným a okamžitým výkonem?</li>
+                        <li>V jakých reálných situacích je důležitý okamžitý vs. průměrný výkon?</li>
+                    </ul>
+                </div>
+            </details>
+        </section>
+
+    </main>
+</body>
+</html>

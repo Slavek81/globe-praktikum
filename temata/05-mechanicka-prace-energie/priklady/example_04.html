@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Srážka vozíků v opačném směru</title>
+
+    <!-- MathJax konfigurace pro správné zobrazování matematických vzorců -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="unified-style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>4. Srážka vozíků v opačném směru</h1>
+            <p>Mechanická práce a energie - řešený příklad</p>
+        </header>
+
+        <!-- Motivační úvod pro studenty -->
+        <div class="intro-context">
+            <strong>💡 Praktická aplikace:</strong> Crash testy automobilů simulují různé typy srážek, aby inženýři mohli navrhovat bezpečnější vozidla. Airbags, bezpečnostní pásy a deformační zóny fungují na principech zachování hybnosti a přeměny kinetické energie. Pochopení pružných a nepružných srážek je klíčové pro automobilový průmysl!
+        </div>
+
+        <section id="zadani">
+            <h2>Zadání úlohy</h2>
+            <div class="zadani-text">
+                Vozík A o hmotnosti <strong>2 kg</strong> se pohybuje rychlostí <strong>2 m·s⁻¹</strong> a vozík B o hmotnosti <strong>5 kg</strong> se pohybuje v opačném směru rychlostí <strong>4 m·s⁻¹</strong>.<br><br>
+                <strong>a)</strong> Předpokládáme-li nepružnou srážku, jak velká část jejich kinetické energie se přemění v jinou formu energie?<br>
+                <strong>b)</strong> Jaká by byla rychlost obou vozíků po srážce, kdyby byla dokonale pružná?
+            </div>
+        </section>
+
+        <section id="postup-reseni">
+            <h2>Postup řešení</h2>
+
+            <div class="calculation-step">
+                <h3>Krok 1: Analýza situace a převody jednotek</h3>
+                <p><strong>Dané hodnoty (volba kladného směru = směr A):</strong></p>
+                <ul>
+                    <li>Hmotnost A: $$m_A = 2 \text{ kg}$$</li>
+                    <li>Rychlost A: $$v_A = +2 \text{ m/s}$$ (kladný směr)</li>
+                    <li>Hmotnost B: $$m_B = 5 \text{ kg}$$</li>
+                    <li>Rychlost B: $$v_B = -4 \text{ m/s}$$ (opačný směr)</li>
+                </ul>
+                <div class="chyba-box">
+                    Pozor na znaménka! Vozíky jedou proti sobě, takže jedna rychlost musí být záporná!
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h3>Krok 2: Výběr fyzikální rovnice</h3>
+                <p><strong>Pro nepružnou srážku:</strong></p>
+                <div class="rovnice-blok">
+                    <div class="rovnice-nadpis">📐 Zákon zachování hybnosti</div>
+                    <div class="rovnice-text">$$m_Av_A + m_Bv_B = (m_A + m_B)v'$$</div>
+                </div>
+                <p><strong>Pro pružnou srážku:</strong></p>
+                <div class="rovnice-blok">
+                    <div class="rovnice-nadpis">📐 Vzorce pro pružnou srážku</div>
+                    <div class="rovnice-text">$$v'_A = \frac{(m_A - m_B)v_A + 2m_Bv_B}{m_A + m_B}$$
+$$v'_B = \frac{2m_Av_A + (m_B - m_A)v_B}{m_A + m_B}$$</div>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h3>Krok 3: Algebraické vyjádření</h3>
+                <p><strong>Nepružná srážka - celková energie před:</strong></p>
+                <div class="rovnice-blok">
+                    <div class="rovnice-text">$$E_{k,před} = \frac{1}{2}m_Av_A^2 + \frac{1}{2}m_Bv_B^2 = \frac{1}{2} \cdot 2 \cdot 2^2 + \frac{1}{2} \cdot 5 \cdot (-4)^2 = 4 + 40 = 44 \text{ J}$$</div>
+                </div>
+                <p><strong>Rychlost po nepružné srážce:</strong></p>
+                <div class="rovnice-blok">
+                    <div class="rovnice-text">$$v' = \frac{2 \cdot 2 + 5 \cdot (-4)}{2 + 5} = \frac{4 - 20}{7} = -\frac{16}{7} \approx -2{,}29 \text{ m/s}$$</div>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h3>Krok 4: Dosazení a výpočet</h3>
+                <p><strong>a) Nepružná srážka:</strong></p>
+                <p>Energie po srážce: $$E_{k,po} = \frac{1}{2}(m_A+m_B)(v')^2 = \frac{1}{2} \cdot 7 \cdot (-2{,}29)^2 \approx 18{,}4 \text{ J}$$</p>
+                <p>Ztráta energie: $$\Delta E_k = 44 - 18{,}4 = 25{,}6 \text{ J}$$</p>
+
+                <p><strong>b) Pružná srážka:</strong></p>
+                <div class="rovnice-blok">
+                    <div class="rovnice-text">$$v'_A = \frac{(2-5) \cdot 2 + 2 \cdot 5 \cdot (-4)}{7} = \frac{-6 - 40}{7} = -\frac{46}{7} \approx -6{,}57 \text{ m/s}$$
+
+$$v'_B = \frac{2 \cdot 2 \cdot 2 + (5-2) \cdot (-4)}{7} = \frac{8 - 12}{7} = -\frac{4}{7} \approx -0{,}57 \text{ m/s}$$</div>
+                </div>
+            </div>
+
+            <div class="calculation-step">
+                <h3>Krok 5: Kontrola a odpověď</h3>
+                <p><strong>Odpovědi:</strong></p>
+                <ul>
+                    <li>a) Při nepružné srážce se ztratilo <strong>25,6 J</strong> energie</li>
+                    <li>b) Po pružné srážce: $$v'_A \approx -6{,}57 \text{ m/s}$$, $$v'_B \approx -0{,}57 \text{ m/s}$$</li>
+                </ul>
+                <p><strong>Význam:</strong> U nepružné srážky se část energie "ztratí" (přemění na teplo, zvuk). U pružné srážky se energie zachová a vozíky se od sebe "odrazí". Oba mají po srážce zápornou rychlost → jedou směrem vozíku B.</p>
+            </div>
+        </section>
+
+        <section id="shrnuti">
+            <h2>Shrnutí a kontrola</h2>
+
+            <div class="summary-box">
+                <strong>Hlavní poznatky:</strong>
+                <ul>
+                    <li>Při čelní srážce je důležité správně určit znaménka rychlostí</li>
+                    <li>U nepružné srážky se zachovává hybnost, ale ne mechanická energie</li>
+                    <li>U pružné srážky se zachovává jak hybnost, tak mechanická energie</li>
+                    <li>Ztracená energie se přemění na teplo, zvuk a deformaci</li>
+                </ul>
+            </div>
+
+            <div class="info-box">
+                <strong>Kontrola rozumnosti:</strong> Oba vozíky jedou po srážce směrem těžšího vozíku B (záporný směr), což odpovídá fyzikální realitě.
+            </div>
+
+            <details>
+                <summary>🤔 Metakognitivní otázky</summary>
+                <div>
+                    <ul>
+                        <li>Proč oba vozíky jedou po srážce stejným směrem?</li>
+                        <li>Co je rozdíl mezi pružnou a nepružnou srážkou v reálném světě?</li>
+                        <li>Jak souvisí ztráta energie s bezpečností při autonehodách?</li>
+                        <li>Které předpoklady jsme udělali? (Tření, odpor vzduchu...)</li>
+                    </ul>
+                </div>
+            </details>
+        </section>
+
+    </main>
+</body>
+</html>
