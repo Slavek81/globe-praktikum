@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01 - Bilance systému | Fyzika - opakování a prohloubení</title>
+    <meta name="description" content="Základy materiálových a energetických bilancí - teorie i praktické příklady.">
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+        window.MathJax = {
+            tex: {inlineMath: [['$', '$'], ['\\(', '\\)']]},
+            svg: {fontCache: 'global'}
+        };
+    </script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="nav-brand">
+                <h1><a href="../../index.html" style="color: inherit; text-decoration: none;"><i class="fas fa-atom"></i> Fyzika - opakování a prohloubení</a></h1>
+                <p class="subtitle">01 - Bilance systému</p>
+            </div>
+            <nav class="nav">
+                <a href="../../index.html" class="nav-link">Domů</a>
+            </nav>
+            <div class="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Lecture Header -->
+    <section class="page-hero">
+        <div class="container">
+            <div class="lecture-hero-content">
+                <div class="lecture-number">01</div>
+                <div class="lecture-info">
+                    <h1>Bilance systému</h1>
+                    <p class="lecture-subtitle">Základní principy materiálových a energetických bilancí</p>
+                    <div class="lecture-meta-hero">
+                        <span><i class="fas fa-clock"></i> 3 hodiny</span>
+                        <span><i class="fas fa-users"></i> Teoretická přednáška</span>
+                        <span><i class="fas fa-calculator"></i> Základní výpočty</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Navigation -->
+    <section class="section">
+        <div class="container">
+            <div class="quick-nav">
+                <a href="#objectives" class="quick-nav-item">
+                    <i class="fa-solid fa-bullseye"></i>
+                    <span>Cíle</span>
+                </a>
+                <a href="#theory" class="quick-nav-item">
+                    <i class="fas fa-book"></i>
+                    <span>Teorie</span>
+                </a>
+                <a href="#presentations" class="quick-nav-item">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                    <span>Prezentace</span>
+                </a>
+                <a href="#examples" class="quick-nav-item">
+                    <i class="fas fa-calculator"></i>
+                    <span>Příklady</span>
+                </a>
+                <a href="#materials" class="quick-nav-item">
+                    <i class="fas fa-download"></i>
+                    <span>Materiály</span>
+                </a>
+            </div>
+        </div>
+    </section>    <!-- Learning Objectives -->
+    <section id="objectives" class="section section-gray">
+        <div class="container">
+            <h2 class="section-title">Cíle přednášky</h2>
+            <div class="objectives-grid">
+                <div class="objective-card">
+                    <div class="objective-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>Porozumět základům</h3>
+                    <p>Seznámení se základními pojmy: teplota, teplo, tepelný tok, entalpie, měrná tepelná kapacita</p>
+                </div>
+                <div class="objective-card">
+                    <div class="objective-icon">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <h3>Zvládnout bilance</h3>
+                    <p>Aplikace zákonů zachování hmoty a energie na praktické systémy</p>
+                </div>
+                <div class="objective-card">
+                    <div class="objective-icon">
+                        <i class="fas fa-flask"></i>
+                    </div>
+                    <h3>Bilance s chemickou reakcí</h3>
+                    <p>Pokročilé bilance zahrnující chemické procesy a reakce</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Theoretical Foundations -->
+    <section id="theory" class="section">
+        <div class="container">
+            <h2 class="section-title">Teoretické základy</h2>
+
+            <div class="theory-content">
+                <div class="theory-block">
+                    <h3><i class="fas fa-thermometer-half"></i> Základní pojmy</h3>
+                    <div class="definitions">
+                        <div class="definition-item">
+                            <h4>Teplota T [°C, K, °F]</h4>
+                            <p>Stavová veličina, která měří průměrnou kinetickou energii pohybujících se molekul v látce.</p>
+                        </div>
+                        <div class="definition-item">
+                            <h4>Teplo Q [J]</h4>
+                            <p>Dějová veličina a forma energie, která se přenáší mezi tělesy o různých teplotách z teplejšího do chladnějšího.</p>
+                        </div>
+                        <div class="definition-item">
+                            <h4>Tepelný tok $\dot{Q}$ [W]</h4>
+                            <p>Množství tepla přenesené za jednotku času. Tepelný tok je přímo úměrný teplotnímu rozdílu.</p>
+                        </div>
+                        <div class="definition-item">
+                            <h4>Entalpie H [J]</h4>
+                            <p>Fyzikální veličina rozměru energie, základní pro energetické bilance.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="theory-block">
+                    <h3><i class="fas fa-calculator"></i> Základní rovnice</h3>
+                    <div class="equations">
+                        <div class="equation-block">
+                            <h4>Diskontinuální provoz (bez průtoku v čase):</h4>
+                            <div class="equation">$$Q = m \cdot c_p \cdot (T_2 - T_1)$$</div>
+                            <p class="equation-note">kde Q je teplo [J], m hmotnost [kg], cp měrná tepelná kapacita [J/(kg·K)]</p>
+                        </div>
+
+                        <div class="equation-block">
+                            <h4>Kontinuální provoz (s průtokem v čase):</h4>
+                            <div class="equation">$$\dot{Q} = \dot{m} \cdot c_p \cdot (T_2 - T_1)$$</div>
+                            <p class="equation-note">kde $\dot{Q}$ je tepelný tok [W], $\dot{m}$ hmotnostní tok [kg/s]</p>
+                        </div>
+
+                        <div class="equation-block">
+                            <h4>S fázovou změnou (var/kondenzace):</h4>
+                            <div class="equation">$$\dot{Q} = \dot{m} \cdot c_{p,kapaliny} \cdot (T_{var} - T_1) + \dot{m} \cdot l_v + \dot{m} \cdot c_{p,páry} \cdot (T_2 - T_{var})$$</div>
+                            <p class="equation-note">kde $l_v$ je měrné skupenské teplo varu [J/kg]</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="theory-block">
+                    <h3><i class="fas fa-balance-scale"></i> Zákony zachování</h3>
+                    <div class="conservation-laws">
+                        <div class="law-item">
+                            <h4>Zákon zachování hmoty:</h4>
+                            <div class="law-equation">Vstup = Výstup + Akumulace</div>
+                        </div>
+                        <div class="law-item">
+                            <h4>Zákon zachování energie:</h4>
+                            <div class="law-equation">Energie vstupující - Energie vystupující = Akumulace energie</div>
+                        </div>
+                        <div class="law-item">
+                            <h4>Obecná bilance:</h4>
+                            <div class="law-equation">Vstup + Výroba = Výstup + Spotřeba + Akumulace</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Presentations -->
+    <section id="presentations" class="section section-gray">
+        <div class="container">
+            <h2 class="section-title">Interaktivní prezentace</h2>
+            <div class="presentations-grid">
+                <a href="prezentace/03_bilance.html" class="presentation-card" target="_blank">
+                    <div class="presentation-preview">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <div class="presentation-info">
+                        <h3>Bilance</h3>
+                        <p>Kompletní přehled materiálových a energetických bilancí</p>
+                        <div class="presentation-meta">
+                            <span><i class="fas fa-external-link-alt"></i> Otevře v novém okně</span>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="prezentace/04_bilance_s_chemickou_reakci.html" class="presentation-card" target="_blank">
+                    <div class="presentation-preview">
+                        <i class="fas fa-flask"></i>
+                    </div>
+                    <div class="presentation-info">
+                        <h3>Bilance s chemickou reakcí</h3>
+                        <p>Pokročilé bilance zahrnující chemické procesy a reakce</p>
+                        <div class="presentation-meta">
+                            <span><i class="fas fa-external-link-alt"></i> Otevře v novém okně</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Examples Section -->
+    <section id="examples" class="section">
+        <div class="container">
+            <h2 class="section-title">Praktické příklady</h2>
+            
+            <div class="examples-categories">
+                <div class="example-category">
+                    <h3><i class="fas fa-thermometer-half"></i> Tepelné výpočty</h3>
+                    <div class="example-list">
+                        <a href="priklady/example_01.html" class="example-item" target="_blank">
+                            <h4>1. Akumulace tepla v nádrži</h4>
+                            <p>Výpočet energie potřebné k ohřevu vody v zásobníku</p>
+                            <span class="difficulty easy">Začátečník</span>
+                        </a>
+                        <a href="priklady/example_02.html" class="example-item" target="_blank">
+                            <h4>2. Analýza ohřevu vody v rychlovarné konvici</h4>
+                            <p>Praktický příklad s měřením času a výkonu</p>
+                            <span class="difficulty easy">Začátečník</span>
+                        </a>
+                        <a href="priklady/example_03.html" class="example-item" target="_blank">
+                            <h4>3. Výpočet energie pro ohřev a odpaření vody</h4>
+                            <p>Fázové změny a skupenské teplo</p>
+                            <span class="difficulty medium">Středně pokročilý</span>
+                        </a>
+                        <a href="priklady/example_04.html" class="example-item" target="_blank">
+                            <h4>4. Analýza výkonu průtokového ohřívače</h4>
+                            <p>Kontinuální proces, hmotnostní tok</p>
+                            <span class="difficulty medium">Středně pokročilý</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="example-category">
+                    <h3><i class="fas fa-balance-scale"></i> Bilance</h3>
+                    <div class="example-list">
+                        <a href="priklady/example_05a.html" class="example-item" target="_blank">
+                            <h4>5. Tajemství vodovodní baterie</h4>
+                            <p>Míchání teplé a studené vody - hmotnostní bilance</p>
+                            <span class="difficulty easy">Začátečník</span>
+                        </a>
+                        <a href="priklady/example_05b.html" class="example-item" target="_blank">
+                            <h4>6. Analýza protiproudého výměníku tepla II</h4>
+                            <p>Pokročilá analýza s tepelně závislými vlastnostmi</p>
+                            <span class="difficulty advanced">Pokročilý</span>
+                        </a>
+                        <a href="priklady/example_06.html" class="example-item" target="_blank">
+                            <h4>7. Náklady na ohřev vody v rychlovarné konvici</h4>
+                            <p>Ekonomické porovnání různých způsobů ohřevu</p>
+                            <span class="difficulty advanced">Pokročilý</span>
+                        </a>
+                        <a href="priklady/example_07.html" class="example-item" target="_blank">
+                            <h4>8. Výpočet průtoku spalin ve výměníku tepla</h4>
+                            <p>Kombinovaná hmotnostní a energetická bilance</p>
+                            <span class="difficulty medium">Středně pokročilý</span>
+                        </a>
+                        <a href="priklady/example_08.html" class="example-item" target="_blank">
+                            <h4>9. Výměník tepla s kondenzací páry</h4>
+                            <p>Fázové změny v tepelných výměnících</p>
+                            <span class="difficulty advanced">Pokročilý</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="example-category">
+                    <h3><i class="fas fa-coins"></i> Ekonomické analýzy</h3>
+                    <div class="example-list">
+                        <a href="priklady/example_09.html" class="example-item" target="_blank">
+                            <h4>10. Analýza průmyslové pece</h4>
+                            <p>Komplexní energetická a ekonomická analýza</p>
+                            <span class="difficulty easy">Začátečník</span>
+                        </a>
+                        <a href="priklady/example_10.html" class="example-item" target="_blank">
+                            <h4>11. Ekonomická analýza rekuperačního výměníku</h4>
+                            <p>Ekonomické vyhodnocení úspor energie</p>
+                            <span class="difficulty advanced">Pokročilý</span>
+                        </a>
+                        <a href="priklady/example_11.html" class="example-item" target="_blank">
+                            <h4>12. Neutralizace kyseliny a hydroxidu</h4>
+                            <p>Bilance s chemickou reakcí</p>
+                            <span class="difficulty advanced">Pokročilý</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="example-category">
+                    <h3><i class="fas fa-flask"></i> Chemické procesy</h3>
+                    <div class="example-list">
+                        <a href="priklady/example_12.html" class="example-item" target="_blank">
+                            <h4>13. Krystalizace s recyklací</h4>
+                            <p>Krystalizace uhličitanu sodného s recyklem matečného roztoku</p>
+                            <span class="difficulty advanced">Pokročilý</span>
+                        </a>
+                        <a href="priklady/example_13.html" class="example-item" target="_blank">
+                            <h4>14. Spalování síry</h4>
+                            <p>Stechiometrie spalovacích procesů</p>
+                            <span class="difficulty advanced">Pokročilý</span>
+                        </a>
+                        <a href="priklady/example_14.html" class="example-item" target="_blank">
+                            <h4>15. Pražení pyritu</h4>
+                            <p>Komplexní bilance průmyslového procesu</p>
+                            <span class="difficulty advanced">Pokročilý</span>
+                        </a>
+                        <a href="priklady/example_15.html" class="example-item" target="_blank">
+                            <h4>16. CSTR reaktor - Hydrolýza esteru</h4>
+                            <p>Kontinuální míchaný reaktor</p>
+                            <span class="difficulty medium">Středně pokročilý</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="example-category">
+                    <h3><i class="fas fa-atom"></i> Reakční entalpie</h3>
+                    <div class="example-list">
+                        <a href="priklady/example_16.html" class="example-item" target="_blank">
+                            <h4>17. Separátor s recyklem</h4>
+                            <p>Hmotnostní bilance s recyklací</p>
+                            <span class="difficulty advanced">Pokročilý</span>
+                        </a>
+                        <a href="priklady/example_17.html" class="example-item" target="_blank">
+                            <h4>18. Reaktor s recyklem</h4>
+                            <p>Komplexní bilance s reakcí a recyklací</p>
+                            <span class="difficulty advanced">Pokročilý</span>
+                        </a>
+                        <a href="priklady/example_reakcni_entalpie_1.html" class="example-item" target="_blank">
+                            <h4>19. Výpočet reakční entalpie I</h4>
+                            <p>Základy výpočtu reakčního tepla</p>
+                            <span class="difficulty medium">Středně pokročilý</span>
+                        </a>
+                        <a href="priklady/example_reakcni_entalpie_2.html" class="example-item" target="_blank">
+                            <h4>20. Výpočet reakční entalpie II</h4>
+                            <p>Pokročilé výpočty s teplotní závislostí</p>
+                            <span class="difficulty advanced">Pokročilý</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>    <!-- Materials Section -->
+    <section id="materials" class="section section-gray">
+        <div class="container">
+            <h2 class="section-title">Materiály ke stažení</h2>
+
+            <div class="materials-grid">
+                <div class="material-card">
+                    <div class="material-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <h3>Teoretický přehled - Úvod a bilance</h3>
+                    <p>Kompletní přehled teorie úvodu a bilance: základní pojmy (teplota, teplo, entalpie), rovnice pro diskontinuální a kontinuální provoz, zákony zachování hmoty a energie</p>
+                    <div class="material-meta">
+                        <span><i class="fas fa-file-pdf"></i> PDF</span>
+                        <span><i class="fas fa-download"></i> 48 KB</span>
+                    </div>
+                    <a href="materialy/uvod_bilance_teorie.pdf" target="_blank" style="display: inline-block; background: #2563eb; color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: 500; transition: background 0.2s;">Otevřít PDF</a>
+                </div>
+            </div>
+
+            <!-- Special Topics -->
+            <div class="special-topics">
+                <h3><i class="fas fa-lightbulb"></i> Speciální témata</h3>
+                <div class="topics-grid">
+                    <div class="topic-card">
+                        <h4>🏺 Písková baterie</h4>
+                        <p>Analýza finské 100 MWh pískové baterie - jak funguje skladování energie v písku?</p>
+                        <div class="topic-links">
+                            <a href="https://www.osel.cz/14223-100-mwh-piskova-baterie-ve-finskem-pornainenu-je-nejvykonnejsi-na-svete.html" target="_blank">
+                                <i class="fas fa-external-link-alt"></i> Článek OSEL
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="topic-card">
+                        <h4>☀️ Fotovoltaika</h4>
+                        <p>Výpočty solárních panelů - kolik potřebujeme pro pokrytí spotřeby?</p>
+                        <div class="topic-links">
+                            <a href="https://re.jrc.ec.europa.eu/pvg_tools/en/tools.html" target="_blank">
+                                <i class="fas fa-external-link-alt"></i> EU kalkulátor
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Navigation -->
+    <section class="section">
+        <div class="container">
+            <div class="lecture-navigation">
+                <a href="../00-umela-inteligence/index.html" class="nav-btn secondary">
+                    <i class="fas fa-arrow-left"></i> Předchozí téma
+                </a>
+                <a href="../02-kinematika/index.html" class="nav-btn secondary">
+                    Další téma <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script src="../../js/main.js"></script>
+</body>
+</html>

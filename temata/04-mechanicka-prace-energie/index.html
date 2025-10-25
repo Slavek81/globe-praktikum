@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04 - Mechanická práce a mechanická energie | Fyzika - opakování a prohloubení</title>
+    <meta name="description" content="Mechanická práce a mechanická energie - energetické principy a výpočty s důrazem na praktické aplikace.">
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+        window.MathJax = {
+            tex: {inlineMath: [['$', '$'], ['\\(', '\\)']]},
+            svg: {fontCache: 'global'}
+        };
+    </script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="nav-brand">
+                <h1><a href="../../index.html" style="color: inherit; text-decoration: none;"><i class="fas fa-atom"></i> Fyzika - opakování a prohloubení</a></h1>
+                <p class="subtitle">04 - Mechanická práce a mechanická energie</p>
+            </div>
+            <nav class="nav">
+                <a href="../../index.html" class="nav-link">Domů</a>
+            </nav>
+            <div class="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Lecture Header -->
+    <section class="page-hero">
+        <div class="container">
+            <div class="lecture-hero-content">
+                <div class="lecture-number">04</div>
+                <div class="lecture-info">
+                    <h1>Mechanická práce a mechanická energie</h1>
+                    <p class="lecture-subtitle">Energetické principy a výpočty s důrazem na praktické aplikace</p>
+                    <div class="lecture-meta-hero">
+                        <span><i class="fas fa-clock"></i> 4 hodiny</span>
+                        <span><i class="fas fa-chart-line"></i> Opakování</span>
+                        <span><i class="fas fa-battery-full"></i> Energie</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Navigation -->
+    <section class="section">
+        <div class="container">
+            <div class="quick-nav">
+                <a href="#objectives" class="quick-nav-item">
+                    <i class="fa-solid fa-bullseye"></i>
+                    <span>Cíle</span>
+                </a>
+                <a href="#theory" class="quick-nav-item">
+                    <i class="fas fa-book"></i>
+                    <span>Teorie</span>
+                </a>
+                <a href="#presentations" class="quick-nav-item">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                    <span>Prezentace</span>
+                </a>
+                <a href="#examples" class="quick-nav-item">
+                    <i class="fas fa-calculator"></i>
+                    <span>Příklady</span>
+                </a>
+                <a href="#materials" class="quick-nav-item">
+                    <i class="fas fa-download"></i>
+                    <span>Materiály</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Learning Objectives -->
+    <section id="objectives" class="section section-gray">
+        <div class="container">
+            <h2 class="section-title">Cíle přednášky</h2>
+            <div class="objectives-grid">
+                <div class="objective-card">
+                    <div class="objective-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3>Mechanická práce</h3>
+                    <p>Pochopit pojem mechanické práce a naučit se vypočítat práci síly při přemísťování tělesa</p>
+                </div>
+                <div class="objective-card">
+                    <div class="objective-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Výkon a účinnost</h3>
+                    <p>Rozlišit průměrný a okamžitý výkon, vypočítat účinnost různých zařízení</p>
+                </div>
+                <div class="objective-card">
+                    <div class="objective-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>Kinetická a potenciální energie</h3>
+                    <p>Zvládnout výpočty energie pohybu a polohové energie v gravitačním poli</p>
+                </div>
+                <div class="objective-card">
+                    <div class="objective-icon">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <h3>Zákon zachování energie</h3>
+                    <p>Aplikovat zákon zachování mechanické energie na praktické úlohy a srážky těles</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Theoretical Foundations -->
+    <section id="theory" class="section">
+        <div class="container">
+            <h2 class="section-title">Teoretické základy</h2>
+
+            <div class="theory-content">
+                <div class="theory-block">
+                    <h3><i class="fas fa-tools"></i> Mechanická práce a výkon</h3>
+                    <div class="equations">
+                        <div class="equation-block">
+                            <h4>Mechanická práce:</h4>
+                            <div class="equation">$$W = F \cdot s \cdot \cos\alpha$$</div>
+                            <p class="equation-note">kde W je práce [J], F síla [N], s dráha [m], α úhel mezi silou a směrem pohybu</p>
+                        </div>
+
+                        <div class="equation-block">
+                            <h4>Průměrný výkon:</h4>
+                            <div class="equation">$$P_p = \frac{W}{t}$$</div>
+                            <p class="equation-note">kde $P_p$ je průměrný výkon [W], W práce [J], t čas [s]</p>
+                        </div>
+
+                        <div class="equation-block">
+                            <h4>Okamžitý výkon:</h4>
+                            <div class="equation">$$P = F \cdot v$$</div>
+                            <p class="equation-note">kde P je okamžitý výkon [W], F síla [N], v rychlost [m/s]</p>
+                        </div>
+
+                        <div class="equation-block">
+                            <h4>Účinnost:</h4>
+                            <div class="equation">$$\eta = \frac{P_{výst}}{P_{vst}} = \frac{W_{výst}}{W_{vst}}$$</div>
+                            <p class="equation-note">kde η je účinnost (vždy < 1)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="theory-block">
+                    <h3><i class="fas fa-bolt"></i> Mechanická energie</h3>
+                    <div class="equations">
+                        <div class="equation-block">
+                            <h4>Kinetická energie:</h4>
+                            <div class="equation">$$E_k = \frac{1}{2}mv^2$$</div>
+                            <p class="equation-note">Energie pohybujícího se tělesa. Při zdvojnásobení rychlosti se $E_k$ zčtyřnásobí!</p>
+                        </div>
+
+                        <div class="equation-block">
+                            <h4>Potenciální energie:</h4>
+                            <div class="equation">$$E_p = mgh$$</div>
+                            <p class="equation-note">kde m je hmotnost [kg], g = 9,81 m/s², h výška nad nulovou hladinou [m]</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="theory-block">
+                    <h3><i class="fas fa-sync-alt"></i> Zákony zachování</h3>
+                    <div class="equations">
+                        <div class="equation-block">
+                            <h4>Zákon zachování mechanické energie:</h4>
+                            <div class="equation">$$E_k + E_p = \text{konst.}$$</div>
+                            <div class="equation">$$\frac{1}{2}mv^2 + mgh = \text{konst.}$$</div>
+                            <p class="equation-note">V izolované soustavě bez odporových sil se celková energie nemění</p>
+                        </div>
+
+                        <div class="equation-block">
+                            <h4>Zákon zachování hybnosti:</h4>
+                            <div class="equation">$$\vec{p}_{před} = \vec{p}_{po}$$</div>
+                            <div class="equation">$$m_1\vec{v}_1 + m_2\vec{v}_2 = m_1\vec{v}'_1 + m_2\vec{v}'_2$$</div>
+                            <p class="equation-note">Platí vždy při srážkách - pružných i nepružných</p>
+                        </div>
+
+                        <div class="equation-block">
+                            <h4>Rychlost při volném pádu:</h4>
+                            <div class="equation">$$v = \sqrt{2gh}$$</div>
+                            <p class="equation-note">Odvozeno ze zákona zachování energie: $E_p = E_k$</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Presentations -->
+    <section id="presentations" class="section section-gray">
+        <div class="container">
+            <h2 class="section-title">Interaktivní prezentace</h2>
+            <div class="presentations-grid">
+                <a href="prezentace/prace_energie_prezentace.html" class="presentation-card" target="_blank">
+                    <div class="presentation-preview">
+                        <i class="fas fa-battery-full"></i>
+                    </div>
+                    <div class="presentation-info">
+                        <h3>Mechanická práce a energie - Kompletní teorie</h3>
+                        <p>Interaktivní prezentace s mechanickou prací, výkonem, účinností, kinetickou a potenciální energií, zákony zachování a srážkami těles. Obsahuje 6 funkčních kalkulátorů.</p>
+                        <div class="presentation-meta">
+                            <span><i class="fas fa-external-link-alt"></i> Otevře v novém okně</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Examples Section -->
+    <section id="examples" class="section">
+        <div class="container">
+            <h2 class="section-title">Praktické příklady</h2>
+            <p class="section-subtitle" style="text-align: center; margin-bottom: 2rem; color: #64748b;">
+                Vybrané příklady z mechanické práce, výkonu a energie. Kompletní sbírka všech 6 příkladů je dostupná <a href="priklady/prace_energie_zadani_reseni.html" target="_blank" style="color: #2563eb; text-decoration: underline;">zde</a>.
+            </p>
+
+            <div class="examples-categories">
+
+                <div class="example-category">
+                    <h3><i class="fas fa-tools"></i> Mechanická práce a výkon (1-3)</h3>
+                    <p class="category-description" style="color: #64748b; font-size: 0.95rem; margin-top: 0.5rem;">
+                        Základní úlohy s výpočty práce, průměrného a okamžitého výkonu.
+                    </p>
+                    <div class="example-list">
+
+                        <a href="priklady/example_01.html" class="example-item" target="_blank">
+                            <h4>1. Práce a výkon stálé síly</h4>
+                            <span class="difficulty easy">Začátečník až středně pokročilý</span>
+                        </a>
+
+                        <a href="priklady/example_02.html" class="example-item" target="_blank">
+                            <h4>2. Odraz míče z výšky</h4>
+                            <span class="difficulty easy">Začátečník až středně pokročilý</span>
+                        </a>
+
+                        <a href="priklady/example_03.html" class="example-item" target="_blank">
+                            <h4>3. Vozíčky na nakloněné rovině</h4>
+                            <span class="difficulty medium">Středně pokročilý až pokročilý</span>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div class="example-category">
+                    <h3><i class="fas fa-arrows-alt-h"></i> Srážky a hybnost (4-6)</h3>
+                    <p class="category-description" style="color: #64748b; font-size: 0.95rem; margin-top: 0.5rem;">
+                        Pružné a nepružné srážky, zákon zachování hybnosti, impuls síly.
+                    </p>
+                    <div class="example-list">
+
+                        <a href="priklady/example_04.html" class="example-item" target="_blank">
+                            <h4>4. Srážka vozíků v opačném směru</h4>
+                            <span class="difficulty medium">Středně pokročilý až pokročilý</span>
+                        </a>
+
+                        <a href="priklady/example_05.html" class="example-item" target="_blank">
+                            <h4>5. Odraz míče a impuls síly</h4>
+                            <span class="difficulty medium">Středně pokročilý až pokročilý</span>
+                        </a>
+
+                        <a href="priklady/example_06.html" class="example-item" target="_blank">
+                            <h4>6. Srážka železničních vagonů</h4>
+                            <span class="difficulty medium">Středně pokročilý až pokročilý</span>
+                        </a>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Materials Section -->
+    <section id="materials" class="section section-gray">
+        <div class="container">
+            <h2 class="section-title">Materiály ke stažení</h2>
+            <div class="materials-grid">
+                <div class="material-card">
+                    <div class="material-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <h3>Teoretický přehled - Práce a energie</h3>
+                    <p>Kompletní přehled mechanické práce a energie: práce a výkon, kinetická a potenciální energie, zákony zachování, srážky těles včetně všech rovnic a jednotek</p>
+                    <div class="material-meta">
+                        <span><i class="fas fa-file-pdf"></i> PDF</span>
+                        <span><i class="fas fa-download"></i> 48 KB</span>
+                    </div>
+                    <a href="materialy/prace_energie_teorie.pdf" target="_blank" style="display: inline-block; background: #2563eb; color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: 500; transition: background 0.2s;">Otevřít PDF</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Navigation -->
+    <section class="section">
+        <div class="container">
+            <div class="lecture-navigation">
+                <a href="../03-dynamika/index.html" class="nav-btn secondary">
+                    <i class="fas fa-arrow-left"></i> Předchozí téma
+                </a>
+                <a href="../05-gravitacni-pole/index.html" class="nav-btn secondary">
+                    Další téma <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script src="../../js/main.js"></script>
+</body>
+</html>

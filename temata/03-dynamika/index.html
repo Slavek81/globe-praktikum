@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03 - Dynamika | Fyzika - opakování a prohloubení</title>
+    <meta name="description" content="Dynamika - síly, zákony pohybu, hybnost a energie s důrazem na praktické řešení příkladů.">
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+        window.MathJax = {
+            tex: {inlineMath: [['$', '$'], ['\\(', '\\)']]},
+            svg: {fontCache: 'global'}
+        };
+    </script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="nav-brand">
+                <h1><a href="../../index.html" style="color: inherit; text-decoration: none;"><i class="fas fa-atom"></i> Fyzika - opakování a prohloubení</a></h1>
+                <p class="subtitle">03 - Dynamika</p>
+            </div>
+            <nav class="nav">
+                <a href="../../index.html" class="nav-link">Domů</a>
+            </nav>
+            <div class="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Lecture Header -->
+    <section class="page-hero">
+        <div class="container">
+            <div class="lecture-hero-content">
+                <div class="lecture-number">03</div>
+                <div class="lecture-info">
+                    <h1>Dynamika</h1>
+                    <p class="lecture-subtitle">Síly, zákony pohybu, hybnost a energie - praktické řešení příkladů</p>
+                    <div class="lecture-meta-hero">
+                        <span><i class="fas fa-clock"></i> 4 hodiny</span>
+                        <span><i class="fas fa-chart-line"></i> Opakování</span>
+                        <span><i class="fas fa-weight"></i> Síly</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Navigation -->
+    <section class="section">
+        <div class="container">
+            <div class="quick-nav">
+                <a href="#objectives" class="quick-nav-item">
+                    <i class="fa-solid fa-bullseye"></i>
+                    <span>Cíle</span>
+                </a>
+                <a href="#theory" class="quick-nav-item">
+                    <i class="fas fa-book"></i>
+                    <span>Teorie</span>
+                </a>
+                <a href="#presentations" class="quick-nav-item">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                    <span>Prezentace</span>
+                </a>
+                <a href="#examples" class="quick-nav-item">
+                    <i class="fas fa-calculator"></i>
+                    <span>Příklady</span>
+                </a>
+                <a href="#materials" class="quick-nav-item">
+                    <i class="fas fa-download"></i>
+                    <span>Materiály</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Learning Objectives -->
+    <section id="objectives" class="section section-gray">
+        <div class="container">
+            <h2 class="section-title">Cíle přednášky</h2>
+            <div class="objectives-grid">
+                <div class="objective-card">
+                    <div class="objective-icon">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <h3>Newtonovy zákony</h3>
+                    <p>Porozumět třem základním zákonům pohybu a jejich aplikaci na reálné situace</p>
+                </div>
+                <div class="objective-card">
+                    <div class="objective-icon">
+                        <i class="fas fa-weight-hanging"></i>
+                    </div>
+                    <h3>Síly a jejich druhy</h3>
+                    <p>Rozpoznat a analyzovat různé typy sil: tíhovou, normálovou, třecí, odstředivou</p>
+                </div>
+                <div class="objective-card">
+                    <div class="objective-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>Hybnost a energie</h3>
+                    <p>Zvládnout zákony zachování hybnosti a mechanické energie při řešení úloh</p>
+                </div>
+                <div class="objective-card">
+                    <div class="objective-icon">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <h3>Řešit příklady</h3>
+                    <p>Praktické výpočty s dynamickými rovnicemi, analýza sil, reálné aplikace</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Theoretical Foundations -->
+    <section id="theory" class="section">
+        <div class="container">
+            <h2 class="section-title">Teoretické základy</h2>
+
+            <div class="theory-content">
+                <div class="theory-block">
+                    <h3><i class="fas fa-balance-scale"></i> Newtonovy zákony pohybu</h3>
+                    <div class="definitions">
+                        <div class="definition-item">
+                            <h4>1. Newtonův zákon (Zákon setrvačnosti)</h4>
+                            <p>Těleso setrvává v klidu nebo v rovnoměrném přímočarém pohybu, pokud na něj nepůsobí žádná síla nebo výsledná síla je nulová.</p>
+                        </div>
+                        <div class="definition-item">
+                            <h4>2. Newtonův zákon (Zákon síly)</h4>
+                            <p>Zrychlení tělesa je přímo úměrné působící síle a nepřímo úměrné hmotnosti tělesa. Matematicky: F = m·a, kde F je síla [N], m hmotnost [kg], a zrychlení [m/s²].</p>
+                        </div>
+                        <div class="definition-item">
+                            <h4>3. Newtonův zákon (Akce a reakce)</h4>
+                            <p>Každá akce vyvolává stejně velkou, ale opačně orientovanou reakci. Síly působí vždy ve dvojicích.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="theory-block">
+                    <h3><i class="fas fa-weight-hanging"></i> Druhy sil</h3>
+                    <div class="equations">
+                        <div class="equation-block">
+                            <h4>Tíhová síla:</h4>
+                            <div class="equation">$$F_g = m \cdot g$$</div>
+                            <p class="equation-note">kde g = 9,81 m/s² je tíhové zrychlení</p>
+                        </div>
+
+                        <div class="equation-block">
+                            <h4>Třecí síla:</h4>
+                            <div class="equation">$$F_t = f \cdot F_n$$</div>
+                            <p class="equation-note">kde f je součinitel tření (bezrozměrný), $F_n$ je normálová síla [N]</p>
+                        </div>
+
+                        <div class="equation-block">
+                            <h4>Dostředivá síla:</h4>
+                            <div class="equation">$$F_d = m \cdot \frac{v^2}{r} = m \cdot \omega^2 \cdot r$$</div>
+                            <p class="equation-note">kde r je poloměr kružnice [m], ω úhlová rychlost [rad/s]</p>
+                        </div>
+
+                        <div class="equation-block">
+                            <h4>Síla na nakloněné rovině:</h4>
+                            <div class="equation">$$F_{||} = m \cdot g \cdot \sin \alpha$$</div>
+                            <div class="equation">$$F_{\perp} = m \cdot g \cdot \cos \alpha$$</div>
+                            <p class="equation-note">kde α je úhel sklonu roviny</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="theory-block">
+                    <h3><i class="fas fa-rocket"></i> Hybnost a zákony zachování</h3>
+                    <div class="equations">
+                        <div class="equation-block">
+                            <h4>Hybnost:</h4>
+                            <div class="equation">$$\vec{p} = m \cdot \vec{v}$$</div>
+                            <p class="equation-note">Vektorová veličina charakterizující pohybový stav tělesa. Jednotka: kg·m/s</p>
+                        </div>
+
+                        <div class="equation-block">
+                            <h4>Zákon zachování hybnosti:</h4>
+                            <div class="equation">$$\sum \vec{p}_{\text{před}} = \sum \vec{p}_{\text{po}}$$</div>
+                            <p class="equation-note">V izolované soustavě se celková hybnost zachovává (např. při srážkách)</p>
+                        </div>
+
+                        <div class="equation-block">
+                            <h4>Impuls síly:</h4>
+                            <div class="equation">$$\Delta \vec{p} = \vec{F} \cdot \Delta t$$</div>
+                            <p class="equation-note">Změna hybnosti je rovna impulsu síly</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Presentations -->
+    <section id="presentations" class="section section-gray">
+        <div class="container">
+            <h2 class="section-title">Interaktivní prezentace</h2>
+            <div class="presentations-grid">
+                <a href="prezentace/dynamika_prezentace.html" class="presentation-card" target="_blank">
+                    <div class="presentation-preview">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <div class="presentation-info">
+                        <h3>Dynamika - Kompletní teorie</h3>
+                        <p>Interaktivní prezentace s Newtonovými zákony, silami, hybností a energií s praktickými příklady a kalkulátory</p>
+                        <div class="presentation-meta">
+                            <span><i class="fas fa-external-link-alt"></i> Otevře v novém okně</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Examples Section -->
+    <section id="examples" class="section">
+        <div class="container">
+            <h2 class="section-title">Praktické příklady</h2>
+            <p class="section-subtitle" style="text-align: center; margin-bottom: 2rem; color: #64748b;">
+                Vybrané vzorové příklady z každé kategorie. Kompletní sbírka všech 56 příkladů je dostupná <a href="priklady/dynamika_zadani_reseni.html" target="_blank" style="color: #2563eb; text-decoration: underline;">zde</a>.
+            </p>
+
+            <div class="examples-categories">
+
+                <div class="example-category">
+                    <h3><i class="fas fa-balance-scale"></i> Newtonovy zákony a základy (1-15)</h3>
+                    <p class="category-description" style="color: #64748b; font-size: 0.95rem; margin-top: 0.5rem;">
+                        Základní úlohy s aplikací Newtonových zákonů, výpočty síly, hmotnosti a zrychlení.
+                    </p>
+                    <div class="example-list">
+
+                        <a href="priklady/example_01.html" class="example-item" target="_blank">
+                            <h4>1. Znázornění sil na těleso</h4>
+                            <span class="difficulty easy">Začátečník až středně pokročilý</span>
+                        </a>
+
+                        <a href="priklady/example_02.html" class="example-item" target="_blank">
+                            <h4>2. Síly působící na loď</h4>
+                            <span class="difficulty easy">Začátečník až středně pokročilý</span>
+                        </a>
+
+                        <a href="priklady/example_03.html" class="example-item" target="_blank">
+                            <h4>3. Tažná síla automobilu</h4>
+                            <span class="difficulty easy">Začátečník až středně pokročilý</span>
+                        </a>
+
+                        <a href="priklady/example_04.html" class="example-item" target="_blank">
+                            <h4>4. Jednotka Newton v SI</h4>
+                            <span class="difficulty easy">Začátečník až středně pokročilý</span>
+                        </a>
+
+                        <a href="priklady/example_05.html" class="example-item" target="_blank">
+                            <h4>5. Zvedání kýble se zrychlením</h4>
+                            <span class="difficulty easy">Začátečník až středně pokročilý</span>
+                        </a>
+
+                        <a href="priklady/example_06.html" class="example-item" target="_blank">
+                            <h4>6. Tlačení krabice o stěnu</h4>
+                            <span class="difficulty easy">Začátečník až středně pokročilý</span>
+                        </a>
+
+                        <a href="priklady/example_07.html" class="example-item" target="_blank">
+                            <h4>7. Hrníček na siloměru s pivem</h4>
+                            <span class="difficulty easy">Začátečník až středně pokročilý</span>
+                        </a>
+
+                        <a href="priklady/example_08.html" class="example-item" target="_blank">
+                            <h4>8. Síla pro rovnoměrný pohyb</h4>
+                            <span class="difficulty easy">Začátečník až středně pokročilý</span>
+                        </a>
+
+                        <a href="priklady/example_09.html" class="example-item" target="_blank">
+                            <h4>9. Výpočet součinitele tření</h4>
+                            <span class="difficulty easy">Začátečník až středně pokročilý</span>
+                        </a>
+
+                        <a href="priklady/example_10.html" class="example-item" target="_blank">
+                            <h4>10. Tažení skříně</h4>
+                            <span class="difficulty easy">Začátečník až středně pokročilý</span>
+                        </a>
+
+                        <a href="priklady/example_11.html" class="example-item" target="_blank">
+                            <h4>11. Mobil na střeše auta</h4>
+                            <span class="difficulty easy">Začátečník až středně pokročilý</span>
+                        </a>
+
+                        <a href="priklady/example_12.html" class="example-item" target="_blank">
+                            <h4>12. Náklad s gumičuky</h4>
+                            <span class="difficulty easy">Začátečník až středně pokročilý</span>
+                        </a>
+
+                        <a href="priklady/example_13.html" class="example-item" target="_blank">
+                            <h4>13. Koeficient tření bruslí</h4>
+                            <span class="difficulty easy">Začátečník až středně pokročilý</span>
+                        </a>
+
+                        <a href="priklady/example_14.html" class="example-item" target="_blank">
+                            <h4>14. Tření pneumatiky na silnici</h4>
+                            <span class="difficulty easy">Začátečník až středně pokročilý</span>
+                        </a>
+
+                        <a href="priklady/example_15.html" class="example-item" target="_blank">
+                            <h4>15. Tření láhve ve vlaku</h4>
+                            <span class="difficulty easy">Začátečník až středně pokročilý</span>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div class="example-category">
+                    <h3><i class="fas fa-hands"></i> Tření a nakloněné roviny (16-30)</h3>
+                    <p class="category-description" style="color: #64748b; font-size: 0.95rem; margin-top: 0.5rem;">
+                        Analýza třecích sil, nakloněné roviny, rozklad sil do složek.
+                    </p>
+                    <div class="example-list">
+
+                        <a href="priklady/example_16.html" class="example-item" target="_blank">
+                            <h4>16. Tření pneumatiky při smyku</h4>
+                            <span class="difficulty medium">Středně pokročilý až pokročilý</span>
+                        </a>
+
+                        <a href="priklady/example_17.html" class="example-item" target="_blank">
+                            <h4>17. Brzdná dráha a rychlost</h4>
+                            <span class="difficulty medium">Středně pokročilý až pokročilý</span>
+                        </a>
+
+                        <a href="priklady/example_18.html" class="example-item" target="_blank">
+                            <h4>18. Tření tělesa na rovině</h4>
+                            <span class="difficulty medium">Středně pokročilý až pokročilý</span>
+                        </a>
+
+                        <a href="priklady/example_19.html" class="example-item" target="_blank">
+                            <h4>19. Pohyb po nakloněné rovině</h4>
+                            <span class="difficulty medium">Středně pokročilý až pokročilý</span>
+                        </a>
+
+                        <a href="priklady/example_20.html" class="example-item" target="_blank">
+                            <h4>20. Kritický úhel nakloněné roviny</h4>
+                            <span class="difficulty medium">Středně pokročilý až pokročilý</span>
+                        </a>
+
+                        <a href="priklady/example_21.html" class="example-item" target="_blank">
+                            <h4>21. Ložisko na nakloněné rovině</h4>
+                            <span class="difficulty medium">Středně pokročilý až pokročilý</span>
+                        </a>
+
+                        <a href="priklady/example_22.html" class="example-item" target="_blank">
+                            <h4>22. Pohyb na nakloněné rovině</h4>
+                            <span class="difficulty medium">Středně pokročilý až pokročilý</span>
+                        </a>
+
+                        <a href="priklady/example_23.html" class="example-item" target="_blank">
+                            <h4>23. Auto na kopci 15°</h4>
+                            <span class="difficulty medium">Středně pokročilý až pokročilý</span>
+                        </a>
+
+                        <a href="priklady/example_24.html" class="example-item" target="_blank">
+                            <h4>24. Tažení na nakloněné rovině</h4>
+                            <span class="difficulty medium">Středně pokročilý až pokročilý</span>
+                        </a>
+
+                        <a href="priklady/example_25.html" class="example-item" target="_blank">
+                            <h4>25. Zrychlení raketových motorů</h4>
+                            <span class="difficulty medium">Středně pokročilý až pokročilý</span>
+                        </a>
+
+                        <a href="priklady/example_26.html" class="example-item" target="_blank">
+                            <h4>26. Zrychlení z změny hybnosti</h4>
+                            <span class="difficulty medium">Středně pokročilý až pokročilý</span>
+                        </a>
+
+                        <a href="priklady/example_27.html" class="example-item" target="_blank">
+                            <h4>27. Obecný výpočet rychlosti</h4>
+                            <span class="difficulty medium">Středně pokročilý až pokročilý</span>
+                        </a>
+
+                        <a href="priklady/example_28.html" class="example-item" target="_blank">
+                            <h4>28. Soustava závaží</h4>
+                            <span class="difficulty medium">Středně pokročilý až pokročilý</span>
+                        </a>
+
+                        <a href="priklady/example_29.html" class="example-item" target="_blank">
+                            <h4>29. Taška ve výtahu</h4>
+                            <span class="difficulty medium">Středně pokročilý až pokročilý</span>
+                        </a>
+
+                        <a href="priklady/example_30.html" class="example-item" target="_blank">
+                            <h4>30. Přetržené lano kamiónu</h4>
+                            <span class="difficulty medium">Středně pokročilý až pokročilý</span>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div class="example-category">
+                    <h3><i class="fas fa-arrows-alt-h"></i> Hybnost a rázy (31-50)</h3>
+                    <p class="category-description" style="color: #64748b; font-size: 0.95rem; margin-top: 0.5rem;">
+                        Zákon zachování hybnosti, srážky těles, impuls síly.
+                    </p>
+                    <div class="example-list">
+
+                        <a href="priklady/example_31.html" class="example-item" target="_blank">
+                            <h4>31. Výpočet výsledné síly</h4>
+                            <span class="difficulty medium">Středně pokročilý až pokročilý</span>
+                        </a>
+
+                        <a href="priklady/example_32.html" class="example-item" target="_blank">
+                            <h4>32. Dvě tělesa na provázku</h4>
+                            <span class="difficulty medium">Středně pokročilý až pokročilý</span>
+                        </a>
+
+                        <a href="priklady/example_33.html" class="example-item" target="_blank">
+                            <h4>33. Rychlobruslařka 60 kg</h4>
+                            <span class="difficulty medium">Středně pokročilý až pokročilý</span>
+                        </a>
+
+                        <a href="priklady/example_34.html" class="example-item" target="_blank">
+                            <h4>34. Síla působící na chlapce</h4>
+                            <span class="difficulty medium">Středně pokročilý až pokročilý</span>
+                        </a>
+
+                        <a href="priklady/example_35.html" class="example-item" target="_blank">
+                            <h4>35. Impuls síly při kulečníku</h4>
+                            <span class="difficulty medium">Středně pokročilý až pokročilý</span>
+                        </a>
+
+                        <a href="priklady/example_36.html" class="example-item" target="_blank">
+                            <h4>36. Kulka zasáhne poleno</h4>
+                            <span class="difficulty medium">Středně pokročilý až pokročilý</span>
+                        </a>
+
+                        <a href="priklady/example_37.html" class="example-item" target="_blank">
+                            <h4>37. Střela zasáhne prkno</h4>
+                            <span class="difficulty medium">Středně pokročilý až pokročilý</span>
+                        </a>
+
+                        <a href="priklady/example_38.html" class="example-item" target="_blank">
+                            <h4>38. Míč dopadající na zem</h4>
+                            <span class="difficulty medium">Středně pokročilý až pokročilý</span>
+                        </a>
+
+                        <a href="priklady/example_39.html" class="example-item" target="_blank">
+                            <h4>39. Zpětný ráz pistole</h4>
+                            <span class="difficulty medium">Středně pokročilý až pokročilý</span>
+                        </a>
+
+                        <a href="priklady/example_40.html" class="example-item" target="_blank">
+                            <h4>40. Srážka železničních vagónů</h4>
+                            <span class="difficulty medium">Středně pokročilý až pokročilý</span>
+                        </a>
+
+                        <a href="priklady/example_41.html" class="example-item" target="_blank">
+                            <h4>41. Karel s medicinbalem</h4>
+                            <span class="difficulty medium">Středně pokročilý až pokročilý</span>
+                        </a>
+
+                        <a href="priklady/example_42.html" class="example-item" target="_blank">
+                            <h4>42. Nepružná srážka vozíků</h4>
+                            <span class="difficulty medium">Středně pokročilý až pokročilý</span>
+                        </a>
+
+                        <a href="priklady/example_43.html" class="example-item" target="_blank">
+                            <h4>43. Nepružná srážka koulí</h4>
+                            <span class="difficulty medium">Středně pokročilý až pokročilý</span>
+                        </a>
+
+                        <a href="priklady/example_44.html" class="example-item" target="_blank">
+                            <h4>44. Střelba ze vzduchovky</h4>
+                            <span class="difficulty medium">Středně pokročilý až pokročilý</span>
+                        </a>
+
+                        <a href="priklady/example_45.html" class="example-item" target="_blank">
+                            <h4>45. Člun a hozený kámen</h4>
+                            <span class="difficulty medium">Středně pokročilý až pokročilý</span>
+                        </a>
+
+                        <a href="priklady/example_46.html" class="example-item" target="_blank">
+                            <h4>46. Pružná srážka stejných hmot</h4>
+                            <span class="difficulty medium">Středně pokročilý až pokročilý</span>
+                        </a>
+
+                        <a href="priklady/example_47.html" class="example-item" target="_blank">
+                            <h4>47. Pružná srážka různých hmot</h4>
+                            <span class="difficulty medium">Středně pokročilý až pokročilý</span>
+                        </a>
+
+                        <a href="priklady/example_48.html" class="example-item" target="_blank">
+                            <h4>48. Srážka kulečníkových koulí</h4>
+                            <span class="difficulty medium">Středně pokročilý až pokročilý</span>
+                        </a>
+
+                        <a href="priklady/example_49.html" class="example-item" target="_blank">
+                            <h4>49. Srážka auto a kamión</h4>
+                            <span class="difficulty medium">Středně pokročilý až pokročilý</span>
+                        </a>
+
+                        <a href="priklady/example_50.html" class="example-item" target="_blank">
+                            <h4>50. Dvě tělesa na ledě</h4>
+                            <span class="difficulty medium">Středně pokročilý až pokročilý</span>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div class="example-category">
+                    <h3><i class="fas fa-project-diagram"></i> Složitější soustavy a rotace (51-56)</h3>
+                    <p class="category-description" style="color: #64748b; font-size: 0.95rem; margin-top: 0.5rem;">
+                        Kombinované úlohy, soustavy těles, rotační pohyb.
+                    </p>
+                    <div class="example-list">
+
+                        <a href="priklady/example_51.html" class="example-item" target="_blank">
+                            <h4>51. Rychle rotující pulsar</h4>
+                            <span class="difficulty hard">Pokročilý</span>
+                        </a>
+
+                        <a href="priklady/example_52.html" class="example-item" target="_blank">
+                            <h4>52. Rotace pneumatiky</h4>
+                            <span class="difficulty hard">Pokročilý</span>
+                        </a>
+
+                        <a href="priklady/example_53.html" class="example-item" target="_blank">
+                            <h4>53. Těleso na provázku kružnice</h4>
+                            <span class="difficulty hard">Pokročilý</span>
+                        </a>
+
+                        <a href="priklady/example_54.html" class="example-item" target="_blank">
+                            <h4>54. Pohyb míčku ve vlaku a výtahu</h4>
+                            <span class="difficulty hard">Pokročilý</span>
+                        </a>
+
+                        <a href="priklady/example_55.html" class="example-item" target="_blank">
+                            <h4>55. Těleso na pohybujícím vozíku</h4>
+                            <span class="difficulty hard">Pokročilý</span>
+                        </a>
+
+                        <a href="priklady/example_56.html" class="example-item" target="_blank">
+                            <h4>56. Pohyb tělesa ve výtahu</h4>
+                            <span class="difficulty hard">Pokročilý</span>
+                        </a>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Materials Section -->
+    <section id="materials" class="section section-gray">
+        <div class="container">
+            <h2 class="section-title">Materiály ke stažení</h2>
+            <div class="materials-grid">
+                <div class="material-card">
+                    <div class="material-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <h3>Teoretický přehled - Dynamika</h3>
+                    <p>Kompletní přehled dynamiky: Newtonovy zákony, druhy sil (tíhová, třecí, dostředivá), síla na nakloněné rovině, hybnost a zákony zachování včetně všech rovnic a jednotek</p>
+                    <div class="material-meta">
+                        <span><i class="fas fa-file-pdf"></i> PDF</span>
+                        <span><i class="fas fa-download"></i> 43 KB</span>
+                    </div>
+                    <a href="materialy/dynamika_teorie.pdf" target="_blank" style="display: inline-block; background: #2563eb; color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: 500; transition: background 0.2s;">Otevřít PDF</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Navigation -->
+    <section class="section">
+        <div class="container">
+            <div class="lecture-navigation">
+                <a href="../02-kinematika/index.html" class="nav-btn secondary">
+                    <i class="fas fa-arrow-left"></i> Předchozí téma
+                </a>
+                <a href="../04-mechanicka-prace-energie/index.html" class="nav-btn secondary">
+                    Další téma <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script src="../../js/main.js"></script>
+</body>
+</html>
