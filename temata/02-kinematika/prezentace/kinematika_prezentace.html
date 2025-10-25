@@ -804,14 +804,24 @@
                 // Kontrola obou hodnot
                 const calcTime = Math.sqrt(2 * height / g);
                 const calcHeight = 0.5 * g * time * time;
-                const velocity = g * time;
-                result += `<p><strong>Rychlost při dopadu:</strong> v = gt = 9.81×${time} = <span class="highlight">${velocity.toFixed(2)} m/s</span></p>`;
-                result += `<p><strong>Kontrola času:</strong> t = √(2h/g) = ${calcTime.toFixed(2)} s</p>`;
-                result += `<p><strong>Kontrola výšky:</strong> h = ½gt² = ${calcHeight.toFixed(2)} m</p>`;
-                if (Math.abs(calcTime - time) < 0.01) {
-                    result += `<p style="color: green;">✓ Hodnoty jsou konzistentní!</p>`;
+                const velocityFromHeight = Math.sqrt(2 * g * height);
+                const velocityFromTime = g * time;
+
+                result += `<h4>📊 Kontrola zadaných hodnot:</h4>`;
+                result += `<p><strong>Zadáno:</strong> h = ${height} m, t = ${time} s</p>`;
+                result += `<p><strong>Kontrola času z výšky:</strong> t = √(2h/g) = √(2×${height}/9.81) = <span class="highlight">${calcTime.toFixed(2)} s</span></p>`;
+                result += `<p><strong>Kontrola výšky z času:</strong> h = ½gt² = ½×9.81×${time}² = <span class="highlight">${calcHeight.toFixed(2)} m</span></p>`;
+
+                result += `<h4>📐 Rychlost při dopadu:</h4>`;
+                result += `<p><strong>Z výšky:</strong> v = √(2gh) = √(2×9.81×${height}) = <span class="highlight">${velocityFromHeight.toFixed(2)} m/s</span></p>`;
+                result += `<p><strong>Z času:</strong> v = gt = 9.81×${time} = <span class="highlight">${velocityFromTime.toFixed(2)} m/s</span></p>`;
+
+                if (Math.abs(calcTime - time) < 0.1 && Math.abs(calcHeight - height) < 1) {
+                    result += `<p style="color: green; font-weight: bold;">✓ Hodnoty jsou konzistentní! Rychlost: ${velocityFromHeight.toFixed(2)} m/s</p>`;
                 } else {
-                    result += `<p style="color: red;">❌ Hodnoty nejsou konzistentní!</p>`;
+                    result += `<p style="color: red; font-weight: bold;">❌ Hodnoty nejsou konzistentní!</p>`;
+                    result += `<p style="color: orange;">Rozdíl v čase: ${Math.abs(calcTime - time).toFixed(2)} s</p>`;
+                    result += `<p style="color: orange;">Rozdíl ve výšce: ${Math.abs(calcHeight - height).toFixed(2)} m</p>`;
                 }
             } else {
                 result += '<p style="color: red;">❌ Zadejte výšku nebo čas!</p>';
